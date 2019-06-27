@@ -1,0 +1,23 @@
+html {
+  min-height: 100%;
+  background-image: linear-gradient(to bottom right, blue, white);
+}
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.applyLink {
+  padding: 10px 5%;
+  font-size: 1.5rem;
+  text-align: center;
+  color: gold;
+  background-color: blue;
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+}
+
+.applyLink a {
+  color: gold;
+}
