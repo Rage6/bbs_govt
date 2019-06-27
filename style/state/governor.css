@@ -123,6 +123,15 @@ body {
 .goalList {
   padding-top: 40px;
 }
+.agencySubtitle {
+  border-bottom: 2px solid gold;
+  padding: 10px 0 10px 10%;
+  color: gold;
+  font-size: 1.5rem;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #2020a0;
+  width: 90%;
+}
 .upArrow {
   margin-left: 50%;
   position: relative;

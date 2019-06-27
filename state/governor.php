@@ -43,12 +43,16 @@
           > Policies & Goals
         </div>
       </a>
-      <div class="menuButton">
-        > Agencies
-      </div>
-      <div class="menuButton">
-        > Daily Report of Activities
-      </div>
+      <a href="#agencyTag">
+        <div class="menuButton">
+          > Agencies
+        </div>
+      </a>
+      <a href="#reportTag">
+        <div class="menuButton">
+          > Daily Report of Activities
+        </div>
+      </a>
     </div>
     <div class="govContent">
       <img src="../img/state/governor/bbs_gov.jpg">
@@ -90,8 +94,7 @@
       <a name="electedTag">
         <div class="tagTitle">ELECTED OFFICIALS</div>
         <div style="margin-top:0px" class="govBox">
-          <div class="firstBox govSubtitle">
-            ATTORNEY GENERAL</div>
+          <div class="firstBox govSubtitle">ATTORNEY GENERAL</div>
           <div class="nameAndPic">
             <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
             <img src="../img/state/governor/bbs_gov.jpg"/>
@@ -194,6 +197,21 @@
           <a href="#topTag">
             <img src="../img/state/up_arrow.png" />
           </a>
+        </div>
+      </a>
+      <a name="agencyTag">
+        <div class="tagTitle">Departments & Agencies</div>
+        <div style="margin-top:0px" class="govBox">
+          <?php
+            $agencyStmt = $pdo->prepare("SELECT * FROM Department INNER JOIN Delegate WHERE section_id=9 AND Department.delegate_id=Delegate.delegate_id");
+            $agencyStmt->execute();
+            while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
+              echo("
+                <div class='agencySubtitle'>".$oneAgency['dpt_name']."</div>
+                <div></div>
+              ");
+            };
+          ?>
         </div>
       </a>
     </div>
