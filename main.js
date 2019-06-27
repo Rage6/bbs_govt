@@ -17,3 +17,5 @@ $(()=>{
   })
 
 })
+
+// Open and close Department/Agency boxes

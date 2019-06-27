@@ -45,7 +45,7 @@
       </a>
       <a href="#agencyTag">
         <div class="menuButton">
-          > Agencies
+          > Departments & Agencies
         </div>
       </a>
       <a href="#reportTag">
@@ -203,13 +203,18 @@
         <div class="tagTitle">Departments & Agencies</div>
         <div style="margin-top:0px" class="govBox">
           <?php
-            $agencyStmt = $pdo->prepare("SELECT * FROM Department INNER JOIN Delegate WHERE section_id=9 AND Department.delegate_id=Delegate.delegate_id");
+            $agencyNum = 1;
+            $agencyStmt = $pdo->prepare("SELECT * FROM Department INNER JOIN Delegate WHERE section_id=9 AND Department.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY dpt_id ASC");
             $agencyStmt->execute();
             while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
               echo("
-                <div class='agencySubtitle'>".$oneAgency['dpt_name']."</div>
-                <div></div>
+                <div class='agencySubtitle' id='agencyBtn".$agencyNum."'>".$oneAgency['dpt_name']."</div>
+                <div class='agencyContent' id='agencyCnt".$agencyNum."'>
+                  <div>".$oneAgency['purpose']."</div>
+                  <div class='director'>Director: ".$oneAgency['first_name']." ".$oneAgency['last_name']."</div>
+                </div>
               ");
+              $agencyNum++;
             };
           ?>
         </div>
