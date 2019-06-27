@@ -123,6 +123,27 @@ body {
 .goalList {
   padding-top: 40px;
 }
+.agencySubtitle {
+  border-bottom: 2px solid gold;
+  padding: 10px 0 10px 10%;
+  color: gold;
+  font-size: 1.5rem;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #2020a0;
+  width: 90%;
+}
+.agencyContent {
+  border: 1px solid #2020a0;
+  border-top: none;
+  padding: 10px 10% 30px 10%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: gold;
+}
+.director {
+  margin-top: 10px;
+  border-top: 1px solid black;
+  padding-top: 5px;
+}
 .upArrow {
   margin-left: 50%;
   position: relative;
