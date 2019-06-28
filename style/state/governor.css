@@ -168,7 +168,24 @@ body {
 }
 
 .allReportCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
   display: none;
+}
+
+.reportDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.reportTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.reportMain {
+  padding: 0 5%;
 }
 
 .upArrow {

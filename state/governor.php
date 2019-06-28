@@ -238,10 +238,14 @@
             <?php
               $cntNum = 1;
               while ($oneReport = $reportStmt->fetch(PDO::FETCH_ASSOC)) {
+                $month = substr($oneReport['timestamp'],5,2);
+                $day = substr($oneReport['timestamp'],8,2);
+                $year = substr($oneReport['timestamp'],0,4);
                 echo("
                 <div id='reportCnt".$cntNum."' class='allReportCnt'>
-                  <div>".$oneReport['timestamp']."</div>
-                  <div>".$oneReport['title']."</div>
+                  <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                  <div class='reportTitle'>".$oneReport['title']."</div>
+                  <div class='reportMain'>".$oneReport['content']."</div>
                 </div>");
                 $cntNum++;
               };
