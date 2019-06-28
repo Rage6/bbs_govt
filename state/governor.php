@@ -224,6 +224,36 @@
           </a>
         </div>
       </a>
+      <a name="reportTag">
+        <div class="tagTitle">DAILY REPORT OF ACTIVITIES</div>
+        <div class="reportBox">
+          <div class="allReportBtns">
+            <div id="report1" data-day="1">1</div>
+            <div id="report2" data-day="2">2</div>
+            <div id="report3" data-day="3">3</div>
+            <div id="report4" data-day="4">4</div>
+            <div id="report5" data-day="5">5</div>
+          </div>
+          <div class="reportCnt">
+            <?php
+              $cntNum = 1;
+              while ($oneReport = $reportStmt->fetch(PDO::FETCH_ASSOC)) {
+                echo("
+                <div id='reportCnt".$cntNum."' class='allReportCnt'>
+                  <div>".$oneReport['timestamp']."</div>
+                  <div>".$oneReport['title']."</div>
+                </div>");
+                $cntNum++;
+              };
+            ?>
+          </div>
+        </div>
+        <div class="upArrow" style="margin-top:20px">
+          <a href="#topTag">
+            <img src="../img/state/up_arrow.png" />
+          </a>
+        </div>
+      </a>
     </div>
       <div class="footer">
         Want to attend Buckeye Boys State next year?<br/>
