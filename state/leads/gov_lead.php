@@ -36,6 +36,12 @@ $secStmt = $pdo->prepare(
 $secStmt->execute();
 $secInfo = $secStmt->fetch(PDO::FETCH_ASSOC);
 
-// print_r($govInfo);
+// Recalls all daily reports
+$reportStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=3 AND approved=1 AND post_order<=5 ORDER BY post_order ASC");
+$reportStmt->execute();
+
+// echo("<pre>");
+// var_dump($reportInfo);
+// echo("</pre>");
 
 ?>

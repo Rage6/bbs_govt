@@ -135,7 +135,8 @@ body {
 .agencyContent {
   border: 1px solid #2020a0;
   border-top: none;
-  padding: 10px 10% 30px 10%;
+  padding: 10px 10% 15px 10%;
+  display: none;
   font-family: 'Montserrat', sans-serif;
   background-color: gold;
 }
@@ -144,6 +145,49 @@ body {
   border-top: 1px solid black;
   padding-top: 5px;
 }
+
+.reportBox {
+  /* padding-top: 10px; */
+  color: gold;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2020a0;
+}
+
+.allReportBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allReportBtns div {
+  margin: 20px 0 10px 0;
+  border: 1px solid gold;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+}
+
+.allReportCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
+  display: none;
+}
+
+.reportDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.reportTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.reportMain {
+  padding: 0 5%;
+}
+
 .upArrow {
   margin-left: 50%;
   position: relative;

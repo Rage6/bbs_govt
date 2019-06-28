@@ -203,7 +203,7 @@
         <div class="tagTitle">Departments & Agencies</div>
         <div style="margin-top:0px" class="govBox">
           <?php
-            $agencyNum = 1;
+            $agencyNum = 0;
             $agencyStmt = $pdo->prepare("SELECT * FROM Department INNER JOIN Delegate WHERE section_id=9 AND Department.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY dpt_id ASC");
             $agencyStmt->execute();
             while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -217,6 +217,45 @@
               $agencyNum++;
             };
           ?>
+        </div>
+        <div class="upArrow" style="margin-top:20px">
+          <a href="#topTag">
+            <img src="../img/state/up_arrow.png" />
+          </a>
+        </div>
+      </a>
+      <a name="reportTag">
+        <div class="tagTitle">DAILY REPORT OF ACTIVITIES</div>
+        <div class="reportBox">
+          <div class="allReportBtns">
+            <div id="report1" data-day="1">1</div>
+            <div id="report2" data-day="2">2</div>
+            <div id="report3" data-day="3">3</div>
+            <div id="report4" data-day="4">4</div>
+            <div id="report5" data-day="5">5</div>
+          </div>
+          <div class="reportCnt">
+            <?php
+              $cntNum = 1;
+              while ($oneReport = $reportStmt->fetch(PDO::FETCH_ASSOC)) {
+                $month = substr($oneReport['timestamp'],5,2);
+                $day = substr($oneReport['timestamp'],8,2);
+                $year = substr($oneReport['timestamp'],0,4);
+                echo("
+                <div id='reportCnt".$cntNum."' class='allReportCnt'>
+                  <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                  <div class='reportTitle'>".$oneReport['title']."</div>
+                  <div class='reportMain'>".$oneReport['content']."</div>
+                </div>");
+                $cntNum++;
+              };
+            ?>
+          </div>
+        </div>
+        <div class="upArrow" style="margin-top:20px">
+          <a href="#topTag">
+            <img src="../img/state/up_arrow.png" />
+          </a>
         </div>
       </a>
     </div>
