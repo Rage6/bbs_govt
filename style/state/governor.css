@@ -135,7 +135,8 @@ body {
 .agencyContent {
   border: 1px solid #2020a0;
   border-top: none;
-  padding: 10px 10% 30px 10%;
+  padding: 10px 10% 15px 10%;
+  display: none;
   font-family: 'Montserrat', sans-serif;
   background-color: gold;
 }

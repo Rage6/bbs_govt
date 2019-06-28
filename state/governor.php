@@ -203,7 +203,7 @@
         <div class="tagTitle">Departments & Agencies</div>
         <div style="margin-top:0px" class="govBox">
           <?php
-            $agencyNum = 1;
+            $agencyNum = 0;
             $agencyStmt = $pdo->prepare("SELECT * FROM Department INNER JOIN Delegate WHERE section_id=9 AND Department.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY dpt_id ASC");
             $agencyStmt->execute();
             while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -217,6 +217,11 @@
               $agencyNum++;
             };
           ?>
+        </div>
+        <div class="upArrow" style="margin-top:20px">
+          <a href="#topTag">
+            <img src="../img/state/up_arrow.png" />
+          </a>
         </div>
       </a>
     </div>
