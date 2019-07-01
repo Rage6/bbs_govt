@@ -6,29 +6,56 @@
 
   if (isset($_POST['sectionLogin'])) {
     // search for desired section
+    echo("check 1");
     $findSecStmt = $pdo->prepare('SELECT * FROM Section WHERE section_id=:sid');
     $findSecStmt->execute(array(
       ':sid'=>htmlentities($_POST['sectionId'])
     ));
     $secInfo = $findSecStmt->fetch(PDO::FETCH_ASSOC);
-    // makes sure one (and ONLY one) section was selected
-
-    // compares the selected password to the entered one
-
-    // if all correct, it redirects to the admin page
-    // $_SESSION['section_id'] = "put correct id number here";
-    // $_SESSION['message'] = "Put message here";
-    // header('Location: admin.php');
-
-    // if incorrect, it redirects back to login
-    $_SESSION['message'] = $secInfo;
-    header('Location: login.php');
+    echo("<pre>");
+    var_dump($secInfo);
+    echo("</pre>");
+    if (count($secInfo['section_id']) == 1) {
+      $givenPw = htmlentities($_POST['sectionPw']);
+      // encrypt the entered password
+      $delPw = $secInfo['del_pw'];
+      $counsPw = $secInfo['couns_pw'];
+      if ($givenPw == $counsPw) {
+        $_SESSION['section_id'] = $secInfo['section_id'];
+        $_SESSION['admin_type'] = "counselor";
+        $_SESSION['message'] = "Welcome to your counselor's admin";
+        header('Location: admin.php');
+        return true;
+      } elseif ($givenPw == $delPw) {
+        $_SESSION['section_id'] = $sectionInfo["section_id"];
+        $_SESSION['admin_type'] = "delegate";
+        $_SESSION['message'] = "Welcome to your delegate's admin";
+        header('Location: admin.php');
+        return true;
+      } else {
+        $_SESSION['message'] = "The entered password does not work with that section.";
+        header('Location: login.php');
+        return false;
+      };
+    } else {
+      $_SESSION['message'] = "The section that you are searching for was not found. Please contact the IT department for any assistance.";
+      header('Location: login.php');
+      return false;
+    };
   };
 
-  echo("POST:");
-  var_dump($_POST);
-  echo("SESSION:");
-  var_dump($_SESSION);
+  // echo("GET:");
+  // echo("<pre>");
+  // var_dump($_GET);
+  // echo("</pre>");
+  // echo("POST:");
+  // echo("<pre>");
+  // var_dump($_POST);
+  // echo("</pre>");
+  // echo("SESSION:");
+  // echo("<pre>");
+  // var_dump($_SESSION);
+  // echo("</pre>");
 
 ?>
 <!DOCTYPE html>
@@ -54,6 +81,12 @@
         </div>
         </table>
       </form>
+      <?php
+        if (isset($_SESSION['message'])) {
+          echo($_SESSION['message']);
+          unset($_SESSION['message']);
+        };
+      ?>
     </div>
   </body>
 </html>
