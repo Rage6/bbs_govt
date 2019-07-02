@@ -69,22 +69,7 @@
       header('Location: login.php');
       return false;
     };
-    // if (password_verify($givenPw,$masterKey) == true) {
-    //   $masterToken = bin2hex(random_bytes(64));
-    //   $_SESSION['key_token'] = $masterToken;
-    //   $newTknStmt = $pdo->prepare("UPDATE Maintenance SET key_token=:tkn WHERE locksmith_id=1");
-    //   $newTknStmt->execute(array(
-    //     ':tkn'=>$masterToken
-    //   ));
-    //   header('Location: locksmith.php');
-    //   return true;
-    // } else {
-    //   $_SESSION['message'] = "Your Keybox login failed, fucker.";
-    //   header('Location: login.php');
-    //   return false;
-    // };
 
-    // // encrypt the entered password
     // $delPw = $secInfo['del_pw'];
     // $counsPw = $secInfo['couns_pw'];
     // if ($givenPw == $counsPw) {
