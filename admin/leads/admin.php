@@ -44,10 +44,9 @@ $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
-echo("<pre>");
-var_dump($secInfo);
-echo("Type: ".$_SESSION['adminType']);
-echo("</pre>");
+// echo("<pre>");
+// var_dump($secInfo);
+// echo("</pre>");
 
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {
