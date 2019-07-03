@@ -47,11 +47,26 @@
         $_SESSION['message'] = "<b style='color:red'>ERROR 2 (login.php): More/less than 1 row in 'secInfo'</b>";
         header('Location: login.php');
       } else {
+        $newTkn = bin2hex(random_bytes(64));
         if (password_verify($givenPw,$secInfo[0]['couns_pw'])) {
+          $counsTknStmt = $pdo->prepare("UPDATE Section SET couns_token=:nt WHERE section_id=:scd");
+          $counsTknStmt->execute(array(
+            ':nt'=>$newTkn,
+            ':scd'=>htmlentities($_POST['sectionId'])
+          ));
+          $_SESSION['counsToken'] = $newTkn;
+          $_SESSION['secId'] = htmlentities($_POST['sectionId']);
           $_SESSION['message'] = "<b style='color:green'>Counselor login successful</b>";
           header('Location: admin.php');
           return true;
         } elseif (password_verify($givenPw,$secInfo[0]['del_pw'])) {
+          $delTknStmt = $pdo->prepare("UPDATE Section SET del_token=:nt WHERE section_id=:scd");
+          $delTknStmt->execute(array(
+            ':nt'=>$newTkn,
+            ':scd'=>htmlentities($_POST['sectionId'])
+          ));
+          $_SESSION['delToken'] = $newTkn;
+          $_SESSION['secId'] = htmlentities($_POST['sectionId']);
           $_SESSION['message'] = "<b style='color:green'>Delegate login successful</b>";
           header('Location: admin.php');
           return true;
@@ -69,26 +84,6 @@
       header('Location: login.php');
       return false;
     };
-
-    // $delPw = $secInfo['del_pw'];
-    // $counsPw = $secInfo['couns_pw'];
-    // if ($givenPw == $counsPw) {
-    //   $_SESSION['section_id'] = $secInfo['section_id'];
-    //   $_SESSION['admin_type'] = "counselor";
-    //   $_SESSION['message'] = "Welcome to your counselor's admin";
-    //   header('Location: admin.php');
-    //   return true;
-    // } elseif ($givenPw == $delPw) {
-    //   $_SESSION['section_id'] = $sectionInfo["section_id"];
-    //   $_SESSION['admin_type'] = "delegate";
-    //   $_SESSION['message'] = "Welcome to your delegate's admin";
-    //   header('Location: admin.php');
-    //   return true;
-    // } else {
-    //   $_SESSION['message'] = "The entered password does not work with that section.";
-    //   header('Location: login.php');
-    //   return false;
-    // };
   };
 
   // echo("GET:");
@@ -119,7 +114,7 @@
     </div>
     <?php
       if (isset($_SESSION['message'])) {
-        echo($_SESSION['message']);
+        echo("<div class='message'>".$_SESSION['message']."</div>");
         unset($_SESSION['message']);
       };
     ?>
