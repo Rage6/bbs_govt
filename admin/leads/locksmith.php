@@ -28,20 +28,34 @@ for ($secNum = 0; $secNum < $totalSec; $secNum++) {
 if (isset($_POST['changePw'])) {
   if ($_POST['newPw'] == $_POST['confPw']) {
     $secName = htmlentities($_POST['secName']);
+    $pwType = htmlentities($_POST['typeId']);
     $newPw = htmlentities($_POST['newPw']);
     $newHash = password_hash($newPw,PASSWORD_DEFAULT);
-    if ($_POST['typeId'] == 'delegate') {
-      $newPwStmt = $pdo->prepare("UPDATE Section SET del_pw=:nwh WHERE section_id=:sid");
-    } else {
-      $newPwStmt = $pdo->prepare("UPDATE Section SET couns_pw=:nwh WHERE section_id=:sid");
-    };
-    $newPwStmt->execute(array(
-      ':nwh'=>$newHash,
-      ':sid'=>htmlentities($_POST['secId'])
+    // Makes sure that the counselor and delegate passwords aren't the same
+    $getBothPwStmt = $pdo->prepare("SELECT couns_pw, del_pw FROM Section WHERE section_id=:sd");
+    $getBothPwStmt->execute(array(
+      ':sd'=>htmlentities($_POST['secId'])
     ));
-    $_SESSION['message'] = "<b style='color:green'>New password set for '".$secName."' section</b>";
-    header('Location: locksmith.php');
-    return false;
+    $getBothPw = $getBothPwStmt->fetch(PDO::FETCH_ASSOC);
+    if (password_verify($getBothPw['couns_pw'],$newHash) != true || password_verify($getBothPw['del_pw'],$newHash) != true) {
+      $_SESSION['message'] = "<b style='color:red'>The password entered is already used. Please try a differnent password</b>";
+      header('Location: locksmith.php');
+      return false;
+    } else {
+      // Now it puts the new password in the dB
+      if ($pwType == 'delegate') {
+        $newPwStmt = $pdo->prepare("UPDATE Section SET del_pw=:nwh WHERE section_id=:sid");
+      } else {
+        $newPwStmt = $pdo->prepare("UPDATE Section SET couns_pw=:nwh WHERE section_id=:sid");
+      };
+      $newPwStmt->execute(array(
+        ':nwh'=>$newHash,
+        ':sid'=>htmlentities($_POST['secId'])
+      ));
+      $_SESSION['message'] = "<b style='color:green'>New password set for '".$secName."' section</b>";
+      header('Location: locksmith.php');
+      return true;
+    };
   } else {
     $_SESSION['message'] = "<b style='color:red'>Your new password must match it confirmation password</b>";
     header('Location: locksmith.php');

@@ -51,7 +51,9 @@ body {
 }
 
 .lockReset {
-  margin: 30px 15% 0 15%;
+  margin: 30px 10% 0 10%;
+  padding: 10px 5%;
   display: flex;
   justify-content: space-between;
+  background-color: lightblue;
 }
