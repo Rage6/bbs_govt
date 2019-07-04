@@ -11,7 +11,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Admin Center</title>
+    <title>BBS | Admin Center</title>
     <link rel="stylesheet" type="text/css" href="../style/admin/admin.css" />
   </head>
   <body>
@@ -30,10 +30,28 @@
     <div class="titleTop">BUCKEYE BOYS STATE</div>
     <div class="titleBottom">Administrative Center</div>
     <?php
-      if (isset($_SESSION['message'])) {
+      if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
         echo($_SESSION['message']);
         unset($_SESSION['message']);
       };
     ?>
+    <div class="sectionName">
+      <?php
+        // Adds these to the city or county titles for the page
+        if ($secInfo['is_city'] == "1") {
+          $titleSuffix = " City";
+        } elseif ($secInfo['is_county'] == "1") {
+          $titleSuffix = " County";
+        } else {
+          $titleSuffix = "";
+        };
+        // Displays which section you are working on
+        echo($secInfo['section_name'].$titleSuffix);
+      ?>
+    </div>
+    <div style="display:flex">
+      <div class="belowTab"></div>
+      <div class="belowTab"></div>
+    </div>
   </body>
 </html>

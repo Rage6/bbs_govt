@@ -17,9 +17,41 @@ body {
 }
 
 .titleTop {
+  font-size: 1.2rem;
   text-align: center;
+  text-decoration: underline;
 }
 
 .titleBottom {
+  margin-bottom: 40px;
+  font-size: 1.7rem;
   text-align: center;
+}
+
+.sectionName {
+  border: 2px solid black;
+  border-bottom: none;
+  border-radius: 15px 15px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  background-color: tan;
+  width: 50%;
+}
+
+.belowTab {
+  background-color: tan;
+  height: 10px;
+  width: 50%;
+}
+
+.belowTab:first-of-type {
+  border-top: 2px solid tan;
+}
+
+.belowTab:last-of-type {
+  border-top: 2px solid black;
+}
+
+.mainBox {
+  background-color: tan;
 }

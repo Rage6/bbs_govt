@@ -18,7 +18,7 @@
       Welcome to the Buckeye Boys State Administration page. Before adding, updating, or deleting information from the BBS website, you must first select your desired Section and enter the correct password.
     </div>
     <?php
-      if (isset($_SESSION['message'])) {
+      if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
         echo("<div class='message'>".$_SESSION['message']."</div>");
         unset($_SESSION['message']);
       };

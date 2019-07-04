@@ -6,6 +6,7 @@ if (isset($_POST['sectionLogin'])) {
 
   // Route to locksmith page...
   if ($givenSect == "999") {
+    echo("locksmith");
     $masterStmt = $pdo->prepare("SELECT key_pw,attempts FROM Maintenance WHERE locksmith_id=999");
     $masterStmt->execute();
     while ($oneMaster = $masterStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -23,6 +24,7 @@ if (isset($_POST['sectionLogin'])) {
           ':tkn'=>$masterToken
         ));
         $_SESSION['key_token'] = $masterToken;
+        $_SESSION['message'] = "<b style='color:green'>Login Successful</b>";
         header('Location: locksmith.php');
         return true;
       } else {
@@ -33,7 +35,8 @@ if (isset($_POST['sectionLogin'])) {
     };
 
   // Route to admin page...
-  } elseif ($givenSect != "") {
+} elseif ($givenSect != "") {
+    echo("admin");
     $findSecStmt = $pdo->prepare('SELECT * FROM Section WHERE section_id=:sid');
     $findSecStmt->execute(array(
       ':sid'=>htmlentities($_POST['sectionId'])
@@ -79,6 +82,7 @@ if (isset($_POST['sectionLogin'])) {
 
   // Route back to login when no section is selected
   } else {
+    echo("other");
     $_SESSION['message'] = "<b style='color:red'>You must select a section, county, or city</b>";
     header('Location: login.php');
     return false;
