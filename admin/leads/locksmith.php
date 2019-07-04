@@ -49,6 +49,17 @@ if (isset($_POST['changePw'])) {
   };
 };
 
+// Resets the number of failed login attempts back to zero for the given section
+if (isset($_POST['resetNum'])) {
+  $resetNumStmt = $pdo->prepare("UPDATE Section SET couns_num=0, del_num=0 WHERE section_id=:scid");
+  $resetNumStmt->execute(array(
+    ':scid'=>htmlentities($_POST['secId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Section unlocked</b>";
+  header('Location: locksmith.php');
+  return true;
+};
+
 // Logs out user
 if (isset($_POST['logout'])) {
   $_SESSION['message'] = "<b style='color:green'>Logout successful</b>";

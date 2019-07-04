@@ -49,3 +49,9 @@ body {
   text-align: center;
   width: 80%;
 }
+
+.lockReset {
+  margin: 30px 15% 0 15%;
+  display: flex;
+  justify-content: space-between;
+}

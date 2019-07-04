@@ -26,6 +26,11 @@
         unset($_SESSION['message']);
       };
       for ($indexNum = 0; $indexNum < $totalSec; $indexNum++) {
+        if ($secList[$indexNum]['couns_num'] >= 5) {
+          $attemptColor = "red";
+        } else {
+          $attemptColor = "green";
+        };
         echo("
           <div class='secBox'>
 
@@ -53,6 +58,17 @@
                     <div class='changeBttn'><input type='submit' name='changePw' value='ENTER'></div>
                   </div>
                 </form>
+              </div>
+              <div class='lockReset'>
+                <div>
+                  Failed Logins: <span style='color:".$attemptColor."'>".$secList[$indexNum]['del_num']."</span>
+                </div>
+                <div>
+                  <form method='POST'>
+                    <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."' />
+                    <input style='border:1px solid black' type='submit' name='resetNum' value='UNLOCK' />
+                  </form>
+                </div>
               </div>
 
           </div>
