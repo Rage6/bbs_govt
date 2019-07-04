@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.menuTop {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menuTop div {
+  padding: 5px 2%;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.titleTop {
+  font-size: 1.2rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.titleBottom {
+  margin-bottom: 40px;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.message {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.sectionName {
+  border: 2px solid black;
+  border-bottom: none;
+  border-radius: 15px 15px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  background-color: tan;
+  width: 50%;
+}
+
+.belowTab {
+  background-color: tan;
+  height: 40px;
+  width: 50%;
+}
+
+.belowTab:first-of-type {
+  border-top: 2px solid tan;
+}
+
+.belowTab:last-of-type {
+  border-top: 2px solid black;
+}
+
+.mainBox {
+  background-color: tan;
+}
+
+.postType {
+  margin: 0 10% 30px 10%;
+  text-decoration: underline;
+}
+
+.postBox {
+  margin: 0 5% 50px 5%;
+  border: 1px solid black;
+}
+
+.postBox textarea {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.changeBttn {
+
+}
+
+.changeBttn input {
+  margin: 0 0 30px 10%;
+  border: 2px solid white;
+  font-size: 2rem;
+  color: white;
+  background-color: blue;
+  width: 80%;
+  cursor: pointer;
+}

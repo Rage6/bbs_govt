@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.mainTitle {
+  margin: 15px 0 30px 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.message {
+  margin: 10px 10%;
+  text-align: center;
+  width: 80%;
+}
+
+.secBox {
+  margin-bottom: 10px;
+  border-bottom: 1px solid blue;
+  padding-bottom: 30px;
+}
+
+.secName {
+  padding: 5px 0 5px 20px;
+  color: gold;
+  background-color: blue;
+}
+
+.rowPasswords {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.typeTitle {
+  text-align: center;
+}
+
+.inputPasswords {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.changeBttn {
+  margin: 10px 0 0 10%;
+  border: 1px solid black;
+  text-align: center;
+  width: 80%;
+}
+
+.lockReset {
+  margin: 30px 10% 0 10%;
+  padding: 10px 5%;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightblue;
+}
