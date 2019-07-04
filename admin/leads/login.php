@@ -6,7 +6,6 @@ if (isset($_POST['sectionLogin'])) {
 
   // Route to locksmith page...
   if ($givenSect == "999") {
-    echo("locksmith");
     $masterStmt = $pdo->prepare("SELECT key_pw,attempts FROM Maintenance WHERE locksmith_id=999");
     $masterStmt->execute();
     while ($oneMaster = $masterStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -36,7 +35,6 @@ if (isset($_POST['sectionLogin'])) {
 
   // Route to admin page...
 } elseif ($givenSect != "") {
-    echo("admin");
     $findSecStmt = $pdo->prepare('SELECT * FROM Section WHERE section_id=:sid');
     $findSecStmt->execute(array(
       ':sid'=>htmlentities($_POST['sectionId'])
@@ -48,9 +46,14 @@ if (isset($_POST['sectionLogin'])) {
       $_SESSION['message'] = "<b style='color:red'>ERROR 2 (login.php): More/less than 1 row in 'secInfo'</b>";
       header('Location: login.php');
     } else {
+      if ($secInfo[0]['couns_num'] > 4 || $secInfo[0]['del_num'] > 4) {
+        $_SESSION['message'] = "<b style='color:red'>Due to multiple failed password attempts, this section is currently locked. You must contact the BBS IT staff in order to unlock this section.</b>";
+        header('Location: login.php');
+        return false;
+      };
       $newTkn = bin2hex(random_bytes(64));
       if (password_verify($givenPw,$secInfo[0]['couns_pw'])) {
-        $counsTknStmt = $pdo->prepare("UPDATE Section SET couns_token=:nt WHERE section_id=:scd");
+        $counsTknStmt = $pdo->prepare("UPDATE Section SET couns_token=:nt, couns_num=0, del_num=0 WHERE section_id=:scd");
         $counsTknStmt->execute(array(
           ':nt'=>$newTkn,
           ':scd'=>htmlentities($_POST['sectionId'])
@@ -61,7 +64,7 @@ if (isset($_POST['sectionLogin'])) {
         header('Location: admin.php');
         return true;
       } elseif (password_verify($givenPw,$secInfo[0]['del_pw'])) {
-        $delTknStmt = $pdo->prepare("UPDATE Section SET del_token=:nt WHERE section_id=:scd");
+        $delTknStmt = $pdo->prepare("UPDATE Section SET del_token=:nt, couns_num=0, del_num=0 WHERE section_id=:scd");
         $delTknStmt->execute(array(
           ':nt'=>$newTkn,
           ':scd'=>htmlentities($_POST['sectionId'])
@@ -72,7 +75,18 @@ if (isset($_POST['sectionLogin'])) {
         header('Location: admin.php');
         return true;
       } else {
-        $_SESSION['message'] = "<b style='color:red'>Password incorrect</b>";
+        $numDelFails = $secInfo[0]['del_num'] + 1;
+        $numLeft = 5 - $numDelFails;
+        if ($numLeft == 0) {
+          $totalMessage = "Your section is now locked. Contact the BBS IT staff in order to unlock this section.";
+        } else {
+          $totalMessage = "You have ".$numLeft." more attempts until this section locks.";
+        };
+        $addNumStmt = $pdo->prepare("UPDATE Section SET del_num = del_num + 1, couns_num = couns_num + 1 WHERE section_id=:scd");
+        $addNumStmt->execute(array(
+          ':scd'=>htmlentities($_POST['sectionId'])
+        ));
+        $_SESSION['message'] = "<b style='color:red'>Password Incorrect. ".$totalMessage."</b>";
         header('Location: login.php');
         return fail;
       };
@@ -82,7 +96,6 @@ if (isset($_POST['sectionLogin'])) {
 
   // Route back to login when no section is selected
   } else {
-    echo("other");
     $_SESSION['message'] = "<b style='color:red'>You must select a section, county, or city</b>";
     header('Location: login.php');
     return false;
