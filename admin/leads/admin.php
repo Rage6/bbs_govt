@@ -39,14 +39,14 @@ if (isset($_SESSION['counsToken'])) {
 
 // Gets section data
 $secId = (int)$_SESSION['secId'];
-$secInfoStmt = $pdo->prepare("SELECT * FROM Section WHERE section_id=:sid");
+$secInfoStmt = $pdo->prepare("SELECT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
 $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
-echo("<pre>");
-var_dump($secInfo);
-echo("</pre>");
+// echo("<pre>");
+// var_dump($secInfo);
+// echo("</pre>");
 
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {

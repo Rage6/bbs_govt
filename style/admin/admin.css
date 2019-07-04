@@ -28,6 +28,11 @@ body {
   text-align: center;
 }
 
+.message {
+  margin: 15px 0;
+  text-align: center;
+}
+
 .sectionName {
   border: 2px solid black;
   border-bottom: none;
@@ -40,7 +45,7 @@ body {
 
 .belowTab {
   background-color: tan;
-  height: 10px;
+  height: 40px;
   width: 50%;
 }
 
@@ -54,4 +59,33 @@ body {
 
 .mainBox {
   background-color: tan;
+}
+
+.postType {
+  margin: 0 10% 30px 10%;
+  text-decoration: underline;
+}
+
+.postBox {
+  margin: 0 5% 50px 5%;
+  border: 1px solid black;
+}
+
+.postBox textarea {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.changeBttn {
+
+}
+
+.changeBttn input {
+  margin: 0 0 30px 10%;
+  border: 2px solid white;
+  font-size: 2rem;
+  color: white;
+  background-color: blue;
+  width: 80%;
+  cursor: pointer;
 }
