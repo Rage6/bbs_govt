@@ -88,6 +88,10 @@ body {
   width: 30%;
 }
 
+.addBox {
+  background-color: lightgreen;
+}
+
 .postBox {
   margin: 0 5% 30px 5%;
   padding: 10px 5%;
@@ -137,4 +141,37 @@ body {
   color: white;
   background-color: red;
   cursor: pointer;
+}
+
+.counsOnly {
+  margin-top: 15px;
+  padding: 15px 0;
+  border: 2px dashed black;
+  text-align: center;
+}
+
+.delBox {
+  margin-top: 20px;
+  display: none;
+}
+
+.delBttnRow {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delBttn {
+  border: 1px solid black;
+  padding: 10px 5%;
+}
+
+.noDel {
+  color: black;
+  background-color: white;
+}
+
+.yesDel {
+  color: white;
+  background-color: red;
 }

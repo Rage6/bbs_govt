@@ -48,6 +48,17 @@ $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 // var_dump($secInfo);
 // echo("</pre>");
 
+// Delete a post
+if (isset($_POST['deletePost'])) {
+  $delPostStmt = $pdo->prepare('DELETE FROM Post WHERE post_id=:pid');
+  $delPostStmt->execute(array(
+    ':pid'=>$_POST['postId']
+  ));
+  $_SESSION['message'] = "<b style='color:blue'>Post Deleted</b>";
+  header('Location: admin.php');
+  return true;
+};
+
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {
   if (isset($_SESSION['counsToken'])) {

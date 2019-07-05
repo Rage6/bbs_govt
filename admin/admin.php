@@ -64,12 +64,22 @@
         $listTypeStmt->execute(array(
           ':sid'=>$secInfo['section_id']
         ));
-        echo("<form method='POST'>");
           while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
             echo("
             <div class='postTypeRow'>
               <div class='postType'>".$oneType['type_name']."</div>
-              <div class='addingPost'> + ADD POST</div>
+              <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
+            </div>
+            <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
+              <form method='POST'>
+                <input type='hidden' name='approval' value='0' />
+                <div class='postTitle'>Title:</div>
+                <input type='text' name='postTitle' placeholder='Enter your title here' />
+                <div>Content:</div>
+                <input type='text' name='postContent' placeholder='Enter your content here' />
+                <div>Order #:</div>
+                <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
+              </form>
             </div>
             ");
             $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order ASC");
@@ -97,19 +107,22 @@
                   <div>Order #:</div>
                   <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
               ");
+              if ($approval == 1) {
+                $ifApproved = "checked";
+                $ifPending = "";
+                $status = "PUBLIC";
+              } else {
+                $ifApproved = "";
+                $ifPending = "checked";
+                $status = "PENDING";
+              };
+              echo("<div>Online Status: ".$status."</div>");
               if ($_SESSION['adminType'] == "counselor") {
-                if ($approval == 1) {
-                  $ifApproved = "checked";
-                  $ifPending = "";
-                } else {
-                  $ifApproved = "";
-                  $ifPending = "checked";
-                };
                 echo("
-                  <div>
-                    <div>Counselor Approval:</div>
+                  <div class='counsOnly'>
+                    <div><u>COUNSELOR ONLY</u></div>
                     <input type='radio' id='yes' name='approval' value='1' ".$ifApproved." />
-                    <label for='yes'>COMPLETE</label>
+                    <label for='yes'>COMPLETE</label></br>
                     <input type='radio' id='no' name='approval' value='0' ".$ifPending." />
                     <label for='yes'>PENDING</label>
                   </div>
@@ -118,7 +131,16 @@
               echo("
                   <div class='changeBttns'>
                     <input type='submit' name='changePosts' value='CHANGE' />
-                    <div>DELETE</div>
+                    <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."'>DELETE</div>
+                  </div>
+                  <div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
+                    ARE YOU SURE YOU WANT TO DELETE THIS POST?
+                    <div class='delBttnRow'>
+                      <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
+                      <div class='delBttn yesDel'>
+                        <input type='submit' name='deletePost' value='YES, delete it' />
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>");
