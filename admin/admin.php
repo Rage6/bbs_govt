@@ -78,25 +78,41 @@
             ));
             while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
               if ($onePost['approved'] == 1) {
-                $approval = 'true';
+                $approval = 1;
               } else {
-                $approval = 'false';
+                $approval = 0;
               };
               echo("
-              <div class='postBox' data-approved=".$approval.">
+              <div class='postBox'>
                 <form method='POST'>
                   <input type='hidden' name='postId' value='".$onePost['post_id']."'>
                   <div class='postTitle'>Title:</div>
-                  <input type='text' name='postTitle' value='".$onePost['title']."' />
+                  <input type='text' name='postTitle' value='");
+                    echo htmlspecialchars($onePost['title'], ENT_QUOTES);
+                    echo("' />
                   <div>Content:</div>
-                  <input type='text' name='postContent' value='".$onePost['content']."' />
+                  <input type='text' name='postContent' value='");
+                    echo htmlspecialchars($onePost['content'], ENT_QUOTES);
+                    echo("' />
                   <div>Order #:</div>
                   <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
               ");
               if ($_SESSION['adminType'] == "counselor") {
+                if ($approval == 1) {
+                  $ifApproved = "checked";
+                  $ifPending = "";
+                } else {
+                  $ifApproved = "";
+                  $ifPending = "checked";
+                };
                 echo("
-                    <div>Approved:</div>
-                    <input type='number' name='orderNum' min='1' value='".$onePost['approved']."' />
+                  <div>
+                    <div>Counselor Approval:</div>
+                    <input type='radio' id='yes' name='approval' value='1' ".$ifApproved." />
+                    <label for='yes'>COMPLETE</label>
+                    <input type='radio' id='no' name='approval' value='0' ".$ifPending." />
+                    <label for='yes'>PENDING</label>
+                  </div>
                 ");
               };
               echo("
