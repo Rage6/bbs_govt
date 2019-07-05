@@ -66,7 +66,12 @@
         ));
         echo("<form method='POST'>");
           while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
-            echo("<div class='postType'>".$oneType['type_name']."</div>");
+            echo("
+            <div class='postTypeRow'>
+              <div class='postType'>".$oneType['type_name']."</div>
+              <div class='addingPost'> + ADD POST</div>
+            </div>
+            ");
             $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order ASC");
             $listPostStmt->execute(array(
               ':tid'=>$oneType['type_id']
@@ -79,22 +84,30 @@
               };
               echo("
               <div class='postBox' data-approved=".$approval.">
-                <div>Title:</div>
-                <textarea>".$onePost['title']."</textarea>
-                <div>Content:</div>
-                <textarea>".$onePost['content']."</textarea>
-                <div>Order #:</div>
-                <textarea>".$onePost['post_order']."</textarea>
-                <div>Approved:</div>
-                <textarea>".$onePost['approved']."</textarea>
+                <form method='POST'>
+                  <input type='hidden' name='postId' value='".$onePost['post_id']."'>
+                  <div class='postTitle'>Title:</div>
+                  <input type='text' name='postTitle' value='".$onePost['title']."' />
+                  <div>Content:</div>
+                  <input type='text' name='postContent' value='".$onePost['content']."' />
+                  <div>Order #:</div>
+                  <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
+              ");
+              if ($_SESSION['adminType'] == "counselor") {
+                echo("
+                    <div>Approved:</div>
+                    <input type='number' name='orderNum' min='1' value='".$onePost['approved']."' />
+                ");
+              };
+              echo("
+                  <div class='changeBttns'>
+                    <input type='submit' name='changePosts' value='CHANGE' />
+                    <div>DELETE</div>
+                  </div>
+                </form>
               </div>");
             };
           };
-          echo("
-            <div class='changeBttn'>
-              <input type='submit' name='changePosts' value='MAKE CHANGES' />
-            </div>
-          ");
         echo("</form>");
       ?>
     </div>
