@@ -58,34 +58,130 @@ body {
 }
 
 .mainBox {
+  padding-bottom: 30px;
   background-color: tan;
 }
 
+.postTypeRow {
+  margin: 0 5% 10px 5%;
+  padding-top: 40px;
+  display:flex;
+  justify-content:space-between
+}
+
+.postTypeRow:first-of-type {
+  padding-top: 0;
+}
+
 .postType {
-  margin: 0 10% 30px 10%;
+  font-size: 1.3rem;
   text-decoration: underline;
 }
 
+.addingPost {
+  border-radius: 5px;
+  padding: 10px 2%;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: green;
+  width: 30%;
+}
+
+.addBox {
+  background-color: lightgreen;
+}
+
+.addSubmit {
+  margin: 20px 0 0 30%;
+  padding: 5px 0;
+  display: block;
+  color: white;
+  font-size: 1.3rem;
+  background-color: green;
+  width: 40%;
+}
+
 .postBox {
-  margin: 0 5% 50px 5%;
+  margin: 0 5% 30px 5%;
+  padding: 10px 5%;
   border: 1px solid black;
 }
 
+.postBox:last-of-type {
+  margin-bottom: 0;
+}
+
 .postBox textarea {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
   box-sizing: border-box;
   width: 100%;
 }
 
-.changeBttn {
-
+.postTitle {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
 }
 
-.changeBttn input {
-  margin: 0 0 30px 10%;
-  border: 2px solid white;
-  font-size: 2rem;
+.postOrder {
+  font-size: 1.1rem;
+  width: 10%;
+}
+
+.changeBttns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.changeBttns input {
+  margin: 10px 0;
+  border: 1px solid white;
+  font-size: 1.2rem;
   color: white;
   background-color: blue;
-  width: 80%;
   cursor: pointer;
+}
+
+.changeBttns div {
+  margin: 10px 0;
+  border: 1px solid white;
+  padding: 5px 2%;
+  font-size: 1.2rem;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+}
+
+.counsOnly {
+  margin-top: 15px;
+  padding: 15px 0;
+  border: 2px dashed black;
+  text-align: center;
+}
+
+.delBox {
+  margin-top: 20px;
+  display: none;
+}
+
+.delBttnRow {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delBttn {
+  border: 1px solid black;
+  padding: 10px 5%;
+}
+
+.noDel {
+  color: black;
+  background-color: white;
+}
+
+.yesDel {
+  color: white;
+  background-color: red;
 }

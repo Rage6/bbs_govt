@@ -48,6 +48,63 @@ $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 // var_dump($secInfo);
 // echo("</pre>");
 
+// Add a new post
+if (isset($_POST['addPost'])) {
+  if ($_POST['postTitle'] != "") {
+    if ($_POST['postContent'] != "") {
+      if ($_POST['orderNum'] != "") {
+        $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,approved,type_id,section_id) VALUES (:ti,:cn,:po,:ap,:td,:sd)");
+        $addPostStmt->execute(array(
+          ':ti'=>htmlentities($_POST['postTitle']),
+          ':cn'=>htmlentities($_POST['postContent']),
+          ':po'=>htmlentities($_POST['orderNum']),
+          ':ap'=>htmlentities($_POST['approval']),
+          ':td'=>htmlentities($_POST['typeId']),
+          ':sd'=>htmlentities($_POST['secId'])
+        ));
+        $_SESSION['message'] = "<b style='color:green'>Post Added</b>";
+        header('Location: admin.php');
+        return true;
+      } else {
+        $_SESSION['message'] = "<b style='color:red'>An order within the other posts is required</b>";
+        header('Location: admin.php');
+        return false;
+      };
+    } else {
+      $_SESSION['message'] = "<b style='color:red'>A content is required</b>";
+      header('Location: admin.php');
+      return false;
+    };
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>A title is required</b>";
+    header('Location: admin.php');
+    return false;
+  };
+};
+
+// Approving a pending post (or switching back to 'pending')
+if (isset($_POST['changeApproval'])) {
+  $approvalStmt = $pdo->prepare("UPDATE Post SET approved=:apv WHERE post_id=:pd");
+  $approvalStmt->execute(array(
+    ':apv'=>htmlentities($_POST['approval']),
+    ':pd'=>htmlentities($_POST['postId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Approval changed</b>";
+  header('Location: admin.php');
+  return true;
+};
+
+// Delete a post
+if (isset($_POST['deletePost'])) {
+  $delPostStmt = $pdo->prepare('DELETE FROM Post WHERE post_id=:pid');
+  $delPostStmt->execute(array(
+    ':pid'=>$_POST['postId']
+  ));
+  $_SESSION['message'] = "<b style='color:blue'>Post Deleted</b>";
+  header('Location: admin.php');
+  return true;
+};
+
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {
   if (isset($_SESSION['counsToken'])) {
