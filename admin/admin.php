@@ -72,13 +72,16 @@
             </div>
             <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
               <form method='POST'>
-                <input type='hidden' name='approval' value='0' />
                 <div class='postTitle'>Title:</div>
                 <input type='text' name='postTitle' placeholder='Enter your title here' />
                 <div>Content:</div>
                 <input type='text' name='postContent' placeholder='Enter your content here' />
                 <div>Order #:</div>
                 <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
+                <input type='hidden' name='approval' value='0' />
+                <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
+                <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
+                <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />
               </form>
             </div>
             ");
@@ -124,7 +127,8 @@
                     <input type='radio' id='yes' name='approval' value='1' ".$ifApproved." />
                     <label for='yes'>COMPLETE</label></br>
                     <input type='radio' id='no' name='approval' value='0' ".$ifPending." />
-                    <label for='yes'>PENDING</label>
+                    <label for='no'>PENDING</label></br>
+                    <input type='submit' name='changeApproval' value='SUBMIT' />
                   </div>
                 ");
               };
@@ -137,9 +141,7 @@
                     ARE YOU SURE YOU WANT TO DELETE THIS POST?
                     <div class='delBttnRow'>
                       <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
-                      <div class='delBttn yesDel'>
-                        <input type='submit' name='deletePost' value='YES, delete it' />
-                      </div>
+                      <input class='yesDel' type='submit' name='deletePost' value='YES, delete it' />
                     </div>
                   </div>
                 </form>
