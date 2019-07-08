@@ -51,11 +51,19 @@ $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 // echo("</pre>");
 
 // Gets all city info
-$allCityStmt = $pdo->prepare("SELECT city_id,section_name FROM City");
+$allCityStmt = $pdo->prepare("SELECT city_id,section_name,county_id FROM City");
 $allCityStmt->execute();
 $allCity = [];
 while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
   $allCity[] = $oneCity;
+};
+
+// Gets all delegate info
+$allDelegateStmt = $pdo->prepare("SELECT delegate_id,first_name,last_name FROM Delegate ORDER BY last_name ASC");
+$allDelegateStmt->execute();
+$allDelegate = [];
+while ($oneDelegate = $allDelegateStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allDelegate[] = $oneDelegate;
 };
 
 // Add a new post
@@ -114,6 +122,65 @@ if (isset($_POST['deletePost'])) {
   header('Location: admin.php');
   return true;
 };
+
+// Changes the job assignment from one existing delegate to another
+if (isset($_POST['changeJobDel'])) {
+  if ($_POST['jobId'] == -1) {
+    $_SESSION['message'] = "<b style='color:red'>A job must be selected</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    if (!isset($_POST['jobDel'])) {
+      $_SESSION['message'] = "<b style='color:red'>A delegate must be selected</b>";
+      header('Location: admin.php');
+      return false;
+    } else {
+      $changeJobStmt = $pdo->prepare("UPDATE Job SET delegate_id=:jd WHERE job_id=:ji");
+      $changeJobStmt->execute(array(
+        ':jd'=>htmlentities($_POST['jobDel']),
+        ':ji'=>htmlentities($_POST['jobId'])
+      ));
+      $_SESSION['message'] = "<b style='color:green'>Job Updated</b>";
+      header('Location: admin.php');
+      return true;
+    };
+  };
+};
+
+// Adding a new delegate to the job table
+if (isset($_POST['addDelegate'])) {
+  if ($_POST['newFirstN'] == "" || $_POST['newLastN'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>A first and last name must be entered</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    if ($_POST['delCity'] == -1) {
+      $_SESSION['message'] = "<b style='color:red'>A city must be selected</b>";
+      header('Location: admin.php');
+      return false;
+    } else {
+      for ($cityCount = 0; $cityCount < count($allCity); $cityCount++) {
+        if ($allCity[$cityCount]['city_id'] == $_POST['delCity']) {
+          $delCounty = $allCity[$cityCount]['county_id'];
+        };
+      };
+      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,email,hometown,city_id,county_id) VALUES (:fn,:lm,:em,:hm,:ci,:co)");
+      $addDelegateStmt->execute(array(
+        ':fn'=>htmlentities($_POST['newFirstN']),
+        ':lm'=>htmlentities($_POST['newLastN']),
+        ':em'=>htmlentities($_POST['newEmail']),
+        ':hm'=>htmlentities($_POST['newHome']),
+        ':ci'=>htmlentities($_POST['delCity']),
+        ':co'=>$delCounty
+      ));
+      $_SESSION['message'] = "<b style='color:green'>Delegate Added</b>";
+      header('Location: admin.php');
+      return true;
+    };
+  };
+};
+
+// Show all Departments with 
 
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {

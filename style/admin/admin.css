@@ -185,3 +185,11 @@ body {
   color: white;
   background-color: red;
 }
+
+.counsTitle {
+  margin-bottom: 40px;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  background-color: red;
+}

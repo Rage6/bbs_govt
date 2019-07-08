@@ -155,28 +155,7 @@
           };
         echo("</form>");
 
-        // ** Below are options ONLY available for counselors
-
-        // For adding a new delegate to the database
-        echo("
-          <div>
-            <div>Add New Delegate</div>
-            <div>
-              <form method='POST'>
-                <input type='text' name='newFirstN' placeholder='First name' />
-                <input type='text' name='newLastN' placeholder='Last name' />
-                <select name='delCity'>
-                  <option>Choose a city...</option>");
-                  for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
-                    echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
-                  };
-        echo("
-                </select>
-                <input type='submit' name='addDelegate' value='ADD' />
-              </form>
-            </div>
-          </div>
-        ");
+        // ** Below are COUNSELOR ONLY
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
@@ -185,32 +164,91 @@
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
           echo("
+            <div class='counsTitle'>
+              COUNSELORS ONLY
+            </div>
             <div>
               <div>
-                <table>
-                  <thead>
+                <u>Current Job Assignments</u>
+              </div>
+              <div>
+                <table>");
+                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <tr><td>".$oneJob['job_name']."</td></tr>
                     <tr>
-                      Job Assignments
-                    </tr>
-                  </thead>
-                  <tbody>");
-                    while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo("
-                        <tr>
-                          <td>".$oneJob['job_name']."</td>
-                        </tr>
-                        <tr>
-                          <td>".$oneJob['first_name']." ".$oneJob['last_name']."</td>
-                          <td>".$oneJob['section_name']."</td>
-                          <input type='hidden' name='jobId' value='".$oneJob['job_id']."' />
-                          <td>CHANGE</td>
-                        </tr>");
-                    };
+                      <td>".$oneJob['first_name']." ".$oneJob['last_name']."</td>
+                      <td>".$oneJob['section_name']."</td>
+                    </tr>");
+                };
           echo("
-                  </tbody>
                 </table>
               </div>
             </div>
+            </br>
+            <div>
+              <u>Change a job assignment</u>
+            </div>
+            <div>
+              <form method='POST'>
+                <span>I need to change the current... </span>
+                <span>
+                  <select name='jobId'>
+                    <option value='-1'>Choose a job</option>");
+                    $jobListStmt->execute(array(
+                      ':scd'=>htmlentities($secInfo['section_id'])
+                    ));
+                    while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                      echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
+                    };
+          echo("
+                  </select>
+                </span>
+                <div>
+                  Choose a delegate:
+                </div>
+                <div>");
+                for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
+                  echo("
+                  <div>
+                    <input type='radio' name='jobDel' value='".$allDelegate[$delNum]['delegate_id']."' />".$allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
+                  </div>");
+                };
+          echo("
+                  <div>
+                    <input type='submit' name='changeJobDel' value='CHANGE' />
+                  </div>
+                </div>
+              </form>
+            </div>
+          ");
+
+          // For adding a new delegate to the database
+          echo("
+              <div>
+                <div>Add New Delegate</div>
+                <div>
+                  <form method='POST'>
+                    <input type='text' name='newFirstN' placeholder='First name' />
+                    </br>
+                    <input type='text' name='newLastN' placeholder='Last name' />
+                    </br>
+                    <input type='text' name='newHome' placeholder='Hometown' />
+                    </br>
+                    <input type='text' name='newEmail' placeholder='Email' />
+                    </br>
+                    <select name='delCity'>
+                      <option value='-1'>Choose a city...</option>");
+                      for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
+                        echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
+                      };
+          echo("
+                    </select>
+                    </br>
+                    <input type='submit' name='addDelegate' value='ADD' />
+                  </form>
+                </div>
+              </div>
           ");
         };
       ?>
