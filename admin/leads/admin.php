@@ -8,9 +8,10 @@ if (isset($_SESSION['counsToken'])) {
   ));
   $dbTkn = $dbTknStmt->fetch(PDO::FETCH_ASSOC)['couns_token'];
   if ($dbTkn != $_SESSION['counsToken']) {
-    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This occurs if another counselor logs into this section's account while you are still logged in.</b>";
+    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another counselor logged into this section's account recently.</b>";
     unset($_SESSION['counsToken']);
     unset($_SESSION['secId']);
+    unset($_SESSION['adminType']);
     header('Location: login.php');
     return false;
   } else {
@@ -23,9 +24,10 @@ if (isset($_SESSION['counsToken'])) {
   ));
   $dbTkn = $dbTknStmt->fetch(PDO::FETCH_ASSOC)['del_token'];
   if ($dbTkn != $_SESSION['delToken']) {
-    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This occurs if another delegate logs into this section's account while you are still logged in.</b>";
+    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another delegate logged into this section's account recently.</b>";
     unset($_SESSION['delToken']);
     unset($_SESSION['secId']);
+    unset($_SESSION['adminType']);
     header('Location: login.php');
     return false;
   } else {
@@ -47,6 +49,14 @@ $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 // echo("<pre>");
 // var_dump($secInfo);
 // echo("</pre>");
+
+// Gets all city info
+$allCityStmt = $pdo->prepare("SELECT city_id,section_name FROM City");
+$allCityStmt->execute();
+$allCity = [];
+while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allCity[] = $oneCity;
+};
 
 // Add a new post
 if (isset($_POST['addPost'])) {

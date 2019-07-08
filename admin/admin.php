@@ -18,6 +18,11 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
     <script src="main.js"></script>
+    <!-- For EasyAutocomplete -->
+    <script src="../node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/easy-autocomplete/dist/easy-autocomplete.min.css">
+    <link rel="stylesheet" href="../node_modules/easy-autocomplete/dist/easy-autocomplete.themes.min.css">
+    <!--  -->
   </head>
   <body>
     <div class="menuTop">
@@ -149,6 +154,65 @@
             };
           };
         echo("</form>");
+
+        // ** Below are options ONLY available for counselors
+
+        // For adding a new delegate to the database
+        echo("
+          <div>
+            <div>Add New Delegate</div>
+            <div>
+              <form method='POST'>
+                <input type='text' name='newFirstN' placeholder='First name' />
+                <input type='text' name='newLastN' placeholder='Last name' />
+                <select name='delCity'>
+                  <option>Choose a city...</option>");
+                  for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
+                    echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
+                  };
+        echo("
+                </select>
+                <input type='submit' name='addDelegate' value='ADD' />
+              </form>
+            </div>
+          </div>
+        ");
+
+        // For assigning/changing job assignments
+        if ($_SESSION['adminType'] == 'counselor') {
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
+          $jobListStmt->execute(array(
+            ':scd'=>htmlentities($secInfo['section_id'])
+          ));
+          echo("
+            <div>
+              <div>
+                <table>
+                  <thead>
+                    <tr>
+                      Job Assignments
+                    </tr>
+                  </thead>
+                  <tbody>");
+                    while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                      echo("
+                        <tr>
+                          <td>".$oneJob['job_name']."</td>
+                        </tr>
+                        <tr>
+                          <td>".$oneJob['first_name']." ".$oneJob['last_name']."</td>
+                          <td>".$oneJob['section_name']."</td>
+                          <input type='hidden' name='jobId' value='".$oneJob['job_id']."' />
+                          <td>CHANGE</td>
+                        </tr>");
+                    };
+          echo("
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ");
+        };
       ?>
     </div>
   </body>
