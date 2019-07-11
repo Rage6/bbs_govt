@@ -18,11 +18,6 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
     <script src="main.js"></script>
-    <!-- For EasyAutocomplete -->
-    <script src="../node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.min.js"></script>
-    <link rel="stylesheet" href="../node_modules/easy-autocomplete/dist/easy-autocomplete.min.css">
-    <link rel="stylesheet" href="../node_modules/easy-autocomplete/dist/easy-autocomplete.themes.min.css">
-    <!--  -->
   </head>
   <body>
     <div class="menuTop">
@@ -167,29 +162,28 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
-            <div>
-              <div>
-                <u>Current Job Assignments</u>
-              </div>
-              <div>
-                <table>");
-                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
-                    <tr><td>".$oneJob['job_name']."</td></tr>
-                    <tr>
-                      <td>".$oneJob['first_name']." ".$oneJob['last_name']."</td>
-                      <td>".$oneJob['section_name']."</td>
-                    </tr>");
-                };
-          echo("
-                </table>
-              </div>
+            <div id='listTitle' class='listTitle'>
+              <span>
+                Current Staff
+              </span>
+              <span>V</span>
             </div>
-            </br>
-            <div>
-              <u>Change a job assignment</u>
+            <div id='listBox' class='listBox'>");
+              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                echo("
+                  <div class='staffTitle'>".$oneJob['job_name']."</div>
+                  <div class='staffContent'>
+                    <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
+                    <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
+                  </div>");
+              };
+        echo("
             </div>
-            <div>
+            <div id='assignJobTitle' class='listTitle'>
+              <span>Assign From Directory</span>
+              <span>V</span>
+            </div>
+            <div id='assignJobBox' class='assignJobBox'>
               <form method='POST'>
                 <span>I need to change the current... </span>
                 <span>
@@ -223,32 +217,78 @@
             </div>
           ");
 
-          // For adding a new delegate to the database
+          // For changing or deleting a delegate from the database
           echo("
-              <div>
-                <div>Add New Delegate</div>
-                <div>
-                  <form method='POST'>
-                    <input type='text' name='newFirstN' placeholder='First name' />
-                    </br>
-                    <input type='text' name='newLastN' placeholder='Last name' />
-                    </br>
-                    <input type='text' name='newHome' placeholder='Hometown' />
-                    </br>
-                    <input type='text' name='newEmail' placeholder='Email' />
-                    </br>
-                    <select name='delCity'>
-                      <option value='-1'>Choose a city...</option>");
-                      for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
-                        echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
-                      };
-          echo("
-                    </select>
-                    </br>
-                    <input type='submit' name='addDelegate' value='ADD' />
-                  </form>
-                </div>
+            <div id='updateDirTitle' class='listTitle'>
+              <span>Update Directory</span>
+              <span>V</span>
+            </div>
+            <div id='updateDirBox' class='updateDirBox'>
+              <div id='addDirTitle'>ADD DELEGATE</div>
+              <div id='addDirBox' class='addDirBox'>
+                <form method='POST'>
+                  <input type='text' name='newFirstN' placeholder='First name' />
+                  </br>
+                  <input type='text' name='newLastN' placeholder='Last name' />
+                  </br>
+                  <input type='text' name='newHome' placeholder='Hometown' />
+                  </br>
+                  <input type='text' name='newEmail' placeholder='Email' />
+                  </br>
+                  <select name='delCity'>
+                    <option value='-1'>Choose a city...</option>");
+                    for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
+                      echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
+                    };
+            echo("
+                  </select>
+                  </br>
+                  <input type='submit' name='addDelegate' value='ADD' />
+                </form>
               </div>
+              <table class='updateTable'>");
+            for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
+              echo("
+                <form method='POST'>
+                  <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
+                  <tr class='updateRow'>
+                    <td class='tableName'>".
+                    $allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
+                    </td>
+                    <td data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
+                      CHANGE
+                    </td>
+                    <td data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
+                      DELETE
+                    </td>
+                  </tr>
+                  <tr id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox updateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
+                    <td colspan='3' style='border:1px solid black'>
+                      <div>Change any info below and click 'SUBMIT'</div>
+                      <div>
+                        <span>First Name</span>
+                        <span>
+                          <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
+                        </span></br>
+                        <span>Last Name</span>
+                        <span>
+                          <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
+                        </span></br>
+                        <input type='submit' name='updateDelInfo' value='SUBMIT' />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
+                    <td colspan='3' style='border:1px solid black'>
+                      Delete Box
+                    </td>
+                  </tr>
+                </form>
+              ");
+            };
+          echo("
+              </table>
+            </div>
           ");
         };
       ?>

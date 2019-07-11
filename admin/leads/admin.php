@@ -59,7 +59,7 @@ while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
 };
 
 // Gets all delegate info
-$allDelegateStmt = $pdo->prepare("SELECT delegate_id,first_name,last_name FROM Delegate ORDER BY last_name ASC");
+$allDelegateStmt = $pdo->prepare("SELECT * FROM Delegate ORDER BY last_name, first_name ASC");
 $allDelegateStmt->execute();
 $allDelegate = [];
 while ($oneDelegate = $allDelegateStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -147,6 +147,25 @@ if (isset($_POST['changeJobDel'])) {
   };
 };
 
+// Updating a current delegate in the directory
+if (isset($_POST['updateDelInfo'])) {
+  if ($_POST['updateFstNm'] == "" || $_POST['updateLstNm'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>The first and last names must be filled out</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn WHERE delegate_id=:di');
+    $updateDelStmt->execute(array(
+      ':fsn'=>htmlentities($_POST['updateFstNm']),
+      ':lsn'=>htmlentities($_POST['updateLstNm']),
+      ':di'=>htmlentities($_POST['delId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Update Successful</b>";
+    header('Location: admin.php');
+    return true;
+  };
+};
+
 // Adding a new delegate to the job table
 if (isset($_POST['addDelegate'])) {
   if ($_POST['newFirstN'] == "" || $_POST['newLastN'] == "") {
@@ -180,7 +199,7 @@ if (isset($_POST['addDelegate'])) {
   };
 };
 
-// Show all Departments with 
+// Show all Departments with
 
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {

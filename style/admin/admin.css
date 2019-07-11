@@ -193,3 +193,84 @@ body {
   text-align: center;
   background-color: red;
 }
+
+.jobList {
+  margin: 0 5% 20px 5%;
+}
+
+.listTitle {
+  margin-top: 20px;
+  padding: 10px 15% 10px 5%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 1.5rem;
+  background-color: green;
+}
+
+.listBox {
+  display: none;
+  background-color: white;
+}
+
+.staffTitle {
+  padding: 10px 10%;
+  color: white;
+  font-size: 1.3rem;
+  background-color: blue;
+}
+
+.staffContent {
+  padding: 5px 0;
+}
+
+.staffContent div {
+  padding: 5px 5%;
+}
+
+.assignJobBox {
+  display: none;
+}
+
+.updateDirBox {
+  display: none;
+  overflow-y: scroll;
+  height: 325px;
+}
+
+.updateTable {
+  margin: 15px 5% 0 5%;
+  border: 2px solid black;
+  border-spacing: 5px 20px;
+  width: 90%;
+}
+
+.tableName {
+  overflow: scroll;
+  white-space: nowrap;
+  width: 50%;
+}
+
+.tableChange {
+  color: white;
+  text-align: center;
+  background-color: blue;
+}
+
+.tableDelete {
+  color: white;
+  text-align: center;
+  background-color: red;
+}
+
+.changeBox {
+  display: none;
+}
+
+.deleteBox {
+  display: none;
+}
+
+.addDirBox {
+  display: none;
+}
