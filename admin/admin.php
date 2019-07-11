@@ -180,15 +180,14 @@
         echo("
             </div>
             <div id='assignJobTitle' class='listTitle'>
-              <span>Assign From Directory</span>
-              <span>V</span>
+              Assign A Job
             </div>
             <div id='assignJobBox' class='assignJobBox'>
               <form method='POST'>
                 <span>I need to change the current... </span>
                 <span>
                   <select name='jobId'>
-                    <option value='-1'>Choose a job</option>");
+                    <option value='-1'>Section Jobs</option>");
                     $jobListStmt->execute(array(
                       ':scd'=>htmlentities($secInfo['section_id'])
                     ));
@@ -220,8 +219,7 @@
           // For adding, changing, deleting a delegate from the database
           echo("
             <div id='updateDirTitle' class='listTitle'>
-              <span>Update Directory</span>
-              <span>V</span>
+              Delegate Directory
             </div>
             <div id='updateDirBox' class='updateDirBox'>
               <div id='addDirTitle' class='addDirTitle'>ADD DELEGATE</div>
