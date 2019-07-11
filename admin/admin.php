@@ -217,33 +217,38 @@
             </div>
           ");
 
-          // For changing or deleting a delegate from the database
+          // For adding, changing, deleting a delegate from the database
           echo("
             <div id='updateDirTitle' class='listTitle'>
               <span>Update Directory</span>
               <span>V</span>
             </div>
             <div id='updateDirBox' class='updateDirBox'>
-              <div id='addDirTitle'>ADD DELEGATE</div>
+              <div id='addDirTitle' class='addDirTitle'>ADD DELEGATE</div>
               <div id='addDirBox' class='addDirBox'>
                 <form method='POST'>
-                  <input type='text' name='newFirstN' placeholder='First name' />
-                  </br>
-                  <input type='text' name='newLastN' placeholder='Last name' />
-                  </br>
-                  <input type='text' name='newHome' placeholder='Hometown' />
-                  </br>
-                  <input type='text' name='newEmail' placeholder='Email' />
-                  </br>
-                  <select name='delCity'>
+                  <div>
+                    <input class='delInfoInput' type='text' name='newFirstN' placeholder='First name' />
+                  </div>
+                  <div>
+                    <input class='delInfoInput' type='text' name='newLastN' placeholder='Last name' />
+                  </div>
+                  <div>
+                    <input class='delInfoInput' type='text' name='newHome' placeholder='Hometown' />
+                  </div>
+                  <div>
+                    <input class='delInfoInput' type='text' name='newEmail' placeholder='Email' />
+                  </div>
+                  <select class='selectBttn' name='delCity'>
                     <option value='-1'>Choose a city...</option>");
                     for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
                       echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
                     };
             echo("
                   </select>
-                  </br>
-                  <input type='submit' name='addDelegate' value='ADD' />
+                  <div>
+                    <input class='addBttn' type='submit' name='addDelegate' value='ADD' />
+                  </div>
                 </form>
               </div>
               <table class='updateTable'>");

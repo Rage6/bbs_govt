@@ -64,8 +64,10 @@ $(()=>{
   $("#addDirTitle").click(() => {
     if ($("#addDirBox").css('display') == 'block') {
       $("#addDirBox").css('display','none');
+      $("#addDirTitle").css('border-radius','10px');
     } else {
       $("#addDirBox").css('display','block');
+      $("#addDirTitle").css('border-radius','10px 10px 0 0');
     };
   });
 
