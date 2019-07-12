@@ -211,7 +211,15 @@ if (isset($_POST['deleteDel'])) {
   return true;
 };
 
-// Show all Departments with
+// Show all Departments
+$dptListStmt = $pdo->prepare("SELECT * FROM Department WHERE section_id=:secd");
+$dptListStmt->execute(array(
+  ':secd'=>htmlentities($_SESSION['secId'])
+));
+$dptList = [];
+while ($oneDpt = $dptListStmt->fetch(PDO::FETCH_ASSOC)) {
+  $dptList[] = $oneDpt;
+};
 
 // Create new department and job
 if (isset($_POST['makeDpt'])) {
@@ -242,6 +250,8 @@ if (isset($_POST['makeDpt'])) {
     return true;
   };
 };
+
+// Changing or deleting a department
 
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {

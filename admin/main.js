@@ -34,7 +34,7 @@ $(()=>{
     } else {
       $("#listBox").css('display','block');
     };
-    $("#dptBox").css('display','none');
+    $("#dptDirBox").css('display','none');
     $("#assignJobBox").css('display','none');
     $("#updateDirBox").css('display','none');
   });
@@ -46,7 +46,7 @@ $(()=>{
     } else {
       $("#assignJobBox").css('display','block');
     };
-    $("#dptBox").css('display','none');
+    $("#dptDirBox").css('display','none');
     $("#listBox").css('display','none');
     $("#updateDirBox").css('display','none');
   });
@@ -58,7 +58,7 @@ $(()=>{
     } else {
       $("#updateDirBox").css('display','block');
     };
-    $("#dptBox").css('display','none');
+    $("#dptDirBox").css('display','none');
     $("#listBox").css('display','none');
     $("#assignJobBox").css('display','none');
   });
@@ -86,8 +86,8 @@ $(()=>{
     $("#assignJobBox").css('display','none');
   });
 
+  // Opens/closes the 'CHANGE' and 'DELETE' buttons on 'Delegate Directory'
   $("[data-delId][data-act]").click(()=>{
-    // console.log(event.target.dataset.delid);
     if (event.target.dataset.act == 'delBttn' || event.target.dataset.act == 'chgBttn') {
       let boxId = null;
       let nonBox = null;
@@ -108,6 +108,56 @@ $(()=>{
       // Not sure why, but clicking on 'CANCEL' carries out the function twice
       let removeBox = "#delBox" + event.target.dataset.delid;
       $(removeBox).css('display','none');
+    };
+  });
+
+  // Opens/closes the Department directory's options
+  $("#dptTitle").click(()=> {
+    if ($("#dptDirBox").css('display') == 'block') {
+      $("#dptDirBox").css('display','none');
+    } else {
+      $("#dptDirBox").css('display','block');
+    };
+  });
+
+  // Opens/closes the 'ADD DIRECTORY' box
+  $("#addDptBttn").click(()=> {
+    // console.log("worked");
+    if ($("#addDptBox").css('display') == 'block') {
+      $("#addDptBttn").css('border-radius','15px');
+      $("#addDptBox").css('display','none');
+    } else {
+      $("#addDptBttn").css('border-radius','15px 15px 0 0');
+      $("#addDptBox").css('display','block');
+    };
+  });
+
+  // Opens/closes the 'CHANGE' and 'DELETE' options in Department Directory
+  $("[data-dptId][data-act]").click(()=> {
+    let eventId = event.target.dataset.dptid;
+    if (event.target.dataset.act == "chgDptBttn") {
+      let notClicked = "#delDptBox" + eventId;
+      $(notClicked).css('display','none');
+      let clicked = "#chgDptBox" + eventId;
+      if ($(clicked).css('display') == 'block') {
+        $(clicked).css('display','none');
+      } else {
+        $(clicked).css('display','block');
+      };
+    } else if (event.target.dataset.act == "delDptBttn") {
+      let notClicked = "#chgDptBox" + eventId;
+      $(notClicked).css('display','none');
+      let clicked = "#delDptBox" + eventId;
+      if ($(clicked).css('display') == 'block') {
+        $(clicked).css('display','none');
+      } else {
+        $(clicked).css('display','block');
+      };
+    } else if (event.target.dataset.act == "cancelDptBttn") {
+      let closeDelBox = "#delDptBox" + eventId;
+      $(closeDelBox).css('display','none');
+    } else {
+      console.log("didn't work");
     };
   });
 

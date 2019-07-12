@@ -242,7 +242,7 @@
             echo("
                   </select>
                   <div>
-                    <input class='addBttn' type='submit' name='addDelegate' value='ADD' />
+                    <input class='addDelBttn' type='submit' name='addDelegate' value='ADD' />
                   </div>
                 </form>
               </div>
@@ -298,23 +298,74 @@
             <div id='dptTitle' class='listTitle'>
               Department Directory
             </div>
-            <div id='dptBox'>
+            <div id='dptDirBox' class='dptDirBox allBox'>
               <form method='POST'>
-                <div>
-                  CREATE NEW DEPARTMENT
+                <div id='addDptBttn' class='addDptBttn'>
+                  CREATE DEPARTMENT
                 </div>
-                <div>
-                  <input type='text' name='dptName' placeholder='Department Name' /></br>
-                  <input type='text' name='dptPurpose' placeholder='Purpose' /></br>
-                  <input type='text' name='dptJob' placeholder='Job Title' />
-                  <div>Will it be used this year?</div>
-                  <select name='dptActive'>
-                    <option value='1'>ACTIVE</option>
-                    <option value='0'>INACTIVE</option>
-                  </select></br>
-                  <input type='submit' name='makeDpt' value='CREATE' />
+                <div id='addDptBox' class='addDptBox'>
+                  <input class='dptText' type='text' name='dptName' placeholder='Department Name' />
+                  <input class='dptText' type='text' name='dptPurpose' placeholder='Purpose' /></br>
+                  <input class='dptText' type='text' name='dptJob' placeholder='Job Title' />
+                  <div class='dptActive'>
+                    <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>
+                    <select name='dptActive'>
+                      <option value='1'>YES</option>
+                      <option value='0'>NO</option>
+                    </select>
+                  </div>
+                  <input class='addDptSubmit' type='submit' name='makeDpt' value='CREATE' />
                 </div>
               </form>
+              <div class='updateTable'>");
+              for ($dptNum = 0; $dptNum < count($dptList); $dptNum++) {
+
+                echo("
+                <form method='POST'>
+                  <input type='hidden' name='dptId' value='".$dptList[$dptNum]['dpt_id']."'>
+                  <div class='updateRow'>
+                    <div class='tableName'>".$dptList[$dptNum]['dpt_name']."
+                    </div>
+                    <div data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='chgDptBttn' class='tableChange'>
+                      CHANGE
+                    </div>
+                    <div data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='delDptBttn' class='tableDelete'>
+                      DELETE
+                    </div>
+                  </div>
+                  <div id='chgDptBox".$dptList[$dptNum]['dpt_id']."' class='changeBox' data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='chgDptBox'>
+                    <div>
+                      <div class='changeInfo'><i>Change any info below and click 'ENTER'</i></div>
+                      <div class='changeInput'>
+                        <div>Department Name:</div>
+                        <input type='text' name='dptName' value='".$dptList[$dptNum]['dpt_name']."' />
+                      </div>
+                      <div class='changeInput'>
+                        <div>Purpose:</div>
+                        <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
+                      </div>
+                      <input class='changeEnter' type='submit' name='submitDpt' value='ENTER' />
+                    </div>
+                  </div>
+                  <div id='delDptBox".$dptList[$dptNum]['dpt_id']."' class='deleteBox udpateRow' data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='delDptBox'>
+                    <div class='deleteInfo'>
+                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
+                    </div>
+                    <div class='deleteRow'>
+                      <input type='hidden' name='removeDptId' value='".$dptList[$dptNum]['dpt_id']."' />
+                      <input type='hidden' name='removeDptName' value='".$dptList[$dptNum]['dpt_name']."' />
+                      <div>
+                        <input type='submit' name='deleteDpt' value='YES, delete it' />
+                      </div>
+                      <div data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='cancelDptBttn'>CANCEL</div>
+                    </div>
+                  </div>
+                </form>"
+                );
+
+              };
+              echo("
+              </div>
             </div>
           ");
         };
