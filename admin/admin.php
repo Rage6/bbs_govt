@@ -298,8 +298,23 @@
             <div id='dptTitle' class='listTitle'>
               Department Directory
             </div>
-            <div id='dptBox' class='dptBox'>
-              testing
+            <div id='dptBox'>
+              <form method='POST'>
+                <div>
+                  CREATE NEW DEPARTMENT
+                </div>
+                <div>
+                  <input type='text' name='dptName' placeholder='Department Name' /></br>
+                  <input type='text' name='dptPurpose' placeholder='Purpose' /></br>
+                  <input type='text' name='dptJob' placeholder='Job Title' />
+                  <div>Will it be used this year?</div>
+                  <select name='dptActive'>
+                    <option value='1'>ACTIVE</option>
+                    <option value='0'>INACTIVE</option>
+                  </select></br>
+                  <input type='submit' name='makeDpt' value='CREATE' />
+                </div>
+              </form>
             </div>
           ");
         };

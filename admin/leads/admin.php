@@ -213,6 +213,36 @@ if (isset($_POST['deleteDel'])) {
 
 // Show all Departments with
 
+// Create new department and job
+if (isset($_POST['makeDpt'])) {
+  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "" || $_POST['dptJob'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Department name, purpose, and job title required</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,active,section_id) VALUES (:jn,1,:st)");
+    $createJobStmt->execute(array(
+      ':jn'=>htmlentities($_POST['dptJob']),
+      ':st'=>htmlentities($_SESSION['secId'])
+    ));
+    $createDptStmt = $pdo->prepare("INSERT INTO Department(dpt_name,purpose,job_id,active,section_id) VALUES (:dn,:pu,:jo,:ac,:sc)");
+    $lastIdStmt = $pdo->prepare("SELECT LAST_INSERT_ID()");
+    $lastIdStmt->execute();
+    $lastId = $lastIdStmt->fetch(PDO::FETCH_ASSOC)['LAST_INSERT_ID()'];
+    // Note: The department wont show up until it has a delegate assigned to it
+    $createDptStmt->execute(array(
+      ':dn'=>htmlentities($_POST['dptName']),
+      ':pu'=>htmlentities($_POST['dptPurpose']),
+      ':jo'=>$lastId,
+      ':ac'=>htmlentities($_POST['dptActive']),
+      ':sc'=>htmlentities($_SESSION['secId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Department created</b>";
+    header('Location: admin.php');
+    return true;
+  };
+};
+
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {
   if (isset($_SESSION['counsToken'])) {
