@@ -249,48 +249,54 @@
                   </div>
                 </form>
               </div>
-              <table class='updateTable'>");
+              <div class='updateTable'>");
             for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
               echo("
                 <form method='POST'>
                   <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
-                  <tr class='updateRow'>
-                    <td class='tableName'>".
+                  <div class='updateRow'>
+                    <div class='tableName'>".
                     $allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
-                    </td>
-                    <td data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
+                    </div>
+                    <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
                       CHANGE
-                    </td>
-                    <td data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
+                    </div>
+                    <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
                       DELETE
-                    </td>
-                  </tr>
-                  <tr id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox updateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
-                    <td colspan='3' style='border:1px solid black'>
-                      <div>Change any info below and click 'SUBMIT'</div>
-                      <div>
-                        <span>First Name</span>
-                        <span>
-                          <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
-                        </span></br>
-                        <span>Last Name</span>
-                        <span>
-                          <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
-                        </span></br>
-                        <input type='submit' name='updateDelInfo' value='SUBMIT' />
+                    </div>
+                  </div>
+                  <div id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
+                    <div>
+                      <div class='changeInfo'><i>Change any info below and click 'ENTER'</i></div>
+                      <div class='changeInput'>
+                        <div>First Name:</div>
+                        <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
                       </div>
-                    </td>
-                  </tr>
-                  <tr id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
-                    <td colspan='3' style='border:1px solid black'>
-                      Delete Box
-                    </td>
-                  </tr>
+                      <div class='changeInput'>
+                        <div>Last Name:</div>
+                        <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
+                      </div>
+                      <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
+                    </div>
+                  </div>
+                  <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
+                    <div class='deleteInfo'>
+                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
+                    </div>
+                    <div class='deleteRow'>
+                      <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
+                      <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
+                      <div>
+                        <input type='submit' name='deleteDel' value='YES, delete it' />
+                      </div>
+                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
+                    </div>
+                  </div>
                 </form>
               ");
             };
           echo("
-              </table>
+              </div>
             </div>
           ");
         };

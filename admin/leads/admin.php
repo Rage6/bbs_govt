@@ -199,6 +199,18 @@ if (isset($_POST['addDelegate'])) {
   };
 };
 
+// Deleting an existing delegate
+if (isset($_POST['deleteDel'])) {
+  $removedName = htmlentities($_POST['removeDelName']);
+  $deleteDelStmt = $pdo->prepare("DELETE FROM Delegate WHERE delegate_id=:did");
+  $deleteDelStmt->execute(array(
+    ':did'=>htmlentities($_POST['removeDelId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Delegate ".$removedName." was deleted</b>";
+  header('Location: admin.php');
+  return true;
+};
+
 // Show all Departments with
 
 // Logs out data and sends to login page
