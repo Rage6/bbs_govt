@@ -380,3 +380,7 @@ body {
   background-color: gold;
   width: 50%;
 }
+
+.dptBox {
+  display: none;
+}

@@ -34,6 +34,7 @@ $(()=>{
     } else {
       $("#listBox").css('display','block');
     };
+    $("#dptBox").css('display','none');
     $("#assignJobBox").css('display','none');
     $("#updateDirBox").css('display','none');
   });
@@ -45,17 +46,19 @@ $(()=>{
     } else {
       $("#assignJobBox").css('display','block');
     };
+    $("#dptBox").css('display','none');
     $("#listBox").css('display','none');
     $("#updateDirBox").css('display','none');
   });
 
-  // Opens/closes the current directory for changes/deletes
+  // Opens/closes the delegate directory for changes/deletes
   $("#updateDirTitle").click(() => {
     if ($("#updateDirBox").css('display') == 'block') {
       $("#updateDirBox").css('display','none');
     } else {
       $("#updateDirBox").css('display','block');
     };
+    $("#dptBox").css('display','none');
     $("#listBox").css('display','none');
     $("#assignJobBox").css('display','none');
   });
@@ -69,6 +72,18 @@ $(()=>{
       $("#addDirBox").css('display','block');
       $("#addDirTitle").css('border-radius','10px 10px 0 0');
     };
+  });
+
+  // Opens/closes where Departments are listed
+  $("#dptTitle").click(()=>{
+    if ($("#dptBox").css('display') == 'block') {
+      $("#dptBox").css('display','none');
+    } else {
+      $("#dptBox").css('display','block');
+    };
+    $("#updateDirBox").css('display','none');
+    $("#listBox").css('display','none');
+    $("#assignJobBox").css('display','none');
   });
 
   $("[data-delId][data-act]").click(()=>{

@@ -163,10 +163,7 @@
               COUNSELORS ONLY
             </div>
             <div id='listTitle' class='listTitle'>
-              <span>
-                Current Staff
-              </span>
-              <span>V</span>
+              Current Staff
             </div>
             <div id='listBox' class='listBox'>");
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -297,6 +294,12 @@
             };
           echo("
               </div>
+            </div>
+            <div id='dptTitle' class='listTitle'>
+              Department Directory
+            </div>
+            <div id='dptBox' class='dptBox'>
+              testing
             </div>
           ");
         };
