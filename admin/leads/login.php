@@ -1,5 +1,11 @@
 <?php
 
+$allSectStmt = $pdo->prepare("SELECT section_id,section_name,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC");
+$allSectStmt->execute();
+while ($oneSect = $allSectStmt->fetch(PDO::FETCH_ASSOC)) {
+  $sectList[] = $oneSect;
+};
+
 if (isset($_POST['sectionLogin'])) {
   $givenSect = htmlentities($_POST['sectionId']);
   $givenPw = htmlentities($_POST['sectionPw']);

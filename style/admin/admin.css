@@ -64,9 +64,8 @@ body {
 
 .postTypeRow {
   margin: 0 5% 10px 5%;
-  padding-top: 40px;
   display:flex;
-  justify-content:space-between
+  justify-content:flex-end;
 }
 
 .postTypeRow:first-of-type {
@@ -74,8 +73,16 @@ body {
 }
 
 .postType {
+  margin-bottom: 10px;
+  padding: 5px 5%;
+  color: white;
   font-size: 1.3rem;
-  text-decoration: underline;
+  background-color: blue;
+}
+
+.postMain {
+  margin-bottom: 30px;
+  display: none;
 }
 
 .addingPost {
@@ -184,4 +191,256 @@ body {
 .yesDel {
   color: white;
   background-color: red;
+}
+
+.counsTitle {
+  margin-bottom: 40px;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  background-color: red;
+}
+
+.jobList {
+  margin: 0 5% 20px 5%;
+}
+
+.listTitle {
+  margin-top: 20px;
+  padding: 10px 15% 10px 5%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 1.5rem;
+  background-color: green;
+}
+
+.listBox {
+  display: none;
+  background-color: white;
+}
+
+.staffTitle {
+  padding: 10px 10%;
+  color: white;
+  font-size: 1.3rem;
+  background-color: blue;
+}
+
+.staffContent {
+  padding: 5px 0;
+}
+
+.staffContent div {
+  padding: 5px 5%;
+}
+
+.assignJobBox {
+  display: none;
+}
+
+.updateDirBox {
+  display: none;
+}
+
+.updateTable {
+  margin: 15px 5% 0 5%;
+  padding-top: 10px;
+  border: 2px solid black;
+  overflow-y: scroll;
+  height: 325px;
+  width: 90%;
+}
+
+.updateRow {
+  margin: 0 2% 10px 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tableName {
+  overflow: scroll;
+  white-space: nowrap;
+  width: 48%;
+}
+
+.tableChange {
+  padding: 5px 1%;
+  color: white;
+  text-align: center;
+  background-color: blue;
+}
+
+.tableDelete {
+  padding: 5px 1%;
+  color: white;
+  text-align: center;
+  background-color: red;
+}
+
+.changeBox {
+  margin-bottom: 15px;
+  padding: 5px 3% 10px 3%;
+  border-bottom: 1px dashed black;
+  display: none;
+}
+
+.changeInfo {
+  margin-left: 20%;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 60%;;
+}
+
+.changeInput {
+  margin: 5px 0;
+  display: flex;
+}
+
+.changeInput div {
+  margin-right: 5%;
+  text-align: right;
+  width: 35%;
+}
+
+.changeInput input {
+  width: 60%;
+}
+
+.changeEnter {
+  margin: 10px 0 0 25%;
+  color: white;
+  font-size: 1.1rem;
+  background-color: green;
+  width: 50%;
+}
+
+.deleteBox {
+  margin-bottom: 15px;
+  padding: 10px 10%;
+  border-bottom: 1px dashed black;
+  display: none;
+}
+
+.deleteInfo {
+  text-align: center;
+}
+
+.deleteRow {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteRow div {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 3%;
+  font-size: 1.1rem;
+  background-color: lightgrey;
+}
+
+.deleteRow div:first-child {
+  border: 1px solid white;
+  color: white;
+  background-color: red;
+}
+
+.addDirTitle {
+  margin: 20px 0 0 15%;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: 2px solid blue;
+  color: blue;
+  text-align: center;
+  background-color: gold;
+  width: 70%;
+}
+
+.addDirBox {
+  margin: 0 5%;
+  padding: 5px 2%;
+  background-color: blue;
+  display: none;
+  width: 86%;
+}
+
+.delInfoInput {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 98%;
+}
+
+.selectBttn {
+  font-size: 1.2rem;
+  background-color: lightgrey;
+  width: 100%;
+}
+
+.addDelBttn {
+  margin: 10px 25%;
+  padding: 5px 0;
+  color: black;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: gold;
+  width: 50%;
+}
+
+.dptDirBox {
+  display: none;
+}
+
+.addDptBttn {
+  margin: 0 15%;
+  padding: 10px 0;
+  border: 2px solid blue;
+  border-radius: 15px;
+  color: blue;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: gold;
+  width: 70%;
+}
+
+.addDptBox {
+  margin: 0 5%;
+  padding: 5px 2%;
+  background-color: blue;
+  display: none;
+}
+
+.dptText {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  width: 98%;
+}
+
+.dptActive {
+  color: gold;
+  font-size: 1.1rem;
+}
+
+.dptActive select {
+  border: 1px solid gold;
+  color: gold;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: blue;
+}
+
+.addDptSubmit {
+  margin: 30px 0 15px 30%;
+  border-radius: 15px;
+  color: blue;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: gold;
+  width: 40%;
+}
+
+.allBox {
+  padding: 20px 0;
+  background-color: lightgreen;
 }

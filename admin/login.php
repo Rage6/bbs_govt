@@ -26,7 +26,24 @@
     <div class="formBox">
       <form method="POST">
         <div>Select your desired section, county, or city</div>
-        <input type="text" name="sectionId" />
+        <select style='background-color:lightgrey' name='sectionId'>
+          <option value=''>Choose A Section</option>
+          <?php
+            for ($sectNum = 0; $sectNum < count($sectList); $sectNum++) {
+              if ($sectList[$sectNum]['is_city'] == 1) {
+                $sectionName = "City of ".$sectList[$sectNum]['section_name'];
+              } elseif ($sectList[$sectNum]['is_county'] == 1) {
+                $sectionName = "County of ".$sectList[$sectNum]['section_name'];
+              } else {
+                $sectionName = $sectList[$sectNum]['section_name'];
+              };
+              echo("<option value='".$sectList[$sectNum]['section_id']."'>".$sectionName."</option>");
+            };
+            if (isset($_GET['maintenance'])) {
+              echo("<option value='999'>Maintenance</option>");
+            };
+          ?>
+        </select>
         <div>Enter your password</div>
         <input type="password" name="sectionPw" />
         <div class="formBttn">

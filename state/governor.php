@@ -204,7 +204,7 @@
         <div style="margin-top:0px" class="govBox">
           <?php
             $agencyNum = 0;
-            $agencyStmt = $pdo->prepare("SELECT * FROM Department INNER JOIN Delegate WHERE section_id=9 AND Department.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY dpt_id ASC");
+            $agencyStmt = $pdo->prepare("SELECT DISTINCT * FROM Department INNER JOIN Job INNER JOIN Delegate WHERE Department.section_id=9 AND Department.job_id=Job.job_id AND Job.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY Department.dpt_id ASC");
             $agencyStmt->execute();
             while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
               echo("

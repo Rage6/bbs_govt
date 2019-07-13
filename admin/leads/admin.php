@@ -8,9 +8,10 @@ if (isset($_SESSION['counsToken'])) {
   ));
   $dbTkn = $dbTknStmt->fetch(PDO::FETCH_ASSOC)['couns_token'];
   if ($dbTkn != $_SESSION['counsToken']) {
-    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This occurs if another counselor logs into this section's account while you are still logged in.</b>";
+    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another counselor logged into this section's account recently.</b>";
     unset($_SESSION['counsToken']);
     unset($_SESSION['secId']);
+    unset($_SESSION['adminType']);
     header('Location: login.php');
     return false;
   } else {
@@ -23,9 +24,10 @@ if (isset($_SESSION['counsToken'])) {
   ));
   $dbTkn = $dbTknStmt->fetch(PDO::FETCH_ASSOC)['del_token'];
   if ($dbTkn != $_SESSION['delToken']) {
-    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This occurs if another delegate logs into this section's account while you are still logged in.</b>";
+    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another delegate logged into this section's account recently.</b>";
     unset($_SESSION['delToken']);
     unset($_SESSION['secId']);
+    unset($_SESSION['adminType']);
     header('Location: login.php');
     return false;
   } else {
@@ -44,9 +46,22 @@ $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
-// echo("<pre>");
-// var_dump($secInfo);
-// echo("</pre>");
+
+// Gets all city info
+$allCityStmt = $pdo->prepare("SELECT city_id,section_name,county_id FROM City");
+$allCityStmt->execute();
+$allCity = [];
+while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allCity[] = $oneCity;
+};
+
+// Gets all delegate info
+$allDelegateStmt = $pdo->prepare("SELECT * FROM Delegate ORDER BY last_name, first_name ASC");
+$allDelegateStmt->execute();
+$allDelegate = [];
+while ($oneDelegate = $allDelegateStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allDelegate[] = $oneDelegate;
+};
 
 // Add a new post
 if (isset($_POST['addPost'])) {
@@ -94,6 +109,26 @@ if (isset($_POST['changeApproval'])) {
   return true;
 };
 
+// Changes an existing post
+if (isset($_POST['changePosts'])) {
+  if ($_POST['postTitle'] == "" || $_POST['postContent'] == "" || $_POST['orderNum'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Title, main content, and order placement is required</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od WHERE post_id = :poi");
+    $changePostStmt->execute(array(
+      ':tl'=>htmlentities($_POST['postTitle']),
+      ':ct'=>htmlentities($_POST['postContent']),
+      ':od'=>htmlentities($_POST['orderNum']),
+      ':poi'=>htmlentities($_POST['postId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Post approved</b>";
+    header('Location: admin.php');
+    return true;
+  };
+};
+
 // Delete a post
 if (isset($_POST['deletePost'])) {
   $delPostStmt = $pdo->prepare('DELETE FROM Post WHERE post_id=:pid');
@@ -101,6 +136,177 @@ if (isset($_POST['deletePost'])) {
     ':pid'=>$_POST['postId']
   ));
   $_SESSION['message'] = "<b style='color:blue'>Post Deleted</b>";
+  header('Location: admin.php');
+  return true;
+};
+
+// Changes the job assignment from one existing delegate to another
+if (isset($_POST['changeJobDel'])) {
+  if ($_POST['jobId'] == -1) {
+    $_SESSION['message'] = "<b style='color:red'>A job must be selected</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    if (!isset($_POST['jobDel'])) {
+      $_SESSION['message'] = "<b style='color:red'>A delegate must be selected</b>";
+      header('Location: admin.php');
+      return false;
+    } else {
+      $changeJobStmt = $pdo->prepare("UPDATE Job SET delegate_id=:jd WHERE job_id=:ji");
+      $changeJobStmt->execute(array(
+        ':jd'=>htmlentities($_POST['jobDel']),
+        ':ji'=>htmlentities($_POST['jobId'])
+      ));
+      $_SESSION['message'] = "<b style='color:green'>Job Updated</b>";
+      header('Location: admin.php');
+      return true;
+    };
+  };
+};
+
+// Updating a current delegate in the directory
+if (isset($_POST['updateDelInfo'])) {
+  if ($_POST['updateFstNm'] == "" || $_POST['updateLstNm'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>The first and last names must be filled out</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn WHERE delegate_id=:di');
+    $updateDelStmt->execute(array(
+      ':fsn'=>htmlentities($_POST['updateFstNm']),
+      ':lsn'=>htmlentities($_POST['updateLstNm']),
+      ':di'=>htmlentities($_POST['delId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Update Successful</b>";
+    header('Location: admin.php');
+    return true;
+  };
+};
+
+// Adding a new delegate to the job table
+if (isset($_POST['addDelegate'])) {
+  if ($_POST['newFirstN'] == "" || $_POST['newLastN'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>A first and last name must be entered</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    if ($_POST['delCity'] == -1) {
+      $_SESSION['message'] = "<b style='color:red'>A city must be selected</b>";
+      header('Location: admin.php');
+      return false;
+    } else {
+      for ($cityCount = 0; $cityCount < count($allCity); $cityCount++) {
+        if ($allCity[$cityCount]['city_id'] == $_POST['delCity']) {
+          $delCounty = $allCity[$cityCount]['county_id'];
+        };
+      };
+      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,email,hometown,city_id,county_id) VALUES (:fn,:lm,:em,:hm,:ci,:co)");
+      $addDelegateStmt->execute(array(
+        ':fn'=>htmlentities($_POST['newFirstN']),
+        ':lm'=>htmlentities($_POST['newLastN']),
+        ':em'=>htmlentities($_POST['newEmail']),
+        ':hm'=>htmlentities($_POST['newHome']),
+        ':ci'=>htmlentities($_POST['delCity']),
+        ':co'=>$delCounty
+      ));
+      $_SESSION['message'] = "<b style='color:green'>Delegate Added</b>";
+      header('Location: admin.php');
+      return true;
+    };
+  };
+};
+
+// Deleting an existing delegate
+if (isset($_POST['deleteDel'])) {
+  $removedName = htmlentities($_POST['removeDelName']);
+  $deleteDelStmt = $pdo->prepare("DELETE FROM Delegate WHERE delegate_id=:did");
+  $deleteDelStmt->execute(array(
+    ':did'=>htmlentities($_POST['removeDelId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Delegate ".$removedName." was deleted</b>";
+  header('Location: admin.php');
+  return true;
+};
+
+// Show all Departments
+$dptListStmt = $pdo->prepare("SELECT DISTINCT * FROM Department JOIN Job WHERE Department.section_id=:secd AND Job.job_id=Department.job_id");
+$dptListStmt->execute(array(
+  ':secd'=>htmlentities($_SESSION['secId'])
+));
+$dptList = [];
+while ($oneDpt = $dptListStmt->fetch(PDO::FETCH_ASSOC)) {
+  $dptList[] = $oneDpt;
+};
+
+// Create new department and job
+// Note: Departments always begin as 'Active'
+if (isset($_POST['makeDpt'])) {
+  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "" || $_POST['dptJob'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Department name, purpose, and job title required</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    if ($_POST['dptHead'] == 0) {
+      $_SESSION['message'] = "<b style='color:red'>Choose a delegate</b>";
+      header('Location: admin.php');
+      return false;
+    } else {
+      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,job_active,delegate_id,section_id) VALUES (:jn,1,:dg,:st)");
+      $createJobStmt->execute(array(
+        ':jn'=>htmlentities($_POST['dptJob']),
+        ':dg'=>htmlentities($_POST['dptHead']),
+        ':st'=>htmlentities($_SESSION['secId'])
+      ));
+      $createDptStmt = $pdo->prepare("INSERT INTO Department(dpt_name,purpose,job_id,active,section_id) VALUES (:dn,:pu,:jo,:ac,:sc)");
+      $lastIdStmt = $pdo->prepare("SELECT LAST_INSERT_ID()");
+      $lastIdStmt->execute();
+      $lastId = $lastIdStmt->fetch(PDO::FETCH_ASSOC)['LAST_INSERT_ID()'];
+      // Note: The department wont show up until it has a delegate assigned to it
+      $createDptStmt->execute(array(
+        ':dn'=>htmlentities($_POST['dptName']),
+        ':pu'=>htmlentities($_POST['dptPurpose']),
+        ':jo'=>$lastId,
+        ':ac'=>htmlentities($_POST['dptActive']),
+        ':sc'=>htmlentities($_SESSION['secId'])
+      ));
+      $_SESSION['message'] = "<b style='color:green'>Department created</b>";
+      header('Location: admin.php');
+      return true;
+    };
+  };
+};
+
+// Changes a department and it's job
+if (isset($_POST['submitDpt'])) {
+  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Name and purpose required</b>";
+    header('Location: admin.php');
+    return true;
+  } else {
+    $changeDptStmt = $pdo->prepare("UPDATE Department SET dpt_name=:dm, purpose=:pp, active=:av WHERE dpt_id=:dp");
+    $changeDptStmt->execute(array(
+      ':dm'=>htmlentities($_POST['dptName']),
+      ':pp'=>htmlentities($_POST['dptPurpose']),
+      ':av'=>htmlentities($_POST['dptActive']),
+      ':dp'=>htmlentities($_POST['dptId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Department Changed</b>";
+    header('Location: admin.php');
+    return true;
+  };
+};
+
+// Delete a department
+if (isset($_POST['deleteDpt'])) {
+  $deleteDptStmt = $pdo->prepare("DELETE FROM Department WHERE dpt_id=:dpt");
+  $deleteDptStmt->execute(array(
+    ':dpt'=>htmlentities($_POST['dptId'])
+  ));
+  $deleteJobStmt = $pdo->prepare("DELETE FROM Job WHERE job_id=:jb");
+  $deleteJobStmt->execute(array(
+    ':jb'=>htmlentities($_POST['removeJobId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Department and job deleted</b>";
   header('Location: admin.php');
   return true;
 };
