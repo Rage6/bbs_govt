@@ -314,12 +314,30 @@
                       <option value='0'>NO</option>
                     </select>
                   </div>
+                  <div>
+                    <span>Director: </span>
+                    <select name='dptHead'>
+                      <option value='0'>Choose a delegate</option>");
+                    for ($num = 0; $num < count($allDelegate); $num++) {
+                      echo("
+                      <option value='".$allDelegate[$num]['delegate_id']."'>".
+                        $allDelegate[$num]['first_name']." ".$allDelegate[$num]['last_name']
+                      ."</option>");
+                    };
+              echo("</select>
+                  </div>
                   <input class='addDptSubmit' type='submit' name='makeDpt' value='CREATE' />
                 </div>
               </form>
               <div class='updateTable'>");
               for ($dptNum = 0; $dptNum < count($dptList); $dptNum++) {
-
+                if ($dptList[$dptNum]['active'] == 1) {
+                  $forYes = " selected";
+                  $forNo = "";
+                } else {
+                  $forYes = "";
+                  $forNo = " selected";
+                };
                 echo("
                 <form method='POST'>
                   <input type='hidden' name='dptId' value='".$dptList[$dptNum]['dpt_id']."'>
@@ -344,6 +362,13 @@
                         <div>Purpose:</div>
                         <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
                       </div>
+                      <div class='dptActive'>
+                        <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>
+                        <select name='dptActive'>
+                          <option value='1'".$forYes.">YES</option>
+                          <option value='0'".$forNo.">NO</option>
+                        </select>
+                      </div>
                       <input class='changeEnter' type='submit' name='submitDpt' value='ENTER' />
                     </div>
                   </div>
@@ -353,7 +378,7 @@
                     </div>
                     <div class='deleteRow'>
                       <input type='hidden' name='removeDptId' value='".$dptList[$dptNum]['dpt_id']."' />
-                      <input type='hidden' name='removeDptName' value='".$dptList[$dptNum]['dpt_name']."' />
+                      <input type='hidden' name='removeJobId' value='".$dptList[$dptNum]['job_id']."' />
                       <div>
                         <input type='submit' name='deleteDpt' value='YES, delete it' />
                       </div>

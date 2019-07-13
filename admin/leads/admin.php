@@ -212,7 +212,7 @@ if (isset($_POST['deleteDel'])) {
 };
 
 // Show all Departments
-$dptListStmt = $pdo->prepare("SELECT * FROM Department WHERE section_id=:secd");
+$dptListStmt = $pdo->prepare("SELECT DISTINCT * FROM Department JOIN Job WHERE Department.section_id=:secd AND Job.job_id=Department.job_id");
 $dptListStmt->execute(array(
   ':secd'=>htmlentities($_SESSION['secId'])
 ));
@@ -222,36 +222,77 @@ while ($oneDpt = $dptListStmt->fetch(PDO::FETCH_ASSOC)) {
 };
 
 // Create new department and job
+// Note: Departments always begin as 'Active'
 if (isset($_POST['makeDpt'])) {
   if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "" || $_POST['dptJob'] == "") {
     $_SESSION['message'] = "<b style='color:red'>Department name, purpose, and job title required</b>";
     header('Location: admin.php');
     return false;
   } else {
-    $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,active,section_id) VALUES (:jn,1,:st)");
-    $createJobStmt->execute(array(
-      ':jn'=>htmlentities($_POST['dptJob']),
-      ':st'=>htmlentities($_SESSION['secId'])
+    if ($_POST['dptHead'] == 0) {
+      $_SESSION['message'] = "<b style='color:red'>Choose a delegate</b>";
+      header('Location: admin.php');
+      return false;
+    } else {
+      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,active,delegate_id,section_id) VALUES (:jn,1,:dg,:st)");
+      $createJobStmt->execute(array(
+        ':jn'=>htmlentities($_POST['dptJob']),
+        ':dg'=>htmlentities($_POST['dptHead']),
+        ':st'=>htmlentities($_SESSION['secId'])
+      ));
+      $createDptStmt = $pdo->prepare("INSERT INTO Department(dpt_name,purpose,job_id,active,section_id) VALUES (:dn,:pu,:jo,:ac,:sc)");
+      $lastIdStmt = $pdo->prepare("SELECT LAST_INSERT_ID()");
+      $lastIdStmt->execute();
+      $lastId = $lastIdStmt->fetch(PDO::FETCH_ASSOC)['LAST_INSERT_ID()'];
+      // Note: The department wont show up until it has a delegate assigned to it
+      $createDptStmt->execute(array(
+        ':dn'=>htmlentities($_POST['dptName']),
+        ':pu'=>htmlentities($_POST['dptPurpose']),
+        ':jo'=>$lastId,
+        ':ac'=>htmlentities($_POST['dptActive']),
+        ':sc'=>htmlentities($_SESSION['secId'])
+      ));
+      $_SESSION['message'] = "<b style='color:green'>Department created</b>";
+      header('Location: admin.php');
+      return true;
+    };
+  };
+};
+
+// Changes a department and it's job
+if (isset($_POST['submitDpt'])) {
+  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Name and purpose required</b>";
+    header('Location: admin.php');
+    return true;
+  } else {
+    $changeDptStmt = $pdo->prepare("UPDATE Department SET dpt_name=:dm, purpose=:pp, active=:av WHERE dpt_id=:dp");
+    $changeDptStmt->execute(array(
+      ':dm'=>htmlentities($_POST['dptName']),
+      ':pp'=>htmlentities($_POST['dptPurpose']),
+      ':av'=>htmlentities($_POST['dptActive']),
+      ':dp'=>htmlentities($_POST['dptId'])
     ));
-    $createDptStmt = $pdo->prepare("INSERT INTO Department(dpt_name,purpose,job_id,active,section_id) VALUES (:dn,:pu,:jo,:ac,:sc)");
-    $lastIdStmt = $pdo->prepare("SELECT LAST_INSERT_ID()");
-    $lastIdStmt->execute();
-    $lastId = $lastIdStmt->fetch(PDO::FETCH_ASSOC)['LAST_INSERT_ID()'];
-    // Note: The department wont show up until it has a delegate assigned to it
-    $createDptStmt->execute(array(
-      ':dn'=>htmlentities($_POST['dptName']),
-      ':pu'=>htmlentities($_POST['dptPurpose']),
-      ':jo'=>$lastId,
-      ':ac'=>htmlentities($_POST['dptActive']),
-      ':sc'=>htmlentities($_SESSION['secId'])
-    ));
-    $_SESSION['message'] = "<b style='color:green'>Department created</b>";
+    $_SESSION['message'] = "<b style='color:green'>Department Changed</b>";
     header('Location: admin.php');
     return true;
   };
 };
 
-// Changing or deleting a department
+// Delete a department
+if (isset($_POST['deleteDpt'])) {
+  $deleteDptStmt = $pdo->prepare("DELETE FROM Department WHERE dpt_id=:dpt");
+  $deleteDptStmt->execute(array(
+    ':dpt'=>htmlentities($_POST['dptId'])
+  ));
+  $deleteJobStmt = $pdo->prepare("DELETE FROM Job WHERE job_id=:jb");
+  $deleteJobStmt->execute(array(
+    ':jb'=>htmlentities($_POST['removeJobId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Department and job deleted</b>";
+  header('Location: admin.php');
+  return true;
+};
 
 // Logs out data and sends to login page
 if (isset($_POST['logout'])) {
