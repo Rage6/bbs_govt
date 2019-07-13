@@ -64,9 +64,8 @@ body {
 
 .postTypeRow {
   margin: 0 5% 10px 5%;
-  padding-top: 40px;
   display:flex;
-  justify-content:space-between
+  justify-content:flex-end;
 }
 
 .postTypeRow:first-of-type {
@@ -74,8 +73,16 @@ body {
 }
 
 .postType {
+  margin-bottom: 10px;
+  padding: 5px 5%;
+  color: white;
   font-size: 1.3rem;
-  text-decoration: underline;
+  background-color: blue;
+}
+
+.postMain {
+  margin-bottom: 30px;
+  display: none;
 }
 
 .addingPost {

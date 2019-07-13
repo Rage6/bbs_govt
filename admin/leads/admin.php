@@ -46,9 +46,6 @@ $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
-// echo("<pre>");
-// var_dump($secInfo);
-// echo("</pre>");
 
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT city_id,section_name,county_id FROM City");
@@ -110,6 +107,26 @@ if (isset($_POST['changeApproval'])) {
   $_SESSION['message'] = "<b style='color:green'>Approval changed</b>";
   header('Location: admin.php');
   return true;
+};
+
+// Changes an existing post
+if (isset($_POST['changePosts'])) {
+  if ($_POST['postTitle'] == "" || $_POST['postContent'] == "" || $_POST['orderNum'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Title, main content, and order placement is required</b>";
+    header('Location: admin.php');
+    return false;
+  } else {
+    $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od WHERE post_id = :poi");
+    $changePostStmt->execute(array(
+      ':tl'=>htmlentities($_POST['postTitle']),
+      ':ct'=>htmlentities($_POST['postContent']),
+      ':od'=>htmlentities($_POST['orderNum']),
+      ':poi'=>htmlentities($_POST['postId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Post approved</b>";
+    header('Location: admin.php');
+    return true;
+  };
 };
 
 // Delete a post
@@ -234,7 +251,7 @@ if (isset($_POST['makeDpt'])) {
       header('Location: admin.php');
       return false;
     } else {
-      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,active,delegate_id,section_id) VALUES (:jn,1,:dg,:st)");
+      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,job_active,delegate_id,section_id) VALUES (:jn,1,:dg,:st)");
       $createJobStmt->execute(array(
         ':jn'=>htmlentities($_POST['dptJob']),
         ':dg'=>htmlentities($_POST['dptHead']),

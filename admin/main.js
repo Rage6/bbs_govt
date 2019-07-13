@@ -1,6 +1,18 @@
 $(()=>{
   console.log("testing admin/main.js");
 
+  // Opens and closes all of a type's posts
+  $("[data-head]").click(()=> {
+    let typeNum = event.target.dataset.head;
+    let typeId = "#typeId" + typeNum;
+    let typeDisplay = $(typeId).css('display');
+    if (typeDisplay == 'block') {
+      $(typeId).css('display','none');
+    } else {
+      $(typeId).css('display','block');
+    };
+  });
+
   // Opens and closes 'DELETE' boxes
   $("[data-post]").click(() => {
     let delBttnId = "#" + event.target.id;
