@@ -25,6 +25,11 @@ if (isset($_SESSION['counsToken'])) {
       return false;
     } else {
       $_SESSION['adminType'] = "counselor";
+      $counsSessionStmt = $pdo->prepare('UPDATE Section SET couns_sess_start=:css WHERE section_id=:scid');
+      $counsSessionStmt->execute(array(
+        ':css'=>time(),
+        ':scid'=>htmlentities($_SESSION['secId'])
+      ));
     };
   }
 } elseif (isset($_SESSION['delToken'])) {
@@ -43,7 +48,7 @@ if (isset($_SESSION['counsToken'])) {
     return false;
   } else {
     if (((time() - $dbObject['del_sess_start']) / 60) > 30) {
-      $_SESSION['message'] = "<b style='color:red'>You were automatically logged out since no information updates or requests were made for the past 30 minutes. This is a security measure, not an error. You can log back in now.</b>";
+      $_SESSION['message'] = "<b style='color:red'>You were automatically logged out since no updates or requests had been made for the past 30 minutes. This is a security measure, not an error. You can log back in now.</b>";
       unset($_SESSION['delToken']);
       unset($_SESSION['secId']);
       unset($_SESSION['adminType']);
@@ -51,6 +56,11 @@ if (isset($_SESSION['counsToken'])) {
       return false;
     } else {
       $_SESSION['adminType'] = "delegate";
+      $delSessionStmt = $pdo->prepare('UPDATE Section SET del_sess_start=:dss WHERE section_id=:scid');
+      $delSessionStmt->execute(array(
+        ':dss'=>time(),
+        ':scid'=>htmlentities($_SESSION['secId'])
+      ));
     };
   }
 } else {
@@ -353,9 +363,9 @@ if (isset($_POST['logout'])) {
 // echo("<pre>");
 // var_dump($_POST);
 // echo("</pre>");
-echo("SESSION:");
-echo("<pre>");
-var_dump($_SESSION);
-echo("</pre>");
+// echo("SESSION:");
+// echo("<pre>");
+// var_dump($_SESSION);
+// echo("</pre>");
 
 ?>

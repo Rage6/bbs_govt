@@ -58,7 +58,6 @@ body {
 }
 
 .mainBox {
-  padding-bottom: 30px;
   background-color: tan;
 }
 
@@ -194,11 +193,15 @@ body {
 }
 
 .counsTitle {
-  margin-bottom: 40px;
+  margin: 40px 0 0px 0;
   color: white;
   font-size: 2rem;
   text-align: center;
   background-color: red;
+}
+
+.counsContent {
+  border: 2px solid red;
 }
 
 .jobList {
@@ -443,4 +446,38 @@ body {
 .allBox {
   padding: 20px 0;
   background-color: lightgreen;
+}
+
+.refAll {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.refInfoBar {
+  margin-top: ;
+  padding: 10px 10%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 1.2rem;
+  background-color: black;
+}
+
+.refInfoBttn {
+  border-radius: 20px;
+  color: black;
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+  width: 20px;
+}
+
+.refInfoBox {
+  padding: 10px 5%;
+  border-top: 2px dashed white;
+  color: white;
+  font-size: 1.1rem;
+  display: none;
+  background-color: black;
 }

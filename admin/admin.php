@@ -165,6 +165,9 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
+
+            <div class='counsContent'>
+
             <div id='listTitle' class='listTitle'>
               Current Staff
             </div>
@@ -395,17 +398,22 @@
               echo("
               </div>
             </div>
+
+            </div>
+
           ");
         };
       ?>
-      <div>
-        Refresh in: <span id="timeMin">10</span> min
-      </div>
-      <div>
-        <u>What does this mean?</u>
-        <div>
-          During BBS, most of these admin updates will be carried out over public computers. There is a chance that a qualified user will accidentally leave their account logged on one of these devices, making it vulnerable to unqualified users.</br>
-          To reduce the risk, an account will automatically relock itself if its page has not a) been refreshed or b) submitted an update within the past 30 minutes.
+      <div style="padding-top:50px"></div>
+      <div class="refAll">
+        <div id="refInfoBar" class="refInfoBar">
+          <div id="refText">Refresh in: <span id="timeMin">30</span> min</div>
+          <div id="refInfoBttn" class="refInfoBttn">?</div>
+        </div>
+        <div id="refInfoBox" class="refInfoBox">
+          <u style='text-align:center'>Why is there a timer on this?</u></br>
+          There is a chance that a user will accidentally leave their account logged in on a public device, making it vulnerable to unqualified users.</br>
+          To reduce this risk, your device will automatically relock this account if its page has not been refreshed or updated in the past 30 minutes.
         </div>
       </div>
     </div>

@@ -174,18 +174,42 @@ $(()=>{
   });
 
   // Counts down the time until the session expires
-  currentMin = $("#timeMin").text();
+  let currentMin = $("#timeMin").text();
+  let currentSec = currentMin * 60;
+  let interval = null;
+  $(document).ready(() => {
+    interval = setInterval(tickDown,1000);
+  });
   const tickDown = () => {
-    setInterval(()=>{
-      currentMin--;
-      console.log(currentMin);
-      if (currentMin < 0) {
-        clearInterval(this.tickDown);
-        console.log("This happened...")
-      };
-    },1000);
+    currentSec--;
+    currentMin = Math.floor(currentSec / 60);
+    currentRemainder = currentSec - (currentMin * 60);
+    if (currentRemainder < 10) {
+      currentRemainder = "0" + currentRemainder;
+    };
+    if (currentMin < 10) {
+      currentMin = "0" + currentMin;
+    };
+    if (currentMin == 2 && currentRemainder == 0) {
+      $("#refInfoBar").css('background-color','orange').css('black','orange');
+    };
+    if (currentMin == 1 && currentRemainder == 0) {
+      $("#refInfoBar").css('background-color','red').css('color','white');
+    };
+    $("#timeMin").text(currentMin + ":" + currentRemainder);
+    if (currentSec < 0) {
+      $("#refText").text("Auto-locked. Refresh & login");
+      clearInterval(interval);
+    };
   };
 
-  // tickDown();
+  // Opens and closes the box about the 30 minute 'auto-lock'
+  $("#refInfoBttn").click(()=>{
+    if ($("#refInfoBox").css('display') == "block") {
+      $("#refInfoBox").css('display','none');
+    } else {
+      $("#refInfoBox").css('display','block');
+    };
+  });
 
 });

@@ -126,9 +126,9 @@ if (isset($_POST['sectionLogin'])) {
 // echo("<pre>");
 // var_dump($_POST);
 // echo("</pre>");
-echo("SESSION:");
-echo("<pre>");
-var_dump($_SESSION);
-echo("</pre>");
+// echo("SESSION:");
+// echo("<pre>");
+// var_dump($_SESSION);
+// echo("</pre>");
 
 ?>
