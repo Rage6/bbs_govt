@@ -2,11 +2,12 @@
 
 // Confirms a token is present and matches with the token in the dB
 if (isset($_SESSION['counsToken'])) {
-  $dbTknStmt = $pdo->prepare("SELECT couns_token FROM Section WHERE section_id=:cid");
+  $dbTknStmt = $pdo->prepare("SELECT couns_token,couns_sess_start FROM Section WHERE section_id=:cid");
   $dbTknStmt->execute(array(
     ':cid'=>htmlentities($_SESSION['secId'])
   ));
-  $dbTkn = $dbTknStmt->fetch(PDO::FETCH_ASSOC)['couns_token'];
+  $dbObject = $dbTknStmt->fetch(PDO::FETCH_ASSOC);
+  $dbTkn = $dbObject['couns_token'];
   if ($dbTkn != $_SESSION['counsToken']) {
     $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another counselor logged into this section's account recently.</b>";
     unset($_SESSION['counsToken']);
@@ -15,23 +16,42 @@ if (isset($_SESSION['counsToken'])) {
     header('Location: login.php');
     return false;
   } else {
-    $_SESSION['adminType'] = "counselor";
+    if (((time() - $dbObject['couns_sess_start']) / 60) > 30) {
+      $_SESSION['message'] = "<b style='color:red'>You were automatically logged out since no information updates or requests were made for the past 30 minutes. This is a security measure, not an error. You can log back in now.</b>";
+      unset($_SESSION['counsToken']);
+      unset($_SESSION['secId']);
+      unset($_SESSION['adminType']);
+      header('Location: login.php');
+      return false;
+    } else {
+      $_SESSION['adminType'] = "counselor";
+    };
   }
 } elseif (isset($_SESSION['delToken'])) {
-  $dbTknStmt = $pdo->prepare("SELECT del_token FROM Section WHERE section_id=:cid");
+  $dbTknStmt = $pdo->prepare("SELECT del_token, del_sess_start FROM Section WHERE section_id=:cid");
   $dbTknStmt->execute(array(
     ':cid'=>htmlentities($_SESSION['secId'])
   ));
-  $dbTkn = $dbTknStmt->fetch(PDO::FETCH_ASSOC)['del_token'];
+  $dbObject = $dbTknStmt->fetch(PDO::FETCH_ASSOC);
+  $dbTkn = $dbObject['del_token'];
   if ($dbTkn != $_SESSION['delToken']) {
-    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another delegate logged into this section's account recently.</b>";
+    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This probably happened because another delegate has logged into this section since you last logged in.</b>";
     unset($_SESSION['delToken']);
     unset($_SESSION['secId']);
     unset($_SESSION['adminType']);
     header('Location: login.php');
     return false;
   } else {
-    $_SESSION['adminType'] = "delegate";
+    if (((time() - $dbObject['del_sess_start']) / 60) > 30) {
+      $_SESSION['message'] = "<b style='color:red'>You were automatically logged out since no information updates or requests were made for the past 30 minutes. This is a security measure, not an error. You can log back in now.</b>";
+      unset($_SESSION['delToken']);
+      unset($_SESSION['secId']);
+      unset($_SESSION['adminType']);
+      header('Location: login.php');
+      return false;
+    } else {
+      $_SESSION['adminType'] = "delegate";
+    };
   }
 } else {
   $_SESSION['message'] = "<b style='color:red'>You must login to enter the Admin Center</b>";
@@ -333,9 +353,9 @@ if (isset($_POST['logout'])) {
 // echo("<pre>");
 // var_dump($_POST);
 // echo("</pre>");
-// echo("SESSION:");
-// echo("<pre>");
-// var_dump($_SESSION);
-// echo("</pre>");
+echo("SESSION:");
+echo("<pre>");
+var_dump($_SESSION);
+echo("</pre>");
 
 ?>

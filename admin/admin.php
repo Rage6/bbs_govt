@@ -398,7 +398,16 @@
           ");
         };
       ?>
+      <div>
+        Refresh in: 30 min
+      </div>
+      <div>
+        <u>What does this mean?</u>
+        <div>
+          During BBS, most of these admin updates will be carried out over public computers. There is a chance that a qualified user will accidentally leave their account logged on one of these devices, making it vulnerable to unqualified users.</br>
+          To reduce the risk, an account will automatically relock itself if its page has not a) been refreshed or b) submitted an update within the past 30 minutes.
+        </div>
+      </div>
     </div>
   </body>
 </html>
-<!-- section_id,section_name,description,full_time,is_city,is_county -->
