@@ -399,7 +399,7 @@
         };
       ?>
       <div>
-        Refresh in: 30 min
+        Refresh in: <span id="timeMin">10</span> min
       </div>
       <div>
         <u>What does this mean?</u>

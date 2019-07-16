@@ -173,4 +173,19 @@ $(()=>{
     };
   });
 
+  // Counts down the time until the session expires
+  currentMin = $("#timeMin").text();
+  const tickDown = () => {
+    setInterval(()=>{
+      currentMin--;
+      console.log(currentMin);
+      if (currentMin < 0) {
+        clearInterval(this.tickDown);
+        console.log("This happened...")
+      };
+    },1000);
+  };
+
+  // tickDown();
+
 });
