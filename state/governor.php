@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Governor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="../style/state/governor.css"/>
+    <link rel="stylesheet" type="text/css" href="../style/state/governor/gov_360.css"/>
     <!-- <link rel="stylesheet" type="text/css" href="../style/required.css"/> -->
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
