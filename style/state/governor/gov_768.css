@@ -1,7 +1,23 @@
+.govTitle {
+  font-size: 4rem;
+}
+.govTitle div:last-child {
+  font-size: 1.8rem;
+}
+.menuBar {
+  font-size: 1.5rem;
+}
+.menuList {
+  font-size: 1.5rem;
+}
+
+.menuButton {
+  padding-left: 10%;
+}
+
 .nameAndPic {
   display: flex;
   justify-content: space-around;
-  color: blue;
 }
 
 .govName {
@@ -17,4 +33,35 @@
 
 .govBio {
   font-size: 1.5rem;
+}
+
+.goalBox {
+  font-size: 1.3rem;
+}
+
+.goalIntro {
+  padding: 0 15%;
+}
+
+.listTitle {
+  font-size: 1.5rem;
+}
+
+.agencySubtitle {
+  padding-left: 15%;
+  font-size: 1.8rem;
+}
+
+.purpose {
+  font-size: 1.3rem;
+}
+
+.director {
+  font-size: 1.3rem;
+}
+
+.allReportBtns div {
+  padding: 10px 0;
+  font-size: 1.7rem;
+  width: 8%;
 }

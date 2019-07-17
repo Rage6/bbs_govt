@@ -72,6 +72,9 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
       <a name="governorTag">
+
+        <div>
+
         <div class="govBox">
           <div class="govSubtitle">GOVERNOR</div>
           <div class="nameAndPic">
@@ -102,6 +105,9 @@
             </a>
           </div>
         </div>
+
+        </div>
+
       </a>
       <a name="electedTag">
         <div class="tagTitle">ELECTED OFFICIALS</div>
@@ -169,7 +175,7 @@
       <a name="goalTag">
         <div class="tagTitle">POLICIES & GOALS</div>
         <div class="goalBox">
-          <div>
+          <div class="goalIntro">
             Gov. <?php echo($govInfo['last_name']) ?>, Lt. Gov. <?php echo($ltgovInfo['last_name']) ?> and their team are dedicated to leading their state in the right direction.
           </div>
           <div class="policyList">
