@@ -16,6 +16,7 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 .menuBar {
+  padding: 2px 0;
   color: #2020a0;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -92,11 +93,12 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 .nameAndPic img{
-  
+
 }
 .govBio {
   margin-bottom: 30px;
   padding: 30px 10% 0 10%;
+  font-size: 1.1rem;
   font-family: 'Playfair Display', serif;
 }
 .goalBox {
@@ -112,6 +114,12 @@ body {
 .listTitle {
   font-size: 1.2rem;
   text-align: center;
+}
+.itemTitle {
+  text-decoration: underline;
+}
+.itemContent {
+
 }
 .policyList {
   padding-top: 40px;
@@ -135,6 +143,9 @@ body {
   display: none;
   font-family: 'Montserrat', sans-serif;
   background-color: gold;
+}
+.purpose {
+
 }
 .director {
   margin-top: 10px;
