@@ -11,6 +11,12 @@
     <title>BBS | Governor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../style/state/governor/gov_360.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 361px) and (max-width: 375px)" href="../style/state/governor/gov_375.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 376px) and (max-width: 414px)" href="../style/state/governor/gov_414.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 415px) and (max-width: 768px)" href="../style/state/governor/gov_768.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 769px) and (max-width: 1366px)" href="../style/state/governor/gov_1366.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="../style/state/governor/gov_1440.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 1441px)" href="../style/state/governor/gov_1920.css"/>
     <!-- <link rel="stylesheet" type="text/css" href="../style/required.css"/> -->
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"

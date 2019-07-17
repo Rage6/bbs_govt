@@ -1,7 +1,7 @@
 .nameAndPic {
   display: flex;
   justify-content: space-around;
-  color: green;
+  color: blue;
 }
 
 .govName {

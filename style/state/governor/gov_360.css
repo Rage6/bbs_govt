@@ -84,19 +84,15 @@ body {
 .nameAndPic {
   margin: 0 5%;
   padding-top: 20px;
-  display: flex;
-  justify-content: space-around;
 }
 .govName {
   padding: 10px 0;
   text-align: center;
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
-  max-width: 50%;
 }
 .nameAndPic img{
-  height: 30%;
-  width: 30%;
+  
 }
 .govBio {
   margin-bottom: 30px;
