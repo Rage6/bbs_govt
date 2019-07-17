@@ -42,6 +42,30 @@ body {
   background-position: bottom;
   background-image: linear-gradient(to bottom right, #2020a0, white, red);
 }
+#img_0 {
+  display: block;
+}
+.slideshow {
+  display: none;
+}
+.slideFilm {
+
+}
+.oneFrame {
+
+}
+#img_1 {
+
+}
+#img_2 {
+
+}
+#img_3 {
+
+}
+#img_4 {
+  
+}
 .govBox {
   margin-top: 30px;
 }

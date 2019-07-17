@@ -67,7 +67,20 @@
       </a>
     </div>
     <div class="govContent">
-      <img src="../img/state/governor/bbs_gov.jpg">
+      <img id="img_0" src="../img/state/governor/bbs_gov.jpg">
+      <div class="slideshow">
+        <div class="slideFilm">
+          <div id="img_1_A" class="oneFrame"></div>
+          <div id="img_2_A" class="oneFrame"></div>
+          <div id="img_3_A" class="oneFrame"></div>
+          <div id="img_4_A" class="oneFrame"></div>
+          <div id="img_1_B" class="oneFrame"></div>
+          <div id="img_2_B" class="oneFrame"></div>
+          <div id="img_3_B" class="oneFrame"></div>
+          <div id="img_4_B" class="oneFrame"></div>
+        </div>
+      </div>
+
       <div class="govIntro">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
