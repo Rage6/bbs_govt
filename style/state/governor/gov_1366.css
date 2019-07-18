@@ -1,7 +1,105 @@
+.govTitle {
+  font-size: 4rem;
+}
+
+.govTitle div:last-child {
+  font-size: 1.8rem;
+}
+
+#img_0 {
+  display: none;
+}
+
+.slideshow {
+  display: block;
+  /* position: relative; */
+  overflow: hidden;
+}
+
+.slideFilm {
+  display: flex;
+  position: relative;
+  left: 0;
+  width: 300%;
+  animation: slideAction 15s linear infinite;
+}
+
+@keyframes slideAction {
+  0%   { left: 0 }
+  100% { left: -1200px }
+}
+
+.oneFrame {
+  background-size: cover;
+  height: 300px;
+  width: 300px;
+}
+
+#img_1_A {
+  background-image: url("../../../img/state/governor/bbs_gov.jpg");
+  display: inherit;
+}
+
+#img_2_A {
+  background-image: url("../../../img/state/governor/band_2.jpg");
+  display: inherit;
+}
+
+#img_3_A {
+  background-image: url("../../../img/state/governor/AL_logo.jpg");
+  display: inherit;
+}
+
+#img_4_A {
+  background-image: url("../../../img/state/governor/ceremony.jpg");
+  display: inherit;
+}
+
+#img_5_A {
+  background-image: url("../../../img/state/governor/ceremony.jpg");
+  display: inherit;
+}
+
+#img_1_B {
+  background-image: url("../../../img/state/governor/bbs_gov.jpg");
+  display: inherit;
+}
+
+#img_2_B {
+  background-image: url("../../../img/state/governor/band_2.jpg");
+  display: inherit;
+}
+
+#img_3_B {
+  background-image: url("../../../img/state/governor/AL_logo.jpg");
+  display: inherit;
+}
+
+#img_4_B {
+  background-image: url("../../../img/state/governor/ceremony.jpg");
+  display: inherit;
+}
+
+#img_5_B {
+  background-image: url("../../../img/state/governor/ceremony.jpg");
+  display: inherit;
+}
+
+.menuBar {
+  font-size: 1.5rem;
+}
+
+.menuList {
+  font-size: 1.5rem;
+}
+
+.menuButton {
+  padding-left: 10%;
+}
+
 .nameAndPic {
   display: flex;
   justify-content: space-around;
-  color: green;
 }
 
 .govName {
