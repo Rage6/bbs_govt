@@ -7,5 +7,5 @@
 
 <b>What is this website?</b></br>
 <p>
-  This is the hub of multiple "mini-websites" will help other BBS delegates, friends, and family follow what is happening in the different branches of their government. For example, the BBS Governor and his staff will have an entire page in which they can publicize their most important activities and events over the course of the day, as well as display their goals and policies for the rest of the week.
+  This is the hub of multiple "mini-websites" which will help other BBS delegates, friends, and family follow what is happening in the different branches of their government. For example, the BBS Governor and his staff will have an entire page in which they can publicize their most important activities and events over the course of the day, as well as display their goals and policies for the rest of the week.
 </p>
