@@ -57,16 +57,40 @@ body {
 .oneFrame {
 
 }
-#img_1 {
+#img_1_A {
 
 }
-#img_2 {
+#img_2_A {
 
 }
-#img_3 {
+#img_3_A {
 
 }
-#img_4 {
+#img_4_A {
+
+}
+#img_5_A {
+
+}
+#img_6_A {
+
+}
+#img_1_B {
+
+}
+#img_2_B {
+
+}
+#img_3_B {
+
+}
+#img_4_B {
+
+}
+#img_5_B {
+
+}
+#img_6_B {
 
 }
 .govBox {
@@ -151,8 +175,14 @@ body {
 .itemContent {
 
 }
+.bothList {
+  
+}
 .policyList {
   padding-top: 40px;
+}
+.goalDivider {
+  display: none;
 }
 .goalList {
   padding-top: 40px;

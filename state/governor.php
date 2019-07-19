@@ -76,11 +76,15 @@
           <div id="img_3_A" class="oneFrame"></div>
           <div id="img_4_A" class="oneFrame"></div>
           <div id="img_5_A" class="oneFrame"></div>
+          <div id="img_6_A" class="oneFrame"></div>
+          <div id="img_7_A" class="oneFrame"></div>
           <div id="img_1_B" class="oneFrame"></div>
           <div id="img_2_B" class="oneFrame"></div>
           <div id="img_3_B" class="oneFrame"></div>
           <div id="img_4_B" class="oneFrame"></div>
           <div id="img_5_B" class="oneFrame"></div>
+          <div id="img_6_B" class="oneFrame"></div>
+          <div id="img_7_B" class="oneFrame"></div>
         </div>
       </div>
 
@@ -200,37 +204,40 @@
           <div class="goalIntro">
             Gov. <?php echo($govInfo['last_name']) ?>, Lt. Gov. <?php echo($ltgovInfo['last_name']) ?> and their team are dedicated to leading their state in the right direction.
           </div>
-          <div class="policyList">
-            <div class="listTitle">POLICIES</div>
-            <ul>
-              <?php
-                // For collecting all of their policies
-                $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND section_id=9 AND approved=1 ORDER BY post_order ASC");
-                $policyStmt->execute();
-                while ($onePolicy = $policyStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("<li class='listSpacing'>
-                    <div class='itemTitle'>".$onePolicy['title']."</div>
-                    <div class='itemContent'>".$onePolicy['content']."</div>
-                  </li>");
-                };
-              ?>
-            </ul>
-          </div>
-          <div class="goalList">
-            <div class="listTitle">GOALS</div>
-            <ul>
-              <?php
-                // For collecting all of their goals
-                $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND section_id=9 AND approved=1 ORDER BY post_order ASC");
-                $goalStmt->execute();
-                while ($oneGoal = $goalStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("<li class='listSpacing'>
-                    <div class='itemTitle'>".$oneGoal['title']."</div>
-                    <div class='itemContent'>".$oneGoal['content']."</div>
-                  </li>");
-                };
-              ?>
-            </ul>
+          <div class="bothList">
+            <div class="policyList">
+              <div class="listTitle">POLICIES</div>
+              <ul>
+                <?php
+                  // For collecting all of their policies
+                  $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND section_id=9 AND approved=1 ORDER BY post_order ASC");
+                  $policyStmt->execute();
+                  while ($onePolicy = $policyStmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo("<li class='listSpacing'>
+                      <div class='itemTitle'>".$onePolicy['title']."</div>
+                      <div class='itemContent'>".$onePolicy['content']."</div>
+                    </li>");
+                  };
+                ?>
+              </ul>
+            </div>
+            <div class="goalDivider"></div>
+            <div class="goalList">
+              <div class="listTitle">GOALS</div>
+              <ul>
+                <?php
+                  // For collecting all of their goals
+                  $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND section_id=9 AND approved=1 ORDER BY post_order ASC");
+                  $goalStmt->execute();
+                  while ($oneGoal = $goalStmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo("<li class='listSpacing'>
+                      <div class='itemTitle'>".$oneGoal['title']."</div>
+                      <div class='itemContent'>".$oneGoal['content']."</div>
+                    </li>");
+                  };
+                ?>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="upArrow" style="margin-top:20px">
