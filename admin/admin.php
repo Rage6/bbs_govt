@@ -165,6 +165,9 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
+
+            <div class='counsContent'>
+
             <div id='listTitle' class='listTitle'>
               Current Staff
             </div>
@@ -395,10 +398,24 @@
               echo("
               </div>
             </div>
+
+            </div>
+
           ");
         };
       ?>
+      <div style="padding-top:50px"></div>
+      <div class="refAll">
+        <div id="refInfoBar" class="refInfoBar">
+          <div id="refText">Refresh in: <span id="timeMin">30</span> min</div>
+          <div id="refInfoBttn" class="refInfoBttn">?</div>
+        </div>
+        <div id="refInfoBox" class="refInfoBox">
+          <u style='text-align:center'>Why is there a timer on this?</u></br>
+          There is a chance that a user will accidentally leave their account logged in on a public device, making it vulnerable to unqualified users.</br>
+          To reduce this risk, your device will automatically relock this account if its page has not been refreshed or updated in the past 30 minutes.
+        </div>
+      </div>
     </div>
   </body>
 </html>
-<!-- section_id,section_name,description,full_time,is_city,is_county -->

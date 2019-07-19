@@ -11,11 +11,15 @@ body {
   text-align: center;
   background-color: #2020a0;
 }
+.divider {
+
+}
 .govTitle div:last-child {
   font-size: 1.5rem;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 .menuBar {
+  padding: 2px 0;
   color: #2020a0;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -40,6 +44,54 @@ body {
   padding-bottom: 50px;
   background-position: bottom;
   background-image: linear-gradient(to bottom right, #2020a0, white, red);
+}
+#img_0 {
+  display: block;
+}
+.slideshow {
+  display: none;
+}
+.slideFilm {
+
+}
+.oneFrame {
+
+}
+#img_1_A {
+
+}
+#img_2_A {
+
+}
+#img_3_A {
+
+}
+#img_4_A {
+
+}
+#img_5_A {
+
+}
+#img_6_A {
+
+}
+#img_1_B {
+
+}
+#img_2_B {
+
+}
+#img_3_B {
+
+}
+#img_4_B {
+
+}
+#img_5_B {
+
+}
+#img_6_B {
+
 }
 .govBox {
   margin-top: 30px;
@@ -84,23 +136,20 @@ body {
 .nameAndPic {
   margin: 0 5%;
   padding-top: 20px;
-  display: flex;
-  justify-content: space-around;
 }
 .govName {
   padding: 10px 0;
   text-align: center;
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
-  max-width: 50%;
 }
 .nameAndPic img{
-  height: 30%;
-  width: 30%;
+
 }
 .govBio {
   margin-bottom: 30px;
   padding: 30px 10% 0 10%;
+  font-size: 1.1rem;
   font-family: 'Playfair Display', serif;
 }
 .goalBox {
@@ -108,6 +157,9 @@ body {
   color: gold;
   font-family: 'Montserrat', sans-serif;
   background-color: #2020a0;
+}
+.goalIntro {
+
 }
 .listSpacing {
   margin: 10px 0;
@@ -117,8 +169,20 @@ body {
   font-size: 1.2rem;
   text-align: center;
 }
+.itemTitle {
+  text-decoration: underline;
+}
+.itemContent {
+
+}
+.bothList {
+  
+}
 .policyList {
   padding-top: 40px;
+}
+.goalDivider {
+  display: none;
 }
 .goalList {
   padding-top: 40px;
@@ -130,7 +194,7 @@ body {
   font-size: 1.5rem;
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #2020a0;
-  width: 90%;
+  width: 85%;
 }
 .agencyContent {
   border: 1px solid #2020a0;
@@ -139,6 +203,9 @@ body {
   display: none;
   font-family: 'Montserrat', sans-serif;
   background-color: gold;
+}
+.purpose {
+
 }
 .director {
   margin-top: 10px;

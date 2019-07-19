@@ -1,0 +1,33 @@
+.govTitle {
+  font-size: 3.1rem;
+}
+.govTitle div:last-child {
+  font-size: 1.6rem;
+}
+.menuBar {
+  font-size: 1.1rem;
+}
+.menuList {
+  font-size: 1.2rem;
+}
+.govName {
+  font-size: 2.5rem;
+}
+.govBio {
+  font-size: 1.3rem;
+}
+.listTitle {
+  font-size: 1.4rem;
+}
+.itemTitle {
+  font-size: 1.2rem;
+}
+.itemContent {
+
+}
+.purpose {
+  font-size: 1.1rem;
+}
+.director {
+  font-size: 1.2rem;
+}

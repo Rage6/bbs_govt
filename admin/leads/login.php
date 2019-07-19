@@ -67,6 +67,11 @@ if (isset($_POST['sectionLogin'])) {
         $_SESSION['counsToken'] = $newTkn;
         $_SESSION['secId'] = htmlentities($_POST['sectionId']);
         $_SESSION['message'] = "<b style='color:green'>Counselor login successful</b>";
+        $counsSessionStmt = $pdo->prepare('UPDATE Section SET couns_sess_start=:st WHERE section_id=:sd');
+        $counsSessionStmt->execute(array(
+          ':st'=>time(),
+          ':sd'=>htmlentities($_SESSION['secId'])
+        ));
         header('Location: admin.php');
         return true;
       } elseif (password_verify($givenPw,$secInfo[0]['del_pw'])) {
@@ -78,12 +83,17 @@ if (isset($_POST['sectionLogin'])) {
         $_SESSION['delToken'] = $newTkn;
         $_SESSION['secId'] = htmlentities($_POST['sectionId']);
         $_SESSION['message'] = "<b style='color:green'>Delegate login successful</b>";
+        $delSessionStmt = $pdo->prepare('UPDATE Section SET del_sess_start=:st WHERE section_id=:sd');
+        $delSessionStmt->execute(array(
+          ':st'=>time(),
+          ':sd'=>htmlentities($_SESSION['secId'])
+        ));
         header('Location: admin.php');
         return true;
       } else {
         $numDelFails = $secInfo[0]['del_num'] + 1;
         $numLeft = 5 - $numDelFails;
-        if ($numLeft == 0) {
+        if ($numLeft <= 0) {
           $totalMessage = "Your section is now locked. Contact the BBS IT staff in order to unlock this section.";
         } else {
           $totalMessage = "You have ".$numLeft." more attempts until this section locks.";
