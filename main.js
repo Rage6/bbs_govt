@@ -16,9 +16,6 @@ $(()=>{
     $("#menuContent").css("display","none")
   });
 
-  // Starts all .agencyContent as hidden
-  $(".agencyContent").css("display","none");
-
   // Gives each .attr() to each element
   const agencyCount = $(".agencyContent").length;
   for (let a = 0; a <= agencyCount; a++) {
@@ -26,20 +23,25 @@ $(()=>{
   };
 
   // This finds the clicked agency element (aka "event") and uses it to show or hide that agency's content box
-  // NOTE: This MUST follow the creation of the "agencyCount" variable
+  // NOTE: This MUST follow the creation of the "agencyCount" variable above
+  // NOTE: This only functions for tablets, phones because bigger screens have enough space for the content all the time
   $("[data-agency]").click((event)=>{
-    let agencyNum = event.target.dataset.agency;
-    let agencyBtnId = "#" + event.target.id;
-    let agencyCntId = "#agencyCnt" + agencyNum;
-    if ($(agencyCntId).css("display") == "none") {
-      $(agencyCntId).css("display","block");
-    } else {
-      $(agencyCntId).css("display","none");
-    };
-    for (let b = 0; b < agencyCount; b++) {
-      if ("#agencyBtn" + b != agencyBtnId) {
-        $("#agencyCnt" + b).css("display","none");
+    if (window.innerWidth < 769) {
+      let agencyNum = event.target.dataset.agency;
+      let agencyBtnId = "#" + event.target.id;
+      let agencyCntId = "#agencyCnt" + agencyNum;
+      if ($(agencyCntId).css("display") == "none") {
+        $(agencyCntId).css("display","block");
+      } else {
+        $(agencyCntId).css("display","none");
       };
+      for (let b = 0; b < agencyCount; b++) {
+        if ("#agencyBtn" + b != agencyBtnId) {
+          $("#agencyCnt" + b).css("display","none");
+        };
+      };
+    } else {
+      $(".agencyContent").css('display','block');
     };
   });
 

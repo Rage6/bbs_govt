@@ -34,6 +34,7 @@
     <a name="topTag"></a>
     <div class="govTitle">
       <div><?php echo($govInfo['first_name']." ".$govInfo['last_name']) ?></div>
+      <div class="divider"></div>
       <div>Governor of Buckeye Boys State</div>
     </div>
     <div id="menuClick" class="menuBar">
@@ -74,10 +75,12 @@
           <div id="img_2_A" class="oneFrame"></div>
           <div id="img_3_A" class="oneFrame"></div>
           <div id="img_4_A" class="oneFrame"></div>
+          <div id="img_5_A" class="oneFrame"></div>
           <div id="img_1_B" class="oneFrame"></div>
           <div id="img_2_B" class="oneFrame"></div>
           <div id="img_3_B" class="oneFrame"></div>
           <div id="img_4_B" class="oneFrame"></div>
+          <div id="img_5_B" class="oneFrame"></div>
         </div>
       </div>
 
@@ -85,17 +88,16 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
       <a name="governorTag">
-
-        <div>
-
         <div class="govBox">
           <div class="govSubtitle">GOVERNOR</div>
-          <div class="nameAndPic">
-            <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
-            <img src="../img/state/governor/bbs_gov.jpg"/>
-          </div>
-          <div class="govBio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+          <div class="forFlex">
+            <div class="nameAndPic">
+              <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
+              <img src="../img/state/governor/bbs_gov.jpg"/>
+            </div>
+            <div class="govBio">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+            </div>
           </div>
           <div class="upArrow">
             <a href="#topTag">
@@ -105,12 +107,14 @@
         </div>
         <div class="govBox">
           <div class="govSubtitle">LT GOVERNOR</div>
-          <div class="nameAndPic">
-            <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
-            <img src="../img/state/governor/bbs_gov.jpg"/>
-          </div>
-          <div class="govBio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+          <div class="forFlex">
+            <div class="nameAndPic">
+              <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
+              <img src="../img/state/governor/bbs_gov.jpg"/>
+            </div>
+            <div class="govBio">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+            </div>
           </div>
           <div class="upArrow">
             <a href="#topTag">
@@ -118,20 +122,19 @@
             </a>
           </div>
         </div>
-
-        </div>
-
       </a>
       <a name="electedTag">
         <div class="tagTitle">ELECTED OFFICIALS</div>
         <div style="margin-top:0px" class="govBox">
           <div class="firstBox govSubtitle">ATTORNEY GENERAL</div>
-          <div class="nameAndPic">
-            <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
-            <img src="../img/state/governor/bbs_gov.jpg"/>
-          </div>
-          <div class="govBio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+          <div class="forFlex">
+            <div class="nameAndPic">
+              <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
+              <img src="../img/state/governor/bbs_gov.jpg"/>
+            </div>
+            <div class="govBio">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+            </div>
           </div>
           <div class="upArrow">
             <a href="#topTag">
@@ -141,12 +144,14 @@
         </div>
         <div class="govBox">
           <div class="govSubtitle">TREASURER OF STATE</div>
-          <div class="nameAndPic">
-            <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
-            <img src="../img/state/governor/bbs_gov.jpg"/>
-          </div>
-          <div class="govBio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+          <div class="forFlex">
+            <div class="nameAndPic">
+              <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
+              <img src="../img/state/governor/bbs_gov.jpg"/>
+            </div>
+            <div class="govBio">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+            </div>
           </div>
           <div class="upArrow">
             <a href="#topTag">
@@ -156,12 +161,14 @@
         </div>
         <div class="govBox">
           <div class="govSubtitle">AUDITOR OF STATE</div>
-          <div class="nameAndPic">
-            <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
-            <img src="../img/state/governor/bbs_gov.jpg"/>
-          </div>
-          <div class="govBio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+          <div class="forFlex">
+            <div class="nameAndPic">
+              <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
+              <img src="../img/state/governor/bbs_gov.jpg"/>
+            </div>
+            <div class="govBio">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+            </div>
           </div>
           <div class="upArrow">
             <a href="#topTag">
@@ -171,12 +178,14 @@
         </div>
         <div class="govBox">
           <div class="govSubtitle">SECRETARY OF STATE</div>
-          <div class="nameAndPic">
-            <div class="govName"><?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?></div>
-            <img src="../img/state/governor/bbs_gov.jpg"/>
-          </div>
-          <div class="govBio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+          <div class="forFlex">
+            <div class="nameAndPic">
+              <div class="govName"><?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?></div>
+              <img src="../img/state/governor/bbs_gov.jpg"/>
+            </div>
+            <div class="govBio">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+            </div>
           </div>
           <div class="upArrow">
             <a href="#topTag">
@@ -232,18 +241,20 @@
       </a>
       <a name="agencyTag">
         <div class="tagTitle">Departments & Agencies</div>
-        <div style="margin-top:0px" class="govBox">
+        <div style="margin-top:0px" class="govBox agencyBox">
           <?php
             $agencyNum = 0;
             $agencyStmt = $pdo->prepare("SELECT DISTINCT * FROM Department INNER JOIN Job INNER JOIN Delegate WHERE Department.section_id=9 AND Department.job_id=Job.job_id AND Job.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY Department.dpt_id ASC");
             $agencyStmt->execute();
             while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
               echo("
+              <div class='oneAgency'>
                 <div class='agencySubtitle' id='agencyBtn".$agencyNum."'>".$oneAgency['dpt_name']."</div>
                 <div class='agencyContent' id='agencyCnt".$agencyNum."'>
                   <div class='purpose'>".$oneAgency['purpose']."</div>
                   <div class='director'>Director: ".$oneAgency['first_name']." ".$oneAgency['last_name']."</div>
                 </div>
+              </div>
               ");
               $agencyNum++;
             };
