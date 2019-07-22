@@ -1,7 +1,7 @@
 <?php
   session_start();
-  require_once("../pdo.php");
-  require_once("./leads/gov_lead.php");
+  require_once("../../pdo.php");
+  require_once("gov_lead.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -11,24 +11,24 @@
     <title>BBS | Governor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
     <!-- Width: 0px to 360px (Default CSS) -->
-    <link rel="stylesheet" type="text/css" href="../style/state/governor/gov_360.css"/>
+    <link rel="stylesheet" type="text/css" href="style/gov_360.css"/>
     <!-- Width: 361px to 375px -->
-    <link rel="stylesheet" media="screen and (min-width: 361px) and (max-width: 375px)" href="../style/state/governor/gov_375.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 361px) and (max-width: 375px)" href="style/gov_375.css"/>
     <!-- Width: 376px to 414px -->
-    <link rel="stylesheet" media="screen and (min-width: 376px) and (max-width: 414px)" href="../style/state/governor/gov_414.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 376px) and (max-width: 414px)" href="style/gov_414.css"/>
     <!-- Width: 415px to 768px -->
-    <link rel="stylesheet" media="screen and (min-width: 415px) and (max-width: 768px)" href="../style/state/governor/gov_768.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 415px) and (max-width: 768px)" href="style/gov_768.css"/>
     <!-- Width: 769px to 1366px -->
-    <link rel="stylesheet" media="screen and (min-width: 769px) and (max-width: 1366px)" href="../style/state/governor/gov_1366.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 769px) and (max-width: 1366px)" href="style/gov_1366.css"/>
     <!-- Width: 1367px to 1440px -->
-    <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="../style/state/governor/gov_1440.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/gov_1440.css"/>
     <!-- Width: 1441px and above -->
-    <link rel="stylesheet" media="screen and (min-width: 1441px)" href="../style/state/governor/gov_1920.css"/>
+    <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/gov_1920.css"/>
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-    <script src="../main.js"></script>
+    <script src="main.js"></script>
   </head>
   <body>
     <a name="topTag"></a>
@@ -68,7 +68,7 @@
       </a>
     </div>
     <div class="govContent">
-      <img id="img_0" src="../img/state/governor/bbs_gov.jpg">
+      <img id="img_0" src="../../img/state/governor/bbs_gov.jpg">
       <div class="slideshow">
         <div class="slideFilm">
           <div id="img_1_A" class="oneFrame"></div>
@@ -97,7 +97,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
-              <img src="../img/state/governor/bbs_gov.jpg"/>
+              <img src="../../img/state/governor/bbs_gov.jpg"/>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -105,7 +105,7 @@
           </div>
           <div class="upArrow">
             <a href="#topTag">
-              <img src="../img/state/up_arrow.png" />
+              <img src="../../img/state/up_arrow.png" />
             </a>
           </div>
         </div>
@@ -114,7 +114,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
-              <img src="../img/state/governor/bbs_gov.jpg"/>
+              <img src="../../img/state/governor/bbs_gov.jpg"/>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -122,7 +122,7 @@
           </div>
           <div class="upArrow">
             <a href="#topTag">
-              <img src="../img/state/up_arrow.png" />
+              <img src="../../img/state/up_arrow.png" />
             </a>
           </div>
         </div>
@@ -134,7 +134,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
-              <img src="../img/state/governor/bbs_gov.jpg"/>
+              <img src="../../img/state/governor/bbs_gov.jpg"/>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -142,7 +142,7 @@
           </div>
           <div class="upArrow">
             <a href="#topTag">
-              <img src="../img/state/up_arrow.png" />
+              <img src="../../img/state/up_arrow.png" />
             </a>
           </div>
         </div>
@@ -151,7 +151,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
-              <img src="../img/state/governor/bbs_gov.jpg"/>
+              <img src="../../img/state/governor/bbs_gov.jpg"/>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -159,7 +159,7 @@
           </div>
           <div class="upArrow">
             <a href="#topTag">
-              <img src="../img/state/up_arrow.png" />
+              <img src="../../img/state/up_arrow.png" />
             </a>
           </div>
         </div>
@@ -168,7 +168,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
-              <img src="../img/state/governor/bbs_gov.jpg"/>
+              <img src="../../img/state/governor/bbs_gov.jpg"/>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -176,7 +176,7 @@
           </div>
           <div class="upArrow">
             <a href="#topTag">
-              <img src="../img/state/up_arrow.png" />
+              <img src="../../img/state/up_arrow.png" />
             </a>
           </div>
         </div>
@@ -185,7 +185,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?></div>
-              <img src="../img/state/governor/bbs_gov.jpg"/>
+              <img src="../../img/state/governor/bbs_gov.jpg"/>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -193,7 +193,7 @@
           </div>
           <div class="upArrow">
             <a href="#topTag">
-              <img src="../img/state/up_arrow.png" />
+              <img src="../../img/state/up_arrow.png" />
             </a>
           </div>
         </div>
@@ -242,7 +242,7 @@
         </div>
         <div class="upArrow" style="margin-top:20px">
           <a href="#topTag">
-            <img src="../img/state/up_arrow.png" />
+            <img src="../../img/state/up_arrow.png" />
           </a>
         </div>
       </a>
@@ -269,7 +269,7 @@
         </div>
         <div class="upArrow" style="margin-top:20px">
           <a href="#topTag">
-            <img src="../img/state/up_arrow.png" />
+            <img src="../../img/state/up_arrow.png" />
           </a>
         </div>
       </a>
@@ -303,7 +303,7 @@
         </div>
         <div class="upArrow" style="margin-top:20px">
           <a href="#topTag">
-            <img src="../img/state/up_arrow.png" />
+            <img src="../../img/state/up_arrow.png" />
           </a>
         </div>
       </a>

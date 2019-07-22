@@ -16,25 +16,25 @@
       <span>State Level</span>
     </div>
     <div class="homeContent">
-      <a href="./governor.php">
+      <a href="governor/governor.php">
         <div class="branchButton">
           <img class="branchImg" src="../img/state/governor.jpg" />
           <div class="branchTitle">Office of the Governor</div>
         </div>
       </a>
-      <a href="">
+      <a href="senate/senate.php">
         <div class="branchButton">
           <img class="branchImg" src="../img/state/senate.jpg" />
           <div class="branchTitle">BBS Senate</div>
         </div>
       </a>
-      <a href="">
+      <a href="house_of_reps/house_of_reps.php">
         <div class="branchButton">
           <img class="branchImg" src="../img/state/HoR.jpg" />
           <div class="branchTitle">BBS House of Representatives</div>
         </div>
       </a>
-      <a href="">
+      <a href="supreme_court/supreme_court.php">
         <div class="branchButton">
           <img class="branchImg" src="../img/state/supreme_court.jpg" />
           <div class="branchTitle">Supreme Court of BBS</div>

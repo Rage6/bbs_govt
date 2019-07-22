@@ -11,6 +11,6 @@
     <link rel="stylesheet" type="text/css" href="style/legislature.css" />
   </head>
   <body>
-    This is state senate.
+    This is state House of Reps.
   </body>
 </html>
