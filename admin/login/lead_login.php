@@ -25,7 +25,7 @@ if (isset($_POST['sectionLogin'])) {
     } else {
       if (password_verify($givenPw,$masterInfo[0]['key_pw'])) {
         $masterToken = bin2hex(random_bytes(64));
-        $mstrTknStmt = $pdo->prepare("UPDATE Maintenance SET key_token=:tkn WHERE locksmith_id=999");
+        $mstrTknStmt = $pdo->prepare("UPDATE Maintenance SET key_token=:tkn,attempts=0 WHERE locksmith_id=999");
         $mstrTknStmt->execute(array(
           ':tkn'=>$masterToken
         ));
@@ -34,6 +34,8 @@ if (isset($_POST['sectionLogin'])) {
         header('Location: ../locksmith/locksmith.php');
         return true;
       } else {
+        $addAttemptStmt = $pdo->prepare("UPDATE Maintenance SET attempts=attempts+1");
+        $addAttemptStmt->execute();
         $_SESSION['message'] = "<b style='color:red'>Incorrect password</div>";
         header('Location: login.php');
         return false;
