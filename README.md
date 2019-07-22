@@ -15,7 +15,13 @@
   There are two important reasons for this website:
   <ol>
     <li>
-      <u>Delegate Learning</u>: Buckeye Boys State is a very large program, often exceeding 1000 delegates, so it is impossible for a single delegate to easily track what is happening within their new BBS government. The <span style='color:red'>primary reason</span> for website will resolve some of that problem. Upon entering this website, they will be able to quickly find a particular city/county/state page and learn the most up-to-date information that his elected delegates have shared.
+      <span style='text-decoration:underline'>Delegate Learning</span>: Buckeye Boys State is a very large program, often exceeding 1000 delegates, so it is impossible for a single delegate to easily understanding what is happening within their new BBS government as a whole. This website will resolve some of that problem. Its <span style='color:red'>primary reason</span> is to allow delegates to quickly find a particular city, county, or state page and then learn the most up-to-date BBS information that they are searching for.
+    </li>
+    <li>
+      <span style='text-decoration:underline'>Government Clarity</span>: As mentioned above, there will be frequent updates about what has been happening within the numerous government branches of BBS. In this way, the website will teach the delegates in charge the importance of clear and frequent communication between the elected and their constituents. It is worth noting that these updates will be carried out by THE DELEGATES (and not the counselor staff). Any of the announcements about new laws, recent court cases, and executive policies will be written by the delegates themselves. A counselor or Legionnaire will have to approve these posts before it appears online, but this is mostly to prevent offensive or false posts.
+    </li>
+    <li>
+      <span style='text-decoration:underline'>Advertisement/Understanding Among Non-Delegates</span>: The BBS program's only current, consistent means of advertising explaining itself is is by past delegates share their stories/experiences with others. This is not sufficient because, even if all of the delegates were to actively promote BBS, a single delegate cannot thoroughly explain it outside of their role as a delegate. This is why the <span style='color: blue'>secondary purpose</span> of this website is to display the structure and function of BBS to non-delegates (parents, potential delegates, high school counselors, etc). This explanation can also act as an easy advertisement, with which anyone (delegate or not) can share this website rather than trying to thoroughly explain this seemingly overwhelming program.
     </li>
   </ol>
 </p>
