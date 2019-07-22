@@ -8,7 +8,7 @@ $storedTkn = $storedTknStmt->fetch(PDO::FETCH_ASSOC)['key_token'];
 // Compares your browser's token to the database's
 if ($storedTkn != $_SESSION['key_token']) {
   $_SESSION['message'] = "<b style='color:red'>Invalid token</b>";
-  header('Location: login.php');
+  header('Location: ../login/login.php');
   return false;
 };
 
@@ -18,7 +18,7 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,couns_num,del_num FROM Section ORDER BY section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,couns_num,del_num,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
@@ -78,7 +78,7 @@ if (isset($_POST['resetNum'])) {
 if (isset($_POST['logout'])) {
   $_SESSION['message'] = "<b style='color:green'>Logout successful</b>";
   unset($_SESSION['key_token']);
-  header('Location: login.php');
+  header('Location: ../login/login.php');
   return true;
 };
 

@@ -1,8 +1,8 @@
 <?php
 
   session_start();
-  require_once("../pdo.php");
-  require_once("leads/login.php");
+  require_once("../../pdo.php");
+  require_once("lead_login.php");
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Admin Login</title>
-    <link rel="stylesheet" type="text/css" href="../style/admin/login.css" />
+    <link rel="stylesheet" type="text/css" href="style/login.css" />
   </head>
   <body>
     <div class="infoBox">

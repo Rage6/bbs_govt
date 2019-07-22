@@ -1,8 +1,8 @@
 <?php
 
   session_start();
-  require_once("../pdo.php");
-  require_once("leads/locksmith.php");
+  require_once("../../pdo.php");
+  require_once("lead_locksmith.php");
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Key Box</title>
-    <link rel="stylesheet" type="text/css" href="../style/admin/locksmith.css" />
+    <link rel="stylesheet" type="text/css" href="style/locksmith.css" />
   </head>
   <body>
     <form method="POST">

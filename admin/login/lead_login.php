@@ -1,5 +1,6 @@
 <?php
 
+// Finds all section info for dropbox
 $allSectStmt = $pdo->prepare("SELECT section_id,section_name,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC");
 $allSectStmt->execute();
 while ($oneSect = $allSectStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -30,7 +31,7 @@ if (isset($_POST['sectionLogin'])) {
         ));
         $_SESSION['key_token'] = $masterToken;
         $_SESSION['message'] = "<b style='color:green'>Login Successful</b>";
-        header('Location: locksmith.php');
+        header('Location: ../locksmith/locksmith.php');
         return true;
       } else {
         $_SESSION['message'] = "<b style='color:red'>Incorrect password</div>";
@@ -72,7 +73,7 @@ if (isset($_POST['sectionLogin'])) {
           ':st'=>time(),
           ':sd'=>htmlentities($_SESSION['secId'])
         ));
-        header('Location: admin.php');
+        header('Location: ../admin/admin.php');
         return true;
       } elseif (password_verify($givenPw,$secInfo[0]['del_pw'])) {
         $delTknStmt = $pdo->prepare("UPDATE Section SET del_token=:nt, couns_num=0, del_num=0 WHERE section_id=:scd");
@@ -88,7 +89,7 @@ if (isset($_POST['sectionLogin'])) {
           ':st'=>time(),
           ':sd'=>htmlentities($_SESSION['secId'])
         ));
-        header('Location: admin.php');
+        header('Location: ../admin/admin.php');
         return true;
       } else {
         $numDelFails = $secInfo[0]['del_num'] + 1;
@@ -107,7 +108,7 @@ if (isset($_POST['sectionLogin'])) {
         return fail;
       };
     };
-    header('Location: admin.php');
+    header('Location: ../admin/admin.php');
     return true;
 
   // Route back to login when no section is selected

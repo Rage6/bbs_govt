@@ -13,7 +13,7 @@ if (isset($_SESSION['counsToken'])) {
     unset($_SESSION['counsToken']);
     unset($_SESSION['secId']);
     unset($_SESSION['adminType']);
-    header('Location: login.php');
+    header('Location: ../login/login.php');
     return false;
   } else {
     if (((time() - $dbObject['couns_sess_start']) / 60) > 30) {
@@ -21,7 +21,7 @@ if (isset($_SESSION['counsToken'])) {
       unset($_SESSION['counsToken']);
       unset($_SESSION['secId']);
       unset($_SESSION['adminType']);
-      header('Location: login.php');
+      header('Location: ../login/login.php');
       return false;
     } else {
       $_SESSION['adminType'] = "counselor";
@@ -44,7 +44,7 @@ if (isset($_SESSION['counsToken'])) {
     unset($_SESSION['delToken']);
     unset($_SESSION['secId']);
     unset($_SESSION['adminType']);
-    header('Location: login.php');
+    header('Location: ../login/login.php');
     return false;
   } else {
     if (((time() - $dbObject['del_sess_start']) / 60) > 30) {
@@ -52,7 +52,7 @@ if (isset($_SESSION['counsToken'])) {
       unset($_SESSION['delToken']);
       unset($_SESSION['secId']);
       unset($_SESSION['adminType']);
-      header('Location: login.php');
+      header('Location: ../login/login.php');
       return false;
     } else {
       $_SESSION['adminType'] = "delegate";
@@ -65,7 +65,7 @@ if (isset($_SESSION['counsToken'])) {
   }
 } else {
   $_SESSION['message'] = "<b style='color:red'>You must login to enter the Admin Center</b>";
-  header('Location: login.php');
+  header('Location: ../login/login.php');
   return false;
 };
 
@@ -351,7 +351,7 @@ if (isset($_POST['logout'])) {
   unset($_SESSION['adminType']);
   unset($_SESSION['secId']);
   $_SESSION['message'] = "<b style='color:green'>Logout Successful</b>";
-  header('Location: login.php');
+  header('Location: ../login/login.php');
   return true;
 };
 

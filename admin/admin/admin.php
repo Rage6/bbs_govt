@@ -1,8 +1,8 @@
 <?php
 
   session_start();
-  require_once("../pdo.php");
-  require_once("leads/admin.php");
+  require_once("../../pdo.php");
+  require_once("lead_admin.php");
 
 ?>
 
@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Admin Center</title>
-    <link rel="stylesheet" type="text/css" href="../style/admin/admin.css" />
+    <link rel="stylesheet" type="text/css" href="style/admin.css" />
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
