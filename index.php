@@ -12,6 +12,9 @@
     <link rel="stylesheet" type="text/css" href="style/index.css" />
   </head>
   <body>
+    <!-- <div>
+      <img src="" />
+    </div> -->
     <div id="hubTitle">
       <div>Welcome To</div>
       <div>Buckeye Boys State</div>
