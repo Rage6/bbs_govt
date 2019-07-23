@@ -105,7 +105,7 @@ if (isset($_POST['sectionLogin'])) {
         $addNumStmt->execute(array(
           ':scd'=>htmlentities($_POST['sectionId'])
         ));
-        $_SESSION['message'] = "<b style='color:red'>Password Incorrect. ".$totalMessage."</b>";
+        $_SESSION['message'] = "<b style='color:red'>Password Incorrect.</br> ".$totalMessage."</b>";
         header('Location: login.php');
         return fail;
       };

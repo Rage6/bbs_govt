@@ -1,6 +1,7 @@
 body {
+  padding-bottom: 60px;
   font-size: 16px;
-  background-color: lightgrey;
+  background-color: lightblue;
 }
 
 .infoBox {
@@ -32,7 +33,7 @@ body {
 }
 
 .explain {
-
+  font-size: 1.2rem;
 }
 
 .message {
@@ -49,6 +50,7 @@ body {
 
 .formBox div {
   margin: 10px 0;
+  font-size: 1.3rem;
 }
 
 .formBttn {
@@ -56,4 +58,27 @@ body {
   color: blue;
   background-color: gold;
   width: 50%;
+}
+
+.lockedBox {
+  padding: 0 10%;
+  color: gold;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: black;
+  width: 80%;
+}
+
+.lockedBttn {
+  padding: 10px 0 10px 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.lockedInfo {
+  border-top: 1px dashed gold;
+  padding: 15px 0;
+  display: none;
+  font-size: 1.1rem;
 }

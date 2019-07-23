@@ -12,6 +12,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Admin Login</title>
     <link rel="stylesheet" type="text/css" href="style/login_360.css" />
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="main.js"></script>
   </head>
   <body>
     <a href="../../index.php">
@@ -29,7 +34,7 @@
         </div>
       </div>
       <div class="explain">
-        Before adding, updating, or deleting information from the BBS website, you must first select your desired Section and enter the correct password.
+        Welcome! The Administrative Center is where counselors and delegates can update information in their state, county, or city's webpage.
       </div>
     </div>
     <?php
@@ -66,6 +71,14 @@
         </div>
         </table>
       </form>
+    </div>
+    <div class="lockedBox">
+      <div id="lockedBttn" class="lockedBttn">
+        Locked Out?
+      </div>
+      <div id="lockedInfo" class="lockedInfo">
+        To prevent hacking, a section account is "locked" if a user makes 5 failed login attempts in a row. To "unlock" it, contact a counselor or the BBS IT staff.
+      </div>
     </div>
   </body>
 </html>
