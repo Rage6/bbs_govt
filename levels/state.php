@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | State Government</title>
     <link rel="stylesheet" type="text/css" href="../style/required.css" />
-    <link rel="stylesheet" type="text/css" href="../style/level.css" />
+    <link rel="stylesheet" type="text/css" href="style/level.css" />
+    <link rel="stylesheet" type="text/css" href="style/state.css" />
   </head>
   <body>
     <div class="homeTitle">
@@ -16,7 +17,7 @@
       <span>State Level</span>
     </div>
     <div class="homeContent">
-      <a href="governor/governor.php">
+      <a href="../state/governor/governor.php">
         <div class="branchButton">
           <img class="branchImg" src="../img/state/governor.jpg" />
           <div class="branchTitle">Office of the Governor</div>
