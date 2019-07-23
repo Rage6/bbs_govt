@@ -12,9 +12,11 @@
     <link rel="stylesheet" type="text/css" href="style/index.css" />
   </head>
   <body>
-    <!-- <div>
-      <img src="" />
-    </div> -->
+    <a href="admin/login/login.php">
+      <div class="adminLink">
+        A
+      </div>
+    </a>
     <div id="hubTitle">
       <div>Welcome To</div>
       <div>Buckeye Boys State</div>

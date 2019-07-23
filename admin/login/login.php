@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" href="style/login.css" />
   </head>
   <body>
+    <a href="../../index.php">
+      <div>
+        H
+      </div>
+    </a>
     <div class="infoBox">
       Welcome to the Buckeye Boys State Administration page. Before adding, updating, or deleting information from the BBS website, you must first select your desired Section and enter the correct password.
     </div>
