@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Admin Login</title>
-    <link rel="stylesheet" type="text/css" href="style/login.css" />
+    <link rel="stylesheet" type="text/css" href="style/login_360.css" />
   </head>
   <body>
     <a href="../../index.php">
@@ -20,7 +20,17 @@
       </div>
     </a>
     <div class="infoBox">
-      Welcome to the Buckeye Boys State Administration page. Before adding, updating, or deleting information from the BBS website, you must first select your desired Section and enter the correct password.
+      <div class="allTitle">
+        <div class="upperTitle">
+          Buckeye Boys State
+        </div>
+        <div class="lowerTitle">
+          Administrative Center
+        </div>
+      </div>
+      <div class="explain">
+        Before adding, updating, or deleting information from the BBS website, you must first select your desired Section and enter the correct password.
+      </div>
     </div>
     <?php
       if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
