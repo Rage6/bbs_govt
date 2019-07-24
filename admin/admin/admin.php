@@ -92,7 +92,7 @@
                   <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
                 </div>
               ");
-              $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order ASC");
+              $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order, Post.timestamp ASC");
               $listPostStmt->execute(array(
                 ':tid'=>$oneType['type_id']
               ));
@@ -114,6 +114,8 @@
                     <input type='text' name='postContent' value='");
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
                       echo("' />
+                    <div>Time Posted</div>
+                    <input type='text' name='postTime' value='".$onePost['timestamp']."' />
                     <div>Order #:</div>
                     <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
                 ");
