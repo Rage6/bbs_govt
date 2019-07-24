@@ -171,24 +171,22 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
-
             <div class='counsContent'>
-
-            <div id='listTitle' class='listTitle'>
-              Current Staff
-            </div>
-            <div id='listBox' class='listBox'>");
-              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                echo("
-                  <div class='staffTitle'>".$oneJob['job_name']."</div>
-                  <div class='staffContent'>
-                    <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
-                    <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
-                  </div>");
+              <div id='listTitle' class='postType listTitle'>
+                Current Staff
+              </div>
+              <div id='listBox' class='listBox'>");
+                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <div class='staffTitle'>".$oneJob['job_name']."</div>
+                    <div class='staffContent'>
+                      <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
+                      <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
+                    </div>");
               };
         echo("
             </div>
-            <div id='assignJobTitle' class='listTitle'>
+            <div id='assignJobTitle' class='postType listTitle'>
               Assign A Job
             </div>
             <div id='assignJobBox' class='assignJobBox'>
@@ -227,7 +225,7 @@
 
           // For adding, changing, deleting a delegate from the database
           echo("
-            <div id='updateDirTitle' class='listTitle'>
+            <div id='updateDirTitle' class='postType listTitle'>
               Delegate Directory
             </div>
             <div id='updateDirBox' class='updateDirBox'>
@@ -307,7 +305,7 @@
           echo("
               </div>
             </div>
-            <div id='dptTitle' class='listTitle'>
+            <div id='dptTitle' class='postType listTitle'>
               Department Directory
             </div>
             <div id='dptDirBox' class='dptDirBox allBox'>
@@ -353,6 +351,7 @@
                 echo("
                 <form method='POST'>
                   <input type='hidden' name='dptId' value='".$dptList[$dptNum]['dpt_id']."'>
+                  <input type='hidden' name='dptJobId' value='".$dptList[$dptNum]['job_id']."'>
                   <div class='updateRow'>
                     <div class='tableName'>".$dptList[$dptNum]['dpt_name']."
                     </div>
@@ -373,6 +372,10 @@
                       <div class='changeInput'>
                         <div>Purpose:</div>
                         <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
+                      </div>
+                      <div class='changeInput'>
+                        <div>Lead Job:</div>
+                        <input type='text' name='dptJobName' value='".$dptList[$dptNum]['job_name']."' />
                       </div>
                       <div class='dptActive'>
                         <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>

@@ -99,9 +99,11 @@ body {
 
 .postType {
   margin-bottom: 10px;
-  padding: 5px 5%;
+  padding: 10px 15% 10px 5%;
+  display: flex;
+  justify-content: space-between;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   background-color: blue;
 }
 
@@ -236,11 +238,11 @@ body {
 
 .listTitle {
   margin-top: 20px;
-  padding: 10px 15% 10px 5%;
+  /* padding: 10px 15% 10px 5%;
   display: flex;
   justify-content: space-between;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.5rem; */
   background-color: green;
 }
 

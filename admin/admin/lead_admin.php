@@ -308,8 +308,8 @@ if (isset($_POST['makeDpt'])) {
 
 // Changes a department and it's job
 if (isset($_POST['submitDpt'])) {
-  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "") {
-    $_SESSION['message'] = "<b style='color:red'>Name and purpose required</b>";
+  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "" || $_POST['dptJobName'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Department name, purpose, and job name are required</b>";
     header('Location: admin.php');
     return true;
   } else {
@@ -319,6 +319,11 @@ if (isset($_POST['submitDpt'])) {
       ':pp'=>htmlentities($_POST['dptPurpose']),
       ':av'=>htmlentities($_POST['dptActive']),
       ':dp'=>htmlentities($_POST['dptId'])
+    ));
+    $changeDptJobStmt = $pdo->prepare("UPDATE Job SET job_name=:jbn WHERE job_id=:jid");
+    $changeDptJobStmt->execute(array(
+      ':jbn'=>htmlentities($_POST['dptJobName']),
+      ':jid'=>htmlentities($_POST['dptJobId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Department Changed</b>";
     header('Location: admin.php');
