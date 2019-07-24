@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Admin Center</title>
-    <link rel="stylesheet" type="text/css" href="style/admin.css" />
+    <link rel="stylesheet" type="text/css" href="style/admin_360.css" />
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -86,6 +86,12 @@
                 </form>
               </div>
               ");
+              echo("
+                <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
+                  <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
+                  <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
+                </div>
+              ");
               $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order ASC");
               $listPostStmt->execute(array(
                 ':tid'=>$oneType['type_id']
@@ -97,7 +103,7 @@
                   $approval = 0;
                 };
                 echo("
-                <div class='postBox'>
+                <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
                     <input type='hidden' name='postId' value='".$onePost['post_id']."'>
                     <div class='postTitle'>Title:</div>

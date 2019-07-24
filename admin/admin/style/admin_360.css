@@ -71,6 +71,32 @@ body {
   padding-top: 0;
 }
 
+.pendingRow {
+  margin: 0 5%;
+  display: flex;
+  font-size: 1.2rem;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.pendingRow div {
+  border: 1px solid black;
+  border-bottom: none;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  padding: 10px 0;
+  width: 40%;
+}
+
+.pendingBttn {
+  color: gold;
+  background-color: black;
+}
+
+.allBttn {
+
+}
+
 .postType {
   margin-bottom: 10px;
   padding: 5px 5%;
