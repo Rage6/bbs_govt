@@ -1,5 +1,5 @@
 html {
-  
+
 }
 
 body {
@@ -272,8 +272,12 @@ body {
 }
 
 .listTitle {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: green;
+}
+
+.listTitle:first-of-type {
+  margin-top: 0px;
 }
 
 .listBox {
