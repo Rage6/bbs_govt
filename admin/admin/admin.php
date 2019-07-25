@@ -106,17 +106,17 @@
                 <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
                     <input type='hidden' name='postId' value='".$onePost['post_id']."'>
-                    <div class='postTitle'>Title:</div>
-                    <input type='text' name='postTitle' value='");
+                    <div class='postSubtitle'>Title:</div>
+                    <textarea class='postText titleText' name='postTitle'>");
                       echo htmlspecialchars($onePost['title'], ENT_QUOTES);
-                      echo("' />
-                    <div>Content:</div>
-                    <input type='text' name='postContent' value='");
+                    echo("</textarea>
+                    <div class='postSubtitle'>Content:</div>
+                    <textarea class='postText contentText' name='postContent'>");
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
-                      echo("' />
-                    <div>Time Posted</div>
-                    <input type='text' name='postTime' value='".$onePost['timestamp']."' />
-                    <div>Order #:</div>
+                    echo("</textarea>
+                    <div class='postSubtitle'>Time Posted</div>
+                    <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>
+                    <div class='postSubtitle'>Order #:</div>
                     <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
                 ");
                 if ($approval == 1) {
@@ -129,7 +129,7 @@
                   $status = "PENDING";
                 };
                 echo("
-                    <div>Online Status: ".$status."</div>
+                    <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                     <div class='changeBttns'>
                       <input type='submit' name='changePosts' value='CHANGE' />
                       <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."'>DELETE</div>

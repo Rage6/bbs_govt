@@ -1,6 +1,16 @@
 $(()=>{
   console.log("testing admin/main.js");
 
+  // Compares window height and body height and makes the body is higher than the window
+  let windowHeight = $(window).height();
+  let bodyHeight = $("body").height();
+  if (windowHeight > bodyHeight) {
+    let mainBoxHeight = $(".mainBox").height();
+    let addedHeight = windowHeight - bodyHeight;
+    let newHeight = mainBoxHeight + addedHeight;
+    $(".mainBox").css('min-height',newHeight);
+  };
+
   // Opens and closes all of a type's posts
   $("[data-head]").click(()=> {
     let typeNum = event.target.dataset.head;
