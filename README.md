@@ -2,7 +2,7 @@
 
 <b>What is Buckeye Boys State (BBS)?</b>
 <p>
-  This annual summer program is an 8-day, hands-on experience in the operation of the democratic form of government, the organization of political parties, and the relationship of one to the other in shaping Ohio government. For more information, <a href="http://www.ohiobuckeyeboysstate.com/">click here</a>.
+  This annual summer program is an 8-day, hands-on experience in the operation of a democratic government, the organization of political parties, and the functions within the Ohio government. For more information, <a href="http://www.ohiobuckeyeboysstate.com/">click here</a>.
  </p>
 
 <b>What is this website?</b>
@@ -22,6 +22,66 @@
     </li>
     <li>
       <i>Government Clarity</i>: As mentioned in the above "primary reason", there will be frequent updates about what has been happening within the numerous government branches of BBS. In this way, this website will serve a <b>third reason</b>, which is to teach the delegates in charge the importance of clear and frequent communication between the elected and their constituents. It is worth noting that these updates will be carried out by THE DELEGATES (and not the counselor staff). The things posted on their webpages (new laws, recent court cases, executive policies, etc) will be written by the delegates themselves. A counselor or Legionnaire will have to approve these posts before they will appears online, but this is mostly to prevent offensive or false posts.
+    </li>
+  </ol>
+</p>
+
+<b>How to use the 'Administrative Center'?</b>
+<p>
+  The 'Administrative Center' is where a delegate or counselor can add new posts, update current ones, or delete them.
+  <ol>
+    <li>
+      Either click on the 'gear' icon on the home page, or enter the base URL followed by '/admin/login/login.php'
+    </li>
+    <li>
+      Select the desired section that you want to update in the dropdown box
+    </li>
+    <li>
+      Enter either that section's counselor or delegate password.
+      <ul>
+        <li>
+          NOTE: Counselors will have access to the same abilities as a delegate within their section IN ADDITION TO some 'counselor only' options.
+        </li>
+      </ul>
+    </li>
+    <li>
+      Click 'ENTER'
+    </li>
+    <li>
+      Click on any of the available options to update the desired information.
+    </li>
+    <li>
+      Things worth knowing about
+      <ul>
+        <li>
+          A delegate's post will not be shown online until their section counselor logs in with his password and approves it.
+        </li>
+        <li>
+          As a security measure, user access into a section's webpage will end after 30 minutes unless the user a) refresh the page, or b) submits an update.
+        </li>
+        <li>
+          Counselors will have access to the same abilities as a delegate does within their section IN ADDITION TO some 'counselor only' abilities. These include:
+          <ol>
+            <li>
+              <u>Current Staff</u>: List of all of this section's jobs and the names of the delegate that filling those roles
+            </li>
+            <li>
+              <u>Assign A Job</u>: Select a delegate from the overall list of delegates and assign them to one of this section's jobs
+            </li>
+            <li>
+              <u>Delegate Directory</u>: Add a delegate to the overall delegate directory, change a current delegate's name, or delete a delegate from the directory entirely
+            </li>
+            <li>
+              <u>Department Directory</u>: Add, change, or delete a department/agency/etc. within this section. A department's basic information includes: its name, purpose, the title for its delegate-in-charge, and whether it is 'in use' or not.
+              <ul>
+                <li>
+                  A department 'in use' will be displayed online, while one NOT in use won't. This is an option because the number/types of departments often changes from year-to-year.
+                </li>
+              </ul>
+            </li>
+          <ol>
+        </li>
+      </ul>
     </li>
   </ol>
 </p>
