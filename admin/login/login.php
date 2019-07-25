@@ -19,11 +19,11 @@
     <script src="main.js"></script>
   </head>
   <body>
-    <a href="../../index.php">
-      <div>
-        H
-      </div>
-    </a>
+    <div class="returnArrow">
+      <a href="../../index.php">
+        <img src="../../img/return_arrow_left.png" />
+      </a>
+    </div>
     <div class="infoBox">
       <div class="allTitle">
         <div class="upperTitle">
