@@ -202,10 +202,12 @@ if (isset($_POST['updateDelInfo'])) {
     header('Location: admin.php');
     return false;
   } else {
-    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn WHERE delegate_id=:di');
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el WHERE delegate_id=:di');
     $updateDelStmt->execute(array(
       ':fsn'=>htmlentities($_POST['updateFstNm']),
       ':lsn'=>htmlentities($_POST['updateLstNm']),
+      ':ht'=>htmlentities($_POST['updateHmtn']),
+      ':el'=>htmlentities($_POST['updateEmail']),
       ':di'=>htmlentities($_POST['delId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Update Successful</b>";

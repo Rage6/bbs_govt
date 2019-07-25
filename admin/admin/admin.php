@@ -285,6 +285,14 @@
                         <div>Last Name:</div>
                         <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
                       </div>
+                      <div class='changeInput'>
+                        <div>Hometown:</div>
+                        <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
+                      </div>
+                      <div class='changeInput'>
+                        <div>Email:</div>
+                        <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
+                      </div>
                       <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                     </div>
                   </div>
