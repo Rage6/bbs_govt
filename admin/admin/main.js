@@ -1,6 +1,16 @@
 $(()=>{
   console.log("testing admin/main.js");
 
+  // Compares window height and body height and makes the body is higher than the window
+  let windowHeight = $(window).height();
+  let bodyHeight = $("body").height();
+  if (windowHeight > bodyHeight) {
+    let mainBoxHeight = $(".mainBox").height();
+    let addedHeight = windowHeight - bodyHeight;
+    let newHeight = mainBoxHeight + addedHeight;
+    $(".mainBox").css('min-height',newHeight);
+  };
+
   // Opens and closes all of a type's posts
   $("[data-head]").click(()=> {
     let typeNum = event.target.dataset.head;
@@ -10,6 +20,75 @@ $(()=>{
       $(typeId).css('display','none');
     } else {
       $(typeId).css('display','block');
+    };
+  });
+
+  // Hides all approved posts
+  let allPost = $("[data-postid]");
+  let postNum = $("[data-postid]").length;
+  for (let num = 0; num < postNum; num++) {
+    if ($(allPost[num])[0].dataset.approval == 1) {
+      let targetId = "#" + $(allPost[num])[0].id;
+        $(targetId).css('display','none');
+    };
+  };
+
+  // Adds filler content if a type has no pending posts
+  let allTypes = $("[data-head]");
+  let allPosts = $("[data-postid]");
+  for (let typeIndex = 0; typeIndex < allTypes.length; typeIndex++) {
+    let oneTypeId = allTypes[typeIndex].dataset.head;
+    let pendingTotal = 0;
+    for (let postIndex = 0; postIndex < allPosts.length; postIndex++) {
+      if (allPosts[postIndex].dataset.typeid == oneTypeId) {
+        if (allPosts[postIndex].dataset.approval == "0") {
+          pendingTotal++;
+        };
+      };
+    };
+    if (pendingTotal == 0) {
+      let noPendingType = "#typeRow_" + oneTypeId;
+      $(noPendingType).after("<div id='emptyBox_" + oneTypeId + "' class='postBox' style='text-align:center'>There are no posts waiting for approval at this time.<div>");
+    };
+  };
+
+  // Switches between 'pending' and 'all' posts
+  $("[data-approval]").click(()=>{
+    let postType = event.target.dataset.pendtype;
+    let approvalStatus = event.target.dataset.approval;
+    let pendingId = "#pending" + postType;
+    let allId = "#all" + postType;
+    if (approvalStatus == 0) {
+      $(pendingId).css({'color':'gold','background-color':'black'});
+      $(allId).css({'color':'black','background-color':'transparent'});
+    } else {
+      $(pendingId).css({'color':'black','background-color':'transparent'});
+      $(allId).css({'color':'gold','background-color':'black'});
+    };
+    let postLength = ($("[data-postid]").length);
+    let typeLength = 0;
+    for (let postCount = 0; postCount < postLength; postCount++) {
+      let onePost = $("[data-postid]")[postCount];
+      if (postType == onePost.dataset.typeid) {
+        let onePostId = "#" + onePost.id;
+        if (approvalStatus == "0") {
+          if (onePost.dataset.approval == "1") {
+            $(onePost).css('display','none');
+          };
+        } else {
+          $(onePost).css('display','block');
+        };
+      };
+      if (onePost.dataset.typeid == postType && onePost.dataset.approval == approvalStatus) {
+        typeLength++;
+      };
+    };
+    let typeRowId = "#typeRow_" + event.target.dataset.pendtype;
+    if (typeLength == 0) {
+      $(typeRowId).after("<div id='emptyBox_"+event.target.dataset.pendtype+"' class='postBox' style='text-align:center'>There are no posts waiting for approval at this time.<div>");
+    } else {
+      let emptyBoxId = "#emptyBox_" + event.target.dataset.pendtype;
+      $(emptyBoxId).remove();
     };
   });
 

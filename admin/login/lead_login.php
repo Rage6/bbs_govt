@@ -1,5 +1,6 @@
 <?php
 
+// Finds all section info for dropbox
 $allSectStmt = $pdo->prepare("SELECT section_id,section_name,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC");
 $allSectStmt->execute();
 while ($oneSect = $allSectStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -24,15 +25,17 @@ if (isset($_POST['sectionLogin'])) {
     } else {
       if (password_verify($givenPw,$masterInfo[0]['key_pw'])) {
         $masterToken = bin2hex(random_bytes(64));
-        $mstrTknStmt = $pdo->prepare("UPDATE Maintenance SET key_token=:tkn WHERE locksmith_id=999");
+        $mstrTknStmt = $pdo->prepare("UPDATE Maintenance SET key_token=:tkn,attempts=0 WHERE locksmith_id=999");
         $mstrTknStmt->execute(array(
           ':tkn'=>$masterToken
         ));
         $_SESSION['key_token'] = $masterToken;
         $_SESSION['message'] = "<b style='color:green'>Login Successful</b>";
-        header('Location: locksmith.php');
+        header('Location: ../locksmith/locksmith.php');
         return true;
       } else {
+        $addAttemptStmt = $pdo->prepare("UPDATE Maintenance SET attempts=attempts+1");
+        $addAttemptStmt->execute();
         $_SESSION['message'] = "<b style='color:red'>Incorrect password</div>";
         header('Location: login.php');
         return false;
@@ -72,7 +75,7 @@ if (isset($_POST['sectionLogin'])) {
           ':st'=>time(),
           ':sd'=>htmlentities($_SESSION['secId'])
         ));
-        header('Location: admin.php');
+        header('Location: ../admin/admin.php');
         return true;
       } elseif (password_verify($givenPw,$secInfo[0]['del_pw'])) {
         $delTknStmt = $pdo->prepare("UPDATE Section SET del_token=:nt, couns_num=0, del_num=0 WHERE section_id=:scd");
@@ -88,7 +91,7 @@ if (isset($_POST['sectionLogin'])) {
           ':st'=>time(),
           ':sd'=>htmlentities($_SESSION['secId'])
         ));
-        header('Location: admin.php');
+        header('Location: ../admin/admin.php');
         return true;
       } else {
         $numDelFails = $secInfo[0]['del_num'] + 1;
@@ -102,12 +105,12 @@ if (isset($_POST['sectionLogin'])) {
         $addNumStmt->execute(array(
           ':scd'=>htmlentities($_POST['sectionId'])
         ));
-        $_SESSION['message'] = "<b style='color:red'>Password Incorrect. ".$totalMessage."</b>";
+        $_SESSION['message'] = "<b style='color:red'>Password Incorrect.</br> ".$totalMessage."</b>";
         header('Location: login.php');
         return fail;
       };
     };
-    header('Location: admin.php');
+    header('Location: ../admin/admin.php');
     return true;
 
   // Route back to login when no section is selected

@@ -1,7 +1,5 @@
 $(()=>{
 
-  // *** GOVERNOR PAGE --- START
-
   // Opens and closes the menu options
   $("#menuClick").click(()=>{
     if ($("#menuContent").css("display") == "block") {
@@ -59,7 +57,5 @@ $(()=>{
       };
     };
   });
-
-  // GOVERNOR PAGE --- END
 
 })

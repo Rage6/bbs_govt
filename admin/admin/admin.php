@@ -1,8 +1,8 @@
 <?php
 
   session_start();
-  require_once("../pdo.php");
-  require_once("leads/admin.php");
+  require_once("../../pdo.php");
+  require_once("lead_admin.php");
 
 ?>
 
@@ -12,7 +12,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Admin Center</title>
-    <link rel="stylesheet" type="text/css" href="../style/admin/admin.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
+    <!-- Width: 0px to 360px (Default CSS) -->
+    <link rel="stylesheet" type="text/css" href="style/admin_360.css" />
+    <!-- Width: 361px to 375px -->
+    <link rel="stylesheet" media="screen and (min-width: 361px) and (max-width: 375px)" href="style/admin_375.css"/>
+    <!-- Width: 376px to 414px -->
+    <link rel="stylesheet" media="screen and (min-width: 376px) and (max-width: 414px)" href="style/admin_414.css"/>
+    <!-- Width: 415px to 768px -->
+    <link rel="stylesheet" media="screen and (min-width: 415px) and (max-width: 768px)" href="style/admin_768.css"/>
+    <!-- Width: 769px to 1366px -->
+    <link rel="stylesheet" media="screen and (min-width: 769px) and (max-width: 1366px)" href="style/admin_1366.css"/>
+    <!-- Width: 1367px to 1440px -->
+    <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/admin_1440.css"/>
+    <!-- Width: 1441px and above -->
+    <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/admin_1920.css"/>
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -86,7 +100,13 @@
                 </form>
               </div>
               ");
-              $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order ASC");
+              echo("
+                <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
+                  <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
+                  <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
+                </div>
+              ");
+              $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order, Post.timestamp ASC");
               $listPostStmt->execute(array(
                 ':tid'=>$oneType['type_id']
               ));
@@ -97,18 +117,20 @@
                   $approval = 0;
                 };
                 echo("
-                <div class='postBox'>
+                <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
                     <input type='hidden' name='postId' value='".$onePost['post_id']."'>
-                    <div class='postTitle'>Title:</div>
-                    <input type='text' name='postTitle' value='");
+                    <div class='postSubtitle'>Title:</div>
+                    <textarea class='postText titleText' name='postTitle'>");
                       echo htmlspecialchars($onePost['title'], ENT_QUOTES);
-                      echo("' />
-                    <div>Content:</div>
-                    <input type='text' name='postContent' value='");
+                    echo("</textarea>
+                    <div class='postSubtitle'>Content:</div>
+                    <textarea class='postText contentText' name='postContent'>");
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
-                      echo("' />
-                    <div>Order #:</div>
+                    echo("</textarea>
+                    <div class='postSubtitle'>Time Posted</div>
+                    <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>
+                    <div class='postSubtitle'>Order #:</div>
                     <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
                 ");
                 if ($approval == 1) {
@@ -121,7 +143,7 @@
                   $status = "PENDING";
                 };
                 echo("
-                    <div>Online Status: ".$status."</div>
+                    <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                     <div class='changeBttns'>
                       <input type='submit' name='changePosts' value='CHANGE' />
                       <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."'>DELETE</div>
@@ -165,24 +187,22 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
-
             <div class='counsContent'>
-
-            <div id='listTitle' class='listTitle'>
-              Current Staff
-            </div>
-            <div id='listBox' class='listBox'>");
-              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                echo("
-                  <div class='staffTitle'>".$oneJob['job_name']."</div>
-                  <div class='staffContent'>
-                    <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
-                    <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
-                  </div>");
+              <div id='listTitle' class='postType listTitle'>
+                Current Staff
+              </div>
+              <div id='listBox' class='listBox'>");
+                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <div class='staffTitle'>".$oneJob['job_name']."</div>
+                    <div class='staffContent'>
+                      <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
+                      <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
+                    </div>");
               };
         echo("
             </div>
-            <div id='assignJobTitle' class='listTitle'>
+            <div id='assignJobTitle' class='postType listTitle'>
               Assign A Job
             </div>
             <div id='assignJobBox' class='assignJobBox'>
@@ -221,7 +241,7 @@
 
           // For adding, changing, deleting a delegate from the database
           echo("
-            <div id='updateDirTitle' class='listTitle'>
+            <div id='updateDirTitle' class='postType listTitle'>
               Delegate Directory
             </div>
             <div id='updateDirBox' class='updateDirBox'>
@@ -279,6 +299,14 @@
                         <div>Last Name:</div>
                         <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
                       </div>
+                      <div class='changeInput'>
+                        <div>Hometown:</div>
+                        <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
+                      </div>
+                      <div class='changeInput'>
+                        <div>Email:</div>
+                        <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
+                      </div>
                       <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                     </div>
                   </div>
@@ -301,7 +329,7 @@
           echo("
               </div>
             </div>
-            <div id='dptTitle' class='listTitle'>
+            <div id='dptTitle' class='postType listTitle'>
               Department Directory
             </div>
             <div id='dptDirBox' class='dptDirBox allBox'>
@@ -347,6 +375,7 @@
                 echo("
                 <form method='POST'>
                   <input type='hidden' name='dptId' value='".$dptList[$dptNum]['dpt_id']."'>
+                  <input type='hidden' name='dptJobId' value='".$dptList[$dptNum]['job_id']."'>
                   <div class='updateRow'>
                     <div class='tableName'>".$dptList[$dptNum]['dpt_name']."
                     </div>
@@ -367,6 +396,10 @@
                       <div class='changeInput'>
                         <div>Purpose:</div>
                         <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
+                      </div>
+                      <div class='changeInput'>
+                        <div>Lead Job:</div>
+                        <input type='text' name='dptJobName' value='".$dptList[$dptNum]['job_name']."' />
                       </div>
                       <div class='dptActive'>
                         <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>

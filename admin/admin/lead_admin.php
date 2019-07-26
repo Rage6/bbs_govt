@@ -13,7 +13,7 @@ if (isset($_SESSION['counsToken'])) {
     unset($_SESSION['counsToken']);
     unset($_SESSION['secId']);
     unset($_SESSION['adminType']);
-    header('Location: login.php');
+    header('Location: ../login/login.php');
     return false;
   } else {
     if (((time() - $dbObject['couns_sess_start']) / 60) > 30) {
@@ -21,7 +21,7 @@ if (isset($_SESSION['counsToken'])) {
       unset($_SESSION['counsToken']);
       unset($_SESSION['secId']);
       unset($_SESSION['adminType']);
-      header('Location: login.php');
+      header('Location: ../login/login.php');
       return false;
     } else {
       $_SESSION['adminType'] = "counselor";
@@ -44,7 +44,7 @@ if (isset($_SESSION['counsToken'])) {
     unset($_SESSION['delToken']);
     unset($_SESSION['secId']);
     unset($_SESSION['adminType']);
-    header('Location: login.php');
+    header('Location: ../login/login.php');
     return false;
   } else {
     if (((time() - $dbObject['del_sess_start']) / 60) > 30) {
@@ -52,7 +52,7 @@ if (isset($_SESSION['counsToken'])) {
       unset($_SESSION['delToken']);
       unset($_SESSION['secId']);
       unset($_SESSION['adminType']);
-      header('Location: login.php');
+      header('Location: ../login/login.php');
       return false;
     } else {
       $_SESSION['adminType'] = "delegate";
@@ -65,7 +65,7 @@ if (isset($_SESSION['counsToken'])) {
   }
 } else {
   $_SESSION['message'] = "<b style='color:red'>You must login to enter the Admin Center</b>";
-  header('Location: login.php');
+  header('Location: ../login/login.php');
   return false;
 };
 
@@ -146,11 +146,12 @@ if (isset($_POST['changePosts'])) {
     header('Location: admin.php');
     return false;
   } else {
-    $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od WHERE post_id = :poi");
+    $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od, Post.timestamp=:ts WHERE post_id = :poi");
     $changePostStmt->execute(array(
       ':tl'=>htmlentities($_POST['postTitle']),
       ':ct'=>htmlentities($_POST['postContent']),
       ':od'=>htmlentities($_POST['orderNum']),
+      ':ts'=>htmlentities($_POST['postTime']),
       ':poi'=>htmlentities($_POST['postId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Post approved</b>";
@@ -201,10 +202,12 @@ if (isset($_POST['updateDelInfo'])) {
     header('Location: admin.php');
     return false;
   } else {
-    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn WHERE delegate_id=:di');
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el WHERE delegate_id=:di');
     $updateDelStmt->execute(array(
       ':fsn'=>htmlentities($_POST['updateFstNm']),
       ':lsn'=>htmlentities($_POST['updateLstNm']),
+      ':ht'=>htmlentities($_POST['updateHmtn']),
+      ':el'=>htmlentities($_POST['updateEmail']),
       ':di'=>htmlentities($_POST['delId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Update Successful</b>";
@@ -308,8 +311,8 @@ if (isset($_POST['makeDpt'])) {
 
 // Changes a department and it's job
 if (isset($_POST['submitDpt'])) {
-  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "") {
-    $_SESSION['message'] = "<b style='color:red'>Name and purpose required</b>";
+  if ($_POST['dptName'] == "" || $_POST['dptPurpose'] == "" || $_POST['dptJobName'] == "") {
+    $_SESSION['message'] = "<b style='color:red'>Department name, purpose, and job name are required</b>";
     header('Location: admin.php');
     return true;
   } else {
@@ -319,6 +322,11 @@ if (isset($_POST['submitDpt'])) {
       ':pp'=>htmlentities($_POST['dptPurpose']),
       ':av'=>htmlentities($_POST['dptActive']),
       ':dp'=>htmlentities($_POST['dptId'])
+    ));
+    $changeDptJobStmt = $pdo->prepare("UPDATE Job SET job_name=:jbn WHERE job_id=:jid");
+    $changeDptJobStmt->execute(array(
+      ':jbn'=>htmlentities($_POST['dptJobName']),
+      ':jid'=>htmlentities($_POST['dptJobId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Department Changed</b>";
     header('Location: admin.php');
@@ -351,7 +359,7 @@ if (isset($_POST['logout'])) {
   unset($_SESSION['adminType']);
   unset($_SESSION['secId']);
   $_SESSION['message'] = "<b style='color:green'>Logout Successful</b>";
-  header('Location: login.php');
+  header('Location: ../login/login.php');
   return true;
 };
 

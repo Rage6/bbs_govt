@@ -1,3 +1,7 @@
+html {
+
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -71,11 +75,39 @@ body {
   padding-top: 0;
 }
 
+.pendingRow {
+  margin: 0 5%;
+  display: flex;
+  font-size: 1.2rem;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.pendingRow div {
+  border: 1px solid black;
+  border-bottom: none;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  padding: 10px 0;
+  width: 40%;
+}
+
+.pendingBttn {
+  color: gold;
+  background-color: black;
+}
+
+.allBttn {
+
+}
+
 .postType {
   margin-bottom: 10px;
-  padding: 5px 5%;
+  padding: 10px 15% 10px 5%;
+  display: flex;
+  justify-content: space-between;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   background-color: blue;
 }
 
@@ -118,24 +150,47 @@ body {
   margin-bottom: 0;
 }
 
-.postBox textarea {
+.postText {
   margin-bottom: 10px;
   font-size: 1.1rem;
   box-sizing: border-box;
   width: 100%;
 }
 
-.postTitle {
+.postSubtitle {
   margin-bottom: 5px;
-  font-size: 1.1rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.titleText {
+  height: 80px;
+}
+
+.contentText {
+  height: 300px;
+}
+
+.timeText {
+  margin-left: 17%;
+  height: 30px;
+  width: 66%;
 }
 
 .postOrder {
+  margin-left: 45%;
+  margin-bottom: 10px;
   font-size: 1.1rem;
   width: 10%;
 }
 
+.postStatus {
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
 .changeBttns {
+  margin: 20px 0 50px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -157,13 +212,6 @@ body {
   color: white;
   background-color: red;
   cursor: pointer;
-}
-
-.counsOnly {
-  margin-top: 15px;
-  padding: 15px 0;
-  border: 2px dashed black;
-  text-align: center;
 }
 
 .delBox {
@@ -192,8 +240,23 @@ body {
   background-color: red;
 }
 
+.counsOnly {
+  padding: 15px 0;
+  border: 2px dashed white;
+  color: white;
+  text-align: center;
+  line-height: 1.7;
+  font-size: 1.3rem;
+  background-color: green;
+}
+
+.counsOnly input {
+  font-size: 1.3rem;
+  border: 2px solid white;
+}
+
 .counsTitle {
-  margin: 40px 0 0px 0;
+  margin: 40px 0 0 0;
   color: white;
   font-size: 2rem;
   text-align: center;
@@ -209,13 +272,12 @@ body {
 }
 
 .listTitle {
-  margin-top: 20px;
-  padding: 10px 15% 10px 5%;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  font-size: 1.5rem;
+  margin-top: 10px;
   background-color: green;
+}
+
+.listTitle:first-of-type {
+  margin-top: 0px;
 }
 
 .listBox {

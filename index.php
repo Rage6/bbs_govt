@@ -12,12 +12,17 @@
     <link rel="stylesheet" type="text/css" href="style/index.css" />
   </head>
   <body>
+    <div class="adminLink">
+      <a href="admin/login/login.php">
+        <img src="img/gear.png" />
+      </a>
+    </div>
     <div id="hubTitle">
       <div>Welcome To</div>
       <div>Buckeye Boys State</div>
     </div>
     <div id="hubContent">
-      <a href="./state/home.php">
+      <a href="levels/state.php">
         <div id="stateButton" class="levelButton">
           <img class="levelImg" src="img/congress_3.jpg">
           <div class="levelTitle">
