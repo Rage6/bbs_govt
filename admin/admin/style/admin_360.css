@@ -214,9 +214,18 @@ body {
   cursor: pointer;
 }
 
+.blueBttn {
+  background-color: blue !important;
+}
+
+.yesChg {
+  color: white;
+  background-color: blue;
+}
+
 .delBox {
   margin-top: 20px;
-  display: none;
+  /* display: none; */
 }
 
 .delBttnRow {
@@ -241,6 +250,7 @@ body {
 }
 
 .counsOnly {
+  margin-top: 25px;
   padding: 15px 0;
   border: 2px dashed white;
   color: white;

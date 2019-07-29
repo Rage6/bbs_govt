@@ -92,16 +92,32 @@ $(()=>{
     };
   });
 
-  // Opens and closes 'DELETE' boxes
+  // Opens and closes the 'CHANGE' and 'DELETE' boxes
   $("[data-post]").click(() => {
-    let delBttnId = "#" + event.target.id;
-    let delBttnNum = $(delBttnId).attr('data-post');
-    let delBoxId = "#delBox" + delBttnNum;
-    let displayStatus = $(delBoxId).css('display');
-    if (displayStatus == "block") {
-      $(delBoxId).css('display','none');
+    let clickBttnId = "#" + event.target.id;
+    let clickBttnNum = $(clickBttnId).attr('data-post');
+    if (event.target.dataset.box == "delete") {
+      let delBoxId = "#delBox" + clickBttnNum;
+      let displayStatus = $(delBoxId).css('display');
+      if (displayStatus == "block") {
+        $(delBoxId).css('display','none');
+      } else {
+        $(delBoxId).css('display','block');
+      };
+      let chgBoxId = "#chgBox" + clickBttnNum;
+      $(chgBoxId).css('display','none')
+    } else if (event.target.dataset.box == "change") {
+      let chgBoxId = "#chgBox" + clickBttnNum;
+      let displayStatus = $(chgBoxId).css('display');
+      if (displayStatus == "block") {
+        $(chgBoxId).css('display','none');
+      } else {
+        $(chgBoxId).css('display','block');
+      };
+      let delBoxId = "#delBox" + clickBttnNum;
+      $(delBoxId).css('display','none')
     } else {
-      $(delBoxId).css('display','block');
+      console.log("Neither change nor delete");
     };
   });
 
