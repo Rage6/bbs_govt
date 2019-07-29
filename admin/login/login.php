@@ -43,7 +43,7 @@
         unset($_SESSION['message']);
       };
     ?>
-    <div class="formBox">
+    <div id="formBox" class="formBox">
       <form method="POST">
         <div>Select your desired section, county, or city</div>
         <select style='background-color:lightgrey' name='sectionId'>
