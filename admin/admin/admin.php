@@ -136,7 +136,7 @@
                 if ($approval == 1) {
                   $ifApproved = "checked";
                   $ifPending = "";
-                  $status = "PUBLIC";
+                  $status = "APPROVED";
                 } else {
                   $ifApproved = "";
                   $ifPending = "checked";
@@ -145,8 +145,15 @@
                 echo("
                     <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                     <div class='changeBttns'>
-                      <input type='submit' name='changePosts' value='CHANGE' />
-                      <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."'>DELETE</div>
+                      <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>
+                      <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>
+                    </div>
+                    <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>
+                      NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. Do you still want to make the change(s)?
+                      <div class='delBttnRow'>
+                        <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
+                        <input class='yesChg' type='submit' name='changePosts' value='Yes, change it' />
+                      </div>
                     </div>
                     <div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
                       ARE YOU SURE YOU WANT TO DELETE THIS POST?
@@ -160,7 +167,7 @@
                         <div class='counsOnly'>
                           <div><u>COUNSELOR ONLY</u></div>
                           <input type='radio' id='yes' name='approval' value='1' ".$ifApproved." />
-                          <label for='yes'>COMPLETE</label></br>
+                          <label for='yes'>APPROVED</label></br>
                           <input type='radio' id='no' name='approval' value='0' ".$ifPending." />
                           <label for='no'>PENDING</label></br>
                           <input type='submit' name='changeApproval' value='SUBMIT' />
