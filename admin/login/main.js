@@ -15,8 +15,7 @@ $(()=>{
   let bodyHeight = $("body").outerHeight(true);
   let windowHeight = $(window).outerHeight(true);
   if (windowHeight > bodyHeight) {
-    let newHeight = windowHeight;
-    $("body").css('height',newHeight).css('padding','0');
+    $("body").css('height',windowHeight).css('padding','0');
   };
 
 });
