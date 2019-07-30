@@ -314,6 +314,13 @@ body {
   display: none;
 }
 
+.delegateList {
+  margin: 0 5%;
+  border: 1px solid black;
+  overflow-y: scroll;
+  height: 200px;
+}
+
 .updateDirBox {
   display: none;
 }
