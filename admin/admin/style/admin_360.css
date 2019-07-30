@@ -506,19 +506,19 @@ body {
 .addDptBttn {
   margin: 0 15%;
   padding: 10px 0;
-  border: 2px solid blue;
   border-radius: 15px;
-  color: blue;
+  color: white;
   font-size: 1.2rem;
   text-align: center;
-  background-color: gold;
+  background-color: green;
   width: 70%;
 }
 
 .addDptBox {
   margin: 0 5%;
   padding: 5px 2%;
-  background-color: blue;
+  color: white;
+  background-color: green;
   display: none;
 }
 
@@ -529,22 +529,23 @@ body {
 }
 
 .dptActive {
-  color: gold;
+  margin-bottom: 5px;
+  color: white;
   font-size: 1.1rem;
 }
 
 .dptActive select {
-  border: 1px solid gold;
-  color: gold;
+  border: 1px solid white;
+  color: white;
   font-size: 1.1rem;
   text-align: center;
-  background-color: blue;
+  background-color: green;
 }
 
 .addDptSubmit {
   margin: 30px 0 15px 30%;
   border-radius: 15px;
-  color: blue;
+  color: black;
   font-size: 1.3rem;
   text-align: center;
   background-color: gold;

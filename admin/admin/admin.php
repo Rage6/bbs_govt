@@ -367,7 +367,7 @@
                       <option value='0'>NO</option>
                     </select>
                   </div>
-                  <div>
+                  <div class='dptActive'>
                     <span>Director: </span>
                     <select name='dptHead'>
                       <option value='0'>Choose a delegate</option>");
