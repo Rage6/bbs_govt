@@ -12,6 +12,11 @@
     <link rel="stylesheet" type="text/css" href="style/state.css" />
   </head>
   <body>
+    <div class="returnArrow">
+      <a href="../index.php">
+        <img src="../img/return_arrow_left.png" />
+      </a>
+    </div>
     <div class="homeTitle">
       <div>BBS <?php echo($currentYear) ?></div>
       <span>State Level</span>
