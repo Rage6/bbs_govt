@@ -129,6 +129,9 @@
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
                     echo("</textarea>
                     <div class='postSubtitle'>Time Posted</div>
+                    <div style='text-align:center'>
+                      (<i>YYYY-MM-DD HH:MM:SS</i>)
+                    </div>
                     <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>
                     <div class='postSubtitle'>Order #:</div>
                     <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
@@ -136,11 +139,11 @@
                 if ($approval == 1) {
                   $ifApproved = "checked";
                   $ifPending = "";
-                  $status = "APPROVED";
+                  $status = "<b style='color:green'>APPROVED</b>";
                 } else {
                   $ifApproved = "";
                   $ifPending = "checked";
-                  $status = "PENDING";
+                  $status = "<b style='color:yellow'>PENDING</b>";
                 };
                 echo("
                     <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
@@ -414,14 +417,14 @@
                       </div>
                       <div class='changeInput'>
                         <div>Purpose:</div>
-                        <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
+                        <textarea name='dptPurpose'>".$dptList[$dptNum]['purpose']."</textarea>
                       </div>
                       <div class='changeInput'>
-                        <div>Lead Job:</div>
+                        <div>Boss Title:</div>
                         <input type='text' name='dptJobName' value='".$dptList[$dptNum]['job_name']."' />
                       </div>
                       <div class='dptActive'>
-                        <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>
+                        <div class='dptActiveText'>In Use?</div>
                         <select name='dptActive'>
                           <option value='1'".$forYes.">YES</option>
                           <option value='0'".$forNo.">NO</option>
@@ -432,7 +435,7 @@
                   </div>
                   <div id='delDptBox".$dptList[$dptNum]['dpt_id']."' class='deleteBox udpateRow' data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='delDptBox'>
                     <div class='deleteInfo'>
-                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
+                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DEPARTMENT?</i></b>
                     </div>
                     <div class='deleteRow'>
                       <input type='hidden' name='removeDptId' value='".$dptList[$dptNum]['dpt_id']."' />
@@ -455,6 +458,7 @@
 
           ");
         };
+        // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
       ?>
       <div style="padding-top:50px"></div>
       <div class="refAll">
