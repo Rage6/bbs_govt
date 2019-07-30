@@ -37,6 +37,12 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: gold;
 }
+.backButton {
+  border-top: 1px dashed #2020a0;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  text-align: center;
+}
 .menuList a {
   text-decoration: none;
 }

@@ -230,7 +230,8 @@
                 <div>
                   Choose a delegate:
                 </div>
-                <div>");
+                <div>
+                  <div class='delegateList'>");
                 for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
                   echo("
                   <div>
@@ -238,6 +239,7 @@
                   </div>");
                 };
           echo("
+                  </div>
                   <div>
                     <input type='submit' name='changeJobDel' value='CHANGE' />
                   </div>

@@ -1,3 +1,16 @@
+.returnArrow {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 15px 0;
+  padding: 5px 0 0 5px;
+  background-color: gold;
+  width: 35px;
+  height: 35px;
+}
+.returnArrow img {
+  width: 25px;
+  height: 25px;
+}
 .homeTitle {
   margin: 30px 0;
   padding: 0 5%;
