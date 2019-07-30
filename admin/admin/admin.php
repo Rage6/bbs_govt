@@ -148,8 +148,11 @@
                       <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>
                       <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>
                     </div>
-                    <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>
-                      NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. Do you still want to make the change(s)?
+                    <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
+                    if ($_SESSION['adminType'] == "delegate") {
+                      echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
+                    };
+                    echo("Are you sure you want to make the change(s)?
                       <div class='delBttnRow'>
                         <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
                         <input class='yesChg' type='submit' name='changePosts' value='Yes, change it' />
@@ -203,8 +206,13 @@
                   echo("
                     <div class='staffTitle'>".$oneJob['job_name']."</div>
                     <div class='staffContent'>
-                      <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
-                      <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
+                      <div>
+                        <span style='color:green'>NAME:</span>
+                        ".$oneJob['first_name']." ".$oneJob['last_name']."
+                      </div>
+                      <div>
+                        <span style='color:green'>CITY:</span> ".$oneJob['section_name']."
+                      </div>
                     </div>");
               };
         echo("
@@ -214,21 +222,23 @@
             </div>
             <div id='assignJobBox' class='assignJobBox'>
               <form method='POST'>
-                <span>I need to change the current... </span>
-                <span>
-                  <select name='jobId'>
-                    <option value='-1'>Section Jobs</option>");
-                    $jobListStmt->execute(array(
-                      ':scd'=>htmlentities($secInfo['section_id'])
-                    ));
-                    while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
-                    };
-          echo("
-                  </select>
-                </span>
-                <div>
-                  Choose a delegate:
+                <div class='pickJob'>
+                  <div>I am filling this job... </div>
+                  <div>
+                    <select name='jobId'>
+                      <option value='-1'>-- Select Job --</option>");
+                      $jobListStmt->execute(array(
+                        ':scd'=>htmlentities($secInfo['section_id'])
+                      ));
+                      while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
+                      };
+            echo("
+                    </select>
+                  </div>
+                </div>
+                <div style='text-align:center;margin-bottom:10px'>
+                  ...with the following delegate:
                 </div>
                 <div>
                   <div class='delegateList'>");
@@ -241,7 +251,7 @@
           echo("
                   </div>
                   <div>
-                    <input type='submit' name='changeJobDel' value='CHANGE' />
+                    <input class='assignJobBttn' type='submit' name='changeJobDel' value='CHANGE' />
                   </div>
                 </div>
               </form>
