@@ -66,6 +66,11 @@
           > Daily Report of Activities
         </div>
       </a>
+      <a href="../../levels/state.php">
+        <div class="menuButton backButton">
+          < Go Back
+        </div>
+      </a>
     </div>
     <div class="govContent">
       <img id="img_0" src="../../img/state/governor/bbs_gov.jpg">
