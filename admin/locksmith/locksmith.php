@@ -33,44 +33,50 @@
         };
         echo("
           <div class='secBox'>
-
-              <div class='secName'>".$secList[$indexNum]['section_name']."</div>
-              <div class='rowPasswords'>
+            <div class='secName'>".$secList[$indexNum]['section_name']."</div>
+            <div class='rowPasswords'>
+              <form method='POST'>
+                <div>
+                  <div class='typeTitle'>DELEGATE</div>
+                  <input type='hidden' name='typeId' value='delegate'>
+                  <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."'>
+                  <input type='hidden' name='secName' value='".$secList[$indexNum]['section_name']."'>
+                  <div><input class='inputPasswords' type='text' name='newPw' placeholder='new password' /></div>
+                  <div><input class='inputPasswords' type='text' name='confPw' placeholder='confirm password' /></div>
+                  <div class='changeBttn'><input type='submit' name='changePw' value='ENTER'></div>
+                </div>
+              </form>
+              <form method='POST'>
+                <div>
+                  <div class='typeTitle'>COUNSELOR</div>
+                  <input type='hidden' name='typeId' value='counselor'>
+                  <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."'>
+                  <input type='hidden' name='secName' value='".$secList[$indexNum]['section_name']."'>
+                  <div><input class='inputPasswords' type='text' name='newPw' placeholder='new password' /></div>
+                  <div><input class='inputPasswords' type='text' name='confPw' placeholder='confirm password' /></div>
+                  <div class='changeBttn'><input type='submit' name='changePw' value='ENTER'></div>
+                </div>
+              </form>
+            </div>
+            <div class='lockReset'>
+              <div>
+                Failed Logins: <span style='color:".$attemptColor."'>".$secList[$indexNum]['del_num']."</span>
+              </div>
+              <div>
                 <form method='POST'>
-                  <div>
-                    <div class='typeTitle'>DELEGATE</div>
-                    <input type='hidden' name='typeId' value='delegate'>
-                    <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."'>
-                    <input type='hidden' name='secName' value='".$secList[$indexNum]['section_name']."'>
-                    <div><input class='inputPasswords' type='text' name='newPw' placeholder='new password' /></div>
-                    <div><input class='inputPasswords' type='text' name='confPw' placeholder='confirm password' /></div>
-                    <div class='changeBttn'><input type='submit' name='changePw' value='ENTER'></div>
-                  </div>
-                </form>
-                <form method='POST'>
-                  <div>
-                    <div class='typeTitle'>COUNSELOR</div>
-                    <input type='hidden' name='typeId' value='counselor'>
-                    <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."'>
-                    <input type='hidden' name='secName' value='".$secList[$indexNum]['section_name']."'>
-                    <div><input class='inputPasswords' type='text' name='newPw' placeholder='new password' /></div>
-                    <div><input class='inputPasswords' type='text' name='confPw' placeholder='confirm password' /></div>
-                    <div class='changeBttn'><input type='submit' name='changePw' value='ENTER'></div>
-                  </div>
+                  <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."' />
+                  <input style='border:1px solid black' type='submit' name='resetNum' value='UNLOCK' />
                 </form>
               </div>
-              <div class='lockReset'>
-                <div>
-                  Failed Logins: <span style='color:".$attemptColor."'>".$secList[$indexNum]['del_num']."</span>
-                </div>
-                <div>
-                  <form method='POST'>
-                    <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."' />
-                    <input style='border:1px solid black' type='submit' name='resetNum' value='UNLOCK' />
-                  </form>
-                </div>
-              </div>
-
+            </div>");
+            if ($secList[$indexNum]['failed_IP'] != null) {
+              echo("
+              <div class='lockReset lastIP'>
+                <div><u>Last Failed IP Address:</u></div>
+                <div>".$secList[$indexNum]['failed_IP']."</div>
+              </div>");
+            };
+            echo("
           </div>
         ");
       };

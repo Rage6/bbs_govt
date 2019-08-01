@@ -70,7 +70,7 @@ if (isset($_POST['sectionLogin'])) {
         $_SESSION['counsToken'] = $newTkn;
         $_SESSION['secId'] = htmlentities($_POST['sectionId']);
         $_SESSION['message'] = "<b style='color:green'>Counselor login successful</b>";
-        $counsSessionStmt = $pdo->prepare('UPDATE Section SET couns_sess_start=:st WHERE section_id=:sd');
+        $counsSessionStmt = $pdo->prepare('UPDATE Section SET couns_sess_start=:st, failed_IP=NULL WHERE section_id=:sd');
         $counsSessionStmt->execute(array(
           ':st'=>time(),
           ':sd'=>htmlentities($_SESSION['secId'])
@@ -86,7 +86,7 @@ if (isset($_POST['sectionLogin'])) {
         $_SESSION['delToken'] = $newTkn;
         $_SESSION['secId'] = htmlentities($_POST['sectionId']);
         $_SESSION['message'] = "<b style='color:green'>Delegate login successful</b>";
-        $delSessionStmt = $pdo->prepare('UPDATE Section SET del_sess_start=:st WHERE section_id=:sd');
+        $delSessionStmt = $pdo->prepare('UPDATE Section SET del_sess_start=:st, failed_IP=NULL WHERE section_id=:sd');
         $delSessionStmt->execute(array(
           ':st'=>time(),
           ':sd'=>htmlentities($_SESSION['secId'])
@@ -94,6 +94,15 @@ if (isset($_POST['sectionLogin'])) {
         header('Location: ../admin/admin.php');
         return true;
       } else {
+        if ($secInfo[0]['del_num'] == 4) {
+          if ($secInfo[0]['failed_IP'] == null) {
+            $failedIPStmt = $pdo->prepare("UPDATE Section SET failed_IP=:fi WHERE section_id=:si");
+            $failedIPStmt->execute(array(
+              ':fi'=>htmlentities($_SERVER['REMOTE_ADDR']),
+              ':si'=>htmlentities($_POST['sectionId'])
+            ));
+          };
+        };
         $numDelFails = $secInfo[0]['del_num'] + 1;
         $numLeft = 5 - $numDelFails;
         if ($numLeft <= 0) {

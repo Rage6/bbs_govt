@@ -57,3 +57,10 @@ body {
   justify-content: space-between;
   background-color: lightblue;
 }
+
+.lastIP {
+  margin: 0 10% 0 10%;
+  border: 2px dashed red;
+  display: block;
+  text-align: center;
+}
