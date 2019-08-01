@@ -102,7 +102,7 @@ body {
 }
 
 .postType {
-  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 10px 15% 10px 5%;
   display: flex;
   justify-content: space-between;
@@ -111,8 +111,13 @@ body {
   background-color: blue;
 }
 
+.postType:first-of-type {
+  margin-top: 0px;
+}
+
 .postMain {
   margin-bottom: 30px;
+  padding-top: 10px;
   display: none;
 }
 
@@ -282,12 +287,15 @@ body {
 }
 
 .listTitle {
-  margin-top: 10px;
   background-color: green;
 }
 
 .listTitle:first-of-type {
   margin-top: 0px;
+}
+
+.listTitle:last-of-type {
+  margin-bottom: 0px;
 }
 
 .listBox {
@@ -297,9 +305,9 @@ body {
 
 .staffTitle {
   padding: 10px 10%;
-  color: white;
+  color: green;
   font-size: 1.3rem;
-  background-color: blue;
+  background-color: lightgreen;
 }
 
 .staffContent {
@@ -312,6 +320,26 @@ body {
 
 .assignJobBox {
   display: none;
+  background-color: lightgreen;
+}
+
+.assignJobBttn {
+  margin: 20px 30%;
+  color: white;
+  font-size: 1.3rem;
+  background-color: green;
+  width: 40%;
+}
+
+.pickJob {
+  margin: 0 5% 30px 5%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pickJob select {
+  background-color: white;
 }
 
 .delegateList {
@@ -322,7 +350,9 @@ body {
 }
 
 .updateDirBox {
+  padding: 20px 0;
   display: none;
+  background-color: lightgreen;
 }
 
 .updateTable {
@@ -389,8 +419,19 @@ body {
   width: 60%;
 }
 
+.changeInput select {
+  border: 1px solid black;
+  font-size: 0.9rem;
+}
+
+.changeInput textarea {
+  overflow-y:scroll;
+  width:60%;
+  height: 50px;
+}
+
 .changeEnter {
-  margin: 10px 0 0 25%;
+  margin: 30px 0 10px 25%;
   color: white;
   font-size: 1.1rem;
   background-color: green;
@@ -429,20 +470,19 @@ body {
 }
 
 .addDirTitle {
-  margin: 20px 0 0 15%;
+  margin-left: 15%;
   padding: 10px 0;
   border-radius: 10px;
-  border: 2px solid blue;
-  color: blue;
+  color: white;
   text-align: center;
-  background-color: gold;
+  background-color: green;
   width: 70%;
 }
 
 .addDirBox {
   margin: 0 5%;
   padding: 5px 2%;
-  background-color: blue;
+  background-color: green;
   display: none;
   width: 86%;
 }
@@ -477,19 +517,19 @@ body {
 .addDptBttn {
   margin: 0 15%;
   padding: 10px 0;
-  border: 2px solid blue;
   border-radius: 15px;
-  color: blue;
+  color: white;
   font-size: 1.2rem;
   text-align: center;
-  background-color: gold;
+  background-color: green;
   width: 70%;
 }
 
 .addDptBox {
   margin: 0 5%;
   padding: 5px 2%;
-  background-color: blue;
+  color: white;
+  background-color: green;
   display: none;
 }
 
@@ -500,22 +540,30 @@ body {
 }
 
 .dptActive {
-  color: gold;
+  margin-bottom: 5px;
+  display: flex;
   font-size: 1.1rem;
 }
 
+.dptActiveText {
+  margin-right: 5%;
+  font-size:1.1rem;
+  text-align: right;
+  width: 35%;
+}
+
 .dptActive select {
-  border: 1px solid gold;
-  color: gold;
+  border: 1px solid white;
+  color: white;
   font-size: 1.1rem;
   text-align: center;
-  background-color: blue;
+  background-color: green;
 }
 
 .addDptSubmit {
   margin: 30px 0 15px 30%;
   border-radius: 15px;
-  color: blue;
+  color: black;
   font-size: 1.3rem;
   text-align: center;
   background-color: gold;

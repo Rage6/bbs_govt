@@ -1,3 +1,7 @@
-.titleTop {
-  color: orange;
+.postStatus {
+  padding: 10px 0;
+}
+
+.changeBttns div {
+  font-size: 1.6rem;
 }

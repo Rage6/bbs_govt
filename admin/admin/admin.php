@@ -129,6 +129,9 @@
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
                     echo("</textarea>
                     <div class='postSubtitle'>Time Posted</div>
+                    <div style='text-align:center'>
+                      (<i>YYYY-MM-DD HH:MM:SS</i>)
+                    </div>
                     <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>
                     <div class='postSubtitle'>Order #:</div>
                     <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
@@ -136,11 +139,11 @@
                 if ($approval == 1) {
                   $ifApproved = "checked";
                   $ifPending = "";
-                  $status = "APPROVED";
+                  $status = "<b style='color:green'>APPROVED</b>";
                 } else {
                   $ifApproved = "";
                   $ifPending = "checked";
-                  $status = "PENDING";
+                  $status = "<b style='color:yellow'>PENDING</b>";
                 };
                 echo("
                     <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
@@ -148,8 +151,11 @@
                       <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>
                       <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>
                     </div>
-                    <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>
-                      NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. Do you still want to make the change(s)?
+                    <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
+                    if ($_SESSION['adminType'] == "delegate") {
+                      echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
+                    };
+                    echo("Are you sure you want to make the change(s)?
                       <div class='delBttnRow'>
                         <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
                         <input class='yesChg' type='submit' name='changePosts' value='Yes, change it' />
@@ -203,8 +209,13 @@
                   echo("
                     <div class='staffTitle'>".$oneJob['job_name']."</div>
                     <div class='staffContent'>
-                      <div><span style='color:blue'>NAME:</span> ".$oneJob['first_name']." ".$oneJob['last_name']."</div>
-                      <div><span style='color:blue'>CITY:</span> ".$oneJob['section_name']."</div>
+                      <div>
+                        <span style='color:green'>NAME:</span>
+                        ".$oneJob['first_name']." ".$oneJob['last_name']."
+                      </div>
+                      <div>
+                        <span style='color:green'>CITY:</span> ".$oneJob['section_name']."
+                      </div>
                     </div>");
               };
         echo("
@@ -214,21 +225,23 @@
             </div>
             <div id='assignJobBox' class='assignJobBox'>
               <form method='POST'>
-                <span>I need to change the current... </span>
-                <span>
-                  <select name='jobId'>
-                    <option value='-1'>Section Jobs</option>");
-                    $jobListStmt->execute(array(
-                      ':scd'=>htmlentities($secInfo['section_id'])
-                    ));
-                    while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
-                    };
-          echo("
-                  </select>
-                </span>
-                <div>
-                  Choose a delegate:
+                <div class='pickJob'>
+                  <div>I am filling this job... </div>
+                  <div>
+                    <select name='jobId'>
+                      <option value='-1'>-- Select Job --</option>");
+                      $jobListStmt->execute(array(
+                        ':scd'=>htmlentities($secInfo['section_id'])
+                      ));
+                      while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
+                      };
+            echo("
+                    </select>
+                  </div>
+                </div>
+                <div style='text-align:center;margin-bottom:10px'>
+                  ...with the following delegate:
                 </div>
                 <div>
                   <div class='delegateList'>");
@@ -241,7 +254,7 @@
           echo("
                   </div>
                   <div>
-                    <input type='submit' name='changeJobDel' value='CHANGE' />
+                    <input class='assignJobBttn' type='submit' name='changeJobDel' value='CHANGE' />
                   </div>
                 </div>
               </form>
@@ -316,6 +329,23 @@
                         <div>Email:</div>
                         <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
                       </div>
+                      <div class='changeInput'>
+                        <div>BBS City:</div>
+                        <select name='updateCityId'>");
+                        for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
+                          if ($allCity[$currentCityNum]['city_id'] == $allDelegate[$delNum]['city_id']) {
+                            $currentCity = $allCity[$currentCityNum];
+                          };
+                        };
+                        echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
+                        for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
+                          if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['city_id']) {
+                            echo("<option value='".$allCity[$updateCityNum]['city_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
+                          };
+                        };
+                  echo("
+                        </select>
+                      </div>
                       <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                     </div>
                   </div>
@@ -357,7 +387,7 @@
                       <option value='0'>NO</option>
                     </select>
                   </div>
-                  <div>
+                  <div class='dptActive'>
                     <span>Director: </span>
                     <select name='dptHead'>
                       <option value='0'>Choose a delegate</option>");
@@ -404,14 +434,14 @@
                       </div>
                       <div class='changeInput'>
                         <div>Purpose:</div>
-                        <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
+                        <textarea name='dptPurpose'>".$dptList[$dptNum]['purpose']."</textarea>
                       </div>
                       <div class='changeInput'>
-                        <div>Lead Job:</div>
+                        <div>Boss Title:</div>
                         <input type='text' name='dptJobName' value='".$dptList[$dptNum]['job_name']."' />
                       </div>
                       <div class='dptActive'>
-                        <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>
+                        <div class='dptActiveText'>In Use?</div>
                         <select name='dptActive'>
                           <option value='1'".$forYes.">YES</option>
                           <option value='0'".$forNo.">NO</option>
@@ -422,7 +452,7 @@
                   </div>
                   <div id='delDptBox".$dptList[$dptNum]['dpt_id']."' class='deleteBox udpateRow' data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='delDptBox'>
                     <div class='deleteInfo'>
-                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
+                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DEPARTMENT?</i></b>
                     </div>
                     <div class='deleteRow'>
                       <input type='hidden' name='removeDptId' value='".$dptList[$dptNum]['dpt_id']."' />
@@ -445,6 +475,7 @@
 
           ");
         };
+        // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
       ?>
       <div style="padding-top:50px"></div>
       <div class="refAll">
