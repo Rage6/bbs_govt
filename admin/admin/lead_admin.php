@@ -78,7 +78,8 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // Gets all city info
-$allCityStmt = $pdo->prepare("SELECT city_id,section_name,county_id FROM City");
+// $allCityStmt = $pdo->prepare("SELECT city_id,section_name,county_id FROM City");
+$allCityStmt = $pdo->prepare("SELECT * FROM City");
 $allCityStmt->execute();
 $allCity = [];
 while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -220,12 +221,19 @@ if (isset($_POST['updateDelInfo'])) {
     header('Location: admin.php');
     return false;
   } else {
-    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el WHERE delegate_id=:di');
+    for ($oneCityNum = 0; $oneCityNum < count($allCity); $oneCityNum++) {
+      if ($allCity[$oneCityNum]['city_id'] == htmlentities($_POST['updateCityId'])) {
+        $countyId = $allCity[$oneCityNum]['county_id'];
+      };
+    };
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el, city_id=:ci, county_id=:co WHERE delegate_id=:di');
     $updateDelStmt->execute(array(
       ':fsn'=>htmlentities($_POST['updateFstNm']),
       ':lsn'=>htmlentities($_POST['updateLstNm']),
       ':ht'=>htmlentities($_POST['updateHmtn']),
       ':el'=>htmlentities($_POST['updateEmail']),
+      ':ci'=>htmlentities($_POST['updateCityId']),
+      ':co'=>$countyId,
       ':di'=>htmlentities($_POST['delId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Update Successful</b>";

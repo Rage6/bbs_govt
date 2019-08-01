@@ -329,6 +329,23 @@
                         <div>Email:</div>
                         <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
                       </div>
+                      <div class='changeInput'>
+                        <div>BBS City:</div>
+                        <select name='updateCityId'>");
+                        for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
+                          if ($allCity[$currentCityNum]['city_id'] == $allDelegate[$delNum]['city_id']) {
+                            $currentCity = $allCity[$currentCityNum];
+                          };
+                        };
+                        echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
+                        for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
+                          if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['city_id']) {
+                            echo("<option value='".$allCity[$updateCityNum]['city_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
+                          };
+                        };
+                  echo("
+                        </select>
+                      </div>
                       <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                     </div>
                   </div>

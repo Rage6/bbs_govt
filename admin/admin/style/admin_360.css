@@ -419,6 +419,11 @@ body {
   width: 60%;
 }
 
+.changeInput select {
+  border: 1px solid black;
+  font-size: 0.9rem;
+}
+
 .changeInput textarea {
   overflow-y:scroll;
   width:60%;
