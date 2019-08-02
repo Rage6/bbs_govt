@@ -18,7 +18,7 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,couns_num,del_num,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
