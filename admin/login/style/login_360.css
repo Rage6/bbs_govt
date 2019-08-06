@@ -74,6 +74,11 @@ body {
   font-size: 1.3rem;
 }
 
+.formBox select {
+  margin-bottom: 20px;
+  background-color: lightgrey;
+}
+
 .formBttn {
   margin: 30px 25% 10px 25% !important;
   color: blue;
