@@ -77,8 +77,12 @@
             };
           ?>
         </select>
-        <div>Enter your password</div>
-        <input type="password" name="sectionPw" />
+        <div>
+          <div>
+            Enter your password
+          </div>
+          <input type="password" name="sectionPw" />
+        </div>
         <input class="formBttn" type="submit" name="sectionLogin" value="ENTER" />
         </table>
       </form>

@@ -5,6 +5,7 @@ body {
   position: absolute;
   font-size: 16px;
   background-color: lightblue;
+  width: 100%;
 }
 
 .returnArrow {
