@@ -192,7 +192,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -234,7 +234,12 @@
                         ':scd'=>htmlentities($secInfo['section_id'])
                       ));
                       while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
+                        if ($singleJob['senator'] != NULL || $singleJob['representative'] != NULL) {
+                          $cityName = $singleJob['section_name'];
+                        } else {
+                          $cityName = "";
+                        };
+                        echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name']."</option>");
                       };
             echo("
                     </select>
