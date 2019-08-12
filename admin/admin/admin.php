@@ -244,12 +244,18 @@
                   ...with the following delegate:
                 </div>
                 <div>
-                  <div class='delegateList'>");
+                  <div class='delegateList'>
+                    <div>
+                      <input type='radio' name='jobDel' value='0' />
+                      VACANT
+                    </div>");
                 for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
-                  echo("
-                  <div>
-                    <input type='radio' name='jobDel' value='".$allDelegate[$delNum]['delegate_id']."' />".$allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
-                  </div>");
+                  if ($allDelegate[$delNum]['delegate_id'] != 0) {
+                    echo("
+                    <div>
+                      <input type='radio' name='jobDel' value='".$allDelegate[$delNum]['delegate_id']."' />".$allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
+                    </div>");
+                  };
                 };
           echo("
                   </div>
@@ -296,74 +302,76 @@
               </div>
               <div class='updateTable'>");
             for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
-              echo("
-                <form method='POST'>
-                  <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
-                  <div class='updateRow'>
-                    <div class='tableName'>".
-                    $allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
-                    </div>
-                    <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
-                      CHANGE
-                    </div>
-                    <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
-                      DELETE
-                    </div>
-                  </div>
-                  <div id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
-                    <div>
-                      <div class='changeInfo'><i>Change any info below and click 'ENTER'</i></div>
-                      <div class='changeInput'>
-                        <div>First Name:</div>
-                        <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
+              if ($allDelegate[$delNum]['delegate_id'] != 0) {
+                echo("
+                  <form method='POST'>
+                    <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
+                    <div class='updateRow'>
+                      <div class='tableName'>".
+                      $allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
                       </div>
-                      <div class='changeInput'>
-                        <div>Last Name:</div>
-                        <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
+                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
+                        CHANGE
                       </div>
-                      <div class='changeInput'>
-                        <div>Hometown:</div>
-                        <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
+                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
+                        DELETE
                       </div>
-                      <div class='changeInput'>
-                        <div>Email:</div>
-                        <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
-                      </div>
-                      <div class='changeInput'>
-                        <div>BBS City:</div>
-                        <select name='updateCityId'>");
-                        for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
-                          if ($allCity[$currentCityNum]['city_id'] == $allDelegate[$delNum]['city_id']) {
-                            $currentCity = $allCity[$currentCityNum];
-                          };
-                        };
-                        echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
-                        for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
-                          if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['city_id']) {
-                            echo("<option value='".$allCity[$updateCityNum]['city_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
-                          };
-                        };
-                  echo("
-                        </select>
-                      </div>
-                      <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                     </div>
-                  </div>
-                  <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
-                    <div class='deleteInfo'>
-                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
-                    </div>
-                    <div class='deleteRow'>
-                      <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
-                      <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
+                    <div id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
                       <div>
-                        <input type='submit' name='deleteDel' value='YES, delete it' />
+                        <div class='changeInfo'><i>Change any info below and click 'ENTER'</i></div>
+                        <div class='changeInput'>
+                          <div>First Name:</div>
+                          <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>Last Name:</div>
+                          <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>Hometown:</div>
+                          <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>Email:</div>
+                          <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>BBS City:</div>
+                          <select name='updateCityId'>");
+                          for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
+                            if ($allCity[$currentCityNum]['city_id'] == $allDelegate[$delNum]['city_id']) {
+                              $currentCity = $allCity[$currentCityNum];
+                            };
+                          };
+                          echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
+                          for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
+                            if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['city_id']) {
+                              echo("<option value='".$allCity[$updateCityNum]['city_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
+                            };
+                          };
+                    echo("
+                          </select>
+                        </div>
+                        <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>
-                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
                     </div>
-                  </div>
-                </form>
-              ");
+                    <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
+                      <div class='deleteInfo'>
+                        <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
+                      </div>
+                      <div class='deleteRow'>
+                        <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
+                        <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
+                        <div>
+                          <input type='submit' name='deleteDel' value='YES, delete it' />
+                        </div>
+                        <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
+                      </div>
+                    </div>
+                  </form>
+                ");
+              };
             };
           echo("
               </div>
