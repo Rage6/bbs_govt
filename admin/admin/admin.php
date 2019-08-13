@@ -57,9 +57,9 @@
     <div class="sectionName">
       <?php
         // Adds these to the city or county titles for the page
-        if ($secInfo['is_city'] == "1") {
+        if ($secInfo['is_city'] > 0) {
           $titleSuffix = " City";
-        } elseif ($secInfo['is_county'] == "1") {
+        } elseif ($secInfo['is_county'] > 0) {
           $titleSuffix = " County";
         } else {
           $titleSuffix = "";
@@ -192,7 +192,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -234,7 +234,7 @@
                         ':scd'=>htmlentities($secInfo['section_id'])
                       ));
                       while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        if ($singleJob['senator'] != NULL || $singleJob['representative'] != NULL) {
+                        if ($singleJob['senator'] != 0 || $singleJob['representative'] != 0) {
                           $cityName = $singleJob['section_name'];
                         } else {
                           $cityName = "";
@@ -258,8 +258,14 @@
                   if ($allDelegate[$delNum]['delegate_id'] != 0) {
                     echo("
                     <div>
-                      <input type='radio' name='jobDel' value='".$allDelegate[$delNum]['delegate_id']."' />".$allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
-                    </div>");
+                      <input
+                        type='radio'
+                        name='jobDel'
+                        value='".$allDelegate[$delNum]['delegate_id']."'
+                      />"
+                      .$allDelegate[$delNum]['last_name'].", "
+                      .$allDelegate[$delNum]['first_name'].
+                    "</div>");
                   };
                 };
           echo("

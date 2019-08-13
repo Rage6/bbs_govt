@@ -202,6 +202,25 @@ if (isset($_POST['changeJobDel'])) {
       header('Location: admin.php');
       return false;
     } else {
+      // This makes sure a Rep or Senator can only be assigned to their city's seats
+      $ifCongressJobStmt = $pdo->prepare("SELECT senator,representative FROM Job WHERE job_id=:jd");
+      $ifCongressJobStmt->execute(array(
+        ':jd'=>htmlentities($_POST['jobId'])
+      ));
+      $ifCongressJob = $ifCongressJobStmt->fetch(PDO::FETCH_ASSOC);
+      if ($ifCongressJob['representative'] != 0 || $ifCongressJob['senator'] != 0) {
+        $getDelCityStmt = $pdo->prepare("SELECT City.section_id FROM Delegate JOIN City WHERE Delegate.city_id=City.city_id AND delegate_id=:di");
+        $getDelCityStmt->execute(array(
+          ':di'=>htmlentities($_POST['jobDel'])
+        ));
+        $delCitySect = $getDelCityStmt->fetch(PDO::FETCH_ASSOC)['section_id'];
+        if ($delCitySect != $ifCongressJob['senator'] && $delCitySect != $ifCongressJob['representative']) {
+          $_SESSION['message'] = "<b style='color:red'>A Representative or Senator must server their own city</b>";
+          header('Location: admin.php');
+          return false;
+        };
+      };
+      //
       $changeJobStmt = $pdo->prepare("UPDATE Job SET delegate_id=:jd WHERE job_id=:ji");
       $changeJobStmt->execute(array(
         ':jd'=>htmlentities($_POST['jobDel']),
@@ -210,6 +229,7 @@ if (isset($_POST['changeJobDel'])) {
       $_SESSION['message'] = "<b style='color:green'>Job Updated</b>";
       header('Location: admin.php');
       return true;
+
     };
   };
 };
