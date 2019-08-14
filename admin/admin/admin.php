@@ -369,14 +369,12 @@
                     </div>
                     <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
                       <div class='deleteInfo'>
-                        <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
+                        <b><i>ARE YOU SURE YOU WANT TO DELETE '".$allDelegate[$delNum]['first_name']." ".$allDelegate[$delNum]['last_name']."' FROM THE DIRECTORY?</i></b>
                       </div>
                       <div class='deleteRow'>
                         <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
                         <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
-                        <div>
-                          <input type='submit' name='deleteDel' value='YES, delete it' />
-                        </div>
+                        <input class='deleteBttn' type='submit' name='deleteDel' value='YES, delete it' />
                         <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
                       </div>
                     </div>

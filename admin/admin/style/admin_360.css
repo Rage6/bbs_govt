@@ -473,6 +473,14 @@ body {
   background-color: red;
 }
 
+.deleteBttn {
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  background-color: red;
+}
+
 .addDirTitle {
   margin-left: 15%;
   padding: 10px 0;
