@@ -1,3 +1,110 @@
+.menuTop div {
+  font-size: 1rem;
+}
+
+.menuTop input {
+  font-size: 1rem;
+}
+
 .titleTop {
-  color: green;
+  font-size: 1.4rem;
+}
+
+.titleBottom {
+  font-size: 2.1rem;
+}
+
+.timeText {
+  margin-left: 50%;
+  position: relative;
+  left: -90px;
+  width: 180px
+}
+
+.postStatus {
+  margin-left: 50%;
+  padding: 15px 0;
+  position: relative;
+  left: -150px;
+  width: 300px;
+}
+
+.changeBttns {
+  padding: 10px 15%;
+}
+
+.changeBttns div {
+  font-size: 1.7rem;
+}
+
+.delBox {
+  border: 1px solid black;
+  padding: 10px 15% 30px 15%;
+  background-color: orange;
+}
+
+.noDel {
+  font-size: 1.3rem;
+}
+
+.yesDel {
+  font-size: 1.3rem;
+}
+
+.counsOnly {
+  margin-left: 50%;
+  position: relative;
+  left: -150px;
+  width: 300px;
+}
+
+.counsContent {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.counsBox {
+  border: 1px solid black;
+  width: 45%;
+}
+
+.counsBox:first-of-type {
+  margin-top: 10px;
+}
+
+.listBox {
+  display: block;
+  overflow-y: scroll;
+  height: 412px;
+}
+
+.assignJobBox {
+  display: block;
+}
+
+.updateDirBox {
+  display: block;
+}
+
+.dptDirBox {
+  display: block;
+}
+
+.staffTitle {
+  padding: 8px 10%;
+}
+
+.assignJobBox {
+  font-size: 1.2rem;
+}
+
+.delegateList {
+  padding-top: 5px;
+}
+
+.delRadio {
+  padding-bottom: 5px;
+  padding-left: 10px;
 }

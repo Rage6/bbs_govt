@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
+  background-color: lightblue;
 }
 
 .menuTop {
@@ -15,6 +16,7 @@ body {
 }
 
 .menuTop div {
+  border-bottom-right-radius: 15px;
   padding: 5px 2%;
   font-size: 0.8rem;
   color: white;
@@ -132,6 +134,7 @@ body {
 }
 
 .addBox {
+  font-size: 1.2rem;
   background-color: lightgreen;
 }
 
@@ -178,6 +181,7 @@ body {
 
 .timeText {
   margin-left: 17%;
+  text-align: center;
   height: 30px;
   width: 66%;
 }
@@ -186,12 +190,18 @@ body {
   margin-left: 45%;
   margin-bottom: 10px;
   font-size: 1.1rem;
+  text-align: center;
   width: 10%;
 }
 
 .postStatus {
   margin-top: 20px;
   border: 1px solid black;
+}
+
+.emptyBox {
+  font-size: 1.1rem;
+  background-color: lightgreen;
 }
 
 .changeBttns {
@@ -282,6 +292,14 @@ body {
   border: 2px solid red;
 }
 
+.counsBox {
+  margin-top: 10px;
+}
+
+.counsBox:first-of-type {
+  margin-top: 0;
+}
+
 .jobList {
   margin: 0 5% 20px 5%;
 }
@@ -338,7 +356,7 @@ body {
   justify-content: space-around;
 }
 
-.pickJob select {
+.pickJob div select {
   background-color: white;
 }
 
@@ -347,6 +365,10 @@ body {
   border: 1px solid black;
   overflow-y: scroll;
   height: 200px;
+}
+
+.delRadio {
+  overflow-x: scroll;
 }
 
 .updateDirBox {
@@ -466,6 +488,14 @@ body {
 .deleteRow div:first-child {
   border: 1px solid white;
   color: white;
+  background-color: red;
+}
+
+.deleteBttn {
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
   background-color: red;
 }
 

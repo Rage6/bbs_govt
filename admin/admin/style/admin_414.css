@@ -5,3 +5,36 @@
 .changeBttns div {
   font-size: 1.6rem;
 }
+
+.staffTitle {
+  font-size: 1.5rem;
+}
+
+.staffContent {
+  font-size: 1.2rem;
+}
+
+.assignJobBox {
+  font-size: 1.2rem;
+}
+
+.pickJob div select {
+  font-size: 1.1rem;
+}
+
+.delRadio {
+  padding: 0 0 7px 7px;
+}
+
+.delRadio:first-child {
+  padding-top: 7px;
+}
+
+.addDirTitle {
+  margin-left: 5%;
+  width: 200px;
+}
+
+.tableName {
+  font-size: 1.1rem;
+}

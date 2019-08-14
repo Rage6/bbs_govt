@@ -40,7 +40,7 @@
           <div class="branchTitle">BBS House of Representatives</div>
         </div>
       </a>
-      <a href="supreme_court/supreme_court.php">
+      <a href="../state/supreme_court/supreme_court.php">
         <div class="branchButton">
           <img class="branchImg" src="../img/state/supreme_court.jpg" />
           <div class="branchTitle">Supreme Court of BBS</div>

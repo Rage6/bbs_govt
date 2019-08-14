@@ -37,9 +37,9 @@
     <div class="menuTop">
       <?php
         if ($_SESSION['adminType'] == "counselor") {
-          echo("<div style='background-color:blue'>STATUS: COUNSELOR</div>");
+          echo("<div style='background-color:green'>STATUS: COUNSELOR</div>");
         } else {
-          echo("<div style='background-color:green'>STATUS: DELEGATE</div>");
+          echo("<div style='background-color:blue'>STATUS: DELEGATE</div>");
         };
       ?>
       <form method="POST">
@@ -57,9 +57,9 @@
     <div class="sectionName">
       <?php
         // Adds these to the city or county titles for the page
-        if ($secInfo['is_city'] == "1") {
+        if ($secInfo['is_city'] > 0) {
           $titleSuffix = " City";
-        } elseif ($secInfo['is_county'] == "1") {
+        } elseif ($secInfo['is_county'] > 0) {
           $titleSuffix = " County";
         } else {
           $titleSuffix = "";
@@ -87,10 +87,10 @@
               </div>
               <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
                 <form method='POST'>
-                  <div class='postTitle'>Title:</div>
-                  <input type='text' name='postTitle' placeholder='Enter your title here' />
-                  <div>Content:</div>
-                  <input type='text' name='postContent' placeholder='Enter your content here' />
+                  <div class='postSubtitle'>Title:</div>
+                  <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
+                  <div class='postSubtitle'>Content:</div>
+                  <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
                   <div>Order #:</div>
                   <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
                   <input type='hidden' name='approval' value='0' />
@@ -192,7 +192,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -200,26 +200,37 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
-            <div class='counsContent'>
-              <div id='listTitle' class='postType listTitle'>
-                Current Staff
-              </div>
-              <div id='listBox' class='listBox'>");
-                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
-                    <div class='staffTitle'>".$oneJob['job_name']."</div>
-                    <div class='staffContent'>
-                      <div>
-                        <span style='color:green'>NAME:</span>
-                        ".$oneJob['first_name']." ".$oneJob['last_name']."
-                      </div>
-                      <div>
-                        <span style='color:green'>CITY:</span> ".$oneJob['section_name']."
-                      </div>
-                    </div>");
+            <div class='counsContent'>");
+
+          // Box that shows all of the section's current staff
+          echo("
+              <div class='counsBox'>
+                <div id='listTitle' class='postType listTitle'>
+                  Current Staff
+                </div>
+                <div id='listBox' class='listBox'>");
+              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                echo("
+                  <div class='staffTitle'>
+                    ".$oneJob['job_name']."
+                  </div>
+                  <div class='staffContent'>
+                    <div>
+                      <span style='color:green'>NAME:</span>
+                      ".$oneJob['first_name']." ".$oneJob['last_name']."
+                    </div>
+                    <div>
+                      <span style='color:green'>BBS CITY:</span> ".$oneJob['section_name']."
+                    </div>
+                  </div>");
               };
         echo("
-            </div>
+                </div>
+              </div>");
+
+        // Box that for assigning delegates to the section's jobs
+        echo("
+          <div class='counsBox'>
             <div id='assignJobTitle' class='postType listTitle'>
               Assign A Job
             </div>
@@ -234,7 +245,12 @@
                         ':scd'=>htmlentities($secInfo['section_id'])
                       ));
                       while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name']."</option>");
+                        if ($singleJob['senator'] != 0 || $singleJob['representative'] != 0) {
+                          $cityName = $singleJob['section_name'];
+                        } else {
+                          $cityName = "";
+                        };
+                        echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name']."</option>");
                       };
             echo("
                     </select>
@@ -244,12 +260,24 @@
                   ...with the following delegate:
                 </div>
                 <div>
-                  <div class='delegateList'>");
+                  <div class='delegateList'>
+                    <div class='delRadio'>
+                      <input type='radio' name='jobDel' value='0' />
+                      NO DELEGATE
+                    </div>");
                 for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
-                  echo("
-                  <div>
-                    <input type='radio' name='jobDel' value='".$allDelegate[$delNum]['delegate_id']."' />".$allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
-                  </div>");
+                  if ($allDelegate[$delNum]['delegate_id'] != 0) {
+                    echo("
+                    <div class='delRadio'>
+                      <input
+                        type='radio'
+                        name='jobDel'
+                        value='".$allDelegate[$delNum]['delegate_id']."'
+                      />"
+                      .$allDelegate[$delNum]['last_name'].", "
+                      .$allDelegate[$delNum]['first_name'].
+                    "</div>");
+                  };
                 };
           echo("
                   </div>
@@ -259,15 +287,17 @@
                 </div>
               </form>
             </div>
+          </div>
           ");
 
-          // For adding, changing, deleting a delegate from the database
+          // Box for adding, changing, deleting a delegate from the database
           echo("
+          <div class='counsBox'>
             <div id='updateDirTitle' class='postType listTitle'>
               Delegate Directory
             </div>
             <div id='updateDirBox' class='updateDirBox'>
-              <div id='addDirTitle' class='addDirTitle'>ADD DELEGATE</div>
+              <div id='addDirTitle' class='addDirTitle'>+ ADD DELEGATE</div>
               <div id='addDirBox' class='addDirBox'>
                 <form method='POST'>
                   <div>
@@ -285,7 +315,7 @@
                   <select class='selectBttn' name='delCity'>
                     <option value='-1'>Choose a city...</option>");
                     for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
-                      echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
+                      echo("<option value='".$allCity[$cityNum]['section_id']."'>".$allCity[$cityNum]['section_name']."</option>");
                     };
             echo("
                   </select>
@@ -296,78 +326,82 @@
               </div>
               <div class='updateTable'>");
             for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
-              echo("
-                <form method='POST'>
-                  <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
-                  <div class='updateRow'>
-                    <div class='tableName'>".
-                    $allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
-                    </div>
-                    <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
-                      CHANGE
-                    </div>
-                    <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
-                      DELETE
-                    </div>
-                  </div>
-                  <div id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
-                    <div>
-                      <div class='changeInfo'><i>Change any info below and click 'ENTER'</i></div>
-                      <div class='changeInput'>
-                        <div>First Name:</div>
-                        <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
+              if ($allDelegate[$delNum]['delegate_id'] != 0) {
+                echo("
+                  <form method='POST'>
+                    <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
+                    <div class='updateRow'>
+                      <div class='tableName'>".
+                      $allDelegate[$delNum]['last_name'].", ".$allDelegate[$delNum]['first_name']."
                       </div>
-                      <div class='changeInput'>
-                        <div>Last Name:</div>
-                        <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
+                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBttn' class='tableChange'>
+                        CHANGE
                       </div>
-                      <div class='changeInput'>
-                        <div>Hometown:</div>
-                        <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
+                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBttn' class='tableDelete'>
+                        DELETE
                       </div>
-                      <div class='changeInput'>
-                        <div>Email:</div>
-                        <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
-                      </div>
-                      <div class='changeInput'>
-                        <div>BBS City:</div>
-                        <select name='updateCityId'>");
-                        for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
-                          if ($allCity[$currentCityNum]['city_id'] == $allDelegate[$delNum]['city_id']) {
-                            $currentCity = $allCity[$currentCityNum];
-                          };
-                        };
-                        echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
-                        for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
-                          if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['city_id']) {
-                            echo("<option value='".$allCity[$updateCityNum]['city_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
-                          };
-                        };
-                  echo("
-                        </select>
-                      </div>
-                      <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                     </div>
-                  </div>
-                  <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
-                    <div class='deleteInfo'>
-                      <b><i>ARE YOU SURE YOU WANT TO DELETE THIS DELEGATE?</i></b>
-                    </div>
-                    <div class='deleteRow'>
-                      <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
-                      <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
+                    <div id='chgBox".$allDelegate[$delNum]['delegate_id']."' class='changeBox' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='chgBox'>
                       <div>
-                        <input type='submit' name='deleteDel' value='YES, delete it' />
+                        <div class='changeInfo'><i>Change any info below and click 'ENTER'</i></div>
+                        <div class='changeInput'>
+                          <div>First Name:</div>
+                          <input type='text' name='updateFstNm' value='".$allDelegate[$delNum]['first_name']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>Last Name:</div>
+                          <input type='text' name='updateLstNm' value='".$allDelegate[$delNum]['last_name']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>Hometown:</div>
+                          <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>Email:</div>
+                          <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
+                        </div>
+                        <div class='changeInput'>
+                          <div>BBS City:</div>
+                          <select name='updateCityId'>");
+                          for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
+                            if ($allCity[$currentCityNum]['section_id'] == $allDelegate[$delNum]['city_id']) {
+                              $currentCity = $allCity[$currentCityNum];
+                            };
+                          };
+                          echo("<option value='".$currentCity['section_id']."'>".$currentCity['section_name']."</option>");
+                          for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
+                            if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['section_id']) {
+                              echo("<option value='".$allCity[$updateCityNum]['section_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
+                            };
+                          };
+                    echo("
+                          </select>
+                        </div>
+                        <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>
-                      <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
                     </div>
-                  </div>
-                </form>
-              ");
+                    <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
+                      <div class='deleteInfo'>
+                        <b><i>ARE YOU SURE YOU WANT TO DELETE '".$allDelegate[$delNum]['first_name']." ".$allDelegate[$delNum]['last_name']."' FROM THE DIRECTORY?</i></b>
+                      </div>
+                      <div class='deleteRow'>
+                        <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
+                        <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
+                        <input class='deleteBttn' type='submit' name='deleteDel' value='YES, delete it' />
+                        <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
+                      </div>
+                    </div>
+                  </form>
+                ");
+              };
             };
           echo("
               </div>
             </div>
+          </div>");
+          //
+          echo("
+          <div class='counsBox'>
             <div id='dptTitle' class='postType listTitle'>
               Department Directory
             </div>
@@ -465,14 +499,12 @@
                   </div>
                 </form>"
                 );
-
               };
               echo("
+                </div>
               </div>
             </div>
-
-            </div>
-
+          </div>
           ");
         };
         // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
