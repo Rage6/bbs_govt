@@ -192,7 +192,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN City WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=City.city_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -302,7 +302,7 @@
                   <select class='selectBttn' name='delCity'>
                     <option value='-1'>Choose a city...</option>");
                     for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
-                      echo("<option value='".$allCity[$cityNum]['city_id']."'>".$allCity[$cityNum]['section_name']."</option>");
+                      echo("<option value='".$allCity[$cityNum]['section_id']."'>".$allCity[$cityNum]['section_name']."</option>");
                     };
             echo("
                   </select>
@@ -357,8 +357,8 @@
                           };
                           echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
                           for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
-                            if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['city_id']) {
-                              echo("<option value='".$allCity[$updateCityNum]['city_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
+                            if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['section_id']) {
+                              echo("<option value='".$allCity[$updateCityNum]['section_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
                             };
                           };
                     echo("

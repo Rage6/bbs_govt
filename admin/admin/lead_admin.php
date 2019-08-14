@@ -78,8 +78,7 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // Gets all city info
-// $allCityStmt = $pdo->prepare("SELECT city_id,section_name,county_id FROM City");
-$allCityStmt = $pdo->prepare("SELECT * FROM City");
+$allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
 $allCityStmt->execute();
 $allCity = [];
 while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -209,7 +208,7 @@ if (isset($_POST['changeJobDel'])) {
       ));
       $ifCongressJob = $ifCongressJobStmt->fetch(PDO::FETCH_ASSOC);
       if ($ifCongressJob['representative'] != 0 || $ifCongressJob['senator'] != 0) {
-        $getDelCityStmt = $pdo->prepare("SELECT City.section_id FROM Delegate JOIN City WHERE Delegate.city_id=City.city_id AND delegate_id=:di");
+        $getDelCityStmt = $pdo->prepare("SELECT Section.section_id FROM Delegate JOIN Section WHERE Delegate.city_id=Section.section_id AND delegate_id=:di");
         $getDelCityStmt->execute(array(
           ':di'=>htmlentities($_POST['jobDel'])
         ));
@@ -242,8 +241,8 @@ if (isset($_POST['updateDelInfo'])) {
     return false;
   } else {
     for ($oneCityNum = 0; $oneCityNum < count($allCity); $oneCityNum++) {
-      if ($allCity[$oneCityNum]['city_id'] == htmlentities($_POST['updateCityId'])) {
-        $countyId = $allCity[$oneCityNum]['county_id'];
+      if ($allCity[$oneCityNum]['section_id'] == htmlentities($_POST['updateCityId'])) {
+        $countyId = $allCity[$oneCityNum]['is_county'];
       };
     };
     $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el, city_id=:ci, county_id=:co WHERE delegate_id=:di');
@@ -253,7 +252,7 @@ if (isset($_POST['updateDelInfo'])) {
       ':ht'=>htmlentities($_POST['updateHmtn']),
       ':el'=>htmlentities($_POST['updateEmail']),
       ':ci'=>htmlentities($_POST['updateCityId']),
-      ':co'=>$countyId,
+      ':co'=>(int)$countyId,
       ':di'=>htmlentities($_POST['delId'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Update Successful</b>";
@@ -275,8 +274,8 @@ if (isset($_POST['addDelegate'])) {
       return false;
     } else {
       for ($cityCount = 0; $cityCount < count($allCity); $cityCount++) {
-        if ($allCity[$cityCount]['city_id'] == $_POST['delCity']) {
-          $delCounty = $allCity[$cityCount]['county_id'];
+        if ($allCity[$cityCount]['section_id'] == $_POST['delCity']) {
+          $delCounty = $allCity[$cityCount]['is_county'];
         };
       };
       $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,email,hometown,city_id,county_id) VALUES (:fn,:lm,:em,:hm,:ci,:co)");
@@ -286,7 +285,7 @@ if (isset($_POST['addDelegate'])) {
         ':em'=>htmlentities($_POST['newEmail']),
         ':hm'=>htmlentities($_POST['newHome']),
         ':ci'=>htmlentities($_POST['delCity']),
-        ':co'=>$delCounty
+        ':co'=>(int)$delCounty
       ));
       $_SESSION['message'] = "<b style='color:green'>Delegate Added</b>";
       header('Location: admin.php');

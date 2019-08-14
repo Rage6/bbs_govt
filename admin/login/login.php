@@ -66,7 +66,7 @@
               if ($sectList[$sectNum]['section_id'] != 0) {
                 if ($sectList[$sectNum]['is_city'] == 1) {
                   $sectionName = "City of ".$sectList[$sectNum]['section_name'];
-                } elseif ($sectList[$sectNum]['is_county'] == 1) {
+                } elseif ($sectList[$sectNum]['section_id'] == $sectList[$sectNum]['is_county']) {
                   $sectionName = "County of ".$sectList[$sectNum]['section_name'];
                 } else {
                   $sectionName = $sectList[$sectNum]['section_name'];
