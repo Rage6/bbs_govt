@@ -284,7 +284,7 @@
               Delegate Directory
             </div>
             <div id='updateDirBox' class='updateDirBox'>
-              <div id='addDirTitle' class='addDirTitle'>ADD DELEGATE</div>
+              <div id='addDirTitle' class='addDirTitle'>+ ADD DELEGATE</div>
               <div id='addDirBox' class='addDirBox'>
                 <form method='POST'>
                   <div>

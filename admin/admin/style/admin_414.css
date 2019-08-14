@@ -29,3 +29,12 @@
 .delRadio:first-child {
   padding-top: 7px;
 }
+
+.addDirTitle {
+  margin-left: 5%;
+  width: 200px;
+}
+
+.tableName {
+  font-size: 1.1rem;
+}
