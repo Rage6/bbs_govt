@@ -1,3 +1,15 @@
+.menuTop div {
+  font-size: 1rem;
+}
+
+.menuTop input {
+  font-size: 1rem;
+}
+
 .titleTop {
-  color: green;
+  font-size: 1.4rem;
+}
+
+.titleBottom {
+  font-size: 2.1rem;
 }

@@ -37,9 +37,9 @@
     <div class="menuTop">
       <?php
         if ($_SESSION['adminType'] == "counselor") {
-          echo("<div style='background-color:blue'>STATUS: COUNSELOR</div>");
+          echo("<div style='background-color:green'>STATUS: COUNSELOR</div>");
         } else {
-          echo("<div style='background-color:green'>STATUS: DELEGATE</div>");
+          echo("<div style='background-color:blue'>STATUS: DELEGATE</div>");
         };
       ?>
       <form method="POST">
@@ -87,10 +87,10 @@
               </div>
               <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
                 <form method='POST'>
-                  <div class='postTitle'>Title:</div>
-                  <input type='text' name='postTitle' placeholder='Enter your title here' />
-                  <div>Content:</div>
-                  <input type='text' name='postContent' placeholder='Enter your content here' />
+                  <div class='postSubtitle'>Title:</div>
+                  <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
+                  <div class='postSubtitle'>Content:</div>
+                  <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
                   <div>Order #:</div>
                   <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
                   <input type='hidden' name='approval' value='0' />

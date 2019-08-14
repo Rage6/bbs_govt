@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
+  background-color: lightblue;
 }
 
 .menuTop {
@@ -15,6 +16,7 @@ body {
 }
 
 .menuTop div {
+  border-bottom-right-radius: 15px;
   padding: 5px 2%;
   font-size: 0.8rem;
   color: white;
@@ -132,6 +134,7 @@ body {
 }
 
 .addBox {
+  font-size: 1.2rem;
   background-color: lightgreen;
 }
 
