@@ -48,7 +48,7 @@ $(()=>{
     };
     if (pendingTotal == 0) {
       let noPendingType = "#typeRow_" + oneTypeId;
-      $(noPendingType).after("<div id='emptyBox_" + oneTypeId + "' class='postBox' style='text-align:center'>There are no posts waiting for approval at this time.<div>");
+      $(noPendingType).after("<div id='emptyBox_" + oneTypeId + "' class='postBox emptyBox' style='text-align:center'>There are no posts waiting for approval at this time.<div>");
     };
   };
 
@@ -134,40 +134,55 @@ $(()=>{
     };
   });
 
+  let currentWidth = $(window).width();
+  // Function that gets the current width of the window
+  const checkWidth = () => {
+    currentWidth = $(window).width();
+  };
+
   // Opens/closes where the section's current staff can be seen
   $("#listTitle").click(() => {
-    if ($("#listBox").css('display') == 'block') {
-      $("#listBox").css('display','none');
-    } else {
-      $("#listBox").css('display','block');
+    checkWidth();
+    if (currentWidth <= 414) {
+      if ($("#listBox").css('display') == 'block') {
+        $("#listBox").css('display','none');
+      } else {
+        $("#listBox").css('display','block');
+      };
+      $("#dptDirBox").css('display','none');
+      $("#assignJobBox").css('display','none');
+      $("#updateDirBox").css('display','none');
     };
-    $("#dptDirBox").css('display','none');
-    $("#assignJobBox").css('display','none');
-    $("#updateDirBox").css('display','none');
   });
 
   // Opens/closes where a job is assigned to a delegate (if they are already in the directory)
   $("#assignJobTitle").click(() => {
-    if ($("#assignJobBox").css('display') == 'block') {
-      $("#assignJobBox").css('display','none');
-    } else {
-      $("#assignJobBox").css('display','block');
+    checkWidth();
+    if (currentWidth <= 414) {
+      if ($("#assignJobBox").css('display') == 'block') {
+        $("#assignJobBox").css('display','none');
+      } else {
+        $("#assignJobBox").css('display','block');
+      };
+      $("#dptDirBox").css('display','none');
+      $("#listBox").css('display','none');
+      $("#updateDirBox").css('display','none');
     };
-    $("#dptDirBox").css('display','none');
-    $("#listBox").css('display','none');
-    $("#updateDirBox").css('display','none');
   });
 
   // Opens/closes the delegate directory for changes/deletes
   $("#updateDirTitle").click(() => {
-    if ($("#updateDirBox").css('display') == 'block') {
-      $("#updateDirBox").css('display','none');
-    } else {
-      $("#updateDirBox").css('display','block');
+    checkWidth();
+    if (currentWidth <= 414) {
+      if ($("#updateDirBox").css('display') == 'block') {
+        $("#updateDirBox").css('display','none');
+      } else {
+        $("#updateDirBox").css('display','block');
+      };
+      $("#dptDirBox").css('display','none');
+      $("#listBox").css('display','none');
+      $("#assignJobBox").css('display','none');
     };
-    $("#dptDirBox").css('display','none');
-    $("#listBox").css('display','none');
-    $("#assignJobBox").css('display','none');
   });
 
   // Opens/closes where delegates can be added to the directory
@@ -181,16 +196,21 @@ $(()=>{
     };
   });
 
-  // Opens/closes where Departments are listed
+  // Opens/closes the Department list
   $("#dptTitle").click(()=>{
-    if ($("#dptBox").css('display') == 'block') {
-      $("#dptBox").css('display','none');
-    } else {
-      $("#dptBox").css('display','block');
+    checkWidth();
+    console.log(currentWidth);
+    if (currentWidth <= 414) {
+      console.log("this worked");
+      if ($("#dptDirBox").css('display') == 'block') {
+        $("#dptDirBox").css('display','none');
+      } else {
+        $("#dptDirBox").css('display','block');
+      };
+      $("#updateDirBox").css('display','none');
+      $("#listBox").css('display','none');
+      $("#assignJobBox").css('display','none');
     };
-    $("#updateDirBox").css('display','none');
-    $("#listBox").css('display','none');
-    $("#assignJobBox").css('display','none');
   });
 
   // Opens/closes the 'CHANGE' and 'DELETE' buttons on 'Delegate Directory'
@@ -215,15 +235,6 @@ $(()=>{
       // Not sure why, but clicking on 'CANCEL' carries out the function twice
       let removeBox = "#delBox" + event.target.dataset.delid;
       $(removeBox).css('display','none');
-    };
-  });
-
-  // Opens/closes the Department directory's options
-  $("#dptTitle").click(()=> {
-    if ($("#dptDirBox").css('display') == 'block') {
-      $("#dptDirBox").css('display','none');
-    } else {
-      $("#dptDirBox").css('display','block');
     };
   });
 
@@ -282,7 +293,7 @@ $(()=>{
     let currentSec = Math.floor(timeDiff / 1000);
     let currentMin = Math.floor(currentSec / 60);
     let currentRemainder = currentSec - (currentMin * 60);
-    console.log(currentMin + ":" + currentRemainder);
+    // console.log(currentMin + ":" + currentRemainder);
     if (currentRemainder < 10) {
       currentRemainder = "0" + currentRemainder;
     };

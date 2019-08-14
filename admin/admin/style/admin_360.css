@@ -181,6 +181,7 @@ body {
 
 .timeText {
   margin-left: 17%;
+  text-align: center;
   height: 30px;
   width: 66%;
 }
@@ -189,12 +190,18 @@ body {
   margin-left: 45%;
   margin-bottom: 10px;
   font-size: 1.1rem;
+  text-align: center;
   width: 10%;
 }
 
 .postStatus {
   margin-top: 20px;
   border: 1px solid black;
+}
+
+.emptyBox {
+  font-size: 1.1rem;
+  background-color: lightgreen;
 }
 
 .changeBttns {
@@ -283,6 +290,14 @@ body {
 
 .counsContent {
   border: 2px solid red;
+}
+
+.counsBox {
+  margin-top: 10px;
+}
+
+.counsBox:first-of-type {
+  margin-top: 0;
 }
 
 .jobList {

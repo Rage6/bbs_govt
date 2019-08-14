@@ -200,26 +200,37 @@
             <div class='counsTitle'>
               COUNSELORS ONLY
             </div>
-            <div class='counsContent'>
-              <div id='listTitle' class='postType listTitle'>
-                Current Staff
-              </div>
-              <div id='listBox' class='listBox'>");
-                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
-                    <div class='staffTitle'>".$oneJob['job_name']."</div>
-                    <div class='staffContent'>
-                      <div>
-                        <span style='color:green'>NAME:</span>
-                        ".$oneJob['first_name']." ".$oneJob['last_name']."
-                      </div>
-                      <div>
-                        <span style='color:green'>CITY:</span> ".$oneJob['section_name']."
-                      </div>
-                    </div>");
+            <div class='counsContent'>");
+
+          // Box that shows all of the section's current staff
+          echo("
+              <div class='counsBox'>
+                <div id='listTitle' class='postType listTitle'>
+                  Current Staff
+                </div>
+                <div id='listBox' class='listBox'>");
+              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                echo("
+                  <div class='staffTitle'>
+                    ".$oneJob['job_name']."
+                  </div>
+                  <div class='staffContent'>
+                    <div>
+                      <span style='color:green'>NAME:</span>
+                      ".$oneJob['first_name']." ".$oneJob['last_name']."
+                    </div>
+                    <div>
+                      <span style='color:green'>BBS CITY:</span> ".$oneJob['section_name']."
+                    </div>
+                  </div>");
               };
         echo("
-            </div>
+                </div>
+              </div>");
+
+        // Box that for assigning delegates to the section's jobs
+        echo("
+          <div class='counsBox'>
             <div id='assignJobTitle' class='postType listTitle'>
               Assign A Job
             </div>
@@ -276,10 +287,12 @@
                 </div>
               </form>
             </div>
+          </div>
           ");
 
-          // For adding, changing, deleting a delegate from the database
+          // Box for adding, changing, deleting a delegate from the database
           echo("
+          <div class='counsBox'>
             <div id='updateDirTitle' class='postType listTitle'>
               Delegate Directory
             </div>
@@ -385,6 +398,10 @@
           echo("
               </div>
             </div>
+          </div>");
+          //
+          echo("
+          <div class='counsBox'>
             <div id='dptTitle' class='postType listTitle'>
               Department Directory
             </div>
@@ -482,14 +499,12 @@
                   </div>
                 </form>"
                 );
-
               };
               echo("
+                </div>
               </div>
             </div>
-
-            </div>
-
+          </div>
           ");
         };
         // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
