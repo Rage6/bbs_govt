@@ -297,6 +297,12 @@ if (isset($_POST['addDelegate'])) {
 // Deleting an existing delegate
 if (isset($_POST['deleteDel'])) {
   $removedName = htmlentities($_POST['removeDelName']);
+  // This changes the delegate's jobs to the default 'NO DELEGATE' row
+  $changeJobDelegateStmt = $pdo->prepare("UPDATE Job SET delegate_id=0 WHERE delegate_id=:jd");
+  $changeJobDelegateStmt->execute(array(
+    ':jd'=>htmlentities($_POST['removeDelId'])
+  ));
+  // This actually deletes the delegate's row
   $deleteDelStmt = $pdo->prepare("DELETE FROM Delegate WHERE delegate_id=:did");
   $deleteDelStmt->execute(array(
     ':did'=>htmlentities($_POST['removeDelId'])
