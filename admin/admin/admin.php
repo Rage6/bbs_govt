@@ -351,7 +351,7 @@
                           <div>BBS City:</div>
                           <select name='updateCityId'>");
                           for ($currentCityNum = 0; $currentCityNum < count($allCity); $currentCityNum++) {
-                            if ($allCity[$currentCityNum]['city_id'] == $allDelegate[$delNum]['city_id']) {
+                            if ($allCity[$currentCityNum]['section_id'] == $allDelegate[$delNum]['city_id']) {
                               $currentCity = $allCity[$currentCityNum];
                             };
                           };
