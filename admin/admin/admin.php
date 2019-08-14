@@ -250,14 +250,14 @@
                 </div>
                 <div>
                   <div class='delegateList'>
-                    <div>
+                    <div class='delRadio'>
                       <input type='radio' name='jobDel' value='0' />
-                      VACANT
+                      NO DELEGATE
                     </div>");
                 for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
                   if ($allDelegate[$delNum]['delegate_id'] != 0) {
                     echo("
-                    <div>
+                    <div class='delRadio'>
                       <input
                         type='radio'
                         name='jobDel'
@@ -355,7 +355,7 @@
                               $currentCity = $allCity[$currentCityNum];
                             };
                           };
-                          echo("<option value='".$currentCity['city_id']."'>".$currentCity['section_name']."</option>");
+                          echo("<option value='".$currentCity['section_id']."'>".$currentCity['section_name']."</option>");
                           for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
                             if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['section_id']) {
                               echo("<option value='".$allCity[$updateCityNum]['section_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
