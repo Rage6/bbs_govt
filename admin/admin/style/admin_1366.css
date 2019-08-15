@@ -52,6 +52,7 @@
 
 .pendingRow div {
   border: 2px solid lightblue;
+  border-bottom: none;
 }
 
 .emptyBox {

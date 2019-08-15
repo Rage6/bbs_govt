@@ -9,6 +9,10 @@ body {
   background-color: lightblue;
 }
 
+.wholePage {
+  background-color: lightblue;
+}
+
 .menuTop {
   margin-bottom: 30px;
   display: flex;

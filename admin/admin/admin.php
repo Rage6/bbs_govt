@@ -34,6 +34,7 @@
     <script src="main.js"></script>
   </head>
   <body>
+  <div class="wholePage">
     <div class="menuTop">
       <?php
         if ($_SESSION['adminType'] == "counselor") {
@@ -68,7 +69,7 @@
         echo($secInfo['section_name'].$titleSuffix);
       ?>
     </div>
-    <div style="display:flex">
+    <div style="display:flex;border-left:2px solid black;border-right:2px solid black">
       <div class="belowTab"></div>
       <div class="belowTab"></div>
     </div>
@@ -527,5 +528,6 @@
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>
