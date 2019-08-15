@@ -73,6 +73,7 @@
       <div class="belowTab"></div>
     </div>
     <div class="mainBox">
+      <div class="delegateContent">
       <?php
         $listTypeStmt = $pdo->prepare("SELECT * FROM Type WHERE section_id=:sid");
         $listTypeStmt->execute(array(
@@ -80,31 +81,33 @@
         ));
           while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
             echo("
-            <div data-head='".$oneType['type_id']."' class='postType'>".$oneType['type_name']."</div>
-            <div id='typeId".$oneType['type_id']."' class='postMain'>
-              <div class='postTypeRow'>
-                <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
-              </div>
-              <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
-                <form method='POST'>
-                  <div class='postSubtitle'>Title:</div>
-                  <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
-                  <div class='postSubtitle'>Content:</div>
-                  <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
-                  <div>Order #:</div>
-                  <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
-                  <input type='hidden' name='approval' value='0' />
-                  <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
-                  <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
-                  <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />
-                </form>
-              </div>
-              ");
+            <div class='delegateBox'>
+              <div data-head='".$oneType['type_id']."' class='postType'>".$oneType['type_name']."</div>
+              <div id='typeId".$oneType['type_id']."' class='postMain'>
+                <div class='postTypeRow'>
+                  <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
+                </div>
+                <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
+                  <form method='POST'>
+                    <div class='postSubtitle'>Title:</div>
+                    <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
+                    <div class='postSubtitle'>Content:</div>
+                    <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
+                    <div>Order #:</div>
+                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
+                    <input type='hidden' name='approval' value='0' />
+                    <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
+                    <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
+                    <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />
+                  </form>
+                </div>
+                ");
               echo("
                 <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
                   <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
                   <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
                 </div>
+                <div id='boxList_".$oneType['type_id']."' class='boxList'>
               ");
               $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order, Post.timestamp ASC");
               $listPostStmt->execute(array(
@@ -184,9 +187,11 @@
                   </form>
                 </div>");
               };
-        echo("</div>");
+            echo("</div>");
+        echo("</div>
+            </div>");
           };
-        // echo("</form>");
+    echo("</div>");
 
         // ** Below are COUNSELOR ONLY
 
