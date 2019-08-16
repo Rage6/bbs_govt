@@ -47,8 +47,8 @@ $(()=>{
       };
     };
     if (pendingTotal == 0) {
-      let noPendingType = "#typeRow_" + oneTypeId;
-      $(noPendingType).after("<div id='emptyBox_" + oneTypeId + "' class='postBox emptyBox' style='text-align:center'>There are no posts waiting for approval at this time.<div>");
+      let noPendingType = "#boxList_" + oneTypeId;
+      $(noPendingType).append("<div id='emptyBox_" + oneTypeId + "' class='postBox emptyBox'>There are no posts waiting for approval at this time.<div>");
     };
   };
 
@@ -59,11 +59,11 @@ $(()=>{
     let pendingId = "#pending" + postType;
     let allId = "#all" + postType;
     if (approvalStatus == 0) {
-      $(pendingId).css({'color':'gold','background-color':'black'});
-      $(allId).css({'color':'black','background-color':'transparent'});
+      $(pendingId).css({'color':'black','background-color':'lightblue'});
+      $(allId).css({'color':'white','background-color':'blue'});
     } else {
-      $(pendingId).css({'color':'black','background-color':'transparent'});
-      $(allId).css({'color':'gold','background-color':'black'});
+      $(pendingId).css({'color':'white','background-color':'blue'});
+      $(allId).css({'color':'black','background-color':'lightblue'});
     };
     let postLength = ($("[data-postid]").length);
     let typeLength = 0;
@@ -83,9 +83,9 @@ $(()=>{
         typeLength++;
       };
     };
-    let typeRowId = "#typeRow_" + event.target.dataset.pendtype;
+    let typeRowId = "#boxList_" + event.target.dataset.pendtype;
     if (typeLength == 0) {
-      $(typeRowId).after("<div id='emptyBox_"+event.target.dataset.pendtype+"' class='postBox' style='text-align:center'>There are no posts waiting for approval at this time.<div>");
+      $(typeRowId).append("<div id='emptyBox_"+event.target.dataset.pendtype+"' class='postBox emptyBox'>There are no posts waiting for approval at this time.<div>");
     } else {
       let emptyBoxId = "#emptyBox_" + event.target.dataset.pendtype;
       $(emptyBoxId).remove();

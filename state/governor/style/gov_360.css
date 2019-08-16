@@ -212,9 +212,11 @@ body {
 .purpose {
 
 }
+.directorRow {
+  border-top: 1px solid black;
+}
 .director {
   margin-top: 10px;
-  border-top: 1px solid black;
   padding-top: 5px;
 }
 
