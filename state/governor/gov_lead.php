@@ -1,10 +1,5 @@
 <?php
 
-// For all of this section's images
-$govImgStmt = $pdo->prepare("SELECT * FROM Image WHERE Image.section_id=9");
-$govImgStmt->execute();
-$govImg = $govImgStmt->fetch(PDO::FETCH_ASSOC);
-
 // For Governor basic info
 $govStmt = $pdo->prepare(
   "SELECT * FROM Delegate INNER JOIN Job WHERE Delegate.delegate_id=Job.delegate_id AND Job.job_id=1");
@@ -45,8 +40,8 @@ $secInfo = $secStmt->fetch(PDO::FETCH_ASSOC);
 $reportStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=3 AND approved=1 AND post_order<=5 ORDER BY post_order ASC");
 $reportStmt->execute();
 
-echo("<pre>");
-var_dump($govImg);
-echo("</pre>");
+// echo("<pre>");
+// var_dump($currentHost);
+// echo("</pre>");
 
 ?>

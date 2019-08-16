@@ -73,7 +73,8 @@
       </a>
     </div>
     <div class="govContent">
-      <img id="img_0" src="../../img/state/governor/bbs_gov.jpg">
+      <img id="img_0" src=
+        <?php echo($imgPrefix.$govInfo['img_src']) ?> />
       <div class="slideshow">
         <div class="slideFilm">
           <div id="img_1_A" class="oneFrame"></div>
@@ -102,7 +103,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <img src=<?php echo($imgPrefix.$govInfo['img_src']) ?> />
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -119,7 +120,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <img src=<?php echo($imgPrefix.$ltgovInfo['img_src']) ?> />
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -139,7 +140,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <img src=<?php echo($imgPrefix.$attGenInfo['img_src']) ?> />
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -156,7 +157,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <img src=<?php echo($imgPrefix.$treasInfo['img_src']) ?> />
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -173,7 +174,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <img src=<?php echo($imgPrefix.$auditInfo['img_src']) ?> />
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -190,7 +191,7 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <img src=<?php echo($imgPrefix.$secInfo['img_src']) ?> />
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
