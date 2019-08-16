@@ -264,7 +264,14 @@
                 <div class='agencySubtitle' id='agencyBtn".$agencyNum."'>".$oneAgency['dpt_name']."</div>
                 <div class='agencyContent' id='agencyCnt".$agencyNum."'>
                   <div class='purpose'>".$oneAgency['purpose']."</div>
-                  <div class='director'>Director: ".$oneAgency['first_name']." ".$oneAgency['last_name']."</div>
+                  <div class='directorRow'>
+                    <div class='director'>"
+                      .$oneAgency['job_name'].
+                    ":</div>
+                    <div class='directorName'>"
+                      .$oneAgency['first_name']." ".$oneAgency['last_name'].
+                    "</div>
+                  </div>
                 </div>
               </div>
               ");

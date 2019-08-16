@@ -61,7 +61,9 @@
 .oneFrame {
   background-size: cover;
   height: 300px;
-  width: 300px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 300px;
 }
 
 #img_1_A {
@@ -225,7 +227,7 @@
   font-size: 1.3rem;
 }
 
-.director {
+.directorRow {
   text-align: center;
   font-size: 1.2rem;
 }
