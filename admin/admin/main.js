@@ -279,9 +279,16 @@ $(()=>{
     };
   });
 
+  // Opens and closes the 'Staff Photo' option
+  $("#photoTab").click(()=>{
+    if ($(".photoMain").css('display') == 'none') {
+      $(".photoMain").css('display','block');
+    } else {
+      $(".photoMain").css('display','none');
+    };
+  });
+
   // Counts down the time until the session expires
-  // let currentMin = $("#timeMin").text();
-  // let currentSec = currentMin * 60;
   let interval = null;
   $(document).ready(() => {
     interval = setInterval(tickDown,1000);

@@ -77,6 +77,19 @@ $secInfoStmt->execute(array(
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
+// All photo locations w/ staff info if they have a location
+$allPhotoStmt = $pdo->prepare("SELECT job_id,job_name,img_path,img_file,approved FROM Job WHERE section_id=:se AND img_file IS NOT NULL");
+$allPhotoStmt->execute(array(
+  ':se'=>$secId
+));
+$allPhotos = [];
+while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allPhotos[] = $onePhoto;
+};
+// echo("<pre>");
+// var_dump($allPhotos);
+// echo("</pre>");
+
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
 $allCityStmt->execute();
@@ -231,6 +244,20 @@ if (isset($_POST['changeJobDel'])) {
 
     };
   };
+};
+
+// Uploade a job image, replacing the current one
+
+// Showing or hiding the current job image
+if (isset($_POST['approveImg'])) {
+  $chgImgApprovalStmt = $pdo->prepare("UPDATE Job SET approved=:ap WHERE job_id=:jim");
+  $chgImgApproval = $chgImgApprovalStmt->execute(array(
+    ':ap'=>htmlentities($_POST['imgStatus']),
+    ':jim'=>htmlentities($_POST['appImgId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Image Approval Changed</b>";
+  header('Location: admin.php');
+  return true;
 };
 
 // Updating a current delegate in the directory

@@ -83,7 +83,9 @@
           while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
             echo("
             <div class='delegateBox'>
-              <div data-head='".$oneType['type_id']."' class='postType'>".$oneType['type_name']."</div>
+              <div data-head='".$oneType['type_id']."' class='postType'>"
+                .$oneType['type_name'].
+              "</div>
               <div id='typeId".$oneType['type_id']."' class='postMain'>
                 <div class='postTypeRow'>
                   <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
@@ -192,7 +194,61 @@
         echo("</div>
             </div>");
           };
-    echo("</div>");
+          echo("<div id='photoTab' class='postType'>
+            Staff Photos
+          </div>
+          <div class='photoMain'>
+            <div>");
+              for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
+                echo("
+                <div>
+                  <div>".$allPhotos[$imgNum]['job_name']."</div>
+                  <div>
+                    <img src='".$imgPrefix.$allPhotos[$imgNum]['img_path'].$allPhotos[$imgNum]['img_file']."'/>
+                  </div>
+                  <form method='POST' enctype='multipart/form-data'>
+                    <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
+                    <input name='jobImg' type='file' />
+                    <input name='submitFile' type='submit' value='ENTER'/>
+                  </form>");
+                  if ($_SESSION['adminType'] == 'counselor') {
+                    echo("
+                    <div>
+                      <form method='POST'>
+                        <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
+                        <select name='imgStatus'>");
+                        if ($allPhotos[$imgNum]['approved'] == 1) {
+                          echo("
+                            <option value='1'>YES</option>
+                            <option value='0'>NO</option>");
+                        } else {
+                          echo("
+                            <option value='0'>NO</option>
+                            <option value='1'>YES</option>");
+                        };
+                        echo("
+                        </select>
+                        <input name='approveImg' type='submit' value='ENTER' />
+                      </form>
+                    </div>");
+                  } else {
+                    if ($allPhotos[$imgNum]['approved'] == 1) {
+                      $approvalStatus = "APPROVED";
+                    } else {
+                      $approvalStatus = "PENDING";
+                    };
+                    echo("
+                    <div>
+                      Approval Status: ".$approvalStatus."
+                    </div>
+                    ");
+                  };
+                echo("
+                </div>");
+              };
+            echo("</div>
+          </div>");
+  echo("</div>");
 
         // ** Below are COUNSELOR ONLY
 
