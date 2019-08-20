@@ -41,7 +41,7 @@ $reportStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=3 AND approved=1 A
 $reportStmt->execute();
 
 // echo("<pre>");
-// var_dump($reportInfo);
+// var_dump($currentHost);
 // echo("</pre>");
 
 ?>

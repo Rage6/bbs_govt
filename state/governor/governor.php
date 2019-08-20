@@ -73,7 +73,14 @@
       </a>
     </div>
     <div class="govContent">
-      <img id="img_0" src="../../img/state/governor/bbs_gov.jpg">
+      <?php
+        if ($govInfo['approved'] == 1) {
+          echo("<img id='img_0' src='".$imgPrefix.$govInfo['file_path'].$govInfo['file_img']."?t=".time()."' />");
+        } else {
+          echo("<img src='".$imgPrefix."\default_photo.png' />");
+        };
+      ?>
+
       <div class="slideshow">
         <div class="slideFilm">
           <div id="img_1_A" class="oneFrame"></div>
@@ -102,7 +109,13 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <?php
+                if ($govInfo['approved'] == 1) {
+                  echo("<img src='".$imgPrefix.$govInfo['file_path'].$govInfo['file_img']."?t=".time()."' />");
+                } else {
+                  echo("<img src='".$imgPrefix."\default_photo.png' />");
+                };
+              ?>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -119,7 +132,13 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <?php
+                if ($ltgovInfo['approved'] == 1) {
+                  echo("<img src='".$imgPrefix.$ltgovInfo['file_path'].$ltgovInfo['file_img']."?t=".time()."' />");
+                } else {
+                  echo("<img src='".$imgPrefix."\default_photo.png' />");
+                };
+              ?>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -139,7 +158,13 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <?php
+                if ($attGenInfo['approved'] == 1) {
+                  echo("<img src='".$imgPrefix.$attGenInfo['file_path'].$attGenInfo['file_img']."?t=".time()."' />");
+                } else {
+                  echo("<img src='".$imgPrefix."\default_photo.png' />");
+                };
+              ?>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -156,7 +181,13 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <?php
+                if ($treasInfo['approved'] == 1) {
+                  echo("<img src='".$imgPrefix.$treasInfo['file_path'].$treasInfo['file_img']."?t=".time()."' />");
+                } else {
+                  echo("<img src='".$imgPrefix."\default_photo.png' />");
+                };
+              ?>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -173,7 +204,13 @@
           <div class="forFlex">
             <div class="nameAndPic">
               <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <?php
+                if ($auditInfo['approved'] == 1) {
+                  echo("<img src='".$imgPrefix.$auditInfo['file_path'].$auditInfo['file_img']."?t=".time()."' />");
+                } else {
+                  echo("<img src='".$imgPrefix."\default_photo.png' />");
+                };
+              ?>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
@@ -189,8 +226,16 @@
           <div class="govSubtitle">SECRETARY OF STATE</div>
           <div class="forFlex">
             <div class="nameAndPic">
-              <div class="govName"><?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?></div>
-              <img src="../../img/state/governor/bbs_gov.jpg"/>
+              <div class="govName">
+                <?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?>
+              </div>
+              <?php
+                if ($secInfo['approved'] == 1) {
+                  echo("<img src='".$imgPrefix.$secInfo['file_path'].$secInfo['file_img']."?t=".time()."' />");
+                } else {
+                  echo("<img src='".$imgPrefix."\default_photo.png' />");
+                };
+              ?>
             </div>
             <div class="govBio">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.

@@ -283,6 +283,102 @@ body {
   background-color: red;
 }
 
+.photoTab {
+
+}
+
+.photoMain {
+  display: none;
+  background-color: tan;
+}
+
+.photoBox {
+  margin: 10px 0 10px 5%;
+  padding-bottom: 20px;
+  background-color: lightblue;
+  width: 90%;
+}
+
+.photoTitle {
+  margin: 0 0 10px 0;
+  padding-top: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.photoImg {
+  margin-left: 5%;
+  width: 90%;
+  height: 90%;
+}
+
+.photoMain input {
+  font-size: 1.2rem;
+}
+
+.photoFile {
+  margin-left: 5%;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: grey;
+  font-size: 1rem;
+  background-color: lightgrey;
+  width: 90%;
+  cursor: pointer;
+}
+
+.photoUpload {
+  margin: 5px 0 15px 30%;
+  padding: 10px 0 10px 0;
+  text-align: center;
+  color: white;
+  font-size: 1.3rem;
+  background-color: blue;
+  width: 40%;
+}
+
+.photoMain select {
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+  background-color: black;
+}
+
+.photoApprovBox {
+  margin-left: 10%;
+  border: 2px dashed white;
+  padding: 10px 0;
+  color: white;
+  background-color: green;
+  width: 80%;
+}
+
+.counsApprTitle {
+  padding-bottom: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.apprSelection div {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.apprSelection select {
+  margin-left: 40%;
+  width: 20%;
+}
+
+.counsApprBttn {
+  margin: 30px 0 0 35%;
+  color: green;
+  background-color: white;
+  width: 30%;
+}
+
 .counsOnly {
   margin-top: 25px;
   padding: 15px 0;
