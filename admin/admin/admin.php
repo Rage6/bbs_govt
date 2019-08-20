@@ -201,34 +201,40 @@
             <div>");
               for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                 echo("
-                <div>
-                  <div>".$allPhotos[$imgNum]['job_name']."</div>
+                <div class='photoBox'>
+                  <div class='photoTitle'>".$allPhotos[$imgNum]['job_name']."</div>
                   <div>
-                    <img src='".$imgPrefix.$allPhotos[$imgNum]['img_path'].$allPhotos[$imgNum]['img_file']."'/>
+                    <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['file_path'].$allPhotos[$imgNum]['file_img']."?t=".time()."'/>
                   </div>
                   <form method='POST' enctype='multipart/form-data'>
                     <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                    <input name='jobImg' type='file' />
-                    <input name='submitFile' type='submit' value='ENTER'/>
+                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['file_img']."' />
+                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['file_path']."' />
+                    <input class='photoFile' name='jobImg' type='file' />
+                    <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
                     echo("
-                    <div>
+                    <div class='photoApprovBox'>
+                      <div class='counsApprTitle'>COUNSELOR ONLY</div>
                       <form method='POST'>
                         <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                        <select name='imgStatus'>");
-                        if ($allPhotos[$imgNum]['approved'] == 1) {
+                        <div class='apprSelection'>
+                          <div>Image Approved?</div>
+                          <select name='imgStatus'>");
+                          if ($allPhotos[$imgNum]['approved'] == 1) {
+                            echo("
+                              <option value='1'>YES</option>
+                              <option value='0'>NO</option>");
+                          } else {
+                            echo("
+                              <option value='0'>NO</option>
+                              <option value='1'>YES</option>");
+                          };
                           echo("
-                            <option value='1'>YES</option>
-                            <option value='0'>NO</option>");
-                        } else {
-                          echo("
-                            <option value='0'>NO</option>
-                            <option value='1'>YES</option>");
-                        };
-                        echo("
-                        </select>
-                        <input name='approveImg' type='submit' value='ENTER' />
+                          </select>
+                        </div>
+                        <input class='counsApprBttn' name='approveImg' type='submit' value='ENTER' />
                       </form>
                     </div>");
                   } else {

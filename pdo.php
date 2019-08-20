@@ -13,9 +13,11 @@
 
   // Will set up the absolute path to all of the images
   if ($currentHost == "localhost:8888") {
-    $imgPrefix = "http:\\\localhost:8888\Buckeye_Boys_State\bbs_govt\img";
+    // $imgPrefix = "http:\\\localhost:8888\Buckeye_Boys_State\bbs_govt\img";
+    $imgPrefix = "http://localhost:8888/Buckeye_Boys_State/bbs_govt/img";
   } else {
-    $imgPrefix = "https:\\\buckeye-boys-state.herokuapp.com\img";
+    // $imgPrefix = "https:\\\buckeye-boys-state.herokuapp.com\img";
+    $imgPrefix = "https://buckeye-boys-state.herokuapp.com/img";
   };
 
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

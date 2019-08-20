@@ -78,7 +78,7 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT job_id,job_name,img_path,img_file,approved FROM Job WHERE section_id=:se AND img_file IS NOT NULL");
+$allPhotoStmt = $pdo->prepare("SELECT job_id,job_name,file_path,file_img,approved FROM Job WHERE section_id=:se AND file_img IS NOT NULL");
 $allPhotoStmt->execute(array(
   ':se'=>$secId
 ));
@@ -247,6 +247,66 @@ if (isset($_POST['changeJobDel'])) {
 };
 
 // Uploade a job image, replacing the current one
+if (isset($_POST['submitFile'])) {
+  $jobImg = $_FILES['jobImg'];
+  $onlyTypes = ['jpg','jpeg','png'];
+  $choppedImgName = explode('.', $jobImg['name']);
+  if (count($_FILES) == 1) {
+    if (count($choppedImgName) == 2) {
+      $imgExt = strtolower(end($choppedImgName));
+      if (in_array($imgExt, $onlyTypes)) {
+        if ($jobImg['error'] === 0) {
+          if ($jobImg['size'] <= 2000000) {
+            $currentFilePath = htmlentities($_POST['jobPath']);
+            $currentFileName = htmlentities($_POST['jobFile']);
+            $_FILES['jobImg']['name'] = $currentFileName;
+            $imgDestination = "../../img".$currentFilePath.$currentFileName;
+            move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
+            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            // $_SESSION['message'] = "<b style='color:green'>".$imgDestination."</b>";
+            header('Location: admin.php');
+            // echo("<pre>");
+            // var_dump($_FILES);
+            // echo("</pre>");
+            return true;
+          } else {
+            $_SESSION['message'] = "<b style='color:red'>Your file can be no larger than 2 megabytes</b>";
+            unset($_FILES['jobImg']);
+            header('Location: admin.php');
+            return false;
+          };
+        } else {
+          $_SESSION['message'] = "
+            <b style='color:red'>
+              An error occured during your upload. Please contact your counselor or the BBS IT staff
+            </b>
+            </br>
+            <b style='color:red'>
+              Error: ".$_FILES['jobImg']['tmp_name']."
+            </b>";
+          unset($_FILES['jobImg']);
+          header('Location: admin.php');
+          return false;
+        };
+      } else {
+        $_SESSION['message'] = "<b style='color:red'>Your file type must be .jpg, .jpeg, or .png</b>";
+        unset($_FILES['jobImg']);
+        header('Location: admin.php');
+        return false;
+      };
+    } else {
+      $_SESSION['message'] = "<b style='color:red'>Your file cannot contain multiple extensions</b>";
+      unset($_FILES['jobImg']);
+      header('Location: admin.php');
+      return false;
+    };
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>An image must be selected</b>";
+    unset($_FILES['jobImg']);
+    header('Location: admin.php');
+    return false;
+  };
+};
 
 // Showing or hiding the current job image
 if (isset($_POST['approveImg'])) {
@@ -452,6 +512,10 @@ if (isset($_POST['logout'])) {
 // echo("SESSION:");
 // echo("<pre>");
 // var_dump($_SESSION);
+// echo("</pre>");
+// echo("FILES:");
+// echo("<pre>");
+// var_dump($_FILES);
 // echo("</pre>");
 
 ?>
