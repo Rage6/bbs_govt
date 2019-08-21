@@ -288,6 +288,24 @@ $(()=>{
     };
   });
 
+  // Sets initial cropBox height
+  let cropBoxHeight = $(window).height() - $("#refAll").height();
+  $(".cropBox").css('height',cropBoxHeight);
+
+  // Shows the cropBox after image is uploaded
+  let requestData = window.location.search.substring(1);
+  let requestList = requestData.split("=");
+  console.log(requestList);
+  if (requestList[0] == "crop") {
+    $(".cropBox").css('display','block');
+    $("#cropImg").attr('src',requestList[1]);
+  };
+
+  // Cancel new photo
+  $("#closeCrop").click(()=>{
+    $("#cropBox").css('display','none');
+  });
+
   // Counts down the time until the session expires
   let interval = null;
   $(document).ready(() => {

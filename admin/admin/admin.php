@@ -35,6 +35,45 @@
   </head>
   <body>
   <div class="wholePage">
+    <div class="cropBox">
+      <div class="cropBacking">
+      </div>
+      <div class="cropToolBox">
+        <div class="closeCrop" id="closeCrop">X</div>
+        <div class="cropImgBox">
+          <img id="cropImg" class="cropImg" src="../../img/default_photo.png" />
+          <div class="topCrop cropBorder"></div>
+          <div class="cropMidRow">
+            <div class="leftCrop cropColumns cropBorder">t</div>
+            <div class="rightCrop cropColumns cropBorder">t</div>
+          </div>
+          <div class="bottomCrop cropBorder"></div>
+        </div>
+        <div class="cropMove">
+          <div style="display:flex;justify-content:space-around">
+            ^
+          </div>
+          <div style="display:flex;justify-content:space-around">
+            <div>
+              <
+            </div>
+            <div>
+              V
+            </div>
+            <div>
+              >
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-around">
+          <div>Smaller</div>
+          <div>Bigger</div>
+        </div>
+        <div>
+          ENTER
+        </div>
+      </div>
+    </div>
     <div class="menuTop">
       <?php
         if ($_SESSION['adminType'] == "counselor") {
@@ -578,7 +617,7 @@
         // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
       ?>
       <div style="padding-top:50px"></div>
-      <div class="refAll">
+      <div class="refAll" id="refAll">
         <div id="refInfoBar" class="refInfoBar">
           <div id="refText">Refresh in: <span id="timeMin">30</span> min</div>
           <div id="refInfoBttn" class="refInfoBttn">?</div>
