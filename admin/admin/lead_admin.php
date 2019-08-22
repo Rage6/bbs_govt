@@ -78,7 +78,7 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, Image.image_path, Image.filename, approved FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, approved FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
 
 $allPhotoStmt->execute(array(
   ':se'=>$secId
@@ -257,11 +257,13 @@ if (isset($_POST['submitFile'])) {
           if ($jobImg['size'] <= 2000000) {
             $currentFilePath = htmlentities($_POST['jobPath']);
             $currentFileName = htmlentities($_POST['jobFile']);
+            $currentImgId = htmlentities($_POST['imageId']);
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
-            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
-            header('Location: admin.php?crop='.$imgDestination);
+            // $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            $_SESSION['message'] = "<b style='color:green'>currentImgId: ".$currentImgId."</b>";
+            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId);
             return true;
           } else {
             $_SESSION['message'] = "<b style='color:red'>Your file can be no larger than 2 megabytes</b>";
@@ -310,6 +312,17 @@ if (isset($_POST['approveImg'])) {
     ':jim'=>htmlentities($_POST['appImgId'])
   ));
   $_SESSION['message'] = "<b style='color:green'>Image Approval Changed</b>";
+  header('Location: admin.php');
+  return true;
+};
+
+// Denies image approval if an image is uploaded but not edited
+if (isset($_POST['exitBttn'])) {
+  $notCroppedStmt = $pdo->prepare("UPDATE Job SET approved=0 WHERE job_id=:jbd");
+  $notCroppedStmt->execute(array(
+    ':jbd'=>htmlentities($_POST['jobId'])
+  ));
+  $_SESSION['message'] = "<b style='color:red'>Image upload canceled</b>";
   header('Location: admin.php');
   return true;
 };
