@@ -35,7 +35,7 @@
   </head>
   <body>
   <div class="wholePage">
-    <div class="cropBox">
+    <div class="cropBox" id="cropBox">
       <div class="cropBacking">
       </div>
       <div class="cropToolBox">
@@ -51,17 +51,17 @@
         </div>
         <div class="cropMove">
           <div style="display:flex;justify-content:space-around">
-            ^
+            U
           </div>
           <div style="display:flex;justify-content:space-around">
             <div>
-              <
+              L
             </div>
             <div>
-              V
+              D
             </div>
             <div>
-              >
+              R
             </div>
           </div>
         </div>
@@ -243,12 +243,12 @@
                 <div class='photoBox'>
                   <div class='photoTitle'>".$allPhotos[$imgNum]['job_name']."</div>
                   <div>
-                    <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['file_path'].$allPhotos[$imgNum]['file_img']."?t=".time()."'/>
+                    <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path'].$allPhotos[$imgNum]['filename']."?t=".time()."'/>
                   </div>
                   <form method='POST' enctype='multipart/form-data'>
                     <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['file_img']."' />
-                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['file_path']."' />
+                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
+                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
                     <input class='photoFile' name='jobImg' type='file' />
                     <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");

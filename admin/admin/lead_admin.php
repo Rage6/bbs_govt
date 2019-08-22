@@ -71,14 +71,15 @@ if (isset($_SESSION['counsToken'])) {
 
 // Gets section data
 $secId = (int)$_SESSION['secId'];
-$secInfoStmt = $pdo->prepare("SELECT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
+$secInfoStmt = $pdo->prepare("SELECT DISTINCT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
 $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT job_id,job_name,file_path,file_img,approved FROM Job WHERE section_id=:se AND file_img IS NOT NULL");
+$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, Image.image_path, Image.filename, approved FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+
 $allPhotoStmt->execute(array(
   ':se'=>$secId
 ));
@@ -86,9 +87,6 @@ $allPhotos = [];
 while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
   $allPhotos[] = $onePhoto;
 };
-// echo("<pre>");
-// var_dump($allPhotos);
-// echo("</pre>");
 
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
