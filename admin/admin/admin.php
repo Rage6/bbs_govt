@@ -39,7 +39,7 @@
       <div class="cropBacking">
       </div>
       <div class="cropToolBox">
-        <div id="closeCrop">
+        <div id="closeCrop" class="closeRow">
           <form method="POST">
             <input id="exitJobId" type="hidden" name="jobId" value="">
             <input class="closeCrop" type="submit" name="exitBttn" value="X" />
@@ -49,8 +49,8 @@
           <img id="cropImg" class="cropImg" src="../../img/default_photo.png" />
           <div class="topCrop cropBorder"></div>
           <div class="cropMidRow">
-            <div class="leftCrop cropColumns cropBorder">t</div>
-            <div class="rightCrop cropColumns cropBorder">t</div>
+            <div class="leftCrop cropColumns cropBorder">|</div>
+            <div class="rightCrop cropColumns cropBorder">|</div>
           </div>
           <div class="bottomCrop cropBorder"></div>
         </div>
@@ -71,8 +71,8 @@
           </div>
         </div>
         <div style="display:flex;justify-content:space-around">
-          <div>Smaller</div>
-          <div>Bigger</div>
+          <div id="smallerBttn" style="background-color:green">Smaller</div>
+          <div id="biggerBttn" style="background-color:blue">Bigger</div>
         </div>
         <div>
           ENTER

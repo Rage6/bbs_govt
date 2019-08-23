@@ -773,16 +773,21 @@ body {
 
 .cropToolBox {
   margin-left: 5%;
-  padding: 10px 2%;
+  padding: 0 2% 10px 2%;
   background-color: black;
   position: fixed;
-  top: 30px;
+  top: 20px;
   z-index: 2;
+  overflow: scroll;
+  max-height: 550px;
   width: 86%;
 }
 
+.closeRow {
+  padding: 10px 0;
+}
+
 .closeCrop {
-  margin-bottom: 15px;
   border: 1px solid white;
   border-radius: 5px;
   padding: 2px 3px;

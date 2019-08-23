@@ -292,26 +292,67 @@ $(()=>{
   let cropBoxHeight = $(window).height() - $("#refAll").height();
   $(".cropBox").css('height',cropBoxHeight);
 
+  // Sets up the default square box when opening the cropBox
+  const updateCropImg = (imgWidth,imgHeight) => {
+    let portrait = null;
+    let fitWidth = document.getElementById('cropImg').width;
+    let fitHeight = ((imgHeight / imgWidth) * fitWidth).toFixed(0);
+    let closeHeight = $(".closeRow").outerHeight();
+    if (fitHeight > fitWidth) {
+      maxSize = fitWidth;
+      portrait = true;
+      bottomPad = fitHeight - maxSize;
+      $(".rightCrop").css('width',0);
+      $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
+      // console.log("Portrait: " + maxSize);
+    } else {
+      maxSize = fitHeight;
+      portrait = false;
+      rightPad = fitWidth - maxSize;
+      $(".bottomCrop").css('height',0);
+      $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
+      // console.log("Landscape: " + maxSize);
+    };
+    if (portrait == true) {
+      bottomPx = imgHeight - maxSize;
+    } else {
+      rightPx = imgWidth - maxSize;
+    };
+  };
+
   // Shows the cropBox after image is uploaded
+  let rawWidth = 0;
+  let rawHeight = 0;
   let requestData = window.location.search.substring(1);
   let requestList = requestData.split("&");
+  let maxSize = 0;
+  let topHeight = 0;
+  let rightPx = 0;
+  let bottomPx = 0;
+  let leftPx = 0;
+  let topPad = 0;
+  let rightPad = 0;
+  let bottomPad = 0;
+  let leftPad = 0;
   if (requestList[0] == "crop") {
     $(".cropBox").css('display','block');
     $("#cropImg").attr('src',requestList[1]);
     $("#exitJobId").val(requestList[2]);
+    rawWidth = requestList[3];
+    rawHeight = requestList[4];
     console.log(requestList);
+    updateCropImg(rawWidth,rawHeight);
   };
 
-  // Sets up the default square box when opening the cropBox
-  let maxSize = 0;
-  if ($("#cropImg").height() > $("#cropImg").width()) {
-    maxSize = $("#cropImg").width();
+  // To shrink the image's cropping
+  $("#smallerBttn").click(()=>{
     console.log(maxSize);
-  } else {
-    $("#cropImg").height()
-    maxSize = $("#cropImg").width();
-    console.log(maxSize);
-  };
+    topPad++;
+    rightPad++;
+    bottomPad++;
+    leftPad++;
+    $(".topCrop").css('height',)
+  });
 
   // Counts down the time until the session expires
   let interval = null;

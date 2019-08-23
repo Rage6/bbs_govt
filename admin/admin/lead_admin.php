@@ -261,9 +261,9 @@ if (isset($_POST['submitFile'])) {
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
-            // $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
-            $_SESSION['message'] = "<b style='color:green'>currentImgId: ".$currentImgId."</b>";
-            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId);
+            $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName);
+            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
             return true;
           } else {
             $_SESSION['message'] = "<b style='color:red'>Your file can be no larger than 2 megabytes</b>";
