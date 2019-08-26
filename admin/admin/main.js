@@ -1,5 +1,5 @@
 $(()=>{
-  console.log("testing admin/main.js");
+  console.log("checking admin/main.js");
 
   // Compares window height and body height and makes the body is higher than the window
   let windowHeight = $(window).height();
@@ -296,7 +296,7 @@ $(()=>{
   const updateCropImg = (imgWidth,imgHeight) => {
     let portrait = null;
     let fitWidth = document.getElementById('cropImg').width;
-    let fitHeight = ((imgHeight / imgWidth) * fitWidth).toFixed(0);
+    let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
     if (fitHeight > fitWidth) {
@@ -306,16 +306,13 @@ $(()=>{
       $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
       $(".leftCrop").css('top',closeHeight).css('height',maxSize);
       $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
-      // console.log("Portrait: " + maxSize);
     } else {
       maxSize = fitHeight;
       portrait = false;
       rightPad = fitWidth - maxSize;
-      // $(".bottomCrop").css('height',0);
-      $(".bottomCrop").css('height',0).css('top',closeHeight + maxSize);
       $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
       $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-      // console.log("Landscape: " + maxSize);
+      $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
     };
   };
 
@@ -345,50 +342,49 @@ $(()=>{
     updateCropImg(rawWidth,rawHeight);
   };
 
-  console.log($(".bottomCrop").css('top'))
-
   // To shrink the image's cropping
   $("#smallerBttn").click(()=>{
-
-    // Lowers the top padding
-    topHeight = $(".topCrop").height();
-    let nextTopHeight = topHeight + 1;
-    top = $(".topCrop").css('top');
-    $(".topCrop").css('height',nextTopHeight + "px");
-
-    // Increases the right padding to the left
-    rightWidth = $(".rightCrop").width();
-    rightHeight = $(".rightCrop").height();
-    right = parseInt($(".rightCrop").css('margin-top').replace('px',''));
-    let nextRightWidth = rightWidth + 1;
-    let nextRightHeight = rightHeight - 2;
-    let nextRightTop = right + 1;
-    $(".rightCrop").css('width',nextRightWidth + "px");
-    $(".rightCrop").css('height',nextRightHeight + "px");
-    $(".rightCrop").css('margin-top',nextRightTop);
-
-    // Raise the bottom padding
-    bottomHeight = $(".bottomCrop").height();
-    let nextBottomHeight = bottomHeight + 1;
-    $(".bottomCrop").css('height',nextBottomHeight + "px");
-    bottom = $(".bottomCrop").css('margin-top');
-    console.log(bottom);
-    let nextBottomTop = parseInt(bottom.replace("px","")) - 1;
-    console.log(nextBottomTop);
-    $(".bottomCrop").css('margin-top',nextBottomTop + "px");
-    // bottom = nextBottomTop;
-
-    // Increases the left padding to the left
-    leftWidth = $(".leftCrop").width();
-    leftHeight = $(".leftCrop").height();
-    left = parseInt($(".leftCrop").css('margin-top').replace('px',''));
-    let nextLeftWidth = leftWidth + 1;
-    let nextLeftHeight = leftHeight - 2;
-    let nextLeftTop = left + 1;
-    $(".leftCrop").css('width',nextLeftWidth + "px");
-    $(".leftCrop").css('height',nextLeftHeight + "px");
-    $(".leftCrop").css('margin-top',nextLeftTop);
+    topCropPx = parseInt($(".topCrop").css('height').replace("px","")) + $(".topCrop").offset().top;
+    bottomCropPx = $(".bottomCrop").offset().top;
+    if (bottomCropPx - topCropPx > 50) {
+      // Lowers the top padding
+      topHeight = $(".topCrop").height();
+      let nextTopHeight = topHeight + 1;
+      top = $(".topCrop").css('top');
+      $(".topCrop").css('height',nextTopHeight + "px");
+      // Increases the right padding to the left
+      rightWidth = $(".rightCrop").width();
+      rightHeight = $(".rightCrop").height();
+      right = parseInt($(".rightCrop").css('margin-top').replace('px',''));
+      let nextRightWidth = rightWidth + 1;
+      let nextRightHeight = rightHeight - 2;
+      let nextRightTop = right + 1;
+      $(".rightCrop").css('width',nextRightWidth + "px");
+      $(".rightCrop").css('height',nextRightHeight + "px");
+      $(".rightCrop").css('margin-top',nextRightTop);
+      // Raise the bottom padding
+      bottomHeight = $(".bottomCrop").height();
+      let nextBottomHeight = bottomHeight + 1;
+      $(".bottomCrop").css('height',nextBottomHeight + "px");
+      bottom = $(".bottomCrop").css('margin-top');
+      let nextBottomTop = parseInt(bottom.replace("px","")) - 1;
+      $(".bottomCrop").css('margin-top',nextBottomTop + "px");
+      // Increases the left padding to the left
+      leftWidth = $(".leftCrop").width();
+      leftHeight = $(".leftCrop").height();
+      left = parseInt($(".leftCrop").css('margin-top').replace('px',''));
+      let nextLeftWidth = leftWidth + 1;
+      let nextLeftHeight = leftHeight - 2;
+      let nextLeftTop = left + 1;
+      $(".leftCrop").css('width',nextLeftWidth + "px");
+      $(".leftCrop").css('height',nextLeftHeight + "px");
+      $(".leftCrop").css('margin-top',nextLeftTop);
+    };
   });
+
+  // Collects the cropped data, redirects back into admin.php w/ data in GET request
+
+
 
   // Counts down the time until the session expires
   let interval = null;
