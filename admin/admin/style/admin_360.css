@@ -811,7 +811,7 @@ body {
 
 .topCrop {
   position: absolute;
-  top: 44px;
+  /* top: 44px; */
   width: 96%;
   height: 0px;
 }

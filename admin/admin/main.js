@@ -298,25 +298,24 @@ $(()=>{
     let fitWidth = document.getElementById('cropImg').width;
     let fitHeight = ((imgHeight / imgWidth) * fitWidth).toFixed(0);
     let closeHeight = $(".closeRow").outerHeight();
+    $(".topCrop").css('top',closeHeight);
     if (fitHeight > fitWidth) {
       maxSize = fitWidth;
       portrait = true;
       bottomPad = fitHeight - maxSize;
-      $(".rightCrop").css('width',0);
+      $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
+      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
       $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
       // console.log("Portrait: " + maxSize);
     } else {
       maxSize = fitHeight;
       portrait = false;
       rightPad = fitWidth - maxSize;
-      $(".bottomCrop").css('height',0);
+      // $(".bottomCrop").css('height',0);
+      $(".bottomCrop").css('height',0).css('top',closeHeight + maxSize);
       $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
+      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
       // console.log("Landscape: " + maxSize);
-    };
-    if (portrait == true) {
-      bottomPx = imgHeight - maxSize;
-    } else {
-      rightPx = imgWidth - maxSize;
     };
   };
 
@@ -326,32 +325,69 @@ $(()=>{
   let requestData = window.location.search.substring(1);
   let requestList = requestData.split("&");
   let maxSize = 0;
+  let top = 0;
+  let right = 0;
+  let bottom = 0;
+  let left = 0;
   let topHeight = 0;
-  let rightPx = 0;
-  let bottomPx = 0;
-  let leftPx = 0;
-  let topPad = 0;
-  let rightPad = 0;
-  let bottomPad = 0;
-  let leftPad = 0;
+  let rightWidth = 0;
+  let rightHeight = 0;
+  let bottomHeight = 0;
+  let leftWidth = 0;
+  let leftHeight = 0;
   if (requestList[0] == "crop") {
     $(".cropBox").css('display','block');
     $("#cropImg").attr('src',requestList[1]);
     $("#exitJobId").val(requestList[2]);
     rawWidth = requestList[3];
     rawHeight = requestList[4];
-    console.log(requestList);
+    // console.log(requestList);
     updateCropImg(rawWidth,rawHeight);
   };
 
+  console.log($(".bottomCrop").css('top'))
+
   // To shrink the image's cropping
   $("#smallerBttn").click(()=>{
-    console.log(maxSize);
-    topPad++;
-    rightPad++;
-    bottomPad++;
-    leftPad++;
-    $(".topCrop").css('height',)
+
+    // Lowers the top padding
+    topHeight = $(".topCrop").height();
+    let nextTopHeight = topHeight + 1;
+    top = $(".topCrop").css('top');
+    $(".topCrop").css('height',nextTopHeight + "px");
+
+    // Increases the right padding to the left
+    rightWidth = $(".rightCrop").width();
+    rightHeight = $(".rightCrop").height();
+    right = parseInt($(".rightCrop").css('margin-top').replace('px',''));
+    let nextRightWidth = rightWidth + 1;
+    let nextRightHeight = rightHeight - 2;
+    let nextRightTop = right + 1;
+    $(".rightCrop").css('width',nextRightWidth + "px");
+    $(".rightCrop").css('height',nextRightHeight + "px");
+    $(".rightCrop").css('margin-top',nextRightTop);
+
+    // Raise the bottom padding
+    bottomHeight = $(".bottomCrop").height();
+    let nextBottomHeight = bottomHeight + 1;
+    $(".bottomCrop").css('height',nextBottomHeight + "px");
+    bottom = $(".bottomCrop").css('margin-top');
+    console.log(bottom);
+    let nextBottomTop = parseInt(bottom.replace("px","")) - 1;
+    console.log(nextBottomTop);
+    $(".bottomCrop").css('margin-top',nextBottomTop + "px");
+    // bottom = nextBottomTop;
+
+    // Increases the left padding to the left
+    leftWidth = $(".leftCrop").width();
+    leftHeight = $(".leftCrop").height();
+    left = parseInt($(".leftCrop").css('margin-top').replace('px',''));
+    let nextLeftWidth = leftWidth + 1;
+    let nextLeftHeight = leftHeight - 2;
+    let nextLeftTop = left + 1;
+    $(".leftCrop").css('width',nextLeftWidth + "px");
+    $(".leftCrop").css('height',nextLeftHeight + "px");
+    $(".leftCrop").css('margin-top',nextLeftTop);
   });
 
   // Counts down the time until the session expires
