@@ -74,7 +74,7 @@
           <div id="smallerBttn" style="background-color:green">Smaller</div>
           <div id="biggerBttn" style="background-color:blue">Bigger</div>
         </div>
-        <div>
+        <div id="submitCrop">
           ENTER
         </div>
       </div>

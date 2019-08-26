@@ -388,25 +388,25 @@ $(()=>{
     let rightCheck = $(".rightCrop").width();
     let bottomCheck = $(".bottomCrop").height();
     let leftCheck = $(".leftCrop").width();
-    let rightCropTop = $(".rightCrop").position().top;
+    let rightMarginTop = parseInt($(".rightCrop").css('margin-top').replace("px",""));
     let rightCropHeight = $(".rightCrop").height();
-    let bottomCropTop = $(".bottomCrop").position().top;
+    let bottomMarginTop = parseInt($(".bottomCrop").css('margin-top').replace("px",""));
     let bottomCropHeight = $(".bottomCrop").height();
-    let leftCropTop = $(".leftCrop").position().top;
+    let leftMarginTop = parseInt($(".leftCrop").css('margin-top').replace("px",""));
     let leftCropHeight = $(".leftCrop").height();
     if (topCheck > 0 && rightCheck > 0 && bottomCheck > 0 && leftCheck > 0) {
       $(".topCrop")
         .css('height',topCheck - 1 + "px");
       $(".rightCrop")
         .css('width',rightCheck - 1 + "px")
-        .css('top',rightCropTop - 1 + "px")
+        .css('margin-top',rightMarginTop - 1 + "px")
         .css('height',rightCropHeight + 2 + "px");
       $(".bottomCrop")
-        .css('top',bottomCropTop + 1 + "px")
+        .css('margin-top',bottomMarginTop + 1 + "px")
         .css('height',bottomCropHeight - 1 + "px");
       $(".leftCrop")
         .css('width',leftCheck - 1 + "px")
-        .css('top',leftCropTop - 1 + "px")
+        .css('margin-top',leftMarginTop - 1 + "px")
         .css('height',leftCropHeight + 2 + "px");
     } else {
       console.log("The image cannot get any larger");
@@ -414,8 +414,21 @@ $(()=>{
   });
 
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
-
-
+  $("#submitCrop").click(()=>{
+    let imgSetWidth = document.getElementById('cropImg').width;
+    let imgSetHeight = parseInt(((rawHeight / rawWidth) * imgSetWidth).toFixed(0));
+    let borderPx = [
+      $(".topCrop").height(),
+      $(".rightCrop").width(),
+      $(".bottomCrop").height(),
+      $(".leftCrop").width()
+    ];
+    let topPercent = parseFloat(((borderPx[0] / imgSetHeight) * 100).toFixed(1));
+    let rightPercent = parseFloat(((borderPx[1] / imgSetWidth) * 100).toFixed(1));
+    let bottomPercent = parseFloat(((borderPx[2] / imgSetHeight) * 100).toFixed(1));
+    let leftPercent = parseFloat(((borderPx[3] / imgSetWidth) * 100).toFixed(1));
+    // Put the address back to admin.php with the above data as a GET request and a GET word that will trigger the correct stuff in PHP in lead_admin.php
+  });
 
   // Counts down the time until the session expires
   let interval = null;
