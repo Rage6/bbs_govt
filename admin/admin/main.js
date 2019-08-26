@@ -342,7 +342,7 @@ $(()=>{
     updateCropImg(rawWidth,rawHeight);
   };
 
-  // To shrink the image's cropping
+  // To shrink the cropping border size of the image
   $("#smallerBttn").click(()=>{
     topCropPx = parseInt($(".topCrop").css('height').replace("px","")) + $(".topCrop").offset().top;
     bottomCropPx = $(".bottomCrop").offset().top;
@@ -379,6 +379,37 @@ $(()=>{
       $(".leftCrop").css('width',nextLeftWidth + "px");
       $(".leftCrop").css('height',nextLeftHeight + "px");
       $(".leftCrop").css('margin-top',nextLeftTop);
+    };
+  });
+
+  // To enlarge the cropping border size of the image
+  $("#biggerBttn").click(()=>{
+    let topCheck = $(".topCrop").height();
+    let rightCheck = $(".rightCrop").width();
+    let bottomCheck = $(".bottomCrop").height();
+    let leftCheck = $(".leftCrop").width();
+    let rightCropTop = $(".rightCrop").position().top;
+    let rightCropHeight = $(".rightCrop").height();
+    let bottomCropTop = $(".bottomCrop").position().top;
+    let bottomCropHeight = $(".bottomCrop").height();
+    let leftCropTop = $(".leftCrop").position().top;
+    let leftCropHeight = $(".leftCrop").height();
+    if (topCheck > 0 && rightCheck > 0 && bottomCheck > 0 && leftCheck > 0) {
+      $(".topCrop")
+        .css('height',topCheck - 1 + "px");
+      $(".rightCrop")
+        .css('width',rightCheck - 1 + "px")
+        .css('top',rightCropTop - 1 + "px")
+        .css('height',rightCropHeight + 2 + "px");
+      $(".bottomCrop")
+        .css('top',bottomCropTop + 1 + "px")
+        .css('height',bottomCropHeight - 1 + "px");
+      $(".leftCrop")
+        .css('width',leftCheck - 1 + "px")
+        .css('top',leftCropTop - 1 + "px")
+        .css('height',leftCropHeight + 2 + "px");
+    } else {
+      console.log("The image cannot get any larger");
     };
   });
 
