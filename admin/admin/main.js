@@ -413,21 +413,34 @@ $(()=>{
     };
   });
 
+  // Moving cropping box upwards
+
+  // Moving cropping box to the right
+
+  // Moving cropping box downward
+
+  // Moving cropping box to the left
+  
+
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
   $("#submitCrop").click(()=>{
-    let imgSetWidth = document.getElementById('cropImg').width;
-    let imgSetHeight = parseInt(((rawHeight / rawWidth) * imgSetWidth).toFixed(0));
+    let imgFullWidth = document.getElementById('cropImg').width;
+    let imgFullHeight = parseInt(((rawHeight / rawWidth) * imgFullWidth).toFixed(0));
     let borderPx = [
       $(".topCrop").height(),
       $(".rightCrop").width(),
       $(".bottomCrop").height(),
       $(".leftCrop").width()
     ];
-    let topPercent = parseFloat(((borderPx[0] / imgSetHeight) * 100).toFixed(1));
-    let rightPercent = parseFloat(((borderPx[1] / imgSetWidth) * 100).toFixed(1));
-    let bottomPercent = parseFloat(((borderPx[2] / imgSetHeight) * 100).toFixed(1));
-    let leftPercent = parseFloat(((borderPx[3] / imgSetWidth) * 100).toFixed(1));
-    // Put the address back to admin.php with the above data as a GET request and a GET word that will trigger the correct stuff in PHP in lead_admin.php
+    let cropWidthPx = imgFullWidth - (borderPx[3] + borderPx[1]);
+    let cropHeightPx = imgFullHeight - (borderPx[0] + borderPx[2]);
+    let cropWidthPercent = parseFloat(((cropWidthPx / imgFullWidth) * 100).toFixed(1));
+    let cropHeightPercent = parseFloat(((cropHeightPx / imgFullHeight) * 100).toFixed(1));
+    let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(1));
+    let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(1));
+    let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
+    console.log(newHref);
+    window.location.href = newHref;
   });
 
   // Counts down the time until the session expires

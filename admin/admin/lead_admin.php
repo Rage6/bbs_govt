@@ -263,6 +263,7 @@ if (isset($_POST['submitFile'])) {
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
             $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName);
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            $_SESSION['imgId'] = $currentImgId;
             header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
             return true;
           } else {
@@ -302,6 +303,22 @@ if (isset($_POST['submitFile'])) {
     header('Location: admin.php');
     return false;
   };
+};
+
+// After editing, the dimensions are saved on its row in the Image table
+if (isset($_GET['editImg'])) {
+  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET pixel_x=:px,pixel_y=:py,height=:hgt,width=:wth,edited=1 WHERE image_id=:img");
+  $imgDimensionsStmt->execute(array(
+    ':px'=>htmlentities($_GET['xPercent']),
+    ':py'=>htmlentities($_GET['yPercent']),
+    ':hgt'=>htmlentities($_GET['heightPercent']),
+    ':wth'=>htmlentities($_GET['widthPercent']),
+    ':img'=>htmlentities($_SESSION['imgId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
+  unset($_SESSION['imgId']);
+  header('Location: admin.php');
+  return true;
 };
 
 // Showing or hiding the current job image

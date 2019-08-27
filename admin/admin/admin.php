@@ -259,14 +259,15 @@
                     <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
-                    $photoInfoStmt = $pdo->prepare("SELECT height, width FROM Image WHERE job_id=:jbi");
+                    $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
                     $photoInfoStmt->execute(array(
                       ':jbi'=>$allPhotos[$imgNum]['job_id']
                     ));
                     $photoInfo = $photoInfoStmt->fetch(PDO::FETCH_ASSOC);
                     echo("<div class='photoApprovBox'>
                       <div class='counsApprTitle'>COUNSELOR ONLY</div>");
-                      if ($photoInfo['height'] == $photoInfo['width'] && $photoInfo['height'] != 0 && $photoInfo['width'] != 0) {
+                      // if ($photoInfo['height'] == $photoInfo['width'] && $photoInfo['height'] != 0 && $photoInfo['width'] != 0) {
+                      if ($photoInfo['edited'] == 1) {
                         echo("<form method='POST'>
                           <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
                           <div class='apprSelection'>
