@@ -78,7 +78,7 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, approved FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, Image.approved, pixel_x, pixel_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
 
 $allPhotoStmt->execute(array(
   ':se'=>$secId
@@ -262,12 +262,20 @@ if (isset($_POST['submitFile'])) {
             $imgDestination = "../../img".$currentFilePath.$currentFileName;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
             $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName);
+            $uploadSizesStmt = $pdo->prepare("UPDATE Image SET actual_width=:ax, actual_height=:ay WHERE image_id=:imi");
+            $uploadSizesStmt->execute(array(
+              ':ax'=>$imageInfo[0],
+              ':ay'=>$imageInfo[1],
+              ':imi'=>$currentImgId
+            ));
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
             $_SESSION['imgId'] = $currentImgId;
             header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
+            unset($_SESSION['imgid']);
             return true;
           } else {
             $_SESSION['message'] = "<b style='color:red'>Your file can be no larger than 2 megabytes</b>";
+            unset($_SESSION['imgId']);
             unset($_FILES['jobImg']);
             header('Location: admin.php');
             return false;
@@ -292,7 +300,11 @@ if (isset($_POST['submitFile'])) {
         return false;
       };
     } else {
-      $_SESSION['message'] = "<b style='color:red'>Your file cannot contain multiple extensions</b>";
+      if (count($choppedImgName) < 2) {
+        $_SESSION['message'] = "<b style='color:red'>An image must be selected</b>";
+      } else {
+        $_SESSION['message'] = "<b style='color:red'>Your file cannot contain multiple extensions</b>";
+      };
       unset($_FILES['jobImg']);
       header('Location: admin.php');
       return false;
@@ -307,7 +319,7 @@ if (isset($_POST['submitFile'])) {
 
 // After editing, the dimensions are saved on its row in the Image table
 if (isset($_GET['editImg'])) {
-  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET pixel_x=:px,pixel_y=:py,height=:hgt,width=:wth,edited=1 WHERE image_id=:img");
+  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET pixel_x=:px,pixel_y=:py,height=:hgt,width=:wth,edited=1,approved=0 WHERE image_id=:img");
   $imgDimensionsStmt->execute(array(
     ':px'=>htmlentities($_GET['xPercent']),
     ':py'=>htmlentities($_GET['yPercent']),
@@ -323,7 +335,7 @@ if (isset($_GET['editImg'])) {
 
 // Showing or hiding the current job image
 if (isset($_POST['approveImg'])) {
-  $chgImgApprovalStmt = $pdo->prepare("UPDATE Job SET approved=:ap WHERE job_id=:jim");
+  $chgImgApprovalStmt = $pdo->prepare("UPDATE Image SET approved=:ap WHERE job_id=:jim");
   $chgImgApproval = $chgImgApprovalStmt->execute(array(
     ':ap'=>htmlentities($_POST['imgStatus']),
     ':jim'=>htmlentities($_POST['appImgId'])
@@ -335,11 +347,12 @@ if (isset($_POST['approveImg'])) {
 
 // Denies image approval if an image is uploaded but not edited
 if (isset($_POST['exitBttn'])) {
-  $notCroppedStmt = $pdo->prepare("UPDATE Job SET approved=0 WHERE job_id=:jbd");
+  $notCroppedStmt = $pdo->prepare("UPDATE Image SET approved=0,edited=0 WHERE job_id=:jbd");
   $notCroppedStmt->execute(array(
     ':jbd'=>htmlentities($_POST['jobId'])
   ));
   $_SESSION['message'] = "<b style='color:red'>Image upload canceled</b>";
+  unset($_SESSION['imgId']);
   header('Location: admin.php');
   return true;
 };

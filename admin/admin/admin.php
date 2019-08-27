@@ -257,6 +257,8 @@
                     <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
                     <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
                     <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
+                    <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
+                    <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
                     <input class='photoFile' name='jobImg' type='file' />
                     <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");
@@ -268,7 +270,6 @@
                     $photoInfo = $photoInfoStmt->fetch(PDO::FETCH_ASSOC);
                     echo("<div class='photoApprovBox'>
                       <div class='counsApprTitle'>COUNSELOR ONLY</div>");
-                      // if ($photoInfo['height'] == $photoInfo['width'] && $photoInfo['height'] != 0 && $photoInfo['width'] != 0) {
                       if ($photoInfo['edited'] == 1) {
                         echo("<form method='POST'>
                           <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
