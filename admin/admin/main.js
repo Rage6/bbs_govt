@@ -414,13 +414,76 @@ $(()=>{
   });
 
   // Moving cropping box upwards
+  $("#upBttn").click(()=>{
+    let currentTopHeight = $(".topCrop").height();
+    let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
+    let currentBottomHeight = $(".bottomCrop").height();
+    let currentBottomMargin = parseInt($(".bottomCrop").css('margin-top').replace("px",""));
+    let currentLeftMargin = parseInt($(".leftCrop").css('margin-top').replace("px",""));
+    if (currentTopHeight > 0) {
+      $(".topCrop")
+        .css('height', currentTopHeight - 1 + "px");
+      $(".rightCrop")
+        .css('margin-top', currentRightMargin - 1 + "px");
+      $(".bottomCrop")
+        .css('height', currentBottomHeight + 1 + "px")
+        .css('margin-top', currentBottomMargin - 1 + "px");
+      $(".leftCrop")
+        .css('margin-top', currentLeftMargin - 1 + "px");
+    } else {
+      console.log("Cannot go any higher");
+    };
+  });
 
   // Moving cropping box to the right
+  $("#rightBttn").click(()=>{
+    let currentRightWidth = $(".rightCrop").width();
+    let currentLeftWidth = $(".leftCrop").width();
+    if (currentRightWidth > 0) {
+      $(".rightCrop")
+        .css('width', currentRightWidth - 1 + "px");
+      $(".leftCrop")
+        .css('width', currentLeftWidth + 1 + "px");
+    } else {
+      console.log("Cannot go any further right");
+    };
+  });
 
   // Moving cropping box downward
+  $("#downBttn").click(()=>{
+    let currentTopHeight = $(".topCrop").height();
+    let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
+    let currentBottomHeight = $(".bottomCrop").height();
+    let currentBottomMargin = parseInt($(".bottomCrop").css('margin-top').replace("px",""));
+    let currentLeftMargin = parseInt($(".leftCrop").css('margin-top').replace("px",""));
+    if (currentBottomHeight > 0) {
+      $(".topCrop")
+        .css('height', currentTopHeight + 1 + "px");
+      $(".rightCrop")
+        .css('margin-top', currentRightMargin + 1 + "px");
+      $(".bottomCrop")
+        .css('height', currentBottomHeight - 1 + "px")
+        .css('margin-top', currentBottomMargin + 1 + "px");
+      $(".leftCrop")
+        .css('margin-top', currentLeftMargin + 1 + "px");
+    } else {
+      console.log("Cannot go any lower");
+    };
+  });
 
   // Moving cropping box to the left
-  
+  $("#leftBttn").click(()=>{
+    let currentRightWidth = $(".rightCrop").width();
+    let currentLeftWidth = $(".leftCrop").width();
+    if (currentLeftWidth > 0) {
+      $(".rightCrop")
+        .css('width', currentRightWidth + 1 + "px");
+      $(".leftCrop")
+        .css('width', currentLeftWidth - 1 + "px");
+    } else {
+      console.log("Cannot go any further left");
+    };
+  });
 
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
   $("#submitCrop").click(()=>{

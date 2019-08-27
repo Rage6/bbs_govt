@@ -56,18 +56,20 @@
         </div>
         <div class="cropMove">
           <div style="display:flex;justify-content:space-around">
-            U
+            <span id="upBttn">
+              U
+            </span>
           </div>
           <div style="display:flex;justify-content:space-around">
-            <div>
+            <span id="leftBttn">
               L
-            </div>
-            <div>
+            </span>
+            <span id="downBttn">
               D
-            </div>
-            <div>
+            </span>
+            <span id="rightBttn">
               R
-            </div>
+            </span>
           </div>
         </div>
         <div style="display:flex;justify-content:space-around">
