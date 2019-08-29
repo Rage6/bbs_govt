@@ -1,5 +1,5 @@
 $(()=>{
-  console.log("testing admin/main.js");
+  console.log("checking admin/main.js");
 
   // Compares window height and body height and makes the body is higher than the window
   let windowHeight = $(window).height();
@@ -288,6 +288,224 @@ $(()=>{
     };
   });
 
+  // Sets initial cropBox height
+  let cropBoxHeight = $(window).height() - $("#refAll").height();
+  $(".cropBox").css('height',cropBoxHeight);
+
+  // Sets up the default square box when opening the cropBox
+  const updateCropImg = (imgWidth,imgHeight) => {
+    let portrait = null;
+    let fitWidth = document.getElementById('cropImg').width;
+    let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
+    let closeHeight = $(".closeRow").outerHeight();
+    $(".topCrop").css('top',closeHeight);
+    if (fitHeight > fitWidth) {
+      maxSize = fitWidth;
+      portrait = true;
+      bottomPad = fitHeight - maxSize;
+      $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
+      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+      $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
+    } else {
+      maxSize = fitHeight;
+      portrait = false;
+      rightPad = fitWidth - maxSize;
+      $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
+      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+      $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
+    };
+  };
+
+  // Shows the cropBox after image is uploaded
+  let rawWidth = 0;
+  let rawHeight = 0;
+  let requestData = window.location.search.substring(1);
+  let requestList = requestData.split("&");
+  let maxSize = 0;
+  let top = 0;
+  let right = 0;
+  let bottom = 0;
+  let left = 0;
+  let topHeight = 0;
+  let rightWidth = 0;
+  let rightHeight = 0;
+  let bottomHeight = 0;
+  let leftWidth = 0;
+  let leftHeight = 0;
+  if (requestList[0] == "crop") {
+    $(".cropBox").css('display','block');
+    $("#cropImg").attr('src',requestList[1]);
+    $("#exitJobId").val(requestList[2]);
+    rawWidth = requestList[3];
+    rawHeight = requestList[4];
+    // console.log(requestList);
+    updateCropImg(rawWidth,rawHeight);
+  };
+
+  // To shrink the cropping border size of the image
+  $("#smallerBttn").click(()=>{
+    topCropPx = parseInt($(".topCrop").css('height').replace("px","")) + $(".topCrop").offset().top;
+    bottomCropPx = $(".bottomCrop").offset().top;
+    if (bottomCropPx - topCropPx > 50) {
+      // Lowers the top padding
+      topHeight = $(".topCrop").height();
+      let nextTopHeight = topHeight + 1;
+      top = $(".topCrop").css('top');
+      $(".topCrop").css('height',nextTopHeight + "px");
+      // Increases the right padding to the left
+      rightWidth = $(".rightCrop").width();
+      rightHeight = $(".rightCrop").height();
+      right = parseInt($(".rightCrop").css('margin-top').replace('px',''));
+      let nextRightWidth = rightWidth + 1;
+      let nextRightHeight = rightHeight - 2;
+      let nextRightTop = right + 1;
+      $(".rightCrop").css('width',nextRightWidth + "px");
+      $(".rightCrop").css('height',nextRightHeight + "px");
+      $(".rightCrop").css('margin-top',nextRightTop);
+      // Raise the bottom padding
+      bottomHeight = $(".bottomCrop").height();
+      let nextBottomHeight = bottomHeight + 1;
+      $(".bottomCrop").css('height',nextBottomHeight + "px");
+      bottom = $(".bottomCrop").css('margin-top');
+      let nextBottomTop = parseInt(bottom.replace("px","")) - 1;
+      $(".bottomCrop").css('margin-top',nextBottomTop + "px");
+      // Increases the left padding to the left
+      leftWidth = $(".leftCrop").width();
+      leftHeight = $(".leftCrop").height();
+      left = parseInt($(".leftCrop").css('margin-top').replace('px',''));
+      let nextLeftWidth = leftWidth + 1;
+      let nextLeftHeight = leftHeight - 2;
+      let nextLeftTop = left + 1;
+      $(".leftCrop").css('width',nextLeftWidth + "px");
+      $(".leftCrop").css('height',nextLeftHeight + "px");
+      $(".leftCrop").css('margin-top',nextLeftTop);
+    };
+  });
+
+  // To enlarge the cropping border size of the image
+  $("#biggerBttn").click(()=>{
+    let topCheck = $(".topCrop").height();
+    let rightCheck = $(".rightCrop").width();
+    let bottomCheck = $(".bottomCrop").height();
+    let leftCheck = $(".leftCrop").width();
+    let rightMarginTop = parseInt($(".rightCrop").css('margin-top').replace("px",""));
+    let rightCropHeight = $(".rightCrop").height();
+    let bottomMarginTop = parseInt($(".bottomCrop").css('margin-top').replace("px",""));
+    let bottomCropHeight = $(".bottomCrop").height();
+    let leftMarginTop = parseInt($(".leftCrop").css('margin-top').replace("px",""));
+    let leftCropHeight = $(".leftCrop").height();
+    if (topCheck > 0 && rightCheck > 0 && bottomCheck > 0 && leftCheck > 0) {
+      $(".topCrop")
+        .css('height',topCheck - 1 + "px");
+      $(".rightCrop")
+        .css('width',rightCheck - 1 + "px")
+        .css('margin-top',rightMarginTop - 1 + "px")
+        .css('height',rightCropHeight + 2 + "px");
+      $(".bottomCrop")
+        .css('margin-top',bottomMarginTop + 1 + "px")
+        .css('height',bottomCropHeight - 1 + "px");
+      $(".leftCrop")
+        .css('width',leftCheck - 1 + "px")
+        .css('margin-top',leftMarginTop - 1 + "px")
+        .css('height',leftCropHeight + 2 + "px");
+    } else {
+      console.log("The image cannot get any larger");
+    };
+  });
+
+  // Moving cropping box upwards
+  $("#upBttn").click(()=>{
+    let currentTopHeight = $(".topCrop").height();
+    let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
+    let currentBottomHeight = $(".bottomCrop").height();
+    let currentBottomMargin = parseInt($(".bottomCrop").css('margin-top').replace("px",""));
+    let currentLeftMargin = parseInt($(".leftCrop").css('margin-top').replace("px",""));
+    if (currentTopHeight > 0) {
+      $(".topCrop")
+        .css('height', currentTopHeight - 1 + "px");
+      $(".rightCrop")
+        .css('margin-top', currentRightMargin - 1 + "px");
+      $(".bottomCrop")
+        .css('height', currentBottomHeight + 1 + "px")
+        .css('margin-top', currentBottomMargin - 1 + "px");
+      $(".leftCrop")
+        .css('margin-top', currentLeftMargin - 1 + "px");
+    } else {
+      console.log("Cannot go any higher");
+    };
+  });
+
+  // Moving cropping box to the right
+  $("#rightBttn").click(()=>{
+    let currentRightWidth = $(".rightCrop").width();
+    let currentLeftWidth = $(".leftCrop").width();
+    if (currentRightWidth > 0) {
+      $(".rightCrop")
+        .css('width', currentRightWidth - 1 + "px");
+      $(".leftCrop")
+        .css('width', currentLeftWidth + 1 + "px");
+    } else {
+      console.log("Cannot go any further right");
+    };
+  });
+
+  // Moving cropping box downward
+  $("#downBttn").click(()=>{
+    let currentTopHeight = $(".topCrop").height();
+    let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
+    let currentBottomHeight = $(".bottomCrop").height();
+    let currentBottomMargin = parseInt($(".bottomCrop").css('margin-top').replace("px",""));
+    let currentLeftMargin = parseInt($(".leftCrop").css('margin-top').replace("px",""));
+    if (currentBottomHeight > 0) {
+      $(".topCrop")
+        .css('height', currentTopHeight + 1 + "px");
+      $(".rightCrop")
+        .css('margin-top', currentRightMargin + 1 + "px");
+      $(".bottomCrop")
+        .css('height', currentBottomHeight - 1 + "px")
+        .css('margin-top', currentBottomMargin + 1 + "px");
+      $(".leftCrop")
+        .css('margin-top', currentLeftMargin + 1 + "px");
+    } else {
+      console.log("Cannot go any lower");
+    };
+  });
+
+  // Moving cropping box to the left
+  $("#leftBttn").click(()=>{
+    let currentRightWidth = $(".rightCrop").width();
+    let currentLeftWidth = $(".leftCrop").width();
+    if (currentLeftWidth > 0) {
+      $(".rightCrop")
+        .css('width', currentRightWidth + 1 + "px");
+      $(".leftCrop")
+        .css('width', currentLeftWidth - 1 + "px");
+    } else {
+      console.log("Cannot go any further left");
+    };
+  });
+
+  // Collects the cropped data, redirects back into admin.php w/ data in GET request
+  $("#submitCrop").click(()=>{
+    let imgFullWidth = document.getElementById('cropImg').width;
+    let imgFullHeight = parseInt(((rawHeight / rawWidth) * imgFullWidth).toFixed(0));
+    let borderPx = [
+      $(".topCrop").height(),
+      $(".rightCrop").width(),
+      $(".bottomCrop").height(),
+      $(".leftCrop").width()
+    ];
+    let cropWidthPx = imgFullWidth - (borderPx[3] + borderPx[1]);
+    let cropHeightPx = imgFullHeight - (borderPx[0] + borderPx[2]);
+    let cropWidthPercent = parseFloat(((cropWidthPx / imgFullWidth) * 100).toFixed(1));
+    let cropHeightPercent = parseFloat(((cropHeightPx / imgFullHeight) * 100).toFixed(1));
+    let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(1));
+    let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(1));
+    let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
+    console.log(newHref);
+    window.location.href = newHref;
+  });
+
   // Counts down the time until the session expires
   let interval = null;
   $(document).ready(() => {
@@ -300,7 +518,6 @@ $(()=>{
     let currentSec = Math.floor(timeDiff / 1000);
     let currentMin = Math.floor(currentSec / 60);
     let currentRemainder = currentSec - (currentMin * 60);
-    // console.log(currentMin + ":" + currentRemainder);
     if (currentRemainder < 10) {
       currentRemainder = "0" + currentRemainder;
     };

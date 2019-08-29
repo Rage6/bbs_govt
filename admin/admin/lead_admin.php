@@ -71,14 +71,15 @@ if (isset($_SESSION['counsToken'])) {
 
 // Gets section data
 $secId = (int)$_SESSION['secId'];
-$secInfoStmt = $pdo->prepare("SELECT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
+$secInfoStmt = $pdo->prepare("SELECT DISTINCT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
 $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT job_id,job_name,file_path,file_img,approved FROM Job WHERE section_id=:se AND file_img IS NOT NULL");
+$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+
 $allPhotoStmt->execute(array(
   ':se'=>$secId
 ));
@@ -86,9 +87,6 @@ $allPhotos = [];
 while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
   $allPhotos[] = $onePhoto;
 };
-// echo("<pre>");
-// var_dump($allPhotos);
-// echo("</pre>");
 
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
@@ -259,18 +257,26 @@ if (isset($_POST['submitFile'])) {
           if ($jobImg['size'] <= 2000000) {
             $currentFilePath = htmlentities($_POST['jobPath']);
             $currentFileName = htmlentities($_POST['jobFile']);
+            $currentFileExtension = htmlentities($_POST['jobExt']);
+            $currentImgId = htmlentities($_POST['imageId']);
             $_FILES['jobImg']['name'] = $currentFileName;
-            $imgDestination = "../../img".$currentFilePath.$currentFileName;
+            $imgDestination = "../../img".$currentFilePath.$currentFileName.".".$currentFileExtension;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
+            $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName.".".$currentFileExtension);
+            $uploadSizesStmt = $pdo->prepare("UPDATE Image SET actual_width=:ax, actual_height=:ay WHERE image_id=:imi");
+            $uploadSizesStmt->execute(array(
+              ':ax'=>$imageInfo[0],
+              ':ay'=>$imageInfo[1],
+              ':imi'=>$currentImgId
+            ));
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
-            // $_SESSION['message'] = "<b style='color:green'>".$imgDestination."</b>";
-            header('Location: admin.php');
-            // echo("<pre>");
-            // var_dump($_FILES);
-            // echo("</pre>");
+            $_SESSION['imgId'] = $currentImgId;
+            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
+            unset($_SESSION['imgid']);
             return true;
           } else {
             $_SESSION['message'] = "<b style='color:red'>Your file can be no larger than 2 megabytes</b>";
+            unset($_SESSION['imgId']);
             unset($_FILES['jobImg']);
             header('Location: admin.php');
             return false;
@@ -295,7 +301,11 @@ if (isset($_POST['submitFile'])) {
         return false;
       };
     } else {
-      $_SESSION['message'] = "<b style='color:red'>Your file cannot contain multiple extensions</b>";
+      if (count($choppedImgName) < 2) {
+        $_SESSION['message'] = "<b style='color:red'>An image must be selected</b>";
+      } else {
+        $_SESSION['message'] = "<b style='color:red'>Your file cannot contain multiple extensions</b>";
+      };
       unset($_FILES['jobImg']);
       header('Location: admin.php');
       return false;
@@ -308,14 +318,99 @@ if (isset($_POST['submitFile'])) {
   };
 };
 
+// After editing, the dimensions are saved on its row in the Image table
+if (isset($_GET['editImg'])) {
+  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,edited=1,approved=0 WHERE image_id=:img");
+  $imgDimensionsStmt->execute(array(
+    ':px'=>htmlentities($_GET['xPercent']),
+    ':py'=>htmlentities($_GET['yPercent']),
+    ':hgt'=>htmlentities($_GET['heightPercent']),
+    ':wth'=>htmlentities($_GET['widthPercent']),
+    ':img'=>htmlentities($_SESSION['imgId'])
+  ));
+
+  $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
+
+  $updatePhotoStmt->execute(array(
+    ':se'=>$secId
+  ));
+  $updatePhotos = [];
+  while ($onePhoto = $updatePhotoStmt->fetch(PDO::FETCH_ASSOC)) {
+    $updatePhotos[] = $onePhoto;
+  };
+
+  $arrayImgId = $_SESSION['imgId'];
+  $imgNum = null;
+  for ($indexNum = 0; $indexNum < count($updatePhotos); $indexNum++) {
+    if ($updatePhotos[$indexNum]['image_id'] == $arrayImgId) {
+      $imgNum = $indexNum;
+    };
+  };
+  // Collects all the necessary data to crop the original images...
+  $actualWidth = $updatePhotos[$imgNum]['actual_width'];
+  $actualHeight = $updatePhotos[$imgNum]['actual_height'];
+  $percentWidth = $updatePhotos[$imgNum]['width'];
+  $percentHeight = $updatePhotos[$imgNum]['height'];
+  $percentX = $updatePhotos[$imgNum]['percent_x'];
+  $percentY = $updatePhotos[$imgNum]['percent_y'];
+  $fromX = ($percentX / 100) * $actualWidth;
+  $fromY = ($percentY / 100) * $actualHeight;
+  $cropWidth = ($percentWidth / 100) * $actualWidth;
+  $cropHeight = ($percentHeight / 100) * $actualHeight;
+  $originalImgName = $updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
+  // ... before actually carrying out the cropping and upload
+  $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
+  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+  $fileType = $updatePhotos[$imgNum]['extension'];
+  if ($fileType == "jpeg") {
+    $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  } else if ($fileType == "jpg") {
+    $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  } else if ($fileType == "png") {
+    $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  };
+  imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
+  if ($fileType == "jpeg") {
+    imagejpeg($blankImg,$editImgName);
+    // imagedestroy($originalImgFile);
+    // imagedestroy($blankImg);
+  } else if ($fileType == "jpg") {
+    imagejpeg($blankImg,$editImgName);
+    // imagedestroy($originalImgFile);
+    // imagedestroy($blankImg);
+  } else if ($fileType == "png") {
+    imagepng($blankImg,$editImgName);
+    // imagedestroy($originalImgFile);
+    // imagedestroy($blankImg);
+  };
+  //
+
+  $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
+  unset($_SESSION['imgId']);
+  header('Location: admin.php');
+  return true;
+};
+
 // Showing or hiding the current job image
 if (isset($_POST['approveImg'])) {
-  $chgImgApprovalStmt = $pdo->prepare("UPDATE Job SET approved=:ap WHERE job_id=:jim");
+  $chgImgApprovalStmt = $pdo->prepare("UPDATE Image SET approved=:ap WHERE job_id=:jim");
   $chgImgApproval = $chgImgApprovalStmt->execute(array(
     ':ap'=>htmlentities($_POST['imgStatus']),
     ':jim'=>htmlentities($_POST['appImgId'])
   ));
   $_SESSION['message'] = "<b style='color:green'>Image Approval Changed</b>";
+  header('Location: admin.php');
+  return true;
+};
+
+// Denies image approval if an image is uploaded but not edited
+if (isset($_POST['exitBttn'])) {
+  $notCroppedStmt = $pdo->prepare("UPDATE Image SET approved=0,edited=0 WHERE job_id=:jbd");
+  $notCroppedStmt->execute(array(
+    ':jbd'=>htmlentities($_POST['jobId'])
+  ));
+  $_SESSION['message'] = "<b style='color:red'>Image upload canceled</b>";
+  unset($_SESSION['imgId']);
   header('Location: admin.php');
   return true;
 };
