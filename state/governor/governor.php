@@ -111,7 +111,7 @@
               <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
               <?php
                 if ($govInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$govInfo['section_path']."crop_".$govGenInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$govInfo['section_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
