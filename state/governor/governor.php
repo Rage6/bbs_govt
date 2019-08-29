@@ -75,9 +75,9 @@
     <div class="govContent">
       <?php
         if ($govInfo['approved'] == 1) {
-          echo("<img id='img_0' src='".$imgPrefix.$govInfo['file_path'].$govInfo['file_img']."?t=".time()."' />");
+          echo("<img id='img_0' src='".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
         } else {
-          echo("<img src='".$imgPrefix."\default_photo.png' />");
+          echo("<img id='img_0' src='".$imgPrefix."\default_photo.png' />");
         };
       ?>
 
@@ -111,7 +111,7 @@
               <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
               <?php
                 if ($govInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$govInfo['file_path'].$govInfo['file_img']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$govInfo['section_path']."crop_".$govGenInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -134,7 +134,7 @@
               <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
               <?php
                 if ($ltgovInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$ltgovInfo['file_path'].$ltgovInfo['file_img']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$ltgovInfo['section_path']."crop_".$ltgovInfo['filename'].".".$ltgovInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -160,7 +160,7 @@
               <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
               <?php
                 if ($attGenInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$attGenInfo['file_path'].$attGenInfo['file_img']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$attGenInfo['section_path']."crop_".$attGenInfo['filename'].".".$attGenInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -183,7 +183,7 @@
               <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
               <?php
                 if ($treasInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$treasInfo['file_path'].$treasInfo['file_img']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$treasInfo['section_path'].$treasInfo['filename']."crop_".$treasInfo['filename'].".".$treasInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -206,7 +206,7 @@
               <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
               <?php
                 if ($auditInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$auditInfo['file_path'].$auditInfo['file_img']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$auditInfo['section_path'].$auditInfo['filename']."crop_".$auditInfo['filename'].".".$auditInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -231,7 +231,7 @@
               </div>
               <?php
                 if ($secInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$secInfo['file_path'].$secInfo['file_img']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$secInfo['section_path'].$secInfo['filename']."crop_".$secInfo['filename'].".".$secInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };

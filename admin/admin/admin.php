@@ -35,6 +35,52 @@
   </head>
   <body>
   <div class="wholePage">
+    <div class="cropBox" id="cropBox">
+      <div class="cropBacking">
+      </div>
+      <div class="cropToolBox">
+        <div id="closeCrop" class="closeRow">
+          <form method="POST">
+            <input id="exitJobId" type="hidden" name="jobId" value="">
+            <input class="closeCrop" type="submit" name="exitBttn" value="X" />
+          </form>
+        </div>
+        <div class="cropImgBox">
+          <img id="cropImg" class="cropImg" src="../../img/default_photo.png" />
+          <div class="topCrop cropBorder"></div>
+          <div class="cropMidRow">
+            <div class="leftCrop cropColumns cropBorder">|</div>
+            <div class="rightCrop cropColumns cropBorder">|</div>
+          </div>
+          <div class="bottomCrop cropBorder"></div>
+        </div>
+        <div class="cropMove">
+          <div style="display:flex;justify-content:space-around">
+            <span id="upBttn">
+              U
+            </span>
+          </div>
+          <div style="display:flex;justify-content:space-around">
+            <span id="leftBttn">
+              L
+            </span>
+            <span id="downBttn">
+              D
+            </span>
+            <span id="rightBttn">
+              R
+            </span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-around">
+          <div id="smallerBttn" style="background-color:green">Smaller</div>
+          <div id="biggerBttn" style="background-color:blue">Bigger</div>
+        </div>
+        <div id="submitCrop">
+          ENTER
+        </div>
+      </div>
+    </div>
     <div class="menuTop">
       <?php
         if ($_SESSION['adminType'] == "counselor") {
@@ -200,43 +246,91 @@
           <div class='photoMain'>
             <div>");
               for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
+                // // Collects all the necessary data to crop the original images...
+                // $actualWidth = $allPhotos[$imgNum]['actual_width'];
+                // $actualHeight = $allPhotos[$imgNum]['actual_height'];
+                // $percentX = $allPhotos[$imgNum]['percent_x'];
+                // $percentY = $allPhotos[$imgNum]['percent_y'];
+                // $fromX = ($percentX / 100) * $actualWidth;
+                // $fromY = ($percentY / 100) * $actualHeight;
+                // $cropWidth = ($allPhotos[$imgNum]['width'] / 100) * $actualWidth;
+                // $cropHeight = ($allPhotos[$imgNum]['height'] / 100) * $actualHeight;
+                // $originalImgName = $allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension'];
+                // // ... before actually carrying out the actual upload
+                // $editImgName = $allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension'];
+                // $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+                // $fileType = $allPhotos[$imgNum]['extension'];
+                // if ($fileType == "jpeg") {
+                //   $originalImgFile = imagecreatefromjpeg($allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']);
+                // } else if ($fileType == "jpg") {
+                //   $originalImgFile = imagecreatefromjpeg($allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']);
+                // } else if ($fileType == "png") {
+                //   $originalImgFile = imagecreatefrompng($allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']);
+                // };
+                // imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
+                // if ($fileType == "jpeg") {
+                //   imagejpeg($blankImg,$editImgName);
+                //   // imagedestroy($originalImgFile);
+                //   // imagedestroy($blankImg);
+                // } else if ($fileType == "jpg") {
+                //   imagejpeg($blankImg,$editImgName);
+                //   // imagedestroy($originalImgFile);
+                //   // imagedestroy($blankImg);
+                // } else if ($fileType == "png") {
+                //   imagepng($blankImg,$editImgName);
+                //   // imagedestroy($originalImgFile);
+                //   // imagedestroy($blankImg);
+                // };
                 echo("
                 <div class='photoBox'>
                   <div class='photoTitle'>".$allPhotos[$imgNum]['job_name']."</div>
-                  <div>
-                    <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['file_path'].$allPhotos[$imgNum]['file_img']."?t=".time()."'/>
-                  </div>
+                  <div>");
+                    echo("<img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>");
+                    // echo("<img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path'].$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>");
+                  echo("</div>
                   <form method='POST' enctype='multipart/form-data'>
                     <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['file_img']."' />
-                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['file_path']."' />
+                    <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
+                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
+                    <input name='jobExt' type='hidden' value='".$allPhotos[$imgNum]['extension']."' />
+                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
+                    <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
+                    <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
                     <input class='photoFile' name='jobImg' type='file' />
                     <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
-                    echo("
-                    <div class='photoApprovBox'>
-                      <div class='counsApprTitle'>COUNSELOR ONLY</div>
-                      <form method='POST'>
-                        <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                        <div class='apprSelection'>
-                          <div>Image Approved?</div>
-                          <select name='imgStatus'>");
-                          if ($allPhotos[$imgNum]['approved'] == 1) {
+                    $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
+                    $photoInfoStmt->execute(array(
+                      ':jbi'=>$allPhotos[$imgNum]['job_id']
+                    ));
+                    $photoInfo = $photoInfoStmt->fetch(PDO::FETCH_ASSOC);
+                    echo("<div class='photoApprovBox'>
+                      <div class='counsApprTitle'>COUNSELOR ONLY</div>");
+                      if ($photoInfo['edited'] == 1) {
+                        echo("<form method='POST'>
+                          <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
+                          <div class='apprSelection'>
+                            <div>Image Approved?</div>
+                            <select name='imgStatus'>");
+                            if ($allPhotos[$imgNum]['approved'] == 1) {
+                              echo("
+                                <option value='1'>YES</option>
+                                <option value='0'>NO</option>");
+                            } else {
+                              echo("
+                                <option value='0'>NO</option>
+                                <option value='1'>YES</option>");
+                            };
                             echo("
-                              <option value='1'>YES</option>
-                              <option value='0'>NO</option>");
-                          } else {
-                            echo("
-                              <option value='0'>NO</option>
-                              <option value='1'>YES</option>");
-                          };
-                          echo("
-                          </select>
-                        </div>
-                        <input class='counsApprBttn' name='approveImg' type='submit' value='ENTER' />
-                      </form>
-                    </div>");
+                            </select>
+                          </div>
+                          <input class='counsApprBttn' name='approveImg' type='submit' value='ENTER' />
+                        </form>");
+                      } else {
+                        echo("<div style='padding: 0 5%'>This image was not edited into a square shape, making it unable to fit on their page. Tell the delegate to reload their image, use the included editing tool, and hit 'ENTER'</div>");
+                      };
+                    echo("</div>");
                   } else {
                     if ($allPhotos[$imgNum]['approved'] == 1) {
                       $approvalStatus = "APPROVED";
@@ -578,7 +672,7 @@
         // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
       ?>
       <div style="padding-top:50px"></div>
-      <div class="refAll">
+      <div class="refAll" id="refAll">
         <div id="refInfoBar" class="refInfoBar">
           <div id="refText">Refresh in: <span id="timeMin">30</span> min</div>
           <div id="refInfoBttn" class="refInfoBttn">?</div>
