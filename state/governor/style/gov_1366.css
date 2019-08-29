@@ -31,6 +31,10 @@
   padding-left: 10%;
 }
 
+.backButton {
+  font-size: 1.3rem;
+}
+
 .govContent {
   padding-bottom: 1px;
 }
