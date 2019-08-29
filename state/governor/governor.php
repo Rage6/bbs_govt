@@ -75,9 +75,9 @@
     <div class="govContent">
       <?php
         if ($govInfo['approved'] == 1) {
-          echo("<img id='img_0' src='".$imgPrefix.$govInfo['section_path'].$govInfo['filename']."?t=".time()."' />");
+          echo("<img id='img_0' src='".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
         } else {
-          echo("<img src='".$imgPrefix."\default_photo.png' />");
+          echo("<img id='img_0' src='".$imgPrefix."\default_photo.png' />");
         };
       ?>
 
