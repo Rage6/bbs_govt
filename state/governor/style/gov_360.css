@@ -28,6 +28,12 @@ body {
 .menuList {
   border-top: 1px solid #2020a0;
 }
+
+#hoverLink:hover {
+  color: gold;
+  background-color: #2020a0;
+}
+
 #menuContent {
   display: none;
 }

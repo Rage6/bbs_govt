@@ -42,32 +42,32 @@
     </div>
     <div id="menuContent" class="menuList">
       <a href="#governorTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Governor & Lt. Governor
         </div>
       </a>
       <a href="#electedTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Elected Officials
         </div>
       </a>
       <a href="#goalTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Policies & Goals
         </div>
       </a>
       <a href="#agencyTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Departments & Agencies
         </div>
       </a>
       <a href="#reportTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Daily Report of Activities
         </div>
       </a>
       <a href="../../levels/state.php">
-        <div class="menuButton backButton">
+        <div id="hoverLink" class="menuButton backButton">
           < BACK
         </div>
       </a>
