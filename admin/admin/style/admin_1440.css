@@ -120,6 +120,7 @@
 .counsBox {
   border: 1px solid black;
   width: 45%;
+  background-color: lightgreen;
 }
 
 .counsBox:first-of-type {

@@ -55,30 +55,30 @@
           <div class="bottomCrop cropBorder"></div>
         </div>
         <div class="cropMove">
-          <div style="display:flex;justify-content:space-around">
-            <span id="upBttn">
-              U
-            </span>
+          <div class="cropMoveRow">
+            <button id="upBttn" class="moveBttn">
+              <img src="../../img/admin/right_arrow.png" />
+            </button>
           </div>
-          <div style="display:flex;justify-content:space-around">
-            <span id="leftBttn">
-              L
-            </span>
-            <span id="downBttn">
-              D
-            </span>
-            <span id="rightBttn">
-              R
-            </span>
+          <div class="cropMoveRow">
+            <button id="leftBttn" class="moveBttn">
+              <img src="../../img/admin/right_arrow.png" />
+            </button>
+            <button id="downBttn" class="moveBttn">
+              <img src="../../img/admin/right_arrow.png" />
+            </button>
+            <button id="rightBttn" class="moveBttn">
+              <img src="../../img/admin/right_arrow.png" />
+            </button>
           </div>
         </div>
-        <div style="display:flex;justify-content:space-around">
-          <div id="smallerBttn" style="background-color:green">Smaller</div>
-          <div id="biggerBttn" style="background-color:blue">Bigger</div>
+        <div class="cropSize">
+          <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
+          <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
         </div>
-        <div id="submitCrop">
+        <button id="submitCrop" type="button">
           ENTER
-        </div>
+        </button>
       </div>
     </div>
     <div class="menuTop">

@@ -854,9 +854,60 @@ body {
 }
 
 .cropMove {
-  margin: 0 35%
+  margin: 0 30%
+}
+
+.cropMoveRow {
+  margin-bottom: 10px;
+  display:flex;
+  justify-content:space-around
+}
+
+.moveBttn {
+  border-radius: 5px;
+  background-color: orange;
+  width: 30px;
+  height: 30px;
+}
+
+.moveBttn img {
+  width: 100%;
+}
+
+#upBttn {
+  transform: rotate(-90deg);
+}
+
+#rightBttn {
+
+}
+
+#downBttn {
+  transform: rotate(90deg);
+}
+
+#leftBttn {
+  transform: rotate(180deg);
 }
 
 .cropSize {
+  margin: 20px 30% 0 30%;
+  display:flex;
+  justify-content:space-around;
+}
 
+.sizeBttn {
+  border-radius: 5px;
+  background-color: lightgrey;
+  height: 40px;
+  width: 40px;
+}
+
+#submitCrop {
+  margin: 30px 0 50px 20%;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: blue;
+  width: 60%;
 }
