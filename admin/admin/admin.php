@@ -240,54 +240,30 @@
         echo("</div>
             </div>");
           };
-          echo("<div id='photoTab' class='postType'>
+          echo("
+          <div class='delegateBox'>
+          <div id='photoTab' class='postType'>
             Staff Photos
           </div>
-          <div class='photoMain'>
-            <div>");
+          <div class='postMain photoMain'>
+            <div class='postTypeRow'>
+              <div class='addingPost hideAdding'>
+                Testing
+              </div>
+            </div>
+            <div class='pendingRow photoFolderTab'>
+              <div class='pendingBttn'>
+                View / Change
+              </div>
+            </div>
+            <div class='boxList'>");
               for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
-                // // Collects all the necessary data to crop the original images...
-                // $actualWidth = $allPhotos[$imgNum]['actual_width'];
-                // $actualHeight = $allPhotos[$imgNum]['actual_height'];
-                // $percentX = $allPhotos[$imgNum]['percent_x'];
-                // $percentY = $allPhotos[$imgNum]['percent_y'];
-                // $fromX = ($percentX / 100) * $actualWidth;
-                // $fromY = ($percentY / 100) * $actualHeight;
-                // $cropWidth = ($allPhotos[$imgNum]['width'] / 100) * $actualWidth;
-                // $cropHeight = ($allPhotos[$imgNum]['height'] / 100) * $actualHeight;
-                // $originalImgName = $allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension'];
-                // // ... before actually carrying out the actual upload
-                // $editImgName = $allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension'];
-                // $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
-                // $fileType = $allPhotos[$imgNum]['extension'];
-                // if ($fileType == "jpeg") {
-                //   $originalImgFile = imagecreatefromjpeg($allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']);
-                // } else if ($fileType == "jpg") {
-                //   $originalImgFile = imagecreatefromjpeg($allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']);
-                // } else if ($fileType == "png") {
-                //   $originalImgFile = imagecreatefrompng($allPhotos[$imgNum]['section_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']);
-                // };
-                // imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
-                // if ($fileType == "jpeg") {
-                //   imagejpeg($blankImg,$editImgName);
-                //   // imagedestroy($originalImgFile);
-                //   // imagedestroy($blankImg);
-                // } else if ($fileType == "jpg") {
-                //   imagejpeg($blankImg,$editImgName);
-                //   // imagedestroy($originalImgFile);
-                //   // imagedestroy($blankImg);
-                // } else if ($fileType == "png") {
-                //   imagepng($blankImg,$editImgName);
-                //   // imagedestroy($originalImgFile);
-                //   // imagedestroy($blankImg);
-                // };
                 echo("
                 <div class='photoBox'>
                   <div class='photoTitle'>".$allPhotos[$imgNum]['job_name']."</div>
-                  <div>");
-                    echo("<img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>");
-                    // echo("<img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path'].$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>");
-                  echo("</div>
+                  <div>
+                    <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
+                  </div>
                   <form method='POST' enctype='multipart/form-data'>
                     <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
                     <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
@@ -347,6 +323,7 @@
                 </div>");
               };
             echo("</div>
+          </div>
           </div>");
   echo("</div>");
 
