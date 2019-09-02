@@ -283,8 +283,13 @@ body {
   background-color: red;
 }
 
-.photoTab {
+.photoFolderTab {
+  justify-content: flex-start;
+}
 
+.hideAdding {
+  color: tan;
+  background-color: tan;
 }
 
 .photoMain {
@@ -297,6 +302,10 @@ body {
   padding-bottom: 20px;
   background-color: lightblue;
   width: 90%;
+}
+
+.photoBox:first-of-type {
+  margin-top: 0;
 }
 
 .photoTitle {

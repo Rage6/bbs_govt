@@ -1,4 +1,5 @@
-$(()=>{
+// $(()=>{
+$(document).ready(()=>{
   console.log("checking admin/main.js");
 
   // Compares window height and body height and makes the body is higher than the window
@@ -343,7 +344,7 @@ $(()=>{
   };
 
   // To shrink the cropping border size of the image
-  $("#smallerBttn").click(()=>{
+  const shrinkImg = () => {
     topCropPx = parseInt($(".topCrop").css('height').replace("px","")) + $(".topCrop").offset().top;
     bottomCropPx = $(".bottomCrop").offset().top;
     if (bottomCropPx - topCropPx > 50) {
@@ -380,10 +381,10 @@ $(()=>{
       $(".leftCrop").css('height',nextLeftHeight + "px");
       $(".leftCrop").css('margin-top',nextLeftTop);
     };
-  });
+  };
 
-  // To enlarge the cropping border size of the image
-  $("#biggerBttn").click(()=>{
+  // To increase the cropping border size of the image
+  const enlargeImg = () => {
     let topCheck = $(".topCrop").height();
     let rightCheck = $(".rightCrop").width();
     let bottomCheck = $(".bottomCrop").height();
@@ -411,6 +412,22 @@ $(()=>{
     } else {
       console.log("The image cannot get any larger");
     };
+  };
+
+  // Activates shrinkImg() to make the img smaller
+  $("#smallerBttn").mousedown(()=>{
+    const shrinkInterval = setInterval(() => { shrinkImg() }, 50);
+    $("#smallerBttn").mouseup(()=>{
+      clearInterval(shrinkInterval);
+    });
+  });
+
+  // Activates enlargeImg() to make the img larger
+  $("#biggerBttn").mousedown(()=>{
+    const enlargeInterval = setInterval(() => { enlargeImg() }, 50);
+    $("#biggerBttn").mouseup(()=>{
+      clearInterval(enlargeInterval);
+    });
   });
 
   // Moving cropping box upwards

@@ -98,6 +98,11 @@
   font-size: 1.3rem;
 }
 
+.hideAdding {
+  color: blue;
+  background-color: blue;
+}
+
 .counsOnly {
   margin-left: 50%;
   position: relative;
