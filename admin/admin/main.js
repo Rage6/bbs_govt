@@ -1,4 +1,5 @@
-$(()=>{
+// $(()=>{
+$(document).ready(()=>{
   console.log("checking admin/main.js");
 
   // Compares window height and body height and makes the body is higher than the window
@@ -343,7 +344,7 @@ $(()=>{
   };
 
   // To shrink the cropping border size of the image
-  $("#smallerBttn").click(()=>{
+  const shrinkImg = () => {
     topCropPx = parseInt($(".topCrop").css('height').replace("px","")) + $(".topCrop").offset().top;
     bottomCropPx = $(".bottomCrop").offset().top;
     if (bottomCropPx - topCropPx > 50) {
@@ -380,10 +381,10 @@ $(()=>{
       $(".leftCrop").css('height',nextLeftHeight + "px");
       $(".leftCrop").css('margin-top',nextLeftTop);
     };
-  });
+  };
 
-  // To enlarge the cropping border size of the image
-  $("#biggerBttn").click(()=>{
+  // To increase the cropping border size of the image
+  const enlargeImg = () => {
     let topCheck = $(".topCrop").height();
     let rightCheck = $(".rightCrop").width();
     let bottomCheck = $(".bottomCrop").height();
@@ -411,10 +412,27 @@ $(()=>{
     } else {
       console.log("The image cannot get any larger");
     };
+  };
+
+  // Activates shrinkImg() to make the img smaller
+  $("#smallerBttn").mousedown(()=>{
+    const shrinkInterval = setInterval(() => { shrinkImg() }, 50);
+    $("#smallerBttn").mouseup(()=>{
+      clearInterval(shrinkInterval);
+    });
+  });
+
+  // Activates enlargeImg() to make the img larger
+  $("#biggerBttn").mousedown(()=>{
+    const enlargeInterval = setInterval(() => { enlargeImg() }, 50);
+    $("#biggerBttn").mouseup(()=>{
+      clearInterval(enlargeInterval);
+    });
   });
 
   // Moving cropping box upwards
-  $("#upBttn").click(()=>{
+  // $("#upBttn").click(()=>{
+  const upCrop = () => {
     let currentTopHeight = $(".topCrop").height();
     let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
     let currentBottomHeight = $(".bottomCrop").height();
@@ -433,10 +451,18 @@ $(()=>{
     } else {
       console.log("Cannot go any higher");
     };
+  };
+
+  // Activates the upward movement of the cropped image
+  $("#upBttn").mousedown(()=>{
+    const upInterval = setInterval(() => { upCrop() }, 50);
+    $("#upBttn").mouseup(()=>{
+      clearInterval(upInterval);
+    });
   });
 
   // Moving cropping box to the right
-  $("#rightBttn").click(()=>{
+  const rightCrop = () => {
     let currentRightWidth = $(".rightCrop").width();
     let currentLeftWidth = $(".leftCrop").width();
     if (currentRightWidth > 0) {
@@ -447,10 +473,18 @@ $(()=>{
     } else {
       console.log("Cannot go any further right");
     };
+  };
+
+  // Activates the right movement of the cropped image
+  $("#rightBttn").mousedown(()=>{
+    const rightInterval = setInterval(() => { rightCrop() }, 50);
+    $("#rightBttn").mouseup(()=>{
+      clearInterval(rightInterval);
+    });
   });
 
   // Moving cropping box downward
-  $("#downBttn").click(()=>{
+  const downCrop = () =>{
     let currentTopHeight = $(".topCrop").height();
     let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
     let currentBottomHeight = $(".bottomCrop").height();
@@ -469,10 +503,19 @@ $(()=>{
     } else {
       console.log("Cannot go any lower");
     };
+  };
+
+  // Activates the down movement of the cropped image
+  $("#downBttn").mousedown(()=>{
+    const downInterval = setInterval(() => { downCrop() }, 50);
+    $("#downBttn").mouseup(()=>{
+      clearInterval(downInterval);
+    });
   });
 
   // Moving cropping box to the left
-  $("#leftBttn").click(()=>{
+  // $("#leftBttn").click(()=>{
+  const leftCrop = () => {
     let currentRightWidth = $(".rightCrop").width();
     let currentLeftWidth = $(".leftCrop").width();
     if (currentLeftWidth > 0) {
@@ -483,6 +526,14 @@ $(()=>{
     } else {
       console.log("Cannot go any further left");
     };
+  };
+
+  // Activates the left movement of the cropped image
+  $("#leftBttn").mousedown(()=>{
+    const leftInterval = setInterval(() => { leftCrop() }, 50);
+    $("#leftBttn").mouseup(()=>{
+      clearInterval(leftInterval);
+    });
   });
 
   // Collects the cropped data, redirects back into admin.php w/ data in GET request

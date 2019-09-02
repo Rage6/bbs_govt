@@ -42,33 +42,33 @@
     </div>
     <div id="menuContent" class="menuList">
       <a href="#governorTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Governor & Lt. Governor
         </div>
       </a>
       <a href="#electedTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Elected Officials
         </div>
       </a>
       <a href="#goalTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Policies & Goals
         </div>
       </a>
       <a href="#agencyTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Departments & Agencies
         </div>
       </a>
       <a href="#reportTag">
-        <div class="menuButton">
+        <div id="hoverLink" class="menuButton">
           > Daily Report of Activities
         </div>
       </a>
       <a href="../../levels/state.php">
-        <div class="menuButton backButton">
-          < Go Back
+        <div id="hoverLink" class="menuButton backButton">
+          < BACK
         </div>
       </a>
     </div>
@@ -83,14 +83,22 @@
 
       <div class="slideshow">
         <div class="slideFilm">
-          <div id="img_1_A" class="oneFrame"></div>
+          <div
+            id="img_1_A"
+            class="oneFrame"
+            style="background-image:url('<?php echo($govInfo['section_path'].'crop_'.$govInfo['filename'].'.'.$govInfo['extension'])?>')"
+          ></div>
           <div id="img_2_A" class="oneFrame"></div>
           <div id="img_3_A" class="oneFrame"></div>
           <div id="img_4_A" class="oneFrame"></div>
           <div id="img_5_A" class="oneFrame"></div>
           <div id="img_6_A" class="oneFrame"></div>
           <div id="img_7_A" class="oneFrame"></div>
-          <div id="img_1_B" class="oneFrame"></div>
+          <div
+            id="img_1_B"
+            class="oneFrame"
+            style="background-image:url('<?php echo($govInfo['section_path'].'crop_'.$govInfo['filename'].'.'.$govInfo['extension'])?>')"
+          ></div>
           <div id="img_2_B" class="oneFrame"></div>
           <div id="img_3_B" class="oneFrame"></div>
           <div id="img_4_B" class="oneFrame"></div>

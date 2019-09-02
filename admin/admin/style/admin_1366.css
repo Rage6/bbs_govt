@@ -98,6 +98,11 @@
   font-size: 1.3rem;
 }
 
+.hideAdding {
+  color: blue;
+  background-color: blue;
+}
+
 .counsOnly {
   margin-left: 50%;
   position: relative;
@@ -114,6 +119,7 @@
 
 .counsBox {
   border: 1px solid black;
+  background-color: lightgreen;
   width: 45%;
 }
 
