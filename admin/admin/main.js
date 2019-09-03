@@ -414,24 +414,42 @@ $(document).ready(()=>{
     };
   };
 
+  // Detects whether this devices is using a touch screen or a mouse
+  if ('ontouchstart' in document.documentElement) {
+    startType = "touchstart";
+    stopType = "touchend";
+  } else {
+    startType = "mousedown";
+    stopType = "mouseup";
+  };
+
   // Activates shrinkImg() to make the img smaller
-  $("#smallerBttn").mousedown(()=>{
-    const shrinkInterval = setInterval(() => { shrinkImg() }, 50);
-    $("#smallerBttn").mouseup(()=>{
+  let shrinkInterval = null;
+  $("#smallerBttn").on(startType,()=>{
+    if (shrinkInterval != null) {
       clearInterval(shrinkInterval);
-    });
+    };
+    shrinkInterval = setInterval(() => { shrinkImg() }, 50);
+  });
+  // Automatically deactivates shrinkImg()
+  $("#smallerBttn").on(stopType,()=>{
+    clearInterval(shrinkInterval);
   });
 
   // Activates enlargeImg() to make the img larger
-  $("#biggerBttn").mousedown(()=>{
-    const enlargeInterval = setInterval(() => { enlargeImg() }, 50);
-    $("#biggerBttn").mouseup(()=>{
+  let enlargeInterval = null;
+  $("#biggerBttn").on(startType,()=>{
+    if (enlargeInterval != null) {
       clearInterval(enlargeInterval);
-    });
+    };
+    enlargeInterval = setInterval(() => { enlargeImg() }, 50);
+  });
+  // Automatically deactivates shrinkImg()
+  $("#biggerBttn").on(stopType,()=>{
+    clearInterval(enlargeInterval);
   });
 
   // Moving cropping box upwards
-  // $("#upBttn").click(()=>{
   const upCrop = () => {
     let currentTopHeight = $(".topCrop").height();
     let currentRightMargin = parseInt($(".rightCrop").css('margin-top').replace("px",""));
@@ -454,11 +472,16 @@ $(document).ready(()=>{
   };
 
   // Activates the upward movement of the cropped image
-  $("#upBttn").mousedown(()=>{
-    const upInterval = setInterval(() => { upCrop() }, 50);
-    $("#upBttn").mouseup(()=>{
+  let upInterval = null;
+  $("#upBttn").on(startType,()=>{
+    if (upInterval != null) {
       clearInterval(upInterval);
-    });
+    };
+    upInterval = setInterval(() => { upCrop() }, 50);
+  });
+  // Automatically deactivates upInterval()
+  $("#upBttn").on(stopType,()=>{
+    clearInterval(upInterval);
   });
 
   // Moving cropping box to the right
@@ -476,11 +499,16 @@ $(document).ready(()=>{
   };
 
   // Activates the right movement of the cropped image
-  $("#rightBttn").mousedown(()=>{
-    const rightInterval = setInterval(() => { rightCrop() }, 50);
-    $("#rightBttn").mouseup(()=>{
+  let rightInterval = null;
+  $("#rightBttn").on(startType,()=>{
+    if (rightInterval != null) {
       clearInterval(rightInterval);
-    });
+    };
+    rightInterval = setInterval(() => { rightCrop() }, 50);
+  });
+  // Automatically deactivates rightInterval()
+  $("#rightBttn").on(stopType,()=>{
+    clearInterval(rightInterval);
   });
 
   // Moving cropping box downward
@@ -506,15 +534,19 @@ $(document).ready(()=>{
   };
 
   // Activates the down movement of the cropped image
-  $("#downBttn").mousedown(()=>{
-    const downInterval = setInterval(() => { downCrop() }, 50);
-    $("#downBttn").mouseup(()=>{
+  let downInterval = null;
+  $("#downBttn").on(startType,()=>{
+    if (downInterval != null) {
       clearInterval(downInterval);
-    });
+    };
+    downInterval = setInterval(() => { downCrop() }, 50);
+  });
+  // Automatically deactivates shrinkImg()
+  $("#downBttn").on(stopType,()=>{
+    clearInterval(downInterval);
   });
 
   // Moving cropping box to the left
-  // $("#leftBttn").click(()=>{
   const leftCrop = () => {
     let currentRightWidth = $(".rightCrop").width();
     let currentLeftWidth = $(".leftCrop").width();
@@ -529,11 +561,16 @@ $(document).ready(()=>{
   };
 
   // Activates the left movement of the cropped image
-  $("#leftBttn").mousedown(()=>{
-    const leftInterval = setInterval(() => { leftCrop() }, 50);
-    $("#leftBttn").mouseup(()=>{
+  let leftInterval = null;
+  $("#leftBttn").on(startType,()=>{
+    if (leftInterval != null) {
       clearInterval(leftInterval);
-    });
+    };
+    leftInterval = setInterval(() => { leftCrop() }, 50);
+  });
+  // Automatically deactivates leftCrop()
+  $("#leftBttn").on(stopType,()=>{
+    clearInterval(leftInterval);
   });
 
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
