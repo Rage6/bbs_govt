@@ -191,7 +191,7 @@
               <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
               <?php
                 if ($treasInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$treasInfo['section_path'].$treasInfo['filename']."crop_".$treasInfo['filename'].".".$treasInfo['extension']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$treasInfo['section_path']."crop_".$treasInfo['filename'].".".$treasInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -214,7 +214,7 @@
               <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
               <?php
                 if ($auditInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$auditInfo['section_path'].$auditInfo['filename']."crop_".$auditInfo['filename'].".".$auditInfo['extension']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$auditInfo['section_path']."crop_".$auditInfo['filename'].".".$auditInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
@@ -239,7 +239,7 @@
               </div>
               <?php
                 if ($secInfo['approved'] == 1) {
-                  echo("<img src='".$imgPrefix.$secInfo['section_path'].$secInfo['filename']."crop_".$secInfo['filename'].".".$secInfo['extension']."?t=".time()."' />");
+                  echo("<img src='".$imgPrefix.$secInfo['section_path']."crop_".$secInfo['filename'].".".$secInfo['extension']."?t=".time()."' />");
                 } else {
                   echo("<img src='".$imgPrefix."\default_photo.png' />");
                 };
