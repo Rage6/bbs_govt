@@ -51,6 +51,12 @@
   font-size: 1.3rem;
 }
 
+.cropToolBox {
+  margin-left: 23%;
+  max-height: 826px;
+  width: 50%;
+}
+
 .counsOnly {
   margin-left: 50%;
   position: relative;

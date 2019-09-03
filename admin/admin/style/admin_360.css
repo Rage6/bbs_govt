@@ -782,7 +782,7 @@ body {
 
 .cropToolBox {
   margin-left: 5%;
-  padding: 0 2% 10px 2%;
+  padding: 0 7px 10px 7px;
   background-color: black;
   position: fixed;
   top: 20px;
@@ -820,7 +820,6 @@ body {
 
 .topCrop {
   position: absolute;
-  /* top: 44px; */
   width: 96%;
   height: 0px;
 }
@@ -842,7 +841,8 @@ body {
 }
 
 .rightCrop {
-  right: 2%;
+  /* right: 2%; */
+  right: 7px;
   width: 150px;
 }
 

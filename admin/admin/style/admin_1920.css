@@ -112,6 +112,16 @@
   background-color: blue;
 }
 
+.cropToolBox {
+  margin-left: 576px;
+  max-height: 750px;
+  width: 288px;
+}
+
+.cropBacking {
+  width: 1440px;
+}
+
 .counsOnly {
   margin-left: 50%;
   position: relative;
