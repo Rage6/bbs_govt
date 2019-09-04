@@ -247,13 +247,13 @@ if (isset($_POST['changeJobDel'])) {
 // Uploade a job image, replacing the current one
 if (isset($_POST['submitFile'])) {
   $jobImg = $_FILES['jobImg'];
-  $onlyTypes = ['jpg','jpeg','png'];
+  $onlyTypes = ['jpg','jpeg','JPG','JPEG'];
   $choppedImgName = explode('.', $jobImg['name']);
   if (count($_FILES) == 1) {
     if (count($choppedImgName) == 2) {
       $imgExt = strtolower(end($choppedImgName));
       if (in_array($imgExt, $onlyTypes)) {
-        if ($jobImg['error'] === 0) {
+        if ($jobImg['error'] == 0) {
           if ($jobImg['size'] <= 2000000) {
             $currentFilePath = htmlentities($_POST['jobPath']);
             $currentFileName = htmlentities($_POST['jobFile']);
@@ -269,7 +269,7 @@ if (isset($_POST['submitFile'])) {
               ':ay'=>$imageInfo[1],
               ':imi'=>$currentImgId
             ));
-            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            $_SESSION['message'] = "<b style='color:green'>Upload Successful. ".$imgExt."</b>";
             $_SESSION['imgId'] = $currentImgId;
             header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
             unset($_SESSION['imgid']);
@@ -357,33 +357,33 @@ if (isset($_GET['editImg'])) {
   $fromY = ($percentY / 100) * $actualHeight;
   $cropWidth = ($percentWidth / 100) * $actualWidth;
   $cropHeight = ($percentHeight / 100) * $actualHeight;
-  $originalImgName = $updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
+  // $originalImgName = $updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
   // ... before actually carrying out the cropping and upload
-  $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
-  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
-  $fileType = $updatePhotos[$imgNum]['extension'];
-  if ($fileType == "jpeg") {
-    $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  } else if ($fileType == "jpg") {
-    $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  } else if ($fileType == "png") {
-    $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  };
-  imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
-  if ($fileType == "jpeg") {
-    imagejpeg($blankImg,$editImgName);
-    // imagedestroy($originalImgFile);
-    // imagedestroy($blankImg);
-  } else if ($fileType == "jpg") {
-    imagejpeg($blankImg,$editImgName);
-    // imagedestroy($originalImgFile);
-    // imagedestroy($blankImg);
-  } else if ($fileType == "png") {
-    imagepng($blankImg,$editImgName);
-    // imagedestroy($originalImgFile);
-    // imagedestroy($blankImg);
-  };
-  //
+  // $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
+  // $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+  // $fileType = $updatePhotos[$imgNum]['extension'];
+  // if ($fileType == "jpeg" || $fileType =="JPEG") {
+  //   $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  // } else if ($fileType == "jpg" || $fileType == "JPG") {
+  //   $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  // } else if ($fileType == "png" || $fileType == "PNG") {
+  //   $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  // };
+  // imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
+  // if ($fileType == "jpeg") {
+  //   imagejpeg($blankImg,$editImgName);
+  //   // imagedestroy($originalImgFile);
+  //   // imagedestroy($blankImg);
+  // } else if ($fileType == "jpg") {
+  //   imagejpeg($blankImg,$editImgName);
+  //   // imagedestroy($originalImgFile);
+  //   // imagedestroy($blankImg);
+  // } else if ($fileType == "png") {
+  //   imagepng($blankImg,$editImgName);
+  //   // imagedestroy($originalImgFile);
+  //   // imagedestroy($blankImg);
+  // };
+  // //
 
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);

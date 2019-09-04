@@ -2,6 +2,10 @@
 $(document).ready(()=>{
   console.log("checking admin/main.js");
 
+  // $("body").bind('copy cut',(e)=>{
+  //   e.preventDefault()
+  // });
+
   // Compares window height and body height and makes the body is higher than the window
   let windowHeight = $(window).height();
   let bodyHeight = $("body").height();
@@ -590,7 +594,7 @@ $(document).ready(()=>{
     let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(1));
     let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(1));
     let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
-    console.log(newHref);
+    // console.log(newHref);
     window.location.href = newHref;
   });
 
