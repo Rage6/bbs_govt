@@ -330,7 +330,6 @@ if (isset($_GET['editImg'])) {
   ));
 
   $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
-
   $updatePhotoStmt->execute(array(
     ':se'=>$secId
   ));
@@ -359,31 +358,31 @@ if (isset($_GET['editImg'])) {
   $cropHeight = ($percentHeight / 100) * $actualHeight;
   // $originalImgName = $updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
   // ... before actually carrying out the cropping and upload
-  // $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
-  // $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
-  // $fileType = $updatePhotos[$imgNum]['extension'];
-  // if ($fileType == "jpeg" || $fileType =="JPEG") {
-  //   $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  // } else if ($fileType == "jpg" || $fileType == "JPG") {
-  //   $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  // } else if ($fileType == "png" || $fileType == "PNG") {
-  //   $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  // };
-  // imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
-  // if ($fileType == "jpeg") {
-  //   imagejpeg($blankImg,$editImgName);
-  //   // imagedestroy($originalImgFile);
-  //   // imagedestroy($blankImg);
-  // } else if ($fileType == "jpg") {
-  //   imagejpeg($blankImg,$editImgName);
-  //   // imagedestroy($originalImgFile);
-  //   // imagedestroy($blankImg);
-  // } else if ($fileType == "png") {
-  //   imagepng($blankImg,$editImgName);
-  //   // imagedestroy($originalImgFile);
-  //   // imagedestroy($blankImg);
-  // };
-  // //
+  $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
+  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+  $fileType = $updatePhotos[$imgNum]['extension'];
+  if ($fileType == "jpeg" || $fileType =="JPEG") {
+    $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  } else if ($fileType == "jpg" || $fileType == "JPG") {
+    $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  } else if ($fileType == "png" || $fileType == "PNG") {
+    $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
+  };
+  imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
+  if ($fileType == "jpeg") {
+    imagejpeg($blankImg,$editImgName);
+    // imagedestroy($originalImgFile);
+    // imagedestroy($blankImg);
+  } else if ($fileType == "jpg") {
+    imagejpeg($blankImg,$editImgName);
+    // imagedestroy($originalImgFile);
+    // imagedestroy($blankImg);
+  } else if ($fileType == "png") {
+    imagepng($blankImg,$editImgName);
+    // imagedestroy($originalImgFile);
+    // imagedestroy($blankImg);
+  };
+
 
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);
