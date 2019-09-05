@@ -1,10 +1,6 @@
 // $(()=>{
 $(document).ready(()=>{
-  console.log("checking admin/main.js");
-
-  // $("body").bind('copy cut',(e)=>{
-  //   e.preventDefault()
-  // });
+  console.log("testing admin/main.js");
 
   // Compares window height and body height and makes the body is higher than the window
   let windowHeight = $(window).height();
@@ -384,6 +380,9 @@ $(document).ready(()=>{
       $(".leftCrop").css('width',nextLeftWidth + "px");
       $(".leftCrop").css('height',nextLeftHeight + "px");
       $(".leftCrop").css('margin-top',nextLeftTop);
+    } else {;
+      console.log("Minimum size");
+      clearInterval(shrinkInterval);
     };
   };
 
@@ -413,8 +412,9 @@ $(document).ready(()=>{
         .css('width',leftCheck - 1 + "px")
         .css('margin-top',leftMarginTop - 1 + "px")
         .css('height',leftCropHeight + 2 + "px");
-    } else {
-      console.log("The image cannot get any larger");
+    } else {;
+      console.log("Maximum size");
+      clearInterval(enlargeInterval);
     };
   };
 
@@ -433,6 +433,7 @@ $(document).ready(()=>{
     if (shrinkInterval != null) {
       clearInterval(shrinkInterval);
     };
+    event.preventDefault();
     shrinkInterval = setInterval(() => { shrinkImg() }, 50);
   });
   // Automatically deactivates shrinkImg()
@@ -446,6 +447,7 @@ $(document).ready(()=>{
     if (enlargeInterval != null) {
       clearInterval(enlargeInterval);
     };
+    event.preventDefault();
     enlargeInterval = setInterval(() => { enlargeImg() }, 50);
   });
   // Automatically deactivates shrinkImg()
@@ -472,6 +474,7 @@ $(document).ready(()=>{
         .css('margin-top', currentLeftMargin - 1 + "px");
     } else {
       console.log("Cannot go any higher");
+      clearInterval(upInterval);
     };
   };
 
@@ -481,6 +484,7 @@ $(document).ready(()=>{
     if (upInterval != null) {
       clearInterval(upInterval);
     };
+    event.preventDefault();
     upInterval = setInterval(() => { upCrop() }, 50);
   });
   // Automatically deactivates upInterval()
@@ -499,6 +503,7 @@ $(document).ready(()=>{
         .css('width', currentLeftWidth + 1 + "px");
     } else {
       console.log("Cannot go any further right");
+      clearInterval(rightInterval);
     };
   };
 
@@ -508,6 +513,7 @@ $(document).ready(()=>{
     if (rightInterval != null) {
       clearInterval(rightInterval);
     };
+    event.preventDefault();
     rightInterval = setInterval(() => { rightCrop() }, 50);
   });
   // Automatically deactivates rightInterval()
@@ -534,6 +540,7 @@ $(document).ready(()=>{
         .css('margin-top', currentLeftMargin + 1 + "px");
     } else {
       console.log("Cannot go any lower");
+      clearInterval(downInterval);
     };
   };
 
@@ -543,6 +550,7 @@ $(document).ready(()=>{
     if (downInterval != null) {
       clearInterval(downInterval);
     };
+    event.preventDefault();
     downInterval = setInterval(() => { downCrop() }, 50);
   });
   // Automatically deactivates shrinkImg()
@@ -561,6 +569,7 @@ $(document).ready(()=>{
         .css('width', currentLeftWidth - 1 + "px");
     } else {
       console.log("Cannot go any further left");
+      clearInterval(leftInterval);
     };
   };
 
@@ -570,6 +579,7 @@ $(document).ready(()=>{
     if (leftInterval != null) {
       clearInterval(leftInterval);
     };
+    event.preventDefault();
     leftInterval = setInterval(() => { leftCrop() }, 50);
   });
   // Automatically deactivates leftCrop()
