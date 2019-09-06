@@ -321,6 +321,7 @@ $(document).ready(()=>{
   let rawWidth = 0;
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
+  console.log(requestData);
   let requestList = requestData.split("&");
   let maxSize = 0;
   let top = 0;
@@ -604,8 +605,8 @@ $(document).ready(()=>{
     let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(1));
     let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(1));
     let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
-    // console.log(newHref);
-    window.location.href = newHref;
+    console.log(newHref);
+    // window.location.href = newHref;
   });
 
   // Counts down the time until the session expires

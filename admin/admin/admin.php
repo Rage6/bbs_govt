@@ -35,6 +35,7 @@
   </head>
   <body>
   <div class="wholePage">
+    <!-- START: This is the box that only appears when cropping a newly uploaded image -->
     <div class="cropBox" id="cropBox">
       <div class="cropBacking">
       </div>
@@ -81,6 +82,7 @@
         </button>
       </div>
     </div>
+    <!-- END -->
     <div class="menuTop">
       <?php
         if ($_SESSION['adminType'] == "counselor") {
