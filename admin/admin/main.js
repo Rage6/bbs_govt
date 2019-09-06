@@ -600,13 +600,13 @@ $(document).ready(()=>{
     ];
     let cropWidthPx = imgFullWidth - (borderPx[3] + borderPx[1]);
     let cropHeightPx = imgFullHeight - (borderPx[0] + borderPx[2]);
-    let cropWidthPercent = parseFloat(((cropWidthPx / imgFullWidth) * 100).toFixed(1));
-    let cropHeightPercent = parseFloat(((cropHeightPx / imgFullHeight) * 100).toFixed(1));
-    let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(1));
-    let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(1));
+    let cropWidthPercent = parseFloat(((cropWidthPx / imgFullWidth) * 100).toFixed(0));
+    let cropHeightPercent = parseFloat(((cropHeightPx / imgFullHeight) * 100).toFixed(0));
+    let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(0));
+    let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(0));
     let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
-    console.log(newHref);
-    // window.location.href = newHref;
+    // console.log(newHref);
+    window.location.href = newHref;
   });
 
   // Counts down the time until the session expires
