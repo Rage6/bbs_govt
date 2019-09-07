@@ -361,8 +361,16 @@ if (isset($_GET['editImg'])) {
   $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
   $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
   $fileType = $updatePhotos[$imgNum]['extension'];
+  // Testing by adding data...
+  $test1Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (1,"Test 1")');
+  $test1Stmt->execute();
+  //
   $_SESSION['message'] = "<b style='color:green'>Test 4</b>";
   if ($fileType == "jpeg" || $fileType =="JPEG") {
+    // Testing by adding data...
+    $test2Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (2,"Test 2")');
+    $test2Stmt->execute();
+    //
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   } else if ($fileType == "jpg" || $fileType == "JPG") {
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
@@ -371,6 +379,10 @@ if (isset($_GET['editImg'])) {
   };
   $_SESSION['message'] = "<b style='color:green'>Test 5</b>";
   imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
+  // Testing by adding data...
+  $test3Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (3,"Test 3")');
+  $test3Stmt->execute();
+  //
   $_SESSION['message'] = "<b style='color:green'>Test 6</b>";
   if ($fileType == "jpeg") {
     $_SESSION['message'] = "<b style='color:green'>Test jpeg</b>";
@@ -388,6 +400,10 @@ if (isset($_GET['editImg'])) {
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   };
+  // Testing by adding data...
+  $test3Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (4,"Test 4")');
+  $test3Stmt->execute();
+  //
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);
   header('Location: admin.php');
