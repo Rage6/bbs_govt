@@ -320,6 +320,7 @@ if (isset($_POST['submitFile'])) {
 
 // After editing, the dimensions are saved on its row in the Image table
 if (isset($_GET['editImg'])) {
+  $_SESSION['message'] = "<b style='color:green'>Test 1</b>";
   $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,edited=1,approved=0 WHERE image_id=:img");
   $imgDimensionsStmt->execute(array(
     ':px'=>htmlentities($_GET['xPercent']),
@@ -328,7 +329,7 @@ if (isset($_GET['editImg'])) {
     ':wth'=>htmlentities($_GET['widthPercent']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
-
+  $_SESSION['message'] = "<b style='color:green'>Test 2</b>";
   $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
   $updatePhotoStmt->execute(array(
     ':se'=>$secId
@@ -337,7 +338,7 @@ if (isset($_GET['editImg'])) {
   while ($onePhoto = $updatePhotoStmt->fetch(PDO::FETCH_ASSOC)) {
     $updatePhotos[] = $onePhoto;
   };
-
+  $_SESSION['message'] = "<b style='color:green'>Test 3</b>";
   $arrayImgId = $_SESSION['imgId'];
   $imgNum = null;
   for ($indexNum = 0; $indexNum < count($updatePhotos); $indexNum++) {
@@ -356,11 +357,11 @@ if (isset($_GET['editImg'])) {
   $fromY = ($percentY / 100) * $actualHeight;
   $cropWidth = ($percentWidth / 100) * $actualWidth;
   $cropHeight = ($percentHeight / 100) * $actualHeight;
-  // $originalImgName = $updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
   // ... before actually carrying out the cropping and upload
   $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
   $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
   $fileType = $updatePhotos[$imgNum]['extension'];
+  $_SESSION['message'] = "<b style='color:green'>Test 4</b>";
   if ($fileType == "jpeg" || $fileType =="JPEG") {
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   } else if ($fileType == "jpg" || $fileType == "JPG") {
@@ -368,16 +369,21 @@ if (isset($_GET['editImg'])) {
   } else if ($fileType == "png" || $fileType == "PNG") {
     $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   };
+  $_SESSION['message'] = "<b style='color:green'>Test 5</b>";
   imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
+  $_SESSION['message'] = "<b style='color:green'>Test 6</b>";
   if ($fileType == "jpeg") {
+    $_SESSION['message'] = "<b style='color:green'>Test jpeg</b>";
     imagejpeg($blankImg,$editImgName);
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   } else if ($fileType == "jpg") {
+    $_SESSION['message'] = "<b style='color:green'>Test jpg</b>";
     imagejpeg($blankImg,$editImgName);
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   } else if ($fileType == "png") {
+    $_SESSION['message'] = "<b style='color:green'>Test png</b>";
     imagepng($blankImg,$editImgName);
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
