@@ -320,7 +320,6 @@ if (isset($_POST['submitFile'])) {
 
 // After editing, the dimensions are saved on its row in the Image table
 if (isset($_GET['editImg'])) {
-  $_SESSION['message'] = "<b style='color:green'>Test 1</b>";
   $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,edited=1,approved=0 WHERE image_id=:img");
   $imgDimensionsStmt->execute(array(
     ':px'=>htmlentities($_GET['xPercent']),
@@ -329,7 +328,6 @@ if (isset($_GET['editImg'])) {
     ':wth'=>htmlentities($_GET['widthPercent']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
-  $_SESSION['message'] = "<b style='color:green'>Test 2</b>";
   $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
   $updatePhotoStmt->execute(array(
     ':se'=>$secId
@@ -338,7 +336,6 @@ if (isset($_GET['editImg'])) {
   while ($onePhoto = $updatePhotoStmt->fetch(PDO::FETCH_ASSOC)) {
     $updatePhotos[] = $onePhoto;
   };
-  $_SESSION['message'] = "<b style='color:green'>Test 3</b>";
   $arrayImgId = $_SESSION['imgId'];
   $imgNum = null;
   for ($indexNum = 0; $indexNum < count($updatePhotos); $indexNum++) {
@@ -356,34 +353,29 @@ if (isset($_GET['editImg'])) {
   $fromX = ($percentX / 100) * $actualWidth;
   $fromY = ($percentY / 100) * $actualHeight;
   $cropWidth = ($percentWidth / 100) * $actualWidth;
+  $intCropWidth = (int)$cropWidth;
   $cropHeight = ($percentHeight / 100) * $actualHeight;
+  $intCropHeight = (int)$cropHeight;
   // ... before actually carrying out the cropping and upload
   $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
-  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
-  $fileType = $updatePhotos[$imgNum]['extension'];
   // Testing by adding data...
-  $test1Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (1,"Test 1")');
-  $test1Stmt->execute();
+  $preTestStmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (1,"Test before $blankImg...")');
+  $preTestStmt->execute();
   //
-  $_SESSION['message'] = "<b style='color:green'>Test 4</b>";
+  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+  // Testing by adding data...
+  $preTestStmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (2,"...and test after $blankImg")');
+  $preTestStmt->execute();
+  //
+  $fileType = $updatePhotos[$imgNum]['extension'];
   if ($fileType == "jpeg" || $fileType =="JPEG") {
-    // Testing by adding data...
-    $test2Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (2,"Test 2")');
-    $test2Stmt->execute();
-    //
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   } else if ($fileType == "jpg" || $fileType == "JPG") {
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   } else if ($fileType == "png" || $fileType == "PNG") {
     $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   };
-  $_SESSION['message'] = "<b style='color:green'>Test 5</b>";
   imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
-  // Testing by adding data...
-  $test3Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (3,"Test 3")');
-  $test3Stmt->execute();
-  //
-  $_SESSION['message'] = "<b style='color:green'>Test 6</b>";
   if ($fileType == "jpeg") {
     $_SESSION['message'] = "<b style='color:green'>Test jpeg</b>";
     imagejpeg($blankImg,$editImgName);
@@ -400,10 +392,6 @@ if (isset($_GET['editImg'])) {
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   };
-  // Testing by adding data...
-  $test3Stmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (4,"Test 4")');
-  $test3Stmt->execute();
-  //
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);
   header('Location: admin.php');

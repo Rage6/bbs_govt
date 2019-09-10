@@ -321,7 +321,7 @@ $(document).ready(()=>{
   let rawWidth = 0;
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
-  console.log(requestData);
+  // console.log(requestData);
   let requestList = requestData.split("&");
   let maxSize = 0;
   let top = 0;
