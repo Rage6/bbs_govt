@@ -362,7 +362,7 @@ if (isset($_GET['editImg'])) {
   $preTestStmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (1,"Test before $blankImg...")');
   $preTestStmt->execute();
   //
-  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+  $blankImg = imagecreatetruecolor($intCropWidth,$intCropHeight);
   // Testing by adding data...
   $preTestStmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (2,"...and test after $blankImg")');
   $preTestStmt->execute();
