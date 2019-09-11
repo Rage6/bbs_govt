@@ -247,13 +247,13 @@ if (isset($_POST['changeJobDel'])) {
 // Uploade a job image, replacing the current one
 if (isset($_POST['submitFile'])) {
   $jobImg = $_FILES['jobImg'];
-  $onlyTypes = ['jpg','jpeg','png'];
+  $onlyTypes = ['jpg','jpeg','JPG','JPEG'];
   $choppedImgName = explode('.', $jobImg['name']);
   if (count($_FILES) == 1) {
     if (count($choppedImgName) == 2) {
       $imgExt = strtolower(end($choppedImgName));
       if (in_array($imgExt, $onlyTypes)) {
-        if ($jobImg['error'] === 0) {
+        if ($jobImg['error'] == 0) {
           if ($jobImg['size'] <= 2000000) {
             $currentFilePath = htmlentities($_POST['jobPath']);
             $currentFileName = htmlentities($_POST['jobFile']);
@@ -328,9 +328,7 @@ if (isset($_GET['editImg'])) {
     ':wth'=>htmlentities($_GET['widthPercent']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
-
   $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
-
   $updatePhotoStmt->execute(array(
     ':se'=>$secId
   ));
@@ -338,7 +336,6 @@ if (isset($_GET['editImg'])) {
   while ($onePhoto = $updatePhotoStmt->fetch(PDO::FETCH_ASSOC)) {
     $updatePhotos[] = $onePhoto;
   };
-
   $arrayImgId = $_SESSION['imgId'];
   $imgNum = null;
   for ($indexNum = 0; $indexNum < count($updatePhotos); $indexNum++) {
@@ -356,35 +353,39 @@ if (isset($_GET['editImg'])) {
   $fromX = ($percentX / 100) * $actualWidth;
   $fromY = ($percentY / 100) * $actualHeight;
   $cropWidth = ($percentWidth / 100) * $actualWidth;
+  $intCropWidth = (int)$cropWidth;
   $cropHeight = ($percentHeight / 100) * $actualHeight;
-  $originalImgName = $updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
+  $intCropHeight = (int)$cropHeight;
   // ... before actually carrying out the cropping and upload
   $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
-  $blankImg = imagecreatetruecolor($cropWidth,$cropHeight);
+  // The imagecreatetruecolor() function below is NOT working in Heroku
+  $blankImg = imagecreatetruecolor($intCropWidth,$intCropHeight);
+  //
   $fileType = $updatePhotos[$imgNum]['extension'];
-  if ($fileType == "jpeg") {
+  if ($fileType == "jpeg" || $fileType =="JPEG") {
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  } else if ($fileType == "jpg") {
+  } else if ($fileType == "jpg" || $fileType == "JPG") {
     $originalImgFile = imagecreatefromjpeg($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
-  } else if ($fileType == "png") {
+  } else if ($fileType == "png" || $fileType == "PNG") {
     $originalImgFile = imagecreatefrompng($updatePhotos[$imgNum]['section_path'].$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension']);
   };
   imagecopy($blankImg,$originalImgFile,0,0,$fromX,$fromY,$actualWidth,$actualHeight);
   if ($fileType == "jpeg") {
+    $_SESSION['message'] = "<b style='color:green'>Test jpeg</b>";
     imagejpeg($blankImg,$editImgName);
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   } else if ($fileType == "jpg") {
+    $_SESSION['message'] = "<b style='color:green'>Test jpg</b>";
     imagejpeg($blankImg,$editImgName);
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   } else if ($fileType == "png") {
+    $_SESSION['message'] = "<b style='color:green'>Test png</b>";
     imagepng($blankImg,$editImgName);
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   };
-  //
-
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);
   header('Location: admin.php');
