@@ -358,14 +358,8 @@ if (isset($_GET['editImg'])) {
   $intCropHeight = (int)$cropHeight;
   // ... before actually carrying out the cropping and upload
   $editImgName = $updatePhotos[$imgNum]['section_path']."crop_".$updatePhotos[$imgNum]['filename'].".".$updatePhotos[$imgNum]['extension'];
-  // Testing by adding data...
-  $preTestStmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (1,"Test before $blankImg...")');
-  $preTestStmt->execute();
-  //
+  // The imagecreatetruecolor() function below is NOT working in Heroku
   $blankImg = imagecreatetruecolor($intCropWidth,$intCropHeight);
-  // Testing by adding data...
-  $preTestStmt = $pdo->prepare('INSERT INTO Maintenance (locksmith_id,locksmith_name) VALUES (2,"...and test after $blankImg")');
-  $preTestStmt->execute();
   //
   $fileType = $updatePhotos[$imgNum]['extension'];
   if ($fileType == "jpeg" || $fileType =="JPEG") {
