@@ -296,6 +296,7 @@ $(document).ready(()=>{
   // Sets up the default square box when opening the cropBox
   const updateCropImg = (imgWidth,imgHeight) => {
     let portrait = null;
+    console.log(document.getElementById('cropImg'));
     let fitWidth = document.getElementById('cropImg').width;
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
     let closeHeight = $(".closeRow").outerHeight();
