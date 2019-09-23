@@ -298,7 +298,9 @@ $(document).ready(()=>{
     let portrait = null;
     console.log(document.getElementById('cropImg'));
     let fitWidth = document.getElementById('cropImg').width;
+    console.log(fitWidth);
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
+    console.log(fitHeight);
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
     if (fitHeight > fitWidth) {
