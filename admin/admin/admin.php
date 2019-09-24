@@ -92,7 +92,9 @@
     <?php
       if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
         echo("<div class='message'>".$_SESSION['message']."</div>");
+        // echo("<pre>");
         // var_dump($_SESSION['message']);
+        // echo("</pre>");
         unset($_SESSION['message']);
       };
     ?>

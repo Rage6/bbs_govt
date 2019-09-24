@@ -262,17 +262,20 @@ if (isset($_POST['submitFile'])) {
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName.".".$currentFileExtension;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
-            $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName.".".$currentFileExtension);
+            $imageInfo = exif_read_data($imgDestination,0,true);
+            // $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName.".".$currentFileExtension);
             $uploadSizesStmt = $pdo->prepare("UPDATE Image SET actual_width=:ax, actual_height=:ay WHERE image_id=:imi");
             $uploadSizesStmt->execute(array(
-              ':ax'=>$imageInfo[0],
-              ':ay'=>$imageInfo[1],
+              // ':ax'=>$imageInfo[0],
+              // ':ay'=>$imageInfo[1],
+              ':ax'=>$imageInfo['COMPUTED']['Width'],
+              ':ay'=>$imageInfo['COMPUTED']['Height'],
               ':imi'=>$currentImgId
             ));
-            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
-            // $_SESSION['message'] = exif_read_data($imgDestination,0,true);
+            // $_SESSION['message'] = $imageInfo;
             $_SESSION['imgId'] = $currentImgId;
-            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
+            // header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
+            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo['COMPUTED']['Width']."&".$imageInfo['COMPUTED']['Height']);
             unset($_SESSION['imgid']);
             return true;
           } else {
@@ -386,7 +389,7 @@ if (isset($_GET['editImg'])) {
     // imagedestroy($originalImgFile);
     // imagedestroy($blankImg);
   };
-  $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
+  $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
   unset($_SESSION['imgId']);
   header('Location: admin.php');
   return true;
