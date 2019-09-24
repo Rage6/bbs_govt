@@ -269,8 +269,8 @@ if (isset($_POST['submitFile'])) {
               ':ay'=>$imageInfo[1],
               ':imi'=>$currentImgId
             ));
-            // $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
-            $_SESSION['message'] = exif_read_data($imgDestination,0,true);
+            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            // $_SESSION['message'] = exif_read_data($imgDestination,0,true);
             $_SESSION['imgId'] = $currentImgId;
             header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
             unset($_SESSION['imgid']);

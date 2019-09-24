@@ -91,8 +91,8 @@
     <div class="titleBottom">Administrative Center</div>
     <?php
       if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
-        // echo("<div class='message'>".$_SESSION['message']."</div>");
-        var_dump($_SESSION['message']);
+        echo("<div class='message'>".$_SESSION['message']."</div>");
+        // var_dump($_SESSION['message']);
         unset($_SESSION['message']);
       };
     ?>
