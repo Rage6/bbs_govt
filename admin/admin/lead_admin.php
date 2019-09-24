@@ -282,15 +282,15 @@ if (isset($_POST['submitFile'])) {
             return false;
           };
         } else {
-          // $_SESSION['message'] = "
-          //   <b style='color:red'>
-          //     An error occured during your upload. Please contact your counselor or the BBS IT staff
-          //   </b>
-          //   </br>
-          //   <b style='color:red'>
-          //     Error:
-          //   </b>";
-          $_SESSION['message'] = var_dump($_FILES['jobImg']);
+          $_SESSION['message'] = "
+            <b style='color:red'>
+              An error occured during your upload. Please contact your counselor or the BBS IT staff
+            </b>
+            </br>
+            <b style='color:red'>
+              Error #: ".echo($jobImg['error']).
+            "</b>";
+          // See below link for error message connected to the provided error number: https://www.php.net/manual/en/features.file-upload.errors.php
           unset($_FILES['jobImg']);
           header('Location: admin.php');
           return false;
