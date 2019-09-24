@@ -287,7 +287,7 @@ if (isset($_POST['submitFile'])) {
               An error occured during your upload. Please contact your counselor or the BBS IT staff
             </b>
             </br>
-            <b style='color:red'>Error #: ".echo($jobImg['error'])."</b>";
+            <b style='color:red'>Error #: </b>";
           // See below link for error message connected to the provided error number: https://www.php.net/manual/en/features.file-upload.errors.php
           unset($_FILES['jobImg']);
           header('Location: admin.php');
