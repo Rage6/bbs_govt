@@ -57,20 +57,12 @@
         </div>
         <div class="cropMove">
           <div class="cropMoveRow">
-            <button id="upBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
+            <button id="upBttn" class="moveBttn"></button>
           </div>
           <div class="cropMoveRow">
-            <button id="leftBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
-            <button id="downBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
-            <button id="rightBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
+            <button id="leftBttn" class="moveBttn"></button>
+            <button id="downBttn" class="moveBttn"></button>
+            <button id="rightBttn" class="moveBttn"></button>
           </div>
         </div>
         <div class="cropSize">

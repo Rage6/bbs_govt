@@ -854,7 +854,7 @@ body {
 }
 
 .cropMove {
-  margin: 0 30%
+  margin: 0 25%
 }
 
 .cropMoveRow {
@@ -866,28 +866,32 @@ body {
 .moveBttn {
   border-radius: 5px;
   background-color: orange;
-  width: 30px;
-  height: 30px;
-}
-
-.moveBttn img {
-  width: 100%;
+  width: 40px;
+  height: 40px;
+  user-select: none;
 }
 
 #upBttn {
   transform: rotate(-90deg);
+  background-image: url("../../../img/admin/right_arrow.png");
+  background-size: contain;
 }
 
 #rightBttn {
-
+  background-image: url("../../../img/admin/right_arrow.png");
+  background-size: contain;
 }
 
 #downBttn {
   transform: rotate(90deg);
+  background-image: url("../../../img/admin/right_arrow.png");
+  background-size: contain;
 }
 
 #leftBttn {
   transform: rotate(180deg);
+  background-image: url("../../../img/admin/right_arrow.png");
+  background-size: contain;
 }
 
 .cropSize {
