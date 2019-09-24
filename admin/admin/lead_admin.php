@@ -288,8 +288,8 @@ if (isset($_POST['submitFile'])) {
             </b>
             </br>
             <b style='color:red'>
-              Error: ".$_FILES['jobImg']['tmp_name']."
-            </b>";
+              Error: ".echo($jobImg['error']).
+            "</b>";
           unset($_FILES['jobImg']);
           header('Location: admin.php');
           return false;
