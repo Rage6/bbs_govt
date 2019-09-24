@@ -296,11 +296,11 @@ $(document).ready(()=>{
   // Sets up the default square box when opening the cropBox
   const updateCropImg = (imgWidth,imgHeight) => {
     let portrait = null;
-    console.log(document.getElementById('cropImg'));
-    let fitWidth = document.getElementById('cropImg').width;
-    console.log(fitWidth);
+    // console.log(document.getElementById('cropImg'));
+    let fitWidth = document.getElementById('cropImg').offsetWidth;
+    // console.log(fitWidth);
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
-    console.log(fitHeight);
+    // console.log(fitHeight);
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
     if (fitHeight > fitWidth) {
