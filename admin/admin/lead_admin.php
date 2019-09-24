@@ -282,15 +282,14 @@ if (isset($_POST['submitFile'])) {
             return false;
           };
         } else {
-          // $_SESSION['message'] = "
-          //   <b style='color:red'>
-          //     An error occured during your upload. Please contact your counselor or the BBS IT staff
-          //   </b>
-          //   </br>
-          //   <b style='color:red'>
-          //     Error:
-          //   </b>";
-          $_SESSION['message'] = print_r($jobImg['error']);
+          $_SESSION['message'] = "
+            <b style='color:red'>
+              An error occured during your upload. Please contact your counselor or the BBS IT staff
+            </b>
+            </br>
+            <b style='color:red'>
+              Error:
+            </b>";
           unset($_FILES['jobImg']);
           header('Location: admin.php');
           return false;
