@@ -262,7 +262,7 @@ if (isset($_POST['submitFile'])) {
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName.".".$currentFileExtension;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
-            $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName.".".$currentFileExtension);
+            $imageInfo = getimagesize($imgDestination);
             $uploadSizesStmt = $pdo->prepare("UPDATE Image SET actual_width=:ax, actual_height=:ay WHERE image_id=:imi");
             $uploadSizesStmt->execute(array(
               ':ax'=>$imageInfo[0],
@@ -270,7 +270,6 @@ if (isset($_POST['submitFile'])) {
               ':imi'=>$currentImgId
             ));
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
-            // $_SESSION['message'] = exif_read_data($imgDestination,0,true);
             $_SESSION['imgId'] = $currentImgId;
             header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
             unset($_SESSION['imgid']);
@@ -388,7 +387,7 @@ if (isset($_GET['editImg'])) {
   };
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);
-  header('Location: admin.php');
+  header('Location: admin.php?actualWidth='.$actualWidth.'&$actualHeight='.$actualHeight);
   return true;
 };
 
