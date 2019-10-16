@@ -271,7 +271,7 @@ if (isset($_POST['submitFile'])) {
             ));
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
             $_SESSION['imgId'] = $currentImgId;
-            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
+            header("Location: admin.php?imgAction=crop&destination=".$imgDestination."&imgId=".$currentImgId."&actualWidth=".$imageInfo[0]."&actualHeight=".$imageInfo[1]);
             unset($_SESSION['imgid']);
             return true;
           } else {
@@ -294,7 +294,7 @@ if (isset($_POST['submitFile'])) {
           return false;
         };
       } else {
-        $_SESSION['message'] = "<b style='color:red'>Your file type must be .jpg, .jpeg, or .png</b>";
+        $_SESSION['message'] = "<b style='color:red'>Your file type must be a .jpg or .jpeg file</b>";
         unset($_FILES['jobImg']);
         header('Location: admin.php');
         return false;
@@ -315,6 +315,29 @@ if (isset($_POST['submitFile'])) {
     header('Location: admin.php');
     return false;
   };
+};
+// $testImg = imagecreatefromjpeg("../../img/state/governor/bbs_auditor.jpeg");
+// $rotateTest = imagerotate($testImg,-90,0);
+// imagejpeg($rotateTest, "../../img/state/governor/bbs_auditor.jpeg");
+// To rotate an image before editing
+if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
+  $rotImgInfoStmt = $pdo->prepare("SELECT section_path, filename, extension FROM Image WHERE image_id=:imd");
+  $rotImgInfoStmt->execute(array(
+    ':imd'=>htmlentities($_GET['imgId'])
+  ));
+  $rotImgInfo = $rotImgInfoStmt->fetch(PDO::FETCH_ASSOC);
+  if ($rotImgInfo['extension'] == "jpeg" || $rotImgInfo['extension'] =="JPEG") {
+    $startImgFile =  imagecreatefromjpeg($rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
+    // $startImgFile = imagecreatefromjpeg("../../img/state/governor/bbs_auditor.jpeg");
+  } else if ($rotImgInfo['extension'] == "jpg" || $rotImgInfo['extension'] == "JPG") {
+    $startImgFile =  imagecreatefromjpeg($rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
+    // $startImgFile = imagecreatefromjpeg("../../img/state/governor/bbs_auditor.jpeg");
+  };
+  $rotateImage = imagerotate($startImgFile,-90,0);
+  imagejpeg($rotateImage,$rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
+  // imagejpeg($rotateImage,"../../img/state/governor/bbs_auditor.jpeg");
+  header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']);
+  return true;
 };
 
 // After editing, the dimensions are saved on its row in the Image table
@@ -387,7 +410,7 @@ if (isset($_GET['editImg'])) {
   };
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
   unset($_SESSION['imgId']);
-  header('Location: admin.php?actualWidth='.$actualWidth.'&$actualHeight='.$actualHeight);
+  header('Location: admin.php');
   return true;
 };
 

@@ -68,6 +68,7 @@
         <div class="cropSize">
           <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
           <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
+          <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" />
         </div>
         <button id="submitCrop" type="button">
           ENTER

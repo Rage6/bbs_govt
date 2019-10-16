@@ -895,7 +895,7 @@ body {
 }
 
 .cropSize {
-  margin: 20px 30% 0 30%;
+  margin: 20px 20% 0 20%;
   display:flex;
   justify-content:space-around;
 }

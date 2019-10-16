@@ -298,9 +298,7 @@ $(document).ready(()=>{
     let portrait = null;
     // console.log(document.getElementById('cropImg'));
     let fitWidth = document.getElementById('cropImg').offsetWidth;
-    // console.log(fitWidth);
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
-    // console.log(fitHeight);
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
     if (fitHeight > fitWidth) {
@@ -324,8 +322,9 @@ $(document).ready(()=>{
   let rawWidth = 0;
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
-  // console.log(requestData);
+  console.log(requestData);
   let requestList = requestData.split("&");
+  console.log(requestList[0].split("=")[1]);
   let maxSize = 0;
   let top = 0;
   let right = 0;
@@ -337,13 +336,12 @@ $(document).ready(()=>{
   let bottomHeight = 0;
   let leftWidth = 0;
   let leftHeight = 0;
-  if (requestList[0] == "crop") {
+  if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
     $(".cropBox").css('display','block');
-    $("#cropImg").attr('src',requestList[1]);
-    $("#exitJobId").val(requestList[2]);
-    rawWidth = requestList[3];
-    rawHeight = requestList[4];
-    // console.log(requestList);
+    $("#cropImg").attr('src',requestList[1].split("=")[1]);
+    $("#exitJobId").val(requestList[2].split("=")[1]);
+    rawWidth = requestList[3].split("=")[1];
+    rawHeight = requestList[4].split("=")[1];
     updateCropImg(rawWidth,rawHeight);
   };
 
@@ -589,6 +587,18 @@ $(document).ready(()=>{
   // Automatically deactivates leftCrop()
   $("#leftBttn").on(stopType,()=>{
     clearInterval(leftInterval);
+  });
+
+  $("#rotateBttn").click(()=>{
+    let rotateData = window.location.search.substring(1);
+    let rotateArray = rotateData.split("&");
+    let rotateObject = {};
+    for (let rotateNum = 0; rotateNum < rotateArray.length; rotateNum++) {
+      let oneArray = rotateArray[rotateNum].split("=");
+      rotateObject[oneArray[0]] = oneArray[1];
+    };
+    let rotateHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + rotateObject['destination'] + "&imgId=" + rotateObject['imgId'] + "&actualWidth=" + rotateObject['actualHeight'] + "&actualHeight=" + rotateObject['actualWidth'];
+    window.location.href = rotateHref;
   });
 
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
