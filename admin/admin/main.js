@@ -322,9 +322,7 @@ $(document).ready(()=>{
   let rawWidth = 0;
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
-  console.log(requestData);
   let requestList = requestData.split("&");
-  console.log(requestList[0].split("=")[1]);
   let maxSize = 0;
   let top = 0;
   let right = 0;
@@ -337,8 +335,9 @@ $(document).ready(()=>{
   let leftWidth = 0;
   let leftHeight = 0;
   if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
+    let randomNum = Math.floor(Math.random() * Math.floor(100000000));
     $(".cropBox").css('display','block');
-    $("#cropImg").attr('src',requestList[1].split("=")[1]);
+    $("#cropImg").attr('src',requestList[1].split("=")[1] + "?" + randomNum);
     $("#exitJobId").val(requestList[2].split("=")[1]);
     rawWidth = requestList[3].split("=")[1];
     rawHeight = requestList[4].split("=")[1];
