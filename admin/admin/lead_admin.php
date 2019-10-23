@@ -316,9 +316,7 @@ if (isset($_POST['submitFile'])) {
     return false;
   };
 };
-// $testImg = imagecreatefromjpeg("../../img/state/governor/bbs_auditor.jpeg");
-// $rotateTest = imagerotate($testImg,-90,0);
-// imagejpeg($rotateTest, "../../img/state/governor/bbs_auditor.jpeg");
+
 // To rotate an image before editing
 if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
   $rotImgInfoStmt = $pdo->prepare("SELECT section_path, filename, extension FROM Image WHERE image_id=:imd");
@@ -328,26 +326,31 @@ if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
   $rotImgInfo = $rotImgInfoStmt->fetch(PDO::FETCH_ASSOC);
   if ($rotImgInfo['extension'] == "jpeg" || $rotImgInfo['extension'] =="JPEG") {
     $startImgFile =  imagecreatefromjpeg($rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
-    // $startImgFile = imagecreatefromjpeg("../../img/state/governor/bbs_auditor.jpeg");
   } else if ($rotImgInfo['extension'] == "jpg" || $rotImgInfo['extension'] == "JPG") {
     $startImgFile =  imagecreatefromjpeg($rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
-    // $startImgFile = imagecreatefromjpeg("../../img/state/governor/bbs_auditor.jpeg");
   };
   $rotateImage = imagerotate($startImgFile,-90,0);
   imagejpeg($rotateImage,$rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
-  // imagejpeg($rotateImage,"../../img/state/governor/bbs_auditor.jpeg");
+  // $updateHeightWidthStmt = $pdo->prepare("UPDATE Image SET actual_width=:ah,actual_height=:aw WHERE image_id=:ri");
+  // $updateHeightWidthStmt->execute(array(
+  //   ':ah'=>htmlentities($_GET['actualHeight']),
+  //   ':aw'=>htmlentities($_GET['actualWidth']),
+  //   ':ri'=>htmlentities($_GET['imgId'])
+  // ));
   header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']);
   return true;
 };
 
 // After editing, the dimensions are saved on its row in the Image table
 if (isset($_GET['editImg'])) {
-  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,edited=1,approved=0 WHERE image_id=:img");
+  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,actual_width=:aw,actual_height=:ah,edited=1,approved=0 WHERE image_id=:img");
   $imgDimensionsStmt->execute(array(
     ':px'=>htmlentities($_GET['xPercent']),
     ':py'=>htmlentities($_GET['yPercent']),
     ':hgt'=>htmlentities($_GET['heightPercent']),
     ':wth'=>htmlentities($_GET['widthPercent']),
+    ':ah'=>htmlentities($_GET['actualHeight']),
+    ':aw'=>htmlentities($_GET['actualWidth']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
   $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");

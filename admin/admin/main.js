@@ -323,6 +323,7 @@ $(document).ready(()=>{
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
   let requestList = requestData.split("&");
+  console.log(requestList);
   let maxSize = 0;
   let top = 0;
   let right = 0;
@@ -343,6 +344,8 @@ $(document).ready(()=>{
     rawHeight = requestList[4].split("=")[1];
     updateCropImg(rawWidth,rawHeight);
   };
+
+
 
   // To shrink the cropping border size of the image
   const shrinkImg = () => {
@@ -589,6 +592,10 @@ $(document).ready(()=>{
   });
 
   $("#rotateBttn").click(()=>{
+    let preRotateHeight = rawHeight;
+    let preRotateWidth = rawWidth;
+    rawHeight = preRotateWidth;
+    rawWidth = preRotateHeight;
     let rotateData = window.location.search.substring(1);
     let rotateArray = rotateData.split("&");
     let rotateObject = {};
@@ -597,28 +604,42 @@ $(document).ready(()=>{
       rotateObject[oneArray[0]] = oneArray[1];
     };
     let rotateHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + rotateObject['destination'] + "&imgId=" + rotateObject['imgId'] + "&actualWidth=" + rotateObject['actualHeight'] + "&actualHeight=" + rotateObject['actualWidth'];
+    // console.log(rotateHref);
+    // return false;
     window.location.href = rotateHref;
+    return true;
   });
 
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
   $("#submitCrop").click(()=>{
+    let submitArray = window.location.search.substring(1).split("&");
+    let submitObject = {};
+    for (let submitNum = 0; submitNum < submitArray.length; submitNum++) {
+      let oneSubmit = submitArray[submitNum].split("=");
+      submitObject[oneSubmit[0]] = oneSubmit[1];
+    };
+    console.log(submitObject['actualWidth']);
+    console.log(submitObject['actualHeight']);
     let imgFullWidth = document.getElementById('cropImg').width;
-    let imgFullHeight = parseInt(((rawHeight / rawWidth) * imgFullWidth).toFixed(0));
+    // let imgFullHeight = parseInt(((rawHeight / rawWidth) * imgFullWidth).toFixed(0));
+    let imgFullHeight = parseInt(((parseInt(submitObject['actualHeight']) / parseInt(submitObject['actualWidth'])) * imgFullWidth).toFixed(0));
     let borderPx = [
       $(".topCrop").height(),
       $(".rightCrop").width(),
       $(".bottomCrop").height(),
       $(".leftCrop").width()
     ];
+    console.log(borderPx);
     let cropWidthPx = imgFullWidth - (borderPx[3] + borderPx[1]);
     let cropHeightPx = imgFullHeight - (borderPx[0] + borderPx[2]);
     let cropWidthPercent = parseFloat(((cropWidthPx / imgFullWidth) * 100).toFixed(0));
     let cropHeightPercent = parseFloat(((cropHeightPx / imgFullHeight) * 100).toFixed(0));
     let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(0));
     let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(0));
-    let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
+    let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent + "&actualWidth=" + submitObject['actualWidth'] + "&actualHeight=" + submitObject['actualHeight'];
     // console.log(newHref);
     window.location.href = newHref;
+    return false;
   });
 
   // Counts down the time until the session expires
