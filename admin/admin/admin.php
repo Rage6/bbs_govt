@@ -69,6 +69,9 @@
           <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
           <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
           <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" />
+          <!-- <button id="smallerBttn" class="sizeBttn">BIG</button>
+          <button id="biggerBttn" class="sizeBttn">small</button>
+          <button id="rotateBttn" class="sizeBttn">Rotate</button> -->
         </div>
         <button id="submitCrop" type="button">
           ENTER
