@@ -335,15 +335,19 @@ $(document).ready(()=>{
   let bottomHeight = 0;
   let leftWidth = 0;
   let leftHeight = 0;
-  if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
-    let randomNum = Math.floor(Math.random() * Math.floor(100000000));
-    $(".cropBox").css('display','block');
-    $("#cropImg").attr('src',requestList[1].split("=")[1] + "?t=" + randomNum);
-    $("#exitJobId").val(requestList[2].split("=")[1]);
-    rawWidth = requestList[3].split("=")[1];
-    rawHeight = requestList[4].split("=")[1];
-    updateCropImg(rawWidth,rawHeight);
-  };
+
+  // This makes the 'cropBox' appear a) if the cropping/rotating occurs and b) after the image is uploaded.
+  window.addEventListener('load',(event) => {
+    if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
+      let randomNum = Math.floor(Math.random() * Math.floor(100000000));
+      $(".cropBox").css('display','block');
+      $("#cropImg").attr('src',requestList[1].split("=")[1] + "?t=" + randomNum);
+      $("#exitJobId").val(requestList[2].split("=")[1]);
+      rawWidth = requestList[3].split("=")[1];
+      rawHeight = requestList[4].split("=")[1];
+      updateCropImg(rawWidth,rawHeight);
+    };
+  });
 
 
 
