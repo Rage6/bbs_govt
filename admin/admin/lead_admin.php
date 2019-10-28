@@ -331,12 +331,12 @@ if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
   };
   $rotateImage = imagerotate($startImgFile,-90,0);
   imagejpeg($rotateImage,$rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
-  // $updateHeightWidthStmt = $pdo->prepare("UPDATE Image SET actual_width=:ah,actual_height=:aw WHERE image_id=:ri");
-  // $updateHeightWidthStmt->execute(array(
-  //   ':ah'=>htmlentities($_GET['actualHeight']),
-  //   ':aw'=>htmlentities($_GET['actualWidth']),
-  //   ':ri'=>htmlentities($_GET['imgId'])
-  // ));
+  $updateHeightWidthStmt = $pdo->prepare("UPDATE Image SET actual_width=:aw,actual_height=:ah WHERE image_id=:ri");
+  $updateHeightWidthStmt->execute(array(
+    ':ah'=>htmlentities($_GET['actualHeight']),
+    ':aw'=>htmlentities($_GET['actualWidth']),
+    ':ri'=>htmlentities($_GET['imgId'])
+  ));
   header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']);
   return true;
 };

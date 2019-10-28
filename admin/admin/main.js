@@ -294,28 +294,56 @@ $(document).ready(()=>{
   $(".cropBox").css('height',cropBoxHeight);
 
   // Sets up the default square box when opening the cropBox
-  const updateCropImg = (imgWidth,imgHeight) => {
+  const updateCropImg = (getAction,imgPath,getImgId,imgWidth,imgHeight) => {
     let portrait = null;
-    // console.log(document.getElementById('cropImg'));
+    let randomNum = Math.floor(Math.random() * Math.floor(100000000));
+    $("#cropImg").attr('src',imgPath + "?t=" + randomNum);
     let fitWidth = document.getElementById('cropImg').offsetWidth;
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
-    if (fitHeight > fitWidth) {
-      maxSize = fitWidth;
-      portrait = true;
-      bottomPad = fitHeight - maxSize;
-      $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
-      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-      $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
-    } else {
+    // NOTE: The comparison between 'fit...' and 'img...' orientations below is because the mobile devices weren't coinciding them unless I rotated the image once. Hopefully, this will make them automatically rotated if they happen again.
+    if (fitWidth > fitHeight && imgWidth > imgHeight) {
+      // console.log("They are both a landscape");
       maxSize = fitHeight;
       portrait = false;
       rightPad = fitWidth - maxSize;
       $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
       $(".leftCrop").css('top',closeHeight).css('height',maxSize);
       $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
+    } else {
+      if (fitWidth < fitHeight && imgWidth < imgHeight) {
+        console.log("They are both a portrait");
+        maxSize = fitWidth;
+        portrait = true;
+        bottomPad = fitHeight - maxSize;
+        $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
+        $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+        $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
+      } else {
+        console.log("They don't look the same!");
+        let correctionHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + imgPath + "&imgId=" + getImgId + "&actualWidth=" + imgHeight + "&actualHeight=" + imgWidth;
+        window.location.href = correctionHref;
+        return true;
+      };
     };
+    // let closeHeight = $(".closeRow").outerHeight();
+    // $(".topCrop").css('top',closeHeight);
+    // if (fitHeight > fitWidth) {
+    //   maxSize = fitWidth;
+    //   portrait = true;
+    //   bottomPad = fitHeight - maxSize;
+    //   $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
+    //   $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+    //   $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
+    // } else {
+    //   maxSize = fitHeight;
+    //   portrait = false;
+    //   rightPad = fitWidth - maxSize;
+    //   $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
+    //   $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+    //   $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
+    // };
   };
 
   // Shows the cropBox after image is uploaded
@@ -339,13 +367,16 @@ $(document).ready(()=>{
   // This makes the 'cropBox' appear a) if the cropping/rotating occurs and b) after the image is uploaded.
   window.addEventListener('load',(event) => {
     if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
-      let randomNum = Math.floor(Math.random() * Math.floor(100000000));
+      // let randomNum = Math.floor(Math.random() * Math.floor(100000000));
       $(".cropBox").css('display','block');
-      $("#cropImg").attr('src',requestList[1].split("=")[1] + "?t=" + randomNum);
+      // $("#cropImg").attr('src',requestList[1].split("=")[1] + "?t=" + randomNum);
       $("#exitJobId").val(requestList[2].split("=")[1]);
+      let thisAction = requestList[0].split("=")[1];
+      let srcDestination = requestList[1].split("=")[1];
+      let thisImgId = requestList[2].split("=")[1];
       rawWidth = requestList[3].split("=")[1];
       rawHeight = requestList[4].split("=")[1];
-      updateCropImg(rawWidth,rawHeight);
+      updateCropImg(thisAction,srcDestination,thisImgId,rawWidth,rawHeight);
     };
   });
 
@@ -595,7 +626,6 @@ $(document).ready(()=>{
     clearInterval(leftInterval);
   });
 
-  // Prepares data for rotating the image in lead_admin.php
   $("#rotateBttn").click(()=>{
     let preRotateHeight = rawHeight;
     let preRotateWidth = rawWidth;
