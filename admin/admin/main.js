@@ -302,48 +302,50 @@ $(document).ready(()=>{
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
-    // NOTE: The comparison between 'fit...' and 'img...' orientations below is because the mobile devices weren't coinciding them unless I rotated the image once. Hopefully, this will make them automatically rotated if they happen again.
-    if (fitWidth > fitHeight && imgWidth > imgHeight) {
-      // console.log("They are both a landscape");
-      maxSize = fitHeight;
-      portrait = false;
-      rightPad = fitWidth - maxSize;
-      $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
-      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-      $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
-    } else {
-      if (fitWidth < fitHeight && imgWidth < imgHeight) {
-        console.log("They are both a portrait");
-        maxSize = fitWidth;
-        portrait = true;
-        bottomPad = fitHeight - maxSize;
-        $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
-        $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-        $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
-      } else {
-        console.log("They don't look the same!");
-        let correctionHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + imgPath + "&imgId=" + getImgId + "&actualWidth=" + imgHeight + "&actualHeight=" + imgWidth;
-        window.location.href = correctionHref;
-        return true;
-      };
-    };
-    // let closeHeight = $(".closeRow").outerHeight();
-    // $(".topCrop").css('top',closeHeight);
-    // if (fitHeight > fitWidth) {
-    //   maxSize = fitWidth;
-    //   portrait = true;
-    //   bottomPad = fitHeight - maxSize;
-    //   $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
-    //   $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-    //   $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
-    // } else {
+
+    // if (fitWidth > fitHeight && imgWidth > imgHeight) {
+    //   // console.log("They are both a landscape");
     //   maxSize = fitHeight;
     //   portrait = false;
     //   rightPad = fitWidth - maxSize;
     //   $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
     //   $(".leftCrop").css('top',closeHeight).css('height',maxSize);
     //   $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
+    // } else {
+    //   if (fitWidth < fitHeight && imgWidth < imgHeight) {
+    //     console.log("They are both a portrait");
+    //     maxSize = fitWidth;
+    //     portrait = true;
+    //     bottomPad = fitHeight - maxSize;
+    //     $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
+    //     $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+    //     $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
+    //   } else {
+    //     console.log("They don't look the same!");
+    //     let correctionHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + imgPath + "&imgId=" + getImgId + "&actualWidth=" + imgHeight + "&actualHeight=" + imgWidth;
+    //     window.location.href = correctionHref;
+    //     return true;
+    //   };
     // };
+
+    // let closeHeight = $(".closeRow").outerHeight();
+    // $(".topCrop").css('top',closeHeight);
+    if (fitHeight > fitWidth) {
+      maxSize = fitWidth;
+      portrait = true;
+      bottomPad = fitHeight - maxSize;
+      $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
+      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+      $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
+    } else {
+      maxSize = fitHeight;
+      portrait = false;
+      rightPad = fitWidth - maxSize;
+      $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
+      $(".leftCrop").css('top',closeHeight).css('height',maxSize);
+      $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
+    };
+
   };
 
   // Shows the cropBox after image is uploaded
