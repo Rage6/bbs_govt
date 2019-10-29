@@ -288,13 +288,22 @@ if (isset($_POST['submitFile'])) {
         } else {
           $_SESSION['message'] = "
             <b style='color:red'>
-              ERROR #".$jobImg['error']."</br>
-              Please contact your counselor or the BBS IT staff with this error number.
-              </br>
-              NOTE: If using an Apple device, try using the JPG formate when taking pictures, rather than its default HEIC. To change this go:
-              </br>
-              Settings -> Camera -> Format -> Most Compatible
-            </b>";
+              <u>ERROR #".$jobImg['error']."</u></br>
+              A problem occured during your upload. See <span id='errorInstructBttn'><u>these possible solutions</u></span>, or contact a counselor or IT staff member for assistance along with the above error number.
+            </b>
+            <div id='errorInstructBox style='background-color:white;color:black'>
+              <div>
+                The variety of modern devices, file types, and file sizes can cause occasional problems when uploading an image. Here are some of the potential reasons that your error occurred, and how to solve them.
+              </div>
+              <ul>
+                <li>
+                  <u>Image memory size was too big:</u> To prevent overloading the website's memory space, no image can exceed 2 MB. To reduce your image size, try <a href='https://www.reduceimages.com/'>https://www.reduceimages.com/</a>
+                </li>
+                <li>
+                  <u>
+                </li>
+              </ul>
+            </div>";
           // See below link for error message connected to the provided error number: https://www.php.net/manual/en/features.file-upload.errors.php
           unset($_FILES['jobImg']);
           header('Location: admin.php');
