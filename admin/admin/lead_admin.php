@@ -288,10 +288,13 @@ if (isset($_POST['submitFile'])) {
         } else {
           $_SESSION['message'] = "
             <b style='color:red'>
-              An error occured during your upload. Please contact your counselor or the BBS IT staff with the below error number.
-            </b>
-            </br>
-            <b style='color:red'>ERROR #: ".$jobImg['error']."</b>";
+              ERROR #".$jobImg['error']."</br>
+              Please contact your counselor or the BBS IT staff with this error number.
+              </br>
+              NOTE: If using an Apple device, try using the JPG formate when taking pictures, rather than its default HEIC. To change this go:
+              </br>
+              Settings -> Camera -> Format -> Most Compatible
+            </b>";
           // See below link for error message connected to the provided error number: https://www.php.net/manual/en/features.file-upload.errors.php
           unset($_FILES['jobImg']);
           header('Location: admin.php');
