@@ -254,7 +254,7 @@ if (isset($_POST['submitFile'])) {
       $imgExt = strtolower(end($choppedImgName));
       if (in_array($imgExt, $onlyTypes)) {
         if ($jobImg['error'] == 0) {
-          if ($jobImg['size'] <= 2000000) {
+          if ($jobImg['size'] <= 2500000) {
             $currentFilePath = htmlentities($_POST['jobPath']);
             $currentFileName = htmlentities($_POST['jobFile']);
             $currentFileExtension = htmlentities($_POST['jobExt']);
@@ -262,26 +262,19 @@ if (isset($_POST['submitFile'])) {
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName.".".$currentFileExtension;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
+            // To avoid misuse of EXIF Orientation, this creates the image as a plain JPEG w/o EXIF in the metadata
+            $plainImg = imagecreatefromjpeg($imgDestination);
+            imagejpeg($plainImg,$imgDestination);
+            //
             // To avoid problems with phones, this will automatically rotate the image so that it starts in the 'landscape' orientation
             $exifData = exif_read_data($imgDestination);
             if ($exifData == false) {
-              $exifOrientation = 0;
+              $exifOrientation = "no_EXIF";
             } else {
               if (array_key_exists('Orientation',$exifData) == false) {
-                $exifOrientation = 0;
+                $exifOrientation = "no_Orientation";
               } else {
                 $exifOrientation = $exifData['Orientation'];
-                $initImgFile = imagecreatefromjpeg($imgDestination);
-                if ($exifOrientation == 8) {
-                  $rotateInit = imagerotate($startImgFile,-90,0);
-                  imagejpeg($rotateInit,$imgDestination);
-                } elseif ($exifOrientation == 3) {
-                  $rotateInit = imagerotate($startImgFile,180,0);
-                  imagejpeg($rotateInit,$imgDestination);
-                } elseif ($exifOrientation == 6) {
-                  $rotateInit = imagerotate($startImgFile,90,0);
-                  imagejpeg($rotateInit,$imgDestination);
-                };
               };
             };
             //
@@ -360,7 +353,20 @@ if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
     ':aw'=>htmlentities($_GET['actualWidth']),
     ':ri'=>htmlentities($_GET['imgId'])
   ));
-  header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']);
+  //
+  // This reads if an EXIF is included, and the orientation if so
+  $exifData = exif_read_data($imgDestination);
+  if ($exifData == false) {
+    $exifOrientation = "no_EXIF";
+  } else {
+    if (array_key_exists('Orientation',$exifData) == false) {
+      $exifOrientation = "no_Orientation";
+    } else {
+      $exifOrientation = $exifData['Orientation'];
+    };
+  };
+  //
+  header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']."&imgOrientation=".$exifOrientation);
   return true;
 };
 

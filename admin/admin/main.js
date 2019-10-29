@@ -294,7 +294,7 @@ $(document).ready(()=>{
   $(".cropBox").css('height',cropBoxHeight);
 
   // Sets up the default square box when opening the cropBox
-  const updateCropImg = (getAction,imgPath,getImgId,imgWidth,imgHeight) => {
+  const updateCropImg = (getAction,imgPath,getImgId,imgWidth,imgHeight,imgOrientation) => {
     let portrait = null;
     let randomNum = Math.floor(Math.random() * Math.floor(100000000));
     $("#cropImg").attr('src',imgPath + "?t=" + randomNum);
@@ -303,33 +303,19 @@ $(document).ready(()=>{
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
 
-    // if (fitWidth > fitHeight && imgWidth > imgHeight) {
-    //   // console.log("They are both a landscape");
-    //   maxSize = fitHeight;
-    //   portrait = false;
-    //   rightPad = fitWidth - maxSize;
-    //   $(".rightCrop").css('top',closeHeight).css('width',rightPad).css('height',maxSize);
-    //   $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-    //   $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
-    // } else {
-    //   if (fitWidth < fitHeight && imgWidth < imgHeight) {
-    //     console.log("They are both a portrait");
-    //     maxSize = fitWidth;
-    //     portrait = true;
-    //     bottomPad = fitHeight - maxSize;
-    //     $(".rightCrop").css('top',closeHeight).css('width',0).css('height',maxSize);
-    //     $(".leftCrop").css('top',closeHeight).css('height',maxSize);
-    //     $(".bottomCrop").css('top',maxSize + closeHeight).css('height',bottomPad);
-    //   } else {
-    //     console.log("They don't look the same!");
-    //     let correctionHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + imgPath + "&imgId=" + getImgId + "&actualWidth=" + imgHeight + "&actualHeight=" + imgWidth;
-    //     window.location.href = correctionHref;
-    //     return true;
-    //   };
-    // };
+    if (imgOrientation != "no_EXIF" && imgOrientation != "no_Orientation") {
+      // find a way to determine if the orientation is being used by the screen or not
+      if (imgOrientation == 8) {
+        console.log("turn it 90 degrees, clockwise");
+      } else if (imgOrientation == 3) {
+        console.log("turn 180 degrees");
+      } else if (imgOrientation == 6) {
+        console.log("turn 90 degrees, counterclockwise");
+      } else if (imgOrientation == 1) {
+        console.log("This is oriented correctlys");
+      };
+    };
 
-    // let closeHeight = $(".closeRow").outerHeight();
-    // $(".topCrop").css('top',closeHeight);
     if (fitHeight > fitWidth) {
       maxSize = fitWidth;
       portrait = true;
@@ -376,9 +362,13 @@ $(document).ready(()=>{
       let thisAction = requestList[0].split("=")[1];
       let srcDestination = requestList[1].split("=")[1];
       let thisImgId = requestList[2].split("=")[1];
+      let thisOrientation = null;
+      if (requestList.length == 6) {
+        thisOrientation = requestList[5].split("=")[1];
+      };
       rawWidth = requestList[3].split("=")[1];
       rawHeight = requestList[4].split("=")[1];
-      updateCropImg(thisAction,srcDestination,thisImgId,rawWidth,rawHeight);
+      updateCropImg(thisAction,srcDestination,thisImgId,rawWidth,rawHeight,thisOrientation);
     };
   });
 
