@@ -341,9 +341,7 @@ $(document).ready(()=>{
   // This makes the 'cropBox' appear a) if the cropping/rotating occurs and b) after the image is uploaded.
   window.addEventListener('load',(event) => {
     if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
-      // let randomNum = Math.floor(Math.random() * Math.floor(100000000));
       $(".cropBox").css('display','block');
-      // $("#cropImg").attr('src',requestList[1].split("=")[1] + "?t=" + randomNum);
       $("#exitJobId").val(requestList[2].split("=")[1]);
       let thisAction = requestList[0].split("=")[1];
       let srcDestination = requestList[1].split("=")[1];

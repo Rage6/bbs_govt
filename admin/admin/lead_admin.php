@@ -341,19 +341,6 @@ if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
     ':aw'=>htmlentities($_GET['actualWidth']),
     ':ri'=>htmlentities($_GET['imgId'])
   ));
-  //
-  // This reads if an EXIF is included, and the orientation if so
-  $exifData = exif_read_data($imgDestination);
-  if ($exifData == false) {
-    $exifOrientation = "no_EXIF";
-  } else {
-    if (array_key_exists('Orientation',$exifData) == false) {
-      $exifOrientation = "no_Orientation";
-    } else {
-      $exifOrientation = $exifData['Orientation'];
-    };
-  };
-  //
   header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']."&imgOrientation=".$exifOrientation);
   return true;
 };
