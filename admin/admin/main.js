@@ -294,7 +294,7 @@ $(document).ready(()=>{
   $(".cropBox").css('height',cropBoxHeight);
 
   // Sets up the default square box when opening the cropBox
-  const updateCropImg = (getAction,imgPath,getImgId,imgWidth,imgHeight,imgOrientation) => {
+  const updateCropImg = (getAction,imgPath,getImgId,imgWidth,imgHeight) => {
     let portrait = null;
     let randomNum = Math.floor(Math.random() * Math.floor(100000000));
     $("#cropImg").attr('src',imgPath + "?t=" + randomNum);
@@ -302,20 +302,6 @@ $(document).ready(()=>{
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
-
-    if (imgOrientation != "no_EXIF" && imgOrientation != "no_Orientation") {
-      // find a way to determine if the orientation is being used by the screen or not
-      if (imgOrientation == 8) {
-        console.log("turn it 90 degrees, clockwise");
-      } else if (imgOrientation == 3) {
-        console.log("turn 180 degrees");
-      } else if (imgOrientation == 6) {
-        console.log("turn 90 degrees, counterclockwise");
-      } else if (imgOrientation == 1) {
-        console.log("This is oriented correctlys");
-      };
-    };
-
     if (fitHeight > fitWidth) {
       maxSize = fitWidth;
       portrait = true;
@@ -362,13 +348,9 @@ $(document).ready(()=>{
       let thisAction = requestList[0].split("=")[1];
       let srcDestination = requestList[1].split("=")[1];
       let thisImgId = requestList[2].split("=")[1];
-      let thisOrientation = null;
-      if (requestList.length == 6) {
-        thisOrientation = requestList[5].split("=")[1];
-      };
       rawWidth = requestList[3].split("=")[1];
       rawHeight = requestList[4].split("=")[1];
-      updateCropImg(thisAction,srcDestination,thisImgId,rawWidth,rawHeight,thisOrientation);
+      updateCropImg(thisAction,srcDestination,thisImgId,rawWidth,rawHeight);
     };
   });
 

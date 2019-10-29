@@ -266,18 +266,6 @@ if (isset($_POST['submitFile'])) {
             $plainImg = imagecreatefromjpeg($imgDestination);
             imagejpeg($plainImg,$imgDestination);
             //
-            // To avoid problems with phones, this will automatically rotate the image so that it starts in the 'landscape' orientation
-            $exifData = exif_read_data($imgDestination);
-            if ($exifData == false) {
-              $exifOrientation = "no_EXIF";
-            } else {
-              if (array_key_exists('Orientation',$exifData) == false) {
-                $exifOrientation = "no_Orientation";
-              } else {
-                $exifOrientation = $exifData['Orientation'];
-              };
-            };
-            //
             $imageInfo = getimagesize($imgDestination);
             $uploadSizesStmt = $pdo->prepare("UPDATE Image SET actual_width=:ax, actual_height=:ay WHERE image_id=:imi");
             $uploadSizesStmt->execute(array(
@@ -287,7 +275,7 @@ if (isset($_POST['submitFile'])) {
             ));
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
             $_SESSION['imgId'] = $currentImgId;
-            header("Location: admin.php?imgAction=crop&destination=".$imgDestination."&imgId=".$currentImgId."&actualWidth=".$imageInfo[0]."&actualHeight=".$imageInfo[1]."&imgOrientation=".$exifOrientation);
+            header("Location: admin.php?imgAction=crop&destination=".$imgDestination."&imgId=".$currentImgId."&actualWidth=".$imageInfo[0]."&actualHeight=".$imageInfo[1]);
             unset($_SESSION['imgid']);
             return true;
           } else {
