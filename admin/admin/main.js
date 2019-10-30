@@ -12,6 +12,16 @@ $(document).ready(()=>{
     $(".mainBox").css('min-height',newHeight);
   };
 
+  // Opens and closes the possible explanations to the upload error that just occurred
+  $("#errorInstructBttn").click(()=>{
+    let errBoxStatus = $("#errorInstructBox").css('display');
+    if (errBoxStatus == "none") {
+      $("#errorInstructBox").css('display','block');
+    } else {
+      $("#errorInstructBox").css('display','none');
+    };
+  });
+
   // Opens and closes all of a type's posts
   $("[data-head]").click(()=> {
     let typeNum = event.target.dataset.head;
@@ -294,9 +304,11 @@ $(document).ready(()=>{
   $(".cropBox").css('height',cropBoxHeight);
 
   // Sets up the default square box when opening the cropBox
-  const updateCropImg = (imgWidth,imgHeight) => {
+  const updateCropImg = (getAction,imgPath,getImgId,imgWidth,imgHeight) => {
     let portrait = null;
-    let fitWidth = document.getElementById('cropImg').width;
+    let randomNum = Math.floor(Math.random() * Math.floor(100000000));
+    $("#cropImg").attr('src',imgPath + "?t=" + randomNum);
+    let fitWidth = document.getElementById('cropImg').offsetWidth;
     let fitHeight = parseInt(((imgHeight / imgWidth) * fitWidth).toFixed(0));
     let closeHeight = $(".closeRow").outerHeight();
     $(".topCrop").css('top',closeHeight);
@@ -315,14 +327,15 @@ $(document).ready(()=>{
       $(".leftCrop").css('top',closeHeight).css('height',maxSize);
       $(".bottomCrop").css('top',closeHeight + maxSize).css('height',0);
     };
+
   };
 
   // Shows the cropBox after image is uploaded
   let rawWidth = 0;
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
-  // console.log(requestData);
   let requestList = requestData.split("&");
+  console.log(requestList);
   let maxSize = 0;
   let top = 0;
   let right = 0;
@@ -334,15 +347,22 @@ $(document).ready(()=>{
   let bottomHeight = 0;
   let leftWidth = 0;
   let leftHeight = 0;
-  if (requestList[0] == "crop") {
-    $(".cropBox").css('display','block');
-    $("#cropImg").attr('src',requestList[1]);
-    $("#exitJobId").val(requestList[2]);
-    rawWidth = requestList[3];
-    rawHeight = requestList[4];
-    // console.log(requestList);
-    updateCropImg(rawWidth,rawHeight);
-  };
+
+  // This makes the 'cropBox' appear a) if the cropping/rotating occurs and b) after the image is uploaded.
+  window.addEventListener('load',(event) => {
+    if (requestList[0].split("=")[1] == "crop" || requestList[0].split("=")[1] == "rotate") {
+      $(".cropBox").css('display','block');
+      $("#exitJobId").val(requestList[2].split("=")[1]);
+      let thisAction = requestList[0].split("=")[1];
+      let srcDestination = requestList[1].split("=")[1];
+      let thisImgId = requestList[2].split("=")[1];
+      rawWidth = requestList[3].split("=")[1];
+      rawHeight = requestList[4].split("=")[1];
+      updateCropImg(thisAction,srcDestination,thisImgId,rawWidth,rawHeight);
+    };
+  });
+
+
 
   // To shrink the cropping border size of the image
   const shrinkImg = () => {
@@ -588,25 +608,51 @@ $(document).ready(()=>{
     clearInterval(leftInterval);
   });
 
+  $("#rotateBttn").click(()=>{
+    let preRotateHeight = rawHeight;
+    let preRotateWidth = rawWidth;
+    rawHeight = preRotateWidth;
+    rawWidth = preRotateHeight;
+    let rotateData = window.location.search.substring(1);
+    let rotateArray = rotateData.split("&");
+    let rotateObject = {};
+    for (let rotateNum = 0; rotateNum < rotateArray.length; rotateNum++) {
+      let oneArray = rotateArray[rotateNum].split("=");
+      rotateObject[oneArray[0]] = oneArray[1];
+    };
+    let rotateHref = window.location.origin + window.location.pathname + "?imgAction=rotate&destination=" + rotateObject['destination'] + "&imgId=" + rotateObject['imgId'] + "&actualWidth=" + rotateObject['actualHeight'] + "&actualHeight=" + rotateObject['actualWidth'];
+    window.location.href = rotateHref;
+    return true;
+  });
+
   // Collects the cropped data, redirects back into admin.php w/ data in GET request
   $("#submitCrop").click(()=>{
+    let submitArray = window.location.search.substring(1).split("&");
+    let submitObject = {};
+    for (let submitNum = 0; submitNum < submitArray.length; submitNum++) {
+      let oneSubmit = submitArray[submitNum].split("=");
+      submitObject[oneSubmit[0]] = oneSubmit[1];
+    };
+    console.log(submitObject['actualWidth']);
+    console.log(submitObject['actualHeight']);
     let imgFullWidth = document.getElementById('cropImg').width;
-    let imgFullHeight = parseInt(((rawHeight / rawWidth) * imgFullWidth).toFixed(0));
+    let imgFullHeight = parseInt(((parseInt(submitObject['actualHeight']) / parseInt(submitObject['actualWidth'])) * imgFullWidth).toFixed(0));
     let borderPx = [
       $(".topCrop").height(),
       $(".rightCrop").width(),
       $(".bottomCrop").height(),
       $(".leftCrop").width()
     ];
+    console.log(borderPx);
     let cropWidthPx = imgFullWidth - (borderPx[3] + borderPx[1]);
     let cropHeightPx = imgFullHeight - (borderPx[0] + borderPx[2]);
     let cropWidthPercent = parseFloat(((cropWidthPx / imgFullWidth) * 100).toFixed(0));
     let cropHeightPercent = parseFloat(((cropHeightPx / imgFullHeight) * 100).toFixed(0));
     let topPercent = parseFloat(((borderPx[0] / imgFullHeight) * 100).toFixed(0));
     let leftPercent = parseFloat(((borderPx[3] / imgFullWidth) * 100).toFixed(0));
-    let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent;
-    // console.log(newHref);
+    let newHref = window.location.origin + window.location.pathname + "?editImg=true&xPercent=" + leftPercent + "&yPercent=" + topPercent + "&widthPercent=" + cropWidthPercent + "&heightPercent=" + cropHeightPercent + "&actualWidth=" + submitObject['actualWidth'] + "&actualHeight=" + submitObject['actualHeight'];
     window.location.href = newHref;
+    return false;
   });
 
   // Counts down the time until the session expires

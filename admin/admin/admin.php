@@ -57,25 +57,21 @@
         </div>
         <div class="cropMove">
           <div class="cropMoveRow">
-            <button id="upBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
+            <button id="upBttn" class="moveBttn"></button>
           </div>
           <div class="cropMoveRow">
-            <button id="leftBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
-            <button id="downBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
-            <button id="rightBttn" class="moveBttn">
-              <img src="../../img/admin/right_arrow.png" />
-            </button>
+            <button id="leftBttn" class="moveBttn"></button>
+            <button id="downBttn" class="moveBttn"></button>
+            <button id="rightBttn" class="moveBttn"></button>
           </div>
         </div>
         <div class="cropSize">
           <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
           <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
+          <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" />
+          <!-- <button id="smallerBttn" class="sizeBttn">BIG</button>
+          <button id="biggerBttn" class="sizeBttn">small</button>
+          <button id="rotateBttn" class="sizeBttn">Rotate</button> -->
         </div>
         <button id="submitCrop" type="button">
           ENTER
@@ -100,6 +96,7 @@
     <?php
       if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
         echo("<div class='message'>".$_SESSION['message']."</div>");
+        // var_dump($_SESSION['message']);
         unset($_SESSION['message']);
       };
     ?>

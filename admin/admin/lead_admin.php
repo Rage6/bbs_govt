@@ -254,7 +254,7 @@ if (isset($_POST['submitFile'])) {
       $imgExt = strtolower(end($choppedImgName));
       if (in_array($imgExt, $onlyTypes)) {
         if ($jobImg['error'] == 0) {
-          if ($jobImg['size'] <= 2000000) {
+          if ($jobImg['size'] <= 2500000) {
             $currentFilePath = htmlentities($_POST['jobPath']);
             $currentFileName = htmlentities($_POST['jobFile']);
             $currentFileExtension = htmlentities($_POST['jobExt']);
@@ -262,7 +262,11 @@ if (isset($_POST['submitFile'])) {
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName.".".$currentFileExtension;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
-            $imageInfo = getimagesize("../../img".$currentFilePath.$currentFileName.".".$currentFileExtension);
+            // To avoid misuse of EXIF Orientation, this creates the image as a plain JPEG w/o EXIF in the metadata
+            $plainImg = imagecreatefromjpeg($imgDestination);
+            imagejpeg($plainImg,$imgDestination);
+            //
+            $imageInfo = getimagesize($imgDestination);
             $uploadSizesStmt = $pdo->prepare("UPDATE Image SET actual_width=:ax, actual_height=:ay WHERE image_id=:imi");
             $uploadSizesStmt->execute(array(
               ':ax'=>$imageInfo[0],
@@ -271,7 +275,7 @@ if (isset($_POST['submitFile'])) {
             ));
             $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
             $_SESSION['imgId'] = $currentImgId;
-            header('Location: admin.php?crop&'.$imgDestination."&".$currentImgId."&".$imageInfo[0]."&".$imageInfo[1]);
+            header("Location: admin.php?imgAction=crop&destination=".$imgDestination."&imgId=".$currentImgId."&actualWidth=".$imageInfo[0]."&actualHeight=".$imageInfo[1]);
             unset($_SESSION['imgid']);
             return true;
           } else {
@@ -283,19 +287,43 @@ if (isset($_POST['submitFile'])) {
           };
         } else {
           $_SESSION['message'] = "
-            <b style='color:red'>
-              An error occured during your upload. Please contact your counselor or the BBS IT staff
-            </b>
-            </br>
-            <b style='color:red'>
-              Error: ".$_FILES['jobImg']['tmp_name']."
-            </b>";
+          <div class='message'>
+            <u style='color:red'>ERROR #".$jobImg['error']."</u></br>
+            A problem occured during your upload. See <span id='errorInstructBttn'><b><u>these possible solutions</u></b></span>, or contact a counselor or IT staff member for assistance.
+          </div>
+          <div id='errorInstructBox'>
+            <div>
+              Here are some of the most common causes of uploading errors, and how to solve them.
+            </div>
+            <ul>
+              <li>
+                <b>Image memory size was too big</b>: To prevent overwhelming the website, no image can exceed 2.5 MB. If your image is too large, try using <a href='https://www.reduceimages.com/' style='color:yellow;cursor:pointer'>this website</a> to make a smaller version of your image.
+              </li>
+              <li>
+                <b>Your image is not in the JPG/JPEG format</b>: The most common file format is JPG (or JPEG) and the only format accepted by this website. If your images are not JPG, you can...
+                </br>... <a href='https://png2jpg.com' style='color:yellow'>convert PNG to JPG</a> or...
+                </br>... <a href='https://heictojpg.com/' style='color:yellow'>convert HEIC to JPG</a>
+              </li>
+              <li>
+                <b>To take future photos in JPG</b>:
+                <ul>
+                  <li>
+                    <i>Apple iPhone</i>: Follow this path 'Settings'->'Camera'->'Format' and select the 'Most Compatible' option.
+                  </li>
+                  <li>
+                    <i>Samsung Galaxy</i>: Follow this path 'Camera'->'Settings (Gear icon)'->'Save Options' and deactivate the 'HEIF pictures' option.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>";
+          // See below link for error message connected to the provided error number: https://www.php.net/manual/en/features.file-upload.errors.php
           unset($_FILES['jobImg']);
           header('Location: admin.php');
           return false;
         };
       } else {
-        $_SESSION['message'] = "<b style='color:red'>Your file type must be .jpg, .jpeg, or .png</b>";
+        $_SESSION['message'] = "<b style='color:red'>Your file type must be a .jpg or .jpeg file</b>";
         unset($_FILES['jobImg']);
         header('Location: admin.php');
         return false;
@@ -318,14 +346,40 @@ if (isset($_POST['submitFile'])) {
   };
 };
 
+// To rotate an image before editing
+if (isset($_GET['imgAction']) && $_GET['imgAction'] == "rotate") {
+  $rotImgInfoStmt = $pdo->prepare("SELECT section_path, filename, extension FROM Image WHERE image_id=:imd");
+  $rotImgInfoStmt->execute(array(
+    ':imd'=>htmlentities($_GET['imgId'])
+  ));
+  $rotImgInfo = $rotImgInfoStmt->fetch(PDO::FETCH_ASSOC);
+  if ($rotImgInfo['extension'] == "jpeg" || $rotImgInfo['extension'] =="JPEG") {
+    $startImgFile =  imagecreatefromjpeg($rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
+  } else if ($rotImgInfo['extension'] == "jpg" || $rotImgInfo['extension'] == "JPG") {
+    $startImgFile =  imagecreatefromjpeg($rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
+  };
+  $rotateImage = imagerotate($startImgFile,-90,0);
+  imagejpeg($rotateImage,$rotImgInfo['section_path'].$rotImgInfo['filename'].".".$rotImgInfo['extension']);
+  $updateHeightWidthStmt = $pdo->prepare("UPDATE Image SET actual_width=:aw,actual_height=:ah WHERE image_id=:ri");
+  $updateHeightWidthStmt->execute(array(
+    ':ah'=>htmlentities($_GET['actualHeight']),
+    ':aw'=>htmlentities($_GET['actualWidth']),
+    ':ri'=>htmlentities($_GET['imgId'])
+  ));
+  header("Location: admin.php?imgAction=crop&destination=".$_GET['destination']."&imgId=".$_GET['imgId']."&actualWidth=".$_GET['actualWidth']."&actualHeight=".$_GET['actualHeight']."&imgOrientation=".$exifOrientation);
+  return true;
+};
+
 // After editing, the dimensions are saved on its row in the Image table
 if (isset($_GET['editImg'])) {
-  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,edited=1,approved=0 WHERE image_id=:img");
+  $imgDimensionsStmt = $pdo->prepare("UPDATE Image SET percent_x=:px,percent_y=:py,height=:hgt,width=:wth,actual_width=:aw,actual_height=:ah,edited=1,approved=0 WHERE image_id=:img");
   $imgDimensionsStmt->execute(array(
     ':px'=>htmlentities($_GET['xPercent']),
     ':py'=>htmlentities($_GET['yPercent']),
     ':hgt'=>htmlentities($_GET['heightPercent']),
     ':wth'=>htmlentities($_GET['widthPercent']),
+    ':ah'=>htmlentities($_GET['actualHeight']),
+    ':aw'=>htmlentities($_GET['actualWidth']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
   $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
