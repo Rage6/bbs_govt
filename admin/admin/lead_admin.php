@@ -287,23 +287,34 @@ if (isset($_POST['submitFile'])) {
           };
         } else {
           $_SESSION['message'] = "
-            <b style='color:red'>
-              <u>ERROR #".$jobImg['error']."</u></br>
-              A problem occured during your upload. See <span id='errorInstructBttn'><u>these possible solutions</u></span>, or contact a counselor or IT staff member for assistance along with the above error number.
-            </b>
-            <div id='errorInstructBox style='background-color:white;color:black'>
-              <div>
-                The variety of modern devices, file types, and file sizes can cause occasional problems when uploading an image. Here are some of the potential reasons that your error occurred, and how to solve them.
-              </div>
-              <ul>
-                <li>
-                  <u>Image memory size was too big:</u> To prevent overloading the website's memory space, no image can exceed 2 MB. To reduce your image size, try <a href='https://www.reduceimages.com/'>https://www.reduceimages.com/</a>
-                </li>
-                <li>
-                  <u>
-                </li>
-              </ul>
-            </div>";
+          <div class='message'>
+            <u style='color:red'>ERROR #".$jobImg['error']."</u></br>
+            A problem occured during your upload. See <span id='errorInstructBttn'><b><u>these possible solutions</u></b></span>, or contact a counselor or IT staff member for assistance.
+          </div>
+          <div id='errorInstructBox'>
+            <div>
+              Uploading images can cause errors. Here are some of the most common problems that caused them, and how to solve those problems.
+            </div>
+            <ul>
+              <li>
+                <u>Image memory size was too big</u>: To prevent overwhelming the website, no image can exceed 2.5 MB. If your image is too large, try using <a href='https://www.reduceimages.com/' style='color:yellow;cursor:pointer'>this website</a> to make a smaller version of your image.
+              </li>
+              <li>
+                <u>Your image is not in the JPG/JPEG format</u>: There are many types of images (ex. JPG, PNG, HEIC), and phones often have multiple types to choose from. The most common type is JPG (or JPEG), and it is the only format accepted by this website. If your current image is in PNG, trying changing it to JPG with <a href='https://png2jpg.com' style='color:yellow'>this website</a>.
+              </li>
+              <li>
+                To make future photo images in the JPG format, do the following:
+                <ul>
+                  <li>
+                    <u>Apple iPhone</u>: Follow this path 'Settings'->'Camera'->'Format' and select the 'Most Compatible' option.
+                  </li>
+                  <li>
+                    <u>Samsung Galaxy</u>: Follow this path 'Camera'->'Settings (Gear icon)'->'Save Options' and deactivate the 'HEIF pictures' option.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>";
           // See below link for error message connected to the provided error number: https://www.php.net/manual/en/features.file-upload.errors.php
           unset($_FILES['jobImg']);
           header('Location: admin.php');

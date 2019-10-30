@@ -12,6 +12,16 @@ $(document).ready(()=>{
     $(".mainBox").css('min-height',newHeight);
   };
 
+  // Opens and closes the possible explanations to the upload error that just occurred
+  $("#errorInstructBttn").click(()=>{
+    let errBoxStatus = $("#errorInstructBox").css('display');
+    if (errBoxStatus == "none") {
+      $("#errorInstructBox").css('display','block');
+    } else {
+      $("#errorInstructBox").css('display','none');
+    };
+  });
+
   // Opens and closes all of a type's posts
   $("[data-head]").click(()=> {
     let typeNum = event.target.dataset.head;

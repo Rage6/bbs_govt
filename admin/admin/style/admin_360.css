@@ -48,6 +48,17 @@ body {
   text-align: center;
 }
 
+#errorInstructBox {
+  margin-left: 5%;
+  margin-bottom: 20px;
+  padding: 10px 5%;
+  color: yellow;
+  font-size: 1.1rem;
+  background-color: blue;
+  display: none;
+  width: 80%;
+}
+
 .sectionName {
   border: 2px solid black;
   border-bottom: none;
