@@ -30,7 +30,7 @@
 
 <b>How to use the 'Administrative Center'?</b>
 <p>
-  The 'Administrative Center' is where a delegate or counselor can add new posts, update current ones, or delete them.
+  The 'Administrative Center' is where a delegate or counselor can add new posts, update/delete current ones, or add/edit staff photos. Staff photos must be in the JPG format.
   <ol>
     <li>
       Either click on the 'gear' icon on the home page, or enter the base URL followed by '/admin/login/login.php'
@@ -56,19 +56,19 @@
       Things worth knowing about
       <ul>
         <li>
-          A delegate's post will not be shown online until their section counselor logs in with his password and approves it.
+          A delegate's post will not be shown online until their section counselor logs in with his password and approves it. Think of it as a basic Content Management System (CMS).
         </li>
         <li>
           As a security measure, user access into <u>a section's session will end after 30 minutes</u> unless the user a) refresh the page, or b) submits an update. To prevent users from submitting changes after a session has expired, a timer (using JavaScript) is displayed at the bottom of the page.
         </li>
         <li>
-          In addition to the 30 minute timer, another security tool "locks" a section if it experiences 5 failed login attempts. After that, a) the user's IP address is recorded in the database, and b) the server will not even consider another login attempt.
+          In addition to the 30 minute timer, another security tool "locks" a section if it experiences 5 failed login attempts in a row. After that, a) the user's IP address is recorded in the database, and b) the server will not even consider another login attempt.
         </li>
         <li>
           Counselors will have access to the same abilities as a delegate does within their section IN ADDITION TO some 'counselor only' abilities. These include:
           <ol>
             <li>
-              <u>Current Staff</u>: List of all of this section's jobs and the names of the delegate that filling those roles
+              <u>Current Staff</u>: List of all of this section's jobs and the names of the delegate that are filling those roles
             </li>
             <li>
               <u>Assign A Job</u>: Select a delegate from the overall list of delegates and assign them to one of this section's jobs
