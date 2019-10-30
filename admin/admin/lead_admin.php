@@ -293,23 +293,25 @@ if (isset($_POST['submitFile'])) {
           </div>
           <div id='errorInstructBox'>
             <div>
-              Uploading images can cause errors. Here are some of the most common problems that caused them, and how to solve those problems.
+              Here are some of the most common causes of uploading errors, and how to solve them.
             </div>
             <ul>
               <li>
-                <u>Image memory size was too big</u>: To prevent overwhelming the website, no image can exceed 2.5 MB. If your image is too large, try using <a href='https://www.reduceimages.com/' style='color:yellow;cursor:pointer'>this website</a> to make a smaller version of your image.
+                <b>Image memory size was too big</b>: To prevent overwhelming the website, no image can exceed 2.5 MB. If your image is too large, try using <a href='https://www.reduceimages.com/' style='color:yellow;cursor:pointer'>this website</a> to make a smaller version of your image.
               </li>
               <li>
-                <u>Your image is not in the JPG/JPEG format</u>: There are many types of images (ex. JPG, PNG, HEIC), and phones often have multiple types to choose from. The most common type is JPG (or JPEG), and it is the only format accepted by this website. If your current image is in PNG, trying changing it to JPG with <a href='https://png2jpg.com' style='color:yellow'>this website</a>.
+                <b>Your image is not in the JPG/JPEG format</b>: The most common file format is JPG (or JPEG) and the only format accepted by this website. If your images are not JPG, you can...
+                </br>... <a href='https://png2jpg.com' style='color:yellow'>convert PNG to JPG</a> or...
+                </br>... <a href='https://heictojpg.com/' style='color:yellow'>convert HEIC to JPG</a>
               </li>
               <li>
-                To make future photo images in the JPG format, do the following:
+                <b>To take future photos in JPG</b>:
                 <ul>
                   <li>
-                    <u>Apple iPhone</u>: Follow this path 'Settings'->'Camera'->'Format' and select the 'Most Compatible' option.
+                    <i>Apple iPhone</i>: Follow this path 'Settings'->'Camera'->'Format' and select the 'Most Compatible' option.
                   </li>
                   <li>
-                    <u>Samsung Galaxy</u>: Follow this path 'Camera'->'Settings (Gear icon)'->'Save Options' and deactivate the 'HEIF pictures' option.
+                    <i>Samsung Galaxy</i>: Follow this path 'Camera'->'Settings (Gear icon)'->'Save Options' and deactivate the 'HEIF pictures' option.
                   </li>
                 </ul>
               </li>
