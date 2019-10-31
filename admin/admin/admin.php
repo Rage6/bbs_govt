@@ -126,6 +126,14 @@
           ':sid'=>$secInfo['section_id']
         ));
           while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
+            $subtypeListStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=:tyd");
+            $subtypeListStmt->execute(array(
+              ':tyd'=>$oneType['type_id']
+            ));
+            $subtypeList = [];
+            while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
+              $subtypeList[] = $oneSubtype;
+            };
             echo("
             <div class='delegateBox'>
               <div data-head='".$oneType['type_id']."' class='postType'>"
@@ -141,9 +149,25 @@
                     <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                     <div class='postSubtitle'>Content:</div>
                     <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
-                    <div>Order #:</div>
-                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
-                    <input type='hidden' name='approval' value='0' />
+                    <div class='postSubtitle'>Order #:</div>
+                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
+
+                    if (count($subtypeList) > 1) {
+                      echo("
+                        <div class='postSubtitle'>
+                          Category
+                        </div>
+                        <div>
+                          <select class='subtypeSelect' name='newSubtype'>");
+                            for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
+                              echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                            };
+                          echo("</select>
+                        </div>
+                      ");
+                    };
+
+                    echo("<input type='hidden' name='approval' value='0' />
                     <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
                     <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
                     <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />
@@ -183,8 +207,35 @@
                     <div style='text-align:center'>
                       (<i>YYYY-MM-DD HH:MM:SS</i>)
                     </div>
-                    <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>
-                    <div class='postSubtitle'>Order #:</div>
+                    <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>");
+
+                    if (count($subtypeList) > 1) {
+                      $currentSubId = 0;
+                      $currentSubName = "None";
+                      for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
+                        if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
+                          $currentSubId = $subtypeList[$subNum]['subtype_id'];
+                          $currentSubName = $subtypeList[$subNum]['subtype_name'];
+                        };
+                      };
+                      echo("
+                        <div class='postSubtitle'>
+                          Category
+                        </div>
+                        <div>
+                          <select class='subtypeSelect' name='subtype'>
+                            <option value='".$currentSubId."'>".$currentSubName."</option>");
+                            for ($sub = 0; $sub < count($subtypeList); $sub++) {
+                              if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
+                                echo("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                              };
+                            };
+                          echo("</select>
+                        </div>
+                      ");
+                    };
+
+                    echo("<div class='postSubtitle'>Order #:</div>
                     <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
                 ");
                 if ($approval == 1) {
