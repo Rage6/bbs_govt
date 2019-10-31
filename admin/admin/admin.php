@@ -149,9 +149,25 @@
                     <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                     <div class='postSubtitle'>Content:</div>
                     <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
-                    <div>Order #:</div>
-                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />
-                    <input type='hidden' name='approval' value='0' />
+                    <div class='postSubtitle'>Order #:</div>
+                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
+
+                    if (count($subtypeList) > 1) {
+                      echo("
+                        <div class='postSubtitle'>
+                          Category
+                        </div>
+                        <div>
+                          <select class='subtypeSelect' name='newSubtype'>");
+                            for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
+                              echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                            };
+                          echo("</select>
+                        </div>
+                      ");
+                    };
+
+                    echo("<input type='hidden' name='approval' value='0' />
                     <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
                     <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
                     <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />

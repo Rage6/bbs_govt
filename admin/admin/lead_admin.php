@@ -109,13 +109,14 @@ if (isset($_POST['addPost'])) {
   if ($_POST['postTitle'] != "") {
     if ($_POST['postContent'] != "") {
       if ($_POST['orderNum'] != "") {
-        $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,approved,type_id,section_id) VALUES (:ti,:cn,:po,:ap,:td,:sd)");
+        $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,approved,type_id,subtype_id,section_id) VALUES (:ti,:cn,:po,:ap,:td,:su,:sd)");
         $addPostStmt->execute(array(
           ':ti'=>htmlentities($_POST['postTitle']),
           ':cn'=>htmlentities($_POST['postContent']),
           ':po'=>htmlentities($_POST['orderNum']),
           ':ap'=>htmlentities($_POST['approval']),
           ':td'=>htmlentities($_POST['typeId']),
+          ':su'=>htmlentities($_POST['newSubtype']),
           ':sd'=>htmlentities($_POST['secId'])
         ));
         $_SESSION['message'] = "<b style='color:green'>Post Added</b>";
