@@ -216,6 +216,13 @@ body {
   width: 66%;
 }
 
+.subtypeSelect {
+  margin-left: 10%;
+  font-size: 1rem;
+  background-color: white;
+  width: 80%;
+}
+
 .postOrder {
   margin-left: 45%;
   margin-bottom: 10px;

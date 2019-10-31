@@ -158,24 +158,26 @@ if (isset($_POST['changePosts'])) {
     return false;
   } else {
     if (isset($_SESSION['delToken'])) {
-      $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od, approved = 0, Post.timestamp = :ts WHERE post_id = :poi");
+      $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od, approved = 0, Post.timestamp = :ts, Post.subtype_id = :sb WHERE post_id = :poi");
       $changePostStmt->execute(array(
         ':tl'=>htmlentities($_POST['postTitle']),
         ':ct'=>htmlentities($_POST['postContent']),
         ':od'=>htmlentities($_POST['orderNum']),
         ':ts'=>htmlentities($_POST['postTime']),
+        ':sb'=>htmlentities($_POST['subtype']),
         ':poi'=>htmlentities($_POST['postId'])
       ));
       $_SESSION['message'] = "<b style='color:green'>Post changed, awaiting counselor approval</b>";
       header('Location: admin.php');
       return true;
     } elseif (isset($_SESSION['counsToken'])) {
-      $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od, Post.timestamp=:ts WHERE post_id = :poi");
+      $changePostStmt = $pdo->prepare("UPDATE Post SET title = :tl, content = :ct, post_order = :od, Post.timestamp=:ts, Post.subtype_id = :sb WHERE post_id = :poi");
       $changePostStmt->execute(array(
         ':tl'=>htmlentities($_POST['postTitle']),
         ':ct'=>htmlentities($_POST['postContent']),
         ':od'=>htmlentities($_POST['orderNum']),
         ':ts'=>htmlentities($_POST['postTime']),
+        ':sb'=>htmlentities($_POST['subtype']),
         ':poi'=>htmlentities($_POST['postId'])
       ));
       $_SESSION['message'] = "<b style='color:green'>Post changed and approved</b>";
