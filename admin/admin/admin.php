@@ -211,7 +211,7 @@
 
                     if (count($subtypeList) > 1) {
                       $currentSubId = 0;
-                      $currentSubName = "None";
+                      $currentSubName = "none";
                       for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
                         if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
                           $currentSubId = $subtypeList[$subNum]['subtype_id'];
@@ -232,6 +232,16 @@
                             };
                           echo("</select>
                         </div>
+                      ");
+                    } else {
+                      echo("
+                      <div class='postSubtitle'>
+                        Category
+                      </div>
+                      <div>
+                        <input type='hidden' name='subtype' value='".$subtypeList[0]['subtype_id']."' />
+                        <div style='text-align:center'>".$subtypeList[0]['subtype_name']."</div>
+                      </div>
                       ");
                     };
 
