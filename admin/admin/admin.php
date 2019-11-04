@@ -2,7 +2,18 @@
 
   session_start();
   require_once("../../pdo.php");
+  require_once("../../lockdown.php");
   require_once("lead_admin.php");
+
+  // Redirects back go 'default.html' if lockdown in place
+  if ($checkLock > 0) {
+    unset($_SESSION['counsToken']);
+    unset($_SESSION['delToken']);
+    unset($_SESSION['secId']);
+    unset($_SESSION['adminType']);
+    header('Location: ../../default.html');
+    return true;
+  };
 
 ?>
 

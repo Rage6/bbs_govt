@@ -1,7 +1,15 @@
 <?php
   session_start();
   require_once("../../pdo.php");
+  require_once("../../lockdown.php");
   require_once("gov_lead.php");
+
+  // Redirects to 'default.html' if lockdown in place
+  if ($checkLock > 0) {
+    header('Location: ../../default.html');
+    return true;
+  };
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

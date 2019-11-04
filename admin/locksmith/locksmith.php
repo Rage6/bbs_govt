@@ -2,8 +2,8 @@
 
   session_start();
   require_once("../../pdo.php");
-  require_once("lead_locksmith.php");
   require_once("../../lockdown.php");
+  require_once("lead_locksmith.php");
 
 ?>
 <!DOCTYPE html>
