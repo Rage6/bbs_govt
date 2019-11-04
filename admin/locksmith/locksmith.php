@@ -3,6 +3,7 @@
   session_start();
   require_once("../../pdo.php");
   require_once("lead_locksmith.php");
+  require_once("../../lockdown.php");
 
 ?>
 <!DOCTYPE html>
@@ -31,6 +32,7 @@
         } else {
           $attemptColor = "green";
         };
+        if ($secList[$indexNum]['section_id'] != 0) {
         echo("
           <div class='secBox'>
             <div class='secName'>".$secList[$indexNum]['section_name']."</div>
@@ -79,7 +81,32 @@
             echo("
           </div>
         ");
+        };
       };
     ?>
+    <div class='lockdownBox'>
+      <div class='lockTitle'>
+        LOCKDOWN
+      </div>
+      <div class='lockDescribe'>
+        <u>WARNING</u>: When 'locked', no user will be able to enter any of the site's pages, <b>to include the 'Login' page</b>. To 'unlock' it, you must log into this page with the Login page's direct URL.
+      </div>
+      <div class='lockStatus'>
+        <u>STATUS</u>:
+        <?php
+          if ($checkLock == 0) {
+            echo("<b style='color:green'>UNLOCKED</b>");
+          } else {
+            echo("<b style='color:red'>LOCKED</b>");
+          };
+        ?>
+      </div>
+      <div>
+        <form class='allLockBttns' method='POST'>
+          <input class='oneLockBttn' style='background-color:red' type='submit' name='lockSite' value='LOCK' />
+          <input class='oneLockBttn' style='background-color:green' type='submit' name='unlockSite' value='UNLOCK' />
+        </form>
+      </div>
+    </div>
   </body>
 </html>

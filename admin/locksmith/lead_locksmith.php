@@ -74,6 +74,28 @@ if (isset($_POST['resetNum'])) {
   return true;
 };
 
+// Locks down the website
+if (isset($_POST['lockSite'])) {
+  $lockSiteStmt = $pdo->prepare("UPDATE Maintenance SET lockdown=1 WHERE key_token=:kt");
+  $lockSiteStmt->execute(array(
+    ':kt'=>htmlentities($_SESSION['key_token'])
+  ));
+  $_SESSION['message'] = "<b style='color:red'>BBS website is locked</b>";
+  header('Location: locksmith.php');
+  return true;
+};
+
+// Unlock the website
+if (isset($_POST['unlockSite'])) {
+  $lockSiteStmt = $pdo->prepare("UPDATE Maintenance SET lockdown=0");
+  $lockSiteStmt->execute(array(
+    ':kt'=>htmlentities($_SESSION['key_token'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>BBS website is unlocked</b>";
+  header('Location: locksmith.php');
+  return true;
+};
+
 // Logs out user
 if (isset($_POST['logout'])) {
   $_SESSION['message'] = "<b style='color:green'>Logout successful</b>";
