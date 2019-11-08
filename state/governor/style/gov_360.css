@@ -25,6 +25,9 @@ body {
   text-align: center;
   background-color: gold;
 }
+.fullContent {
+  background-image: linear-gradient(to bottom right, #2020a0, white, red);
+}
 .menuList {
   border-top: 1px solid #2020a0;
 }
@@ -52,11 +55,15 @@ body {
 .menuList a {
   text-decoration: none;
 }
+.menuBox {
+  
+}
 .govContent {
   padding-bottom: 50px;
   background-position: bottom;
-  background-image: linear-gradient(to bottom right, #2020a0, white, red);
+  /* background-image: linear-gradient(to bottom right, #2020a0, white, red); */
 }
+
 #img_0 {
   display: block;
 }

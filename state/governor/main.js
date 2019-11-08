@@ -1,17 +1,21 @@
 $(()=>{
-
+  
   // Opens and closes the menu options
   $("#menuClick").click(()=>{
-    if ($("#menuContent").css("display") == "block") {
-      $("#menuContent").css("display","none");
-    } else {
-      $("#menuContent").css("display","block");
+    if (window.innerWidth < 769) {
+      if ($("#menuContent").css("display") == "block") {
+        $("#menuContent").css("display","none");
+      } else {
+        $("#menuContent").css("display","block");
+      };
     };
   });
 
   // Closes the menu options when an option is selected
   $("div.menuButton").click(()=>{
-    $("#menuContent").css("display","none")
+    if (window.innerWidth < 769) {
+      $("#menuContent").css("display","none");
+    };
   });
 
   // Gives each .attr() to each element

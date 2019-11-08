@@ -105,8 +105,16 @@
   font-size: 1.5rem;
 }
 
+.fullContent {
+
+}
+
 .menuList {
   font-size: 1.5rem;
+}
+
+#menuContent {
+  display: none;
 }
 
 .menuButton {

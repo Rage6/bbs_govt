@@ -19,12 +19,26 @@
 }
 
 .menuBar {
-  padding: 5px;
-  font-size: 1.7rem;
+  display: none;
+}
+
+.fullContent {
+  display: flex;
 }
 
 .menuList {
   font-size: 1.5rem;
+}
+
+.menuBox {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+#menuContent {
+  display: block;
+  width: 50%;
 }
 
 .menuButton {
@@ -163,8 +177,8 @@
 .nameAndPic img{
   border: 2px solid #2020a0;
   border-radius: 15px;
-  height: 350px;
-  width: 350px;
+  height: 300px;
+  width: 300px;
 }
 
 .govBio {
