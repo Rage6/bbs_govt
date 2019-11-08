@@ -1,5 +1,13 @@
 <?php
   require_once("../pdo.php");
+  require_once("../lockdown.php");
+
+  // Sends back go 'default.html' during lockdown
+  if ($checkLock > 0) {
+    header('Location: ../default.html');
+    return true;
+  };
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

@@ -1,6 +1,13 @@
 <?php
   session_start();
   require_once("pdo.php");
+  require_once("lockdown.php");
+
+  if ($checkLock > 0) {
+    header('Location: default.html');
+    return true;
+  };
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

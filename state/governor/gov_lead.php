@@ -5,9 +5,6 @@ $govStmt = $pdo->prepare(
   "SELECT * FROM Delegate INNER JOIN Job INNER JOIN Image WHERE Delegate.delegate_id=Job.delegate_id AND Image.job_id=Job.job_id AND Job.job_id=1");
 $govStmt->execute();
 $govInfo = $govStmt->fetch(PDO::FETCH_ASSOC);
-// echo("<pre>");
-// var_dump($govInfo);
-// echo("</pre>");
 
 // For Lieutenant Governor basic info
 $ltgovStmt = $pdo->prepare(

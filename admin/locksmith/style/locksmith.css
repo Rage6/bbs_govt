@@ -64,3 +64,37 @@ body {
   display: block;
   text-align: center;
 }
+
+.lockdownBox {
+  border: 5px solid red;
+}
+
+.lockTitle {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  background-color: red;
+}
+
+.lockDescribe {
+  padding: 20px 5%;
+  font-size: 1.2rem;
+}
+
+.lockStatus {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.allLockBttns {
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.oneLockBttn {
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+}

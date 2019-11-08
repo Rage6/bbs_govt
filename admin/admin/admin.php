@@ -2,7 +2,18 @@
 
   session_start();
   require_once("../../pdo.php");
+  require_once("../../lockdown.php");
   require_once("lead_admin.php");
+
+  // Redirects back go 'default.html' if lockdown in place
+  if ($checkLock > 0) {
+    unset($_SESSION['counsToken']);
+    unset($_SESSION['delToken']);
+    unset($_SESSION['secId']);
+    unset($_SESSION['adminType']);
+    header('Location: ../../default.html');
+    return true;
+  };
 
 ?>
 
@@ -211,7 +222,7 @@
 
                     if (count($subtypeList) > 1) {
                       $currentSubId = 0;
-                      $currentSubName = "None";
+                      $currentSubName = "none";
                       for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
                         if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
                           $currentSubId = $subtypeList[$subNum]['subtype_id'];
@@ -232,6 +243,16 @@
                             };
                           echo("</select>
                         </div>
+                      ");
+                    } else {
+                      echo("
+                      <div class='postSubtitle'>
+                        Category
+                      </div>
+                      <div>
+                        <input type='hidden' name='subtype' value='".$subtypeList[0]['subtype_id']."' />
+                        <div style='text-align:center'>".$subtypeList[0]['subtype_name']."</div>
+                      </div>
                       ");
                     };
 
