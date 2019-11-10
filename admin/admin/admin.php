@@ -80,9 +80,6 @@
           <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
           <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
           <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" />
-          <!-- <button id="smallerBttn" class="sizeBttn">BIG</button>
-          <button id="biggerBttn" class="sizeBttn">small</button>
-          <button id="rotateBttn" class="sizeBttn">Rotate</button> -->
         </div>
         <button id="submitCrop" type="button">
           ENTER
@@ -727,7 +724,7 @@
         </div>
         <div id="refInfoBox" class="refInfoBox">
           <u style='text-align:center'>Why is there a timer on this?</u></br>
-          There is a chance that a user will accidentally leave their account logged in on a public device, making it vulnerable to unqualified users.</br>
+          If your account is left logged in at a public computer, it would be vulnerable to unqualified users.</br>
           To reduce this risk, your device will automatically relock this account if its page has not been refreshed or updated in the past 30 minutes.
         </div>
       </div>
