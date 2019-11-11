@@ -328,7 +328,7 @@
               for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                 echo("
                 <div class='photoBox'>
-                  <div class='photoTitle'>".$allPhotos[$imgNum]['job_name']."</div>
+                  <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>
                   <div>
                     <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                   </div>

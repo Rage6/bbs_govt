@@ -94,28 +94,133 @@
 
         <div class="slideshow">
           <div class="slideFilm">
-            <div
-              id="img_1_A"
-              class="oneFrame"
-              style="background-image:url('<?php echo($govInfo['section_path'].'crop_'.$govInfo['filename'].'.'.$govInfo['extension'])?>')"
+            <div id="img_1_A" class="oneFrame"
+              <?php
+                if ($govInfo['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
             ></div>
-            <div id="img_2_A" class="oneFrame"></div>
-            <div id="img_3_A" class="oneFrame"></div>
-            <div id="img_4_A" class="oneFrame"></div>
-            <div id="img_5_A" class="oneFrame"></div>
-            <div id="img_6_A" class="oneFrame"></div>
-            <div id="img_7_A" class="oneFrame"></div>
             <div
-              id="img_1_B"
-              class="oneFrame"
-              style="background-image:url('<?php echo($govInfo['section_path'].'crop_'.$govInfo['filename'].'.'.$govInfo['extension'])?>')"
+              id="img_2_A" class="oneFrame"
+              <?php
+                if ($bannerOne['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
             ></div>
-            <div id="img_2_B" class="oneFrame"></div>
-            <div id="img_3_B" class="oneFrame"></div>
-            <div id="img_4_B" class="oneFrame"></div>
-            <div id="img_5_B" class="oneFrame"></div>
-            <div id="img_6_B" class="oneFrame"></div>
-            <div id="img_7_B" class="oneFrame"></div>
+            <div id="img_3_A" class="oneFrame"
+              <?php
+                if ($bannerTwo['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_4_A" class="oneFrame"
+              <?php
+                if ($bannerThree['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_5_A" class="oneFrame"
+              <?php
+                if ($bannerFour['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_6_A" class="oneFrame"
+              <?php
+                if ($bannerFive['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_7_A" class="oneFrame"
+              <?php
+                if ($bannerSix['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_1_B" class="oneFrame"
+            <?php
+              if ($govInfo['approved'] == 1) {
+                echo("style=background-image:url('".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."')");
+              } else {
+                echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+              };
+            ?>
+            ></div>
+            <div id="img_2_B" class="oneFrame"
+              <?php
+                if ($bannerOne['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_3_B" class="oneFrame"
+              <?php
+                if ($bannerTwo['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_4_B" class="oneFrame"
+              <?php
+                if ($bannerThree['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_5_B" class="oneFrame"
+              <?php
+                if ($bannerFour['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_6_B" class="oneFrame"
+              <?php
+                if ($bannerFive['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_7_B" class="oneFrame"
+              <?php
+                if ($bannerSix['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
           </div>
         </div>
 

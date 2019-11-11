@@ -78,7 +78,9 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+// $allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+
+$allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Image WHERE section_id=:se AND filename IS NOT NULL");
 
 $allPhotoStmt->execute(array(
   ':se'=>$secId
@@ -87,6 +89,10 @@ $allPhotos = [];
 while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
   $allPhotos[] = $onePhoto;
 };
+
+// echo("<pre>");
+// var_dump($allPhotos);
+// echo("</pre>");
 
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
