@@ -391,7 +391,7 @@ if (isset($_GET['editImg'])) {
     ':aw'=>htmlentities($_GET['actualWidth']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
-  $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
+  $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Image WHERE section_id=:se AND filename IS NOT NULL");
   $updatePhotoStmt->execute(array(
     ':se'=>$secId
   ));
