@@ -225,7 +225,11 @@
         </div>
 
         <div class="govIntro">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <?php
+            if ($introContent['approved'] == 1) {
+              echo($introContent['content']);
+            };
+          ?>
         </div>
         <a name="governorTag">
           <div class="govBox">
@@ -242,7 +246,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                As governor of Buckeye Boys State, <?php echo($govInfo['first_name']." ".$govInfo['last_name']) ?> governor is the head of the executive branch of the state’s government, as well as the commander-in-chief of the state’s military. He is also responsible for making the state budget, as well as either approving or vetoing potential state laws.
               </div>
             </div>
             <div class="upArrow">
@@ -265,7 +269,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                <b>Lieutenant Governor <?php echo($ltgovInfo['last_name']) ?></b> is an elected officer, the second ranking officer of the executive branch, and the first officer in line to succeed the Governor.
               </div>
             </div>
             <div class="upArrow">
@@ -291,7 +295,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                 <b>Attorney General <?php echo($treasInfo['last_name']) ?></b> is the chief law officer of and chief legal advisor to Buckeye Boys State. He is responsible for protecting the citizens from crimes that range from predatory financial practices to abuse of power.
               </div>
             </div>
             <div class="upArrow">
@@ -314,7 +318,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                The treasurer of Buckeye Boys State, <?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?>, is responsible for collecting and safeguarding taxes and fees, as well as managing state investments.
               </div>
             </div>
             <div class="upArrow">
@@ -337,7 +341,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                As the chief compliance officer of the state, the <b>Auditor <?php echo($auditInfo['last_name']) ?></b> makes Buckeye Boys State's government more efficient, effective and transparent. He does this by placing checks and balances on state and local governments, all for the sake of the taxpayers.
               </div>
             </div>
             <div class="upArrow">
@@ -362,7 +366,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                <b>Secretary <?php echo($secInfo["last_name"]) ?></b> was elected statewide in Buckeye Boys State. His official responsibilities include: overseeing elections in the state; registering business entities (corporations, etc.); granting those businesses the authority to work within the state; registering secured transactions; and granting access to public documents.
               </div>
             </div>
             <div class="upArrow">
