@@ -76,7 +76,7 @@
               > Daily Report of Activities
             </div>
           </a>
-          <a href="../../levels/state.php">
+          <a href="../../index.php">
             <div id="hoverLink" class="menuButton backButton">
               < BACK
             </div>
