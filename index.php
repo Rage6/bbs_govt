@@ -29,6 +29,12 @@
       <div>Welcome To</div>
       <div>Buckeye Boys State</div>
     </div>
+    <!-- <div>
+      The introduction paragraph
+    </div>
+    <div>
+      The paragraph with statistics
+    </div> -->
     <div id="hubContent">
       <div id="stateButton">
         <!-- <img class="levelImg" src="img/congress_3.jpg"> -->

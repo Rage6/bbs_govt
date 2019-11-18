@@ -50,6 +50,21 @@ body {
   width: 80%;
 }
 
+.flagAdjust {
+  margin: 30px 10% 0 10%;
+  border: 2px solid black;
+  padding: 10px 5%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  text-align: center;
+}
+
+.flagBttn {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
 .lockReset {
   margin: 30px 10% 0 10%;
   padding: 10px 5%;

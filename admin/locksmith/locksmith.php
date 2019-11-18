@@ -60,6 +60,30 @@
                 </div>
               </form>
             </div>
+            ");
+            if ($secList[$indexNum]['is_county'] > 0) {
+              if ($secList[$indexNum]['is_city'] > 0) {
+                $flagBkColor = "yellow";
+                $flagColor = "black";
+              } else {
+                $flagBkColor = "red";
+                $flagColor = "white";
+              };
+              echo("
+                <form method='POST'>
+                  <div class='flagAdjust' style='color:".$flagColor.";background-color:".$flagBkColor."'>
+                    <input type='hidden' name='flagSecNum' value='".$secList[$indexNum]['section_id']."'>
+                    <div>
+                      Flag #: <input type='number' name='flagNum' value='".$secList[$indexNum]['flags']."' min='0' max='5'>
+                    </div>
+                    <div>
+                      <input class='flagBttn' type='submit' name='flagUpdate' value='UPDATE NUMBER'>
+                    </div>
+                  </div>
+                </form>
+              ");
+            };
+            echo("
             <div class='lockReset'>
               <div>
                 Failed Logins: <span style='color:".$attemptColor."'>".$secList[$indexNum]['del_num']."</span>

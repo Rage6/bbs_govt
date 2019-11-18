@@ -18,7 +18,7 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,flags,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
@@ -61,6 +61,18 @@ if (isset($_POST['changePw'])) {
     header('Location: locksmith.php');
     return false;
   };
+};
+
+// Changes a county or city's flag number
+if (isset($_POST['flagUpdate'])) {
+  $updateFlag = $pdo->prepare("UPDATE Section SET flags=:fl WHERE section_id=:si");
+  $updateFlag->execute(array(
+    ':fl'=>htmlentities($_POST['flagNum']),
+    ':si'=>htmlentities($_POST['flagSecNum'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Flag # updated</b>";
+  header('Location: locksmith.php');
+  return true;
 };
 
 // Resets the number of failed login attempts back to zero for the given section
