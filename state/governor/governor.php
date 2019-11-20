@@ -51,7 +51,8 @@
     <div class="fullContent">
       <div id="menuContent" class="menuList">
         <div class="menuBox">
-          <a href="#governorTag">
+          <!-- <a href="#governorTag"> -->
+          <a id="govLink">
             <div id="hoverLink" class="menuButton">
               > Governor & Lt. Governor
             </div>
@@ -232,7 +233,7 @@
           ?>
         </div>
         <a name="governorTag">
-          <div class="govBox">
+          <div id="govTop" class="govBox">
             <div class="govSubtitle">GOVERNOR</div>
             <div class="forFlex">
               <div class="nameAndPic">

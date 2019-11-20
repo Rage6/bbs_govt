@@ -1,5 +1,5 @@
 $(()=>{
-  
+
   // Opens and closes the menu options
   $("#menuClick").click(()=>{
     if (window.innerWidth < 769) {
@@ -16,6 +16,22 @@ $(()=>{
     if (window.innerWidth < 769) {
       $("#menuContent").css("display","none");
     };
+  });
+
+  // The following will make the window slide down to the selected option, rather than it suddently changing
+  const slideDown = (contentId) => {
+    // console.log($(window).scrollTop());
+    let screenTop = $(window).scrollTop();
+    // console.log(contentId);
+    // console.log($(contentId).offset().top);
+    let contentTop = $(contentId).offset().top;
+    $('html, body').animate({
+      scrollTop: contentTop
+    }, 300)
+  };
+
+  $("#govLink").click(()=>{
+    slideDown("#govTop");
   });
 
   // Gives each .attr() to each element
