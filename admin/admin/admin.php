@@ -516,9 +516,6 @@
                   <div>
                     <input class='delInfoInput' type='text' name='newHome' placeholder='Hometown' />
                   </div>
-                  <div>
-                    <input class='delInfoInput' type='text' name='newEmail' placeholder='Email' />
-                  </div>
                   <select class='selectBttn' name='delCity'>
                     <option value='-1'>Choose a city...</option>");
                     for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
@@ -562,10 +559,6 @@
                         <div class='changeInput'>
                           <div>Hometown:</div>
                           <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
-                        </div>
-                        <div class='changeInput'>
-                          <div>Email:</div>
-                          <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
                         </div>
                         <div class='changeInput'>
                           <div>BBS City:</div>

@@ -71,7 +71,7 @@ if (isset($_SESSION['counsToken'])) {
 
 // Gets section data
 $secId = (int)$_SESSION['secId'];
-$secInfoStmt = $pdo->prepare("SELECT DISTINCT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
+$secInfoStmt = $pdo->prepare("SELECT DISTINCT section_id,section_name,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
 $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
@@ -491,12 +491,11 @@ if (isset($_POST['updateDelInfo'])) {
         $countyId = $allCity[$oneCityNum]['is_county'];
       };
     };
-    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el, city_id=:ci, county_id=:co WHERE delegate_id=:di');
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, city_id=:ci, county_id=:co WHERE delegate_id=:di');
     $updateDelStmt->execute(array(
       ':fsn'=>htmlentities($_POST['updateFstNm']),
       ':lsn'=>htmlentities($_POST['updateLstNm']),
       ':ht'=>htmlentities($_POST['updateHmtn']),
-      ':el'=>htmlentities($_POST['updateEmail']),
       ':ci'=>htmlentities($_POST['updateCityId']),
       ':co'=>(int)$countyId,
       ':di'=>htmlentities($_POST['delId'])
@@ -524,11 +523,10 @@ if (isset($_POST['addDelegate'])) {
           $delCounty = $allCity[$cityCount]['is_county'];
         };
       };
-      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,email,hometown,city_id,county_id) VALUES (:fn,:lm,:em,:hm,:ci,:co)");
+      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,hometown,city_id,county_id) VALUES (:fn,:lm,:hm,:ci,:co)");
       $addDelegateStmt->execute(array(
         ':fn'=>htmlentities($_POST['newFirstN']),
         ':lm'=>htmlentities($_POST['newLastN']),
-        ':em'=>htmlentities($_POST['newEmail']),
         ':hm'=>htmlentities($_POST['newHome']),
         ':ci'=>htmlentities($_POST['delCity']),
         ':co'=>(int)$delCounty
