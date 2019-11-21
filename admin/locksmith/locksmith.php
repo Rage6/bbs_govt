@@ -65,6 +65,18 @@
               if ($secList[$indexNum]['is_city'] > 0) {
                 $flagBkColor = "yellow";
                 $flagColor = "black";
+                echo("
+                  <form method='POST'>
+                    <div class='flagAdjust' style='background-color:green'>
+                      <input type='hidden' name='popId' value='".$secList[$indexNum]['section_id']."' />
+                      <div>
+                        Population: <input type='number' name='popNum' value='".$secList[$indexNum]['population']."' min='0' />
+                      </div>
+                      <div>
+                        <input type='submit' name='popUpdate' value='UPDATE POPULATION' />
+                      </div>
+                    </div>
+                  </form>");
               } else {
                 $flagBkColor = "red";
                 $flagColor = "white";
@@ -77,7 +89,7 @@
                       Flag #: <input type='number' name='flagNum' value='".$secList[$indexNum]['flags']."' min='0' max='5'>
                     </div>
                     <div>
-                      <input class='flagBttn' type='submit' name='flagUpdate' value='UPDATE NUMBER'>
+                      <input class='flagBttn' type='submit' name='flagUpdate' value='UPDATE FLAGS'>
                     </div>
                   </div>
                 </form>

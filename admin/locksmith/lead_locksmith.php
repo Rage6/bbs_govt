@@ -18,7 +18,7 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,flags,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,population,flags,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
@@ -58,6 +58,24 @@ if (isset($_POST['changePw'])) {
     };
   } else {
     $_SESSION['message'] = "<b style='color:red'>Your new password must match it confirmation password</b>";
+    header('Location: locksmith.php');
+    return false;
+  };
+};
+
+// Changes a city's population
+if (isset($_POST['popUpdate'])) {
+  if ($_POST['popNum'] >= 0) {
+    $updatePop = $pdo->prepare("UPDATE Section SET population=:pp WHERE section_id=:scd AND section_id != 0");
+    $updatePop->execute(array(
+      ':pp'=>htmlentities($_POST['popNum']),
+      ':scd'=>htmlentities($_POST['popId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Population Updated</b>";
+    header('Location: locksmith.php');
+    return true;
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>The population must be greater than zero</b>";
     header('Location: locksmith.php');
     return false;
   };
