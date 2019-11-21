@@ -57,22 +57,22 @@
               > Governor & Lt. Governor
             </div>
           </a>
-          <a href="#electedTag">
+          <a id="electedLink">
             <div id="hoverLink" class="menuButton">
               > Elected Officials
             </div>
           </a>
-          <a href="#goalTag">
+          <a id="goalLink">
             <div id="hoverLink" class="menuButton">
               > Policies & Goals
             </div>
           </a>
-          <a href="#agencyTag">
+          <a id="agencyLink">
             <div id="hoverLink" class="menuButton">
               > Departments & Agencies
             </div>
           </a>
-          <a href="#reportTag">
+          <a id="reportLink">
             <div id="hoverLink" class="menuButton">
               > Daily Report of Activities
             </div>
@@ -232,7 +232,7 @@
             };
           ?>
         </div>
-        <a name="governorTag">
+        <a id="govTop">
           <div id="govTop" class="govBox">
             <div class="govSubtitle">GOVERNOR</div>
             <div class="forFlex">
@@ -280,7 +280,7 @@
             </div>
           </div>
         </a>
-        <a name="electedTag">
+        <a id="electedTop">
           <div class="tagTitle">ELECTED OFFICIALS</div>
           <div style="margin-top:0px" class="govBox">
             <div class="firstBox govSubtitle">ATTORNEY GENERAL</div>
@@ -377,7 +377,7 @@
             </div>
           </div>
         </a>
-        <a name="goalTag">
+        <a id="goalTop">
           <div class="tagTitle">POLICIES & GOALS</div>
           <div class="goalBox">
             <div class="goalIntro">
@@ -425,7 +425,7 @@
             </a>
           </div>
         </a>
-        <a name="agencyTag">
+        <a id="agencyTop">
           <div class="tagTitle">Departments & Agencies</div>
           <div style="margin-top:0px" class="govBox agencyBox">
             <?php
@@ -459,7 +459,7 @@
             </a>
           </div>
         </a>
-        <a name="reportTag">
+        <a id="reportTop">
           <div class="tagTitle">DAILY REPORT OF ACTIVITIES</div>
           <div class="reportBox">
             <div class="allReportBtns">
