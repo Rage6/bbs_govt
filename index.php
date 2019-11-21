@@ -63,32 +63,52 @@
         </a>
       </div>
       <div id="countyButton">
-        <!-- <img class="levelImg" src="img/county_1.jpg"> -->
         <div class="levelTitle">
           COUNTY
         </div>
         <?php
           for ($countyNum = 0; $countyNum < count($countyList); $countyNum++) {
+            $cntyPopStmt = $pdo->prepare("SELECT SUM(population) FROM Section WHERE is_county=:si");
+            $cntyPopStmt->execute(array(
+              ':si'=>htmlentities($countyList[$countyNum]['section_id'])
+            ));
+            $cntyPop = $cntyPopStmt->fetch(PDO::FETCH_ASSOC)['SUM(population)'];
             echo(
               "<a href='county/county.php?section_id=".$countyList[$countyNum]['section_id']."'>
-                <div class='levelButton'>".$countyList[$countyNum]['section_name']."</div>
+                <div class='levelButton'>
+                  <div>".$countyList[$countyNum]['section_name']."</div>
+                  <div>".$countyList[$countyNum]['flags']."</div>
+                  <div>".$cntyPop."</div>
+                </div>
               </a>"
             );
           };
         ?>
       </div>
       <div id="cityButton">
-        <!-- <img class="levelImg" src="img/city_1.png"> -->
         <div class="levelTitle">
           CITY
         </div>
         <?php
           for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
-            echo(
-              "<a href='city/city.php?section_id=".$cityList[$cityNum]['section_id']."'>
-                <div class='levelButton'>".$cityList[$cityNum]['section_name']."</div>
-              </a>"
-            );
+            if ($cityList[$cityNum]['is_city'] == 0) {
+              echo(
+                "<div class='levelButton'>
+                  <div><u>".$cityList[$cityNum]['section_name']."</u></div>
+                </div>
+                "
+              );
+            } else {
+              echo(
+                "<a href='city/city.php?section_id=".$cityList[$cityNum]['section_id']."'>
+                  <div class='levelButton'>
+                    <div>".$cityList[$cityNum]['section_name']."</div>
+                    <div>".$cityList[$cityNum]['flags']."</div>
+                    <div>".$cityList[$cityNum]['population']."</div>
+                  </div>
+                </a>"
+              );
+            };
           };
         ?>
       </div>
