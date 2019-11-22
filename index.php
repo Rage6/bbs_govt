@@ -18,6 +18,10 @@
     <title>BBS 2019</title>
     <link rel="stylesheet" type="text/css" href="style/required.css" />
     <link rel="stylesheet" type="text/css" href="style/index.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="main.js"></script>
   </head>
   <body>
     <div class="adminLink">
@@ -26,15 +30,29 @@
       </a>
     </div>
     <div id="hubTitle">
-      <div>Welcome To</div>
       <div>Buckeye Boys State</div>
+      <div>DIRECTORY</div>
     </div>
-    <!-- <div>
-      The introduction paragraph
+    <div id="glossaryBttn" class="indexBar">
+      GLOSSARY
     </div>
-    <div>
-      The paragraph with statistics
-    </div> -->
+    <div class="introRow">
+      <div class="introBox">
+        <div class="introTitle"><u>WELCOME</u></div>
+        Learn the most up-to-date information here at the <b>Buckeye Boys State (BBS) government directory</b>. This includes:
+        <ul>
+          <li>Basic statistics about BBS</li>
+          <li>Populations of every county and city</li>
+          <li>Number of Flags won by each county or city</li>
+          <li>Basic summary of the BBS program</li>
+          <!-- <li>Election process for each elected official</li> -->
+        </ul>
+        Use the above 'GLOSSARY' button to find your information quickly.
+      </div>
+      <div class="statsBox">
+        This is where the basis BBS stats go
+      </div>
+    </div>
     <div id="hubContent">
       <div id="stateButton">
         <div class="levelTitle">
@@ -42,22 +60,50 @@
         </div>
         <a href="state/governor/governor.php">
           <div class="levelButton">
-            Office of the Governor
+            <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+              <div>
+                Office of the Governor
+              </div>
+              <div>
+                <div><img src='img/right_arrow.png'></div>
+              </div>
+            </div>
           </div>
         </a>
         <a href="state/senate/senate.php">
           <div class="levelButton">
-            Senate
+            <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+              <div>
+                Senate
+              </div>
+              <div>
+                <div><img src='img/right_arrow.png'></div>
+              </div>
+            </div>
           </div>
         </a>
         <a href="state/house_of_reps/house_of_reps.php">
           <div class="levelButton">
-            House of Representatives
+            <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+              <div>
+                House of Representatives
+              </div>
+              <div>
+                <div><img src='img/right_arrow.png'></div>
+              </div>
+            </div>
           </div>
         </a>
         <a href="state/supreme_court/supreme_court.php">
           <div class="levelButton">
-            Supreme Court
+            <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+              <div>
+                Supreme Court
+              </div>
+              <div>
+                <div><img src='img/right_arrow.png'></div>
+              </div>
+            </div>
           </div>
         </a>
       </div>
@@ -77,7 +123,7 @@
                 <div class='levelButton'>
                   <div class='sectionName'>
                     <div>".$countyList[$countyNum]['section_name']." County</div>
-                    <div><img src='img/right_arrow.png'></div>
+                    <!-- <div><img src='img/right_arrow.png'></div> -->
                   </div>
                   <div class='statsRow'>
                     <div><img src='img/flag_2.png'> ".$countyList[$countyNum]['flags']."</div>
@@ -107,7 +153,10 @@
               echo(
                 "<a href='city/city.php?section_id=".$cityList[$cityNum]['section_id']."'>
                   <div class='levelButton'>
-                    <div class='sectionName'>".$cityList[$cityNum]['section_name']." City</div>
+                    <div class='sectionName'>
+                      <div>".$cityList[$cityNum]['section_name']." City</div>
+                      <!-- <div><img src='img/right_arrow.png'></div> -->
+                    </div>
                     <div class='statsRow'>
                       <div><img src='img/flag_2.png'> ".$cityList[$cityNum]['flags']."</div>
                       <div style='border-right:3px solid black'></div>
@@ -120,8 +169,21 @@
           };
         ?>
       </div>
+      <div class="levelTitle explainTitle">What Is Buckeye Boys State?</div>
+      <div class="explainBox">
+        Every summer, nearly 1000 young men take their first steps towards leading our nation by creating and running their own American state: Buckeye Boys State (BBS). This 8 day-long camp, which is taking places at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS are:
+        <ul>
+          <li>Running their own political parties</li>
+          <li>Running for an elected position within their BBS city, county, or state</li>
+          <li>Voting on their own BBS election day</li>
+          <li>Taking responsibility of their new duties within their BBS community (be they elected, appointed, or hired)</li>
+          <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government and paying taxes (with BBS money)</li>
+        </ul>
+        For more information set the <a style="color:gold;border-bottom: 1px solid gold" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
+      </div>
+      <div id="explainBttn" class="moreButton">-- SEE MORE --</div>
     </div>
-    <div class="applyLink">
+    <div class="applyLink" style="background-color:black">
       Want to attend Buckeye Boys State next year?<br/>
       <a href="http://www.ohiobuckeyeboysstate.com/">
         <u>CLICK HERE!</u>
