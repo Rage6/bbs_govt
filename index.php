@@ -37,7 +37,6 @@
     </div> -->
     <div id="hubContent">
       <div id="stateButton">
-        <!-- <img class="levelImg" src="img/congress_3.jpg"> -->
         <div class="levelTitle">
           STATE
         </div>
@@ -76,9 +75,15 @@
             echo(
               "<a href='county/county.php?section_id=".$countyList[$countyNum]['section_id']."'>
                 <div class='levelButton'>
-                  <div>".$countyList[$countyNum]['section_name']."</div>
-                  <div>".$countyList[$countyNum]['flags']."</div>
-                  <div>".$cntyPop."</div>
+                  <div class='sectionName'>
+                    <div>".$countyList[$countyNum]['section_name']." County</div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
+                  <div class='statsRow'>
+                    <div><img src='img/flag_2.png'> ".$countyList[$countyNum]['flags']."</div>
+                    <div style='border-right:3px solid black'></div>
+                    <div><img src='img/delegate_2.png'> ".$cntyPop."</div>
+                  </div>
                 </div>
               </a>"
             );
@@ -93,8 +98,8 @@
           for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
             if ($cityList[$cityNum]['is_city'] == 0) {
               echo(
-                "<div class='levelButton'>
-                  <div><u>".$cityList[$cityNum]['section_name']."</u></div>
+                "<div class='subtitle'>
+                  <div><u>".$cityList[$cityNum]['section_name']." County</u></div>
                 </div>
                 "
               );
@@ -102,9 +107,12 @@
               echo(
                 "<a href='city/city.php?section_id=".$cityList[$cityNum]['section_id']."'>
                   <div class='levelButton'>
-                    <div>".$cityList[$cityNum]['section_name']."</div>
-                    <div>".$cityList[$cityNum]['flags']."</div>
-                    <div>".$cityList[$cityNum]['population']."</div>
+                    <div class='sectionName'>".$cityList[$cityNum]['section_name']." City</div>
+                    <div class='statsRow'>
+                      <div><img src='img/flag_2.png'> ".$cityList[$cityNum]['flags']."</div>
+                      <div style='border-right:3px solid black'></div>
+                      <div><img src='img/delegate_2.png'> ".$cityList[$cityNum]['population']."</div>
+                    </div>
                   </div>
                 </a>"
               );

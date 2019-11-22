@@ -36,10 +36,20 @@ a {
   height: 35px;
   width: 35px;
 }
-.levelButton {
-  margin: 20px 10%;
+.subtitle {
+  margin-top: 45px;
+  text-align: center;
   color: gold;
-  max-width: 350px;
+  font-size: 1.5rem;
+}
+.levelButton {
+  margin: 20px 0% 20px 20%;
+  border-radius: 15px;
+  padding: 15px 5% 15px 5%;
+  color: black;
+  font-size: 1.3rem;
+  background-color: gold;
+  width: 55%;
 }
 .levelImg {
   border-radius: 20px 20px 0 0;
@@ -51,7 +61,26 @@ a {
   text-align: left;
   font-size: 1.5rem;
   color: blue;
-  /* background-color: gold; */
   background-image: linear-gradient(to right, rgba(255,215,0,1) 70%, rgba(255,215,0,0));
   width: 70%;
+}
+.sectionName {
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+  display:flex;
+  justify-content: space-between;
+}
+.sectionName img {
+  width: 40%;
+}
+.statsRow {
+  display: flex;
+  justify-content: space-around;
+}
+.statsRow div {
+  padding-top: 20px;
+  font-size: 2rem;
+}
+.statsRow div img {
+  max-width: 35%;
 }
