@@ -1,0 +1,158 @@
+body {
+  background-image:linear-gradient(to right, #fec231 0%, blue 5%, blue 95%, #fec231 100%);
+}
+a {
+  text-decoration: none;
+}
+#hubTitle {
+  padding: 20px 0 20px 5%;
+  color: #fec231;
+  text-align: left;
+  font-size: 2.4rem;
+}
+#hubTitle div:first-child {
+  border-bottom: 3px solid #fec231;
+  font-size: 2rem;
+  width: 90%;
+}
+#hubContent {
+  padding: 0 0 100px 0;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+}
+.adminLink {
+  border-radius: 0 0 0 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: blue;
+  font-size: 1.1rem;
+  background-color: #fec231;
+  height: 35px;
+  width: 35px;
+}
+.adminLink img {
+  height: 35px;
+  width: 35px;
+}
+.glossaryBar {
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  color: #fec231;
+  text-align: center;
+  font-size: 1.3rem;
+  background-color: darkblue;
+  cursor: pointer;
+}
+.glossaryBox {
+  display: none;
+}
+.glossaryBox div {
+  border-bottom: 1px solid #fec231;
+  padding: 10px 5%;
+  color: #fec231;
+  background-color: darkblue;
+}
+.glossaryBox div:hover {
+  color: darkblue;
+  background-color: #fec231;
+}
+.introRow {
+  margin-bottom: 40px;
+}
+.introBox {
+  margin: 10px 10% 10px 10%;
+  border: 1px solid #fec231;
+  border-radius: 15px;
+  padding: 20px 5%;
+  color: #fec231;
+  font-size: 1.3rem;
+  background-color: darkblue;
+}
+.introTitle {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 3rem;
+}
+.statsBox {
+  margin: 10px 10% 10px 10%;
+  border: 1px solid #fec231;
+  border-radius: 15px;
+  padding: 20px 5%;
+  color: #fec231;
+  font-size: 1.3rem;
+  background-color: darkblue;
+}
+.statsTitle {
+  
+}
+.subtitle {
+  margin-top: 45px;
+  text-align: center;
+  color: #fec231;
+  font-size: 1.5rem;
+}
+.levelButton {
+  margin: 20px 0% 20px 20%;
+  border-radius: 15px;
+  padding: 15px 5% 15px 5%;
+  color: black;
+  font-size: 1.3rem;
+  background-color: #fec231;
+  width: 55%;
+}
+.levelImg {
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+}
+.levelTitle {
+  margin-left: 10%;
+  padding: 10px 5%;
+  text-align: left;
+  font-size: 1.5rem;
+  color: blue;
+  background-image: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
+  width: 70%;
+}
+.sectionName {
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+  display:flex;
+  justify-content: space-between;
+}
+.sectionName div div img {
+  float: right;
+  height: 25px;
+}
+.sectionName div img {
+  float: right;
+  height: 25px;
+}
+.statsRow {
+  display: flex;
+  justify-content: space-around;
+}
+.statsRow div {
+  padding-top: 20px;
+  font-size: 2rem;
+}
+.statsRow div img {
+  height: 30px;
+}
+.explainTitle {
+  margin-top: 50px;
+}
+.explainBox {
+  margin: 10px 10% 10px 10%;
+  padding-bottom: 20px;
+  color: #fec231;
+  font-size: 1.2rem;
+  max-height: 135px;
+  overflow-y: hidden;
+}
+.moreButton {
+  margin-bottom: 20px;
+  color: #fec231;
+  text-align: center;
+}

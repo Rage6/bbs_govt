@@ -7,11 +7,11 @@ body {
   padding: 0;
   position: relative;
 }
-.applyLink {
+/* .applyLink {
   padding: 10px 5%;
   font-size: 1.5rem;
   text-align: center;
-  color: gold;
+  color: #fec231;
   background-color: blue;
   position: absolute;
   bottom: 0;
@@ -19,5 +19,18 @@ body {
 }
 
 .applyLink a {
-  color: gold;
+  color: #fec231;
+} */
+.footer {
+  padding: 20px 0;
+  text-align: center;
+  color: #fec231;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.1rem;
+  background-color: #2020a0;
+}
+.footer a {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  color: #fec231;
 }

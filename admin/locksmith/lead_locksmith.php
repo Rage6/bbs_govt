@@ -18,7 +18,7 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,population,flags,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
@@ -63,6 +63,36 @@ if (isset($_POST['changePw'])) {
   };
 };
 
+// Changes a city's population
+if (isset($_POST['popUpdate'])) {
+  if ($_POST['popNum'] >= 0) {
+    $updatePop = $pdo->prepare("UPDATE Section SET population=:pp WHERE section_id=:scd AND section_id != 0");
+    $updatePop->execute(array(
+      ':pp'=>htmlentities($_POST['popNum']),
+      ':scd'=>htmlentities($_POST['popId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Population Updated</b>";
+    header('Location: locksmith.php');
+    return true;
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>The population must be greater than zero</b>";
+    header('Location: locksmith.php');
+    return false;
+  };
+};
+
+// Changes a county or city's flag number
+if (isset($_POST['flagUpdate'])) {
+  $updateFlag = $pdo->prepare("UPDATE Section SET flags=:fl WHERE section_id=:si");
+  $updateFlag->execute(array(
+    ':fl'=>htmlentities($_POST['flagNum']),
+    ':si'=>htmlentities($_POST['flagSecNum'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Flag # updated</b>";
+  header('Location: locksmith.php');
+  return true;
+};
+
 // Resets the number of failed login attempts back to zero for the given section
 if (isset($_POST['resetNum'])) {
   $resetNumStmt = $pdo->prepare("UPDATE Section SET couns_num=0, del_num=0 WHERE section_id=:scid");
@@ -72,6 +102,48 @@ if (isset($_POST['resetNum'])) {
   $_SESSION['message'] = "<b style='color:green'>Section unlocked</b>";
   header('Location: locksmith.php');
   return true;
+};
+
+// Change the BBS start and end dates/times
+if (isset($_POST['changeDates'])) {
+  if ($_POST['startYear'] != '' && $_POST['endYear'] != '') {
+    if ($_POST['startDay'] != '' && $_POST['endDay'] != '') {
+      if ($_POST['startTime'] != '' && $_POST['endTime'] != '') {
+        $newStartYear = htmlentities($_POST['startYear']);
+        $newStartMonth = htmlentities($_POST['startMonth']);
+        $newStartDay = htmlentities($_POST['startDay']);
+        $newStartTime = htmlentities($_POST['startTime']);
+        $newStartAmPm = htmlentities($_POST['startAmPm']);
+        $newStartDate = $newStartMonth."-".$newStartDay."-".$newStartYear."-".$newStartTime."-".$newStartAmPm;
+        $newEndYear = htmlentities($_POST['endYear']);
+        $newEndMonth = htmlentities($_POST['endMonth']);
+        $newEndDay = htmlentities($_POST['endDay']);
+        $newEndTime = htmlentities($_POST['endTime']);
+        $newEndAmPm = htmlentities($_POST['endAmPm']);
+        $newEndDate = $newEndMonth."-".$newEndDay."-".$newEndYear."-".$newEndTime."-".$newEndAmPm;
+        $updateDateStmt = $pdo->prepare("UPDATE Maintenance SET starting_date=:nsd, ending_date=:ned WHERE locksmith_id=999");
+        $updateDateStmt->execute(array(
+          ':nsd'=>$newStartDate,
+          ':ned'=>$newEndDate
+        ));
+        $_SESSION['message'] = "<b style='color:green'>Date/Time Updated</b>";
+        header('Location: locksmith.php');
+        return true;
+      } else {
+        $_SESSION['message'] = "<b style='color:red'>A time is required</b>";
+        header('Location: locksmith.php');
+        return false;
+      };
+    } else {
+      $_SESSION['message'] = "<b style='color:red'>A day is required</b>";
+      header('Location: locksmith.php');
+      return false;
+    };
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>A year is required</b>";
+    header('Location: locksmith.php');
+    return false;
+  };
 };
 
 // Locks down the website

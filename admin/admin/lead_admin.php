@@ -71,14 +71,16 @@ if (isset($_SESSION['counsToken'])) {
 
 // Gets section data
 $secId = (int)$_SESSION['secId'];
-$secInfoStmt = $pdo->prepare("SELECT DISTINCT section_id,section_name,description,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
+$secInfoStmt = $pdo->prepare("SELECT DISTINCT section_id,section_name,full_time,is_city,is_county FROM Section WHERE section_id=:sid");
 $secInfoStmt->execute(array(
   ':sid'=>$secId
 ));
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-$allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+// $allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+
+$allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Image WHERE section_id=:se AND filename IS NOT NULL");
 
 $allPhotoStmt->execute(array(
   ':se'=>$secId
@@ -87,6 +89,10 @@ $allPhotos = [];
 while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
   $allPhotos[] = $onePhoto;
 };
+
+// echo("<pre>");
+// var_dump($allPhotos);
+// echo("</pre>");
 
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
@@ -385,7 +391,7 @@ if (isset($_GET['editImg'])) {
     ':aw'=>htmlentities($_GET['actualWidth']),
     ':img'=>htmlentities($_SESSION['imgId'])
   ));
-  $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND filename IS NOT NULL");
+  $updatePhotoStmt = $pdo->prepare("SELECT image_id, percent_x, percent_y, height, width, section_path, filename, extension, actual_width, actual_height FROM Image WHERE section_id=:se AND filename IS NOT NULL");
   $updatePhotoStmt->execute(array(
     ':se'=>$secId
   ));
@@ -485,12 +491,11 @@ if (isset($_POST['updateDelInfo'])) {
         $countyId = $allCity[$oneCityNum]['is_county'];
       };
     };
-    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, email=:el, city_id=:ci, county_id=:co WHERE delegate_id=:di');
+    $updateDelStmt = $pdo->prepare('UPDATE Delegate SET first_name=:fsn, last_name=:lsn, hometown=:ht, city_id=:ci, county_id=:co WHERE delegate_id=:di');
     $updateDelStmt->execute(array(
       ':fsn'=>htmlentities($_POST['updateFstNm']),
       ':lsn'=>htmlentities($_POST['updateLstNm']),
       ':ht'=>htmlentities($_POST['updateHmtn']),
-      ':el'=>htmlentities($_POST['updateEmail']),
       ':ci'=>htmlentities($_POST['updateCityId']),
       ':co'=>(int)$countyId,
       ':di'=>htmlentities($_POST['delId'])
@@ -518,11 +523,10 @@ if (isset($_POST['addDelegate'])) {
           $delCounty = $allCity[$cityCount]['is_county'];
         };
       };
-      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,email,hometown,city_id,county_id) VALUES (:fn,:lm,:em,:hm,:ci,:co)");
+      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,hometown,city_id,county_id) VALUES (:fn,:lm,:hm,:ci,:co)");
       $addDelegateStmt->execute(array(
         ':fn'=>htmlentities($_POST['newFirstN']),
         ':lm'=>htmlentities($_POST['newLastN']),
-        ':em'=>htmlentities($_POST['newEmail']),
         ':hm'=>htmlentities($_POST['newHome']),
         ':ci'=>htmlentities($_POST['delCity']),
         ':co'=>(int)$delCounty

@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Governor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/gov_360.css"/>
     <!-- Width: 361px to 375px -->
@@ -51,32 +52,33 @@
     <div class="fullContent">
       <div id="menuContent" class="menuList">
         <div class="menuBox">
-          <a href="#governorTag">
+          <!-- <a href="#governorTag"> -->
+          <a id="govLink">
             <div id="hoverLink" class="menuButton">
               > Governor & Lt. Governor
             </div>
           </a>
-          <a href="#electedTag">
+          <a id="electedLink">
             <div id="hoverLink" class="menuButton">
               > Elected Officials
             </div>
           </a>
-          <a href="#goalTag">
+          <a id="goalLink">
             <div id="hoverLink" class="menuButton">
               > Policies & Goals
             </div>
           </a>
-          <a href="#agencyTag">
+          <a id="agencyLink">
             <div id="hoverLink" class="menuButton">
               > Departments & Agencies
             </div>
           </a>
-          <a href="#reportTag">
+          <a id="reportLink">
             <div id="hoverLink" class="menuButton">
               > Daily Report of Activities
             </div>
           </a>
-          <a href="../../levels/state.php">
+          <a href="../../index.php">
             <div id="hoverLink" class="menuButton backButton">
               < BACK
             </div>
@@ -94,36 +96,145 @@
 
         <div class="slideshow">
           <div class="slideFilm">
-            <div
-              id="img_1_A"
-              class="oneFrame"
-              style="background-image:url('<?php echo($govInfo['section_path'].'crop_'.$govInfo['filename'].'.'.$govInfo['extension'])?>')"
+            <div id="img_1_A" class="oneFrame"
+              <?php
+                if ($govInfo['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
             ></div>
-            <div id="img_2_A" class="oneFrame"></div>
-            <div id="img_3_A" class="oneFrame"></div>
-            <div id="img_4_A" class="oneFrame"></div>
-            <div id="img_5_A" class="oneFrame"></div>
-            <div id="img_6_A" class="oneFrame"></div>
-            <div id="img_7_A" class="oneFrame"></div>
             <div
-              id="img_1_B"
-              class="oneFrame"
-              style="background-image:url('<?php echo($govInfo['section_path'].'crop_'.$govInfo['filename'].'.'.$govInfo['extension'])?>')"
+              id="img_2_A" class="oneFrame"
+              <?php
+                if ($bannerOne['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
             ></div>
-            <div id="img_2_B" class="oneFrame"></div>
-            <div id="img_3_B" class="oneFrame"></div>
-            <div id="img_4_B" class="oneFrame"></div>
-            <div id="img_5_B" class="oneFrame"></div>
-            <div id="img_6_B" class="oneFrame"></div>
-            <div id="img_7_B" class="oneFrame"></div>
+            <div id="img_3_A" class="oneFrame"
+              <?php
+                if ($bannerTwo['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_4_A" class="oneFrame"
+              <?php
+                if ($bannerThree['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_5_A" class="oneFrame"
+              <?php
+                if ($bannerFour['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_6_A" class="oneFrame"
+              <?php
+                if ($bannerFive['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_7_A" class="oneFrame"
+              <?php
+                if ($bannerSix['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_1_B" class="oneFrame"
+            <?php
+              if ($govInfo['approved'] == 1) {
+                echo("style=background-image:url('".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."')");
+              } else {
+                echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+              };
+            ?>
+            ></div>
+            <div id="img_2_B" class="oneFrame"
+              <?php
+                if ($bannerOne['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_3_B" class="oneFrame"
+              <?php
+                if ($bannerTwo['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_4_B" class="oneFrame"
+              <?php
+                if ($bannerThree['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_5_B" class="oneFrame"
+              <?php
+                if ($bannerFour['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_6_B" class="oneFrame"
+              <?php
+                if ($bannerFive['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
+            <div id="img_7_B" class="oneFrame"
+              <?php
+                if ($bannerSix['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                } else {
+                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                };
+              ?>
+            ></div>
           </div>
         </div>
 
         <div class="govIntro">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <?php
+            if ($introContent['approved'] == 1) {
+              echo($introContent['content']);
+            };
+          ?>
         </div>
-        <a name="governorTag">
-          <div class="govBox">
+        <a id="govTop">
+          <div id="govTop" class="govBox">
             <div class="govSubtitle">GOVERNOR</div>
             <div class="forFlex">
               <div class="nameAndPic">
@@ -137,7 +248,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                As governor of Buckeye Boys State, <?php echo($govInfo['first_name']." ".$govInfo['last_name']) ?> governor is the head of the executive branch of the state’s government, as well as the commander-in-chief of the state’s military. He is also responsible for making the state budget, as well as either approving or vetoing potential state laws.
               </div>
             </div>
             <div class="upArrow">
@@ -160,7 +271,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                <b>Lieutenant Governor <?php echo($ltgovInfo['last_name']) ?></b> is an elected officer, the second ranking officer of the executive branch, and the first officer in line to succeed the Governor.
               </div>
             </div>
             <div class="upArrow">
@@ -170,7 +281,7 @@
             </div>
           </div>
         </a>
-        <a name="electedTag">
+        <a id="electedTop">
           <div class="tagTitle">ELECTED OFFICIALS</div>
           <div style="margin-top:0px" class="govBox">
             <div class="firstBox govSubtitle">ATTORNEY GENERAL</div>
@@ -186,7 +297,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                 <b>Attorney General <?php echo($treasInfo['last_name']) ?></b> is the chief law officer of and chief legal advisor to Buckeye Boys State. He is responsible for protecting the citizens from crimes that range from predatory financial practices to abuse of power.
               </div>
             </div>
             <div class="upArrow">
@@ -209,7 +320,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                The treasurer of Buckeye Boys State, <?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?>, is responsible for collecting and safeguarding taxes and fees, as well as managing state investments.
               </div>
             </div>
             <div class="upArrow">
@@ -232,7 +343,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                As the chief compliance officer of the state, the <b>Auditor <?php echo($auditInfo['last_name']) ?></b> makes Buckeye Boys State's government more efficient, effective and transparent. He does this by placing checks and balances on state and local governments, all for the sake of the taxpayers.
               </div>
             </div>
             <div class="upArrow">
@@ -257,7 +368,7 @@
                 ?>
               </div>
               <div class="govBio">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl purus in mollis nunc. Non tellus orci ac auctor augue.
+                <b>Secretary <?php echo($secInfo["last_name"]) ?></b> was elected statewide in Buckeye Boys State. His official responsibilities include: overseeing elections in the state; registering business entities (corporations, etc.); granting those businesses the authority to work within the state; registering secured transactions; and granting access to public documents.
               </div>
             </div>
             <div class="upArrow">
@@ -267,7 +378,7 @@
             </div>
           </div>
         </a>
-        <a name="goalTag">
+        <a id="goalTop">
           <div class="tagTitle">POLICIES & GOALS</div>
           <div class="goalBox">
             <div class="goalIntro">
@@ -315,7 +426,7 @@
             </a>
           </div>
         </a>
-        <a name="agencyTag">
+        <a id="agencyTop">
           <div class="tagTitle">Departments & Agencies</div>
           <div style="margin-top:0px" class="govBox agencyBox">
             <?php
@@ -349,7 +460,7 @@
             </a>
           </div>
         </a>
-        <a name="reportTag">
+        <a id="reportTop">
           <div class="tagTitle">DAILY REPORT OF ACTIVITIES</div>
           <div class="reportBox">
             <div class="allReportBtns">

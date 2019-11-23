@@ -9,7 +9,7 @@
 }
 
 .divider {
-  border-left: 2px solid gold;
+  border-left: 2px solid #fec231;
 }
 
 .govTitle div:last-child {
@@ -90,32 +90,32 @@
 }
 
 #img_2_A {
-  background-image: url("../../../img/state/governor/band_2.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_1.jpeg");
   display: inherit;
 }
 
 #img_3_A {
-  background-image: url("../../../img/state/governor/AL_logo.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_2.jpeg");
   display: inherit;
 }
 
 #img_4_A {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_3.jpeg");
   display: inherit;
 }
 
 #img_5_A {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_4.jpeg");
   display: inherit;
 }
 
 #img_6_A {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_5.jpeg");
   display: inherit;
 }
 
 #img_7_A {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_6.jpeg");
   display: inherit;
 }
 
@@ -124,32 +124,32 @@
 }
 
 #img_2_B {
-  background-image: url("../../../img/state/governor/band_2.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_1.jpeg");
   display: inherit;
 }
 
 #img_3_B {
-  background-image: url("../../../img/state/governor/AL_logo.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_2.jpeg");
   display: inherit;
 }
 
 #img_4_B {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_3.jpeg");
   display: inherit;
 }
 
 #img_5_B {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_4.jpeg");
   display: inherit;
 }
 
 #img_6_B {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_5.jpeg");
   display: inherit;
 }
 
 #img_7_B {
-  background-image: url("../../../img/state/governor/ceremony.jpg");
+  background-image: url("../../../img/state/governor/crop_banner_6.jpeg");
   display: inherit;
 }
 
@@ -215,7 +215,7 @@
   border-radius: 20px;
   color: #2020a0;
   font-size: 2rem;
-  background-color: gold;
+  background-color: #fec231;
   width: 30%;
 }
 
@@ -234,7 +234,7 @@
 
 .goalDivider {
   display: block;
-  border: 2px solid gold;
+  border: 2px solid #fec231;
 }
 
 .agencyBox {
@@ -293,7 +293,7 @@
 }
 
 .reportMain {
-  border: 2px solid gold;
+  border: 2px solid #fec231;
   padding: 20px;
   overflow-y: scroll;
   height: 350px;

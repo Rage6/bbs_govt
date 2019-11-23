@@ -80,9 +80,6 @@
           <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
           <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
           <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" />
-          <!-- <button id="smallerBttn" class="sizeBttn">BIG</button>
-          <button id="biggerBttn" class="sizeBttn">small</button>
-          <button id="rotateBttn" class="sizeBttn">Rotate</button> -->
         </div>
         <button id="submitCrop" type="button">
           ENTER
@@ -331,7 +328,7 @@
               for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                 echo("
                 <div class='photoBox'>
-                  <div class='photoTitle'>".$allPhotos[$imgNum]['job_name']."</div>
+                  <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>
                   <div>
                     <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                   </div>
@@ -519,9 +516,6 @@
                   <div>
                     <input class='delInfoInput' type='text' name='newHome' placeholder='Hometown' />
                   </div>
-                  <div>
-                    <input class='delInfoInput' type='text' name='newEmail' placeholder='Email' />
-                  </div>
                   <select class='selectBttn' name='delCity'>
                     <option value='-1'>Choose a city...</option>");
                     for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
@@ -565,10 +559,6 @@
                         <div class='changeInput'>
                           <div>Hometown:</div>
                           <input type='text' name='updateHmtn' value='".$allDelegate[$delNum]['hometown']."' />
-                        </div>
-                        <div class='changeInput'>
-                          <div>Email:</div>
-                          <input type='text' name='updateEmail' value='".$allDelegate[$delNum]['email']."' />
                         </div>
                         <div class='changeInput'>
                           <div>BBS City:</div>
@@ -727,7 +717,7 @@
         </div>
         <div id="refInfoBox" class="refInfoBox">
           <u style='text-align:center'>Why is there a timer on this?</u></br>
-          There is a chance that a user will accidentally leave their account logged in on a public device, making it vulnerable to unqualified users.</br>
+          If your account is left logged in at a public computer, it would be vulnerable to unqualified users.</br>
           To reduce this risk, your device will automatically relock this account if its page has not been refreshed or updated in the past 30 minutes.
         </div>
       </div>
