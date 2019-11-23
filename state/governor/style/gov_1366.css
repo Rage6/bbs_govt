@@ -9,7 +9,7 @@
 }
 
 .divider {
-  border-left: 2px solid gold;
+  border-left: 2px solid #fec231;
 }
 
 .govTitle div:last-child {
@@ -209,7 +209,7 @@
   border-radius: 20px;
   color: #2020a0;
   font-size: 2rem;
-  background-color: gold;
+  background-color: #fec231;
   width: 24%;
 }
 
@@ -269,7 +269,7 @@
 }
 
 .reportMain {
-  border: 2px solid gold;
+  border: 2px solid #fec231;
   padding: 20px;
   overflow-y: scroll;
   height: 350px;

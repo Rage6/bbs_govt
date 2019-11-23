@@ -36,16 +36,27 @@ a {
   height: 35px;
   width: 35px;
 }
-.indexBar {
+.glossaryBar {
   border-top: 1px solid gold;
   border-bottom: 1px solid gold;
   color: gold;
   text-align: center;
   font-size: 1.3rem;
   background-color: darkblue;
+  cursor: pointer;
 }
-.indexBox {
-
+.glossaryBox {
+  display: none;
+}
+.glossaryBox div {
+  border-bottom: 1px solid gold;
+  padding: 10px 5%;
+  color: gold;
+  background-color: darkblue;
+}
+.glossaryBox div:hover {
+  color: darkblue;
+  background-color: gold;
 }
 .introRow {
   margin-bottom: 40px;
@@ -61,7 +72,7 @@ a {
 .introTitle {
   margin-bottom: 25px;
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 3rem;
 }
 .statsBox {
   margin: 10px 10% 10px 10%;

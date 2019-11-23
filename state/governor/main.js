@@ -72,15 +72,15 @@ $(()=>{
   });
 
   // Similar to 'agency' selection, this selects one of the  Daily Report
-  $("#report1").css("color","#2020a0").css("background-color","gold");
+  $("#report1").css("color","#2020a0").css("background-color","#fec231");
   $("#reportCnt1").css("display","block");
   $("[data-day]").click((event)=>{
-    $("#" + event.target.id).css("color","#2020a0").css("background-color","gold");
+    $("#" + event.target.id).css("color","#2020a0").css("background-color","#fec231");
     let reportNum = parseInt($("#" + event.target.id).attr("data-day"));
     $("#reportCnt" + reportNum).css("display","block");
     for (let c = 1; c < 6; c++) {
       if (c != reportNum) {
-        $("#report" + c).css("color","gold").css("background-color","#2020a0");
+        $("#report" + c).css("color","#fec231").css("background-color","#2020a0");
         $("#reportCnt" + c).css("display","none");
       };
     };
