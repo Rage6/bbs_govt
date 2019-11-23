@@ -55,10 +55,16 @@
           <li>A short summary of the BBS program</li>
           <!-- <li>Election process for each elected official</li> -->
         </ul>
-        Use the above 'GLOSSARY' button to find your information quickly.
+        Use the 'GLOSSARY' button to find your desired information.
       </div>
       <div id="numbersTop" class="statsBox">
-        This is where the basis BBS stats go
+        <div class="statsTitle"><span class="introTitle">B</span>y the numbers...</div>
+        <div>Population: <?php echo($totalPopulation) ?></div>
+        <div>Start Date: <?php echo($startDate) ?></div>
+        <div>End Date: <?php echo($endDate) ?></div>
+        <div>Location: Oxford, OH</div>
+        <div>BBS Counties: <?php echo($totalCounties) ?></div>
+        <div>BBS Cities: <?php echo($totalCities) ?></div>
       </div>
     </div>
     <div id="hubContent">
@@ -195,7 +201,7 @@
       </div>
       <div id="explainBttn" class="moreButton">-- SEE MORE --</div>
     </div>
-    <div class="applyLink" style="background-color:black">
+    <div class="applyLink footer" style="background-color:black">
       Want to attend Buckeye Boys State next year?<br/>
       <a href="http://www.ohiobuckeyeboysstate.com/">
         <u>CLICK HERE!</u>

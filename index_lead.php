@@ -22,4 +22,28 @@
     $totalPopulation += $cityList[$cityNum]['population'];
   };
 
+  // Number of cities
+  $countCities = $pdo->prepare("SELECT COUNT(section_name) FROM Section WHERE is_city=1");
+  $countCities->execute();
+  $totalCities = $countCities->fetch(PDO::FETCH_ASSOC)['COUNT(section_name)'];
+
+  // Number of counties
+  $countCounties = $pdo->prepare("SELECT COUNT(section_name) FROM Section WHERE is_county>0 AND is_city=0");
+  $countCounties->execute();
+  $totalCounties = $countCounties->fetch(PDO::FETCH_ASSOC)['COUNT(section_name)'];
+
+  // Starting date
+  $startDateStmt = $pdo->prepare("SELECT starting_date FROM Maintenance WHERE locksmith_name='Maintenance'");
+  $startDateStmt->execute();
+  $startDate = $startDateStmt->fetch(PDO::FETCH_ASSOC)['starting_date'];
+  $startArray = explode("-",$startDate);
+  $startDate = $startArray[0]." ".$startArray[1].", ".$startArray[2];
+
+  // Ending date
+  $endDateStmt = $pdo->prepare("SELECT ending_date FROM Maintenance WHERE locksmith_name='Maintenance'");
+  $endDateStmt->execute();
+  $endDate = $endDateStmt->fetch(PDO::FETCH_ASSOC)['ending_date'];
+  $endArray = explode("-",$endDate);
+  $endDate = $endArray[0]." ".$endArray[1].", ".$endArray[2];
+
 ?>

@@ -40,11 +40,11 @@ $(() => {
   // Show part or all of the "ABOUT BBS" section
   $("#explainBttn").click(()=>{
     let maxHeight = $(".explainBox").css('max-height');
-    if (maxHeight == "100px") {
+    if (maxHeight == "135px") {
       $(".explainBox").css('max-height','inherit');
       $("#explainBttn").text('-- SEE LESS --');
     } else {
-      $(".explainBox").css('max-height','100px');
+      $(".explainBox").css('max-height','135px');
       $("#explainBttn").text('-- SEE MORE --');
     };
   });

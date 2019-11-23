@@ -77,10 +77,15 @@ a {
 }
 .statsBox {
   margin: 10px 10% 10px 10%;
+  border: 1px solid #fec231;
   border-radius: 15px;
   padding: 20px 5%;
+  color: #fec231;
   font-size: 1.3rem;
-  background-color: lightgrey;
+  background-color: darkblue;
+}
+.statsTitle {
+  
 }
 .subtitle {
   margin-top: 45px;
@@ -143,7 +148,7 @@ a {
   padding-bottom: 20px;
   color: #fec231;
   font-size: 1.2rem;
-  max-height: 100px;
+  max-height: 135px;
   overflow-y: hidden;
 }
 .moreButton {
