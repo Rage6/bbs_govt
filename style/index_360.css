@@ -1,17 +1,17 @@
 body {
-  background-image:linear-gradient(to right, gold 0%, blue 5%, blue 95%, gold 100%);
+  background-image:linear-gradient(to right, #fec231 0%, blue 5%, blue 95%, #fec231 100%);
 }
 a {
   text-decoration: none;
 }
 #hubTitle {
   padding: 20px 0 20px 5%;
-  color: gold;
+  color: #fec231;
   text-align: left;
   font-size: 2.4rem;
 }
 #hubTitle div:first-child {
-  border-bottom: 3px solid gold;
+  border-bottom: 3px solid #fec231;
   font-size: 2rem;
   width: 90%;
 }
@@ -28,7 +28,7 @@ a {
   right: 0;
   color: blue;
   font-size: 1.1rem;
-  background-color: gold;
+  background-color: #fec231;
   height: 35px;
   width: 35px;
 }
@@ -37,9 +37,9 @@ a {
   width: 35px;
 }
 .glossaryBar {
-  border-top: 1px solid gold;
-  border-bottom: 1px solid gold;
-  color: gold;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  color: #fec231;
   text-align: center;
   font-size: 1.3rem;
   background-color: darkblue;
@@ -49,23 +49,24 @@ a {
   display: none;
 }
 .glossaryBox div {
-  border-bottom: 1px solid gold;
+  border-bottom: 1px solid #fec231;
   padding: 10px 5%;
-  color: gold;
+  color: #fec231;
   background-color: darkblue;
 }
 .glossaryBox div:hover {
   color: darkblue;
-  background-color: gold;
+  background-color: #fec231;
 }
 .introRow {
   margin-bottom: 40px;
 }
 .introBox {
   margin: 10px 10% 10px 10%;
+  border: 1px solid #fec231;
   border-radius: 15px;
   padding: 20px 5%;
-  color: gold;
+  color: #fec231;
   font-size: 1.3rem;
   background-color: darkblue;
 }
@@ -84,7 +85,7 @@ a {
 .subtitle {
   margin-top: 45px;
   text-align: center;
-  color: gold;
+  color: #fec231;
   font-size: 1.5rem;
 }
 .levelButton {
@@ -93,7 +94,7 @@ a {
   padding: 15px 5% 15px 5%;
   color: black;
   font-size: 1.3rem;
-  background-color: gold;
+  background-color: #fec231;
   width: 55%;
 }
 .levelImg {
@@ -106,7 +107,7 @@ a {
   text-align: left;
   font-size: 1.5rem;
   color: blue;
-  background-image: linear-gradient(to right, rgba(255,215,0,1) 70%, rgba(255,215,0,0));
+  background-image: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
   width: 70%;
 }
 .sectionName {
@@ -140,13 +141,13 @@ a {
 .explainBox {
   margin: 10px 10% 10px 10%;
   padding-bottom: 20px;
-  color: gold;
+  color: #fec231;
   font-size: 1.2rem;
   max-height: 100px;
   overflow-y: hidden;
 }
 .moreButton {
   margin-bottom: 20px;
-  color: gold;
+  color: #fec231;
   text-align: center;
 }

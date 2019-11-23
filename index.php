@@ -17,7 +17,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS 2019</title>
     <link rel="stylesheet" type="text/css" href="style/required.css" />
-    <link rel="stylesheet" type="text/css" href="style/index.css" />
+    <!-- Width: 0px to 360px (Default CSS) -->
+    <link rel="stylesheet" type="text/css" href="style/index_360.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
@@ -189,7 +190,7 @@
             <li>Taking responsibility of their new duties within their BBS community (be they elected, appointed, or hired)</li>
             <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government and paying taxes (with BBS money)</li>
           </ul>
-          For more information set the <a style="color:gold;border-bottom: 1px solid gold" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
+          For more information set the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
         </div>
       </div>
       <div id="explainBttn" class="moreButton">-- SEE MORE --</div>

@@ -11,7 +11,7 @@ body {
   padding: 10px 5%;
   font-size: 1.5rem;
   text-align: center;
-  color: gold;
+  color: #fec231;
   background-color: blue;
   position: absolute;
   bottom: 0;
@@ -19,5 +19,5 @@ body {
 }
 
 .applyLink a {
-  color: gold;
+  color: #fec231;
 }
