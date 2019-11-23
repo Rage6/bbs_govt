@@ -18,5 +18,19 @@
     $imgPrefix = "https://buckeye-boys-state.herokuapp.com/img";
   };
 
+  // Starting date
+  $startDateStmt = $pdo->prepare("SELECT starting_date FROM Maintenance WHERE locksmith_name='Maintenance'");
+  $startDateStmt->execute();
+  $startDate = $startDateStmt->fetch(PDO::FETCH_ASSOC)['starting_date'];
+  $startArray = explode("-",$startDate);
+  $startDate = $startArray[0]." ".$startArray[1].", ".$startArray[2];
+
+  // Ending date
+  $endDateStmt = $pdo->prepare("SELECT ending_date FROM Maintenance WHERE locksmith_name='Maintenance'");
+  $endDateStmt->execute();
+  $endDate = $endDateStmt->fetch(PDO::FETCH_ASSOC)['ending_date'];
+  $endArray = explode("-",$endDate);
+  $endDate = $endArray[0]." ".$endArray[1].", ".$endArray[2];
+
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>

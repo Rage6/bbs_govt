@@ -72,7 +72,7 @@
                       <div>
                         Population: <input type='number' name='popNum' value='".$secList[$indexNum]['population']."' min='0' />
                       </div>
-                      <div>
+                      <div class='flagBttn' style='background-color:lightgrey'>
                         <input type='submit' name='popUpdate' value='UPDATE POPULATION' />
                       </div>
                     </div>
@@ -120,6 +120,106 @@
         };
       };
     ?>
+    <div class="dateBox">
+      <div class="dateTitle">START & END</div>
+      <form method='POST'>
+        <div class="dateRow">
+          <div style="background-color:lightgreen">
+            <div style="text-align:center"><u>START</u></div>
+            <div>
+              YEAR: <input type='text' name='startYear' value='<?php echo($startArray[2]) ?>' />
+            </div>
+            <div>
+              MONTH:
+              <select name="startMonth">
+                <option value="<?php echo($startArray[0]) ?>"><?php echo($startArray[0]) ?></option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+            </div>
+            <div>
+              DAY: <input type='text' name='startDay' value='<?php echo($startArray[1]) ?>' />
+            </div>
+            <div>
+              TIME: <input type='text' name='startTime' value='<?php echo($startArray[3]) ?>' />
+            </div>
+            <div>
+              AM/PM:
+              <select name='startAmPm'>
+                <?php
+                  if ($startArray[4] == "PM") {
+                    $startValueOne = "PM";
+                    $startValueTwo = "AM";
+                  } else {
+                    $startValueOne = "AM";
+                    $startValueTwo = "PM";
+                  };
+                ?>
+                <option value="<?php echo($startValueOne) ?>"><?php echo($startValueOne) ?></option>
+                <option value="<?php echo($startValueTwo) ?>"><?php echo($startValueTwo) ?></option>
+              </select>
+            </div>
+          </div>
+          <div style="background-color:lightblue">
+            <div style="text-align:center"><u>END</u></div>
+            <div>
+              YEAR: <input type='text' name='endYear' value='<?php echo($endArray[2]) ?>' />
+            </div>
+            <div>
+              MONTH:
+              <select name="endMonth">
+                <option value="<?php echo($endArray[0]) ?>"><?php echo($startArray[0]) ?></option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+              </select>
+            </div>
+            <div>
+              DAY: <input type='text' name='endDay' value='<?php echo($endArray[1]) ?>' />
+            </div>
+            <div>
+              TIME: <input type='text' name='endTime' value='<?php echo($endArray[3]) ?>' />
+            </div>
+            <div>
+              AM/PM:
+              <select name='endAmPm'>
+                <?php
+                  if ($endArray[4] == "PM") {
+                    $valueOne = "PM";
+                    $valueTwo = "AM";
+                  } else {
+                    $valueOne = "AM";
+                    $valueTwo = "PM";
+                  };
+                ?>
+                <option value="<?php echo($valueOne) ?>"><?php echo($valueOne) ?></option>
+                <option value="<?php echo($valueTwo) ?>"><?php echo($valueTwo) ?></option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <input style='background-color:lightgrey;border:1px solid black' type='submit' name='changeDates' value='UPDATE' />
+      </form>
+    </div>
     <div class='lockdownBox'>
       <div class='lockTitle'>
         LOCKDOWN

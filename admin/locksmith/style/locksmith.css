@@ -80,6 +80,24 @@ body {
   text-align: center;
 }
 
+.dateBox {
+  margin-bottom: 50px;
+  border: 5px solid orange;
+}
+
+.dateTitle {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  background-color: orange;
+}
+
+.dateRow {
+  padding: 10px 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .lockdownBox {
   border: 5px solid red;
 }

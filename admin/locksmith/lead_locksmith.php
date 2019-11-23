@@ -104,6 +104,48 @@ if (isset($_POST['resetNum'])) {
   return true;
 };
 
+// Change the BBS start and end dates/times
+if (isset($_POST['changeDates'])) {
+  if ($_POST['startYear'] != '' && $_POST['endYear'] != '') {
+    if ($_POST['startDay'] != '' && $_POST['endDay'] != '') {
+      if ($_POST['startTime'] != '' && $_POST['endTime'] != '') {
+        $newStartYear = htmlentities($_POST['startYear']);
+        $newStartMonth = htmlentities($_POST['startMonth']);
+        $newStartDay = htmlentities($_POST['startDay']);
+        $newStartTime = htmlentities($_POST['startTime']);
+        $newStartAmPm = htmlentities($_POST['startAmPm']);
+        $newStartDate = $newStartMonth."-".$newStartDay."-".$newStartYear."-".$newStartTime."-".$newStartAmPm;
+        $newEndYear = htmlentities($_POST['endYear']);
+        $newEndMonth = htmlentities($_POST['endMonth']);
+        $newEndDay = htmlentities($_POST['endDay']);
+        $newEndTime = htmlentities($_POST['endTime']);
+        $newEndAmPm = htmlentities($_POST['endAmPm']);
+        $newEndDate = $newEndMonth."-".$newEndDay."-".$newEndYear."-".$newEndTime."-".$newEndAmPm;
+        $updateDateStmt = $pdo->prepare("UPDATE Maintenance SET starting_date=:nsd, ending_date=:ned WHERE locksmith_id=999");
+        $updateDateStmt->execute(array(
+          ':nsd'=>$newStartDate,
+          ':ned'=>$newEndDate
+        ));
+        $_SESSION['message'] = "<b style='color:green'>Date/Time Updated</b>";
+        header('Location: locksmith.php');
+        return true;
+      } else {
+        $_SESSION['message'] = "<b style='color:red'>A time is required</b>";
+        header('Location: locksmith.php');
+        return false;
+      };
+    } else {
+      $_SESSION['message'] = "<b style='color:red'>A day is required</b>";
+      header('Location: locksmith.php');
+      return false;
+    };
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>A year is required</b>";
+    header('Location: locksmith.php');
+    return false;
+  };
+};
+
 // Locks down the website
 if (isset($_POST['lockSite'])) {
   $lockSiteStmt = $pdo->prepare("UPDATE Maintenance SET lockdown=1 WHERE key_token=:kt");
