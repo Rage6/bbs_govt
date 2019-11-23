@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Governor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/gov_360.css"/>
     <!-- Width: 361px to 375px -->
