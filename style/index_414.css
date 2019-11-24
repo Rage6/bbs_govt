@@ -5,7 +5,7 @@ a {
 
 }
 #hubTitle {
-
+  color: green;
 }
 #hubTitle div:first-child {
 
@@ -83,5 +83,5 @@ a {
 
 }
 .moreButton {
-  
+
 }

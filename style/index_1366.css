@@ -5,7 +5,7 @@ a {
 
 }
 #hubTitle {
-
+  color: yellow;
 }
 #hubTitle div:first-child {
 
@@ -32,7 +32,8 @@ a {
 
 }
 .introRow {
-
+  display: flex;
+  justify-content: space-between;
 }
 .introBox {
 
@@ -83,5 +84,5 @@ a {
 
 }
 .moreButton {
-  
+
 }
