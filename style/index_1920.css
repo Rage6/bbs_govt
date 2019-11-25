@@ -5,13 +5,20 @@ a {
 
 }
 #hubTitle {
-  color: red;
+
 }
 #hubTitle div:first-child {
 
 }
 #hubContent {
 
+}
+.govtLinkRow {
+  display: flex;
+  justify-content: space-around;
+}
+.govtLinkRow div {
+  width: 60%;
 }
 .adminLink {
 
@@ -20,7 +27,7 @@ a {
 
 }
 .glossaryBar {
-
+  font-size: 2rem;
 }
 .glossaryBox {
 
@@ -32,22 +39,30 @@ a {
 
 }
 .introRow {
-
+  display: flex;
+  justify-content: space-between;
 }
 .introBox {
-
+  margin: 10px 5%;
+  padding: 20px 2%;
+  width: 40%;
 }
 .introTitle {
 
 }
 .statsBox {
-
+  margin: 10px 5%;
+  padding: 20px 3%;
+  width: 40%;
 }
 .statsTitle {
 
 }
 .subtitle {
 
+}
+.subtitle div {
+  width: 100% !important;
 }
 .levelButton {
 
@@ -58,8 +73,14 @@ a {
 .levelTitle {
 
 }
+.sectionList {
+  border-bottom: 1px solid #fec231;
+  overflow-y: scroll;
+  height: 450px;
+  width: 100% !important;
+}
 .sectionName {
-
+  width: 100% !important;
 }
 .sectionName div div img {
 
@@ -68,7 +89,7 @@ a {
 
 }
 .statsRow {
-
+  width: 100% !important;
 }
 .statsRow div {
 
@@ -80,8 +101,9 @@ a {
 
 }
 .explainBox {
-
+  max-height: inherit;
+  overflow-y: hidden;
 }
 .moreButton {
-
+  display: none;
 }

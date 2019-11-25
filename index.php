@@ -85,59 +85,62 @@
           <div class="levelTitle">
             STATE
           </div>
-          <a href="state/governor/governor.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  Office of the Governor
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="state/senate/senate.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  Senate
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
+          <div class="sectionList">
+            <a href="state/governor/governor.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    Office of the Governor
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-          <a href="state/house_of_reps/house_of_reps.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  House of Representatives
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="state/supreme_court/supreme_court.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  Supreme Court
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
+            </a>
+            <a href="state/senate/senate.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    Senate
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </a>
+            <a href="state/house_of_reps/house_of_reps.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    House of Representatives
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="state/supreme_court/supreme_court.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    Supreme Court
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
         <div id="countyTop">
           <div class="levelTitle">
             COUNTY
           </div>
+          <div class="sectionList">
           <?php
             for ($countyNum = 0; $countyNum < count($countyList); $countyNum++) {
               $cntyPopStmt = $pdo->prepare("SELECT SUM(population) FROM Section WHERE is_county=:si");
@@ -154,7 +157,7 @@
                     </div>
                     <div class='statsRow'>
                       <div><img src='img/flag_2.png'> ".$countyList[$countyNum]['flags']."</div>
-                      <div style='border-right:3px solid black'></div>
+                      <div style='border-right:3px solid black; width: 2%;'></div>
                       <div><img src='img/delegate_2.png'> ".$cntyPop."</div>
                     </div>
                   </div>
@@ -162,11 +165,13 @@
               );
             };
           ?>
+          </div>
         </div>
         <div id="cityTop">
           <div class="levelTitle">
             CITY
           </div>
+          <div class="sectionList">
           <?php
             for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
               if ($cityList[$cityNum]['is_city'] == 0) {
@@ -186,7 +191,7 @@
                       </div>
                       <div class='statsRow'>
                         <div><img src='img/flag_2.png'> ".$cityList[$cityNum]['flags']."</div>
-                        <div style='border-right:3px solid black'></div>
+                        <div style='border-right:3px solid black; width: 2%;'></div>
                         <div><img src='img/delegate_2.png'> ".$cityList[$cityNum]['population']."</div>
                       </div>
                     </div>
@@ -195,6 +200,7 @@
               };
             };
           ?>
+          </div>
         </div>
       </div>
       <div id="aboutTop">
