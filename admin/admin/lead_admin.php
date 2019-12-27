@@ -579,7 +579,7 @@ if (isset($_POST['makeDpt'])) {
       header('Location: admin.php');
       return false;
     } else {
-      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,job_active,delegate_id,section_id) VALUES (:jn,1,:dg,:st)");
+      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,job_active,in_department,delegate_id,section_id) VALUES (:jn,1,1,:dg,:st)");
       $createJobStmt->execute(array(
         ':jn'=>htmlentities($_POST['dptJob']),
         ':dg'=>htmlentities($_POST['dptHead']),

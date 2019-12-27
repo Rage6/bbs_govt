@@ -292,9 +292,9 @@
                       echo("
                         <div class='counsOnly'>
                           <div><u>COUNSELOR ONLY</u></div>
-                          <input type='radio' id='yes' name='approval' value='1' ".$ifApproved." />
+                          <input type='radio' id='yes".$onePost['post_id']."' name='approval' value='1' ".$ifApproved." />
                           <label for='yes'>APPROVED</label></br>
-                          <input type='radio' id='no' name='approval' value='0' ".$ifPending." />
+                          <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
                           <label for='no'>PENDING</label></br>
                           <input type='submit' name='changeApproval' value='SUBMIT' />
                         </div>
@@ -399,10 +399,11 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
+          $findDptNameStmt = $pdo->prepare("SELECT dpt_name FROM Department WHERE Department.job_id=:ji");
           echo("
             <div class='counsTitle'>
               COUNSELORS ONLY
@@ -417,9 +418,17 @@
                 </div>
                 <div id='listBox' class='listBox'>");
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                if ($oneJob['in_department'] == 1) {
+                  $findDptNameStmt->execute(array(
+                    ':ji'=>$oneJob['job_id']
+                  ));
+                  $dptName = " (".$findDptNameStmt->fetch(PDO::FETCH_ASSOC)['dpt_name'].")";
+                } else {
+                  $dptName = "";
+                };
                 echo("
                   <div class='staffTitle'>
-                    ".$oneJob['job_name']."
+                    ".$oneJob['job_name'].$dptName."
                   </div>
                   <div class='staffContent'>
                     <div>
@@ -435,7 +444,7 @@
                 </div>
               </div>");
 
-        // Box that for assigning delegates to the section's jobs
+        // Box for assigning delegates to the section's jobs
         echo("
           <div class='counsBox'>
             <div id='assignJobTitle' class='postType listTitle'>
@@ -457,7 +466,15 @@
                         } else {
                           $cityName = "";
                         };
-                        echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name']."</option>");
+                        if ($singleJob['in_department'] == 1) {
+                          $findDptNameStmt->execute(array(
+                            ':ji'=>$singleJob['job_id']
+                          ));
+                          $selectDptName = " (".$findDptNameStmt->fetch(PDO::FETCH_ASSOC)['dpt_name'].")";
+                        } else {
+                          $selectDptName = "";
+                        };
+                        echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name'].$selectDptName."</option>");
                       };
             echo("
                     </select>
@@ -628,7 +645,7 @@
                     for ($num = 0; $num < count($allDelegate); $num++) {
                       echo("
                       <option value='".$allDelegate[$num]['delegate_id']."'>".
-                        $allDelegate[$num]['first_name']." ".$allDelegate[$num]['last_name']
+                        $allDelegate[$num]['last_name'].", ".$allDelegate[$num]['first_name']
                       ."</option>");
                     };
               echo("</select>
