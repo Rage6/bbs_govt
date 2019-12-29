@@ -463,29 +463,6 @@ $(document).ready(()=>{
     };
   };
 
-  // // Detects whether this devices is using a touch screen or a mouse
-  // if ('ontouchstart' in document.documentElement) {
-  //   startType = "touchstart";
-  //   stopType = "touchend";
-  // } else {
-  //   startType = "mousedown";
-  //   stopType = "mouseup";
-  // };
-
-  // // Activates shrinkImg() to make the img smaller
-  // let shrinkInterval = null;
-  // $("#smallerBttn").on(startType,()=>{
-  //   if (shrinkInterval != null) {
-  //     clearInterval(shrinkInterval);
-  //   };
-  //   event.preventDefault();
-  //   shrinkInterval = setInterval(() => { shrinkImg() }, 50);
-  // });
-  // // Automatically deactivates shrinkImg()
-  // $("#smallerBttn").on(stopType,()=>{
-  //   clearInterval(shrinkInterval);
-  // });
-
   // Activates enlargeImg() to make the img larger
   let enlargeInterval = null;
   $("#biggerBttn").on(startType,()=>{
