@@ -77,9 +77,12 @@
           </div>
         </div>
         <div class="cropSize">
-          <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
+          <!-- <img id="smallerBttn" class="sizeBttn" src="../../img/admin/smaller.png" />
           <img id="biggerBttn" class="sizeBttn" src="../../img/admin/larger.png" />
-          <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" />
+          <img id="rotateBttn" class="sizeBttn" src="../../img/admin/rotate.png" /> -->
+          <button id="smallerBttn" class="sizeBttn"></button>
+          <button id="biggerBttn" class="sizeBttn"></button>
+          <button id="rotateBttn" class="sizeBttn"></button>
         </div>
         <button id="submitCrop" type="button">
           ENTER
