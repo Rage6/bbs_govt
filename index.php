@@ -217,9 +217,9 @@
             <li>Running for an elected position within their BBS city, county, or state</li>
             <li>Voting on their own BBS election day</li>
             <li>Taking responsibility of their new duties within their BBS community (be they elected, appointed, or hired)</li>
-            <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government and paying taxes (with BBS money)</li>
+            <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government</li>
           </ul>
-          For more information set the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
+          For more information, check out the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
         </div>
       </div>
       <div id="explainBttn" class="moreButton">-- SEE MORE --</div>

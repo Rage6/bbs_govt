@@ -281,12 +281,23 @@ body {
 }
 
 .upArrow {
-  margin-left: 50%;
+  /* margin-left: 50%;
   position: relative;
   right: 10px;
   height: 20px;
-  width: 20px;
+  width: 20px; */
+  
+  /* margin-left: 40%; */
+  text-align: center;
+  /* width: 20%; */
 }
+
+.upArrow a {
+  color: #00467f;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* .footer {
   padding: 20px 0;
   text-align: center;
