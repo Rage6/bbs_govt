@@ -403,7 +403,7 @@
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
-          $findDptNameStmt = $pdo->prepare("SELECT dpt_name FROM Department WHERE Department.job_id=:ji");
+          $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active FROM Department WHERE Department.job_id=:ji");
           echo("
             <div class='counsTitle'>
               COUNSELORS ONLY
@@ -422,11 +422,15 @@
                   $findDptNameStmt->execute(array(
                     ':ji'=>$oneJob['job_id']
                   ));
-                  $dptName = " (".$findDptNameStmt->fetch(PDO::FETCH_ASSOC)['dpt_name'].")";
+                  $findDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
+                  $dptName = " (".$findDptName['dpt_name'].")";
+                  $dptStatus = $findDptName['active'];
                 } else {
                   $dptName = "";
+                  $dptStatus = 0;
                 };
-                echo("
+                if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
+                  echo("
                   <div class='staffTitle'>
                     ".$oneJob['job_name'].$dptName."
                   </div>
@@ -439,6 +443,7 @@
                       <span style='color:green'>BBS CITY:</span> ".$oneJob['section_name']."
                     </div>
                   </div>");
+                };
               };
         echo("
                 </div>
@@ -470,11 +475,17 @@
                           $findDptNameStmt->execute(array(
                             ':ji'=>$singleJob['job_id']
                           ));
-                          $selectDptName = " (".$findDptNameStmt->fetch(PDO::FETCH_ASSOC)['dpt_name'].")";
+                          $findDpt = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
+                          $findDptName = $findDpt['dpt_name'];
+                          $findDptStatus = $findDpt['active'];
+                          $selectDptName = " (".$findDptName.")";
                         } else {
                           $selectDptName = "";
+                          $findDptStatus = 1;
                         };
-                        echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name'].$selectDptName."</option>");
+                        if ($singleJob['in_department'] == 0 || $findDptStatus == 1) {
+                          echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name'].$selectDptName."</option>");
+                        };
                       };
             echo("
                     </select>
