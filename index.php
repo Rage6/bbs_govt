@@ -9,13 +9,18 @@
     return true;
   };
 
+  $getYearStmt = $pdo->prepare("SELECT starting_date FROM Maintenance");
+  $getYearStmt->execute();
+  $getYear = $getYearStmt->fetch(PDO::FETCH_ASSOC)['starting_date'];
+  $thisYear = explode("-",$getYear)[2];
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BBS 2019</title>
+    <title>BBS | <?php echo($thisYear) ?></title>
     <link rel="stylesheet" type="text/css" href="style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/index_360.css"/>
