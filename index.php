@@ -9,16 +9,33 @@
     return true;
   };
 
+  $getYearStmt = $pdo->prepare("SELECT starting_date FROM Maintenance");
+  $getYearStmt->execute();
+  $getYear = $getYearStmt->fetch(PDO::FETCH_ASSOC)['starting_date'];
+  $thisYear = explode("-",$getYear)[2];
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BBS 2019</title>
+    <title>BBS | <?php echo($thisYear) ?></title>
     <link rel="stylesheet" type="text/css" href="style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/index_360.css"/>
+    <!-- Width: 361px to 375px -->
+    <link rel="stylesheet" media="screen and (min-width: 361px) and (max-width: 375px)" href="style/index_375.css"/>
+    <!-- Width: 376px to 414px -->
+    <link rel="stylesheet" media="screen and (min-width: 376px) and (max-width: 414px)" href="style/index_414.css"/>
+    <!-- Width: 415px to 768px -->
+    <link rel="stylesheet" media="screen and (min-width: 415px) and (max-width: 768px)" href="style/index_768.css"/>
+    <!-- Width: 769px to 1366px -->
+    <link rel="stylesheet" media="screen and (min-width: 769px) and (max-width: 1366px)" href="style/index_1366.css"/>
+    <!-- Width: 1367px to 1440px -->
+    <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/index_1440.css"/>
+    <!-- Width: 1441px and above -->
+    <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/index_1920.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
@@ -73,59 +90,62 @@
           <div class="levelTitle">
             STATE
           </div>
-          <a href="state/governor/governor.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  Office of the Governor
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="state/senate/senate.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  Senate
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
+          <div class="sectionList">
+            <a href="state/governor/governor.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    Office of the Governor
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-          <a href="state/house_of_reps/house_of_reps.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  House of Representatives
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="state/supreme_court/supreme_court.php">
-            <div class="levelButton">
-              <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                <div>
-                  Supreme Court
-                </div>
-                <div>
-                  <div><img src='img/right_arrow.png'></div>
+            </a>
+            <a href="state/senate/senate.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    Senate
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </a>
+            <a href="state/house_of_reps/house_of_reps.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    House of Representatives
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="state/supreme_court/supreme_court.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    Supreme Court
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
         <div id="countyTop">
           <div class="levelTitle">
             COUNTY
           </div>
+          <div class="sectionList">
           <?php
             for ($countyNum = 0; $countyNum < count($countyList); $countyNum++) {
               $cntyPopStmt = $pdo->prepare("SELECT SUM(population) FROM Section WHERE is_county=:si");
@@ -142,7 +162,7 @@
                     </div>
                     <div class='statsRow'>
                       <div><img src='img/flag_2.png'> ".$countyList[$countyNum]['flags']."</div>
-                      <div style='border-right:3px solid black'></div>
+                      <div style='border-right:3px solid black; width: 2%;'></div>
                       <div><img src='img/delegate_2.png'> ".$cntyPop."</div>
                     </div>
                   </div>
@@ -150,11 +170,13 @@
               );
             };
           ?>
+          </div>
         </div>
         <div id="cityTop">
           <div class="levelTitle">
             CITY
           </div>
+          <div class="sectionList">
           <?php
             for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
               if ($cityList[$cityNum]['is_city'] == 0) {
@@ -174,7 +196,7 @@
                       </div>
                       <div class='statsRow'>
                         <div><img src='img/flag_2.png'> ".$cityList[$cityNum]['flags']."</div>
-                        <div style='border-right:3px solid black'></div>
+                        <div style='border-right:3px solid black; width: 2%;'></div>
                         <div><img src='img/delegate_2.png'> ".$cityList[$cityNum]['population']."</div>
                       </div>
                     </div>
@@ -183,6 +205,7 @@
               };
             };
           ?>
+          </div>
         </div>
       </div>
       <div id="aboutTop">
@@ -194,9 +217,9 @@
             <li>Running for an elected position within their BBS city, county, or state</li>
             <li>Voting on their own BBS election day</li>
             <li>Taking responsibility of their new duties within their BBS community (be they elected, appointed, or hired)</li>
-            <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government and paying taxes (with BBS money)</li>
+            <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government</li>
           </ul>
-          For more information set the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
+          For more information, check out the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
         </div>
       </div>
       <div id="explainBttn" class="moreButton">-- SEE MORE --</div>

@@ -197,7 +197,7 @@ body {
   text-decoration: underline;
 }
 .itemContent {
-
+  white-space: pre-wrap;
 }
 .bothList {
 
@@ -228,7 +228,7 @@ body {
   background-color: #fec231;
 }
 .purpose {
-
+  white-space: pre-wrap;
 }
 .directorRow {
   border-top: 1px solid black;
@@ -278,25 +278,15 @@ body {
 
 .reportMain {
   padding: 0 5%;
+  white-space: pre-wrap;
 }
 
 .upArrow {
-  margin-left: 50%;
-  position: relative;
-  right: 10px;
-  height: 20px;
-  width: 20px;
-}
-/* .footer {
-  padding: 20px 0;
   text-align: center;
-  color: #fec231;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 1.1rem;
-  background-color: #2020a0;
 }
-.footer a {
+
+.upArrow a {
+  color: #00467f;
+  text-decoration: none;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  color: #fec231;
-} */
+}

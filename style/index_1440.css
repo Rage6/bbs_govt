@@ -1,0 +1,109 @@
+body {
+
+}
+a {
+
+}
+#hubTitle {
+
+}
+#hubTitle div:first-child {
+
+}
+#hubContent {
+
+}
+.govtLinkRow {
+  display: flex;
+  justify-content: space-around;
+}
+.govtLinkRow div {
+  width: 60%;
+}
+.adminLink {
+
+}
+.adminLink img {
+
+}
+.glossaryBar {
+  font-size: 2rem;
+}
+.glossaryBox {
+
+}
+.glossaryBox div {
+
+}
+.glossaryBox div:hover {
+
+}
+.introRow {
+  display: flex;
+  justify-content: space-between;
+}
+.introBox {
+  margin: 10px 5%;
+  padding: 20px 2%;
+  width: 40%;
+}
+.introTitle {
+
+}
+.statsBox {
+  margin: 10px 5%;
+  padding: 20px 3%;
+  width: 40%;
+}
+.statsTitle {
+
+}
+.subtitle {
+
+}
+.subtitle div {
+  width: 100% !important;
+}
+.levelButton {
+
+}
+.levelImg {
+
+}
+.levelTitle {
+
+}
+.sectionList {
+  border-bottom: 1px solid #fec231;
+  overflow-y: scroll;
+  height: 450px;
+  width: 100% !important;
+}
+.sectionName {
+  width: 100% !important;
+}
+.sectionName div div img {
+
+}
+.sectionName div img {
+
+}
+.statsRow {
+  width: 100% !important;
+}
+.statsRow div {
+
+}
+.statsRow div img {
+
+}
+.explainTitle {
+
+}
+.explainBox {
+  max-height: inherit;
+  overflow-y: hidden;
+}
+.moreButton {
+  display: none;
+}

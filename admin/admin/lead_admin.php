@@ -282,7 +282,7 @@ if (isset($_POST['submitFile'])) {
               ':ay'=>$imageInfo[1],
               ':imi'=>$currentImgId
             ));
-            $_SESSION['message'] = "<b style='color:green'>Upload Successful</b>";
+            $_SESSION['message'] = "<b style='color:green'>Uploading...</b>";
             $_SESSION['imgId'] = $currentImgId;
             header("Location: admin.php?imgAction=crop&destination=".$imgDestination."&imgId=".$currentImgId."&actualWidth=".$imageInfo[0]."&actualHeight=".$imageInfo[1]);
             unset($_SESSION['imgid']);
@@ -473,7 +473,7 @@ if (isset($_POST['exitBttn'])) {
   $notCroppedStmt->execute(array(
     ':jbd'=>htmlentities($_POST['jobId'])
   ));
-  $_SESSION['message'] = "<b style='color:red'>Image upload canceled</b>";
+  $_SESSION['message'] = "<b style='color:red'>Image change canceled</b>";
   unset($_SESSION['imgId']);
   header('Location: admin.php');
   return true;
@@ -579,7 +579,7 @@ if (isset($_POST['makeDpt'])) {
       header('Location: admin.php');
       return false;
     } else {
-      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,job_active,delegate_id,section_id) VALUES (:jn,1,:dg,:st)");
+      $createJobStmt = $pdo->prepare("INSERT INTO Job(job_name,job_active,in_department,delegate_id,section_id) VALUES (:jn,1,1,:dg,:st)");
       $createJobStmt->execute(array(
         ':jn'=>htmlentities($_POST['dptJob']),
         ':dg'=>htmlentities($_POST['dptHead']),

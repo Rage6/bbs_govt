@@ -253,7 +253,7 @@
             </div>
             <div class="upArrow">
               <a href="#topTag">
-                <img src="../../img/state/up_arrow.png" />
+                - TOP -
               </a>
             </div>
           </div>
@@ -276,7 +276,7 @@
             </div>
             <div class="upArrow">
               <a href="#topTag">
-                <img src="../../img/state/up_arrow.png" />
+                - TOP -
               </a>
             </div>
           </div>
@@ -302,7 +302,7 @@
             </div>
             <div class="upArrow">
               <a href="#topTag">
-                <img src="../../img/state/up_arrow.png" />
+                - TOP -
               </a>
             </div>
           </div>
@@ -325,7 +325,7 @@
             </div>
             <div class="upArrow">
               <a href="#topTag">
-                <img src="../../img/state/up_arrow.png" />
+                - TOP -
               </a>
             </div>
           </div>
@@ -348,7 +348,7 @@
             </div>
             <div class="upArrow">
               <a href="#topTag">
-                <img src="../../img/state/up_arrow.png" />
+                - TOP -
               </a>
             </div>
           </div>
@@ -373,7 +373,7 @@
             </div>
             <div class="upArrow">
               <a href="#topTag">
-                <img src="../../img/state/up_arrow.png" />
+                - TOP -
               </a>
             </div>
           </div>
@@ -422,7 +422,7 @@
           </div>
           <div class="upArrow" style="margin-top:20px">
             <a href="#topTag">
-              <img src="../../img/state/up_arrow.png" />
+              - TOP -
             </a>
           </div>
         </a>
@@ -456,7 +456,7 @@
           </div>
           <div class="upArrow" style="margin-top:20px">
             <a href="#topTag">
-              <img src="../../img/state/up_arrow.png" />
+              - TOP -
             </a>
           </div>
         </a>
@@ -490,7 +490,7 @@
           </div>
           <div class="upArrow" style="margin-top:20px">
             <a href="#topTag">
-              <img src="../../img/state/up_arrow.png" />
+              - TOP -
             </a>
           </div>
         </a>
