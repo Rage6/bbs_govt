@@ -197,7 +197,7 @@ body {
   text-decoration: underline;
 }
 .itemContent {
-
+  white-space: pre-wrap;
 }
 .bothList {
 
@@ -228,7 +228,7 @@ body {
   background-color: #fec231;
 }
 .purpose {
-
+  white-space: pre-wrap;
 }
 .directorRow {
   border-top: 1px solid black;
@@ -278,6 +278,7 @@ body {
 
 .reportMain {
   padding: 0 5%;
+  white-space: pre-wrap;
 }
 
 .upArrow {
