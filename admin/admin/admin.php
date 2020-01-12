@@ -38,10 +38,16 @@
     <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/admin_1440.css"/>
     <!-- Width: 1441px and above -->
     <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/admin_1920.css"/>
-    <script
+    <!-- <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script> -->
+    <script src=<?php
+    if ($isLocal == true) {
+      echo("../../".$jquery);
+    } else {
+      echo($jquery);
+    };?>></script>
     <script src="main.js"></script>
   </head>
   <body>
