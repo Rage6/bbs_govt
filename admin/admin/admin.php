@@ -153,13 +153,14 @@
               <div data-head='".$oneType['type_id']."' class='postType'>"
                 .$oneType['type_name'].
               "</div>
-              <div id='typeId".$oneType['type_id']."' class='postMain'>
-                <div class='postTypeRow'>
+              <div id='typeId".$oneType['type_id']."' class='postMain'>");
+              if ($oneType['type_name'] != "Intro Statement") {
+                echo("<div class='postTypeRow'>
                   <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
                 </div>
                 <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
                   <form method='POST'>
-                    <div class='postSubtitle'>Title:</div>
+                    <div class='postSubtitle'>Title/Name(s):</div>
                     <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                     <div class='postSubtitle'>Content:</div>
                     <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
@@ -188,6 +189,7 @@
                   </form>
                 </div>
                 ");
+              };
               echo("
                 <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
                   <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
@@ -209,11 +211,16 @@
                 <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
                     <input type='hidden' name='postId' value='".$onePost['post_id']."'>
-                    <div class='postSubtitle'>Title:</div>
-                    <textarea class='postText titleText' name='postTitle'>");
-                      echo htmlspecialchars($onePost['title'], ENT_QUOTES);
-                    echo("</textarea>
-                    <div class='postSubtitle'>Content:</div>
+                    <div class='postSubtitle'>Title/Name(s):</div>");
+                    if ($oneType['type_name'] != "Intro Statement") {
+                      echo("<textarea class='postText titleText' name='postTitle'>");
+                        echo htmlspecialchars($onePost['title'], ENT_QUOTES);
+                      echo("</textarea>");
+                    } else {
+                      echo("
+                        <div name='postTitle' value='".$onePost['title']."'>".$onePost['title']."</div>");
+                    };
+                    echo("<div class='postSubtitle'>Content:</div>
                     <textarea class='postText contentText' name='postContent'>");
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
                     echo("</textarea>
