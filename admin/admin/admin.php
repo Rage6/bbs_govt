@@ -335,6 +335,7 @@
                 echo("
                 <div class='photoBox'>
                   <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>
+                  <div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>
                   <div>
                     <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                   </div>

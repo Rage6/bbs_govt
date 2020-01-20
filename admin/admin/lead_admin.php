@@ -81,7 +81,6 @@ $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 // $allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
 
 $allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Image WHERE section_id=:se AND filename IS NOT NULL");
-
 $allPhotoStmt->execute(array(
   ':se'=>$secId
 ));
@@ -90,9 +89,22 @@ while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
   $allPhotos[] = $onePhoto;
 };
 
-// echo("<pre>");
-// var_dump($allPhotos);
-// echo("</pre>");
+$photoDelNameStmt = $pdo->prepare("SELECT job_id,first_name,last_name FROM Job INNER JOIN Delegate WHERE Job.delegate_id=Delegate.delegate_id AND Job.section_id=:scd");
+$photoDelNameStmt->execute(array(
+  ':scd'=>$secId
+));
+$photoDelNames = [];
+while($oneDelName = $photoDelNameStmt->fetch(PDO::FETCH_ASSOC)) {
+  // echo("<pre>");
+  // var_dump($oneDelName);
+  // echo("</pre>");
+  for ($nameNum = 0; $nameNum < count($allPhotos); $nameNum++) {
+    if ($oneDelName['job_id'] == $allPhotos[$nameNum]['job_id']) {
+      // var_dump($oneDelName['first_name']." ".$oneDelName['last_name']);
+      $allPhotos[$nameNum]['delegate_name'] = $oneDelName['first_name']." ".$oneDelName['last_name'];
+    };
+  };
+};
 
 // Gets all city info
 $allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");

@@ -333,6 +333,12 @@ body {
   text-align: center;
 }
 
+.photoDelegate {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 .photoImg {
   margin-left: 5%;
   width: 90%;
