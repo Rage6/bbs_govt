@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-size: 16px;
+  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
 }
 
 .mainTitle {
@@ -11,7 +12,7 @@ body {
   align-items: center;
   text-align: center;
   font-family: 'Ibarra Real Nova', serif;
-  background-image: url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background: linear-gradient(transparent, transparent 90%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
   background-size: contain;
 }
 
