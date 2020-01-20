@@ -1,3 +1,33 @@
 body {
-  
+  margin: 0;
+  font-size: 16px;
+}
+
+.mainTitle {
+  padding: 15px 5%;
+  color: gold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: 'Ibarra Real Nova', serif;
+  background-image: url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background-size: contain;
+}
+
+.topMain {
+  font-size: 1.2rem;
+  margin: 10px 0px 5px 0px;
+}
+
+.bottomMain {
+  margin-top: 5px;
+  font-size: 2.2rem;
+}
+
+.courtLogo {
+  background-image: url("http://www.limerickbaptist.ie/wp-content/uploads/sermons/2018/08/scales-of-justice-450203__340.png");
+  background-size: cover;
+  height: 90px;
+  width: 90px;
 }
