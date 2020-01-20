@@ -20,10 +20,6 @@
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/court_360.css" />
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:600&display=swap" rel="stylesheet">
-    <!-- <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script> -->
   <script src=<?php
     if ($isLocal == true) {
       echo("../../".$jquery);
@@ -43,6 +39,21 @@
         </div>
       </div>
       <div class="courtLogo"></div>
+    </div>
+    <div class="menuBttn" id="mainMenu">MENU</div>
+    <div class="allOptions">
+      <div class="optionBttn">JUSTICES</div>
+      <div class="optionBttn">COURT CASES</div>
+      <div class="optionBttn">BAR ASSOCIATION MINUTES</div>
+      <div class="optionBttn">BAR EXAM RESULTS</div>
+      <a href="../../index.php">
+        <div class="optionBttn returnBttn"><< BACK</div>
+      </a>
+    </div>
+    <div class="mainContent">
+      <div class="welcome">
+        <?php echo($intro); ?>
+      </div>
     </div>
   </body>
 </html>

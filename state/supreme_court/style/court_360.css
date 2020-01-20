@@ -32,3 +32,51 @@ body {
   height: 90px;
   width: 90px;
 }
+
+.menuBttn {
+  padding: 10px 0;
+  font-size: 1.4rem;
+  color: gold;
+  text-align: center;
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background-size: cover;
+  cursor: pointer;
+}
+
+.allOptions {
+  display: none;
+}
+
+.optionBttn {
+  padding: 10px 0 10px 5%;
+  color: gold;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.2rem;
+  background: black;
+  border-bottom: 1px solid gold;
+  cursor: pointer;
+}
+
+.returnBttn {
+  padding-left: 0;
+  border-bottom: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.mainContent {
+
+}
+
+.welcome {
+  margin: 20px 0 0 10%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.6rem;
+  text-align: center;
+  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  background-size: cover;
+  width: 70%;
+}
