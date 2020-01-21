@@ -97,9 +97,10 @@ $(document).ready(()=>{
     let typeRowId = "#boxList_" + event.target.dataset.pendtype;
     if (typeLength == 0) {
       let emptyBoxId = "#emptyBox_" + event.target.dataset.pendtype;
-      if (!$(emptyBoxId)) {
-        $(typeRowId).append("<div id='emptyBox_"+event.target.dataset.pendtype+"' class='postBox emptyBox'>There are no posts waiting for approval at this time.<div>");
+      if ($(emptyBoxId)) {
+        $(emptyBoxId).remove();
       };
+      $(typeRowId).append("<div id='emptyBox_"+event.target.dataset.pendtype+"' class='postBox emptyBox'>There are no posts waiting for approval at this time.<div>");
     } else {
       let emptyBoxId = "#emptyBox_" + event.target.dataset.pendtype;
       $(emptyBoxId).remove();
