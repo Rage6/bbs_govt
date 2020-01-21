@@ -32,6 +32,9 @@ $(()=>{
   $("#minutesLink").click(()=>{
     slideDown("#minutesTop",600);
   });
+  $(".goTop").click(()=>{
+    slideDown(".mainTitle",300);
+  });
 
   // Selects the 'minutes' to see
   $("#minute1").css("color","white").css("background-color","black");

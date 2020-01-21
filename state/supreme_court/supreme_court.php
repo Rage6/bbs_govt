@@ -65,10 +65,12 @@
             while($oneJustice = $justiceInfoStmt->fetch(PDO::FETCH_ASSOC)) {
               echo("
               <div class='justiceBox'>
-                <div class='justiceTitle'>".$oneJustice['job_name']."</div>
+                <div class='justiceTitle'>
+                  <div>".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
+                  <div>".$oneJustice['job_name']."</div>
+                </div>
                 <img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />
                 <div class='justiceBio'>
-                  <div>Name: ".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
                   <div>BBS City: ".$oneJustice['section_name']."</div>
                   <div>Hometown: ".$oneJustice['hometown'].", OH</div>
                 </div>
@@ -81,11 +83,13 @@
           </div>
         </div>
       </a>
+
       <div class="upArrow">
-        <a href="#menuTag">
+        <div class="goTop">
           - TOP -
-        </a>
+        </div>
       </div>
+
       <!-- The "Bar Association Minutes" start here -->
       <a id="minutesTop">
         <div class="tagTitle">Bar Association Minutes</div>
@@ -117,9 +121,9 @@
         </div>
       </a>
       <div class="upArrow">
-        <a href="#menuTag">
+        <div class="goTop">
           - TOP -
-        </a>
+        </div>
       </div>
     </div>
   </body>

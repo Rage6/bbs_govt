@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-size: 16px;
-  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
 }
 
 a {
@@ -104,6 +104,7 @@ a {
 .justiceBox {
   margin-left: 5%;
   margin-bottom: 20px;
+  border-radius: 10px;
   padding-bottom: 15px;
   background-color: black;
   width: 90%;
@@ -111,21 +112,32 @@ a {
 
 .justiceTitle {
   padding: 10px 0;
-  color: #fec231;
+  border-radius: 10px 10px 0 0;
+  color: black;
   text-align: center;
   font-size: 1.6rem;
+  font-family: 'Ibarra Real Nova', serif;
+  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  background-size: cover;
+}
+
+.justiceTitle div:last-child {
+  font-size: 1rem;
 }
 
 .justiceImg {
-  margin-left: 5%;
+  margin: 15px 0 0 5%;
   width: 90%;
 }
 
 .justiceBio {
   margin: 15px 0 0 5%;
-  color: #fec231;
+  padding: 10px 0 10px 5%;
+  color: black;
   font-size: 1.4rem;
-  width: 90%;
+  font-family: 'Ibarra Real Nova', serif;
+  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  width: 85%;
 }
 
 /* For the 'Bar Association Minutes' */
@@ -169,11 +181,14 @@ a {
 .minuteMain {
   padding: 0 5%;
   white-space: pre-wrap;
+  min-height: 200px;
+  max-height: 700px;
 }
 
 /* For the tags that take things back to the top */
 .upArrow {
   margin: 20px 0 20px 25%;
+  border: 1px solid #fec231;
   border-radius: 20px;
   text-align: center;
   font-size: 1.2rem;
@@ -181,8 +196,8 @@ a {
   width: 40%;
 }
 
-.upArrow a {
-  color: gold;
+.goTop {
+  color: #fec231;
   text-decoration: none;
   cursor: pointer;
 }
