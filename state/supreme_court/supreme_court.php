@@ -27,12 +27,13 @@
       echo($jquery);
     };?>></script>
     <script src="main.js"></script>
+    <script src="case_library/cases.js"></script>
   </head>
   <body>
     <div class="mainTitle">
       <div>
         <div class="topMain">BUCKEYE BOYS STATE</div>
-        <div style="border-top:3px solid #fec231"></div>
+        <div class="titleDivide"></div>
         <div class="bottomMain">
           <div>SUPREME</div>
           <div>COURT</div>
@@ -90,6 +91,26 @@
         </div>
       </div>
 
+      <!-- The directory of cases -->
+      <a id="caseTop">
+        <div>
+          <div>
+            <!-- This is where you select the type of case -->
+            <!-- Then, they can see all, dismissed, or pending cases -->
+            <!-- The titles of the selected cases are shown here -->
+            <div id="caseBttnList">
+              <!-- The selected title will show its content -->
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <div class="upArrow">
+        <div class="goTop">
+          - TOP -
+        </div>
+      </div>
+
       <!-- The "Bar Association Minutes" start here -->
       <a id="minutesTop">
         <div class="tagTitle">Bar Association Minutes</div>
@@ -120,11 +141,24 @@
           </div>
         </div>
       </a>
+
       <div class="upArrow">
         <div class="goTop">
           - TOP -
         </div>
       </div>
+
+      <!-- The Bar Exam Results -->
+      <a id="resultsTop">
+        <div>For the Bar Exam Results</div>
+      </a>
+
+      <div class="upArrow">
+        <div class="goTop">
+          - TOP -
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

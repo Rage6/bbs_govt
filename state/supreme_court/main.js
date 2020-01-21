@@ -29,8 +29,14 @@ $(()=>{
   $("#justiceLink").click(()=>{
     slideDown("#justiceTop",500);
   });
+  $("#caseLink").click(()=>{
+    slideDown("#caseTop",550);
+  });
   $("#minutesLink").click(()=>{
     slideDown("#minutesTop",600);
+  });
+  $("#resultsLink").click(()=>{
+    slideDown("#resultsTop",650);
   });
   $(".goTop").click(()=>{
     slideDown(".mainTitle",300);
