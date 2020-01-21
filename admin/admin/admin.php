@@ -154,7 +154,7 @@
                 .$oneType['type_name'].
               "</div>
               <div id='typeId".$oneType['type_id']."' class='postMain'>");
-              if ($oneType['type_name'] != "Intro Statement") {
+              if ($oneType['can_add'] == 1) {
                 echo("<div class='postTypeRow'>
                   <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
                 </div>
@@ -211,7 +211,7 @@
                 <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
                     <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
-                    if ($oneType['type_name'] != "Intro Statement") {
+                    if ($oneType['can_add'] == 1) {
                       echo("
                         <div class='postSubtitle'>Title/Name(s):</div>
                         <textarea class='postText titleText' name='postTitle'>");
@@ -219,7 +219,8 @@
                       echo("</textarea>");
                     } else {
                       echo("
-                        <input type='hidden' name='postTitle' value='".$onePost['title']."' />");
+                        <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
+                        <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
                     };
                     echo("<div class='postSubtitle'>Content:</div>
                     <textarea class='postText contentText' name='postContent'>");
