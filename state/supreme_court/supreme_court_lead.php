@@ -1,8 +1,6 @@
 <?php
 
-  $secIdStmt = $pdo->prepare("SELECT section_id FROM Section WHERE section_name='Supreme Court'");
-  $secIdStmt->execute();
-  $secId = (int)$secIdStmt->fetch(PDO::FETCH_ASSOC)['section_id'];
+  $secId = 12;
 
   // For Supreme Court's introduction
   $introStmt = $pdo->prepare("SELECT content FROM Post WHERE section_id=:sec AND title='Intro Statement'");
@@ -10,6 +8,13 @@
     ':sec'=>$secId
   ));
   $intro = $introStmt->fetch(PDO::FETCH_ASSOC)['content'];
+
+  // Collect all bio titles, names, photos, and basic info
+  $justiceInfoStmt = $pdo->prepare(
+    "SELECT first_name,last_name,hometown,section_path,filename,extension,job_name,section_name
+    FROM Job JOIN Delegate JOIN Image JOIN Section
+    WHERE Job.section_id=12 AND Delegate.delegate_id=Job.delegate_id AND Image.job_id=Job.job_id AND Section.section_id=Delegate.city_id");
+  $justiceInfoStmt->execute();
 
   // Collects the Minutes from the Bar Association
   $minuteStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=7 ORDER BY post_order ASC");

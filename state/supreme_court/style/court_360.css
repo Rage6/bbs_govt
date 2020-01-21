@@ -96,11 +96,42 @@ a {
   background-size: contain;
 }
 
-/* This is for the 'Bar Association Minutes' */
+/* For the Justices' bios and photos */
+.allJustices {
+  margin-top: 40px;
+}
+
+.justiceBox {
+  margin-left: 5%;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  background-color: black;
+  width: 90%;
+}
+
+.justiceTitle {
+  padding: 10px 0;
+  color: #fec231;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.justiceImg {
+  margin-left: 5%;
+  width: 90%;
+}
+
+.justiceBio {
+  margin: 15px 0 0 5%;
+  color: #fec231;
+  font-size: 1.4rem;
+  width: 90%;
+}
+
+/* For the 'Bar Association Minutes' */
 .minuteBox {
   color: black;
   font-family: 'Montserrat', sans-serif;
-  /* background-color: #2020a0; */
   background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
 }
 
@@ -140,6 +171,7 @@ a {
   white-space: pre-wrap;
 }
 
+/* For the tags that take things back to the top */
 .upArrow {
   margin: 20px 0 20px 25%;
   border-radius: 20px;

@@ -43,10 +43,10 @@
     <div class="menuContent">
       <div class="menuBttn" id="mainMenu">MENU</div>
       <div class="allOptions">
-        <div class="optionBttn">JUSTICES</div>
-        <div class="optionBttn">COURT CASES</div>
-        <div class="optionBttn">BAR ASSOCIATION MINUTES</div>
-        <div class="optionBttn">BAR EXAM RESULTS</div>
+        <div id="justiceLink" class="optionBttn">JUSTICES</div>
+        <div id="caseLink" class="optionBttn">COURT CASES</div>
+        <div id="minutesLink" class="optionBttn">BAR ASSOCIATION MINUTES</div>
+        <div id="resultsLink" class="optionBttn">BAR EXAM RESULTS</div>
         <a href="../../index.php">
           <div class="optionBttn returnBttn"><< BACK</div>
         </a>
@@ -56,7 +56,38 @@
       <div class="welcome">
         <?php echo($intro); ?>
       </div>
-      <a id="minuteTop">
+      <!-- The Justice bios start here -->
+      <a id="justiceTop">
+        <div class="tagTitle">Supreme Court Justices</div>
+        <div class="allJustices">
+          <div>
+            <?php
+            while($oneJustice = $justiceInfoStmt->fetch(PDO::FETCH_ASSOC)) {
+              echo("
+              <div class='justiceBox'>
+                <div class='justiceTitle'>".$oneJustice['job_name']."</div>
+                <img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />
+                <div class='justiceBio'>
+                  <div>Name: ".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
+                  <div>BBS City: ".$oneJustice['section_name']."</div>
+                  <div>Hometown: ".$oneJustice['hometown'].", OH</div>
+                </div>
+              </div>");
+            };
+            ?>
+          </div>
+          <div>
+            <!-- This will be a box that will fill the box of the selected Justice ONLY when the screen is wider. -->
+          </div>
+        </div>
+      </a>
+      <div class="upArrow">
+        <a href="#menuTag">
+          - TOP -
+        </a>
+      </div>
+      <!-- The "Bar Association Minutes" start here -->
+      <a id="minutesTop">
         <div class="tagTitle">Bar Association Minutes</div>
         <div class="minuteBox">
           <div class="allMinuteBttns">

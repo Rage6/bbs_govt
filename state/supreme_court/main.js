@@ -18,6 +18,21 @@ $(()=>{
     };
   });
 
+  // The following will make the window slide down to the selected option, rather than it suddently changing
+  const slideDown = (contentId,msec) => {
+    // let screenTop = $(window).scrollTop();
+    let contentTop = $(contentId).offset().top;
+    $('html, body').animate({
+      scrollTop: contentTop
+    }, msec)
+  };
+  $("#justiceLink").click(()=>{
+    slideDown("#justiceTop",500);
+  });
+  $("#minutesLink").click(()=>{
+    slideDown("#minutesTop",600);
+  });
+
   // Selects the 'minutes' to see
   $("#minute1").css("color","white").css("background-color","black");
   $("#minuteCnt1").css("display","block");
