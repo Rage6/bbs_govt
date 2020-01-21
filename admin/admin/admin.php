@@ -210,15 +210,16 @@
                 echo("
                 <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
-                    <input type='hidden' name='postId' value='".$onePost['post_id']."'>
-                    <div class='postSubtitle'>Title/Name(s):</div>");
+                    <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
                     if ($oneType['type_name'] != "Intro Statement") {
-                      echo("<textarea class='postText titleText' name='postTitle'>");
+                      echo("
+                        <div class='postSubtitle'>Title/Name(s):</div>
+                        <textarea class='postText titleText' name='postTitle'>");
                         echo htmlspecialchars($onePost['title'], ENT_QUOTES);
                       echo("</textarea>");
                     } else {
                       echo("
-                        <div name='postTitle' value='".$onePost['title']."'>".$onePost['title']."</div>");
+                        <input type='hidden' name='postTitle' value='".$onePost['title']."' />");
                     };
                     echo("<div class='postSubtitle'>Content:</div>
                     <textarea class='postText contentText' name='postContent'>");
