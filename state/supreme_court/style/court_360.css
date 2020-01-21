@@ -87,20 +87,21 @@ a {
 
 .tagTitle {
   margin-top: 30px;
-  border: 1px solid #2020a0;
-  border-top-right-radius: 45px;
   padding: 10px 0;
-  color: #2020a0;
+  color: #fec231;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #fec231;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.4rem;
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background-size: contain;
 }
 
 /* This is for the 'Bar Association Minutes' */
 .minuteBox {
-  color: #fec231;
+  color: black;
   font-family: 'Montserrat', sans-serif;
-  background-color: #2020a0;
+  /* background-color: #2020a0; */
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
 }
 
 .allMinuteBttns {
@@ -110,7 +111,7 @@ a {
 
 .allMinuteBttns div {
   margin: 20px 0 10px 0;
-  border: 1px solid #fec231;
+  border: 1px solid black;
   border-radius: 5px;
   font-size: 1.5rem;
   text-align: center;
@@ -140,11 +141,16 @@ a {
 }
 
 .upArrow {
+  margin: 20px 0 20px 25%;
+  border-radius: 20px;
   text-align: center;
+  font-size: 1.2rem;
+  background-color: black;
+  width: 40%;
 }
 
 .upArrow a {
-  color: #00467f;
+  color: gold;
   text-decoration: none;
   cursor: pointer;
 }

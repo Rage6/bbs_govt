@@ -19,15 +19,15 @@ $(()=>{
   });
 
   // Selects the 'minutes' to see
-  $("#minute1").css("color","#2020a0").css("background-color","#fec231");
+  $("#minute1").css("color","white").css("background-color","black");
   $("#minuteCnt1").css("display","block");
   $("[data-day]").click((event)=>{
-    $("#" + event.target.id).css("color","#2020a0").css("background-color","#fec231");
+    $("#" + event.target.id).css("color","white").css("background-color","black");
     let minuteNum = parseInt($("#" + event.target.id).attr("data-day"));
     $("#minuteCnt" + minuteNum).css("display","block");
     for (let c = 1; c < 6; c++) {
       if (c != minuteNum) {
-        $("#minute" + c).css("color","#fec231").css("background-color","#2020a0");
+        $("#minute" + c).css("color","black").css("background-color","transparent");
         $("#minuteCnt" + c).css("display","none");
       };
     };

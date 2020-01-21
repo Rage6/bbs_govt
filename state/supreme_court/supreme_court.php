@@ -84,12 +84,12 @@
             ?>
           </div>
         </div>
-        <div class="upArrow" style="margin-top:20px">
-          <a href="#menuTag">
-            - TOP -
-          </a>
-        </div>
       </a>
+      <div class="upArrow">
+        <a href="#menuTag">
+          - TOP -
+        </a>
+      </div>
     </div>
   </body>
 </html>
