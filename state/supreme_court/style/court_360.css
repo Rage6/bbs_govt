@@ -84,3 +84,67 @@ a {
   background-size: cover;
   width: 70%;
 }
+
+.tagTitle {
+  margin-top: 30px;
+  border: 1px solid #2020a0;
+  border-top-right-radius: 45px;
+  padding: 10px 0;
+  color: #2020a0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fec231;
+}
+
+/* This is for the 'Bar Association Minutes' */
+.minuteBox {
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2020a0;
+}
+
+.allMinuteBttns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allMinuteBttns div {
+  margin: 20px 0 10px 0;
+  border: 1px solid #fec231;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+}
+
+.allMinuteCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
+  display: none;
+}
+
+.minuteDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.minuteTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.minuteMain {
+  padding: 0 5%;
+  white-space: pre-wrap;
+}
+
+.upArrow {
+  text-align: center;
+}
+
+.upArrow a {
+  color: #00467f;
+  text-decoration: none;
+  cursor: pointer;
+}
