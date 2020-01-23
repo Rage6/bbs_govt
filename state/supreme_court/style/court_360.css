@@ -144,6 +144,67 @@ a {
   width: 85%;
 }
 
+/* For the Court Cases */
+.caseBox {
+  padding : 20px 5%;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+}
+
+.caseBox div i {
+  text-align: center;
+}
+
+.subtypeSelect {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtypeSelect div:last-child {
+  border: 1px solid black;
+  text-align: center;
+  overflow-x: scroll;
+  width: 50%;
+}
+
+.subtypeBttnList {
+  margin-bottom: 10px;
+  display: none;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.subtypeBttn {
+ cursor: pointer;
+}
+
+.caseBttnList {
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 10px 2% 0 2%;
+  /* display: none; */
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+
+
+.caseBttn {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  background-color: black;
+}
+
+.caseContent {
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 5px 2%;
+}
+
 /* For the 'Bar Association Minutes' */
 .minuteBox {
   color: black;

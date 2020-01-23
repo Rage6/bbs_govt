@@ -20,12 +20,12 @@
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/court_360.css" />
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:600&display=swap" rel="stylesheet">
-  <script src=<?php
-    if ($isLocal == true) {
-      echo("../../".$jquery);
-    } else {
-      echo($jquery);
-    };?>></script>
+    <script src=<?php
+      if ($isLocal == true) {
+        echo("../../".$jquery);
+      } else {
+        echo($jquery);
+      };?>></script>
     <script src="main.js"></script>
     <script src="case_library/cases.js"></script>
   </head>
@@ -93,17 +93,27 @@
 
       <!-- The directory of cases -->
       <a id="caseTop">
+        <div class="tagTitle">Court Cases</div>
+      </a>
+      <div class="caseBox">
         <div>
-          <div>
+          <div class="subtypeSelect">
+            <div>CHOOSE TYPE:</div>
+            <div id="selectBox" data-subtypeid="0">---</div>
+          </div>
+          <div id="subtypeBttnList" class="subtypeBttnList">
             <!-- This is where you select the type of case -->
-            <!-- Then, they can see all, dismissed, or pending cases -->
-            <!-- The titles of the selected cases are shown here -->
-            <div id="caseBttnList">
-              <!-- The selected title will show its content -->
-            </div>
           </div>
         </div>
-      </a>
+        <div>CHOOSE CASE:</div>
+        <div id="caseBttnList" class="caseBttnList">
+          <!-- The titles of the selected cases are shown here -->
+          <i>-- No case found --</i>
+        </div>
+        <div id="caseContent" class="caseContent">
+          <i>-- No case selected --</i>
+        </div>
+      </div>
 
       <div class="upArrow">
         <div class="goTop">
