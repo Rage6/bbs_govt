@@ -57,7 +57,7 @@ $(document).ready(()=>{
           for (let contNum = 0; contNum < caseLibrary.length; contNum++) {
             if (event.target.dataset.caseid == caseLibrary[contNum]['post_id']) {
               $("#caseContent").empty();
-              $("#caseContent").text(caseLibrary[contNum]['content']);
+              $("#caseContent").append("<div>" + caseLibrary[contNum]['content'] + "</div>");
               hasText = true;
               break;
             };
