@@ -341,7 +341,7 @@ $(document).ready(()=>{
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
   let requestList = requestData.split("&");
-  console.log(requestList);
+  // console.log(requestList);
   let maxSize = 0;
   let top = 0;
   let right = 0;
