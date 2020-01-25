@@ -628,6 +628,20 @@
                     echo("
                           </select>
                         </div>
+                        <div class='changeInput'>
+                          <div>Bar member?</div>
+                          <select name='updateBarStat'>");
+                            if ($allDelegate[$delNum]['bar_member'] == 1) {
+                              echo("
+                              <option selected value='1'>YES</option>
+                              <option value='0'>NO</option>");
+                            } else {
+                              echo("
+                              <option value='1'>YES</option>
+                              <option selected value='0'>NO</option>");
+                            };
+                          echo("</select>
+                        </div>
                         <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>
                     </div>

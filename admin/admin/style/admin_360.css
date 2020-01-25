@@ -679,8 +679,19 @@ body {
 }
 
 .barSlot {
+  margin-top: 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.barSlot select {
+  width: 40%;
+}
+
+.barSlot div {
+  font-size: 1.2rem;
+  color: white;
+  width: 40%;
 }
 
 .addDelBttn {
