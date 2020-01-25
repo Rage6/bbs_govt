@@ -20,4 +20,15 @@
   $minuteStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=7 ORDER BY post_order ASC");
   $minuteStmt->execute();
 
+  // Collect all of the bar members
+  $memberListStmt = $pdo->prepare(
+    "SELECT
+      delegate_id,first_name,last_name,hometown,section_name
+    FROM
+      Delegate JOIN Section
+    WHERE
+      Delegate.bar_member=1 AND Delegate.city_id=Section.section_id
+    ORDER BY last_name, first_name");
+  $memberListStmt->execute();
+
 ?>

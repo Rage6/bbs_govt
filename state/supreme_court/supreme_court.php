@@ -47,7 +47,7 @@
         <div id="justiceLink" class="optionBttn">JUSTICES</div>
         <div id="caseLink" class="optionBttn">COURT CASES</div>
         <div id="minutesLink" class="optionBttn">BAR ASSOCIATION MINUTES</div>
-        <div id="resultsLink" class="optionBttn">BAR EXAM RESULTS</div>
+        <div id="resultsLink" class="optionBttn">BAR MEMBERS</div>
         <a href="../../index.php">
           <div class="optionBttn returnBttn"><< BACK</div>
         </a>
@@ -160,7 +160,14 @@
 
       <!-- The Bar Exam Results -->
       <a id="resultsTop">
-        <div>For the Bar Exam Results</div>
+        <div class="tagTitle">Bar Members</div>
+        <div class="barBox">
+          <?php
+            while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
+              echo("<div>".$oneMember['first_name']." ".$oneMember['last_name']."<div>");
+            };
+          ?>
+        </div>
       </a>
 
       <div class="upArrow">
