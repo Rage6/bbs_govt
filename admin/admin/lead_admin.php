@@ -535,11 +535,12 @@ if (isset($_POST['addDelegate'])) {
           $delCounty = $allCity[$cityCount]['is_county'];
         };
       };
-      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,hometown,city_id,county_id) VALUES (:fn,:lm,:hm,:ci,:co)");
+      $addDelegateStmt = $pdo->prepare("INSERT INTO Delegate(first_name,last_name,hometown,bar_member,city_id,county_id) VALUES (:fn,:lm,:hm,:bm,:ci,:co)");
       $addDelegateStmt->execute(array(
         ':fn'=>htmlentities($_POST['newFirstN']),
         ':lm'=>htmlentities($_POST['newLastN']),
         ':hm'=>htmlentities($_POST['newHome']),
+        ':bm'=>htmlentities($_POST['delBarStat']),
         ':ci'=>htmlentities($_POST['delCity']),
         ':co'=>(int)$delCounty
       ));

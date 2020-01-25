@@ -567,6 +567,13 @@
                     };
             echo("
                   </select>
+                  <div class='barSlot'>
+                    <div>Bar member?</div>
+                    <select class='selectBttn' name='delBarStat'>
+                      <option value='1'>YES</option>
+                      <option value='0' selected>NO</option>
+                    </select>
+                  </div>
                   <div>
                     <input class='addDelBttn' type='submit' name='addDelegate' value='ADD' />
                   </div>
