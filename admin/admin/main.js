@@ -234,11 +234,11 @@ $(document).ready(()=>{
       let boxId = null;
       let nonBox = null;
       if (event.target.dataset.act == 'chgBttn') {
-        boxId = "#chgBox" + event.target.dataset.delid;
-        nonBox = "#delBox" + event.target.dataset.delid;
+        boxId = "[data-delId='" + event.target.dataset.delid + "'][data-act='chgBox']";
+        nonBox = "[data-delId='" + event.target.dataset.delid + "'][data-act='delBox']";
       } else if (event.target.dataset.act == "delBttn") {
-        boxId = "#delBox" + event.target.dataset.delid;
-        nonBox = "#chgBox" + event.target.dataset.delid;
+        boxId = "[data-delId='" + event.target.dataset.delid + "'][data-act='delBox']";
+        nonBoxId = "[data-delId='" + event.target.dataset.delid + "'][data-act='chgBox']";
       };
       if ($(boxId).css('display') == 'block') {
         $(boxId).css('display','none');
@@ -248,7 +248,8 @@ $(document).ready(()=>{
       $(nonBox).css('display','none');
     } else if (event.target.dataset.act == 'cancelBttn') {
       // Not sure why, but clicking on 'CANCEL' carries out the function twice
-      let removeBox = "#delBox" + event.target.dataset.delid;
+      // console.log("clicked cancel");
+      let removeBox = "[data-delId='" + event.target.dataset.delid + "'][data-act='delBox']";
       $(removeBox).css('display','none');
     };
   });
