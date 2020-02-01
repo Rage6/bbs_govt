@@ -174,10 +174,25 @@
       <a id="resultsTop">
         <div class="tagTitle">Bar Members</div>
         <div class="barBox">
+          Members of the BBS Bar Association have passed the BBS bar exam and is now an attorney-at-law within our state. Certain elected positions require that the official first passes the bar exam. These positions include judges, state attorney general, directors of law, and private attorneys.
           <?php
             if ((int)$countMember > 0) {
               while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
-                echo("<div>".$oneMember['first_name']." ".$oneMember['last_name']."<div>");
+                echo("
+                <div class='memberBox'>
+                  <div class='memberName'>".$oneMember['last_name'].", ".$oneMember['first_name']."</div>
+                  <div class='memberHomeBox'>
+                    <div class='cityColumn bothCities'>
+                      <div class='bothTitles'>BBS City</div>
+                      <div>".$oneMember['section_name']."</div>
+                    </div>
+                    <div class='hometownColumn bothCities'>
+                      <div class='bothTitles'>Hometown</div>
+                      <div>".$oneMember['hometown']."</div>
+                    </div>
+                  </div>
+                </div>
+                ");
               };
             } else {
               echo("<div>There are no bar members at this point</div>");

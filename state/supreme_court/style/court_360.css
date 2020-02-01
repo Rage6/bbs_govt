@@ -251,6 +251,45 @@ a {
   max-height: 700px;
 }
 
+/* For the list of Bar members */
+.barBox {
+  padding: 30px 5% 0px 5%;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+  min-height: 200px;
+  max-height: 800px;
+  overflow-y: scroll;
+}
+
+.memberBox {
+  margin-bottom: 30px;
+  border: 1px dashed black;
+  /* padding: 10px 5%; */
+}
+
+.memberName {
+  padding: 10px 5%;
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background-color: black;
+}
+
+.memberHomeBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bothCities {
+  padding: 10px 0;
+  text-align: center;
+  width: 45%;
+}
+
+.bothTitles {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
 /* For the tags that take things back to the top */
 .upArrow {
   margin: 20px 0 20px 25%;
