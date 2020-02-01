@@ -19,6 +19,18 @@
     <title>BBS | State Supreme Court</title>
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/court_360.css" />
+    <!-- Width: 361px to 375px -->
+    <link rel="stylesheet" media="screen and (min-width: 361px) and (max-width: 375px)" href="style/court_375.css"/>
+    <!-- Width: 376px to 414px -->
+    <link rel="stylesheet" media="screen and (min-width: 376px) and (max-width: 414px)" href="style/court_414.css"/>
+    <!-- Width: 415px to 768px -->
+    <link rel="stylesheet" media="screen and (min-width: 415px) and (max-width: 768px)" href="style/court_768.css"/>
+    <!-- Width: 769px to 1366px -->
+    <link rel="stylesheet" media="screen and (min-width: 769px) and (max-width: 1366px)" href="style/court_1366.css"/>
+    <!-- Width: 1367px to 1440px -->
+    <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/court_1440.css"/>
+    <!-- Width: 1441px and above -->
+    <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/court_1920.css"/>
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:600&display=swap" rel="stylesheet">
     <script src=<?php
       if ($isLocal == true) {
@@ -163,8 +175,12 @@
         <div class="tagTitle">Bar Members</div>
         <div class="barBox">
           <?php
-            while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
-              echo("<div>".$oneMember['first_name']." ".$oneMember['last_name']."<div>");
+            if ((int)$countMember > 0) {
+              while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
+                echo("<div>".$oneMember['first_name']." ".$oneMember['last_name']."<div>");
+              };
+            } else {
+              echo("<div>There are no bar members at this point</div>");
             };
           ?>
         </div>
