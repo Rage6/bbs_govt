@@ -108,7 +108,7 @@
         <div class="tagTitle">Court Cases</div>
       </a>
       <div class="caseBox">
-        <div>
+        <div class="subtypeSelectBox">
           <div class="subtypeSelect">
             <div>CHOOSE TYPE:</div>
             <div id="selectBox" data-subtypeid="0">---</div>
@@ -117,13 +117,19 @@
             <!-- This is where you select the type of case -->
           </div>
         </div>
-        <div>CHOOSE CASE:</div>
-        <div id="caseBttnList" class="caseBttnList">
-          <!-- The titles of the selected cases are shown here -->
-          <i>-- No case found --</i>
+        <div class="caseBttnBox">
+          <div>CHOOSE CASE:</div>
+          <div id="caseBttnList" class="caseBttnList">
+            <!-- The titles of the selected cases are shown here -->
+            <i>-- No case found --</i>
+          </div>
         </div>
-        <div id="caseContent" class="caseContent">
-          <i>-- No case selected --</i>
+        <div class="caseDetailBox">
+          <div>CASE DETAILS</div>
+          <div id="caseContent" class="caseContent">
+            <!-- The details about the selected case show up here -->
+            <i>-- No case selected --</i>
+          </div>
         </div>
       </div>
 
@@ -174,7 +180,12 @@
       <a id="resultsTop">
         <div class="tagTitle">Bar Members</div>
         <div class="barBox">
-          Members of the BBS Bar Association have passed the BBS bar exam and is now an attorney-at-law within our state. Certain elected positions require that the official first passes the bar exam. These positions include judges, state attorney general, directors of law, and private attorneys.
+          <div class="barIntro">
+            All members of the BBS Bar Association have passed the bar exam and are now registered attorneys within our state. Current members are listed below alphabetically, based on their last names.
+          </div>
+          <div class="barIntro">
+            Certain BBS elected positions require that its new officials must also have pass the bar exam. These positions include judges, the state attorney general, and county/city directors of law.
+          </div>
           <?php
             if ((int)$countMember > 0) {
               while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -195,7 +206,11 @@
                 ");
               };
             } else {
-              echo("<div>There are no bar members at this point</div>");
+              echo("
+              <div class='noMemberBox'>
+                <i>Sorry, there are no bar members at this time.</i>
+              </div>
+              ");
             };
           ?>
         </div>
@@ -205,6 +220,13 @@
         <div class="goTop">
           - TOP -
         </div>
+      </div>
+
+      <div class="footer">
+        Want to attend Buckeye Boys State next year?<br/>
+        <a href="http://www.ohiobuckeyeboysstate.com/">
+          <u>CLICK HERE!</u>
+        </a>
       </div>
 
     </div>

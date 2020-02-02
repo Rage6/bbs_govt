@@ -146,7 +146,7 @@ a {
 
 /* For the Court Cases */
 .caseBox {
-  padding : 20px 5%;
+  padding: 40px 5%;
   color: black;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
@@ -154,6 +154,10 @@ a {
 
 .caseBox div i {
   text-align: center;
+}
+
+.subtypeSelectBox {
+  margin-bottom: 30px;
 }
 
 .subtypeSelect {
@@ -171,24 +175,40 @@ a {
 .subtypeBttnList {
   margin-bottom: 10px;
   display: none;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  /* justify-content: space-around;
+  flex-wrap: wrap; */
 }
 
 .subtypeBttn {
- cursor: pointer;
+  margin-left: 50%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid white;
+  padding: 5px 0;
+  text-align: center;
+  color: white;
+  background-color: black;
+  width: 50%;
+  cursor: pointer;
+}
+
+.subtypeBttn:hover {
+  color: #fec231;
+  background-color: black;
+}
+
+.caseBttnBox {
+  margin-bottom: 40px;
 }
 
 .caseBttnList {
   margin-top: 10px;
   border: 1px solid black;
-  padding: 10px 2% 0 2%;
+  padding: 10px 2%;
   /* display: none; */
   overflow-y: scroll;
   max-height: 300px;
 }
-
-
 
 .caseBttn {
   margin-bottom: 10px;
@@ -199,11 +219,18 @@ a {
   background-color: black;
 }
 
+.caseDetailBox {
+
+}
+
 .caseContent {
   margin-top: 10px;
   border: 1px solid black;
   padding: 5px 2%;
   white-space: pre-wrap;
+  min-height: 200px;
+  max-height: 700px;
+  overflow-y: scroll;
 }
 
 /* For the 'Bar Association Minutes' */
@@ -253,23 +280,39 @@ a {
 
 /* For the list of Bar members */
 .barBox {
-  padding: 30px 5% 0px 5%;
+  padding: 40px 5% 0px 5%;
+  font-family: 'Montserrat', sans-serif;
   background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
   min-height: 200px;
   max-height: 800px;
   overflow-y: scroll;
 }
 
-.memberBox {
+.barIntro {
   margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.noMemberBox {
+  margin: 40px 0;
   border: 1px dashed black;
-  /* padding: 10px 5%; */
+  padding: 15px 5%;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.memberBox {
+  margin-bottom: 15px;
+  border: 1px dashed black;
+}
+
+.memberBox:last-child {
+  margin-bottom: 40px;
 }
 
 .memberName {
   padding: 10px 5%;
   color: #fec231;
-  font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: black;
 }
@@ -305,4 +348,19 @@ a {
   color: #fec231;
   text-decoration: none;
   cursor: pointer;
+}
+
+.footer {
+  margin-top: 80px;
+  padding: 20px 5%;
+  text-align: center;
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  background-color: black;
+}
+.footer a {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  color: #fec231;
 }
