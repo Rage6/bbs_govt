@@ -153,13 +153,14 @@
               <div data-head='".$oneType['type_id']."' class='postType'>"
                 .$oneType['type_name'].
               "</div>
-              <div id='typeId".$oneType['type_id']."' class='postMain'>
-                <div class='postTypeRow'>
+              <div id='typeId".$oneType['type_id']."' class='postMain'>");
+              if ($oneType['can_add'] == 1) {
+                echo("<div class='postTypeRow'>
                   <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
                 </div>
                 <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
                   <form method='POST'>
-                    <div class='postSubtitle'>Title:</div>
+                    <div class='postSubtitle'>Title/Name(s):</div>
                     <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                     <div class='postSubtitle'>Content:</div>
                     <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
@@ -188,6 +189,7 @@
                   </form>
                 </div>
                 ");
+              };
               echo("
                 <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
                   <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
@@ -208,12 +210,19 @@
                 echo("
                 <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                   <form method='POST'>
-                    <input type='hidden' name='postId' value='".$onePost['post_id']."'>
-                    <div class='postSubtitle'>Title:</div>
-                    <textarea class='postText titleText' name='postTitle'>");
-                      echo htmlspecialchars($onePost['title'], ENT_QUOTES);
-                    echo("</textarea>
-                    <div class='postSubtitle'>Content:</div>
+                    <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
+                    if ($oneType['can_add'] == 1) {
+                      echo("
+                        <div class='postSubtitle'>Title/Name(s):</div>
+                        <textarea class='postText titleText' name='postTitle'>");
+                        echo htmlspecialchars($onePost['title'], ENT_QUOTES);
+                      echo("</textarea>");
+                    } else {
+                      echo("
+                        <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
+                        <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
+                    };
+                    echo("<div class='postSubtitle'>Content:</div>
                     <textarea class='postText contentText' name='postContent'>");
                       echo htmlspecialchars($onePost['content'], ENT_QUOTES);
                     echo("</textarea>
@@ -558,6 +567,13 @@
                     };
             echo("
                   </select>
+                  <div class='barSlot'>
+                    <div>Bar member?</div>
+                    <select class='selectBttn' name='delBarStat'>
+                      <option value='1'>YES</option>
+                      <option value='0' selected>NO</option>
+                    </select>
+                  </div>
                   <div>
                     <input class='addDelBttn' type='submit' name='addDelegate' value='ADD' />
                   </div>
@@ -611,6 +627,20 @@
                           };
                     echo("
                           </select>
+                        </div>
+                        <div class='changeInput'>
+                          <div>Bar member?</div>
+                          <select name='updateBarStat'>");
+                            if ($allDelegate[$delNum]['bar_member'] == 1) {
+                              echo("
+                              <option selected value='1'>YES</option>
+                              <option value='0'>NO</option>");
+                            } else {
+                              echo("
+                              <option value='1'>YES</option>
+                              <option selected value='0'>NO</option>");
+                            };
+                          echo("</select>
                         </div>
                         <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>

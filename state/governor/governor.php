@@ -396,7 +396,7 @@
                 <ul>
                   <?php
                     // For collecting all of their policies
-                    $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND section_id=9 AND approved=1 ORDER BY post_order ASC");
+                    $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND section_id=$secId AND approved=1 ORDER BY post_order ASC");
                     $policyStmt->execute();
                     while ($onePolicy = $policyStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("<li class='listSpacing'>
@@ -413,7 +413,7 @@
                 <ul>
                   <?php
                     // For collecting all of their goals
-                    $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND section_id=9 AND approved=1 ORDER BY post_order ASC");
+                    $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND section_id=$secId AND approved=1 ORDER BY post_order ASC");
                     $goalStmt->execute();
                     while ($oneGoal = $goalStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("<li class='listSpacing'>
@@ -437,7 +437,7 @@
           <div style="margin-top:0px" class="govBox agencyBox">
             <?php
               $agencyNum = 0;
-              $agencyStmt = $pdo->prepare("SELECT DISTINCT * FROM Department INNER JOIN Job INNER JOIN Delegate WHERE Department.section_id=9 AND Department.job_id=Job.job_id AND Job.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY Department.dpt_id ASC");
+              $agencyStmt = $pdo->prepare("SELECT DISTINCT * FROM Department INNER JOIN Job INNER JOIN Delegate WHERE Department.section_id=$secId AND Department.job_id=Job.job_id AND Job.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY Department.dpt_id ASC");
               $agencyStmt->execute();
               while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
                 echo("

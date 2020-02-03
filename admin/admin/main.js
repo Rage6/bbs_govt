@@ -96,6 +96,10 @@ $(document).ready(()=>{
     };
     let typeRowId = "#boxList_" + event.target.dataset.pendtype;
     if (typeLength == 0) {
+      let emptyBoxId = "#emptyBox_" + event.target.dataset.pendtype;
+      if ($(emptyBoxId)) {
+        $(emptyBoxId).remove();
+      };
       $(typeRowId).append("<div id='emptyBox_"+event.target.dataset.pendtype+"' class='postBox emptyBox'>There are no posts waiting for approval at this time.<div>");
     } else {
       let emptyBoxId = "#emptyBox_" + event.target.dataset.pendtype;
@@ -230,11 +234,11 @@ $(document).ready(()=>{
       let boxId = null;
       let nonBox = null;
       if (event.target.dataset.act == 'chgBttn') {
-        boxId = "#chgBox" + event.target.dataset.delid;
-        nonBox = "#delBox" + event.target.dataset.delid;
+        boxId = "[data-delId='" + event.target.dataset.delid + "'][data-act='chgBox']";
+        nonBox = "[data-delId='" + event.target.dataset.delid + "'][data-act='delBox']";
       } else if (event.target.dataset.act == "delBttn") {
-        boxId = "#delBox" + event.target.dataset.delid;
-        nonBox = "#chgBox" + event.target.dataset.delid;
+        boxId = "[data-delId='" + event.target.dataset.delid + "'][data-act='delBox']";
+        nonBoxId = "[data-delId='" + event.target.dataset.delid + "'][data-act='chgBox']";
       };
       if ($(boxId).css('display') == 'block') {
         $(boxId).css('display','none');
@@ -244,7 +248,8 @@ $(document).ready(()=>{
       $(nonBox).css('display','none');
     } else if (event.target.dataset.act == 'cancelBttn') {
       // Not sure why, but clicking on 'CANCEL' carries out the function twice
-      let removeBox = "#delBox" + event.target.dataset.delid;
+      // console.log("clicked cancel");
+      let removeBox = "[data-delId='" + event.target.dataset.delid + "'][data-act='delBox']";
       $(removeBox).css('display','none');
     };
   });
@@ -337,7 +342,7 @@ $(document).ready(()=>{
   let rawHeight = 0;
   let requestData = window.location.search.substring(1);
   let requestList = requestData.split("&");
-  console.log(requestList);
+  // console.log(requestList);
   let maxSize = 0;
   let top = 0;
   let right = 0;

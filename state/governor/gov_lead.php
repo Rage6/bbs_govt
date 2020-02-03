@@ -1,5 +1,7 @@
 <?php
 
+$secId = 9;
+
 // For Governor basic info
 $govStmt = $pdo->prepare(
   "SELECT * FROM Delegate INNER JOIN Job INNER JOIN Image WHERE Delegate.delegate_id=Job.delegate_id AND Image.job_id=Job.job_id AND Job.job_id=1");

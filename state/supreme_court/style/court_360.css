@@ -1,12 +1,16 @@
 body {
   margin: 0;
   font-size: 16px;
-  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+}
+
+a {
+  text-decoration: none;
 }
 
 .mainTitle {
   padding: 15px 5%;
-  color: gold;
+  color: #fec231;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,6 +25,10 @@ body {
   margin: 10px 0px 5px 0px;
 }
 
+.titleDivide {
+  border-top:3px solid #fec231
+}
+
 .bottomMain {
   margin-top: 5px;
   font-size: 2.2rem;
@@ -31,4 +39,328 @@ body {
   background-size: cover;
   height: 90px;
   width: 90px;
+}
+
+.menuBttn {
+  padding: 10px 0;
+  font-size: 1.4rem;
+  color: #fec231;
+  text-align: center;
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background-size: cover;
+  cursor: pointer;
+}
+
+.allOptions {
+  display: none;
+}
+
+.optionBttn {
+  padding: 10px 0 10px 5%;
+  color: #fec231;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.2rem;
+  background: black;
+  border-bottom: 1px solid #fec231;
+  cursor: pointer;
+}
+
+.returnBttn {
+  padding-left: 0;
+  border-bottom: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.mainContent {
+
+}
+
+.welcome {
+  margin: 20px 0 0 10%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.6rem;
+  text-align: center;
+  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  background-size: cover;
+  width: 70%;
+}
+
+.tagTitle {
+  margin-top: 30px;
+  padding: 10px 0;
+  color: #fec231;
+  text-align: center;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.4rem;
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background-size: contain;
+}
+
+/* For the Justices' bios and photos */
+.allJustices {
+  margin-top: 40px;
+}
+
+.justiceBox {
+  margin-left: 5%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding-bottom: 15px;
+  background-color: black;
+  width: 90%;
+}
+
+.justiceTitle {
+  padding: 10px 0;
+  border-radius: 10px 10px 0 0;
+  color: black;
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: 'Ibarra Real Nova', serif;
+  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  background-size: cover;
+}
+
+.justiceTitle div:last-child {
+  font-size: 1rem;
+}
+
+.justiceImg {
+  margin: 15px 0 0 5%;
+  width: 90%;
+}
+
+.justiceBio {
+  margin: 15px 0 0 5%;
+  padding: 10px 0 10px 5%;
+  color: black;
+  font-size: 1.4rem;
+  font-family: 'Ibarra Real Nova', serif;
+  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  width: 85%;
+}
+
+/* For the Court Cases */
+.caseBox {
+  padding: 40px 5%;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+}
+
+.caseBox div i {
+  text-align: center;
+}
+
+.subtypeSelectBox {
+  margin-bottom: 30px;
+}
+
+.subtypeSelect {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtypeSelect div:last-child {
+  border: 1px solid black;
+  text-align: center;
+  overflow-x: scroll;
+  width: 50%;
+}
+
+.subtypeBttnList {
+  margin-bottom: 10px;
+  display: none;
+  /* justify-content: space-around;
+  flex-wrap: wrap; */
+}
+
+.subtypeBttn {
+  margin-left: 50%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid white;
+  padding: 5px 0;
+  text-align: center;
+  color: white;
+  background-color: black;
+  width: 50%;
+  cursor: pointer;
+}
+
+.subtypeBttn:hover {
+  color: #fec231;
+  background-color: black;
+}
+
+.caseBttnBox {
+  margin-bottom: 40px;
+}
+
+.caseBttnList {
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 10px 2%;
+  /* display: none; */
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+.caseBttn {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  background-color: black;
+}
+
+.caseDetailBox {
+
+}
+
+.caseContent {
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 5px 2%;
+  white-space: pre-wrap;
+  min-height: 200px;
+  max-height: 700px;
+  overflow-y: scroll;
+}
+
+/* For the 'Bar Association Minutes' */
+.minuteBox {
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+}
+
+.allMinuteBttns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allMinuteBttns div {
+  margin: 20px 0 10px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+}
+
+.allMinuteCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
+  display: none;
+}
+
+.minuteDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.minuteTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.minuteMain {
+  padding: 0 5%;
+  white-space: pre-wrap;
+  min-height: 200px;
+  max-height: 700px;
+}
+
+/* For the list of Bar members */
+.barBox {
+  padding: 40px 5% 0px 5%;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+  min-height: 200px;
+  max-height: 800px;
+  overflow-y: scroll;
+}
+
+.barIntro {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.noMemberBox {
+  margin: 40px 0;
+  border: 1px dashed black;
+  padding: 15px 5%;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.memberBox {
+  margin-bottom: 15px;
+  border: 1px dashed black;
+}
+
+.memberBox:last-child {
+  margin-bottom: 40px;
+}
+
+.memberName {
+  padding: 10px 5%;
+  color: #fec231;
+  text-align: center;
+  background-color: black;
+}
+
+.memberHomeBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bothCities {
+  padding: 10px 0;
+  text-align: center;
+  width: 45%;
+}
+
+.bothTitles {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+/* For the tags that take things back to the top */
+.upArrow {
+  margin: 20px 0 20px 25%;
+  border: 1px solid #fec231;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: black;
+  width: 40%;
+}
+
+.goTop {
+  color: #fec231;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 80px;
+  padding: 20px 5%;
+  text-align: center;
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  background-color: black;
+}
+.footer a {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  color: #fec231;
 }

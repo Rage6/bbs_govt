@@ -213,13 +213,13 @@
       <div id="aboutTop">
         <div class="levelTitle explainTitle">What Is Buckeye Boys State?</div>
         <div class="explainBox">
-          <span class="introTitle">E</span>very summer, nearly 1000 young men take their first steps towards leading our nation by creating and running their own American state: Buckeye Boys State (BBS). This 8 day-long camp, which is taking places at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS are:
+          <span class="introTitle">E</span>very summer, nearly 1000 young men take their first steps towards leading our nation by creating and running their own state: Buckeye Boys State (BBS). This 8 day-long camp, which takes place at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS will:
           <ul>
-            <li>Running their own political parties</li>
-            <li>Running for an elected position within their BBS city, county, or state</li>
-            <li>Voting on their own BBS election day</li>
-            <li>Taking responsibility of their new duties within their BBS community (be they elected, appointed, or hired)</li>
-            <li>Fulfilling their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government</li>
+            <li>Run their own political parties</li>
+            <li>Run for elected position within their BBS cities, counties, or state</li>
+            <li>Vote on their own BBS election day</li>
+            <li>Take responsibility of their new duties within their BBS community (be they elected, appointed, or hired)</li>
+            <li>Fulfill their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government</li>
           </ul>
           For more information, check out the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
         </div>
