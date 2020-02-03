@@ -43,7 +43,7 @@
   </head>
   <body>
     <div class="mainTitle">
-      <div>
+      <div class="mainTitleText">
         <div class="topMain">BUCKEYE BOYS STATE</div>
         <div class="titleDivide"></div>
         <div class="bottomMain">
@@ -73,27 +73,22 @@
       <a id="justiceTop">
         <div class="tagTitle">Supreme Court Justices</div>
         <div class="allJustices">
-          <div>
-            <?php
-            while($oneJustice = $justiceInfoStmt->fetch(PDO::FETCH_ASSOC)) {
-              echo("
-              <div class='justiceBox'>
-                <div class='justiceTitle'>
-                  <div>".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
-                  <div>".$oneJustice['job_name']."</div>
-                </div>
-                <img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />
-                <div class='justiceBio'>
-                  <div>BBS City: ".$oneJustice['section_name']."</div>
-                  <div>Hometown: ".$oneJustice['hometown'].", OH</div>
-                </div>
-              </div>");
-            };
-            ?>
-          </div>
-          <div>
-            <!-- This will be a box that will fill the box of the selected Justice ONLY when the screen is wider. -->
-          </div>
+          <?php
+          while($oneJustice = $justiceInfoStmt->fetch(PDO::FETCH_ASSOC)) {
+            echo("
+            <div class='justiceBox'>
+              <div class='justiceTitle'>
+                <div>".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
+                <div>".$oneJustice['job_name']."</div>
+              </div>
+              <img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />
+              <div class='justiceBio'>
+                <div>BBS City: ".$oneJustice['section_name']."</div>
+                <div>Hometown: ".$oneJustice['hometown'].", OH</div>
+              </div>
+            </div>");
+          };
+          ?>
         </div>
       </a>
 
@@ -184,10 +179,11 @@
             All members of the BBS Bar Association have passed the bar exam and are now registered attorneys within our state. Current members are listed below alphabetically, based on their last names.
           </div>
           <div class="barIntro">
-            Certain BBS elected positions require that its new officials must also have pass the bar exam. These positions include judges, the state attorney general, and county/city directors of law.
+            Certain BBS elected positions require that its new officials must also pass the bar exam. These positions include judges, the state attorney general, and county/city directors of law.
           </div>
           <?php
             if ((int)$countMember > 0) {
+              echo("<div class='allMembers'>");
               while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
                 echo("
                 <div class='memberBox'>
@@ -205,6 +201,7 @@
                 </div>
                 ");
               };
+              echo("</div>");
             } else {
               echo("
               <div class='noMemberBox'>
@@ -223,7 +220,9 @@
       </div>
 
       <div class="footer">
-        Want to attend Buckeye Boys State next year?<br/>
+        <div>
+          Want to attend Buckeye Boys State next year?
+        </div>
         <a href="http://www.ohiobuckeyeboysstate.com/">
           <u>CLICK HERE!</u>
         </a>
