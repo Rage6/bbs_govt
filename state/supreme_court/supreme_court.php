@@ -81,9 +81,13 @@
                 <div class='justiceTitle'>
                   <div>".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
                   <div>".$oneJustice['job_name']."</div>
-                </div>
-                <img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />
-                <div class='justiceBio'>
+                </div>");
+                if ($oneJustice['approved'] == 1) {
+                  echo("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />");
+                } else {
+                  echo("<img class='justiceImg' src='../../img/default_photo.png' />");
+                };
+                echo("<div class='justiceBio'>
                   <div>BBS City: ".$oneJustice['section_name']."</div>
                   <div>Hometown: ".$oneJustice['hometown'].", OH</div>
                 </div>
