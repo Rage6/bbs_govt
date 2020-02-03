@@ -1,4 +1,4 @@
-body {
+.wholePage {
   background: repeating-linear-gradient(0.25turn, black, transparent 35px, transparent 90px,black 110px, black 135px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
 }
 
