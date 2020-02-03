@@ -1,0 +1,157 @@
+body {
+  background: repeating-linear-gradient(0.25turn, black, transparent 50px, transparent 190px,black 240px, black 266px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+}
+
+.mainTitle {
+  padding: 15px 9%;
+}
+
+.mainTitleText {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topMain {
+  font-size: 2.5rem;
+  width: 30%;
+}
+
+.titleDivide {
+  border-top: none;
+  border-right: 3px solid #fec231
+}
+
+.bottomMain {
+  font-size: 3.5rem;
+  display: flex;
+}
+
+.bottomMain div {
+  padding-right: 30px;
+}
+
+.courtLogo {
+  height: 110px;
+  width: 110px; */
+}
+
+.menuBttn {
+  font-size: 1.7rem;
+}
+
+.welcome {
+  margin: 20px 0 0 20%;
+  width: 60%;
+}
+
+.tagTitle {
+  font-size: 2.3rem;
+}
+
+.allJustices {
+  padding-left: 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.justiceBox {
+  margin-bottom: 30px;
+  width: 30%;
+}
+
+.justiceTitle div:last-child {
+  font-size: 1.2rem;
+}
+
+.caseBox {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.subtypeSelectBox {
+  margin-right: 2%;
+  border-right: 1px solid black;
+  padding: 0 2% 0 0;
+  width: 16%;
+}
+
+.subtypeSelect {
+  display: block;
+}
+
+.subtypeSelect div:first-of-type {
+  margin-bottom: 15px;
+}
+
+.subtypeSelect div:last-child {
+  width: inherit;
+}
+
+.subtypeBttn {
+  margin-left: 0;
+  width: inherit;
+}
+
+.caseBttnBox {
+  margin: 0 2% 0 0;
+  border-right: 1px solid black;
+  padding-right: 2%;
+  width: 26%;
+}
+
+.caseDetailBox {
+  width: 49%;
+}
+
+.minuteBox {
+  padding: 50px 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.allMinuteBttns {
+  display: block;
+}
+
+.allMinuteBttns div {
+  padding: 5px;
+  width: 100%;
+}
+
+.minuteCnt {
+  width: 90%;
+}
+
+.allMembers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.memberBox {
+  width: 30%;
+}
+
+.fullBarIntro {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.barIntro {
+  width: 45%;
+}
+
+.upArrow {
+  margin-left: 45%;
+  margin-bottom: 100px;
+  font-size: 1.6rem;
+  width: 10%;
+}
+
+.goTop {
+  padding: 5px 0;
+}

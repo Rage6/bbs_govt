@@ -178,7 +178,7 @@
           <div class="barBox">
             <div class="fullBarIntro">
               <div class="barIntro">
-                <div style='margin-bottom:5px'><i><b>What are bar members?</b></i></div>
+                <div style='margin-bottom:5px'><i><b>Who are bar members?</b></i></div>
                 All members of the BBS Bar Association are citizens that have passed the bar exam and are now registered attorneys within our state. Current members are listed below alphabetically based on their last names.
               </div>
               <div class="barIntro">

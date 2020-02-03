@@ -11,7 +11,7 @@ body {
 }
 
 .topMain {
-  font-size: 1.9rem;
+  font-size: 2.2rem;
 }
 
 .titleDivide {
@@ -19,9 +19,13 @@ body {
 }
 
 .bottomMain {
-  font-size: 3rem;
+  font-size: 3.5rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.bottomMain div {
+  margin: 0 2%;
 }
 
 .menuBttn {
@@ -30,6 +34,10 @@ body {
 
 .tagTitle {
   font-size: 1.6rem;
+}
+
+.welcome {
+  margin-left: 15%;
 }
 
 .allJustices {
