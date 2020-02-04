@@ -187,7 +187,7 @@
               </div>
               <div class="barIntro">
                 <div style='margin-bottom:5px'><i><b>When is membership required?</b></i></div>
-                Only bar members can act as an attorney in Buckey Boys State. Certain BBS elected positions require that their new officials must also have passed the bar exam. These positions include judges, the state attorney general, and county/city directors of law.
+                Only bar members can act as an attorney in Buckey Boys State. Certain BBS elected positions require that their official are also bar members. These positions include judges, the state attorney general, and county/city directors of law.
               </div>
             </div>
             <?php
