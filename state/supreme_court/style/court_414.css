@@ -1,0 +1,40 @@
+.wholePage {
+  background: repeating-linear-gradient(0.25turn, black, transparent 35px, transparent 70px,black 115px, black 150px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+}
+
+.topMain {
+  font-size: 1.4rem;
+}
+
+.bottomMain {
+  font-size: 2.5rem;
+}
+
+.menuBttn {
+  font-size: 1.7rem;
+}
+
+.tagTitle {
+  font-size: 1.6rem;
+}
+
+.allJustices {
+  padding-left: 10%;
+  width: 80%;
+}
+
+.justiceBox {
+
+}
+
+.justiceTitle div:last-child {
+  font-size: 1.2rem;
+}
+
+.caseBox {
+  font-size: 1.2rem;
+}
+
+.upArrow {
+  margin-bottom: 100px;
+}

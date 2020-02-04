@@ -1,11 +1,18 @@
 body {
   margin: 0;
+}
+
+.wholePage {
   font-size: 16px;
   background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
 }
 
 a {
   text-decoration: none;
+}
+
+.wholePage {
+
 }
 
 .mainTitle {
@@ -17,7 +24,11 @@ a {
   text-align: center;
   font-family: 'Ibarra Real Nova', serif;
   background: linear-gradient(transparent, transparent 90%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
-  background-size: contain;
+  background-size: cover;
+}
+
+.mainTitleText {
+
 }
 
 .topMain {
@@ -97,21 +108,21 @@ a {
   font-family: 'Ibarra Real Nova', serif;
   font-size: 1.4rem;
   background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
-  background-size: contain;
+  background-size: cover;
 }
 
 /* For the Justices' bios and photos */
 .allJustices {
   margin-top: 40px;
+  padding-left: 5%;
+  width: 90%;
 }
 
 .justiceBox {
-  margin-left: 5%;
   margin-bottom: 20px;
   border-radius: 10px;
   padding-bottom: 15px;
   background-color: black;
-  width: 90%;
 }
 
 .justiceTitle {
@@ -205,8 +216,8 @@ a {
   margin-top: 10px;
   border: 1px solid black;
   padding: 10px 2%;
-  /* display: none; */
   overflow-y: scroll;
+  min-height: 200px;
   max-height: 300px;
 }
 
@@ -226,10 +237,10 @@ a {
 .caseContent {
   margin-top: 10px;
   border: 1px solid black;
-  padding: 5px 2%;
+  padding: 10px 2%;
   white-space: pre-wrap;
   min-height: 200px;
-  max-height: 700px;
+  max-height: 285px;
   overflow-y: scroll;
 }
 
@@ -272,10 +283,12 @@ a {
 }
 
 .minuteMain {
-  padding: 0 5%;
+  border: 1px dashed black;
+  padding: 15px 5%;
   white-space: pre-wrap;
+  overflow-y: scroll;
   min-height: 200px;
-  max-height: 700px;
+  max-height: 375px;
 }
 
 /* For the list of Bar members */
@@ -283,9 +296,14 @@ a {
   padding: 40px 5% 0px 5%;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
-  min-height: 200px;
-  max-height: 800px;
-  overflow-y: scroll;
+}
+
+.fullBarIntro {
+
+}
+
+.fullBarIntro {
+
 }
 
 .barIntro {
@@ -299,6 +317,12 @@ a {
   padding: 15px 5%;
   font-size: 1.3rem;
   text-align: center;
+}
+
+.allMembers {
+  min-height: 200px;
+  max-height: 800px;
+  overflow-y: scroll;
 }
 
 .memberBox {
@@ -335,13 +359,13 @@ a {
 
 /* For the tags that take things back to the top */
 .upArrow {
-  margin: 20px 0 20px 25%;
+  margin: 20px 0 70px 35%;
   border: 1px solid #fec231;
   border-radius: 20px;
   text-align: center;
   font-size: 1.2rem;
   background-color: black;
-  width: 40%;
+  width: 30%;
 }
 
 .goTop {
@@ -352,13 +376,18 @@ a {
 
 .footer {
   margin-top: 80px;
-  padding: 20px 5%;
+  padding: 20px 15% 100px 15%;
   text-align: center;
   color: #fec231;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   background-color: black;
 }
+
+.footer div {
+  padding-bottom: 20px;
+}
+
 .footer a {
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;

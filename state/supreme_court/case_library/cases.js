@@ -19,14 +19,18 @@ $(document).ready(()=>{
 
       // Selects a subtype, changes the data-subtypeid, shows its name, and hides the list
       $("[data-selectid]").click((event)=>{
-        // console.log("subtype selected");
         $("#caseBttnList").empty();
         for (let searchNum = 0; searchNum < subtypeLibrary.length; searchNum++) {
           if (event.target.dataset.selectid == subtypeLibrary[searchNum]['subtype_id']) {
             $("#selectBox").attr("data-subtypeid",event.target.dataset.selectid);
             let selectName = subtypeLibrary[searchNum]['subtype_name'];
             $("#selectBox").text(selectName);
-            $(".subtypeBttnList").css('display','none');
+            if (window.outerWidth < 769) {
+              $(".subtypeBttnList").css('display','none');
+            } else {
+              $(".subtypeBttn").css('color','white');
+              $("[data-selectid=" + event.target.dataset.selectid + "]").css('color','#fec231');
+            };
             addSelectedCases(subtypeLibrary[searchNum]['subtype_id']);
             break;
           };
@@ -57,7 +61,7 @@ $(document).ready(()=>{
           for (let contNum = 0; contNum < caseLibrary.length; contNum++) {
             if (event.target.dataset.caseid == caseLibrary[contNum]['post_id']) {
               $("#caseContent").empty();
-              $("#caseContent").append("<div>" + caseLibrary[contNum]['content'] + "</div>");
+              $("#caseContent").append("<div style='text-align:center'><i>" + caseLibrary[contNum]['title'] + "</i></div></br><div>" + caseLibrary[contNum]['content'] + "</div>");
               hasText = true;
               break;
             };
