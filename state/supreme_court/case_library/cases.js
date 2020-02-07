@@ -57,7 +57,6 @@ $(document).ready(()=>{
         // Colors the selected button and inserts the content on
         $("[data-caseid]").click((event)=>{
           $(".caseBttn").css('color','white');
-          console.log(event.target.dataset.caseid);
           let caseId = event.target.dataset.caseid;
           $("[data-caseid="+caseId+"]").css('color','#fec231')
           let hasText = false;
