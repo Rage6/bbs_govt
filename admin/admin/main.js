@@ -666,7 +666,8 @@ $(document).ready(()=>{
   $(document).ready(() => {
     interval = setInterval(tickDown,1000);
   });
-  const lockTime = Date.now() + 1800000; // Date 30 minutes in the future
+  const lockTime = Date.now() + 1800000; // 30 minutes in the future
+  // const lockTime = Date.now() + 30000; // 30 seconds in the future (for testing)
   const tickDown = () => {
     let currentTime = Date.now();
     let timeDiff = lockTime - currentTime;
@@ -692,6 +693,8 @@ $(document).ready(()=>{
     if (timeDiff < 0) {
       $("#refText").text("Auto-locked. Refresh & login");
       $("#refInfoBar").css('background-color','red').css('color','white');
+      $("<div style='border: 1px solid grey;color: black;background-color: lightgrey;text-align:center'>Your time has expired</div>").insertAfter(".allPostBttns");
+      $(".allPostBttns").css('display','none');
       clearInterval(interval);
     };
   };

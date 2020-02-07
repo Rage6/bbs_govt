@@ -185,7 +185,7 @@
                     echo("<input type='hidden' name='approval' value='0' />
                     <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
                     <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
-                    <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />
+                    <input class='addSubmit allPostBttns' type='submit' name='addPost' value='SUBMIT' />
                   </form>
                 </div>
                 ");
@@ -293,14 +293,14 @@
                     echo("Are you sure you want to make the change(s)?
                       <div class='delBttnRow'>
                         <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
-                        <input class='yesChg' type='submit' name='changePosts' value='Yes, change it' />
+                        <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
                       </div>
                     </div>
                     <div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
                       ARE YOU SURE YOU WANT TO DELETE THIS POST?
                       <div class='delBttnRow'>
                         <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
-                        <input class='yesDel' type='submit' name='deletePost' value='YES, delete it' />
+                        <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
                       </div>
                     </div>");
                     if ($_SESSION['adminType'] == "counselor") {
@@ -311,7 +311,7 @@
                           <label for='yes'>APPROVED</label></br>
                           <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
                           <label for='no'>PENDING</label></br>
-                          <input type='submit' name='changeApproval' value='SUBMIT' />
+                          <input class='allPostBttns' type='submit' name='changeApproval' value='SUBMIT' />
                         </div>
                       ");
                     };
@@ -357,7 +357,7 @@
                     <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
                     <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
                     <input class='photoFile' name='jobImg' type='file' />
-                    <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
+                    <input class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
                     $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
@@ -385,7 +385,7 @@
                             echo("
                             </select>
                           </div>
-                          <input class='counsApprBttn' name='approveImg' type='submit' value='ENTER' />
+                          <input class='counsApprBttn allPostBttns' name='approveImg' type='submit' value='ENTER' />
                         </form>");
                       } else {
                         echo("<div style='padding: 0 5%'>This image was not edited into a square shape, making it unable to fit on their page. Tell the delegate to reload their image, use the included editing tool, and hit 'ENTER'</div>");
@@ -533,7 +533,7 @@
           echo("
                   </div>
                   <div>
-                    <input class='assignJobBttn' type='submit' name='changeJobDel' value='CHANGE' />
+                    <input class='assignJobBttn allPostBttns' type='submit' name='changeJobDel' value='CHANGE' />
                   </div>
                 </div>
               </form>
@@ -575,7 +575,7 @@
                     </select>
                   </div>
                   <div>
-                    <input class='addDelBttn' type='submit' name='addDelegate' value='ADD' />
+                    <input class='addDelBttn allPostBttns' type='submit' name='addDelegate' value='ADD' />
                   </div>
                 </form>
               </div>
@@ -642,7 +642,7 @@
                             };
                           echo("</select>
                         </div>
-                        <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
+                        <input class='changeEnter allPostBttns' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>
                     </div>
                     <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
@@ -652,7 +652,7 @@
                       <div class='deleteRow'>
                         <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
                         <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
-                        <input class='deleteBttn' type='submit' name='deleteDel' value='YES, delete it' />
+                        <input class='deleteBttn allPostBttns' type='submit' name='deleteDel' value='YES, delete it' />
                         <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
                       </div>
                     </div>
@@ -698,7 +698,7 @@
                     };
               echo("</select>
                   </div>
-                  <input class='addDptSubmit' type='submit' name='makeDpt' value='CREATE' />
+                  <input class='addDptSubmit allPostBttns' type='submit' name='makeDpt' value='CREATE' />
                 </div>
               </form>
               <div class='updateTable'>");
@@ -746,7 +746,7 @@
                           <option value='0'".$forNo.">NO</option>
                         </select>
                       </div>
-                      <input class='changeEnter' type='submit' name='submitDpt' value='ENTER' />
+                      <input class='changeEnter allPostBttns' type='submit' name='submitDpt' value='ENTER' />
                     </div>
                   </div>
                   <div id='delDptBox".$dptList[$dptNum]['dpt_id']."' class='deleteBox udpateRow' data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='delDptBox'>
@@ -757,7 +757,7 @@
                       <input type='hidden' name='removeDptId' value='".$dptList[$dptNum]['dpt_id']."' />
                       <input type='hidden' name='removeJobId' value='".$dptList[$dptNum]['job_id']."' />
                       <div>
-                        <input type='submit' name='deleteDpt' value='YES, delete it' />
+                        <input class='allPostBttns' type='submit' name='deleteDpt' value='YES, delete it' />
                       </div>
                       <div data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='cancelDptBttn'>CANCEL</div>
                     </div>
