@@ -291,9 +291,16 @@
                 echo("
                     <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                     <div class='changeBttns'>
-                      <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>
-                      <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>
-                    </div>
+                      <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
+                      $findCanAddStmt = $pdo->prepare("SELECT can_add FROM Type WHERE type_id=:ti");
+                      $findCanAddStmt->execute(array(
+                        ':ti'=>$onePost['type_id']
+                      ));
+                      $findCanAdd = $findCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
+                      if ($findCanAdd == 1) {
+                        echo("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                      };
+                    echo("</div>
                     <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
                     if ($_SESSION['adminType'] == "delegate") {
                       echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
