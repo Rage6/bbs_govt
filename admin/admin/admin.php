@@ -496,7 +496,6 @@
                             ':sn'=>$singleJob['senator']
                           ));
                           $cityName = $findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
-                          $cityName = "senator ";
                         } elseif ($singleJob['representative'] != 0) {
                           $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:rp");
                           $findCityNameStmt->execute(array(
