@@ -676,12 +676,12 @@
           echo("
           <div class='counsBox'>
             <div id='dptTitle' class='postType listTitle'>
-              Department Directory
+              Departments & Committees
             </div>
             <div id='dptDirBox' class='dptDirBox allBox'>
               <form method='POST'>
                 <div id='addDptBttn' class='addDptBttn'>
-                  CREATE DEPARTMENT
+                  ADD +
                 </div>
                 <div id='addDptBox' class='addDptBox'>
                   <input class='dptText' type='text' name='dptName' placeholder='Department Name' />
