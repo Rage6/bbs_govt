@@ -163,9 +163,13 @@
                     <div class='postSubtitle'>Title/Name(s):</div>
                     <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                     <div class='postSubtitle'>Content:</div>
-                    <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
-                    <div class='postSubtitle'>Order #:</div>
-                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
+                    <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>");
+                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 12) {
+                      echo("<div class='postSubtitle'>Bill #:</div>");
+                    } else {
+                      echo("<div class='postSubtitle'>Order #:</div>");
+                    };
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
 
                     if (count($subtypeList) > 1) {
                       echo("
@@ -268,8 +272,12 @@
                       ");
                     };
 
-                    echo("<div class='postSubtitle'>Order #:</div>
-                    <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
+                    if ($onePost['type_id'] == 9 || $onePost['type_id'] == 12) {
+                      echo("<div class='postSubtitle'>Bill #:</div>");
+                    } else {
+                      echo("<div class='postSubtitle'>Order #:</div>");
+                    };
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
                 ");
                 if ($approval == 1) {
                   $ifApproved = "checked";
