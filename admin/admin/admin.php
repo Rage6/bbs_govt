@@ -490,8 +490,19 @@
                         ':scd'=>htmlentities($secInfo['section_id'])
                       ));
                       while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        if ($singleJob['senator'] != 0 || $singleJob['representative'] != 0) {
-                          $cityName = $singleJob['section_name'];
+                        if ($singleJob['senator'] != 0) {
+                          $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:sn");
+                          $findCityNameStmt->execute(array(
+                            ':sn'=>$singleJob['senator']
+                          ));
+                          $cityName = $findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                          $cityName = "senator ";
+                        } elseif ($singleJob['representative'] != 0) {
+                          $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:rp");
+                          $findCityNameStmt->execute(array(
+                            ':rp'=>$singleJob['representative']
+                          ));
+                          $cityName = $findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
                         } else {
                           $cityName = "";
                         };
