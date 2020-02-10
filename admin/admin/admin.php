@@ -310,14 +310,16 @@
                         <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
                         <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
                       </div>
-                    </div>
-                    <div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
-                      ARE YOU SURE YOU WANT TO DELETE THIS POST?
-                      <div class='delBttnRow'>
-                        <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
-                        <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
-                      </div>
                     </div>");
+                    if ($findCanAdd == 1) {
+                      echo("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
+                        ARE YOU SURE YOU WANT TO DELETE THIS POST?
+                        <div class='delBttnRow'>
+                          <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
+                          <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
+                        </div>
+                      </div>");
+                    };
                     if ($_SESSION['adminType'] == "counselor") {
                       echo("
                         <div class='counsOnly'>
