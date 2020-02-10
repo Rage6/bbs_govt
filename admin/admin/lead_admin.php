@@ -212,9 +212,9 @@ if (isset($_POST['changePosts'])) {
 
 // Delete a post
 if (isset($_POST['deletePost'])) {
-  $checkCanAddStmt = $pdo->prepare("SELECT can_add FROM Type WHERE type_id=:ti");
+  $checkCanAddStmt = $pdo->prepare("SELECT can_add FROM Post INNER JOIN Type WHERE Post.post_id=:ps AND Post.type_id=Type.type_id");
   $checkCanAddStmt->execute(array(
-    ':ti'=>htmlentities($_POST['postId'])
+    ':ps'=>htmlentities($_POST['postId'])
   ));
   $checkCanAdd = $checkCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
   if ($checkCanAdd == 1) {
