@@ -1,6 +1,6 @@
 html {
   min-height: 100%;
-  background-image: linear-gradient(to bottom right, blue, white);
+  /* background-image: linear-gradient(to bottom right, blue, white); */
 }
 body {
   margin: 0;

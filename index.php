@@ -105,7 +105,19 @@
                 </div>
               </div>
             </a>
-            <a href="state/senate/senate.php">
+            <a href="state/congress/congress.php">
+              <div class="levelButton">
+                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
+                  <div>
+                    General Assembly
+                  </div>
+                  <div>
+                    <div><img src='img/right_arrow.png'></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- <a href="state/senate/senate.php">
               <div class="levelButton">
                 <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
                   <div>
@@ -128,7 +140,7 @@
                   </div>
                 </div>
               </div>
-            </a>
+            </a> -->
             <a href="state/supreme_court/supreme_court.php">
               <div class="levelButton">
                 <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
