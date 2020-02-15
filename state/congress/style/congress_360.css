@@ -1,0 +1,292 @@
+/*
+AL gold: #fec231
+AL blue: #00467f
+*/
+
+body {
+  margin: 0;
+  font-size: 16px;
+}
+.govTitle {
+  border-bottom: 3px solid #fec231;
+  padding: 20px 0;
+  color: #fec231;
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background-color: #2020a0;
+}
+.divider {
+
+}
+.govTitle div:last-child {
+  font-size: 1.5rem;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+.menuBar {
+  padding: 2px 0;
+  color: #2020a0;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background-color: #fec231;
+}
+.fullContent {
+  background-image: linear-gradient(to bottom right, #2020a0, white, red);
+}
+.menuList {
+  border-top: 1px solid #2020a0;
+}
+
+#hoverLink:hover {
+  color: #fec231;
+  background-color: #2020a0;
+}
+
+#menuContent {
+  display: none;
+}
+.menuButton {
+  padding: 10px 0 10px 10px;
+  color: #2020a0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #fec231;
+}
+.backButton {
+  border-top: 1px dashed #2020a0;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.menuList a {
+  text-decoration: none;
+}
+.menuBox {
+
+}
+.govContent {
+  padding-bottom: 50px;
+  background-position: bottom;
+  /* background-image: linear-gradient(to bottom right, #2020a0, white, red); */
+}
+
+#img_0 {
+  display: block;
+}
+.slideshow {
+  display: none;
+}
+.slideFilm {
+
+}
+.oneFrame {
+
+}
+#img_1_A {
+
+}
+#img_2_A {
+
+}
+#img_3_A {
+
+}
+#img_4_A {
+
+}
+#img_5_A {
+
+}
+#img_6_A {
+
+}
+#img_1_B {
+
+}
+#img_2_B {
+
+}
+#img_3_B {
+
+}
+#img_4_B {
+
+}
+#img_5_B {
+
+}
+#img_6_B {
+
+}
+.govBox {
+  margin-top: 30px;
+}
+.govBox:first {
+  margin-top: 50px;
+}
+.govContent img {
+  margin: 0;
+  padding: 0;
+  width:100%;
+}
+.govIntro {
+  padding: 20px 10%;
+  text-align: center;
+  font-size: 1.7rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.tagTitle {
+  margin-top: 30px;
+  border: 1px solid #2020a0;
+  border-top-right-radius: 45px;
+  padding: 10px 0;
+  color: #2020a0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fec231;
+}
+.govSubtitle {
+  border-top-right-radius: 45px;
+  padding: 10px 0 10px 10%;
+  color: #fec231;
+  font-size: 1.5rem;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #2020a0;
+  width: 90%;
+}
+.firstBox {
+  margin-top: 0px;
+  border-top-right-radius: 0px;
+}
+.nameAndPic {
+  margin: 0 5%;
+  padding-top: 20px;
+}
+.govName {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.nameAndPic img{
+
+}
+.govBio {
+  margin-bottom: 30px;
+  padding: 30px 10% 0 10%;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+}
+.goalBox {
+  padding: 20px 5%;
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2020a0;
+}
+.goalIntro {
+
+}
+.listSpacing {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+.listTitle {
+  font-size: 1.2rem;
+  text-align: center;
+}
+.itemTitle {
+  text-decoration: underline;
+}
+.itemContent {
+  white-space: pre-wrap;
+}
+.bothList {
+
+}
+.policyList {
+  padding-top: 40px;
+}
+.goalDivider {
+  display: none;
+}
+.goalList {
+  padding-top: 40px;
+}
+.agencySubtitle {
+  border-bottom: 2px solid #fec231;
+  padding: 10px 0 10px 10%;
+  color: #fec231;
+  font-size: 1.5rem;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background-color: #2020a0;
+}
+.agencyContent {
+  border: 1px solid #2020a0;
+  border-top: none;
+  padding: 10px 10% 15px 10%;
+  display: none;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fec231;
+}
+.purpose {
+  white-space: pre-wrap;
+}
+.directorRow {
+  border-top: 1px solid black;
+}
+.director {
+  margin-top: 10px;
+  padding-top: 5px;
+}
+
+.reportBox {
+  /* padding-top: 10px; */
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2020a0;
+}
+
+.allReportBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allReportBtns div {
+  margin: 20px 0 10px 0;
+  border: 1px solid #fec231;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+}
+
+.allReportCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
+  display: none;
+}
+
+.reportDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.reportTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.reportMain {
+  padding: 0 5%;
+  white-space: pre-wrap;
+}
+
+.upArrow {
+  text-align: center;
+}
+
+.upArrow a {
+  color: #00467f;
+  text-decoration: none;
+  cursor: pointer;
+}
