@@ -3,11 +3,104 @@ AL gold: #fec231
 AL blue: #00467f
 */
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-size: 16px;
+  height: 100%;
 }
 
 .wholeBox {
+  background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 10%, white 90%, #00467f 95%);
+  height: 100%;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-name: none;
+}
 
+.entranceBox {
+  padding-top: 50px;
+}
+
+.entranceTitle {
+  margin: 0 10% 60px 10%;
+  border: 3px solid #fec231;
+  padding: 5px 0;
+  color: #fec231;
+  font-size: 2.2rem;
+  text-align: center;
+  background-color: black;
+}
+
+.entranceTitle div:first-of-type {
+  margin-left: 5%;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #fec231;
+  font-size: 1.5rem;
+  width: 90%;
+}
+
+.entranceTitle div:last-of-type {
+  margin-top: 5px;
+}
+
+.bothChambers {
+
+}
+
+.chooseHouse {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.chamberBttn {
+  margin: 0 0 0 15%;
+  padding: 20px 5%;
+  color: white;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 60%;
+}
+
+/* Animation */
+
+@keyframes initRedBox {
+  0% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 10%, white 90%, #00467f 95%);
+  }
+  100% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 90%, white 92%, #00467f 95%);
+  }
+}
+
+@keyframes redBox {
+  0% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 8%, #00467f 10%);
+  }
+  100% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 90%, white 92%, #00467f 95%);
+  }
+}
+
+@keyframes initBlueBox {
+  0% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 10%, white 90%, #00467f 95%);
+  }
+  100% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 8%, #00467f 10%);
+  }
+}
+
+@keyframes blueBox {
+  0% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 90%, white 92%, #00467f 95%);
+  }
+  100% {
+    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 8%, #00467f 10%);
+  }
 }

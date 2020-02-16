@@ -42,6 +42,22 @@
     <script src="main.js"></script>
   </head>
   <body>
-    This is the General Assembly
+    <div class='wholeBox'>
+      <div class='entranceBox'>
+        <div class='entranceTitle'>
+          <div>Buckeye Boys State</div>
+          <div>GENERAL ASSEMBLY</div>
+        </div>
+        <div class="bothChambers">
+          <div class="chooseHouse">SELECT A HOUSE:</div>
+          <div id="senClick" style="background-color:#00467f" class="chamberBttn">Senate</div>
+          <div class="chooseHouse">- OR -</div>
+          <div id="repClick" style="background-color:#dc2121" class="chamberBttn">House of Representatives</div>
+        </div>
+        <!-- <div>
+          Welcome to the most senior legislative branch of Buckeye Boys State.
+        </div> -->
+      </div>
+    </div>
   </body>
 </html>
