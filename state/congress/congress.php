@@ -58,6 +58,14 @@
           Welcome to the most senior legislative branch of Buckeye Boys State.
         </div> -->
       </div>
+      <div class='senateBox'>
+        <div id="senTab">SENATE</div>
+      </div>
+      <div class='houseBox'>
+        <div id="repTab">
+          HOUSE
+        </div>
+      </div>
     </div>
   </body>
 </html>

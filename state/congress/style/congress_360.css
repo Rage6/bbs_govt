@@ -3,6 +3,43 @@ AL gold: #fec231
 AL blue: #00467f
 */
 
+/* Begins animation */
+
+/* Moving from 'entranceBox' to 'houseBox' */
+@keyframes toRedBox {
+  to {
+    background-position: 0%;
+  }
+}
+
+/* Moving from 'senateBox' to 'houseBox' */
+@keyframes blueToRed {
+  from {
+    background-position: 100%;
+  }
+  to {
+    background-position: 0%;
+  }
+}
+
+/* Moving from 'entranceBox' to 'senateBox' */
+@keyframes toBlueBox {
+  to {
+    background-position: 100%;
+  }
+}
+
+/* Moving from 'houseBox' to 'senateBox' */
+@keyframes redToBlue {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 100%;
+  }
+}
+/* Ends animations */
+
 html {
   height: 100%;
 }
@@ -14,16 +51,22 @@ body {
 }
 
 .wholeBox {
-  background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 10%, white 90%, #00467f 95%);
+  background-image: linear-gradient(to right, #dc2121, #dc2121 35%, white 37%, white 63%, #00467f 65%);
+  background-size: 300% 100%;
+  background-position-x: 50%;
   height: 100%;
-  animation-timing-function: linear;
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-  animation-duration: 1s;
   animation-name: none;
 }
 
+/* START ENTRANCE BOX */
 .entranceBox {
   padding-top: 50px;
+  /* animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+  animation-name: none; */
 }
 
 .entranceTitle {
@@ -66,41 +109,16 @@ body {
   text-align: center;
   width: 60%;
 }
+/* END ENTRANCE BOX */
 
-/* Animation */
-
-@keyframes initRedBox {
-  0% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 10%, white 90%, #00467f 95%);
-  }
-  100% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 90%, white 92%, #00467f 95%);
-  }
+/* START HOUSE OF REPS BOX */
+.houseBox {
+  display: none;
 }
+/* END HOUSE OF REPS BOX */
 
-@keyframes redBox {
-  0% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 8%, #00467f 10%);
-  }
-  100% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 90%, white 92%, #00467f 95%);
-  }
+/* START SENATE BOX */
+.senateBox {
+  display: none;
 }
-
-@keyframes initBlueBox {
-  0% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 10%, white 90%, #00467f 95%);
-  }
-  100% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 8%, #00467f 10%);
-  }
-}
-
-@keyframes blueBox {
-  0% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 90%, white 92%, #00467f 95%);
-  }
-  100% {
-    background-image: linear-gradient(to right, #dc2121, #dc2121 5%, white 8%, #00467f 10%);
-  }
-}
+/* END SENATE BOX */
