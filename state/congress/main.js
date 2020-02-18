@@ -56,7 +56,6 @@ $(()=>{
   });
 
   // For selecting the Senate from the House of Reps box
-  // THIS ID HASN'T BEEN MADE YET (15FEB2020)
   $("#senTab").click(()=>{
     $(".wholeBox").css("background-position-x","0%");
     $(".houseBox").fadeOut(500);

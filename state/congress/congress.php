@@ -44,6 +44,9 @@
   <body>
     <div class='wholeBox'>
       <div class='entranceBox'>
+        <a class="backArrow" href="../../index.php">
+          <img class="entranceBackArrow" src="../../img/back_arrow_black.png" />
+        </a>
         <div class='entranceTitle'>
           <div>Buckeye Boys State</div>
           <div>GENERAL ASSEMBLY</div>
@@ -54,16 +57,32 @@
           <div class="chooseHouse">- OR -</div>
           <div id="repClick" style="background-color:#dc2121" class="chamberBttn">House of Representatives</div>
         </div>
-        <!-- <div>
-          Welcome to the most senior legislative branch of Buckeye Boys State.
-        </div> -->
       </div>
       <div class='senateBox'>
-        <div id="repTab">To HOUSE</div>
+        <span id="repTab" class="repTab bothTabs">
+          <span>H</span>
+          <span>O</span>
+          <span>U</span>
+          <span>S</span>
+          <span>E</span>
+        </span>
+        <a class="backArrow" href="../../index.php">
+          <img src="../../img/back_arrow_gold.png" />
+        </a>
         <div>This is the Senate</div>
       </div>
       <div class='houseBox'>
-        <div id="senTab">To SENATE</div>
+        <span id="senTab" class="senTab bothTabs">
+          <span>S</span>
+          <span>E</span>
+          <span>N</span>
+          <span>A</span>
+          <span>T</span>
+          <span>E</span>
+        </span>
+        <a class="backArrow" href="../../index.php">
+          <img src="../../img/back_arrow_gold.png" />
+        </a>
         <div>This is the House of Representatives</div>
       </div>
     </div>

@@ -62,11 +62,11 @@ body {
 
 /* START ENTRANCE BOX */
 .entranceBox {
-  padding-top: 50px;
-  /* animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-duration: 0.5s;
-  animation-name: none; */
+
+}
+
+.entranceBackArrow {
+  margin-bottom: 20px;
 }
 
 .entranceTitle {
@@ -111,9 +111,28 @@ body {
 }
 /* END ENTRANCE BOX */
 
+/* START BOTH HOUSES */
+.bothTabs {
+  padding: 5px 7px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 250px;
+  color: #fec231;
+  font-size: 1.2rem;
+  z-index: 2;
+}
+/* END BOTH HOUSES */
+
 /* START HOUSE OF REPS BOX */
 .houseBox {
   display: none;
+}
+
+.senTab {
+  border-radius: 5px 0 0 5px;
+  background-color: #00467f;
+  right: 0;
 }
 /* END HOUSE OF REPS BOX */
 
@@ -121,4 +140,18 @@ body {
 .senateBox {
   display: none;
 }
+
+.repTab {
+  border-radius: 0 5px 5px 0;
+  background-color:#dc2121;
+  left: 0;
+}
 /* END SENATE BOX */
+
+.backArrow {
+  cursor: pointer;
+}
+
+.backArrow img {
+  width: 14%;
+}
