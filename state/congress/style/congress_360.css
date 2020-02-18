@@ -8,34 +8,34 @@ AL blue: #00467f
 /* Moving from 'entranceBox' to 'houseBox' */
 @keyframes toRedBox {
   to {
-    background-position: 0%;
+    background-position-x: 0%;
   }
 }
 
 /* Moving from 'senateBox' to 'houseBox' */
 @keyframes blueToRed {
   from {
-    background-position: 100%;
+    background-position-x: 100%;
   }
   to {
-    background-position: 0%;
+    background-position-x: 0%;
   }
 }
 
 /* Moving from 'entranceBox' to 'senateBox' */
 @keyframes toBlueBox {
   to {
-    background-position: 100%;
+    background-position-x: 100%;
   }
 }
 
 /* Moving from 'houseBox' to 'senateBox' */
 @keyframes redToBlue {
   from {
-    background-position: 0%;
+    background-position-x: 0%;
   }
   to {
-    background-position: 100%;
+    background-position-x: 100%;
   }
 }
 /* Ends animations */

@@ -59,12 +59,12 @@
         </div> -->
       </div>
       <div class='senateBox'>
-        <div id="senTab">SENATE</div>
+        <div id="repTab">To HOUSE</div>
+        <div>This is the Senate</div>
       </div>
       <div class='houseBox'>
-        <div id="repTab">
-          HOUSE
-        </div>
+        <div id="senTab">To SENATE</div>
+        <div>This is the House of Representatives</div>
       </div>
     </div>
   </body>
