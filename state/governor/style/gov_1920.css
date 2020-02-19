@@ -1,4 +1,11 @@
+.backArrow {
+  top: 10px;
+  left: 10px;
+  width: 4%;
+}
+
 .govTitle {
+  padding: 40px 4% 30px 4%;
   display: flex;
   justify-content: space-around;
   font-size: 4.5rem;

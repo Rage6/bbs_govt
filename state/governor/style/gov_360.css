@@ -19,7 +19,7 @@ body {
 }
 .govTitle {
   border-bottom: 3px solid #fec231;
-  padding: 40px 0;
+  padding: 40px 5% 30px 5%;
   color: #fec231;
   font-size: 3rem;
   font-family: 'Montserrat', sans-serif;
