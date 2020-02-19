@@ -12,6 +12,12 @@ body {
   width: 1440px;
 }
 
+.backArrow {
+  top: 15px;
+  left: 15px;
+  width: 4%;
+}
+
 .mainTitle {
   padding: 15px 9%;
 }
