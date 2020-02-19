@@ -42,7 +42,13 @@
   </head>
   <body>
     <a name="topTag"></a>
+    <a class="backArrow" href="../../index.php">
+      <img src="../../img/back_arrow_gold.png" />
+    </a>
     <div class="govTitle">
+      <!-- <a class="backArrow" href="../../index.php">
+        <img src="../../img/back_arrow_gold.png" />
+      </a> -->
       <div><?php echo($govInfo['first_name']." ".$govInfo['last_name']) ?></div>
       <div class="divider"></div>
       <div>Governor of Buckeye Boys State</div>
@@ -79,11 +85,11 @@
               > Daily Report of Activities
             </div>
           </a>
-          <a href="../../index.php">
+          <!-- <a href="../../index.php">
             <div id="hoverLink" class="menuButton backButton">
               < BACK
             </div>
-          </a>
+          </a> -->
         </div>
       </div>
       <div class="govContent">

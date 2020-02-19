@@ -7,9 +7,19 @@ body {
   margin: 0;
   font-size: 16px;
 }
+.backArrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12%;
+}
+.backArrow img {
+  height: 100%;
+  width: 100%;
+}
 .govTitle {
   border-bottom: 3px solid #fec231;
-  padding: 20px 0;
+  padding: 40px 0;
   color: #fec231;
   font-size: 3rem;
   font-family: 'Montserrat', sans-serif;
@@ -24,6 +34,7 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 .menuBar {
+  border-bottom: 1px solid #2020a0;
   padding: 2px 0;
   color: #2020a0;
   font-family: 'Montserrat', sans-serif;
@@ -33,29 +44,19 @@ body {
 .fullContent {
   background-image: linear-gradient(to bottom right, #2020a0, white, red);
 }
-.menuList {
-  border-top: 1px solid #2020a0;
-}
-
 #hoverLink:hover {
   color: #fec231;
   background-color: #2020a0;
 }
-
 #menuContent {
   display: none;
 }
 .menuButton {
+  border-bottom: 1px dashed #2020a0;
   padding: 10px 0 10px 10px;
   color: #2020a0;
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #fec231;
-}
-.backButton {
-  border-top: 1px dashed #2020a0;
-  padding: 5px 0;
-  font-size: 0.8rem;
-  text-align: center;
 }
 .menuList a {
   text-decoration: none;
@@ -68,7 +69,6 @@ body {
   background-position: bottom;
   /* background-image: linear-gradient(to bottom right, #2020a0, white, red); */
 }
-
 #img_0 {
   display: block;
 }
