@@ -43,6 +43,7 @@
           <img src="../../img/back_arrow_gold.png" />
         </a>
         <div class="mainTitle">
+          <div class="courtLogo"></div>
           <div class="mainTitleText">
             <div class="topMain">BUCKEYE BOYS STATE</div>
             <div class="titleDivide"></div>
@@ -51,7 +52,6 @@
               <div>COURT</div>
             </div>
           </div>
-          <div class="courtLogo"></div>
         </div>
       </div>
       <div class="menuContent">
