@@ -45,7 +45,7 @@
     <div class='wholeBox'>
       <div class='entranceBox'>
         <a class="backArrow" href="../../index.php">
-          <img class="entranceBackArrow" src="../../img/back_arrow_black.png" />
+          <img src="../../img/back_arrow_blue.png" />
         </a>
         <div class='entranceTitle'>
           <div>Buckeye Boys State</div>
