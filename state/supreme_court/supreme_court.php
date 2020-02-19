@@ -38,16 +38,21 @@
   </head>
   <body>
     <div class="wholePage">
-      <div class="mainTitle">
-        <div class="mainTitleText">
-          <div class="topMain">BUCKEYE BOYS STATE</div>
-          <div class="titleDivide"></div>
-          <div class="bottomMain">
-            <div>SUPREME</div>
-            <div>COURT</div>
+      <div class="arrowAndTitle">
+        <a class="backArrow" href="../../index.php">
+          <img src="../../img/back_arrow_gold.png" />
+        </a>
+        <div class="mainTitle">
+          <div class="mainTitleText">
+            <div class="topMain">BUCKEYE BOYS STATE</div>
+            <div class="titleDivide"></div>
+            <div class="bottomMain">
+              <div>SUPREME</div>
+              <div>COURT</div>
+            </div>
           </div>
+          <div class="courtLogo"></div>
         </div>
-        <div class="courtLogo"></div>
       </div>
       <div class="menuContent">
         <div class="menuBttn" id="mainMenu">MENU</div>
@@ -56,9 +61,6 @@
           <div id="caseLink" class="optionBttn">COURT CASES</div>
           <div id="minutesLink" class="optionBttn">BAR ASSOCIATION MINUTES</div>
           <div id="resultsLink" class="optionBttn">BAR MEMBERS</div>
-          <a href="../../index.php">
-            <div class="optionBttn returnBttn"><< BACK</div>
-          </a>
         </div>
       </div>
       <div class="mainContent">
