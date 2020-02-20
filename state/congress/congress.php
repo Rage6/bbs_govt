@@ -69,7 +69,16 @@
         <a class="backArrow" href="../../index.php">
           <img src="../../img/back_arrow_gold.png" />
         </a>
-        <div>This is the Senate</div>
+        <div class="senContent">
+          <div class="senTitle">
+            <div class="senText">
+              <div class="bbsTitle">
+                BUCKEYE BOYS STATE
+              </div>
+              SENATE
+            </div>
+          </div>
+        </div>
       </div>
       <div class='houseBox'>
         <span id="senTab" class="senTab bothTabs">
@@ -83,7 +92,9 @@
         <a class="backArrow" href="../../index.php">
           <img src="../../img/back_arrow_gold.png" />
         </a>
-        <div>This is the House of Representatives</div>
+        <div class="repContent">
+          This is the House of Representatives
+        </div>
       </div>
     </div>
   </body>

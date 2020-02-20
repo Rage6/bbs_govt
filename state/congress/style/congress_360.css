@@ -51,7 +51,7 @@ body {
 }
 
 .wholeBox {
-  background-image: linear-gradient(to right, #dc2121, #dc2121 35%, white 37%, white 63%, #00467f 65%);
+  background-image: linear-gradient(to right, #dc2121, #dc2121 35%, transparent 37%, transparent 63%, #00467f 65%), url("../../../img/state/congress/white_fabric.jpg");
   background-size: 300% 100%;
   background-position-x: 50%;
   height: 100%;
@@ -161,4 +161,32 @@ body {
   background-color:#dc2121;
   left: 0;
 }
+
+.senContent {
+  padding-top: 45px;
+}
+
+.senTitle {
+  padding: 90px 0;
+  text-align: center;
+  background-image: url("../../../img/state/congress/senate/sen_chamber.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.senText {
+  padding: 10px 0;
+  color: black;
+  font-size: 4rem;
+  background-color: white;
+  box-shadow: 0 10px 10px white, 0 -10px 10px white;
+}
+
+.bbsTitle {
+  margin-left: 10%;
+  border-bottom: 2px solid black;
+  font-size: 1.2rem;
+  width: 80%;
+}
+
 /* END SENATE BOX */
