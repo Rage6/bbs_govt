@@ -44,8 +44,8 @@
   <body>
     <div class='wholeBox'>
       <div class='entranceBox'>
-        <a class="backArrow" href="../../index.php">
-          <img src="../../img/back_arrow_blue.png" />
+        <a class="entranceBackArrow" href="../../index.php">
+          <img src="../../img/home_blue.png" />
         </a>
         <div class='entranceTitle'>
           <div>Buckeye Boys State</div>
@@ -66,9 +66,14 @@
           <span>S</span>
           <span>E</span>
         </span>
-        <a class="backArrow" href="../../index.php">
-          <img src="../../img/back_arrow_gold.png" />
-        </a>
+        <div class="bothTopBttns">
+          <a class="returnHome" href="../../index.php">
+            <img src="../../img/home_gold.png" />
+          </a>
+          <a class="returnHome" >
+            <img src="../../img/menu_gold.png" />
+          </a>
+        </div>
         <div class="senContent">
           <div class="senTitle">
             <div class="senText">
@@ -77,6 +82,11 @@
               </div>
               SENATE
             </div>
+          </div>
+          <div class="senIntro">
+            <?php
+              echo($senIntro['content']);
+            ?>
           </div>
         </div>
       </div>
@@ -89,9 +99,14 @@
           <span>T</span>
           <span>E</span>
         </span>
-        <a class="backArrow" href="../../index.php">
-          <img src="../../img/back_arrow_gold.png" />
-        </a>
+        <div class="bothTopBttns">
+          <a class="returnHome" href="../../index.php">
+            <img src="../../img/home_gold.png" />
+          </a>
+          <a class="returnHome">
+            <img src="../../img/menu_gold.png" />
+          </a>
+        </div>
         <div class="repContent">
           This is the House of Representatives
         </div>
