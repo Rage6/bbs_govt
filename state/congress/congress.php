@@ -68,7 +68,7 @@
         </span> -->
         <div class="bothTopBttns">
           <a id="senateToCenter" class="returnHome">
-            <img src="../../img/home_gold.png" />
+            <img src="../../img/back_arrow_gold.png" />
           </a>
           <a class="returnHome" >
             <img src="../../img/menu_gold.png" />
@@ -104,7 +104,7 @@
             <img src="../../img/menu_gold.png" />
           </a>
           <a id="repToCenter" class="returnHome">
-            <img src="../../img/home_gold.png" />
+            <img style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
           </a>
         </div>
         <div class="repContent">
