@@ -88,6 +88,27 @@
               echo($senIntro['content']);
             ?>
           </div>
+          <div class="leaderBox">
+            <div class="majorityBox">
+              <!-- Speaker of the House -->
+              <?php
+                while ($oneLdr = $houseLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                  <div class='oneMajLdr'>
+                    <div class='ldrName'>
+                      ".$oneLdr['first_name']." ".$oneLdr['last_name']."
+                    </div>
+                    <div class='ldrTitle'>
+                      ".$oneLdr['job_name']."
+                    </div>
+                  </div>");
+                };
+              ?>
+            </div>
+            <div class="minorityBox">
+
+            </div>
+          </div>
         </div>
       </div>
       <div class='houseBox'>

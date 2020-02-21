@@ -20,4 +20,8 @@
   $houseIntroStmt->execute();
   $houseIntro = $houseIntroStmt->fetch(PDO::FETCH_ASSOC);
 
+  // Gets only the leaders WITHIN the House, NOT all of the Representative as a whole
+  $houseLdrListStmt = $pdo->prepare("SELECT job_id, job_name, first_name, last_name FROM Job INNER JOIN Delegate WHERE Job.section_id=10 AND Job.delegate_id=Delegate.delegate_id AND Job.representative=0");
+  $houseLdrListStmt->execute();
+
 ?>
