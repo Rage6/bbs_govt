@@ -7,35 +7,44 @@ AL blue: #00467f
 
 /* Moving from 'entranceBox' to 'houseBox' */
 @keyframes toRedBox {
+  from {
+    background-position-x: 50%;
+  }
   to {
     background-position-x: 0%;
   }
 }
 
 /* Moving from 'senateBox' to 'houseBox' */
-@keyframes blueToRed {
+@keyframes blueToCenter {
   from {
     background-position-x: 100%;
   }
   to {
-    background-position-x: 0%;
+    background-position-x: 50%;
   }
 }
 
 /* Moving from 'entranceBox' to 'senateBox' */
 @keyframes toBlueBox {
+  from {
+    background-position-x: 50%;
+  }
   to {
     background-position-x: 100%;
   }
 }
 
 /* Moving from 'houseBox' to 'senateBox' */
-@keyframes redToBlue {
+@keyframes redToCenter {
   from {
     background-position-x: 0%;
   }
-  to {
+  /* to {
     background-position-x: 100%;
+  } */
+  to {
+    background-position-x: 50%;
   }
 }
 /* Ends animations */
@@ -151,7 +160,7 @@ body {
   display: none;
 }
 
-.senTab {
+.repToCenter {
   border-radius: 5px 0 0 5px;
   background-color: #00467f;
   right: 0;
@@ -163,14 +172,14 @@ body {
   display: none;
 }
 
-.repTab {
+.senateToCenter {
   border-radius: 0 5px 5px 0;
   background-color:#dc2121;
   left: 0;
 }
 
 .senContent {
-  
+
 }
 
 .senTitle {

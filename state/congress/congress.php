@@ -59,15 +59,15 @@
         </div>
       </div>
       <div class='senateBox'>
-        <span id="repTab" class="repTab bothTabs">
+        <!-- <span id="senateToCenter" class="senateToCenter bothTabs">
           <span>H</span>
           <span>O</span>
           <span>U</span>
           <span>S</span>
           <span>E</span>
-        </span>
+        </span> -->
         <div class="bothTopBttns">
-          <a class="returnHome" href="../../index.php">
+          <a id="senateToCenter" class="returnHome">
             <img src="../../img/home_gold.png" />
           </a>
           <a class="returnHome" >
@@ -91,20 +91,20 @@
         </div>
       </div>
       <div class='houseBox'>
-        <span id="senTab" class="senTab bothTabs">
+        <!-- <span id="repToCenter" class="repToCenter bothTabs">
           <span>S</span>
           <span>E</span>
           <span>N</span>
           <span>A</span>
           <span>T</span>
           <span>E</span>
-        </span>
+        </span> -->
         <div class="bothTopBttns">
-          <a class="returnHome" href="../../index.php">
-            <img src="../../img/home_gold.png" />
-          </a>
           <a class="returnHome">
             <img src="../../img/menu_gold.png" />
+          </a>
+          <a id="repToCenter" class="returnHome">
+            <img src="../../img/home_gold.png" />
           </a>
         </div>
         <div class="repContent">
