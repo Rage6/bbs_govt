@@ -153,11 +153,57 @@ body {
   font-size: 1.2rem;
   z-index: 2;
 }
+
+
 /* END BOTH HOUSES */
 
 /* START HOUSE OF REPS BOX */
 .houseBox {
   display: none;
+}
+
+.leaderBox {
+
+}
+
+.majorityBox {
+
+}
+
+.oneLdr {
+
+}
+
+.oneLdr img {
+
+}
+
+.majorityLdrs {
+
+}
+
+.minorityLdr {
+  
+}
+
+.senLdrs {
+
+}
+
+.ldrTitle {
+
+}
+
+.ldrName {
+
+}
+
+.ldrDescription {
+
+}
+
+.topBttn {
+
 }
 
 /* END HOUSE OF REPS BOX */
@@ -201,7 +247,6 @@ body {
   color: #fec231;
   text-align: center;
   font-size: 1.8rem;
-
 }
 
 /* END SENATE BOX */
