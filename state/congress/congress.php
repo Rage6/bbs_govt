@@ -5,6 +5,10 @@
   require_once("../../lockdown.php");
   require_once("congress_lead.php");
 
+  // echo("<pre>");
+  // var_dump($senateLdrList);
+  // echo("</pre>");
+
 ?>
 
 <!DOCTYPE html>
@@ -59,13 +63,6 @@
         </div>
       </div>
       <div class='senateBox'>
-        <!-- <span id="senateToCenter" class="senateToCenter bothTabs">
-          <span>H</span>
-          <span>O</span>
-          <span>U</span>
-          <span>S</span>
-          <span>E</span>
-        </span> -->
         <div class="bothTopBttns">
           <a id="senateToCenter" class="returnHome">
             <img src="../../img/back_arrow_gold.png" />
@@ -89,37 +86,148 @@
             ?>
           </div>
           <div class="leaderBox">
+            <div>
+              LEADERSHIP ROLES
+            </div>
             <div class="majorityBox">
-              <!-- Speaker of the House -->
+              <div>MAJORITY LEADERSHIP</div>
+              <!-- Senate President -->
+              <div class='oneMajLdr'>
+                <div class='ldrTitle'>
+                  <?php echo($senateLdrList[0]['job_name']) ?>
+                </div>
+                <div class='ldrName'>
+                  <?php echo($senateLdrList[0]['first_name']." ".$senateLdrList[0]['last_name']) ?>
+                </div>
+                <?php
+                if ($senateLdrList[0]['delegate_id'] != "0") {
+                  echo("picture goes here");
+                } else {
+                  echo("<img src='../../img/default_photo.png'>");
+                };
+                ?>
+                <div class='ldrDescription'>
+                  <?php echo($senateLdrList[0]['description']); ?>
+                </div>
+              </div>
+              <div>- TOP -</div>
+              <!-- Senate President Pro Tempore -->
+              <div class='oneMajLdr'>
+                <div class='ldrTitle'>
+                  <?php echo($senateLdrList[1]['job_name']) ?>
+                </div>
+                <div class='ldrName'>
+                  <?php echo($senateLdrList[1]['first_name']." ".$senateLdrList[1]['last_name']) ?>
+                </div>
               <?php
-                while ($oneLdr = $houseLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
-                  <div class='oneMajLdr'>
-                    <div class='ldrName'>
-                      ".$oneLdr['first_name']." ".$oneLdr['last_name']."
-                    </div>
-                    <div class='ldrTitle'>
-                      ".$oneLdr['job_name']."
-                    </div>
-                  </div>");
+                if ($senateLdrList[1]['delegate_id'] != "0") {
+                  echo("picture goes here");
+                } else {
+                  echo("<img src='../../img/default_photo.png'>");
                 };
               ?>
+                <div class='ldrDescription'>
+                  <?php echo($senateLdrList[1]['description']); ?>
+                </div>
+                <div>
+                  Assistant President Pro Tempore: <?php echo($senateLdrList[2]['first_name']." ".$senateLdrList[2]['last_name']) ?>
+                </div>
+              </div>
+              <div>- TOP -</div>
+              <!-- Senate President Pro Tempore -->
+              <div class='oneMajLdr'>
+                <div class='ldrTitle'>
+                  <?php echo($senateLdrList[2]['job_name']) ?>
+                </div>
+                <div class='ldrName'>
+                  <?php echo($senateLdrList[2]['first_name']." ".$senateLdrList[2]['last_name']) ?>
+                </div>
+              <?php
+                if ($senateLdrList[2]['delegate_id'] != "0") {
+                  echo("picture goes here");
+                } else {
+                  echo("<img src='../../img/default_photo.png'>");
+                };
+              ?>
+                <div class='ldrDescription'>
+                  <?php echo($senateLdrList[2]['description']); ?>
+                </div>
+              </div>
+              <div>- TOP -</div>
+              <!-- Senate Majority Whip -->
+              <div class='oneMajLdr'>
+                <div class='ldrTitle'>
+                  <?php echo($senateLdrList[3]['job_name']) ?>
+                </div>
+                <div class='ldrName'>
+                  <?php echo($senateLdrList[3]['first_name']." ".$senateLdrList[3]['last_name']) ?>
+                </div>
+              <?php
+                if ($senateLdrList[3]['delegate_id'] != "0") {
+                  echo("picture goes here");
+                } else {
+                  echo("<img src='../../img/default_photo.png'>");
+                };
+              ?>
+                <div class='ldrDescription'>
+                  <?php echo($senateLdrList[3]['description']); ?>
+                </div>
+              </div>
+              <div>- TOP -</div>
             </div>
             <div class="minorityBox">
-
+              <div>MINORITY LEADERSHIP</div>
+              <!-- Senate Minority Leader -->
+              <div class='oneMajLdr'>
+                <div class='ldrTitle'>
+                  <?php echo($senateLdrList[4]['job_name']) ?>
+                </div>
+                <div class='ldrName'>
+                  <?php echo($senateLdrList[4]['first_name']." ".$senateLdrList[4]['last_name']) ?>
+                </div>
+              <?php
+                if ($senateLdrList[4]['delegate_id'] != "0") {
+                  echo("picture goes here");
+                } else {
+                  echo("<img src='../../img/default_photo.png'>");
+                };
+              ?>
+                <div class='ldrDescription'>
+                  <?php echo($senateLdrList[4]['description']); ?>
+                </div>
+                <div>
+                  Assistant Minority Leader: <?php echo($senateLdrList[5]['first_name']." ".$senateLdrList[5]['last_name']) ?>
+                </div>
+              </div>
+              <div>- TOP -</div>
+              <!-- Senate Minority Whip -->
+              <div class='oneMajLdr'>
+                <div class='ldrTitle'>
+                  <?php echo($senateLdrList[6]['job_name']) ?>
+                </div>
+                <div class='ldrName'>
+                  <?php echo($senateLdrList[6]['first_name']." ".$senateLdrList[6]['last_name']) ?>
+                </div>
+              <?php
+                if ($senateLdrList[6]['delegate_id'] != "0") {
+                  echo("picture goes here");
+                } else {
+                  echo("<img src='../../img/default_photo.png'>");
+                };
+              ?>
+                <div class='ldrDescription'>
+                  <?php echo($senateLdrList[6]['description']); ?>
+                </div>
+                <div>
+                  Assistant Minority Leader: <?php echo($senateLdrList[7]['first_name']." ".$senateLdrList[7]['last_name']) ?>
+                </div>
+              </div>
+              <div>- TOP -</div>
             </div>
           </div>
         </div>
       </div>
       <div class='houseBox'>
-        <!-- <span id="repToCenter" class="repToCenter bothTabs">
-          <span>S</span>
-          <span>E</span>
-          <span>N</span>
-          <span>A</span>
-          <span>T</span>
-          <span>E</span>
-        </span> -->
         <div class="bothTopBttns">
           <a class="returnHome">
             <img src="../../img/menu_gold.png" />

@@ -160,22 +160,11 @@ body {
   display: none;
 }
 
-.repToCenter {
-  border-radius: 5px 0 0 5px;
-  background-color: #00467f;
-  right: 0;
-}
 /* END HOUSE OF REPS BOX */
 
 /* START SENATE BOX */
 .senateBox {
   display: none;
-}
-
-.senateToCenter {
-  border-radius: 0 5px 5px 0;
-  background-color:#dc2121;
-  left: 0;
 }
 
 .senContent {
