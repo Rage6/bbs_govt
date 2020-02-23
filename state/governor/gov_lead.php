@@ -6,7 +6,19 @@ if ($checkLock > 0) {
   return true;
 };
 
+// Current Governor section_id
 $secId = 9;
+
+// List of Governor staff
+$govStaffList = [];
+$govStaffStmt = $pdo->prepare(
+  "SELECT * FROM Delegate INNER JOIN Job INNER JOIN Image WHERE Delegate.delegate_id=Job.delegate_id AND Image.job_id=Job.job_id AND Job.section_id=9");
+$govStaffStmt->execute();
+while($oneGov = $govStaffStmt->fetch(PDO::FETCH_ASSOC)) {
+  $govStaffList[] = $oneGov;
+};
+
+
 
 // For Governor basic info
 $govStmt = $pdo->prepare(
@@ -82,5 +94,9 @@ $bannerSix = $bannerSixStmt->fetch(PDO::FETCH_ASSOC);
 $introContentStmt = $pdo->prepare("SELECT content,approved FROM Post WHERE subtype_id=4 AND section_id=9");
 $introContentStmt->execute();
 $introContent = $introContentStmt->fetch(PDO::FETCH_ASSOC);
+
+// echo("<pre>");
+// var_dump($govStaffList[0]);
+// echo("</pre>");
 
 ?>

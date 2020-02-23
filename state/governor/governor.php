@@ -234,6 +234,35 @@
             ?>
           </div>
           <a id="govTop">
+
+            <?php
+              for ($govNum = 0; $govNum < 2; $govNum++) {
+                echo("
+                <div id='govTop' class='govBox'>
+                  <div class='govSubtitle'>".$govStaffList[$govNum]["job_name"]."</div>
+                  <div class='forFlex'>
+                    <div class='nameAndPic'>
+                      <div class='govName'>
+                        ".$govStaffList[$govNum]["first_name"]." ".$govStaffList[$govNum]["last_name"]."
+                      </div>");
+                      if ($govStaffList[$govNum]['approved'] == 1) {
+                        echo("<img src='".$imgPrefix.$govStaffList[$govNum]['section_path']."crop_".$govStaffList[$govNum]['filename'].".".$govStaffList[$govNum]['extension']."?t=".time()."' />");
+                      } else {
+                        echo("<img src='".$imgPrefix."\default_photo.png' />");
+                      };
+                    echo("
+                    </div>
+                    <div class='govBio'>".$govStaffList[$govNum]['description']."</div>
+                  </div>
+                  <div class='upArrow'>
+                    <a href='#topTag'>
+                      - TOP -
+                    </a>
+                  </div>
+                </div>");
+              };
+            ?>
+
             <div id="govTop" class="govBox">
               <div class="govSubtitle">GOVERNOR</div>
               <div class="forFlex">
