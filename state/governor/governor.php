@@ -47,7 +47,7 @@
         <img src="../../img/back_arrow_gold.png" />
       </a>
       <div class="govTitle">
-        <div><?php echo($govInfo['first_name']." ".$govInfo['last_name']) ?></div>
+        <div><?php echo($govStaffList[0]['first_name']." ".$govStaffList[0]['last_name']) ?></div>
         <div class="divider"></div>
         <div>Governor of Buckeye Boys State</div>
       </div>
@@ -87,8 +87,8 @@
         </div>
         <div class="govContent">
           <?php
-            if ($govInfo['approved'] == 1) {
-              echo("<img id='img_0' src='".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
+            if ($govStaffList[0]['approved'] == 1) {
+              echo("<img id='img_0' src='".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."' />");
             } else {
               echo("<img id='img_0' src='".$imgPrefix."\default_photo.png' />");
             };
@@ -98,8 +98,8 @@
             <div class="slideFilm">
               <div id="img_1_A" class="oneFrame"
                 <?php
-                  if ($govInfo['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."')");
+                  if ($govStaffList[0]['approved'] == 1) {
+                    echo("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
                   } else {
                     echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -162,8 +162,8 @@
               ></div>
               <div id="img_1_B" class="oneFrame"
               <?php
-                if ($govInfo['approved'] == 1) {
-                  echo("style=background-image:url('".$imgPrefix.$govInfo['image_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."')");
+                if ($govStaffList[0]['approved'] == 1) {
+                  echo("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
                 } else {
                   echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
                 };
@@ -225,7 +225,6 @@
               ></div>
             </div>
           </div>
-
           <div class="govIntro">
             <?php
               if ($introContent['approved'] == 1) {
@@ -233,6 +232,7 @@
               };
             ?>
           </div>
+          <!-- Governor, Lt. Governor -->
           <a id="govTop">
             <?php
               for ($govNum = 0; $govNum < 2; $govNum++) {
@@ -243,7 +243,8 @@
                     <div class='nameAndPic'>
                       <div class='govName'>
                         ".$govStaffList[$govNum]["first_name"]." ".$govStaffList[$govNum]["last_name"]."
-                      </div>");
+                      </div>
+                      <div class='govHometown'>".$govStaffList[$govNum]["hometown"].", OH</div>");
                       if ($govStaffList[$govNum]['approved'] == 1) {
                         echo("<img src='".$imgPrefix.$govStaffList[$govNum]['section_path']."crop_".$govStaffList[$govNum]['filename'].".".$govStaffList[$govNum]['extension']."?t=".time()."' />");
                       } else {
@@ -260,111 +261,56 @@
                   </div>
                 </div>");
               };
-            ?>  
+            ?>
           </a>
-
+          <!-- Attorney General, State Treasurer, State Auditor, Secretary of State -->
           <a id="electedTop">
             <div class="tagTitle">ELECTED OFFICIALS</div>
-            <div style="margin-top:0px" class="govBox">
-              <div class="firstBox govSubtitle">ATTORNEY GENERAL</div>
-              <div class="forFlex">
-                <div class="nameAndPic">
-                  <div class="govName"><?php echo($attGenInfo['first_name']." ".$attGenInfo['last_name']) ?></div>
-                  <?php
-                    if ($attGenInfo['approved'] == 1) {
-                      echo("<img src='".$imgPrefix.$attGenInfo['section_path']."crop_".$attGenInfo['filename'].".".$attGenInfo['extension']."?t=".time()."' />");
-                    } else {
-                      echo("<img src='".$imgPrefix."\default_photo.png' />");
-                    };
-                  ?>
-                </div>
-                <div class="govBio">
-                   <b>Attorney General <?php echo($treasInfo['last_name']) ?></b> is the chief law officer of and chief legal advisor to Buckeye Boys State. He is responsible for protecting the citizens from crimes that range from predatory financial practices to abuse of power.
-                </div>
-              </div>
-              <div class="upArrow">
-                <a href="#topTag">
-                  - TOP -
-                </a>
-              </div>
-            </div>
-            <div class="govBox">
-              <div class="govSubtitle">TREASURER OF STATE</div>
-              <div class="forFlex">
-                <div class="nameAndPic">
-                  <div class="govName"><?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?></div>
-                  <?php
-                    if ($treasInfo['approved'] == 1) {
-                      echo("<img src='".$imgPrefix.$treasInfo['section_path']."crop_".$treasInfo['filename'].".".$treasInfo['extension']."?t=".time()."' />");
-                    } else {
-                      echo("<img src='".$imgPrefix."\default_photo.png' />");
-                    };
-                  ?>
-                </div>
-                <div class="govBio">
-                  The treasurer of Buckeye Boys State, <?php echo($treasInfo['first_name']." ".$treasInfo['last_name']) ?>, is responsible for collecting and safeguarding taxes and fees, as well as managing state investments.
-                </div>
-              </div>
-              <div class="upArrow">
-                <a href="#topTag">
-                  - TOP -
-                </a>
-              </div>
-            </div>
-            <div class="govBox">
-              <div class="govSubtitle">AUDITOR OF STATE</div>
-              <div class="forFlex">
-                <div class="nameAndPic">
-                  <div class="govName"><?php echo($auditInfo['first_name']." ".$auditInfo['last_name']) ?></div>
-                  <?php
-                    if ($auditInfo['approved'] == 1) {
-                      echo("<img src='".$imgPrefix.$auditInfo['section_path']."crop_".$auditInfo['filename'].".".$auditInfo['extension']."?t=".time()."' />");
-                    } else {
-                      echo("<img src='".$imgPrefix."\default_photo.png' />");
-                    };
-                  ?>
-                </div>
-                <div class="govBio">
-                  As the chief compliance officer of the state, the <b>Auditor <?php echo($auditInfo['last_name']) ?></b> makes Buckeye Boys State's government more efficient, effective and transparent. He does this by placing checks and balances on state and local governments, all for the sake of the taxpayers.
-                </div>
-              </div>
-              <div class="upArrow">
-                <a href="#topTag">
-                  - TOP -
-                </a>
-              </div>
-            </div>
-            <div class="govBox">
-              <div class="govSubtitle">SECRETARY OF STATE</div>
-              <div class="forFlex">
-                <div class="nameAndPic">
-                  <div class="govName">
-                    <?php echo($secInfo['first_name']." ".$secInfo['last_name']) ?>
+            <?php
+              $firstBox = true;
+              for ($electNum = 2; $electNum < 6; $electNum++) {
+                // echo($govStaffList[$electNum]["job_name"]."</br>");
+                if ($firstBox == true) {
+                  echo("
+                  <div style='margin-top:0px' class='govBox'>
+                    <div class='firstBox govSubtitle'>".$govStaffList[$electNum]['job_name']."</div>");
+                  $firstBox = false;
+                } else {
+                  echo("
+                  <div class='govBox'>
+                    <div class='govSubtitle'>".$govStaffList[$electNum]['job_name']."</div>");
+                };
+                echo("
+                <div class='forFlex'>
+                  <div class='nameAndPic'>
+                    <div class='govName'>
+                      ".$govStaffList[$electNum]['first_name']." ".$govStaffList[$electNum]['last_name']."
+                    </div>
+                    <div class='govHometown'>".$govStaffList[$electNum]['hometown'].", OH</div>");
+                      if ($govStaffList[$electNum]['approved'] == 1) {
+                        echo("<img src='".$imgPrefix.$govStaffList[$electNum]['section_path']."crop_".$govStaffList[$electNum]['filename'].".".$govStaffList[$electNum]['extension']."?t=".time()."' />");
+                      } else {
+                        echo("<img src='".$imgPrefix."\default_photo.png' />");
+                      };
+                  echo("
                   </div>
-                  <?php
-                    if ($secInfo['approved'] == 1) {
-                      echo("<img src='".$imgPrefix.$secInfo['section_path']."crop_".$secInfo['filename'].".".$secInfo['extension']."?t=".time()."' />");
-                    } else {
-                      echo("<img src='".$imgPrefix."\default_photo.png' />");
-                    };
-                  ?>
+                  <div class='govBio'>".$govStaffList[$electNum]['description']."</div>
                 </div>
-                <div class="govBio">
-                  <b>Secretary <?php echo($secInfo["last_name"]) ?></b> was elected statewide in Buckeye Boys State. His official responsibilities include: overseeing elections in the state; registering business entities (corporations, etc.); granting those businesses the authority to work within the state; registering secured transactions; and granting access to public documents.
+                <div class='upArrow'>
+                  <a href='#topTag'>
+                    - TOP -
+                  </a>
                 </div>
-              </div>
-              <div class="upArrow">
-                <a href="#topTag">
-                  - TOP -
-                </a>
-              </div>
-            </div>
+              </div>");
+              };
+            ?>
           </a>
+          <!-- Policies & Goals -->
           <a id="goalTop">
             <div class="tagTitle">POLICIES & GOALS</div>
             <div class="goalBox">
               <div class="goalIntro">
-                Gov. <?php echo($govInfo['last_name']) ?>, Lt. Gov. <?php echo($ltgovInfo['last_name']) ?> and their team are dedicated to leading their state in the right direction.
+                Gov. <?php echo($govStaffList[0]['last_name']) ?>, Lt. Gov. <?php echo($govStaffList[1]['last_name']) ?> and their team are dedicated to leading their state in the right direction.
               </div>
               <div class="bothList">
                 <div class="policyList">
@@ -408,6 +354,7 @@
               </a>
             </div>
           </a>
+          <!-- Departments & Agencies -->
           <a id="agencyTop">
             <div class="tagTitle">Departments & Agencies</div>
             <div style="margin-top:0px" class="govBox agencyBox">
@@ -442,6 +389,7 @@
               </a>
             </div>
           </a>
+          <!-- Daily Reports -->
           <a id="reportTop">
             <div class="tagTitle">DAILY REPORT OF ACTIVITIES</div>
             <div class="reportBox">

@@ -167,6 +167,12 @@ body {
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
 }
+.govHometown {
+  padding-bottom: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
 .nameAndPic img{
 
 }
