@@ -234,7 +234,6 @@
             ?>
           </div>
           <a id="govTop">
-
             <?php
               for ($govNum = 0; $govNum < 2; $govNum++) {
                 echo("
@@ -261,55 +260,9 @@
                   </div>
                 </div>");
               };
-            ?>
-
-            <div id="govTop" class="govBox">
-              <div class="govSubtitle">GOVERNOR</div>
-              <div class="forFlex">
-                <div class="nameAndPic">
-                  <div class="govName"><?php echo($govInfo["first_name"]." ".$govInfo["last_name"]) ?></div>
-                  <?php
-                    if ($govInfo['approved'] == 1) {
-                      echo("<img src='".$imgPrefix.$govInfo['section_path']."crop_".$govInfo['filename'].".".$govInfo['extension']."?t=".time()."' />");
-                    } else {
-                      echo("<img src='".$imgPrefix."\default_photo.png' />");
-                    };
-                  ?>
-                </div>
-                <div class="govBio">
-                  As governor of Buckeye Boys State, <?php echo($govInfo['first_name']." ".$govInfo['last_name']) ?> governor is the head of the executive branch of the state’s government, as well as the commander-in-chief of the state’s military. He is also responsible for making the state budget, as well as either approving or vetoing potential state laws.
-                </div>
-              </div>
-              <div class="upArrow">
-                <a href="#topTag">
-                  - TOP -
-                </a>
-              </div>
-            </div>
-            <div class="govBox">
-              <div class="govSubtitle">LT GOVERNOR</div>
-              <div class="forFlex">
-                <div class="nameAndPic">
-                  <div class="govName"><?php echo($ltgovInfo['first_name'])." ".$ltgovInfo['last_name'] ?></div>
-                  <?php
-                    if ($ltgovInfo['approved'] == 1) {
-                      echo("<img src='".$imgPrefix.$ltgovInfo['section_path']."crop_".$ltgovInfo['filename'].".".$ltgovInfo['extension']."?t=".time()."' />");
-                    } else {
-                      echo("<img src='".$imgPrefix."\default_photo.png' />");
-                    };
-                  ?>
-                </div>
-                <div class="govBio">
-                  <b>Lieutenant Governor <?php echo($ltgovInfo['last_name']) ?></b> is an elected officer, the second ranking officer of the executive branch, and the first officer in line to succeed the Governor.
-                </div>
-              </div>
-              <div class="upArrow">
-                <a href="#topTag">
-                  - TOP -
-                </a>
-              </div>
-            </div>
+            ?>  
           </a>
+
           <a id="electedTop">
             <div class="tagTitle">ELECTED OFFICIALS</div>
             <div style="margin-top:0px" class="govBox">
