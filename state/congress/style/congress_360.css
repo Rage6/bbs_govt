@@ -1,6 +1,8 @@
 /*
 AL gold: #fec231
 AL blue: #00467f
+    red: #8C130E
+  white: #FFFFF4
 */
 
 /* Begins animation */
@@ -60,7 +62,8 @@ body {
 }
 
 .wholeBox {
-  background-image: linear-gradient(to right, #dc2121, #dc2121 35%, transparent 37%, transparent 63%, #00467f 65%), url("../../../img/state/congress/white_fabric.jpg");
+  /* background-image: linear-gradient(to right, #8C130E, #8C130E 35%, transparent 37%, transparent 63%, #00467f 65%), url("../../../img/state/congress/white_fabric.jpg"); */
+  background-image: linear-gradient(to right, #8C130E, #8C130E 35%, #FFFFF4 37%, #FFFFF4 63%, #00467f 65%);
   background-size: 300% 100%;
   background-position-x: 50%;
   height: 100%;
@@ -92,7 +95,7 @@ body {
 .entranceBackArrow {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 25px;
   width: 13%;
 }
 
@@ -127,13 +130,13 @@ body {
 }
 
 .chooseHouse {
-  margin: 15px 0;
+  margin-top: 15px;
   text-align: center;
   font-size: 1.3rem;
 }
 
 .chamberBttn {
-  margin: 0 0 0 15%;
+  margin: 40px 0 0 15%;
   padding: 20px 5%;
   color: white;
   font-size: 1.8rem;
@@ -154,15 +157,17 @@ body {
   z-index: 2;
 }
 
+.leaderBox {
 
-/* END BOTH HOUSES */
-
-/* START HOUSE OF REPS BOX */
-.houseBox {
-  display: none;
 }
 
-.leaderBox {
+.moduleTitle {
+  padding: 5px 0;
+  font-size: 1.9rem;
+  text-align: center;
+}
+
+.leaderTypeTitle {
 
 }
 
@@ -171,11 +176,12 @@ body {
 }
 
 .oneLdr {
-
+  margin-left: 10%;
+  width: 80%
 }
 
 .oneLdr img {
-
+  width: 100%;
 }
 
 .majorityLdrs {
@@ -183,27 +189,38 @@ body {
 }
 
 .minorityLdr {
-  
-}
-
-.senLdrs {
 
 }
 
 .ldrTitle {
-
+  font-size: 1.5rem;
+  text-decoration: underline;
 }
 
 .ldrName {
-
+  margin: 15px 0;
+  color: #fec231;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .ldrDescription {
-
+  margin: 15px 0 30px 0;
+  color: #fec231;
+  font-size: 1.3rem;
 }
 
 .topBttn {
+  margin-bottom: 40px;
+  font-size: 1.2rem;
+  text-align: center;
+}
 
+/* END BOTH HOUSES */
+
+/* START HOUSE OF REPS BOX */
+.houseBox {
+  display: none;
 }
 
 /* END HOUSE OF REPS BOX */
@@ -247,6 +264,50 @@ body {
   color: #fec231;
   text-align: center;
   font-size: 1.8rem;
+}
+
+.senModTitle {
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  color: #fec231;
+  background-color: #8C130E;
+}
+
+.senLdrs {
+
+}
+
+.senMajTitle {
+  margin: 10px 0;
+  padding: 10px 0 10px 2%;
+  color: #00467f;
+  font-size: 1.4rem;
+  background-image: linear-gradient(to right, #fec231, #fec231 75%, transparent 90%);
+}
+
+.senMinTitle {
+  margin: 10px 0;
+  padding: 10px 2% 10px 0;
+  color: #00467f;
+  font-size: 1.4rem;
+  text-align: right;
+  background-image: linear-gradient(to left, #fec231, #fec231 75%, transparent 90%);
+}
+
+.senLdrTitle {
+  color: #fec231;
+}
+
+.senLdrName {
+  color: #fec231;
+}
+
+.senLdrDescription {
+  color: #fec231;
+}
+
+.senTopBttn {
+  color: #fec231
 }
 
 /* END SENATE BOX */

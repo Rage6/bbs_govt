@@ -58,8 +58,7 @@
         <div class="bothChambers">
           <div class="chooseHouse">SELECT A HOUSE:</div>
           <div id="senClick" style="background-color:#00467f" class="chamberBttn">Senate</div>
-          <div class="chooseHouse">- OR -</div>
-          <div id="repClick" style="background-color:#dc2121" class="chamberBttn">House of Representatives</div>
+          <div id="repClick" style="background-color: #8C130E" class="chamberBttn">House of Representatives</div>
         </div>
       </div>
       <div class='senateBox'>
@@ -86,46 +85,54 @@
             ?>
           </div>
           <div class="leaderBox">
-            <div>
-              LEADERSHIP ROLES
+            <div class="moduleTitle senModTitle">
+              LEADERSHIP
             </div>
             <div id="majorityBox" class="majorityBox">
-              <div>MAJORITY LEADERSHIP</div>
+              <div class="senMajTitle">MAJORITY LEADERS</div>
               <?php
                 for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
                   echo("
                   <div class='oneLdr majorityLdrs senLdrs'>
-                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
-                    <div class='ldrName'>".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."</div>");
-                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0") {
-                      echo("picture goes here");
+                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName senLdrName'>
+                      ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
+                    </div>");
+                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
+                      echo("
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
                     } else {
-                      echo("<img src='../../img/default_photo.png'>");
+                      echo("
+                        <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
                   </div>
-                  <div class='topBttn'>- TOP -</div>");
+                  <div class='topBttn senTopBttn'>- TOP -</div>");
                 };
               ?>
             </div>
             <div class="minorityBox">
-              <div>MINORITY LEADERSHIP</div>
+              <div class="senMinTitle">MINORITY LEADERS</div>
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
                   echo("
                   <div class='oneLdr minorityLdr'>
-                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
-                    <div class='ldrName'>".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."</div>");
-                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0") {
-                      echo("picture goes here");
+                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName senLdrName'>
+                      ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
+                    </div>");
+                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
+                      echo("
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
                     } else {
-                      echo("<img src='../../img/default_photo.png'>");
+                      echo("
+                      <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
                   </div>
-                  <div>- TOP -</div>");
+                  <div class='topBttn senTopBttn'>- TOP -</div>");
                 };
               ?>
             </div>
