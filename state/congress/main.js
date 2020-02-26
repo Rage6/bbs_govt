@@ -1,6 +1,6 @@
 $(()=>{
 
-  console.log("main.js is working...");
+  console.log("main.js is STILL working...");
 
   // To adjust the 'body' height when swapping boxes
   const setBodyHeight = (boxCSS) => {
@@ -58,6 +58,8 @@ $(()=>{
     }, 1500);
     setTimeout(function() {
       $(".senateBox").css('display','block');
+      let senInitHeight = $(".senMenu").outerHeight() * (-1);
+      $(".senMenu").css("top",senInitHeight).css("display","block");
     }, 2000);
     setBodyHeight(".senateBox")
     $(".senateBox").delay(1500).fadeIn(500);
@@ -86,6 +88,24 @@ $(()=>{
     setTimeout(function() {
       $(".wholeBox").css('background-position-x','50%');
     }, 2000);
+  });
+
+  // Slides the Senate menu up and down
+  let slidDown = false;
+  $("#senMenuClick").click(()=>{
+    let menuHeight = $(".senMenu").outerHeight();
+    let bttnRowHeight = $(".bothTopBttns").outerHeight();
+    let totalDistance = bttnRowHeight + menuHeight;
+    if (slidDown == false) {
+      let translateY = "translateY(" + totalDistance + "px)";
+      $(".senMenu").css("transform", translateY);
+      slidDown = true;
+    } else {
+      // let translateY = "translateY(-" + totalDistance + "px)";
+      let translateY = "translateY(0px)";
+      $(".senMenu").css("transform", translateY);
+      slidDown = false;
+    }
   });
 
 })

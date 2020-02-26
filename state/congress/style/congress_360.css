@@ -1,8 +1,14 @@
 /*
-AL gold: #fec231
 AL blue: #00467f
-    red: #8C130E
+AL gold: #fec231
   white: #FFFFF4
+
+To find color schemes: https://color.adobe.com/create
+  AL blue: #00467f  <---- primary color
+ dark red: #8C130E
+dark blue: #051E33
+dk. green: #4A4D08
+ylw green: #C5CC0A
 */
 
 /* Begins animation */
@@ -49,6 +55,7 @@ AL blue: #00467f
     background-position-x: 50%;
   }
 }
+
 /* Ends animations */
 
 html {
@@ -72,19 +79,51 @@ body {
   animation-name: none;
 }
 
+.menu {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.senMenu {
+  border-bottom: 1px solid #fec231;
+  display: none;
+  transition: transform 0.5s linear;
+  background-color: #4A4D08;
+}
+
+.senOption {
+  border-top: 1px solid #fec231;
+  padding: 10px 5%;
+  font-size: 1.5rem;
+  color: #fec231;
+}
+
+.senOption:hover {
+  color: #4A4D08;
+  background-color: #fec231;
+}
+
+.senSubOption {
+  margin-top: 10px;
+  padding-left: 10%;
+  font-size: 1.2rem;
+}
+
 .bothTopBttns {
+  position: absolute;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
-}
-
-.returnHome {
-  width: 13%;
-  cursor: pointer;
-}
-
-.returnHome img {
+  background-color: #00467f;
   width: 100%;
-  height: 100%;
+  height: 50px;
+}
+
+.bothTopBttns img {
+  height: 50px;
+  width: auto;
 }
 
 /* START ENTRANCE BOX */
@@ -231,7 +270,7 @@ body {
 }
 
 .senContent {
-
+  padding-top: 50px;
 }
 
 .senTitle {
@@ -270,7 +309,7 @@ body {
   border-top: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
   color: #fec231;
-  background-color: #8C130E;
+  background-color: #4A4D08;
 }
 
 .senLdrs {

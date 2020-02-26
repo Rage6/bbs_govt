@@ -62,13 +62,32 @@
         </div>
       </div>
       <div class='senateBox'>
+        <div class='menu senMenu'>
+          <div class='menuOption senOption'>
+            LEADERSHIP
+            <div class='senSubOption'>
+              + Majority Leaders
+            </div>
+            <div class='senSubOption'>
+              + Minority Leaders
+            </div>
+          </div>
+          <div class='menuOption senOption'>
+            LAWS
+          </div>
+          <div class='menuOption senOption'>
+            BILLS
+          </div>
+          <div class='menuOption senOption'>
+            COMMITTEES
+          </div>
+          <div class='menuOption senOption'>
+            DAILY SESSION JOURNAL
+          </div>
+        </div>
         <div class="bothTopBttns">
-          <a id="senateToCenter" class="returnHome">
-            <img src="../../img/back_arrow_gold.png" />
-          </a>
-          <a class="returnHome" >
-            <img src="../../img/menu_gold.png" />
-          </a>
+            <img id="senateToCenter" src="../../img/back_arrow_gold.png" />
+            <img id="senMenuClick" src="../../img/menu_gold.png" />
         </div>
         <div class="senContent">
           <div class="senTitle">
