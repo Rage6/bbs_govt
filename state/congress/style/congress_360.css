@@ -105,10 +105,21 @@ body {
   background-color: #fec231;
 }
 
+.senOption:hover:first-of-type {
+  background-color: #4A4D08;
+  color: #fec231;
+}
+
 .senSubOption {
-  margin-top: 10px;
+  margin: 10px 0;
   padding-left: 10%;
+  color: #fec231;
   font-size: 1.2rem;
+}
+
+.senSubOption:hover {
+  color: #4A4D08;
+  background-color: #fec231;
 }
 
 .bothTopBttns {

@@ -65,12 +65,12 @@
         <div class='menu senMenu'>
           <div class='menuOption senOption'>
             LEADERSHIP
-            <div class='senSubOption'>
-              + Majority Leaders
-            </div>
-            <div class='senSubOption'>
-              + Minority Leaders
-            </div>
+          </div>
+          <div id="senMajClick" class='senSubOption'>
+            + Majority Leaders
+          </div>
+          <div id="senMinClick" class='senSubOption'>
+            + Minority Leaders
           </div>
           <div class='menuOption senOption'>
             LAWS
@@ -107,7 +107,7 @@
             <div class="moduleTitle senModTitle">
               LEADERSHIP
             </div>
-            <div id="majorityBox" class="majorityBox">
+            <div id="senMajBox" class="majorityBox">
               <div class="senMajTitle">MAJORITY LEADERS</div>
               <?php
                 for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
@@ -131,7 +131,8 @@
                 };
               ?>
             </div>
-            <div class="minorityBox">
+            <div id="senMinBox"
+             class="minorityBox">
               <div class="senMinTitle">MINORITY LEADERS</div>
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {

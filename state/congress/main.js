@@ -1,6 +1,6 @@
 $(()=>{
 
-  console.log("main.js is STILL working...");
+  console.log("main.js is working...");
 
   // To adjust the 'body' height when swapping boxes
   const setBodyHeight = (boxCSS) => {
@@ -92,7 +92,7 @@ $(()=>{
 
   // Slides the Senate menu up and down
   let slidDown = false;
-  $("#senMenuClick").click(()=>{
+  const useSenMenu = () => {
     let menuHeight = $(".senMenu").outerHeight();
     let bttnRowHeight = $(".bothTopBttns").outerHeight();
     let totalDistance = bttnRowHeight + menuHeight;
@@ -101,11 +101,36 @@ $(()=>{
       $(".senMenu").css("transform", translateY);
       slidDown = true;
     } else {
-      // let translateY = "translateY(-" + totalDistance + "px)";
       let translateY = "translateY(0px)";
       $(".senMenu").css("transform", translateY);
       slidDown = false;
-    }
+    };
+  };
+
+  $("#senMenuClick").click(()=>{
+    useSenMenu();
+  });
+
+  // Slides window down to selected module
+  const scrollToOption = (moduleBox,msec) => {
+    let moduleTop = $(moduleBox).offset().top;
+    $('html, body').animate({
+      scrollTop: moduleTop
+    }, msec);
+  };
+  // Slide to Majority Leaders
+  $("#senMajClick").click(() => {
+    scrollToOption("#senMajBox",500);
+    useSenMenu();
+  });
+  // Slide to Minority Leaders
+  $("#senMinClick").click(() => {
+    scrollToOption("#senMinBox",700);
+    useSenMenu();
+  });
+
+  $(".senTopBttn").click(() => {
+    scrollToOption(".senateBox",500);
   });
 
 })
