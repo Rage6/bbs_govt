@@ -69,9 +69,16 @@ body {
 }
 
 .wholeBox {
-  /* background-image: linear-gradient(to right, #8C130E, #8C130E 35%, transparent 37%, transparent 63%, #00467f 65%), url("../../../img/state/congress/white_fabric.jpg"); */
-  background-image: linear-gradient(to right, #8C130E, #8C130E 35%, #FFFFF4 37%, #FFFFF4 63%, #00467f 65%);
-  background-size: 300% 100%;
+  background:
+    linear-gradient(to right, #8C130E, #8C130E 35%, transparent 37%, transparent 63%, #00467f 65%),
+    linear-gradient(
+      rgba(255,255,255,0.85),
+      rgba(255,255,255,0.85)),
+    url("../../../img/state/congress/Black_star.png");
+    /* url("../../../img/state/congress/march_flag.jpg"),
+    url("../../../img/state/congress/general_assembly.jpg"); */
+  background-size: 300% 100%, 300% 100%, 100px;
+  background-repeat: no-repeat, no-repeat, repeat;
   background-position-x: 50%;
   height: 100%;
   animation-timing-function: ease-out;

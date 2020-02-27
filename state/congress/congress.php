@@ -82,7 +82,7 @@
             COMMITTEES
           </div>
           <div class='menuOption senOption'>
-            DAILY SESSION JOURNAL
+            MEET THE SENATORS
           </div>
         </div>
         <div class="bothTopBttns">
@@ -159,7 +159,11 @@
           </div>
           <div class="billBox">
             <div class="moduleTitle senModTitle">BILLS</div>
-            
+            <div class="billDirectory">
+              <!-- Add JSON file to get all of the bill #'s, names, and statuses (maybe by senator in the future)-->
+              <!-- Use JS to make a simple search engine by bill # or keywords(?) -->
+              <!-- Or, someone can select a specific status -->
+            </div>
           </div>
         </div>
       </div>
