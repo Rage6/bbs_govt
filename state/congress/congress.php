@@ -157,6 +157,10 @@
               ?>
             </div>
           </div>
+          <div class="billBox">
+            <div class="moduleTitle senModTitle">BILLS</div>
+            
+          </div>
         </div>
       </div>
       <div class='houseBox'>
