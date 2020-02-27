@@ -364,7 +364,19 @@ body {
 }
 
 .senTopBttn {
-  color: #fec231
+  color: #fec231;
+}
+
+.billBox {
+
+}
+
+.billDirectory {
+  background-color: #051E33;
+}
+
+.oneSenBill {
+  
 }
 
 /* END SENATE BOX */
