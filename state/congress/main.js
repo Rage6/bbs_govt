@@ -61,7 +61,7 @@ $(()=>{
       let senInitHeight = $(".senMenu").outerHeight() * (-1);
       $(".senMenu").css("top",senInitHeight).css("display","block");
     }, 2000);
-    setBodyHeight(".senateBox")
+    setBodyHeight(".senateBox");
     $(".senateBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
@@ -137,5 +137,7 @@ $(()=>{
   $(".senTopBttn").click(() => {
     scrollToOption(".senateBox",500);
   });
+
+  //
 
 })

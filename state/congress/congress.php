@@ -163,15 +163,20 @@
             <!-- Add JSON file to get all of the bill #'s, names, and statuses (maybe by senator that made it, too, in the future)-->
             <!-- Use JS to make a simple search engine by bill # or keywords(?) -->
             <!-- Or, someone can select a specific status -->
-            <div class="selectTitle senSelectTitle">SELECT BY STATUS</div>
-            <div class="selectList">
-              <div class="selectOption" data-subtypeid='0'>ALL</div>
+            <div class="selectTitle senSelectTitle">SEARCH BY STATUS</div>
+            <div id="currentSenSelect" class="currentSelect currentSenSelect">ALL</div>
+            <div class="selectList senSelectList">
+              <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
               <?php
                 $senStatusStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=12");
                 $senStatusStmt->execute();
                 while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
                   echo("
-                    <div class='selectOption' data-subtypeid='".$oneStatus['subtype_id']."'>".$oneStatus['subtype_name']."</div>
+                    <div
+                      class='selectOption senSelectOption'
+                      data-sensubid='".$oneStatus['subtype_id']."'>
+                        ".$oneStatus['subtype_name']."
+                    </div>
                   ");
                 };
               ?>

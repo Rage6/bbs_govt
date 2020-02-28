@@ -274,8 +274,29 @@ body {
 
 }
 
+.selectTitle {
+  margin: 20px 0 10px 0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.currentSelect {
+  padding: 10px 5%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.selectList {
+  display: none;
+}
+
+.selectOption {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
 .billDirectory {
-  margin: 5%;
+  margin: 30px 5% 0 5%;
   border: 1px solid #fec231;
   border-radius: 15px;
   background-color: #051E33;
@@ -285,7 +306,7 @@ body {
 }
 
 .oneBill {
-  padding: 10px 4%;
+  padding: 20px 4%;
 }
 
 .billNumber {
@@ -302,6 +323,10 @@ body {
 
 .billStatus {
   text-align: center;
+}
+
+.divider {
+  margin: 10px 0;
 }
 
 .topBttn {
@@ -410,8 +435,29 @@ body {
 
 }
 
+.senSelectTitle {
+
+}
+
+.currentSenSelect {
+  background-color: #051E33;
+}
+
+.senSelectList {
+  display: none;
+}
+
+.senSelectOption {
+
+}
+
 .oneSenBill {
 
+}
+
+.senDivider {
+  margin: 0 10%;
+  border: 1px dashed #fec231;
 }
 
 /* END SENATE BOX */
