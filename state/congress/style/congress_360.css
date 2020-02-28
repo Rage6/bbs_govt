@@ -233,7 +233,10 @@ body {
 }
 
 .oneLdr {
-  margin-left: 10%;
+  margin-left: 5%;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  padding: 5%;
   width: 80%
 }
 
@@ -262,13 +265,47 @@ body {
 }
 
 .ldrDescription {
-  margin: 15px 0 30px 0;
+  margin: 15px 0;
   color: #fec231;
   font-size: 1.3rem;
 }
 
+.billBox {
+
+}
+
+.billDirectory {
+  margin: 5%;
+  border: 1px solid #fec231;
+  border-radius: 15px;
+  background-color: #051E33;
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 500px;
+}
+
+.oneBill {
+  padding: 10px 4%;
+}
+
+.billNumber {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.billTitle {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.billStatus {
+  text-align: center;
+}
+
 .topBttn {
-  margin-bottom: 40px;
+  margin-top: 40px;
   font-size: 1.2rem;
   text-align: center;
 }
@@ -284,6 +321,7 @@ body {
 
 /* START SENATE BOX */
 .senateBox {
+  color: #fec231;
   display: none;
 }
 
@@ -321,6 +359,7 @@ body {
   color: #fec231;
   text-align: center;
   font-size: 1.8rem;
+  background-color: #051E33;
 }
 
 .senModTitle {
@@ -331,7 +370,7 @@ body {
 }
 
 .senLdrs {
-
+  background-color: #051E33;
 }
 
 .senMajTitle {
@@ -367,16 +406,12 @@ body {
   color: #fec231;
 }
 
-.billBox {
+.senBillBox {
 
-}
-
-.billDirectory {
-  background-color: #051E33;
 }
 
 .oneSenBill {
-  
+
 }
 
 /* END SENATE BOX */

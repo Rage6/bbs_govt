@@ -128,7 +128,12 @@ $(()=>{
     scrollToOption("#senMinBox",700);
     useSenMenu();
   });
-
+  // Slide to Minority Leaders
+  $("#senBillClick").click(() => {
+    scrollToOption("#senBillBox",700);
+    useSenMenu();
+  });
+  // Send window back to the top of the page
   $(".senTopBttn").click(() => {
     scrollToOption(".senateBox",500);
   });

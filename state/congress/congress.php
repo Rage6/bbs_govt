@@ -44,7 +44,7 @@
         echo($jquery);
       };?>></script>
     <script src="main.js"></script>
-    <script src="bill_library/bills.js"></script>
+    <script src="bill_library/bill.js"></script>
   </head>
   <body>
     <div class='wholeBox'>
@@ -73,11 +73,11 @@
           <div id="senMinClick" class='senSubOption'>
             + Minority Leaders
           </div>
-          <div class='menuOption senOption'>
-            LAWS
+          <div id="senBillClick" class='menuOption senOption'>
+            BILLS
           </div>
           <div class='menuOption senOption'>
-            BILLS
+            LAWS
           </div>
           <div class='menuOption senOption'>
             COMMITTEES
@@ -127,8 +127,8 @@
                     };
                     echo("
                     <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
-                  </div>
-                  <div class='topBttn senTopBttn'>- TOP -</div>");
+                    <div class='topBttn senTopBttn'>- TOP -</div>
+                  </div>");
                 };
               ?>
             </div>
@@ -138,7 +138,7 @@
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
                   echo("
-                  <div class='oneLdr minorityLdr'>
+                  <div class='oneLdr minorityLdr senLdrs'>
                     <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
                     <div class='ldrName senLdrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
@@ -152,21 +152,35 @@
                     };
                     echo("
                     <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
-                  </div>
-                  <div class='topBttn senTopBttn'>- TOP -</div>");
+                    <div class='topBttn senTopBttn'>- TOP -</div>
+                  </div>");
                 };
               ?>
             </div>
           </div>
-          <div class="billBox">
+          <div id="senBillBox" class="billBox">
             <div class="moduleTitle senModTitle">BILLS</div>
             <!-- Add JSON file to get all of the bill #'s, names, and statuses (maybe by senator that made it, too, in the future)-->
             <!-- Use JS to make a simple search engine by bill # or keywords(?) -->
             <!-- Or, someone can select a specific status -->
+            <div class="selectTitle senSelectTitle">SELECT BY STATUS</div>
+            <div class="selectList">
+              <div class="selectOption" data-subtypeid='0'>ALL</div>
+              <?php
+                $senStatusStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=12");
+                $senStatusStmt->execute();
+                while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <div class='selectOption' data-subtypeid='".$oneStatus['subtype_id']."'>".$oneStatus['subtype_name']."</div>
+                  ");
+                };
+              ?>
+            </div>
             <div id="senBillDirectory" class="billDirectory">
 
             </div>
           </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
         </div>
       </div>
       <div class='houseBox'>
