@@ -280,17 +280,25 @@ body {
   text-align: center;
 }
 
+.selectBox {
+  margin: 0 5%;
+}
+
 .currentSelect {
-  padding: 10px 5%;
+  padding: 5px 2%;
   font-size: 1.1rem;
   text-align: center;
 }
 
 .selectList {
   display: none;
+  padding-bottom: 10px;
 }
 
 .selectOption {
+  margin: 10px 5% 0 5%;
+  border-radius: 15px;
+  padding: 5px 2%;
   font-size: 1.1rem;
   text-align: center;
 }
@@ -309,20 +317,39 @@ body {
   padding: 20px 4%;
 }
 
+.noBill {
+  text-align: center;
+}
+
 .billNumber {
   margin-bottom: 20px;
+  padding: 5px 0;
+  text-align: center;
   font-size: 1.2rem;
-  text-decoration: underline;
+  background-color: #4A4D08;
 }
 
 .billTitle {
   margin-bottom: 20px;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+}
+
+.billSubtitle {
+  font-size: 1.2rem;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.billTitle div:last-of-type {
   text-align: center;
 }
 
 .billStatus {
-  text-align: center;
+  font-size: 1.6rem;
+}
+
+.billStatus div:last-of-type {
+  text-align: right;
 }
 
 .divider {
@@ -439,8 +466,12 @@ body {
 
 }
 
+.senSelectBox {
+  background-color: #051E33
+}
+
 .currentSenSelect {
-  background-color: #051E33;
+  border: 1px solid #fec231;
 }
 
 .senSelectList {
@@ -448,7 +479,7 @@ body {
 }
 
 .senSelectOption {
-
+  border: 1px solid #fec231;
 }
 
 .oneSenBill {

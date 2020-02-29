@@ -28,10 +28,13 @@ $(document).ready(()=>{
           $("#senBillDirectory").append(
               "<div class='oneBill oneSenBill'>\
                 <div class='billNumber'>Bill # "+billArray[billNum]['post_order']+"</div>\
-                <div class='billTitle'>"+billArray[billNum]['title']+"</div>\
-                <div class='billStatus'>\
-                  <div><u>Status</u></div>\
-                  <div><i>"+billArray[billNum]['subtype_name']+"</i></div>\
+                <div class='billTitle'>\
+                  <div class='billSubtitle'>Title:</div>\
+                  <div>"+billArray[billNum]['title']+"</div>\
+                </div>\
+                <div class='billTitle'>\
+                  <div class='billSubtitle'>Status</div>\
+                  <div>"+billArray[billNum]['subtype_name']+"</div>\
                 </div>\
               </div>"
           );
@@ -42,7 +45,7 @@ $(document).ready(()=>{
       if (noBill == true) {
         $("#senBillDirectory").append(
           "<div class='oneBill oneSenBill'>\
-            <div class='billTitle'>-- NO BILLS FOUND --</div>\
+            <div class='billTitle noBill'>-- NO BILLS FOUND --</div>\
           </div>"
         );
       };
@@ -55,8 +58,10 @@ $(document).ready(()=>{
     $("#currentSenSelect").click(()=>{
       if ($(".senSelectList").css('display') == 'none') {
         $(".senSelectList").css('display','block');
+        setSenHeight();
       } else {
         $(".senSelectList").css('display','none');
+        setSenHeight();
       };
     });
 
