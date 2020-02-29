@@ -7,9 +7,9 @@
   };
 
   // FOR SENATE
-
+  $senSecId = 11;
   // Gets Senate's introductory statement
-  $senIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=30");
+  $senIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=14");
   $senIntroStmt->execute();
   $senIntro = $senIntroStmt->fetch(PDO::FETCH_ASSOC);
 
@@ -24,7 +24,7 @@
   // 7. Minority Whip
   // 8. Assistant Minority Whip
   $senateLdrListStmt = $pdo->prepare("SELECT Job.job_id, job_name, Delegate.delegate_id, first_name, last_name, description, approved, section_path, filename, extension FROM
-    Delegate INNER JOIN Job INNER JOIN Image WHERE Job.section_id=11 AND Job.delegate_id=Delegate.delegate_id AND Job.job_id=Image.job_id AND Job.section_id=Image.section_id AND Job.senator=0");
+    Delegate INNER JOIN Job INNER JOIN Image WHERE Job.section_id=$senSecId AND Job.delegate_id=Delegate.delegate_id AND Job.job_id=Image.job_id AND Job.section_id=Image.section_id AND Job.senator=0");
   $senateLdrListStmt->execute();
   $senateLdrList = [];
   while ($oneSenateLdr = $senateLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -32,14 +32,14 @@
   };
 
   // FOR HOUSE OF REPRESENTATIVES
-
+  $repSecId = 10;
   // Gets House of Rep's introductory statement
-  $houseIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=22");
+  $houseIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=13");
   $houseIntroStmt->execute();
   $houseIntro = $houseIntroStmt->fetch(PDO::FETCH_ASSOC);
 
   // Gets only the leaders WITHIN the House, NOT all of the Representative
-  $houseLdrListStmt = $pdo->prepare("SELECT job_id, job_name, Delegate.delegate_id, first_name, last_name FROM Job INNER JOIN Delegate WHERE Job.section_id=10 AND Job.delegate_id=Delegate.delegate_id AND Job.representative=0");
+  $houseLdrListStmt = $pdo->prepare("SELECT job_id, job_name, Delegate.delegate_id, first_name, last_name FROM Job INNER JOIN Delegate WHERE Job.section_id=$repSecId AND Job.delegate_id=Delegate.delegate_id AND Job.representative=0");
   $houseLdrListStmt->execute();
   $houseLdrList = [];
   while ($oneHouseLdr = $houseLdrListStmt->fetch(PDO::FETCH_ASSOC)) {

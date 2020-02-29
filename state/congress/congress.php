@@ -169,7 +169,7 @@
               <div class="selectList senSelectList">
                 <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
                 <?php
-                  $senStatusStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=12");
+                  $senStatusStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=11");
                   $senStatusStmt->execute();
                   while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
                     echo("
