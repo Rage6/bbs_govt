@@ -12,7 +12,7 @@ $secId = 9;
 // List of Governor staff
 $govStaffList = [];
 $govStaffStmt = $pdo->prepare(
-  "SELECT * FROM Delegate INNER JOIN Job INNER JOIN Image WHERE Delegate.delegate_id=Job.delegate_id AND Image.job_id=Job.job_id AND Job.job_active=1 AND Job.section_id=9");
+  "SELECT * FROM Delegate INNER JOIN Job INNER JOIN Image WHERE Delegate.delegate_id=Job.delegate_id AND Image.job_id=Job.job_id AND Job.job_active=1 AND Job.section_id=$secId");
 $govStaffStmt->execute();
 while($oneGov = $govStaffStmt->fetch(PDO::FETCH_ASSOC)) {
   $govStaffList[] = $oneGov;
@@ -53,7 +53,7 @@ $bannerSixStmt->execute();
 $bannerSix = $bannerSixStmt->fetch(PDO::FETCH_ASSOC);
 
 // Content of the governor's opening statement or motto
-$introContentStmt = $pdo->prepare("SELECT content,approved FROM Post WHERE subtype_id=4 AND section_id=9");
+$introContentStmt = $pdo->prepare("SELECT content,approved FROM Post WHERE type_id=4");
 $introContentStmt->execute();
 $introContent = $introContentStmt->fetch(PDO::FETCH_ASSOC);
 

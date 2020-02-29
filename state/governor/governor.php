@@ -44,7 +44,7 @@
     <div class="wholePage">
       <a name="topTag"></a>
       <a class="backArrow" href="../../index.php">
-        <img src="../../img/back_arrow_gold.png" />
+        <img src="../../img/home_gold.png" />
       </a>
       <div class="govTitle">
         <div><?php echo($govStaffList[0]['first_name']." ".$govStaffList[0]['last_name']) ?></div>
@@ -318,7 +318,7 @@
                   <ul>
                     <?php
                       // For collecting all of their policies
-                      $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND section_id=$secId AND approved=1 ORDER BY post_order ASC");
+                      $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND approved=1 ORDER BY post_order ASC");
                       $policyStmt->execute();
                       while ($onePolicy = $policyStmt->fetch(PDO::FETCH_ASSOC)) {
                         echo("<li class='listSpacing'>
@@ -335,7 +335,7 @@
                   <ul>
                     <?php
                       // For collecting all of their goals
-                      $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND section_id=$secId AND approved=1 ORDER BY post_order ASC");
+                      $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND approved=1 ORDER BY post_order ASC");
                       $goalStmt->execute();
                       while ($oneGoal = $goalStmt->fetch(PDO::FETCH_ASSOC)) {
                         echo("<li class='listSpacing'>

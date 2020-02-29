@@ -40,7 +40,7 @@
     <div class="wholePage">
       <div class="arrowAndTitle">
         <a class="backArrow" href="../../index.php">
-          <img src="../../img/back_arrow_gold.png" />
+          <img src="../../img/home_gold.png" />
         </a>
         <div class="mainTitle">
           <div class="courtLogo"></div>
