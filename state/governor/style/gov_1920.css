@@ -45,7 +45,7 @@
 
 #menuContent {
   display: block;
-  width: 40%;
+  width: 100%;
 }
 
 .menuButton {
@@ -218,12 +218,12 @@
 }
 
 .listTitle {
-  margin-left: 38%;
+  margin-left: 25%;
   border-radius: 20px;
   color: #2020a0;
   font-size: 2rem;
   background-color: #fec231;
-  width: 30%;
+  width: 50%;
 }
 
 .bothList {

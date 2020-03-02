@@ -54,7 +54,7 @@
       <div>DIRECTORY</div>
     </div>
     <div id="glossaryBttn" class="glossaryBar">
-      GLOSSARY
+      MENU
     </div>
     <div id="glossaryBox" class="glossaryBox">
       <div id="numbersBttn">BASIC STATISTICS</div>

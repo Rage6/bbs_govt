@@ -7,7 +7,7 @@ if ($checkLock > 0) {
 };
 
 // Current Governor section_id
-$secId = 9;
+$secId = 1;
 
 // List of Governor staff
 $govStaffList = [];

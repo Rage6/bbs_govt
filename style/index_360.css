@@ -22,7 +22,7 @@ a {
   justify-content: space-around; */
 }
 .govtLinkRow {
-  
+
 }
 .adminLink {
   border-radius: 0 0 0 5px;
@@ -40,12 +40,12 @@ a {
   width: 35px;
 }
 .glossaryBar {
-  border-top: 1px solid #fec231;
-  border-bottom: 1px solid #fec231;
-  color: #fec231;
+  border-top: 1px solid darkblue;
+  border-bottom: 1px solid darkblue;
+  color: darkblue;
   text-align: center;
   font-size: 1.3rem;
-  background-color: darkblue;
+  background-color: #fec231;
   cursor: pointer;
 }
 .glossaryBox {

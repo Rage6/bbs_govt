@@ -179,12 +179,12 @@
           <div class="barBox">
             <div class="fullBarIntro">
               <div class="barIntro">
-                <div style='margin-bottom:5px'><i><b>Who is a bar members?</b></i></div>
-                All members of the BBS Bar Association are citizens that have passed the bar exam and are now registered attorneys within our state. Current members are listed below alphabetically based on their last names.
+                <div style='margin-bottom:5px'><i><b>Who are bar members?</b></i></div>
+                All members of the BBS Bar Association are citizens that have passed the bar exam and are registered attorneys within our state. Current members are listed below.
               </div>
               <div class="barIntro">
                 <div style='margin-bottom:5px'><i><b>When is membership required?</b></i></div>
-                Only bar members can act as an attorney in Buckey Boys State. Certain BBS elected positions require that their official are also bar members. These positions include judges, the state attorney general, and county/city directors of law.
+                Only bar members can act as attorneys in Buckey Boys State. Certain  elected BBS officials are required to be bar members. These positions include judges, the state attorney general, and county/city directors of law.
               </div>
             </div>
             <?php

@@ -269,7 +269,6 @@
             <?php
               $firstBox = true;
               for ($electNum = 2; $electNum < 6; $electNum++) {
-                // echo($govStaffList[$electNum]["job_name"]."</br>");
                 if ($firstBox == true) {
                   echo("
                   <div style='margin-top:0px' class='govBox'>

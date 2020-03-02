@@ -7,7 +7,7 @@
   };
 
   // FOR SENATE
-  $senSecId = 11;
+  $senSecId = 3;
   // Gets Senate's introductory statement
   $senIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=14");
   $senIntroStmt->execute();
@@ -32,7 +32,7 @@
   };
 
   // FOR HOUSE OF REPRESENTATIVES
-  $repSecId = 10;
+  $repSecId = 2;
   // Gets House of Rep's introductory statement
   $houseIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=13");
   $houseIntroStmt->execute();

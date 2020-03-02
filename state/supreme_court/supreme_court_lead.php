@@ -6,7 +6,7 @@
     return true;
   };
 
-  $secId = 12;
+  $secId = 4;
 
   // For Supreme Court's introduction
   $introStmt = $pdo->prepare("SELECT content FROM Post WHERE type_id=5");
