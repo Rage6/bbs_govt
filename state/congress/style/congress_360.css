@@ -72,12 +72,10 @@ body {
   background:
     linear-gradient(to right, #8C130E, #8C130E 35%, transparent 37%, transparent 63%, #00467f 65%),
     linear-gradient(
-      rgba(255,255,255,0.85),
-      rgba(255,255,255,0.85)),
-    url("../../../img/state/congress/Black_star.png");
-    /* url("../../../img/state/congress/march_flag.jpg"),
-    url("../../../img/state/congress/general_assembly.jpg"); */
-  background-size: 300% 100%, 300% 100%, 100px;
+      rgba(255,255,255,0.75),
+      rgba(255,255,255,0.75)),
+    url("../../../img/state/congress/congress_collage.jpg");
+  background-size: 300% 100%, 300% 100%, 375px;
   background-repeat: no-repeat, no-repeat, repeat;
   background-position-x: 50%;
   height: 100%;
