@@ -5,10 +5,18 @@ $(()=>{
   // To adjust the 'body' height when swapping boxes
   const setBodyHeight = (boxCSS) => {
     let currentBoxHeight = $(boxCSS).outerHeight();
+    console.log(currentBoxHeight);
+    // let justHeight = $(boxCSS).height();
+    // console.log(justHeight);
+    // if ($(window).outerHeight() < currentBoxHeight) {
+    //   $("body").css('height',currentBoxHeight);
+    // } else {
+    //   $("body").css('height','100%');
+    // };
     if ($(window).outerHeight() < currentBoxHeight) {
-      $("body").css('height',currentBoxHeight);
+      $(".wholeBox").css('height',currentBoxHeight);
     } else {
-      $("body").css('height','100%');
+      $(".wholeBox").css('height','100%');
     };
   };
 
@@ -62,10 +70,14 @@ $(()=>{
       $(".senMenu").css("top",senInitHeight).css("display","block");
     }, 2000);
     setBodyHeight(".senateBox");
+
+    // let senBoxHeight = $(".senateBox").outerHeight();
+    // $(".wholeBox").css("height",senBoxHeight);
+
     $(".senateBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
-      .css("animation-duration","1s").css("animation-name","toBlueBox")
+      .css("animation-duration","1s")
       .css("animation-name","toBlueBox");
   });
 
