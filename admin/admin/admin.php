@@ -169,24 +169,18 @@
                     } else {
                       echo("<div class='postSubtitle'>Order #:</div>");
                     };
-                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
-
-                    if (count($subtypeList) > 1) {
-                      echo("
-                        <div class='postSubtitle'>
-                          Category
-                        </div>
-                        <div>
-                          <select class='subtypeSelect' name='newSubtype'>");
-                            for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
-                              echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
-                            };
-                          echo("</select>
-                        </div>
-                      ");
-                    };
-
-                    echo("<input type='hidden' name='approval' value='0' />
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />
+                    <div class='postSubtitle'>
+                      Category
+                    </div>
+                    <div>
+                      <select class='subtypeSelect' name='newSubtype'>");
+                        for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
+                          echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                        };
+                      echo("</select>
+                    </div>
+                    <input type='hidden' name='approval' value='0' />
                     <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
                     <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
                     <input class='addSubmit allPostBttns' type='submit' name='addPost' value='SUBMIT' />
@@ -432,7 +426,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.job_id");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
