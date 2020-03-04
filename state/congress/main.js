@@ -20,8 +20,8 @@ $(()=>{
     }, 1500);
     setTimeout(function() {
       $(".houseBox").css('display','block');
+      setBodyHeight(".houseBox");
     }, 2000);
-    setBodyHeight(".houseBox");
     $(".houseBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
@@ -38,8 +38,8 @@ $(()=>{
     }, 1500);
     setTimeout(function() {
       $(".entranceBox").css('display','block');
+      setBodyHeight(".entranceBox");
     }, 2000);
-    setBodyHeight(".entranceBox");
     $(".entranceBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
@@ -62,7 +62,6 @@ $(()=>{
       $(".senMenu").css("top",senInitHeight).css("display","block");
       setBodyHeight(".senateBox");
     }, 2000);
-    // setBodyHeight(".senateBox");
     $(".senateBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
@@ -81,7 +80,6 @@ $(()=>{
       $(".entranceBox").css('display','block');
       setBodyHeight(".entranceBox");
     }, 2000);
-    // setBodyHeight(".entranceBox");
     $(".entranceBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
