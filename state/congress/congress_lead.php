@@ -68,8 +68,8 @@
     $houseLdrList[] = $oneHouseLdr;
   };
 
-  echo("<pre>");
-  var_dump($senateLdrList);
-  echo("</pre>");
+  // echo("<pre>");
+  // var_dump($senateLdrList);
+  // echo("</pre>");
 
 ?>
