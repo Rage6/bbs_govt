@@ -23,8 +23,30 @@
   // f) Assistant Minority Leader
   // g) Minority Whip
   // e) Assistant Minority Whip
-  $senateLdrListStmt = $pdo->prepare("SELECT Job.job_id, job_name, Delegate.delegate_id, first_name, last_name, description, approved, section_path, filename, extension FROM
-    Delegate INNER JOIN Job INNER JOIN Image WHERE Job.section_id=$senSecId AND Job.delegate_id=Delegate.delegate_id AND Job.job_id=Image.job_id AND Job.section_id=Image.section_id AND Job.senator=0 ORDER BY Job.job_id ASC");
+  $senateLdrListStmt = $pdo->prepare(
+    "SELECT
+      Job.job_id,
+      job_name,
+      Delegate.delegate_id,
+      first_name,
+      last_name,
+      description,
+      approved,
+      section_path,
+      filename,
+      extension
+    FROM
+      Delegate INNER JOIN
+      Job INNER JOIN
+      Image
+    WHERE
+      Job.section_id=$senSecId AND
+      Job.delegate_id=Delegate.delegate_id AND
+      Job.job_id=Image.job_id AND
+      Job.section_id=Image.section_id AND
+      Job.senator=0
+    ORDER BY
+      Job.job_id ASC");
   $senateLdrListStmt->execute();
   $senateLdrList = [];
   while ($oneSenateLdr = $senateLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -46,8 +68,8 @@
     $houseLdrList[] = $oneHouseLdr;
   };
 
-  // echo("<pre>");
-  // var_dump($senateLdrList);
-  // echo("</pre>");
+  echo("<pre>");
+  var_dump($senateLdrList);
+  echo("</pre>");
 
 ?>
