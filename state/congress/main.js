@@ -128,9 +128,14 @@ $(()=>{
     scrollToOption("#senMinBox",700);
     useSenMenu();
   });
-  // Slide to Minority Leaders
+  // Slide to Bills
   $("#senBillClick").click(() => {
-    scrollToOption("#senBillBox",700);
+    scrollToOption("#senBillBox",900);
+    useSenMenu();
+  });
+  // Slide to Laws
+  $("#senLawClick").click(()=> {
+    scrollToOption("#senLawBox",900);
     useSenMenu();
   });
   // Send window back to the top of the page
@@ -138,6 +143,24 @@ $(()=>{
     scrollToOption(".senateBox",500);
   });
 
-  //
+  // Function that shows an answer to the 'Laws' questions
+  const showAnswer = (answerBox) => {
+    if ($(answerBox).css('display') == 'none') {
+      $(".lawAnswer").css('display','none');
+      $(answerBox).css('display','block');
+    } else {
+      $(".lawAnswer").css('display','none');
+    };
+  };
+  // Show how a bill becomes a law
+  $("#howLawClick").click(()=>{
+    showAnswer("#howLawBox");
+    setBodyHeight(".senateBox");
+  });
+  // Shows how to view a law's details
+  $("#howViewClick").click(()=>{
+    showAnswer("#howViewBox");
+    setBodyHeight(".senateBox");
+  });
 
 })

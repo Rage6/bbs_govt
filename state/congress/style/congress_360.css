@@ -217,6 +217,7 @@ body {
 }
 
 .moduleTitle {
+  margin-top: 40px;
   padding: 5px 0;
   font-size: 1.9rem;
   text-align: center;
@@ -354,6 +355,29 @@ body {
   margin: 10px 0;
 }
 
+.lawList {
+  margin: 30px 5% 0 5%;
+  border-radius: 15px;
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 500px;
+}
+
+.lawQuestion {
+  margin-top: 20px;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  padding: 5px 5%;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.lawAnswer {
+  display: none;
+  padding: 5px 5%;
+  font-size: 1.3rem;
+}
+
 .topBttn {
   margin-top: 40px;
   font-size: 1.2rem;
@@ -487,6 +511,21 @@ body {
 .senDivider {
   margin: 0 10%;
   border: 1px dashed #fec231;
+}
+
+.senLawList {
+  border: 1px solid #fec231;
+  background-color: #051E33;
+}
+
+.senLawQuestion {
+  color: #fec231;
+  background-color: #051E33;
+}
+
+.senLawAnswer {
+  color: #fec231;
+  background-color: #051E33;
 }
 
 /* END SENATE BOX */

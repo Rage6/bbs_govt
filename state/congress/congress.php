@@ -76,7 +76,7 @@
           <div id="senBillClick" class='menuOption senOption'>
             BILLS
           </div>
-          <div class='menuOption senOption'>
+          <div id="senLawClick" class='menuOption senOption'>
             LAWS
           </div>
           <div class='menuOption senOption'>
@@ -160,9 +160,6 @@
           </div>
           <div id="senBillBox" class="billBox">
             <div class="moduleTitle senModTitle">BILLS</div>
-            <!-- Add JSON file to get all of the bill #'s, names, and statuses (maybe by senator that made it, too, in the future)-->
-            <!-- Use JS to make a simple search engine by bill # or keywords(?) -->
-            <!-- Or, someone can select a specific status -->
             <div class="selectTitle senSelectTitle">SEARCH BY STATUS</div>
             <div class="selectBox senSelectBox">
               <div id="currentSenSelect" class="currentSelect currentSenSelect">ALL</div>
@@ -184,7 +181,42 @@
               </div>
             </div>
             <div id="senBillDirectory" class="billDirectory">
-
+              <!-- This is where the selected bills are listed -->
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
+          <!-- This is a list of the laws, in which to click one for its details -->
+          <div id="senLawBox">
+            <div class="moduleTitle senModTitle">LAWS</div>
+            <div id="howLawClick" class="lawQuestion senLawQuestion">
+              + <i>How do bills become laws?</i>
+            </div>
+            <div id="howLawBox" class="lawAnswer senLawAnswer">
+              Within the Buckeye Boys State, a bill becomes a law upon:
+              <ol>
+                <li>
+                  Passing through both Senate and the House of Representatives
+                </li>
+                <li>
+                  Being either a) signed in by the governor, or b) the governor's veto is overriden by the General Assembly
+                </li>
+            </div>
+            <div id="howViewClick" class="lawQuestion senLawQuestion">
+              + <i>How can I read a law?</i>
+            </div>
+            <div id="howViewBox" class="lawAnswer senLawAnswer">
+              To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
+            </div>
+            <div id="senLawList" class="senLawList lawList">
+              <?php
+                while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <div>
+                      <div>".$oneSenLaw['post_order']."</div>
+                      <div>".$oneSenLaw['title']."</div>
+                    </div>");
+                };
+              ?>
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>

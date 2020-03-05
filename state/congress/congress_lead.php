@@ -6,8 +6,16 @@
     return true;
   };
 
-  // FOR SENATE
+  // LIST OF VARIABLES THAT MUST HAVE A CERTAIN VALUE:
+  // Senate's section_id
   $senSecId = 3;
+  // Senate's 'law' type_id
+  $senTypeId = 11;
+  // Senate's two 'law' subtype_id's
+  $senSubIdOver = 30;
+  $senSubIdSign = 31;
+
+
   // Gets Senate's introductory statement
   $senIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=14");
   $senIntroStmt->execute();
@@ -53,6 +61,21 @@
     $senateLdrList[] = $oneSenateLdr;
   };
 
+  $senLawListStmt = $pdo->prepare(
+    "SELECT
+      post_id,
+      title,
+      post_order
+    FROM
+      Post
+    WHERE
+      section_id=$senSecId AND
+      type_id=$senTypeId AND
+      (subtype_id=$senSubIdSign OR
+      subtype_id=$senSubIdOver)");
+  $senLawListStmt->execute();
+  
+
   // FOR HOUSE OF REPRESENTATIVES
   $repSecId = 2;
   // Gets House of Rep's introductory statement
@@ -61,7 +84,20 @@
   $houseIntro = $houseIntroStmt->fetch(PDO::FETCH_ASSOC);
 
   // Gets only the leaders WITHIN the House, NOT all of the Representative
-  $houseLdrListStmt = $pdo->prepare("SELECT job_id, job_name, Delegate.delegate_id, first_name, last_name FROM Job INNER JOIN Delegate WHERE Job.section_id=$repSecId AND Job.delegate_id=Delegate.delegate_id AND Job.representative=0");
+  $houseLdrListStmt = $pdo->prepare(
+    "SELECT
+      job_id,
+      job_name,
+      Delegate.delegate_id,
+      first_name,
+      last_name
+    FROM
+      Job INNER JOIN
+      Delegate
+    WHERE
+      Job.section_id=$repSecId AND
+      Job.delegate_id=Delegate.delegate_id AND
+      Job.representative=0");
   $houseLdrListStmt->execute();
   $houseLdrList = [];
   while ($oneHouseLdr = $houseLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
