@@ -363,6 +363,20 @@ body {
   max-height: 500px;
 }
 
+.oneLaw {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.oneLawNum {
+  width: 20%;
+}
+
+.oneLawTitle {
+  width: 80%;
+}
+
 .lawQuestion {
   margin-top: 20px;
   border-top: 1px solid #fec231;
@@ -374,7 +388,7 @@ body {
 
 .lawAnswer {
   display: none;
-  padding: 5px 5%;
+  padding: 15px 5%;
   font-size: 1.3rem;
 }
 
@@ -515,6 +529,7 @@ body {
 
 .senLawList {
   border: 1px solid #fec231;
+  padding: 10px 2%;
   background-color: #051E33;
 }
 
@@ -524,6 +539,7 @@ body {
 }
 
 .senLawAnswer {
+  border-bottom: #fec231;
   color: #fec231;
   background-color: #051E33;
 }

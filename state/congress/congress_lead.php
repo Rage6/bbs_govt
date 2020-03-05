@@ -72,9 +72,10 @@
       section_id=$senSecId AND
       type_id=$senTypeId AND
       (subtype_id=$senSubIdSign OR
-      subtype_id=$senSubIdOver)");
+      subtype_id=$senSubIdOver)
+    ORDER BY post_order DESC");
   $senLawListStmt->execute();
-  
+
 
   // FOR HOUSE OF REPRESENTATIVES
   $repSecId = 2;

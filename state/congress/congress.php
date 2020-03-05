@@ -45,6 +45,7 @@
       };?>></script>
     <script src="main.js"></script>
     <script src="bill_library/bill.js"></script>
+    <script src="law_library/law.js"></script>
   </head>
   <body>
     <div class='wholeBox'>
@@ -208,12 +209,16 @@
               To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
             </div>
             <div id="senLawList" class="senLawList lawList">
+              <div class='oneLaw'>
+                <div class='oneLawNum'><u>Bill #</u></div>
+                <div class='oneLawTitle'><u>Title</u></div>
+              </div>
               <?php
                 while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                   echo("
-                    <div>
-                      <div>".$oneSenLaw['post_order']."</div>
-                      <div>".$oneSenLaw['title']."</div>
+                    <div class='oneLaw' data-postId='".$oneSenLaw['post_id']."'>
+                      <div class='oneLawNum'>".$oneSenLaw['post_order']."</div>
+                      <div class='oneLawTitle'>".$oneSenLaw['title']."</div>
                     </div>");
                 };
               ?>

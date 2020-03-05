@@ -135,7 +135,7 @@ $(()=>{
   });
   // Slide to Laws
   $("#senLawClick").click(()=> {
-    scrollToOption("#senLawBox",900);
+    scrollToOption("#senLawBox",1100);
     useSenMenu();
   });
   // Send window back to the top of the page
