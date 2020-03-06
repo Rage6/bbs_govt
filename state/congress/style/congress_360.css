@@ -355,9 +355,25 @@ body {
   margin: 10px 0;
 }
 
+.lawTotal {
+
+}
+
+.lawListTitle {
+  margin: 0 5%;
+  border-top: 1px solid #fec231;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  display: flex;
+  width: 90%;
+}
+
+.lawListTitle div:first-of-type {
+  width: 20%;
+}
+
 .lawList {
-  margin: 30px 5% 0 5%;
-  border-radius: 15px;
+  margin: 0 5%;
   overflow-y: scroll;
   min-height: 200px;
   max-height: 500px;
@@ -525,6 +541,16 @@ body {
 .senDivider {
   margin: 0 10%;
   border: 1px dashed #fec231;
+}
+
+.senLawTotal {
+
+}
+
+.senLawTitle {
+  border-top: 1px solid #fec231;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
 }
 
 .senLawList {

@@ -208,20 +208,22 @@
             <div id="howViewBox" class="lawAnswer senLawAnswer">
               To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
             </div>
-            <div id="senLawList" class="senLawList lawList">
-              <div class='oneLaw'>
-                <div class='oneLawNum'><u>Bill #</u></div>
-                <div class='oneLawTitle'><u>Title</u></div>
+            <div class="lawTotal senLawTotal">
+              <div class="lawListTitle senLawTitle">
+                <div>Bill #</div>
+                <div>Title</div>
               </div>
-              <?php
-                while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
-                    <div class='oneLaw' data-postId='".$oneSenLaw['post_id']."'>
-                      <div class='oneLawNum'>".$oneSenLaw['post_order']."</div>
-                      <div class='oneLawTitle'>".$oneSenLaw['title']."</div>
-                    </div>");
-                };
-              ?>
+              <div id="senLawList" class="senLawList lawList">
+                <?php
+                  while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo("
+                      <div class='oneLaw' data-postId='".$oneSenLaw['post_id']."'>
+                        <div class='oneLawNum'>".$oneSenLaw['post_order']."</div>
+                        <div class='oneLawTitle'>".$oneSenLaw['title']."</div>
+                      </div>");
+                  };
+                ?>
+              </div>
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
