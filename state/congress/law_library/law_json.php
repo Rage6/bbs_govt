@@ -9,6 +9,7 @@
   $lawContentStmt = $pdo->prepare(
     "SELECT
       post_id,
+      title,
       content
     FROM
       Post

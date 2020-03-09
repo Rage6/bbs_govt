@@ -209,20 +209,34 @@
               To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
             </div>
             <div class="lawTotal senLawTotal">
-              <div class="lawListTitle senLawTitle">
-                <div>Bill #</div>
-                <div>Title</div>
+              <div class="leftHalf">
+                <div class="lawListTitle senLawTitle">
+                  <div>Bill #</div>
+                  <div>Title</div>
+                </div>
+                <div id="senLawList" class="senLawList lawList">
+                  <?php
+                    while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                      echo("
+                        <div class='oneLaw'>
+                          <div class='oneLawNum' data-postid='".$oneSenLaw['post_id']."'>
+                            ".$oneSenLaw['post_order']."
+                          </div>
+                          <div class='oneLawTitle' data-postid='".$oneSenLaw['post_id']."'>
+                            ".$oneSenLaw['title']."
+                          </div>
+                        </div>");
+                    };
+                  ?>
+                </div>
               </div>
-              <div id="senLawList" class="senLawList lawList">
-                <?php
-                  while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo("
-                      <div class='oneLaw' data-postId='".$oneSenLaw['post_id']."'>
-                        <div class='oneLawNum'>".$oneSenLaw['post_order']."</div>
-                        <div class='oneLawTitle'>".$oneSenLaw['title']."</div>
-                      </div>");
-                  };
-                ?>
+              <div class="rightHalf">
+                <div class="lawContent senLawContent">
+                  <!-- This is where the selected law's details are listed -->
+                  <div class="startEmpty" style='text-align:center'>
+                    <i>-- SELECT A LAW --</i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
