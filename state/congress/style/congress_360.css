@@ -355,6 +355,10 @@ body {
   margin: 10px 0;
 }
 
+.lawBox {
+
+}
+
 .lawTotal {
   margin-top: 15px;
 }
@@ -367,35 +371,33 @@ body {
   margin: 0 5%;
   padding: 5px 1%;
   border-radius: 10px 10px 0 0;
-  display: flex;
-}
-
-.lawListTitle div {
-  width: 79%;
-}
-
-.lawListTitle div:first-of-type {
-  width: 19%;
+  text-align: center;
 }
 
 .lawList {
   margin: 0 5%;
+  padding: 10px 0%;
   overflow-y: scroll;
   height: 125px;
 }
 
 .oneLaw {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.2rem;
-}
-
-.oneLawNum {
-  width: 20%;
+  border-bottom: 1px dashed #fec231;
 }
 
 .oneLawTitle {
-  width: 80%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 10px;
+  font-size: 1.4rem;
+}
+
+.oneLawApproval {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+  text-align: right;
 }
 
 .lawQuestion {
@@ -440,6 +442,39 @@ body {
 
 .viewLawContent {
   white-space: pre-wrap;
+}
+
+.committeeBox {
+
+}
+
+.oneComm {
+  border-bottom: 1px solid #fec231;
+  background-color: #051E33;
+}
+
+.commTitle {
+  padding: 15px 0;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.commContent {
+  display: none;
+  padding-bottom: 40px;
+}
+
+.commPurpose {
+  margin: 30px 5% 20px 5%;
+  border: 1px dashed #fec231;
+  padding: 10px 5%;
+  font-size: 1.2rem;
+}
+
+.commHead {
+  margin-right: 20%;
+  font-size: 1.1rem;
+  text-align: right;
 }
 
 .topBttn {
@@ -590,7 +625,6 @@ body {
 
 .senLawList {
   border: 1px solid #fec231;
-  padding: 10px 2%;
   background-color: #051E33;
 }
 

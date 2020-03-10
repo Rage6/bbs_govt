@@ -4,7 +4,7 @@ $(document).ready(()=>{
 
     $("[data-postid]").click(()=>{
       let lawId = event.target.dataset.postid;
-      $(".oneLawNum")
+      $(".oneLawApproval")
         .css('background-color','#051E33')
         .css('color','#fec231');
       $(".oneLawTitle")

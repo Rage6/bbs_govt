@@ -18,6 +18,7 @@
     WHERE
       Post.subtype_id=Subtype.subtype_id AND
       Post.type_id=$senTypeId AND
+      subtype_name NOT LIKE '%law%' AND
       approved=1
     ORDER BY
       post_order DESC");

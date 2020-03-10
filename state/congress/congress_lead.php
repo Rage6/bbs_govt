@@ -7,13 +7,14 @@
   };
 
   // LIST OF VARIABLES THAT MUST HAVE A CERTAIN VALUE:
+  // HoR's section_id
+  $houseSecId = 2;
   // Senate's section_id
   $senSecId = 3;
-  // Senate's 'law' type_id
+  // HoR's 'bill' type_id
+  $houseTypeId = 9;
+  // Senate's 'bill' type_id
   $senTypeId = 11;
-  // Senate's two 'law' subtype_id's
-  $senSubIdOver = 30;
-  $senSubIdSign = 31;
 
 
   // Gets Senate's introductory statement
@@ -61,21 +62,56 @@
     $senateLdrList[] = $oneSenateLdr;
   };
 
+  // Lists all of the laws
   $senLawListStmt = $pdo->prepare(
     "SELECT
       post_id,
       title,
-      post_order
+      post_order,
+      subtype_name
     FROM
       Post
+        JOIN
+      Subtype
     WHERE
-      section_id=$senSecId AND
-      type_id=$senTypeId AND
-      (subtype_id=$senSubIdSign OR
-      subtype_id=$senSubIdOver)
+      (Post.section_id=$senSecId
+        OR
+      Post.section_id=$houseSecId)
+       AND
+      (Post.type_id=$senTypeId
+        OR
+      Post.type_id=$houseTypeId)
+       AND
+      Post.subtype_id=Subtype.subtype_id
+       AND
+      (Subtype.subtype_name LIKE '%law%')
     ORDER BY post_order DESC");
   $senLawListStmt->execute();
 
+  // Get all Senate committee information
+  $senCommStmt = $pdo->prepare(
+    "SELECT
+      dpt_id,
+      dpt_name,
+      purpose,
+      job_name,
+      first_name,
+      last_name
+    FROM
+      Department
+        JOIN
+      Job
+        JOIN
+      Delegate
+    WHERE
+      Department.section_id=$senSecId
+        AND
+      Department.job_id=Job.job_id
+        AND
+      Delegate.delegate_id=Job.delegate_id
+    ORDER BY
+      dpt_name ASC");
+  $senCommStmt->execute();
 
   // FOR HOUSE OF REPRESENTATIVES
   $repSecId = 2;

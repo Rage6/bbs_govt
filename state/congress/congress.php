@@ -80,7 +80,7 @@
           <div id="senLawClick" class='menuOption senOption'>
             LAWS
           </div>
-          <div class='menuOption senOption'>
+          <div id="senCommitteeClick" class='menuOption senOption'>
             COMMITTEES
           </div>
           <div class='menuOption senOption'>
@@ -186,8 +186,7 @@
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
-          <!-- This is a list of the laws, in which to click one for its details -->
-          <div id="senLawBox">
+          <div id="senLawBox" class="lawBox senLawBox">
             <div class="moduleTitle senModTitle">LAWS</div>
             <div id="howLawClick" class="lawQuestion senLawQuestion">
               + <i>How do bills become laws?</i>
@@ -211,19 +210,18 @@
             <div class="lawTotal senLawTotal">
               <div class="leftHalf">
                 <div class="lawListTitle senLawTitle">
-                  <div>Bill #</div>
-                  <div>Title</div>
+                  <div>Title & Approval</div>
                 </div>
                 <div id="senLawList" class="senLawList lawList">
                   <?php
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
                         <div class='oneLaw'>
-                          <div class='oneLawNum' data-postid='".$oneSenLaw['post_id']."'>
-                            ".$oneSenLaw['post_order']."
-                          </div>
                           <div class='oneLawTitle' data-postid='".$oneSenLaw['post_id']."'>
                             ".$oneSenLaw['title']."
+                          </div>
+                          <div class='oneLawApproval' data-postid='".$oneSenLaw['post_id']."'>
+                            ".$oneSenLaw['subtype_name']."
                           </div>
                         </div>");
                     };
@@ -238,6 +236,33 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
+            <div class="moduleTitle senModTitle">COMMITTEES</div>
+            <div class="allComm senAllComm">
+              <?php
+                while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <div class='oneComm'>
+                      <div class='commTitle' data-dptid='".$oneSenComm['dpt_id']."'>
+                        ".$oneSenComm['dpt_name']."
+                      </div>
+                      <div class='commContent' data-dptid='".$oneSenComm['dpt_id']."'>
+                        <div class='commPurpose'>
+                          ".$oneSenComm['purpose']."
+                        </div>
+                        <div class='commHead'>
+                          <div><u>".$oneSenComm['job_name']."</u></div>
+                          <div>
+                            ".$oneSenComm['first_name']." ".$oneSenComm['last_name']."
+                          </div>
+                        </div>
+                      </div>
+                    </div>");
+                };
+              ?>
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>

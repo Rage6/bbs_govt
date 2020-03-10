@@ -138,6 +138,11 @@ $(()=>{
     scrollToOption("#senLawBox",1100);
     useSenMenu();
   });
+  // Slide to Committees
+  $("#senCommitteeClick").click(()=> {
+    scrollToOption("#senCommitteeBox",1300);
+    useSenMenu();
+  });
   // Send window back to the top of the page
   $(".senTopBttn").click(() => {
     scrollToOption(".senateBox",500);
@@ -160,6 +165,41 @@ $(()=>{
   // Shows how to view a law's details
   $("#howViewClick").click(()=>{
     showAnswer("#howViewBox");
+    setBodyHeight(".senateBox");
+  });
+
+  // Function that shows the content of a clicked committee title
+  $("[data-dptid]").click(()=>{
+    let thisDptId = event.target.dataset.dptid;
+    let isOpen;
+    if ($(".commContent[data-dptid='"+thisDptId+"']").css('display') == 'block') {
+      isOpen = true;
+    } else {
+      isOpen = false;
+    };
+    $(".commTitle")
+      .css('color','#fec231')
+      .css('background-color','#051E33')
+      .css('border-bottom','none');
+    $(".commContent")
+      .css('display','none');
+    console.log($(".commContent[data-dptid='"+thisDptId+"']").css('display'));
+    if (isOpen == false) {
+      $(".commTitle[data-dptid='"+thisDptId+"']")
+        .css('color','#051E33')
+        .css('background-color','#fec231')
+        .css('border-bottom','1px solid #051E33');
+      $(".commContent[data-dptid='"+thisDptId+"']")
+        .css('display','block');
+      // console.log($(".commContent[data-dptid='"+thisDptId+"']").css('display'));
+    } else {
+      $(".commTitle[data-dptid='"+thisDptId+"']")
+        .css('color','#fec231')
+        .css('background-color','#051E33')
+        .css('border-bottom','none');
+      $(".commContent[data-dptid='"+thisDptId+"']")
+        .css('display','none');
+    };
     setBodyHeight(".senateBox");
   });
 
