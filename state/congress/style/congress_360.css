@@ -400,7 +400,7 @@ body {
   text-align: right;
 }
 
-.lawQuestion {
+.question {
   margin-top: 10px;
   border-top: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
@@ -409,7 +409,7 @@ body {
   font-size: 1.3rem;
 }
 
-.lawAnswer {
+.answer {
   display: none;
   padding: 15px 5%;
   font-size: 1.3rem;
@@ -448,6 +448,11 @@ body {
 
 }
 
+.allComm {
+  margin-top: 20px;
+  border-top: 1px solid #fec231;
+}
+
 .oneComm {
   border-bottom: 1px solid #fec231;
   background-color: #051E33;
@@ -474,6 +479,29 @@ body {
 .commHead {
   margin-right: 20%;
   font-size: 1.1rem;
+  text-align: right;
+}
+
+.cityName {
+  margin-top: 50px;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.3rem;
+  background-image: linear-gradient(to right, transparent, #8C130E 15%, #8C130E 85%, transparent);
+}
+
+.oneSenator {
+  margin: 30px 10% 0 10%;
+}
+
+.oneSenName {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.oneSenHome {
+  margin-top: 15px;
+  font-size: 1.2rem;
   text-align: right;
 }
 
@@ -628,12 +656,12 @@ body {
   background-color: #051E33;
 }
 
-.senLawQuestion {
+.senQuestion {
   color: #fec231;
   background-color: #051E33;
 }
 
-.senLawAnswer {
+.senAnswer {
   border-bottom: #fec231;
   color: #fec231;
   background-color: #051E33;

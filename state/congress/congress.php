@@ -83,7 +83,7 @@
           <div id="senCommitteeClick" class='menuOption senOption'>
             COMMITTEES
           </div>
-          <div class='menuOption senOption'>
+          <div id="senMemberClick" class='menuOption senOption'>
             MEET THE SENATORS
           </div>
         </div>
@@ -188,10 +188,10 @@
           <div class='topBttn senTopBttn'>- TOP -</div>
           <div id="senLawBox" class="lawBox senLawBox">
             <div class="moduleTitle senModTitle">LAWS</div>
-            <div id="howLawClick" class="lawQuestion senLawQuestion">
+            <div id="viewSenBillClick" class="question senQuestion">
               + <i>How do bills become laws?</i>
             </div>
-            <div id="howLawBox" class="lawAnswer senLawAnswer">
+            <div id="viewSenBillBox" class="answer senAnswer">
               Within the Buckeye Boys State, a bill becomes a law upon:
               <ol>
                 <li>
@@ -201,10 +201,10 @@
                   Being either a) signed in by the governor, or b) the governor's veto is overriden by the General Assembly
                 </li>
             </div>
-            <div id="howViewClick" class="lawQuestion senLawQuestion">
+            <div id="viewSenReadClick" class="question senQuestion">
               + <i>How can I read a law?</i>
             </div>
-            <div id="howViewBox" class="lawAnswer senLawAnswer">
+            <div id="viewSenReadBox" class="answer senAnswer">
               To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
             </div>
             <div class="lawTotal senLawTotal">
@@ -241,6 +241,12 @@
           <div class='topBttn senTopBttn'>- TOP -</div>
           <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
             <div class="moduleTitle senModTitle">COMMITTEES</div>
+            <div id="viewSenCommClick" class="question senQuestion">
+              + <i>What does a committee do?</i>
+            </div>
+            <div id="viewSenCommBox" class="answer senAnswer">
+              Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
+            </div>
             <div class="allComm senAllComm">
               <?php
                 while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -259,6 +265,33 @@
                             ".$oneSenComm['first_name']." ".$oneSenComm['last_name']."
                           </div>
                         </div>
+                      </div>
+                    </div>");
+                };
+              ?>
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div id="senMemberBox" class="senMemberBox memberBox">
+            <div class="moduleTitle senModTitle">KNOW YOUR SENATOR</div>
+            <div class="allMember senAllMembers">
+              <?php
+                $currentCity = "";
+                for ($oneSenNum = 0; $oneSenNum < count($senMemList); $oneSenNum++) {
+                  if ($currentCity != $senMemList[$oneSenNum]['section_name']) {
+                    echo("
+                      <div class='cityName'>
+                        ".$senMemList[$oneSenNum]['section_name']."
+                      </div>");
+                    $currentCity = $senMemList[$oneSenNum]['section_name'];
+                  };
+                  echo("
+                    <div class='oneSenator'>
+                      <div class='oneSenName'>
+                        ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
+                      </div>
+                      <div class='oneSenHome'>
+                        ".$senMemList[$oneSenNum]['hometown'].", OH
                       </div>
                     </div>");
                 };

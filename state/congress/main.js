@@ -143,6 +143,11 @@ $(()=>{
     scrollToOption("#senCommitteeBox",1300);
     useSenMenu();
   });
+  // Slide to the list of Senators
+  $("#senMemberClick").click(()=> {
+    scrollToOption("#senMemberBox",1500);
+    useSenMenu();
+  });
   // Send window back to the top of the page
   $(".senTopBttn").click(() => {
     scrollToOption(".senateBox",500);
@@ -151,20 +156,25 @@ $(()=>{
   // Function that shows an answer to the 'Laws' questions
   const showAnswer = (answerBox) => {
     if ($(answerBox).css('display') == 'none') {
-      $(".lawAnswer").css('display','none');
+      $(".answer").css('display','none');
       $(answerBox).css('display','block');
     } else {
-      $(".lawAnswer").css('display','none');
+      $(".answer").css('display','none');
     };
   };
   // Show how a bill becomes a law
-  $("#howLawClick").click(()=>{
-    showAnswer("#howLawBox");
+  $("#viewSenBillClick").click(()=>{
+    showAnswer("#viewSenBillBox");
     setBodyHeight(".senateBox");
   });
   // Shows how to view a law's details
-  $("#howViewClick").click(()=>{
-    showAnswer("#howViewBox");
+  $("#viewSenReadClick").click(()=>{
+    showAnswer("#viewSenReadBox");
+    setBodyHeight(".senateBox");
+  });
+  // Shows how to view a committee's purpose and senator in charge
+  $("#viewSenCommClick").click(()=>{
+    showAnswer("#viewSenCommBox");
     setBodyHeight(".senateBox");
   });
 
@@ -183,7 +193,6 @@ $(()=>{
       .css('border-bottom','none');
     $(".commContent")
       .css('display','none');
-    console.log($(".commContent[data-dptid='"+thisDptId+"']").css('display'));
     if (isOpen == false) {
       $(".commTitle[data-dptid='"+thisDptId+"']")
         .css('color','#051E33')

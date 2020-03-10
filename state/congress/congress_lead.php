@@ -8,11 +8,11 @@
 
   // LIST OF VARIABLES THAT MUST HAVE A CERTAIN VALUE:
   // HoR's section_id
-  $houseSecId = 2;
+  $repSecId = 2;
   // Senate's section_id
   $senSecId = 3;
   // HoR's 'bill' type_id
-  $houseTypeId = 9;
+  $repTypeId = 9;
   // Senate's 'bill' type_id
   $senTypeId = 11;
 
@@ -76,11 +76,11 @@
     WHERE
       (Post.section_id=$senSecId
         OR
-      Post.section_id=$houseSecId)
+      Post.section_id=$repSecId)
        AND
       (Post.type_id=$senTypeId
         OR
-      Post.type_id=$houseTypeId)
+      Post.type_id=$repTypeId)
        AND
       Post.subtype_id=Subtype.subtype_id
        AND
@@ -109,19 +109,50 @@
       Department.job_id=Job.job_id
         AND
       Delegate.delegate_id=Job.delegate_id
+        AND
+      Department.active=1
     ORDER BY
       dpt_name ASC");
   $senCommStmt->execute();
 
+  // Get all of the senators listed
+  $senMemList = [];
+  $senMemListStmt = $pdo->prepare(
+    "SELECT
+      first_name,
+      last_name,
+      hometown,
+      section_name
+    FROM
+      Delegate
+        JOIN
+      Job
+        JOIN
+      Section
+    WHERE
+      Job.section_id=$senSecId
+        AND
+      Job.senator=Section.section_id
+        AND
+      Job.job_name='Senator'
+        AND
+      Job.delegate_id=Delegate.delegate_id
+    ORDER BY
+      section_name,hometown ASC");
+  $senMemListStmt->execute();
+  while ($oneSenMember = $senMemListStmt->fetch(PDO::FETCH_ASSOC)) {
+    $senMemList[] = $oneSenMember;
+  };
+
   // FOR HOUSE OF REPRESENTATIVES
-  $repSecId = 2;
+
   // Gets House of Rep's introductory statement
-  $houseIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=13");
-  $houseIntroStmt->execute();
-  $houseIntro = $houseIntroStmt->fetch(PDO::FETCH_ASSOC);
+  $repIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=13");
+  $repIntroStmt->execute();
+  $repIntro = $repIntroStmt->fetch(PDO::FETCH_ASSOC);
 
   // Gets only the leaders WITHIN the House, NOT all of the Representative
-  $houseLdrListStmt = $pdo->prepare(
+  $repLdrListStmt = $pdo->prepare(
     "SELECT
       job_id,
       job_name,
@@ -135,14 +166,14 @@
       Job.section_id=$repSecId AND
       Job.delegate_id=Delegate.delegate_id AND
       Job.representative=0");
-  $houseLdrListStmt->execute();
-  $houseLdrList = [];
-  while ($oneHouseLdr = $houseLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
-    $houseLdrList[] = $oneHouseLdr;
+  $repLdrListStmt->execute();
+  $repLdrList = [];
+  while ($oneHouseLdr = $repLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
+    $repLdrList[] = $oneHouseLdr;
   };
 
   // echo("<pre>");
-  // var_dump($senateLdrList);
+  // var_dump($senMemList);
   // echo("</pre>");
 
 ?>
