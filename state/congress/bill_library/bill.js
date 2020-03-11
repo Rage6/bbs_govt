@@ -2,6 +2,8 @@ $(document).ready(()=>{
   // console.log("bill.js is working...");
   $.getJSON('bill_library/bill_json.php',(billLibrary)=>{
 
+// ** FOR SENATE BILLS **
+
     const setSenHeight = () => {
       let currentSenHeight = $(".senateBox").outerHeight();
       if ($(window).outerHeight() < currentSenHeight) {
@@ -80,6 +82,19 @@ $(document).ready(()=>{
         billUpdate(billLibrary,newSubId);
         setSenHeight();
     });
+
+// ** FOR THE HOUSE OF REPRESENTATIVES **
+
+    const setRepHeight = () => {
+      let currentRepHeight = $(".houseBox").outerHeight();
+      if ($(window).outerHeight() < currentRepHeight) {
+        $("body").css('height',currentRepHeight);
+      } else {
+        $("body").css('height','100%');
+      };
+    };
+
+    
 
   });
 
