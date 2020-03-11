@@ -11,11 +11,11 @@ $(document).ready(()=>{
       };
     };
 
-    // Function to chose selected bills based on their status
+    // Function to choose selected bills based on their status
     const billUpdate = (billArray,subtypeId) => {
       $("[data-sensubid='"+subtypeId+"']")
         .css('background-color','#fec231')
-        .css('color','#051E33');
+        .css('color','#8C130E');
       let billCount = 0;
       let noBill = true;
       for (let billNum = 0; billNum < billArray.length; billNum++) {
@@ -68,7 +68,7 @@ $(document).ready(()=>{
     // Upon clicking any following option
     $("[data-sensubid]").click(()=>{
         // The menu is first changed and hidden...
-        $(".senSelectOption").css('color','#fec231').css('background-color','#051E33');
+        $(".senSelectOption").css('color','#fec231').css('background-color','#8C130E');
         let newSubId = event.target.dataset.sensubid;
         let newText = event.target.innerText;
         $("[data-sensubid="+newSubId+"]").css('color','#051E33').css('background-color','#fec231');
@@ -80,7 +80,7 @@ $(document).ready(()=>{
         billUpdate(billLibrary,newSubId);
         setSenHeight();
     });
-    
+
   });
 
 });

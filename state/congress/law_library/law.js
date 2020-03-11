@@ -5,14 +5,14 @@ $(document).ready(()=>{
     $("[data-postid]").click(()=>{
       let lawId = event.target.dataset.postid;
       $(".oneLawApproval")
-        .css('background-color','#051E33')
+        .css('background-color','#8C130E')
         .css('color','#fec231');
       $(".oneLawTitle")
-        .css('background-color','#051E33')
+        .css('background-color','#8C130E')
         .css('color','#fec231');
       $("[data-postid='" + lawId + "']")
         .css('background-color','#fec231')
-        .css('color','#051E33');
+        .css('color','#8C130E');
       // console.log(lawLibrary);
       for (let lawNum = 0; lawNum < lawLibrary.length; lawNum++) {
         if (lawLibrary[lawNum]['post_id'] == lawId) {

@@ -189,22 +189,22 @@ $(()=>{
     };
     $(".commTitle")
       .css('color','#fec231')
-      .css('background-color','#051E33')
+      .css('background-color','#8C130E')
       .css('border-bottom','none');
     $(".commContent")
       .css('display','none');
     if (isOpen == false) {
       $(".commTitle[data-dptid='"+thisDptId+"']")
-        .css('color','#051E33')
+        .css('color','#8C130E')
         .css('background-color','#fec231')
-        .css('border-bottom','1px solid #051E33');
+        .css('border-bottom','1px solid #fec231');
       $(".commContent[data-dptid='"+thisDptId+"']")
         .css('display','block');
       // console.log($(".commContent[data-dptid='"+thisDptId+"']").css('display'));
     } else {
       $(".commTitle[data-dptid='"+thisDptId+"']")
         .css('color','#fec231')
-        .css('background-color','#051E33')
+        .css('background-color','#8C130E')
         .css('border-bottom','none');
       $(".commContent[data-dptid='"+thisDptId+"']")
         .css('display','none');

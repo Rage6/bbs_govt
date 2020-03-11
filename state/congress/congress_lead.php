@@ -62,6 +62,18 @@
     $senateLdrList[] = $oneSenateLdr;
   };
 
+  // The
+  $senStatusStmt = $pdo->prepare(
+    "SELECT
+      *
+    FROM
+      Subtype
+    WHERE
+      type_id=11
+        AND
+      subtype_name NOT LIKE '%Law%'");
+  $senStatusStmt->execute();
+
   // Lists all of the laws
   $senLawListStmt = $pdo->prepare(
     "SELECT

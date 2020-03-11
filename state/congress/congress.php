@@ -167,8 +167,6 @@
               <div class="selectList senSelectList">
                 <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
                 <?php
-                  $senStatusStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=11");
-                  $senStatusStmt->execute();
                   while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
                     echo("
                       <div
@@ -216,7 +214,7 @@
                   <?php
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
-                        <div class='oneLaw'>
+                        <div class='oneLaw oneSenLaw'>
                           <div class='oneLawTitle' data-postid='".$oneSenLaw['post_id']."'>
                             ".$oneSenLaw['title']."
                           </div>
@@ -251,11 +249,11 @@
               <?php
                 while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
                   echo("
-                    <div class='oneComm'>
-                      <div class='commTitle' data-dptid='".$oneSenComm['dpt_id']."'>
+                    <div class='oneComm senOneComm'>
+                      <div class='commTitle senCommTitle' data-dptid='".$oneSenComm['dpt_id']."'>
                         ".$oneSenComm['dpt_name']."
                       </div>
-                      <div class='commContent' data-dptid='".$oneSenComm['dpt_id']."'>
+                      <div class='commContent senCommContent' data-dptid='".$oneSenComm['dpt_id']."'>
                         <div class='commPurpose'>
                           ".$oneSenComm['purpose']."
                         </div>
@@ -277,25 +275,33 @@
             <div class="allMember senAllMembers">
               <?php
                 $currentCity = "";
+                $initCity = true;
                 for ($oneSenNum = 0; $oneSenNum < count($senMemList); $oneSenNum++) {
                   if ($currentCity != $senMemList[$oneSenNum]['section_name']) {
+                    if ($initCity == false) {
+                      echo("</div>");
+                    } else {
+                      $initCity = false;
+                    }
                     echo("
-                      <div class='cityName'>
-                        ".$senMemList[$oneSenNum]['section_name']."
-                      </div>");
+                      <div class='oneCity oneSenCity'>
+                        <div class='cityName senCityName'>
+                          ".$senMemList[$oneSenNum]['section_name']."
+                        </div>");
                     $currentCity = $senMemList[$oneSenNum]['section_name'];
                   };
                   echo("
-                    <div class='oneSenator'>
-                      <div class='oneSenName'>
+                    <div class='oneCongressman oneSenator'>
+                      <div class='oneCongName oneSenName'>
                         ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
                       </div>
-                      <div class='oneSenHome'>
+                      <div class='oneCongHome oneSenHome'>
                         ".$senMemList[$oneSenNum]['hometown'].", OH
                       </div>
                     </div>");
                 };
               ?>
+              <!-- </div> -->
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
