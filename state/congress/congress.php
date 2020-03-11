@@ -59,8 +59,12 @@
         </div>
         <div class="bothChambers">
           <div class="chooseHouse">SELECT A HOUSE:</div>
-          <div id="senClick" style="background-color:#00467f" class="chamberBttn">Senate</div>
-          <div id="repClick" style="background-color: #8C130E" class="chamberBttn">House of Representatives</div>
+          <div id="senClick" class="chamberBttn senChamber">
+            Senate
+          </div>
+          <div id="repClick" class="chamberBttn repChamber">
+            House of Representatives
+          </div>
         </div>
       </div>
       <div class='senateBox'>
@@ -190,13 +194,13 @@
               + <i>How do bills become laws?</i>
             </div>
             <div id="viewSenBillBox" class="answer senAnswer">
-              Within the Buckeye Boys State, a bill becomes a law upon:
+              Within the Buckeye Boys State, a bill becomes a law after two steps:
               <ol>
                 <li>
-                  Passing through both Senate and the House of Representatives
+                  Voted in favor by the majority of both Senate and the House of Representatives
                 </li>
                 <li>
-                  Being either a) signed in by the governor, or b) the governor's veto is overriden by the General Assembly
+                  Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
                 </li>
             </div>
             <div id="viewSenReadClick" class="question senQuestion">
@@ -207,7 +211,7 @@
             </div>
             <div class="lawTotal senLawTotal">
               <div class="leftHalf">
-                <div class="lawListTitle senLawTitle">
+                <div class="lawListTitle senLawListTitle">
                   <div>Title & Approval</div>
                 </div>
                 <div id="senLawList" class="senLawList lawList">
@@ -215,10 +219,10 @@
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
                         <div class='oneLaw oneSenLaw'>
-                          <div class='oneLawTitle' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawTitle oneSenLawTitle' data-postid='".$oneSenLaw['post_id']."'>
                             ".$oneSenLaw['title']."
                           </div>
-                          <div class='oneLawApproval' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawApproval oneSenLawApproval' data-postid='".$oneSenLaw['post_id']."'>
                             ".$oneSenLaw['subtype_name']."
                           </div>
                         </div>");

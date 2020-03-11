@@ -192,12 +192,22 @@ body {
 
 .chamberBttn {
   margin: 40px 0 0 15%;
-  padding: 20px 5%;
+  border-radius: 10px;
+  padding: 20px 5%;;
   color: white;
   font-size: 1.8rem;
   text-align: center;
   width: 60%;
 }
+
+.senChamber {
+  background-color: #00467f;
+}
+
+.repChamber {
+  background-color: #8C130E;
+}
+
 /* END ENTRANCE BOX */
 
 /* START BOTH HOUSES */
@@ -376,13 +386,16 @@ body {
 
 .lawList {
   margin: 0 5%;
-  /* padding: 10px 0%; */
   overflow-y: scroll;
   height: 125px;
 }
 
 .oneLaw {
   border-bottom: 1px dashed #fec231;
+}
+
+.oneLaw:hover {
+  cursor: pointer;
 }
 
 .oneLawTitle {
@@ -424,6 +437,7 @@ body {
   padding: 10px 5%;
   font-size: 1.2rem;
   height: 275px;
+  overflow-y: scroll;
 }
 
 .startEmpty {
@@ -481,18 +495,16 @@ body {
 }
 
 .oneCity {
-
+  margin: 20px 10% 0 10%;
 }
 
 .cityName {
-  margin: 50px 10% 0 10%;
   border-radius: 5px 5px 0 0;
   padding: 10px 5%;
   font-size: 1.3rem;
 }
 
 .oneCongressman {
-  margin: 0 10%;
   padding: 10px 5%;
 }
 
@@ -650,7 +662,7 @@ body {
 
 }
 
-.senLawTitle {
+.senLawListTitle {
   border-top: 1px solid #fec231;
   border-left: 1px solid #fec231;
   border-right: 1px solid #fec231;
@@ -682,6 +694,14 @@ body {
 
 .oneSenLaw {
   background-color: #8C130E;
+}
+
+.oneSenLawTitle {
+
+}
+
+.oneSenLawApproval {
+
 }
 
 .senOneComm {
