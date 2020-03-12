@@ -290,7 +290,7 @@
                     echo("
                       <div class='oneCity oneSenCity'>
                         <div class='cityName senCityName'>
-                          ".$senMemList[$oneSenNum]['section_name']."
+                          ".$senMemList[$oneSenNum]['section_name']." City
                         </div>");
                     $currentCity = $senMemList[$oneSenNum]['section_name'];
                   };
