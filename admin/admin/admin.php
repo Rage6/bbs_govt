@@ -426,7 +426,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.job_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.senator,Job.representative,Job.job_id ASC");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -498,13 +498,13 @@
                           $findCityNameStmt->execute(array(
                             ':sn'=>$singleJob['senator']
                           ));
-                          $cityName = $findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                          $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
                         } elseif ($singleJob['representative'] != 0) {
                           $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:rp");
                           $findCityNameStmt->execute(array(
                             ':rp'=>$singleJob['representative']
                           ));
-                          $cityName = $findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                          $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
                         } else {
                           $cityName = "";
                         };
@@ -521,7 +521,7 @@
                           $findDptStatus = 1;
                         };
                         if ($singleJob['in_department'] == 0 || $findDptStatus == 1) {
-                          echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name'].$selectDptName."</option>");
+                          echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name'].$cityName.$selectDptName."</option>");
                         };
                       };
             echo("
