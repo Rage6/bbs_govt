@@ -445,6 +445,23 @@
                 </div>
                 <div id='listBox' class='listBox'>");
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                if ($oneJob['senator'] != 0) {
+                  $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
+                  $jobCityStmt->execute(array(
+                    ':si'=>$oneJob['senator']
+                  ));
+                  $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                  $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                } elseif ($oneJob['representative'] != 0) {
+                  $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
+                  $jobCityStmt->execute(array(
+                    ':si'=>$oneJob['representative']
+                  ));
+                  $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                  $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                } else {
+                  $cityAndId = "";
+                };
                 if ($oneJob['in_department'] == 1) {
                   $findDptNameStmt->execute(array(
                     ':ji'=>$oneJob['job_id']
@@ -459,7 +476,7 @@
                 if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
                   echo("
                   <div class='staffTitle'>
-                    ".$oneJob['job_name'].$dptName."
+                    ".$oneJob['job_name'].$cityAndId.$dptName."
                   </div>
                   <div class='staffContent'>
                     <div>
