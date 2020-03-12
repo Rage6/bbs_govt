@@ -2,7 +2,7 @@ $(document).ready(()=>{
   // console.log("bill.js is working...");
   $.getJSON('bill_library/sen_bill_json.php',(senBillLibrary)=>{
 
-    $.getJSON('bill_library/hor_bill_json.php',(horBillLibrary)=>{
+    $.getJSON('bill_library/hor_bill_json.php',(repBillLibrary)=>{
 
       // Objects for filling billUpdate()'s parameters
       const amLgnColor = {
@@ -15,7 +15,7 @@ $(document).ready(()=>{
         // subtitleBkgd: "#C5CC0A",
         buttons: "#8C130E"
       };
-      const horColors = {
+      const repColors = {
         background: "#051E33",
         titleBkgd: "#4A4D08",
         // subtitleBkgd: "#C5CC0A",
@@ -52,11 +52,11 @@ $(document).ready(()=>{
           divider = "senDivider";
           oneBill = "oneSenBill";
         } else if (chamber == "house") {
-          chamberColors = horColors;
-          subtypeIdData = "[data-horsubid='"+subtypeId+"']";
-          billDirectory = "#horBillDirectory";
-          divider = "horDivider";
-          oneBill = "oneHorBill";
+          chamberColors = repColors;
+          subtypeIdData = "[data-repsubid='"+subtypeId+"']";
+          billDirectory = "#repBillDirectory";
+          divider = "repDivider";
+          oneBill = "oneRepBill";
         };
         $(subtypeIdData)
           .css('background-color',amLgnColor['gold'])
@@ -98,7 +98,7 @@ $(document).ready(()=>{
 
       // Initial display of all of the bills
       billUpdate(senBillLibrary,"0","senate");
-      billUpdate(horBillLibrary,"0","house");
+      billUpdate(repBillLibrary,"0","house");
 
       // Show all of the Senate bill options
       $("#currentSenSelect").click(()=>{
@@ -127,6 +127,40 @@ $(document).ready(()=>{
           // ...before the a new list is entered.
           billUpdate(senBillLibrary,newSubId,"senate");
           setSenHeight();
+      });
+
+      // Show all of the House bill options
+      $("#currentRepSelect").click(()=>{
+        if ($(".repSelectList").css('display') == 'none') {
+          $(".repSelectList").css('display','block');
+          setRepHeight();
+        } else {
+          $(".repSelectList").css('display','none');
+          setRepHeight();
+        };
+      });
+
+      // After clicking on any House option
+      $("[data-repsubid]").click(()=>{
+          // The menu is first changed and hidden...
+          $(".repSelectOption")
+            .css('color',amLgnColor['gold'])
+            .css('background-color',repColors['buttons']);
+          let newSubId = event.target.dataset.repsubid;
+          let newText = event.target.innerText;
+          $("[data-repsubid="+newSubId+"]")
+            .css('color','#051E33')
+            .css('background-color','#fec231');
+          $(".repSelectList")
+            .css('display','none');
+          $("#currentRepSelect")
+            .text(newText);
+          // ...the current list is emptied...
+          $("#repBillDirectory")
+            .empty();
+          // ...before the a new list is entered.
+          billUpdate(repBillLibrary,newSubId,"house");
+          setRepHeight();
       });
 
     });
