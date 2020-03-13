@@ -95,7 +95,7 @@
           <img id="senateToCenter" src="../../img/back_arrow_gold.png" />
           <img id="senMenuClick" src="../../img/menu_gold.png" />
         </div>
-        <div class="senContent">
+        <div class="senContent bothContent">
           <div class="senTitle">
             <div class="senText">
               <div class="bbsTitle">
@@ -339,8 +339,220 @@
           <img id="repMenuClick" src="../../img/menu_gold.png" />
           <img id="repToCenter" style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
         </div>
-        <div class="repContent">
-          
+        <div class="repContent bothContent">
+          <div class="senTitle">
+            <div class="senText">
+              <div class="bbsTitle">
+                BUCKEYE BOYS STATE
+              </div>
+              SENATE
+            </div>
+          </div>
+          <div class="senIntro">
+            <?php
+              echo($senIntro['content']);
+            ?>
+          </div>
+          <div class="leaderBox">
+            <div class="moduleTitle senModTitle">
+              LEADERSHIP
+            </div>
+            <div id="senMajBox" class="majorityBox">
+              <div class="senMajTitle">MAJORITY LEADERS</div>
+              <?php
+                for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
+                  echo("
+                  <div class='oneLdr majorityLdrs senLdrs'>
+                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName senLdrName'>
+                      ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
+                    </div>");
+                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
+                      echo("
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
+                    } else {
+                      echo("
+                        <img src='../../img/default_photo.png'>");
+                    };
+                    echo("
+                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='topBttn senTopBttn'>- TOP -</div>
+                  </div>");
+                };
+              ?>
+            </div>
+            <div id="senMinBox"
+             class="minorityBox">
+              <div class="senMinTitle">MINORITY LEADERS</div>
+              <?php
+                for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
+                  echo("
+                  <div class='oneLdr minorityLdr senLdrs'>
+                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName senLdrName'>
+                      ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
+                    </div>");
+                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
+                      echo("
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
+                    } else {
+                      echo("
+                      <img src='../../img/default_photo.png'>");
+                    };
+                    echo("
+                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='topBttn senTopBttn'>- TOP -</div>
+                  </div>");
+                };
+              ?>
+            </div>
+          </div>
+          <div id="senBillBox" class="billBox">
+            <div class="moduleTitle senModTitle">BILLS</div>
+            <div class="selectTitle senSelectTitle">SEARCH BY STATUS</div>
+            <div class="selectBox senSelectBox">
+              <div id="currentSenSelect" class="currentSelect currentSenSelect">ALL</div>
+              <div class="selectList senSelectList">
+                <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
+                <?php
+                  while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo("
+                      <div
+                        class='selectOption senSelectOption'
+                        data-sensubid='".$oneStatus['subtype_id']."'>
+                          ".$oneStatus['subtype_name']."
+                      </div>
+                    ");
+                  };
+                ?>
+              </div>
+            </div>
+            <div id="senBillDirectory" class="billDirectory">
+              <!-- This is where the selected bills are listed -->
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div id="senLawBox" class="lawBox senLawBox">
+            <div class="moduleTitle senModTitle">LAWS</div>
+            <div id="viewSenBillClick" class="question senQuestion">
+              + <i>How do bills become laws?</i>
+            </div>
+            <div id="viewSenBillBox" class="answer senAnswer">
+              Within the Buckeye Boys State, a bill becomes a law after two steps:
+              <ol>
+                <li>
+                  Voted in favor by the majority of both Senate and the House of Representatives
+                </li>
+                <li>
+                  Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
+                </li>
+            </div>
+            <div id="viewSenReadClick" class="question senQuestion">
+              + <i>How can I read a law?</i>
+            </div>
+            <div id="viewSenReadBox" class="answer senAnswer">
+              To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
+            </div>
+            <div class="lawTotal senLawTotal">
+              <div class="leftHalf">
+                <div class="lawListTitle senLawListTitle">
+                  <div>Title & Approval</div>
+                </div>
+                <div id="senLawList" class="senLawList lawList">
+                  <?php
+                    while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                      echo("
+                        <div class='oneLaw oneSenLaw'>
+                          <div class='oneLawTitle oneSenLawTitle' data-postid='".$oneSenLaw['post_id']."'>
+                            ".$oneSenLaw['title']."
+                          </div>
+                          <div class='oneLawApproval oneSenLawApproval' data-postid='".$oneSenLaw['post_id']."'>
+                            ".$oneSenLaw['subtype_name']."
+                          </div>
+                        </div>");
+                    };
+                  ?>
+                </div>
+              </div>
+              <div class="rightHalf">
+                <div class="lawContent senLawContent">
+                  <!-- This is where the selected law's details are listed -->
+                  <div class="startEmpty" style='text-align:center'>
+                    <i>-- SELECT A LAW --</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
+            <div class="moduleTitle senModTitle">COMMITTEES</div>
+            <div id="viewSenCommClick" class="question senQuestion">
+              + <i>What does a committee do?</i>
+            </div>
+            <div id="viewSenCommBox" class="answer senAnswer">
+              Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
+            </div>
+            <div class="allComm senAllComm">
+              <?php
+                while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
+                  echo("
+                    <div class='oneComm senOneComm'>
+                      <div class='commTitle senCommTitle' data-dptid='".$oneSenComm['dpt_id']."'>
+                        ".$oneSenComm['dpt_name']."
+                      </div>
+                      <div class='commContent senCommContent' data-dptid='".$oneSenComm['dpt_id']."'>
+                        <div class='commPurpose'>
+                          ".$oneSenComm['purpose']."
+                        </div>
+                        <div class='commHead'>
+                          <div><u>".$oneSenComm['job_name']."</u></div>
+                          <div>
+                            ".$oneSenComm['first_name']." ".$oneSenComm['last_name']."
+                          </div>
+                        </div>
+                      </div>
+                    </div>");
+                };
+              ?>
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div id="senMemberBox" class="senMemberBox memberBox">
+            <div class="moduleTitle senModTitle">KNOW YOUR SENATOR</div>
+            <div class="allMember senAllMembers">
+              <?php
+                $currentCity = "";
+                $initCity = true;
+                for ($oneSenNum = 0; $oneSenNum < count($senMemList); $oneSenNum++) {
+                  if ($currentCity != $senMemList[$oneSenNum]['section_name']) {
+                    if ($initCity == false) {
+                      echo("</div>");
+                    } else {
+                      $initCity = false;
+                    }
+                    echo("
+                      <div class='oneCity oneSenCity'>
+                        <div class='cityName senCityName'>
+                          ".$senMemList[$oneSenNum]['section_name']." City
+                        </div>");
+                    $currentCity = $senMemList[$oneSenNum]['section_name'];
+                  };
+                  echo("
+                    <div class='oneCongressman oneSenator'>
+                      <div class='oneCongName oneSenName'>
+                        ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
+                      </div>
+                      <div class='oneCongHome oneSenHome'>
+                        ".$senMemList[$oneSenNum]['hometown'].", OH
+                      </div>
+                    </div>");
+                };
+              ?>
+              </div>
+            </div>
+          </div>
+          <div class='topBttn senTopBttn'>- TOP -</div>
         </div>
       </div>
     </div>

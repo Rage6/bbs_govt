@@ -197,6 +197,10 @@ body {
   z-index: 2;
 }
 
+.bothContent {
+  padding-top: 50px;
+}
+
 .leaderBox {
 
 }
@@ -602,7 +606,7 @@ body {
 }
 
 .senContent {
-  padding-top: 50px;
+
 }
 
 .senTitle {
