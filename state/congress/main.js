@@ -20,6 +20,8 @@ $(()=>{
     }, 1500);
     setTimeout(function() {
       $(".houseBox").css('display','block');
+      let horInitHeight = $(".repMenu").outerHeight() * (-1);
+      $(".repMenu").css("top",horInitHeight).css("display","block");
       setBodyHeight(".houseBox");
     }, 2000);
     $(".houseBox").delay(1500).fadeIn(500);
@@ -91,24 +93,50 @@ $(()=>{
   });
 
   // Slides the Senate menu up and down
-  let slidDown = false;
+  let senSlidDown = false;
   const useSenMenu = () => {
     let menuHeight = $(".senMenu").outerHeight();
-    let bttnRowHeight = $(".bothTopBttns").outerHeight();
+    let bttnRowHeight = $(".senBothTopBttns").outerHeight();
     let totalDistance = bttnRowHeight + menuHeight;
-    if (slidDown == false) {
+    if (senSlidDown == false) {
       let translateY = "translateY(" + totalDistance + "px)";
       $(".senMenu").css("transform", translateY);
-      slidDown = true;
+      senSlidDown = true;
     } else {
       let translateY = "translateY(0px)";
       $(".senMenu").css("transform", translateY);
-      slidDown = false;
+      senSlidDown = false;
     };
   };
 
   $("#senMenuClick").click(()=>{
     useSenMenu();
+  });
+
+  // Slides the HoR menu up and down
+  let repSlidDown = false;
+  console.log("repSlidDown worked");
+  const useRepMenu = () => {
+    let menuHeight = $(".repMenu").outerHeight();
+    console.log(menuHeight);
+    let bttnRowHeight = $(".repBothTopBttns").outerHeight();
+    console.log(bttnRowHeight);
+    let totalDistance = bttnRowHeight + menuHeight;
+    if (repSlidDown == false) {
+      console.log(repSlidDown);
+      let translateY = "translateY(" + totalDistance + "px)";
+      $(".repMenu").css("transform", translateY);
+      repSlidDown = true;
+    } else {
+      console.log(repSlidDown);
+      let translateY = "translateY(0px)";
+      $(".repMenu").css("transform", translateY);
+      repSlidDown = false;
+    };
+  };
+
+  $("#repMenuClick").click(()=>{
+    useRepMenu();
   });
 
   // Slides window down to selected module

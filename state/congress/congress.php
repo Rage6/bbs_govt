@@ -91,7 +91,7 @@
             MEET THE SENATORS
           </div>
         </div>
-        <div class="bothTopBttns">
+        <div class="bothTopBttns senBothTopBttns">
           <img id="senateToCenter" src="../../img/back_arrow_gold.png" />
           <img id="senMenuClick" src="../../img/menu_gold.png" />
         </div>
@@ -335,8 +335,8 @@
             MEET THE REPRESENTATIVES
           </div>
         </div>
-        <div class="bothTopBttns">
-          <img src="../../img/menu_gold.png" />
+        <div class="bothTopBttns repBothTopBttns">
+          <img id="repMenuClick" src="../../img/menu_gold.png" />
           <img id="repToCenter" style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
         </div>
         <div class="repContent">
