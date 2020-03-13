@@ -92,8 +92,8 @@
           </div>
         </div>
         <div class="bothTopBttns">
-            <img id="senateToCenter" src="../../img/back_arrow_gold.png" />
-            <img id="senMenuClick" src="../../img/menu_gold.png" />
+          <img id="senateToCenter" src="../../img/back_arrow_gold.png" />
+          <img id="senMenuClick" src="../../img/menu_gold.png" />
         </div>
         <div class="senContent">
           <div class="senTitle">
@@ -312,13 +312,32 @@
         </div>
       </div>
       <div class='houseBox'>
+        <div class='menu repMenu'>
+          <div class='menuOption repOption'>
+            LEADERSHIP
+          </div>
+          <div id="repMajClick" class='repSubOption'>
+            + Majority Leaders
+          </div>
+          <div id="repMinClick" class='repSubOption'>
+            + Minority Leaders
+          </div>
+          <div id="repBillClick" class='menuOption repOption'>
+            BILLS
+          </div>
+          <div id="repLawClick" class='menuOption repOption'>
+            LAWS
+          </div>
+          <div id="repCommitteeClick" class='menuOption repOption'>
+            COMMITTEES
+          </div>
+          <div id="repMemberClick" class='menuOption repOption'>
+            MEET THE REPRESENTATIVES
+          </div>
+        </div>
         <div class="bothTopBttns">
-          <a class="returnHome">
-            <img src="../../img/menu_gold.png" />
-          </a>
-          <a id="repToCenter" class="returnHome">
-            <img style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
-          </a>
+          <img src="../../img/menu_gold.png" />
+          <img id="repToCenter" style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
         </div>
         <div class="repContent">
           This is the House of Representatives

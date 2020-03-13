@@ -10,13 +10,18 @@
     "SELECT
       post_id,
       title,
-      content
+      content,
+      subtype_name
     FROM
       Post
+        INNER JOIN
+      Subtype
     WHERE
-      subtype_id=$senLawOne
-        OR
-      subtype_id=$senLawTwo");
+      Post.subtype_id=Subtype.subtype_id
+        AND
+      Subtype.subtype_name LIKE '%%Law%'
+        AND
+      approved=1");
   $lawContentStmt->execute();
   $lawContentList = [];
   while ($oneLaw = $lawContentStmt->fetch(PDO::FETCH_ASSOC)) {
