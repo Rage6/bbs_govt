@@ -340,7 +340,7 @@
           <img id="repToCenter" style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
         </div>
         <div class="repContent">
-          This is the House of Representatives
+          
         </div>
       </div>
     </div>
