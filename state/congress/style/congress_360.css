@@ -15,7 +15,7 @@ ylw green: #C5CC0A
 
 HOUSE COLORS:
 ------------------
-dark red: #8C130E  <---- primary color
+red: #8C130E  <---- primary color
 blue: #004E8C
 dark blue: #032540
 yellow green: #898C1C
@@ -197,8 +197,37 @@ body {
   z-index: 2;
 }
 
+.menuOption {
+  border-top: 1px solid #fec231;
+  padding: 10px 5%;
+  font-size: 1.5rem;
+}
+
 .bothContent {
   padding-top: 50px;
+}
+
+.bothTitle {
+  padding: 90px 0;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+}
+
+.bothText {
+  padding: 10px 0;
+  color: black;
+  background-color: #fec231;
+  box-shadow: 0 10px 10px #fec231, 0 -10px 10px #fec231;
+}
+
+.bothIntro {
+  margin: 40px 13%;
+  border: 2px solid #fec231;
+  padding: 10px 3%;
+  color: #fec231;
+  text-align: center;
+  font-size: 1.8rem;
 }
 
 .leaderBox {
@@ -208,6 +237,9 @@ body {
 .moduleTitle {
   margin-top: 40px;
   padding: 5px 0;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  color: #fec231;
   font-size: 1.9rem;
   text-align: center;
 }
@@ -220,11 +252,25 @@ body {
 
 }
 
+.bothMajTitle {
+  margin: 10px 0;
+  padding: 10px 0 10px 2%;
+  font-size: 1.4rem;
+}
+
+.bothMinTitle {
+  margin: 10px 0;
+  padding: 10px 2% 10px 0;
+  font-size: 1.4rem;
+  text-align: right;
+}
+
 .oneLdr {
   margin-left: 5%;
   margin-bottom: 40px;
   border-radius: 10px;
   padding: 5%;
+  color: #fec231;
   width: 80%
 }
 
@@ -556,6 +602,40 @@ body {
   display: none;
 }
 
+.repContent {
+
+}
+
+.repTitle {
+  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
+}
+
+.repText {
+  font-size: 2rem;
+}
+
+.repIntro {
+  background-color: #400200;
+}
+
+.repModTitle {
+  background-color: #4A4D08;
+}
+
+.repMajTitle {
+  color: #400200;
+  background-image: linear-gradient(to right, #fec231, #fec231 75%, transparent 90%);
+}
+
+.repMinTitle {
+  color: #400200;
+  background-image: linear-gradient(to left, #fec231, #fec231 75%, transparent 90%);
+}
+
+.repLdrs {
+  background-color: #400200;
+}
+
 /* END HOUSE OF REPS BOX */
 
 /* START SENATE BOX */
@@ -568,9 +648,6 @@ body {
 }
 
 .senOption {
-  border-top: 1px solid #fec231;
-  padding: 10px 5%;
-  font-size: 1.5rem;
   color: #fec231;
 }
 
@@ -610,19 +687,11 @@ body {
 }
 
 .senTitle {
-  padding: 90px 0;
-  text-align: center;
   background-image: url("../../../img/state/congress/senate/sen_chamber.jpg");
-  background-position: center;
-  background-size: cover;
 }
 
 .senText {
-  padding: 10px 0;
-  color: black;
   font-size: 4rem;
-  background-color: #fec231;
-  box-shadow: 0 10px 10px #fec231, 0 -10px 10px #fec231;
 }
 
 .bbsTitle {
@@ -633,53 +702,25 @@ body {
 }
 
 .senIntro {
-  margin: 40px 13%;
-  border: 2px solid #fec231;
-  padding: 10px 3%;
-  color: #fec231;
-  text-align: center;
-  font-size: 1.8rem;
   background-color: #051E33;
 }
 
 .senModTitle {
-  border-top: 1px solid #fec231;
-  border-bottom: 1px solid #fec231;
-  color: #fec231;
   background-color: #4A4D08;
 }
 
-.senLdrs {
-  background-color: #051E33;
-}
-
 .senMajTitle {
-  margin: 10px 0;
-  padding: 10px 0 10px 2%;
   color: #00467f;
-  font-size: 1.4rem;
   background-image: linear-gradient(to right, #fec231, #fec231 75%, transparent 90%);
 }
 
 .senMinTitle {
-  margin: 10px 0;
-  padding: 10px 2% 10px 0;
   color: #00467f;
-  font-size: 1.4rem;
-  text-align: right;
   background-image: linear-gradient(to left, #fec231, #fec231 75%, transparent 90%);
 }
 
-.senLdrTitle {
-  color: #fec231;
-}
-
-.senLdrName {
-  color: #fec231;
-}
-
-.senLdrDescription {
-  color: #fec231;
+.senLdrs {
+  background-color: #051E33;
 }
 
 .senTopBttn {

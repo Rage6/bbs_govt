@@ -96,15 +96,15 @@
           <img id="senMenuClick" src="../../img/menu_gold.png" />
         </div>
         <div class="senContent bothContent">
-          <div class="senTitle">
-            <div class="senText">
+          <div class="bothTitle senTitle">
+            <div class="bothText senText">
               <div class="bbsTitle">
                 BUCKEYE BOYS STATE
               </div>
               SENATE
             </div>
           </div>
-          <div class="senIntro">
+          <div class="bothIntro senIntro">
             <?php
               echo($senIntro['content']);
             ?>
@@ -114,13 +114,13 @@
               LEADERSHIP
             </div>
             <div id="senMajBox" class="majorityBox">
-              <div class="senMajTitle">MAJORITY LEADERS</div>
+              <div class="bothMajTitle senMajTitle">MAJORITY LEADERS</div>
               <?php
                 for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
                   echo("
                   <div class='oneLdr majorityLdrs senLdrs'>
-                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
-                    <div class='ldrName senLdrName'>
+                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
@@ -131,21 +131,20 @@
                         <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
               ?>
             </div>
-            <div id="senMinBox"
-             class="minorityBox">
-              <div class="senMinTitle">MINORITY LEADERS</div>
+            <div id="senMinBox" class="minorityBox">
+              <div class="bothMinTitle senMinTitle">MINORITY LEADERS</div>
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
                   echo("
                   <div class='oneLdr minorityLdr senLdrs'>
-                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
-                    <div class='ldrName senLdrName'>
+                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
@@ -156,7 +155,7 @@
                       <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
@@ -332,7 +331,7 @@
             COMMITTEES
           </div>
           <div id="repMemberClick" class='menuOption repOption'>
-            MEET THE REPRESENTATIVES
+            KNOW YOUR REPRESENTATIVE
           </div>
         </div>
         <div class="bothTopBttns repBothTopBttns">
@@ -340,31 +339,31 @@
           <img id="repToCenter" style="transform: rotate(180deg)" src="../../img/back_arrow_gold.png" />
         </div>
         <div class="repContent bothContent">
-          <div class="senTitle">
-            <div class="senText">
+          <div class="bothTitle repTitle">
+            <div class="bothText repText">
               <div class="bbsTitle">
                 BUCKEYE BOYS STATE
               </div>
-              SENATE
+              HOUSE OF REPRESENTATIVES
             </div>
           </div>
-          <div class="senIntro">
+          <div class="bothIntro repIntro">
             <?php
               echo($senIntro['content']);
             ?>
           </div>
           <div class="leaderBox">
-            <div class="moduleTitle senModTitle">
+            <div class="moduleTitle repModTitle">
               LEADERSHIP
             </div>
-            <div id="senMajBox" class="majorityBox">
-              <div class="senMajTitle">MAJORITY LEADERS</div>
+            <div id="repMajBox" class="majorityBox">
+              <div class="bothMajTitle repMajTitle">MAJORITY LEADERS</div>
               <?php
                 for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
                   echo("
-                  <div class='oneLdr majorityLdrs senLdrs'>
-                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
-                    <div class='ldrName senLdrName'>
+                  <div class='oneLdr majorityLdrs repLdrs'>
+                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
@@ -375,21 +374,21 @@
                         <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
               ?>
             </div>
-            <div id="senMinBox"
+            <div id="repMinBox"
              class="minorityBox">
-              <div class="senMinTitle">MINORITY LEADERS</div>
+              <div class="bothMinTitle repMinTitle">MINORITY LEADERS</div>
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
                   echo("
-                  <div class='oneLdr minorityLdr senLdrs'>
-                    <div class='ldrTitle senLdrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
-                    <div class='ldrName senLdrName'>
+                  <div class='oneLdr minorityLdr repLdrs'>
+                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
@@ -400,7 +399,7 @@
                       <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription senLdrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
