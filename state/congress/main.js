@@ -115,20 +115,15 @@ $(()=>{
 
   // Slides the HoR menu up and down
   let repSlidDown = false;
-  console.log("repSlidDown worked");
   const useRepMenu = () => {
     let menuHeight = $(".repMenu").outerHeight();
-    console.log(menuHeight);
     let bttnRowHeight = $(".repBothTopBttns").outerHeight();
-    console.log(bttnRowHeight);
     let totalDistance = bttnRowHeight + menuHeight;
     if (repSlidDown == false) {
-      console.log(repSlidDown);
       let translateY = "translateY(" + totalDistance + "px)";
       $(".repMenu").css("transform", translateY);
       repSlidDown = true;
     } else {
-      console.log(repSlidDown);
       let translateY = "translateY(0px)";
       $(".repMenu").css("transform", translateY);
       repSlidDown = false;

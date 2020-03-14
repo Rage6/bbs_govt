@@ -239,7 +239,7 @@ body {
   padding: 5px 0;
   border-top: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
-  color: #fec231;
+  /* color: #fec231; */
   font-size: 1.9rem;
   text-align: center;
 }
@@ -600,6 +600,7 @@ body {
 
 .houseBox {
   display: none;
+  color: #fec231;
 }
 
 .repContent {
@@ -619,7 +620,9 @@ body {
 }
 
 .repModTitle {
-  background-color: #4A4D08;
+  /* color: #051E33; */
+  color: #fec231;
+  background-color: #898C1C;
 }
 
 .repMajTitle {
@@ -636,6 +639,34 @@ body {
   background-color: #400200;
 }
 
+.repTopBttn {
+  color: #fec231;
+}
+
+.repBillBox {
+
+}
+
+.repSelectTitle {
+
+}
+
+.repSelectBox {
+  background-color: #898C1C;
+}
+
+.currentRepSelect {
+  border: 1px solid #fec231;
+}
+
+.repSelectList {
+
+}
+
+.repSelectOption {
+  
+}
+
 /* END HOUSE OF REPS BOX */
 
 /* START SENATE BOX */
@@ -649,6 +680,7 @@ body {
 
 .senOption {
   color: #fec231;
+  background-color: #8C130E;
 }
 
 .senOption:hover {
@@ -662,10 +694,11 @@ body {
 }
 
 .senSubOption {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   padding-left: 10%;
   color: #fec231;
   font-size: 1.2rem;
+  background-color: #8C130E;
 }
 
 .senSubOption:hover {
@@ -706,6 +739,7 @@ body {
 }
 
 .senModTitle {
+  color: #fec231;
   background-color: #4A4D08;
 }
 

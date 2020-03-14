@@ -62,14 +62,14 @@
     $senateLdrList[] = $oneSenateLdr;
   };
 
-  // The
+  // The different statuses of Senate bills before becoming a law
   $senStatusStmt = $pdo->prepare(
     "SELECT
       *
     FROM
       Subtype
     WHERE
-      type_id=11
+      type_id=$senTypeId
         AND
       subtype_name NOT LIKE '%Law%'");
   $senStatusStmt->execute();
@@ -163,7 +163,7 @@
   $repIntroStmt->execute();
   $repIntro = $repIntroStmt->fetch(PDO::FETCH_ASSOC);
 
-  // Gets only the leaders WITHIN the House, NOT all of the Representative
+  // Gets only the LEADERS within the House, NOT all of the Representative
   $repLdrListStmt = $pdo->prepare(
     "SELECT
       job_id,
@@ -184,8 +184,20 @@
     $repLdrList[] = $oneHouseLdr;
   };
 
+  // The different statuses of Senate bills before becoming a law
+  $repStatusStmt = $pdo->prepare(
+    "SELECT
+      *
+    FROM
+      Subtype
+    WHERE
+      type_id=$repTypeId
+        AND
+      subtype_name NOT LIKE '%Law%'");
+  $repStatusStmt->execute();
+
   // echo("<pre>");
-  // var_dump($senMemList);
+  // var_dump($repMemList);
   // echo("</pre>");
 
 ?>

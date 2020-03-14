@@ -19,7 +19,7 @@ $(document).ready(()=>{
         background: "#051E33",
         titleBkgd: "#4A4D08",
         // subtitleBkgd: "#C5CC0A",
-        buttons: "#8C130E"
+        buttons: "#032540"
       };
 
       // Resets the new height after shifting to the senateBox

@@ -68,7 +68,7 @@
         </div>
       </div>
       <div class='senateBox'>
-        <div class='menu senMenu'>
+        <div class='firstTest menu senMenu secondTest'>
           <div class='menuOption senOption'>
             LEADERSHIP
           </div>
@@ -170,12 +170,12 @@
               <div class="selectList senSelectList">
                 <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
                 <?php
-                  while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
+                  while ($oneSenStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
                     echo("
                       <div
                         class='selectOption senSelectOption'
-                        data-sensubid='".$oneStatus['subtype_id']."'>
-                          ".$oneStatus['subtype_name']."
+                        data-sensubid='".$oneSenStatus['subtype_id']."'>
+                          ".$oneSenStatus['subtype_name']."
                       </div>
                     ");
                   };
@@ -406,20 +406,20 @@
               ?>
             </div>
           </div>
-          <div id="senBillBox" class="billBox">
-            <div class="moduleTitle senModTitle">BILLS</div>
-            <div class="selectTitle senSelectTitle">SEARCH BY STATUS</div>
-            <div class="selectBox senSelectBox">
-              <div id="currentSenSelect" class="currentSelect currentSenSelect">ALL</div>
-              <div class="selectList senSelectList">
-                <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
+          <div id="repBillBox" class="billBox">
+            <div class="moduleTitle repModTitle">BILLS</div>
+            <div class="selectTitle repSelectTitle">SEARCH BY STATUS</div>
+            <div class="selectBox repSelectBox">
+              <div id="currentRepSelect" class="currentSelect currentRepSelect">ALL</div>
+              <div class="selectList repSelectList">
+                <div class="selectOption repSelectOption" data-repsubid='0'>ALL</div>
                 <?php
-                  while ($oneStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
+                  while ($oneRepStatus = $repStatusStmt->fetch(PDO::FETCH_ASSOC)) {
                     echo("
                       <div
                         class='selectOption senSelectOption'
-                        data-sensubid='".$oneStatus['subtype_id']."'>
-                          ".$oneStatus['subtype_name']."
+                        data-repsubid='".$oneRepStatus['subtype_id']."'>
+                          ".$oneRepStatus['subtype_name']."
                       </div>
                     ");
                   };
@@ -431,8 +431,8 @@
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
-          <div id="senLawBox" class="lawBox senLawBox">
-            <div class="moduleTitle senModTitle">LAWS</div>
+          <div id="repLawBox" class="lawBox senLawBox">
+            <div class="moduleTitle repModTitle">LAWS</div>
             <div id="viewSenBillClick" class="question senQuestion">
               + <i>How do bills become laws?</i>
             </div>
@@ -485,7 +485,7 @@
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
           <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
-            <div class="moduleTitle senModTitle">COMMITTEES</div>
+            <div class="moduleTitle repModTitle">COMMITTEES</div>
             <div id="viewSenCommClick" class="question senQuestion">
               + <i>What does a committee do?</i>
             </div>
@@ -518,7 +518,7 @@
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
           <div id="senMemberBox" class="senMemberBox memberBox">
-            <div class="moduleTitle senModTitle">KNOW YOUR SENATOR</div>
+            <div class="moduleTitle repModTitle">KNOW YOUR SENATOR</div>
             <div class="allMember senAllMembers">
               <?php
                 $currentCity = "";
