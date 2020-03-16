@@ -4,6 +4,9 @@ $(document).ready(()=>{
 
     $.getJSON('bill_library/hor_bill_json.php',(repBillLibrary)=>{
 
+      // console.log(senBillLibrary);
+      // console.log(repBillLibrary);
+
       // Objects for filling billUpdate()'s parameters
       const amLgnColor = {
         blue: "#00467f",
@@ -16,10 +19,10 @@ $(document).ready(()=>{
         buttons: "#8C130E"
       };
       const repColors = {
-        background: "#051E33",
+        background: "#400200",
         titleBkgd: "#4A4D08",
         // subtitleBkgd: "#C5CC0A",
-        buttons: "#032540"
+        buttons: "#898C1C"
       };
 
       // Resets the new height after shifting to the senateBox
@@ -62,32 +65,32 @@ $(document).ready(()=>{
           .css('background-color',amLgnColor['gold'])
           .css('color',chamberColors['buttons']);
         let billCount = 0;
-        let noBill = true;
-        for (let billNum = 0; billNum < billArray.length; billNum++) {
-          if (subtypeId == "0" || billArray[billNum]['subtype_id'] == subtypeId) {
-            if (billCount > 0) {
+        let billTotal = billArray.length;
+        if (billTotal > 0) {
+          for (let billNum = 0; billNum < billArray.length; billNum++) {
+            if (subtypeId == "0" || billArray[billNum]['subtype_id'] == subtypeId) {
+              if (billCount > 0) {
+                $(billDirectory).append(
+                  "<div class='divider " + divider + "'></div>"
+                );
+              };
               $(billDirectory).append(
-                "<div class='divider " + divider + "'></div>"
+                  "<div class='oneBill " + oneBill + "'>\
+                    <div class='billNumber'>Bill # "+billArray[billNum]['post_order']+"</div>\
+                    <div class='billTitle'>\
+                      <div class='billSubtitle'>Title:</div>\
+                      <div>"+billArray[billNum]['title']+"</div>\
+                    </div>\
+                    <div class='billTitle'>\
+                      <div class='billSubtitle'>Status</div>\
+                      <div>"+billArray[billNum]['subtype_name']+"</div>\
+                    </div>\
+                  </div>"
               );
+              billCount++;
             };
-            $(billDirectory).append(
-                "<div class='oneBill " + oneBill + "'>\
-                  <div class='billNumber'>Bill # "+billArray[billNum]['post_order']+"</div>\
-                  <div class='billTitle'>\
-                    <div class='billSubtitle'>Title:</div>\
-                    <div>"+billArray[billNum]['title']+"</div>\
-                  </div>\
-                  <div class='billTitle'>\
-                    <div class='billSubtitle'>Status</div>\
-                    <div>"+billArray[billNum]['subtype_name']+"</div>\
-                  </div>\
-                </div>"
-            );
-            billCount++;
-            noBill = false;
           };
-        };
-        if (noBill == true) {
+        } else {
           $(billDirectory).append(
             "<div class='oneBill " + oneBill + "'>\
               <div class='billTitle noBill'>-- NO BILLS FOUND --</div>\
@@ -149,7 +152,7 @@ $(document).ready(()=>{
           let newSubId = event.target.dataset.repsubid;
           let newText = event.target.innerText;
           $("[data-repsubid="+newSubId+"]")
-            .css('color','#051E33')
+            .css('color',repColors['buttons'])
             .css('background-color','#fec231');
           $(".repSelectList")
             .css('display','none');

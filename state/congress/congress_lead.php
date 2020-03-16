@@ -98,7 +98,7 @@
        AND
       (Subtype.subtype_name LIKE '%law%')
     ORDER BY post_order DESC");
-  $senLawListStmt->execute();
+  // $senLawListStmt->execute();
 
   // Get all Senate committee information
   $senCommStmt = $pdo->prepare(
@@ -166,18 +166,28 @@
   // Gets only the LEADERS within the House, NOT all of the Representative
   $repLdrListStmt = $pdo->prepare(
     "SELECT
-      job_id,
+      Job.job_id,
       job_name,
       Delegate.delegate_id,
       first_name,
-      last_name
+      last_name,
+      description,
+      approved,
+      section_path,
+      filename,
+      extension
     FROM
+      Delegate INNER JOIN
       Job INNER JOIN
-      Delegate
+      Image
     WHERE
       Job.section_id=$repSecId AND
       Job.delegate_id=Delegate.delegate_id AND
-      Job.representative=0");
+      Job.job_id=Image.job_id AND
+      Job.section_id=Image.section_id AND
+      Job.representative=0
+    ORDER BY
+      Job.job_id ASC");
   $repLdrListStmt->execute();
   $repLdrList = [];
   while ($oneHouseLdr = $repLdrListStmt->fetch(PDO::FETCH_ASSOC)) {
@@ -196,8 +206,39 @@
       subtype_name NOT LIKE '%Law%'");
   $repStatusStmt->execute();
 
+
+
+  // Get all of the representatives listed
+  $repMemList = [];
+  $repMemListStmt = $pdo->prepare(
+    "SELECT
+      first_name,
+      last_name,
+      hometown,
+      section_name
+    FROM
+      Delegate
+        JOIN
+      Job
+        JOIN
+      Section
+    WHERE
+      Job.section_id=$repSecId
+        AND
+      Job.representative=Section.section_id
+        AND
+      Job.job_name='Representative'
+        AND
+      Job.delegate_id=Delegate.delegate_id
+    ORDER BY
+      section_name,hometown ASC");
+  $repMemListStmt->execute();
+  while ($oneRepMember = $repMemListStmt->fetch(PDO::FETCH_ASSOC)) {
+    $repMemList[] = $oneRepMember;
+  };
+
   // echo("<pre>");
-  // var_dump($repMemList);
+  // var_dump($repLdrList);
   // echo("</pre>");
 
 ?>

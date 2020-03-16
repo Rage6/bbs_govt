@@ -182,7 +182,7 @@
                 ?>
               </div>
             </div>
-            <div id="senBillDirectory" class="billDirectory">
+            <div id="senBillDirectory" class="billDirectory senBillDirectory">
               <!-- This is where the selected bills are listed -->
             </div>
           </div>
@@ -215,6 +215,7 @@
                 </div>
                 <div id="senLawList" class="senLawList lawList">
                   <?php
+                    $senLawListStmt->execute();
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
                         <div class='oneLaw oneSenLaw'>
@@ -359,22 +360,22 @@
             <div id="repMajBox" class="majorityBox">
               <div class="bothMajTitle repMajTitle">MAJORITY LEADERS</div>
               <?php
-                for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
+                for ($repLdrNum = 0; $repLdrNum < 6; $repLdrNum++) {
                   echo("
                   <div class='oneLdr majorityLdrs repLdrs'>
-                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrTitle'>".$repLdrList[$repLdrNum]['job_name']."</div>
                     <div class='ldrName'>
-                      ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
+                      ".$repLdrList[$repLdrNum]['first_name']." ".$repLdrList[$repLdrNum]['last_name']."
                     </div>");
-                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
+                    if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
+                      <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."'>");
                     } else {
                       echo("
                         <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
@@ -384,22 +385,22 @@
              class="minorityBox">
               <div class="bothMinTitle repMinTitle">MINORITY LEADERS</div>
               <?php
-                for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
+                for ($repLdrNum = 6; $repLdrNum < 10; $repLdrNum++) {
                   echo("
                   <div class='oneLdr minorityLdr repLdrs'>
-                    <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
+                    <div class='ldrTitle'>".$repLdrList[$repLdrNum]['job_name']."</div>
                     <div class='ldrName'>
-                      ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
+                      ".$repLdrList[$repLdrNum]['first_name']." ".$repLdrList[$repLdrNum]['last_name']."
                     </div>");
-                    if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
+                    if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
+                      <img src='".$repLdrList[$repLdrNum]['section_path']."/".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."'>");
                     } else {
                       echo("
                       <img src='../../img/default_photo.png'>");
                     };
                     echo("
-                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
@@ -417,7 +418,7 @@
                   while ($oneRepStatus = $repStatusStmt->fetch(PDO::FETCH_ASSOC)) {
                     echo("
                       <div
-                        class='selectOption senSelectOption'
+                        class='selectOption repSelectOption'
                         data-repsubid='".$oneRepStatus['subtype_id']."'>
                           ".$oneRepStatus['subtype_name']."
                       </div>
@@ -426,17 +427,17 @@
                 ?>
               </div>
             </div>
-            <div id="senBillDirectory" class="billDirectory">
+            <div id="repBillDirectory" class="billDirectory repBillDirectory">
               <!-- This is where the selected bills are listed -->
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
-          <div id="repLawBox" class="lawBox senLawBox">
+          <div class='topBttn repTopBttn'>- TOP -</div>
+          <div id="repLawBox" class="lawBox repLawBox">
             <div class="moduleTitle repModTitle">LAWS</div>
-            <div id="viewSenBillClick" class="question senQuestion">
+            <div id="viewRepBillClick" class="question repQuestion">
               + <i>How do bills become laws?</i>
             </div>
-            <div id="viewSenBillBox" class="answer senAnswer">
+            <div id="viewRepBillBox" class="answer repAnswer">
               Within the Buckeye Boys State, a bill becomes a law after two steps:
               <ol>
                 <li>
@@ -446,26 +447,27 @@
                   Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
                 </li>
             </div>
-            <div id="viewSenReadClick" class="question senQuestion">
+            <div id="viewRepReadClick" class="question repQuestion">
               + <i>How can I read a law?</i>
             </div>
-            <div id="viewSenReadBox" class="answer senAnswer">
+            <div id="viewRepReadBox" class="answer repAnswer">
               To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
             </div>
-            <div class="lawTotal senLawTotal">
+            <div class="lawTotal repLawTotal">
               <div class="leftHalf">
-                <div class="lawListTitle senLawListTitle">
+                <div class="lawListTitle repLawListTitle">
                   <div>Title & Approval</div>
                 </div>
-                <div id="senLawList" class="senLawList lawList">
+                <div id="repLawList" class="repLawList lawList">
                   <?php
+                    $senLawListStmt->execute();
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
-                        <div class='oneLaw oneSenLaw'>
-                          <div class='oneLawTitle oneSenLawTitle' data-postid='".$oneSenLaw['post_id']."'>
+                        <div class='oneLaw oneRepLaw'>
+                          <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."'>
                             ".$oneSenLaw['title']."
                           </div>
-                          <div class='oneLawApproval oneSenLawApproval' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."'>
                             ".$oneSenLaw['subtype_name']."
                           </div>
                         </div>");
@@ -474,7 +476,7 @@
                 </div>
               </div>
               <div class="rightHalf">
-                <div class="lawContent senLawContent">
+                <div class="lawContent repLawContent">
                   <!-- This is where the selected law's details are listed -->
                   <div class="startEmpty" style='text-align:center'>
                     <i>-- SELECT A LAW --</i>
@@ -517,33 +519,33 @@
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
-          <div id="senMemberBox" class="senMemberBox memberBox">
+          <div id="repMemberBox" class="repMemberBox memberBox">
             <div class="moduleTitle repModTitle">KNOW YOUR SENATOR</div>
-            <div class="allMember senAllMembers">
+            <div class="allMember repAllMembers">
               <?php
                 $currentCity = "";
                 $initCity = true;
-                for ($oneSenNum = 0; $oneSenNum < count($senMemList); $oneSenNum++) {
-                  if ($currentCity != $senMemList[$oneSenNum]['section_name']) {
+                for ($oneRepNum = 0; $oneRepNum < count($repMemList); $oneRepNum++) {
+                  if ($currentCity != $repMemList[$oneRepNum]['section_name']) {
                     if ($initCity == false) {
                       echo("</div>");
                     } else {
                       $initCity = false;
                     }
                     echo("
-                      <div class='oneCity oneSenCity'>
-                        <div class='cityName senCityName'>
-                          ".$senMemList[$oneSenNum]['section_name']." City
+                      <div class='oneCity oneRepCity'>
+                        <div class='cityName repCityName'>
+                          ".$repMemList[$oneRepNum]['section_name']." City
                         </div>");
-                    $currentCity = $senMemList[$oneSenNum]['section_name'];
+                    $currentCity = $repMemList[$oneRepNum]['section_name'];
                   };
                   echo("
-                    <div class='oneCongressman oneSenator'>
-                      <div class='oneCongName oneSenName'>
-                        ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
+                    <div class='oneCongressman oneRepresentative'>
+                      <div class='oneCongName oneRepName'>
+                        ".$repMemList[$oneRepNum]['first_name']." ".$repMemList[$oneRepNum]['last_name']."
                       </div>
-                      <div class='oneCongHome oneSenHome'>
-                        ".$senMemList[$oneSenNum]['hometown'].", OH
+                      <div class='oneCongHome oneRepHome'>
+                        ".$repMemList[$oneRepNum]['hometown'].", OH
                       </div>
                     </div>");
                 };

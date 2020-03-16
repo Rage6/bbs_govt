@@ -341,7 +341,7 @@ body {
   margin: 30px 5% 0 5%;
   border: 1px solid #fec231;
   border-radius: 15px;
-  background-color: #051E33;
+  /* background-color: #051E33; */
   overflow-y: scroll;
   min-height: 200px;
   max-height: 500px;
@@ -664,7 +664,37 @@ body {
 }
 
 .repSelectOption {
-  
+  border: 1px solid #fec231;
+}
+
+.repBillDirectory {
+  background-color: #400200;
+}
+
+
+
+.repCityName {
+  border-radius: 5px 5px 0 0;
+  color: #051E33;
+  background-color: #fec231;
+}
+
+.oneRepresentative {
+  border: 1px solid #fec231;
+  color: #fec231;
+  background-color: #400200;
+}
+
+.oneRepCity:last-child {
+
+}
+
+.oneRepName {
+
+}
+
+.oneRepHome {
+
 }
 
 /* END HOUSE OF REPS BOX */
@@ -783,6 +813,11 @@ body {
 
 .senSelectOption {
   border: 1px solid #fec231;
+}
+
+.senBillDirectory {
+  background-color: #051E33;
+  }
 }
 
 .oneSenBill {

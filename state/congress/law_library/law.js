@@ -9,8 +9,8 @@ $(document).ready(()=>{
     let clickedLawContent = null;
     const senTitle = "oneSenLawTitle";
     const senApproval = "oneSenLawApproval";
-    // const repTitle = ;
-    // const repApproval = ;
+    const repTitle = "oneRepLawTitle";
+    const repApproval = "oneRepLawApproval";
     $("[data-postid]").click(()=>{
       // console.log(event.target.classList);
       for (let classNum = 0; classNum < event.target.classList.length; classNum++) {
@@ -23,11 +23,11 @@ $(document).ready(()=>{
           clickedLawContent = ".senLawContent";
         } else {
           // // This is will be filled out for the the HoR's law list
-          // initBkgd = ;
-          // initColor = ;
-          // clickedTitle = ;
-          // clickedApproval = ;
-          // clickedLawContent = ;
+          initBkgd = "#8C130E";
+          initColor = "#fec231";
+          clickedTitle = ".oneSenLawTitle";
+          clickedApproval = ".oneSenLawApproval";
+          clickedLawContent = ".senLawContent";
         };
       };
       let lawId = event.target.dataset.postid;
