@@ -206,7 +206,32 @@
       subtype_name NOT LIKE '%Law%'");
   $repStatusStmt->execute();
 
-
+  // Get all Senate committee information
+  $repCommStmt = $pdo->prepare(
+    "SELECT
+      dpt_id,
+      dpt_name,
+      purpose,
+      job_name,
+      first_name,
+      last_name
+    FROM
+      Department
+        JOIN
+      Job
+        JOIN
+      Delegate
+    WHERE
+      Department.section_id=$repSecId
+        AND
+      Department.job_id=Job.job_id
+        AND
+      Delegate.delegate_id=Job.delegate_id
+        AND
+      Department.active=1
+    ORDER BY
+      dpt_name ASC");
+  $repCommStmt->execute();
 
   // Get all of the representatives listed
   $repMemList = [];

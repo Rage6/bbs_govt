@@ -254,10 +254,10 @@
                 while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
                   echo("
                     <div class='oneComm senOneComm'>
-                      <div class='commTitle senCommTitle' data-dptid='".$oneSenComm['dpt_id']."'>
+                      <div class='commTitle senCommTitle' data-dptid='".$oneSenComm['dpt_id']."' data-chambertype='senate'>
                         ".$oneSenComm['dpt_name']."
                       </div>
-                      <div class='commContent senCommContent' data-dptid='".$oneSenComm['dpt_id']."'>
+                      <div class='commContent senCommContent' data-dptid='".$oneSenComm['dpt_id']."' data-chambertype='senate'>
                         <div class='commPurpose'>
                           ".$oneSenComm['purpose']."
                         </div>
@@ -486,30 +486,30 @@
             </div>
           </div>
           <div class='topBttn repTopBttn'>- TOP -</div>
-          <div id="repCommitteeBox" class="senCommitteeBox committeeBox">
+          <div id="repCommitteeBox" class="repCommitteeBox committeeBox">
             <div class="moduleTitle repModTitle">COMMITTEES</div>
-            <div id="viewSenCommClick" class="question senQuestion">
+            <div id="viewRepCommClick" class="question repQuestion">
               + <i>What does a committee do?</i>
             </div>
-            <div id="viewSenCommBox" class="answer senAnswer">
+            <div id="viewRepCommBox" class="answer repAnswer">
               Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
             </div>
-            <div class="allComm senAllComm">
+            <div class="allComm repAllComm">
               <?php
-                while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
+                while ($oneRepComm = $repCommStmt->fetch(PDO::FETCH_ASSOC)) {
                   echo("
-                    <div class='oneComm senOneComm'>
-                      <div class='commTitle senCommTitle' data-dptid='".$oneSenComm['dpt_id']."'>
-                        ".$oneSenComm['dpt_name']."
+                    <div class='oneComm repOneComm'>
+                      <div class='commTitle repCommTitle' data-dptid='".$oneRepComm['dpt_id']."' data-chambertype='house'>
+                        ".$oneRepComm['dpt_name']."
                       </div>
-                      <div class='commContent senCommContent' data-dptid='".$oneSenComm['dpt_id']."'>
+                      <div class='commContent repCommContent' data-dptid='".$oneRepComm['dpt_id']."' data-chambertype='house'>
                         <div class='commPurpose'>
-                          ".$oneSenComm['purpose']."
+                          ".$oneRepComm['purpose']."
                         </div>
                         <div class='commHead'>
-                          <div><u>".$oneSenComm['job_name']."</u></div>
+                          <div><u>".$oneRepComm['job_name']."</u></div>
                           <div>
-                            ".$oneSenComm['first_name']." ".$oneSenComm['last_name']."
+                            ".$oneRepComm['first_name']." ".$oneRepComm['last_name']."
                           </div>
                         </div>
                       </div>
@@ -520,7 +520,7 @@
           </div>
           <div class='topBttn repTopBttn'>- TOP -</div>
           <div id="repMemberBox" class="repMemberBox memberBox">
-            <div class="moduleTitle repModTitle">KNOW YOUR SENATOR</div>
+            <div class="moduleTitle repModTitle">KNOW YOUR REPRESENTATIVE</div>
             <div class="allMember repAllMembers">
               <?php
                 $currentCity = "";

@@ -562,7 +562,7 @@ body {
   border-bottom: 1px solid #fec231;
   display: none;
   transition: transform 0.5s linear;
-  background-color: #051E33;
+  background-color: #004E8C;
 }
 
 .repOption {
@@ -573,7 +573,7 @@ body {
 }
 
 .repOption:hover {
-  color: #051E33;
+  color: #004E8C;
   background-color: #fec231;
 }
 
@@ -727,6 +727,26 @@ body {
 
 .oneRepLawApproval {
   background-color: #004E8C;
+}
+
+.repCommitteeBox {
+
+}
+
+.repAllComm {
+
+}
+
+.repOneComm {
+
+}
+
+.repCommTitle {
+  background-color: #004E8C;
+}
+
+.repCommContent {
+  background-color: #400200;
 }
 
 .repCityName {
