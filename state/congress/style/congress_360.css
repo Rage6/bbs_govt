@@ -675,6 +675,60 @@ body {
   background-color: #898C1C;
 }
 
+.repLawBox {
+
+}
+
+.repQuestion {
+  color: #fec231;
+  background-color: #004E8C;
+}
+
+.repAnswer {
+  color: #fec231;
+  background-color: #400200;
+}
+
+.repDivider {
+  margin: 0 10%;
+  border: 1px dashed #fec231;
+}
+
+.repLawTotal {
+
+}
+
+.repLawListTitle {
+  border-top: 1px solid #fec231;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  background-color: #400200;
+}
+
+.repLawList {
+  border: 1px solid #fec231;
+  background-color: #400200;
+}
+
+.repLawContent {
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  background-color: #400200;
+}
+
+.oneRepLaw {
+
+}
+
+.oneRepLawTitle {
+  background-color: #004E8C;
+}
+
+.oneRepLawApproval {
+  background-color: #004E8C;
+}
+
 .repCityName {
   border-radius: 5px 5px 0 0;
   color: #051E33;
@@ -826,6 +880,17 @@ body {
 
 }
 
+.senQuestion {
+  color: #fec231;
+  background-color: #8C130E;
+}
+
+.senAnswer {
+  border-bottom: #fec231;
+  color: #fec231;
+  background-color: #051E33;
+}
+
 .senDivider {
   margin: 0 10%;
   border: 1px dashed #fec231;
@@ -844,17 +909,6 @@ body {
 
 .senLawList {
   border: 1px solid #fec231;
-  background-color: #051E33;
-}
-
-.senQuestion {
-  color: #fec231;
-  background-color: #8C130E;
-}
-
-.senAnswer {
-  border-bottom: #fec231;
-  color: #fec231;
   background-color: #051E33;
 }
 

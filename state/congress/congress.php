@@ -219,10 +219,10 @@
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
                         <div class='oneLaw oneSenLaw'>
-                          <div class='oneLawTitle oneSenLawTitle' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawTitle oneSenLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='senate'>
                             ".$oneSenLaw['title']."
                           </div>
-                          <div class='oneLawApproval oneSenLawApproval' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawApproval oneSenLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='senate'>
                             ".$oneSenLaw['subtype_name']."
                           </div>
                         </div>");
@@ -464,10 +464,10 @@
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
                         <div class='oneLaw oneRepLaw'>
-                          <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
                             ".$oneSenLaw['title']."
                           </div>
-                          <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."'>
+                          <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
                             ".$oneSenLaw['subtype_name']."
                           </div>
                         </div>");

@@ -12,38 +12,57 @@ $(document).ready(()=>{
     const repTitle = "oneRepLawTitle";
     const repApproval = "oneRepLawApproval";
     $("[data-postid]").click(()=>{
-      // console.log(event.target.classList);
       for (let classNum = 0; classNum < event.target.classList.length; classNum++) {
         currentClass = event.target.classList[classNum];
         if (currentClass == senTitle || currentClass == senApproval) {
+          chamber = "senate";
           initBkgd = "#8C130E";
-          initColor = "#fec231";
+          // initColor = "#fec231";
           clickedTitle = ".oneSenLawTitle";
           clickedApproval = ".oneSenLawApproval";
           clickedLawContent = ".senLawContent";
         } else {
           // // This is will be filled out for the the HoR's law list
-          initBkgd = "#8C130E";
+          chamber = "house";
+          initBkgd = "#004E8C";
           initColor = "#fec231";
-          clickedTitle = ".oneSenLawTitle";
-          clickedApproval = ".oneSenLawApproval";
-          clickedLawContent = ".senLawContent";
+          clickedTitle = ".oneRepLawTitle";
+          clickedApproval = ".oneRepLawApproval";
+          clickedLawContent = ".repLawContent";
         };
       };
       let lawId = event.target.dataset.postid;
-      $(clickedApproval)
-        .css('background-color',initBkgd)
-        .css('color',initColor);
-      $(clickedTitle)
-        .css('background-color',initBkgd)
-        .css('color',initColor);
-      $("[data-postid='" + lawId + "']")
+      $(".oneRepLawApproval")
+        .css('background-color',"#004E8C")
+        .css('color',"#fec231");
+      $(".oneRepLawTitle")
+        .css('background-color',"#004E8C")
+        .css('color',"#fec231");
+      $(".oneSenLawApproval")
+        .css('background-color',"#8C130E")
+        .css('color',"#fec231");
+      $(".oneSenLawTitle")
+        .css('background-color',"#8C130E")
+        .css('color',"#fec231");
+      $("[data-postid='" + lawId + "'][data-chamber='" + chamber + "']")
         .css('background-color',initColor)
         .css('color',initBkgd);
       // console.log(lawLibrary);
       for (let lawNum = 0; lawNum < lawLibrary.length; lawNum++) {
         if (lawLibrary[lawNum]['post_id'] == lawId) {
-          $(clickedLawContent).empty();
+          $(".repLawContent").empty();
+          $(".senLawContent").empty();
+          if (clickedLawContent == ".repLawContent") {
+            $(".senLawContent").append(
+              "<div class='startEmpty' style='text-align:center'>\
+                <i>-- SELECT A LAW --</i>\
+              </div>");
+          } else {
+            $(".repLawContent").append(
+              "<div class='startEmpty' style='text-align:center'>\
+                <i>-- SELECT A LAW --</i>\
+              </div>");
+          };
           if (lawLibrary[lawNum]['content'] == '') {
             $(clickedLawContent).append(
               "<div>Details not yet published</div>"

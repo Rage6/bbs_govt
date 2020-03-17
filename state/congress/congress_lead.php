@@ -194,7 +194,7 @@
     $repLdrList[] = $oneHouseLdr;
   };
 
-  // The different statuses of Senate bills before becoming a law
+  // The different statuses of House's bills before becoming a law
   $repStatusStmt = $pdo->prepare(
     "SELECT
       *
