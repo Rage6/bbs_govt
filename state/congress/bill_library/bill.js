@@ -22,7 +22,7 @@ $(document).ready(()=>{
         background: "#400200",
         titleBkgd: "#4A4D08",
         // subtitleBkgd: "#C5CC0A",
-        buttons: "#898C1C"
+        buttons: "#004E8C"
       };
 
       // Resets the new height after shifting to the senateBox
@@ -54,12 +54,14 @@ $(document).ready(()=>{
           billDirectory = "#senBillDirectory";
           divider = "senDivider";
           oneBill = "oneSenBill";
+          billTitle = "senBillNumber";
         } else if (chamber == "house") {
           chamberColors = repColors;
           subtypeIdData = "[data-repsubid='"+subtypeId+"']";
           billDirectory = "#repBillDirectory";
           divider = "repDivider";
           oneBill = "oneRepBill";
+          billTitle = "repBillNumber";
         };
         $(subtypeIdData)
           .css('background-color',amLgnColor['gold'])
@@ -76,7 +78,9 @@ $(document).ready(()=>{
               };
               $(billDirectory).append(
                   "<div class='oneBill " + oneBill + "'>\
-                    <div class='billNumber'>Bill # "+billArray[billNum]['post_order']+"</div>\
+                    <div class='billNumber " + billTitle + "'>\
+                      Bill # "+billArray[billNum]['post_order']+"\
+                    </div>\
                     <div class='billTitle'>\
                       <div class='billSubtitle'>Title:</div>\
                       <div>"+billArray[billNum]['title']+"</div>\

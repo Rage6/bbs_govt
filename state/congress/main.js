@@ -141,27 +141,27 @@ $(()=>{
       scrollTop: moduleTop
     }, msec);
   };
-  // Slide to Majority Leaders
+  // Slide to Senate Majority Leaders
   $("#senMajClick").click(() => {
     scrollToOption("#senMajBox",500);
     useSenMenu();
   });
-  // Slide to Minority Leaders
+  // Slide to Senate Minority Leaders
   $("#senMinClick").click(() => {
     scrollToOption("#senMinBox",700);
     useSenMenu();
   });
-  // Slide to Bills
+  // Slide to Senate Bills
   $("#senBillClick").click(() => {
     scrollToOption("#senBillBox",900);
     useSenMenu();
   });
-  // Slide to Laws
+  // Slide to Laws on Senate page
   $("#senLawClick").click(()=> {
     scrollToOption("#senLawBox",1100);
     useSenMenu();
   });
-  // Slide to Committees
+  // Slide to Senate Committees
   $("#senCommitteeClick").click(()=> {
     scrollToOption("#senCommitteeBox",1300);
     useSenMenu();
@@ -171,9 +171,43 @@ $(()=>{
     scrollToOption("#senMemberBox",1500);
     useSenMenu();
   });
-  // Send window back to the top of the page
+  // Send window back to the top of the Senate page
   $(".senTopBttn").click(() => {
     scrollToOption(".senateBox",500);
+  });
+  // Slide to House Majority Leaders
+  $("#repMajClick").click(() => {
+    scrollToOption("#repMajBox",500);
+    useRepMenu();
+  });
+  // Slide to House Minority Leaders
+  $("#repMinClick").click(() => {
+    scrollToOption("#repMinBox",700);
+    useRepMenu();
+  });
+  // Slide to House Bills
+  $("#repBillClick").click(() => {
+    scrollToOption("#repBillBox",900);
+    useRepMenu();
+  });
+  // Slide to Laws on House page
+  $("#repLawClick").click(()=> {
+    scrollToOption("#repLawBox",1100);
+    useRepMenu();
+  });
+  // Slide to House Committees
+  $("#repCommitteeClick").click(()=> {
+    scrollToOption("#repCommitteeBox",1300);
+    useRepMenu();
+  });
+  // Slide to the list of Representatives
+  $("#repMemberClick").click(()=> {
+    scrollToOption("#repMemberBox",1500);
+    useRepMenu();
+  });
+  // Send window back to the top of the House page
+  $(".repTopBttn").click(() => {
+    scrollToOption(".houseBox",500);
   });
 
   // Function that shows an answer to the 'Laws' questions

@@ -376,7 +376,7 @@
                     };
                     echo("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
-                    <div class='topBttn senTopBttn'>- TOP -</div>
+                    <div class='topBttn repTopBttn'>- TOP -</div>
                   </div>");
                 };
               ?>
@@ -401,7 +401,7 @@
                     };
                     echo("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
-                    <div class='topBttn senTopBttn'>- TOP -</div>
+                    <div class='topBttn repTopBttn'>- TOP -</div>
                   </div>");
                 };
               ?>
@@ -485,8 +485,8 @@
               </div>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
-          <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
+          <div class='topBttn repTopBttn'>- TOP -</div>
+          <div id="repCommitteeBox" class="senCommitteeBox committeeBox">
             <div class="moduleTitle repModTitle">COMMITTEES</div>
             <div id="viewSenCommClick" class="question senQuestion">
               + <i>What does a committee do?</i>
@@ -518,7 +518,7 @@
               ?>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div class='topBttn repTopBttn'>- TOP -</div>
           <div id="repMemberBox" class="repMemberBox memberBox">
             <div class="moduleTitle repModTitle">KNOW YOUR SENATOR</div>
             <div class="allMember repAllMembers">
@@ -553,7 +553,7 @@
               </div>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div class='topBttn repTopBttn'>- TOP -</div>
         </div>
       </div>
     </div>
