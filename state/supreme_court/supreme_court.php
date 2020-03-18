@@ -80,7 +80,7 @@
                   <div>".$oneJustice['job_name']."</div>
                 </div>");
                 if ($oneJustice['approved'] == 1) {
-                  echo("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />");
+                  echo("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."?t=".time()."' />");
                 } else {
                   echo("<img class='justiceImg' src='../../img/default_photo.png' />");
                 };

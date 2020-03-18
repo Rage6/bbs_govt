@@ -125,7 +125,7 @@
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."'>");
                     } else {
                       echo("
                         <img src='../../img/default_photo.png'>");
@@ -149,7 +149,7 @@
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."'>");
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."'>");
                     } else {
                       echo("
                       <img src='../../img/default_photo.png'>");
@@ -369,7 +369,7 @@
                     </div>");
                     if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."'>");
+                      <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
                     } else {
                       echo("
                         <img src='../../img/default_photo.png'>");
@@ -394,7 +394,7 @@
                     </div>");
                     if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$repLdrList[$repLdrNum]['section_path']."/".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."'>");
+                      <img src='".$repLdrList[$repLdrNum]['section_path']."/".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
                     } else {
                       echo("
                       <img src='../../img/default_photo.png'>");
