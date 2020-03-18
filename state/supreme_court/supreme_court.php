@@ -39,9 +39,15 @@
   <body>
     <div class="wholePage">
       <div class="arrowAndTitle">
-        <a class="backArrow" href="../../index.php">
+        <!-- <a class="backArrow" href="../../index.php">
           <img src="../../img/home_gold.png" />
-        </a>
+        </a> -->
+        <div class="bothTopBttns">
+          <a href="../../index.php">
+            <img src="../../img/home_gold.png" />
+          </a>
+          <img id="menuBttn" class="showMenu" src="../../img/menu_gold.png" />
+        </div>
         <div class="mainTitle">
           <div class="courtLogo"></div>
           <div class="mainTitleText">
@@ -55,7 +61,6 @@
         </div>
       </div>
       <div class="menuContent">
-        <div class="menuBttn" id="mainMenu">MENU</div>
         <div class="allOptions">
           <div id="justiceLink" class="optionBttn">JUSTICES</div>
           <div id="caseLink" class="optionBttn">COURT CASES</div>

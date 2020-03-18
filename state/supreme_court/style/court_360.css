@@ -29,6 +29,20 @@ a {
   height: 100%;
 }
 
+.bothTopBttns {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+}
+
+.bothTopBttns img {
+  height: 50px;
+  width: auto;
+}
+
 .mainTitle {
   padding: 30px 5% 15px 5%;
   color: #fec231;
