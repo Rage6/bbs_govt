@@ -1,7 +1,24 @@
+body {
+  background-color: grey;
+}
+
+.wholePage {
+  margin-left: 50%;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  position: absolute;
+  left: -720px;
+  width: 1440px;
+}
+
 .backArrow {
   top: 10px;
   left: 10px;
   width: 4%;
+}
+
+.showMenu {
+  display: none;
 }
 
 .govTitle {
@@ -44,7 +61,7 @@
 }
 
 #menuContent {
-  display: block;
+  display: block !important;
   width: 100%;
 }
 

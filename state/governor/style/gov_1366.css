@@ -4,6 +4,10 @@
   width: 5%;
 }
 
+.showMenu {
+  display: none;
+}
+
 .govTitle {
   display: flex;
   justify-content: space-around;
@@ -43,7 +47,7 @@
 }
 
 #menuContent {
-  display: block;
+  display: block !important;
   width: 50%;
 }
 

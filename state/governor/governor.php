@@ -43,21 +43,20 @@
   <body>
     <div class="wholePage">
       <a name="topTag"></a>
-      <a class="backArrow" href="../../index.php">
-        <img src="../../img/home_gold.png" />
-      </a>
+      <div class="bothTopBttns">
+        <a href="../../index.php">
+          <img src="../../img/home_gold.png" />
+        </a>
+        <img id="menuBttn" class="showMenu" src="../../img/menu_gold.png" />
+      </div>
       <div class="govTitle">
         <div><?php echo($govStaffList[0]['first_name']." ".$govStaffList[0]['last_name']) ?></div>
         <div class="divider"></div>
         <div>Governor of Buckeye Boys State</div>
       </div>
-      <div id="menuClick" class="menuBar">
-        MENU
-      </div>
       <div class="fullContent">
         <div id="menuContent" class="menuList">
           <div class="menuBox">
-            <!-- <a href="#governorTag"> -->
             <a id="govLink">
               <div id="hoverLink" class="menuButton">
                 > Governor & Lt. Governor
@@ -432,5 +431,6 @@
         </a>
       </div>
     </div>
+  </div>
   </body>
 </html>

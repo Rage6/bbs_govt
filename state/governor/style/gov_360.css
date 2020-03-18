@@ -13,9 +13,17 @@ body {
   left: 0;
   width: 12%;
 }
-.backArrow img {
-  height: 100%;
+.bothTopBttns {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+  height: 50px;
+}
+.bothTopBttns img {
+  height: 50px;
+  width: auto;
 }
 .govTitle {
   border-bottom: 3px solid #fec231;
@@ -35,7 +43,7 @@ body {
 }
 .menuBar {
   border-bottom: 1px solid #2020a0;
-  padding: 2px 0;
+  padding: 5px 0;
   color: #2020a0;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -50,6 +58,7 @@ body {
 }
 #menuContent {
   display: none;
+  /* height: 0px; */
 }
 .menuButton {
   border-bottom: 1px dashed #2020a0;
@@ -67,7 +76,6 @@ body {
 .govContent {
   padding-bottom: 50px;
   background-position: bottom;
-  /* background-image: linear-gradient(to bottom right, #2020a0, white, red); */
 }
 #img_0 {
   display: block;

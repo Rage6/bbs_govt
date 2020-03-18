@@ -74,7 +74,7 @@
           <li>A short summary of the BBS program</li>
           <!-- <li>Election process for each elected official</li> -->
         </ul>
-        Use the 'GLOSSARY' button to find your desired information.
+        Use the 'MENU' button to find your desired information.
       </div>
       <div id="numbersTop" class="statsBox">
         <div class="statsTitle"><span class="introTitle">B</span>y the numbers...</div>
@@ -117,30 +117,6 @@
                 </div>
               </div>
             </a>
-            <!-- <a href="state/senate/senate.php">
-              <div class="levelButton">
-                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                  <div>
-                    Senate
-                  </div>
-                  <div>
-                    <div><img src='img/right_arrow.png'></div>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href="state/house_of_reps/house_of_reps.php">
-              <div class="levelButton">
-                <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                  <div>
-                    House of Representatives
-                  </div>
-                  <div>
-                    <div><img src='img/right_arrow.png'></div>
-                  </div>
-                </div>
-              </div>
-            </a> -->
             <a href="state/supreme_court/supreme_court.php">
               <div class="levelButton">
                 <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
