@@ -340,7 +340,8 @@ body {
 .billDirectory {
   margin: 30px 5% 0 5%;
   border: 1px solid #fec231;
-  border-radius: 15px;
+  border-radius: 10px;
+  padding-bottom: 20px;
   /* background-color: #051E33; */
   overflow-y: scroll;
   min-height: 200px;
@@ -348,7 +349,7 @@ body {
 }
 
 .oneBill {
-  padding: 20px 4%;
+  padding: 20px 4% 0 4%;
 }
 
 .noBill {
@@ -356,16 +357,30 @@ body {
 }
 
 .billNumber {
-  margin-bottom: 20px;
+  border: 1px solid #fec231;
+  border-radius: 10px 10px 0 0;
   padding: 5px 0;
   text-align: center;
   font-size: 1.2rem;
   background-color: #4A4D08;
 }
 
+.billData {
+  border-radius: 0 0 10px 10px;
+  padding: 10px 2%;
+  color: #4A4D08;
+  background-color: #fec231;
+}
+
 .billTitle {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+
+.billTitle:last-of-type {
+  margin-bottom: 0;
 }
 
 .billSubtitle {
@@ -375,7 +390,9 @@ body {
 }
 
 .billTitle div:last-of-type {
-  text-align: center;
+  overflow: scroll;
+  max-height: 100px;
+  max-width: 75%;
 }
 
 .billStatus {

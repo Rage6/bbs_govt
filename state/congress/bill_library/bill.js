@@ -55,6 +55,7 @@ $(document).ready(()=>{
           divider = "senDivider";
           oneBill = "oneSenBill";
           billTitle = "senBillNumber";
+          billData = "senBillData";
         } else if (chamber == "house") {
           chamberColors = repColors;
           subtypeIdData = "[data-repsubid='"+subtypeId+"']";
@@ -62,36 +63,32 @@ $(document).ready(()=>{
           divider = "repDivider";
           oneBill = "oneRepBill";
           billTitle = "repBillNumber";
+          billData = "repBillData";
         };
         $(subtypeIdData)
           .css('background-color',amLgnColor['gold'])
           .css('color',chamberColors['buttons']);
-        let billCount = 0;
         let billTotal = billArray.length;
         if (billTotal > 0) {
           for (let billNum = 0; billNum < billArray.length; billNum++) {
             if (subtypeId == "0" || billArray[billNum]['subtype_id'] == subtypeId) {
-              if (billCount > 0) {
-                $(billDirectory).append(
-                  "<div class='divider " + divider + "'></div>"
-                );
-              };
               $(billDirectory).append(
                   "<div class='oneBill " + oneBill + "'>\
                     <div class='billNumber " + billTitle + "'>\
-                      Bill # "+billArray[billNum]['post_order']+"\
+                      Bill #"+billArray[billNum]['post_order']+"\
                     </div>\
-                    <div class='billTitle'>\
-                      <div class='billSubtitle'>Title:</div>\
-                      <div>"+billArray[billNum]['title']+"</div>\
-                    </div>\
-                    <div class='billTitle'>\
-                      <div class='billSubtitle'>Status</div>\
-                      <div>"+billArray[billNum]['subtype_name']+"</div>\
+                    <div class='billData " + billData + "'>\
+                      <div class='billTitle'>\
+                        <div class='billSubtitle'>Title:</div>\
+                        <div>"+billArray[billNum]['title']+"</div>\
+                      </div>\
+                      <div class='billTitle'>\
+                        <div class='billSubtitle'>Status</div>\
+                        <div>"+billArray[billNum]['subtype_name']+"</div>\
+                      </div>\
                     </div>\
                   </div>"
               );
-              billCount++;
             };
           };
         } else {
