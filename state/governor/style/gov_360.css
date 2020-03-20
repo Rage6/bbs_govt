@@ -304,3 +304,7 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.govLegionLink {
+  background-color: #2020a0;
+}

@@ -424,7 +424,7 @@
           </a>
         </div>
       </div>
-      <div class="footer">
+      <div class="footer govLegionLink">
         Want to attend Buckeye Boys State next year?<br/>
         <a href="http://www.ohiobuckeyeboysstate.com/">
           <u>CLICK HERE!</u>

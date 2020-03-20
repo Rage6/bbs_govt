@@ -50,6 +50,8 @@
   <body>
     <div class='wholeBox'>
       <div class='entranceBox'>
+        <div class="bothTopBttns">
+        </div>
         <a class="entranceBackArrow" href="../../index.php">
           <img src="../../img/home_blue.png" />
         </a>
@@ -125,13 +127,15 @@
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."'>");
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."' />");
                     } else {
                       echo("
-                        <img src='../../img/default_photo.png'>");
+                        <img src='../../img/default_photo.png' />");
                     };
                     echo("
-                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>
+                      ".$senateLdrList[$ldrNum]['description']."
+                    </div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
@@ -149,13 +153,15 @@
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
                       echo("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."'>");
+                      <img src='".$senateLdrList[$ldrNum]['section_path']."/".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."' />");
                     } else {
                       echo("
-                      <img src='../../img/default_photo.png'>");
+                      <img src='../../img/default_photo.png' />");
                     };
                     echo("
-                    <div class='ldrDescription'>".$senateLdrList[$ldrNum]['description']."</div>
+                    <div class='ldrDescription'>
+                      ".$senateLdrList[$ldrNum]['description']."
+                    </div>
                     <div class='topBttn senTopBttn'>- TOP -</div>
                   </div>");
                 };
@@ -201,6 +207,7 @@
                 <li>
                   Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
                 </li>
+              </ol>
             </div>
             <div id="viewSenReadClick" class="question senQuestion">
               + <i>How can I read a law?</i>
@@ -219,11 +226,17 @@
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
                       echo("
                         <div class='oneLaw oneSenLaw'>
-                          <div class='oneLawTitle oneSenLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='senate'>
-                            ".$oneSenLaw['title']."
+                          <div
+                            class='oneLawTitle oneSenLawTitle'
+                            data-postid='".$oneSenLaw['post_id']."'
+                            data-chamber='senate'>
+                              ".$oneSenLaw['title']."
                           </div>
-                          <div class='oneLawApproval oneSenLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='senate'>
-                            ".$oneSenLaw['subtype_name']."
+                          <div
+                            class='oneLawApproval oneSenLawApproval'
+                            data-postid='".$oneSenLaw['post_id']."'
+                            data-chamber='senate'>
+                              ".$oneSenLaw['subtype_name']."
                           </div>
                         </div>");
                     };
@@ -254,10 +267,16 @@
                 while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
                   echo("
                     <div class='oneComm senOneComm'>
-                      <div class='commTitle senCommTitle' data-dptid='".$oneSenComm['dpt_id']."' data-chambertype='senate'>
-                        ".$oneSenComm['dpt_name']."
+                      <div
+                        class='commTitle senCommTitle'
+                        data-dptid='".$oneSenComm['dpt_id']."'
+                        data-chambertype='senate'>
+                          ".$oneSenComm['dpt_name']."
                       </div>
-                      <div class='commContent senCommContent' data-dptid='".$oneSenComm['dpt_id']."' data-chambertype='senate'>
+                      <div
+                        class='commContent senCommContent'
+                        data-dptid='".$oneSenComm['dpt_id']."'
+                        data-chambertype='senate'>
                         <div class='commPurpose'>
                           ".$oneSenComm['purpose']."
                         </div>
@@ -279,14 +298,8 @@
             <div class="allMember senAllMembers">
               <?php
                 $currentCity = "";
-                $initCity = true;
                 for ($oneSenNum = 0; $oneSenNum < count($senMemList); $oneSenNum++) {
                   if ($currentCity != $senMemList[$oneSenNum]['section_name']) {
-                    if ($initCity == false) {
-                      echo("</div>");
-                    } else {
-                      $initCity = false;
-                    }
                     echo("
                       <div class='oneCity oneSenCity'>
                         <div class='cityName senCityName'>
@@ -294,21 +307,34 @@
                         </div>");
                     $currentCity = $senMemList[$oneSenNum]['section_name'];
                   };
-                  echo("
-                    <div class='oneCongressman oneSenator'>
-                      <div class='oneCongName oneSenName'>
-                        ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
-                      </div>
-                      <div class='oneCongHome oneSenHome'>
-                        ".$senMemList[$oneSenNum]['hometown'].", OH
-                      </div>
-                    </div>");
+                      echo("
+                        <div class='oneCongressman oneSenator'>
+                          <div class='oneCongName oneSenName'>
+                            ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
+                          </div>
+                          <div class='oneCongHome oneSenHome'>
+                            ".$senMemList[$oneSenNum]['hometown'].", OH
+                          </div>
+                        </div>");
+                  $nextSenNum = $oneSenNum + 1;
+                  if ($nextSenNum != count($senMemList)) {
+                    if ($currentCity != $senMemList[$nextSenNum]['section_name']) {
+                      echo("</div>");
+                    };
+                  } else {
+                    echo("</div>");
+                  };
                 };
               ?>
-              </div>
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
+        </div>
+        <div class='footer senLegionLink'>
+          Want to attend Buckeye Boys State next year?<br>
+          <a href="http://www.ohiobuckeyeboysstate.com/">
+            <u>CLICK HERE!</u>
+          </a>
         </div>
       </div>
       <div class='houseBox'>
@@ -446,6 +472,7 @@
                 <li>
                   Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
                 </li>
+              </ol>
             </div>
             <div id="viewRepReadClick" class="question repQuestion">
               + <i>How can I read a law?</i>
@@ -524,14 +551,8 @@
             <div class="allMember repAllMembers">
               <?php
                 $currentCity = "";
-                $initCity = true;
                 for ($oneRepNum = 0; $oneRepNum < count($repMemList); $oneRepNum++) {
                   if ($currentCity != $repMemList[$oneRepNum]['section_name']) {
-                    if ($initCity == false) {
-                      echo("</div>");
-                    } else {
-                      $initCity = false;
-                    }
                     echo("
                       <div class='oneCity oneRepCity'>
                         <div class='cityName repCityName'>
@@ -548,13 +569,20 @@
                         ".$repMemList[$oneRepNum]['hometown'].", OH
                       </div>
                     </div>");
+                  $nextRepNum = $oneRepNum + 1;
+                  if ($nextRepNum != count($repMemList)) {
+                    if ($currentCity != $repMemList[$nextRepNum]['section_name']) {
+                      echo("</div>");
+                    };
+                  } else {
+                    echo("</div>");
+                  };
                 };
               ?>
-              </div>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>- TOP -</div>
         </div>
+        <div class='topBttn repTopBttn'>- TOP -</div>
       </div>
     </div>
   </body>

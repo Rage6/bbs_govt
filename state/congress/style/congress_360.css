@@ -103,23 +103,9 @@ body {
   width: 100%;
 }
 
-.bothTopBttns {
-  position: absolute;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50px;
-}
-
-.bothTopBttns img {
-  height: 50px;
-  width: auto;
-}
-
 /* START ENTRANCE BOX */
 .entranceBox {
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
 .entranceBackArrow {
@@ -571,6 +557,12 @@ body {
   text-align: center;
 }
 
+.legionLink {
+  margin-top: 150px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
 /* END BOTH HOUSES */
 
 /* START HOUSE OF REPS BOX */
@@ -790,6 +782,10 @@ body {
 
 }
 
+.repLegionLink {
+
+}
+
 /* END HOUSE OF REPS BOX */
 
 /* START SENATE BOX */
@@ -1002,6 +998,11 @@ body {
 
 .oneSenHome {
 
+}
+
+.senLegionLink {
+  margin-top: 50px;
+  background-color: #051E33;
 }
 
 /* END SENATE BOX */
