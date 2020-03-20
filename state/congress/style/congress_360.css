@@ -120,7 +120,7 @@ body {
 }
 
 .entranceTitle {
-  margin: 0px 10% 60px 10%;
+  margin: 0px 10% 40px 10%;
   border: 3px solid #fec231;
   padding: 5px 0;
   color: #fec231;
@@ -147,8 +147,13 @@ body {
 
 .chooseHouse {
   margin-top: 15px;
+  margin-left: 20%;
+  padding: 10px 0;
   text-align: center;
   font-size: 1.3rem;
+  background-color: white;
+  box-shadow: 0 0 5px 5px white;
+  width: 60%;
 }
 
 .chamberBttn {
@@ -167,6 +172,34 @@ body {
 
 .repChamber {
   background-color: #8C130E;
+}
+
+.chamberDivide {
+
+}
+
+.chamberImg {
+
+}
+
+.senChamberImg {
+
+}
+
+.repChamberImg {
+
+}
+
+.senChamberText {
+
+}
+
+.repChamberText {
+
+}
+
+.forWide {
+  display: none;
 }
 
 /* END ENTRANCE BOX */
@@ -783,7 +816,8 @@ body {
 }
 
 .repLegionLink {
-
+  margin-top: 50px;
+  background-color: #400200;
 }
 
 /* END HOUSE OF REPS BOX */

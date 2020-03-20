@@ -1,0 +1,84 @@
+.entranceBox {
+  padding-top: 125px;
+}
+
+.entranceBackArrow {
+  top: 15px;
+  left: 65px;
+  width: 10%;
+}
+
+.entranceTitle {
+  margin-left: 15%;
+  margin-right: 15%;
+  font-size: 4rem;
+}
+
+.entranceTitle div:first-of-type {
+  font-size: 2.2rem;
+}
+
+.chooseHouse {
+  margin-left: 25%;
+  font-size: 2.5rem;
+  width: 50%;
+}
+
+.chamberBttn {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.senChamber {
+  flex-direction: row-reverse;
+  font-size: 3rem;
+}
+
+.repChamber {
+  font-size: 1.9rem;
+}
+
+.chamberDivide {
+  border-left: 3px solid #fec231;
+}
+
+.chamberBttn div:first-of-type {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+}
+
+.chamberImg {
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+}
+
+.senChamberImg {
+  border-radius: 10px 0 0 10px;
+  width: 45%;
+  background-image: url("../../../img/state/congress/senate/senate_2.jpg");
+}
+
+.repChamberImg {
+  border-radius: 0 10px 10px 0;
+  width: 45%;
+  background-image: url("../../../img/state/congress/house_of_rep/house_2.jpg");
+}
+
+.senChamberText {
+  border-radius: 0 10px 10px 0 !important;
+  background-color: #051E33;
+}
+
+.repChamberText {
+  border-radius: 10px 0 0 10px !important;
+  background-color: #400200;
+}
+
+.forWide {
+  display: block;
+}

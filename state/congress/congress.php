@@ -60,12 +60,20 @@
           <div>GENERAL ASSEMBLY</div>
         </div>
         <div class="bothChambers">
-          <div class="chooseHouse">SELECT A HOUSE:</div>
+          <div class="chooseHouse">SELECT A HOUSE</div>
           <div id="senClick" class="chamberBttn senChamber">
-            Senate
+            <div class="senChamberText">
+              Senate
+            </div>
+            <div class="chamberDivide forWide"></div>
+            <div class="chamberImg senChamberImg forWide"></div>
           </div>
           <div id="repClick" class="chamberBttn repChamber">
-            House of Representatives
+            <div class="repChamberText">
+              House of Representatives
+            </div>
+            <div class="chamberDivide forWide"></div>
+            <div class="chamberImg repChamberImg forWide"></div>
           </div>
         </div>
       </div>
@@ -583,6 +591,12 @@
           </div>
         </div>
         <div class='topBttn repTopBttn'>- TOP -</div>
+        <div class='footer repLegionLink'>
+          Want to attend Buckeye Boys State next year?<br>
+          <a href="http://www.ohiobuckeyeboysstate.com/">
+            <u>CLICK HERE!</u>
+          </a>
+        </div>
       </div>
     </div>
   </body>
