@@ -57,10 +57,12 @@
         </a>
         <div class='entranceTitle'>
           <div>Buckeye Boys State</div>
+          <div class="titleDivider"></div>
           <div>GENERAL ASSEMBLY</div>
         </div>
+        <div class="chooseHouse">SELECT A HOUSE</div>
         <div class="bothChambers">
-          <div class="chooseHouse">SELECT A HOUSE</div>
+          <!-- <div class="chooseHouse">SELECT A HOUSE</div> -->
           <div id="senClick" class="chamberBttn senChamber">
             <div class="senChamberText">
               Senate

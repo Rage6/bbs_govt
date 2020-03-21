@@ -132,8 +132,13 @@ body {
 .entranceTitle div:first-of-type {
   margin-left: 5%;
   padding-bottom: 5px;
-  border-bottom: 3px solid #fec231;
   font-size: 1.5rem;
+  width: 90%;
+}
+
+.titleDivider {
+  margin-left: 5%;
+  border-top: 3px solid #fec231;
   width: 90%;
 }
 
@@ -179,15 +184,17 @@ body {
 }
 
 .chamberImg {
-
+  background-position: center;
+  background-size: cover;
+  height: 250px;
 }
 
 .senChamberImg {
-
+  background-image: url("../../../img/state/congress/senate/senate_2.jpg");
 }
 
 .repChamberImg {
-
+  background-image: url("../../../img/state/congress/house_of_rep/house_2.jpg");
 }
 
 .senChamberText {
