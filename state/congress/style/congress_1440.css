@@ -1,0 +1,68 @@
+.entranceBox {
+  padding-top: 110px;
+}
+
+.entranceBackArrow {
+  top: 0;
+  left: 130px;
+  width: 5%;
+}
+
+.entranceTitle {
+  margin: 0px 15% 40px 15%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.entranceTitle div {
+
+}
+
+.entranceTitle div:first-of-type {
+  margin: initial;
+  font-size: 3rem;
+  width: 40%;
+}
+
+.titleDivider {
+  margin-left: 0;
+  border-top: none;
+  border-left: 3px solid #fec231;
+  width: initial;
+  height: 115px;
+}
+
+.entranceTitle div:last-of-type {
+  margin: initial;
+  font-size: 3rem;
+  width: 40%;
+}
+
+.chooseHouse {
+  margin-left: 38%;
+  font-size: 1.8rem;
+  width: 24%;
+}
+
+.bothChambers {
+  margin: 0 13%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.chamberBttn {
+  margin-left: 0%;
+  width: 30%;
+}
+
+.chamberImg {
+  margin: 20px 0;
+  height: 250px;
+}
+
+.forWide {
+  display: flex;
+}
