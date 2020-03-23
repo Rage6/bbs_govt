@@ -35,15 +35,36 @@ dark red: #400200
   }
 }
 
-/* Moving from 'senateBox' to 'houseBox' */
-@keyframes blueToCenter {
+/* Changes 'body' background all red */
+@keyframes bodyMixToRed {
   from {
-    background-position-x: 100%;
+
+  }
+  to {
+
+  }
+}
+
+/* Moving from 'houseBox' to 'entranceBox' */
+@keyframes redToCenter {
+  from {
+    background-position-x: 0%;
   }
   to {
     background-position-x: 50%;
   }
 }
+
+/* Changes 'body' background from red to stripes */
+@keyframes bodyRedToMix {
+  from {
+
+  }
+  to {
+
+  }
+}
+
 
 /* Moving from 'entranceBox' to 'senateBox' */
 @keyframes toBlueBox {
@@ -55,14 +76,11 @@ dark red: #400200
   }
 }
 
-/* Moving from 'houseBox' to 'senateBox' */
-@keyframes redToCenter {
+/* Moving from 'senateBox' to 'entranceBox' */
+@keyframes blueToCenter {
   from {
-    background-position-x: 0%;
-  }
-  /* to {
     background-position-x: 100%;
-  } */
+  }
   to {
     background-position-x: 50%;
   }
@@ -77,6 +95,9 @@ html {
 body {
   margin: 0;
   font-size: 16px;
+  /* background-image: linear-gradient(to bottom, #8C130E, #8C130E 50%, #00467f 50%, #00467f); */
+  background-image: url("../../../img/state/white_marble.jpg");
+  background-size: contain;
   height: 100%;
 }
 

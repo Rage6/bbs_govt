@@ -62,7 +62,6 @@
         </div>
         <div class="chooseHouse">SELECT A HOUSE</div>
         <div class="bothChambers">
-          <!-- <div class="chooseHouse">SELECT A HOUSE</div> -->
           <div id="senClick" class="chamberBttn senChamber">
             <div class="senChamberText">
               Senate

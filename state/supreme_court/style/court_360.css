@@ -4,7 +4,8 @@ body {
 
 .wholePage {
   font-size: 16px;
-  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("../../../img/state/supreme_court/marble_white.jpg");
+  background-size: contain;
 }
 
 a {
@@ -12,7 +13,7 @@ a {
 }
 
 .arrowAndTitle {
-  background: linear-gradient(transparent, transparent 90%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background: linear-gradient(transparent, transparent 90%, black 100%), url("../../../img/state/supreme_court/marble_black.jpg");
   background-size: cover;
 }
 
@@ -44,7 +45,7 @@ a {
 }
 
 .mainTitle {
-  padding: 30px 5% 15px 5%;
+  padding: 50px 5% 15px 5%;
   color: #fec231;
   display: flex;
   justify-content: space-between;

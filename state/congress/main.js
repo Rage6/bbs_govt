@@ -24,6 +24,9 @@ $(()=>{
       $(".repMenu").css("top",horInitHeight).css("display","block");
       setBodyHeight(".houseBox");
     }, 2000);
+    // $("body")
+    //   .css("animation-duration","1s")
+    //   .css("animation-name","bodyMixToRed");
     $(".houseBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
@@ -42,6 +45,9 @@ $(()=>{
       $(".entranceBox").css('display','block');
       setBodyHeight(".entranceBox");
     }, 2000);
+    // $("body")
+    //   .css("animation-duration","1s")
+    //   .css("animation-name","bodyRedToMix");
     $(".entranceBox").delay(1500).fadeIn(500);
     $(".wholeBox")
       .css("animation-delay","0.5s")
