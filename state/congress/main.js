@@ -25,6 +25,7 @@ $(()=>{
       setBodyHeight(".houseBox");
     }, 2000);
     // $("body")
+    //   .css("animation-delay","0.5s")
     //   .css("animation-duration","1s")
     //   .css("animation-name","bodyMixToRed");
     $(".houseBox").delay(1500).fadeIn(500);

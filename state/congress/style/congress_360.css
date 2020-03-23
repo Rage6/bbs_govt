@@ -35,16 +35,6 @@ dark red: #400200
   }
 }
 
-/* Changes 'body' background all red */
-@keyframes bodyMixToRed {
-  from {
-
-  }
-  to {
-
-  }
-}
-
 /* Moving from 'houseBox' to 'entranceBox' */
 @keyframes redToCenter {
   from {
@@ -52,16 +42,6 @@ dark red: #400200
   }
   to {
     background-position-x: 50%;
-  }
-}
-
-/* Changes 'body' background from red to stripes */
-@keyframes bodyRedToMix {
-  from {
-
-  }
-  to {
-
   }
 }
 
@@ -95,8 +75,7 @@ html {
 body {
   margin: 0;
   font-size: 16px;
-  /* background-image: linear-gradient(to bottom, #8C130E, #8C130E 50%, #00467f 50%, #00467f); */
-  background-image: url("../../../img/state/white_marble.jpg");
+  background-image: url("../../../img/state/congress/marble_black.jpg");
   background-size: contain;
   height: 100%;
 }

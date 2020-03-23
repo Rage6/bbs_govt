@@ -98,7 +98,6 @@
        AND
       (Subtype.subtype_name LIKE '%law%')
     ORDER BY post_order DESC");
-  // $senLawListStmt->execute();
 
   // Get all Senate committee information
   $senCommStmt = $pdo->prepare(
