@@ -1,3 +1,5 @@
+/* START OF ENTRANCE BOX */
+
 .wholeBox {
   margin-left: 50%;
   position: absolute;
@@ -73,3 +75,29 @@
 .forWide {
   display: flex;
 }
+
+/* END OF ENTRANCE BOX */
+
+/* START BOTH HOUSES */
+
+.bothContent {
+  padding-top: 105px;
+}
+
+.bothTitle {
+  padding: 0;
+  display: flex;
+}
+
+
+
+/* START BOTH HOUSES */
+
+/* START OF HOUSE BOX */
+
+.repTitle {
+  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
+}
+
+
+/* END OF HOUSE BOX */

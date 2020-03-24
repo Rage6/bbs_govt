@@ -4,6 +4,7 @@
   require_once("../../pdo.php");
   require_once("../../lockdown.php");
   require_once("congress_lead.php");
+  require_once("static_values.php");
 
   // echo("<pre>");
   // var_dump($senateLdrList);
@@ -19,6 +20,7 @@
     <title>BBS | General Assembly</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../../style/required.css" />
+    <link rel="stylesheet" media="screen and (min-width: 1441px)" type="text/css" href="../../style/required_1920.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/congress_360.css"/>
     <!-- Width: 361px to 375px -->
@@ -382,6 +384,7 @@
               </div>
               HOUSE OF REPRESENTATIVES
             </div>
+            <div class="wideTitleImg repTitleImg"></div>
           </div>
           <div class="bothIntro repIntro">
             <?php

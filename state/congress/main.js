@@ -1,6 +1,6 @@
 $(()=>{
 
-  console.log("main.js is working...");
+  console.log("main.js is still working...");
 
   // To adjust the 'body' height when swapping boxes
   const setBodyHeight = (boxCSS) => {

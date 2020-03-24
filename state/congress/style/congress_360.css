@@ -212,16 +212,6 @@ body {
 /* END ENTRANCE BOX */
 
 /* START BOTH HOUSES */
-.bothTabs {
-  padding: 5px 7px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 400px;
-  color: #fec231;
-  font-size: 1.2rem;
-  z-index: 2;
-}
 
 .menuOption {
   border-top: 1px solid #fec231;
@@ -245,6 +235,10 @@ body {
   color: black;
   background-color: #fec231;
   box-shadow: 0 10px 10px #fec231, 0 -10px 10px #fec231;
+}
+
+.wideTitleImg {
+  display: none;
 }
 
 .bothIntro {
@@ -656,12 +650,12 @@ body {
 
 }
 
-.repTitle {
-  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
-}
-
 .repText {
   font-size: 2rem;
+}
+
+.repTitle {
+  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
 }
 
 .repIntro {

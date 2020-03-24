@@ -1,24 +1,10 @@
-html {
-  min-height: 100%;
-  /* background-image: linear-gradient(to bottom right, blue, white); */
-}
-body {
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
 .bothTopBttns {
-  position: absolute;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  padding: 20px 2%;
+  width: 96%;
 }
 
 .bothTopBttns img {
-  height: 50px;
-  width: auto;
+  height: 65px;
 }
 
 .footer {

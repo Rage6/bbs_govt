@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-  // console.log("bill.js is working...");
+  console.log("bill.js is now working...");
   $.getJSON('bill_library/sen_bill_json.php',(senBillLibrary)=>{
 
     $.getJSON('bill_library/hor_bill_json.php',(repBillLibrary)=>{
@@ -135,6 +135,7 @@ $(document).ready(()=>{
 
       // Show all of the House bill options
       $("#currentRepSelect").click(()=>{
+        console.log("#currentRepSelect worked...");
         if ($(".repSelectList").css('display') == 'none') {
           $(".repSelectList").css('display','block');
           setRepHeight();
