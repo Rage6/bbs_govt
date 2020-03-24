@@ -87,9 +87,11 @@
 .bothTitle {
   padding: 0;
   display: flex;
+  background-image: none;
 }
 
 .bothText {
+  padding: 20px 0;
   box-shadow: none;
   width: 50%;
 }
@@ -115,11 +117,11 @@
 }
 
 .repTitle {
-  background-image: none;
+  /* background-image: none; */
 }
 
 .repTitleImg {
-  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
+  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse-2.jpg");
   background-position: center;
   background-size: cover;
 }
