@@ -108,7 +108,81 @@
   min-height: 100%;
 }
 
-/* START BOTH HOUSES */
+.moduleTitle {
+  font-size: 3rem;
+}
+
+.bothMajTitle {
+  margin: 30px 0;
+  padding-left: 5%;
+  font-size: 2rem;
+}
+
+.bothMinTitle {
+  margin: 30px 0;
+  padding-right: 5%;
+  font-size: 2rem;
+}
+
+.ldrList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.oneLdr {
+  padding: 2%;
+  width: 22%;
+}
+
+.billContent {
+  display: flex;
+}
+
+.billNameList {
+  margin: 30px 0 0 0;
+  width: 30%;
+}
+
+.currentSelect {
+  display: none;
+}
+
+.billDirectory {
+  margin: 30px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.selectList {
+  padding-top: 10px;
+}
+
+.selectOption:first-of-type {
+  margin-top: 0px;
+}
+
+.oneBill {
+  padding: 20px 0 0 2%;
+  width: 30%;
+}
+
+.billData {
+  padding: 10px 5%;
+}
+
+.allMember {
+  margin: 25px 5% 0 5%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.oneCity {
+  margin: 20px 3% 0 0;
+  width: 30%;
+}
+
+/* END BOTH HOUSES */
 
 /* START OF HOUSE BOX */
 
@@ -117,7 +191,7 @@
 }
 
 .repTitle {
-  /* background-image: none; */
+
 }
 
 .repTitleImg {
@@ -126,5 +200,42 @@
   background-size: cover;
 }
 
+.repMajTitle {
+  background-image: linear-gradient(to right, #fec231, #fec231 50%, transparent 75%);
+}
+
+.repSelectList {
+  display: block;
+}
 
 /* END OF HOUSE BOX */
+
+/* START OF SENATE */
+
+.senText {
+  font-size: 4rem;
+}
+
+.senTitle {
+
+}
+
+.senTitleImg {
+  background-image: url("../../../img/state/congress/senate/sen_chamber.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.senMajTitle {
+  background-image: linear-gradient(to right, #fec231, #fec231 50%, transparent 75%)
+}
+
+.senMinTitle {
+  background-image: linear-gradient(to left, #fec231, #fec231 50%, transparent 75%)
+}
+
+.senSelectList {
+  display: block;
+}
+
+/* END OF SENATE */

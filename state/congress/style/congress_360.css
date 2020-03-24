@@ -272,6 +272,10 @@ body {
 
 }
 
+.ldrList {
+
+}
+
 .bothMajTitle {
   margin: 10px 0;
   padding: 10px 0 10px 2%;
@@ -325,11 +329,19 @@ body {
 }
 
 .billBox {
+  margin-top: 30px;
+}
+
+.billContent {
 
 }
 
+.billNameList {
+  margin: 30px 5% 0 5%;
+}
+
 .selectTitle {
-  margin: 20px 0 10px 0;
+  margin: 0 0 10px 0;
   font-size: 1.3rem;
   text-align: center;
 }

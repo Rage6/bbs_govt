@@ -106,12 +106,14 @@ $(document).ready(()=>{
 
       // Show all of the Senate bill options
       $("#currentSenSelect").click(()=>{
-        if ($(".senSelectList").css('display') == 'none') {
-          $(".senSelectList").css('display','block');
-          setSenHeight();
-        } else {
-          $(".senSelectList").css('display','none');
-          setSenHeight();
+        if ($(window).outerWidth() < 1366) {
+          if ($(".senSelectList").css('display') == 'none') {
+            $(".senSelectList").css('display','block');
+            setSenHeight();
+          } else {
+            $(".senSelectList").css('display','none');
+            setSenHeight();
+          };
         };
       });
 
@@ -124,8 +126,12 @@ $(document).ready(()=>{
           let newSubId = event.target.dataset.sensubid;
           let newText = event.target.innerText;
           $("[data-sensubid="+newSubId+"]").css('color','#051E33').css('background-color','#fec231');
-          $(".senSelectList").css('display','none');
-          $("#currentSenSelect").text(newText);
+          if ($(window).outerWidth() < 769) {
+            $(".senSelectList")
+              .css('display','none');
+            $("#currentSenSelect")
+              .text(newText);
+          };
           // ...the current list is emptied...
           $("#senBillDirectory").empty();
           // ...before the a new list is entered.
@@ -135,12 +141,14 @@ $(document).ready(()=>{
 
       // Show all of the House bill options
       $("#currentRepSelect").click(()=>{
-        if ($(".repSelectList").css('display') == 'none') {
-          $(".repSelectList").css('display','block');
-          setRepHeight();
-        } else {
-          $(".repSelectList").css('display','none');
-          setRepHeight();
+        if ($(window).outerWidth() < 1366) {
+          if ($(".repSelectList").css('display') == 'none') {
+            $(".repSelectList").css('display','block');
+            setRepHeight();
+          } else {
+            $(".repSelectList").css('display','none');
+            setRepHeight();
+          };
         };
       });
 
@@ -155,10 +163,12 @@ $(document).ready(()=>{
           $("[data-repsubid="+newSubId+"]")
             .css('color',repColors['buttons'])
             .css('background-color','#fec231');
-          $(".repSelectList")
-            .css('display','none');
-          $("#currentRepSelect")
-            .text(newText);
+          if ($(window).outerWidth() < 769) {
+            $(".repSelectList")
+              .css('display','none');
+            $("#currentRepSelect")
+              .text(newText);
+          };
           // ...the current list is emptied...
           $("#repBillDirectory")
             .empty();

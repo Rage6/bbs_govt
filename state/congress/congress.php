@@ -116,6 +116,7 @@
               </div>
               SENATE
             </div>
+            <div class="wideTitleImg senTitleImg"></div>
           </div>
           <div class="bothIntro senIntro">
             <?php
@@ -128,6 +129,7 @@
             </div>
             <div id="senMajBox" class="majorityBox">
               <div class="bothMajTitle senMajTitle">MAJORITY LEADERS</div>
+              <div class="ldrList">
               <?php
                 for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
                   echo("
@@ -151,9 +153,11 @@
                   </div>");
                 };
               ?>
+              </div>
             </div>
             <div id="senMinBox" class="minorityBox">
               <div class="bothMinTitle senMinTitle">MINORITY LEADERS</div>
+              <div class="ldrList">
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
                   echo("
@@ -177,30 +181,37 @@
                   </div>");
                 };
               ?>
+              </div>
             </div>
           </div>
           <div id="senBillBox" class="billBox">
             <div class="moduleTitle senModTitle">BILLS</div>
-            <div class="selectTitle senSelectTitle">SEARCH BY STATUS</div>
-            <div class="selectBox senSelectBox">
-              <div id="currentSenSelect" class="currentSelect currentSenSelect">ALL</div>
-              <div class="selectList senSelectList">
-                <div class="selectOption senSelectOption" data-sensubid='0'>ALL</div>
-                <?php
-                  while ($oneSenStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo("
-                      <div
-                        class='selectOption senSelectOption'
-                        data-sensubid='".$oneSenStatus['subtype_id']."'>
-                          ".$oneSenStatus['subtype_name']."
-                      </div>
-                    ");
-                  };
-                ?>
+            <div class="billContent">
+              <div class="billNameList">
+                <div class="selectTitle senSelectTitle">SEARCH BY STATUS</div>
+                <div class="selectBox senSelectBox">
+                  <div id="currentSenSelect" class="currentSelect currentSenSelect">ALL</div>
+                  <div class="selectList senSelectList">
+                    <div class="selectOption senSelectOption" data-sensubid='0'>
+                      ALL
+                    </div>
+                    <?php
+                      while ($oneSenStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo("
+                          <div
+                            class='selectOption senSelectOption'
+                            data-sensubid='".$oneSenStatus['subtype_id']."'>
+                              ".$oneSenStatus['subtype_name']."
+                          </div>
+                        ");
+                      };
+                    ?>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div id="senBillDirectory" class="billDirectory senBillDirectory">
-              <!-- This is where the selected bills are listed -->
+              <div id="senBillDirectory" class="billDirectory senBillDirectory">
+                <!-- This is where the selected bills are listed -->
+              </div>
             </div>
           </div>
           <div class='topBttn senTopBttn'>- TOP -</div>
@@ -397,6 +408,7 @@
             </div>
             <div id="repMajBox" class="majorityBox">
               <div class="bothMajTitle repMajTitle">MAJORITY LEADERS</div>
+              <div class="ldrList">
               <?php
                 for ($repLdrNum = 0; $repLdrNum < 6; $repLdrNum++) {
                   echo("
@@ -418,10 +430,12 @@
                   </div>");
                 };
               ?>
+              </div>
             </div>
             <div id="repMinBox"
              class="minorityBox">
               <div class="bothMinTitle repMinTitle">MINORITY LEADERS</div>
+              <div class="ldrList">
               <?php
                 for ($repLdrNum = 6; $repLdrNum < 10; $repLdrNum++) {
                   echo("
@@ -443,30 +457,37 @@
                   </div>");
                 };
               ?>
+              </div>
             </div>
           </div>
           <div id="repBillBox" class="billBox">
             <div class="moduleTitle repModTitle">BILLS</div>
-            <div class="selectTitle repSelectTitle">SEARCH BY STATUS</div>
-            <div class="selectBox repSelectBox">
-              <div id="currentRepSelect" class="currentSelect currentRepSelect">ALL</div>
-              <div class="selectList repSelectList">
-                <div class="selectOption repSelectOption" data-repsubid='0'>ALL</div>
-                <?php
-                  while ($oneRepStatus = $repStatusStmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo("
-                      <div
-                        class='selectOption repSelectOption'
-                        data-repsubid='".$oneRepStatus['subtype_id']."'>
-                          ".$oneRepStatus['subtype_name']."
-                      </div>
-                    ");
-                  };
-                ?>
+            <div class="billContent">
+              <div class="billNameList">
+                <div class="selectTitle repSelectTitle">SEARCH BY STATUS</div>
+                <div class="selectBox repSelectBox">
+                  <div id="currentRepSelect" class="currentSelect currentRepSelect">ALL</div>
+                  <div class="selectList repSelectList">
+                    <div class="selectOption repSelectOption" data-repsubid='0'>
+                      ALL
+                    </div>
+                    <?php
+                      while ($oneRepStatus = $repStatusStmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo("
+                          <div
+                            class='selectOption repSelectOption'
+                            data-repsubid='".$oneRepStatus['subtype_id']."'>
+                              ".$oneRepStatus['subtype_name']."
+                          </div>
+                        ");
+                      };
+                    ?>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div id="repBillDirectory" class="billDirectory repBillDirectory">
-              <!-- This is where the selected bills are listed -->
+              <div id="repBillDirectory" class="billDirectory repBillDirectory">
+                <!-- This is where the selected bills are listed -->
+              </div>
             </div>
           </div>
           <div class='topBttn repTopBttn'>- TOP -</div>
