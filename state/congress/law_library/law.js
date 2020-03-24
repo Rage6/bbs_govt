@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-  console.log("law.js is working...");
+  // console.log("law.js is working...");
   $.getJSON('law_library/law_json.php',(lawLibrary)=>{
 
     let initColor = null;
@@ -13,7 +13,6 @@ $(document).ready(()=>{
     const repApproval = "oneRepLawApproval";
     $("[data-postid]").click(()=>{
       for (let classNum = 0; classNum < event.target.classList.length; classNum++) {
-        console.log("The data-postid worked");
         currentClass = event.target.classList[classNum];
         if (currentClass == senTitle || currentClass == senApproval) {
           chamber = "senate";
@@ -48,7 +47,6 @@ $(document).ready(()=>{
       $("[data-postid='" + lawId + "'][data-chamber='" + chamber + "']")
         .css('background-color',initColor)
         .css('color',initBkgd);
-      // console.log(lawLibrary);
       for (let lawNum = 0; lawNum < lawLibrary.length; lawNum++) {
         if (lawLibrary[lawNum]['post_id'] == lawId) {
           $(".repLawContent").empty();

@@ -1,6 +1,6 @@
 $(()=>{
 
-  console.log("main.js is still working...");
+  // console.log("main.js is still working...");
 
   // To adjust the 'body' height when swapping boxes
   const setBodyHeight = (boxCSS) => {
@@ -298,7 +298,6 @@ $(()=>{
         .css('border-bottom','1px solid #fec231');
       $(".commContent[data-dptid='"+thisDptId+"']")
         .css('display','block');
-      // console.log($(".commContent[data-dptid='"+thisDptId+"']").css('display'));
     } else {
       $(".commTitle[data-dptid='"+thisDptId+"']")
         .css('color',selectColors['titleColor'])

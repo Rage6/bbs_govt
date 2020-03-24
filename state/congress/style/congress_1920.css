@@ -89,14 +89,39 @@
   display: flex;
 }
 
+.bothText {
+  box-shadow: none;
+  width: 50%;
+}
 
+.bbsTitle {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  font-size: 2rem;
+}
+
+.wideTitleImg {
+  display: block;
+  width: 50%;
+  min-height: 100%;
+}
 
 /* START BOTH HOUSES */
 
 /* START OF HOUSE BOX */
 
+.repText {
+  font-size: 4rem;
+}
+
 .repTitle {
+  background-image: none;
+}
+
+.repTitleImg {
   background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 
