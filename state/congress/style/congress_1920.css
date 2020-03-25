@@ -171,6 +171,53 @@
   padding: 10px 5%;
 }
 
+.allQuestions {
+  margin: 0 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.oneQuestion {
+  width: 30%;
+}
+
+.answer {
+  display: block;
+}
+
+.lawTotal {
+  display: flex;
+}
+
+.leftHalf {
+  margin: 0 0 0 5%;
+  width: 40%;
+}
+
+.lawListTitle {
+  border-radius: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.lawList {
+  border-radius: 0 0 0 10px;
+  height: 254px;
+}
+
+.rightHalf {
+  margin: 0 5% 0 0;
+  width: 60%;
+}
+
+.lawContent {
+  border-top: 1px solid #fec231;
+  border-radius: 0 10px 10px 0;
+}
+
 .allMember {
   margin: 25px 5% 0 5%;
   display: flex;
@@ -208,6 +255,10 @@
   display: block;
 }
 
+.repLawContent {
+  border-left: none;
+}
+
 /* END OF HOUSE BOX */
 
 /* START OF SENATE */
@@ -236,6 +287,10 @@
 
 .senSelectList {
   display: block;
+}
+
+.senLawContent {
+  border-left: none;
 }
 
 /* END OF SENATE */

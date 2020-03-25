@@ -217,25 +217,31 @@
           <div class='topBttn senTopBttn'>- TOP -</div>
           <div id="senLawBox" class="lawBox senLawBox">
             <div class="moduleTitle senModTitle">LAWS</div>
-            <div id="viewSenBillClick" class="question senQuestion">
-              + <i>How do bills become laws?</i>
-            </div>
-            <div id="viewSenBillBox" class="answer senAnswer">
-              Within the Buckeye Boys State, a bill becomes a law after two steps:
-              <ol>
-                <li>
-                  Voted in favor by the majority of both Senate and the House of Representatives
-                </li>
-                <li>
-                  Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
-                </li>
-              </ol>
-            </div>
-            <div id="viewSenReadClick" class="question senQuestion">
-              + <i>How can I read a law?</i>
-            </div>
-            <div id="viewSenReadBox" class="answer senAnswer">
-              To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
+            <div class="allQuestions">
+              <div class="oneQuestion">
+                <div id="viewSenBillClick" class="question senQuestion">
+                  + <i>How do bills become laws?</i>
+                </div>
+                <div id="viewSenBillBox" class="answer senAnswer">
+                  Within the Buckeye Boys State, a bill becomes a law after two steps:
+                  <ol>
+                    <li>
+                      Voted in favor by the majority of both Senate and the House of Representatives
+                    </li>
+                    <li>
+                      Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="oneQuestion">
+                <div id="viewSenReadClick" class="question senQuestion">
+                  + <i>How can I read a law?</i>
+                </div>
+                <div id="viewSenReadBox" class="answer senAnswer">
+                  To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
+                </div>
+              </div>
             </div>
             <div class="lawTotal senLawTotal">
               <div class="leftHalf">
@@ -493,25 +499,31 @@
           <div class='topBttn repTopBttn'>- TOP -</div>
           <div id="repLawBox" class="lawBox repLawBox">
             <div class="moduleTitle repModTitle">LAWS</div>
-            <div id="viewRepBillClick" class="question repQuestion">
-              + <i>How do bills become laws?</i>
-            </div>
-            <div id="viewRepBillBox" class="answer repAnswer">
-              Within the Buckeye Boys State, a bill becomes a law after two steps:
-              <ol>
-                <li>
-                  Voted in favor by the majority of both Senate and the House of Representatives
-                </li>
-                <li>
-                  Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
-                </li>
-              </ol>
-            </div>
-            <div id="viewRepReadClick" class="question repQuestion">
-              + <i>How can I read a law?</i>
-            </div>
-            <div id="viewRepReadBox" class="answer repAnswer">
-              To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
+            <div class="allQuestions">
+              <div class="oneQuestion">
+                <div id="viewRepBillClick" class="question repQuestion">
+                  + <i>How do bills become laws?</i>
+                </div>
+                <div id="viewRepBillBox" class="answer repAnswer">
+                  Within the Buckeye Boys State, a bill becomes a law after two steps:
+                  <ol>
+                    <li>
+                      Voted in favor by the majority of both Senate and the House of Representatives
+                    </li>
+                    <li>
+                      Either a) signed into law by the governor, or b) the chambers vote to override the governor's veto
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="oneQuestion">
+                <div id="viewRepReadClick" class="question repQuestion">
+                  + <i>How can I read a law?</i>
+                </div>
+                <div id="viewRepReadBox" class="answer repAnswer">
+                  To view a law, scroll through the below list of buttons and search for the one with the desired title. Below and to the right of the title indicates whether that law was signed in by the governor or not. Clicking  the button will display the law's details.
+                </div>
+              </div>
             </div>
             <div class="lawTotal repLawTotal">
               <div class="leftHalf">

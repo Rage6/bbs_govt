@@ -219,11 +219,13 @@ $(()=>{
 
   // Function that shows an answer to the 'Laws' questions
   const showAnswer = (answerBox) => {
-    if ($(answerBox).css('display') == 'none') {
-      $(".answer").css('display','none');
-      $(answerBox).css('display','block');
-    } else {
-      $(".answer").css('display','none');
+    if ($(window).outerWidth() < 769) {
+      if ($(answerBox).css('display') == 'none') {
+        $(".answer").css('display','none');
+        $(answerBox).css('display','block');
+      } else {
+        $(".answer").css('display','none');
+      };
     };
   };
   // Show how a Senate bill becomes a law
