@@ -484,8 +484,15 @@ body {
   text-align: right;
 }
 
-.question {
+.allQuestions {
   margin-top: 10px;
+}
+
+.oneQuestion {
+  margin-bottom: 10px;
+}
+
+.question {
   border-top: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
   padding: 5px 5%;
@@ -755,7 +762,7 @@ body {
   border-top: 1px solid #fec231;
   border-left: 1px solid #fec231;
   border-right: 1px solid #fec231;
-  background-color: #400200;
+  background-color: #898C1C;
 }
 
 .repLawList {
@@ -791,7 +798,7 @@ body {
 }
 
 .repOneComm {
-
+  background-color: #400200;
 }
 
 .repCommTitle {
@@ -799,7 +806,7 @@ body {
 }
 
 .repCommContent {
-  background-color: #400200;
+  
 }
 
 .repCityName {
@@ -958,6 +965,10 @@ body {
 
 }
 
+.senOneQuestion {
+  background-color: #051E33;
+}
+
 .senQuestion {
   color: #fec231;
   background-color: #8C130E;
@@ -982,7 +993,7 @@ body {
   border-top: 1px solid #fec231;
   border-left: 1px solid #fec231;
   border-right: 1px solid #fec231;
-  background-color: #051E33;
+  background-color: #4A4D08;
 }
 
 .senLawList {
@@ -1010,7 +1021,7 @@ body {
 }
 
 .senOneComm {
-
+  background-color: #051E33;
 }
 
 .senCommTitle {
@@ -1018,7 +1029,7 @@ body {
 }
 
 .senCommContent {
-  background-color: #051E33;
+  /* background-color: #051E33; */
 }
 
 .senCityName {

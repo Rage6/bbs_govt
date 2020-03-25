@@ -172,18 +172,37 @@
 }
 
 .allQuestions {
-  margin: 0 5%;
+  margin-left: 5%;
+  margin-right: 5%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: stretch;
 }
 
 .oneQuestion {
-  width: 30%;
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+}
+
+.question {
+  width: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.questionTag {
+  display: none;
+}
+
+.questionList {
+  margin: 0;
 }
 
 .answer {
   display: block;
+  width: 85%;
 }
 
 .lawTotal {
@@ -216,6 +235,30 @@
 .lawContent {
   border-top: 1px solid #fec231;
   border-radius: 0 10px 10px 0;
+}
+
+.allComm {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-top: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.oneComm {
+  border: 1px solid #fec231;
+  border-radius: 10px;
+  width: 30%;
+}
+
+.commTitle {
+  border-radius: 10px 10px 0 0;
+}
+
+.commContent {
+  border-radius: 0 0 10px 10px;
+  display: block;
 }
 
 .allMember {

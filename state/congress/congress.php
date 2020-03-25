@@ -218,13 +218,13 @@
           <div id="senLawBox" class="lawBox senLawBox">
             <div class="moduleTitle senModTitle">LAWS</div>
             <div class="allQuestions">
-              <div class="oneQuestion">
+              <div class="oneQuestion senOneQuestion">
                 <div id="viewSenBillClick" class="question senQuestion">
-                  + <i>How do bills become laws?</i>
+                  <span class="questionTag">+ </span><i>How do bills become laws?</i>
                 </div>
                 <div id="viewSenBillBox" class="answer senAnswer">
                   Within the Buckeye Boys State, a bill becomes a law after two steps:
-                  <ol>
+                  <ol class="questionList">
                     <li>
                       Voted in favor by the majority of both Senate and the House of Representatives
                     </li>
@@ -234,9 +234,9 @@
                   </ol>
                 </div>
               </div>
-              <div class="oneQuestion">
+              <div class="oneQuestion senOneQuestion">
                 <div id="viewSenReadClick" class="question senQuestion">
-                  + <i>How can I read a law?</i>
+                  <span class="questionTag">+ </span><i>How can I read a law?</i>
                 </div>
                 <div id="viewSenReadBox" class="answer senAnswer">
                   To view a law, scroll through the below list and search for the desired title or bill number. Click the title, and that law's details will appear below or beside the list.
@@ -284,11 +284,15 @@
           <div class='topBttn senTopBttn'>- TOP -</div>
           <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
             <div class="moduleTitle senModTitle">COMMITTEES</div>
-            <div id="viewSenCommClick" class="question senQuestion">
-              + <i>What does a committee do?</i>
-            </div>
-            <div id="viewSenCommBox" class="answer senAnswer">
-              Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
+            <div class="allQuestions">
+              <div class="oneQuestion">
+                <div id="viewSenCommClick" class="question senQuestion">
+                  <span class="questionTag">+ </span><i>What does a committee do?</i>
+                </div>
+                <div id="viewSenCommBox" class="answer senAnswer">
+                  Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
+                </div>
+              </div>
             </div>
             <div class="allComm senAllComm">
               <?php
@@ -500,13 +504,13 @@
           <div id="repLawBox" class="lawBox repLawBox">
             <div class="moduleTitle repModTitle">LAWS</div>
             <div class="allQuestions">
-              <div class="oneQuestion">
+              <div class="oneQuestion repOneQuestion">
                 <div id="viewRepBillClick" class="question repQuestion">
-                  + <i>How do bills become laws?</i>
+                  <span class="questionTag">+ </span><i>How do bills become laws?</i>
                 </div>
                 <div id="viewRepBillBox" class="answer repAnswer">
                   Within the Buckeye Boys State, a bill becomes a law after two steps:
-                  <ol>
+                  <ol class="questionList">
                     <li>
                       Voted in favor by the majority of both Senate and the House of Representatives
                     </li>
@@ -516,9 +520,9 @@
                   </ol>
                 </div>
               </div>
-              <div class="oneQuestion">
+              <div class="oneQuestion repOneQuestion">
                 <div id="viewRepReadClick" class="question repQuestion">
-                  + <i>How can I read a law?</i>
+                  <span class="questionTag">+ </span><i>How can I read a law?</i>
                 </div>
                 <div id="viewRepReadBox" class="answer repAnswer">
                   To view a law, scroll through the below list of buttons and search for the one with the desired title. Below and to the right of the title indicates whether that law was signed in by the governor or not. Clicking  the button will display the law's details.
@@ -560,11 +564,15 @@
           <div class='topBttn repTopBttn'>- TOP -</div>
           <div id="repCommitteeBox" class="repCommitteeBox committeeBox">
             <div class="moduleTitle repModTitle">COMMITTEES</div>
-            <div id="viewRepCommClick" class="question repQuestion">
-              + <i>What does a committee do?</i>
-            </div>
-            <div id="viewRepCommBox" class="answer repAnswer">
-              Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
+            <div class="allQuestions">
+              <div class="oneQuestion">
+                <div id="viewRepCommClick" class="question repQuestion">
+                  <span class="questionTag">+ </span><i>What does a committee do?</i>
+                </div>
+                <div id="viewRepCommBox" class="answer repAnswer">
+                  Committees are an essential part of the legislative process. They monitor on-going governmental operations, identify issues suitable for legislative review, gather and evaluate information, and recommend courses of action to their respective chambers.
+                </div>
+              </div>
             </div>
             <div class="allComm repAllComm">
               <?php

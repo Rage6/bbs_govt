@@ -261,57 +261,59 @@ $(()=>{
 
   // Function that shows the content of a clicked committee title
   $("[data-dptid]").click(()=>{
-    let thisDptId = event.target.dataset.dptid;
-    let thisType = event.target.dataset.chambertype;
-    let isOpen;
-    if ($(".commContent[data-dptid='"+thisDptId+"']").css('display') == 'block') {
-      isOpen = true;
-    } else {
-      isOpen = false;
-    };
-    const commSenColors = {
-      titleColor: '#fec231',
-      titleBkgd: '#8C130E'
-    };
-    const commRepColors = {
-      titleColor: '#fec231',
-      titleBkgd: '#004E8C'
-    };
-    let selectColors = null;
-    if (thisType == 'senate') {
-      selectColors = commSenColors;
-    } else {
-      selectColors = commRepColors;
-    };
-    $(".commTitle[data-chambertype='senate']")
-      .css('color',commSenColors['titleColor'])
-      .css('background-color',commSenColors['titleBkgd'])
-      .css('border-bottom','none');
-    $(".commTitle[data-chambertype='house']")
-      .css('color',commRepColors['titleColor'])
-      .css('background-color',commRepColors['titleBkgd'])
-      .css('border-bottom','none');
-    $(".commContent")
-      .css('display','none');
-    if (isOpen == false) {
-      $(".commTitle[data-dptid='"+thisDptId+"']")
-        .css('color',selectColors['titleBkgd'])
-        .css('background-color',selectColors['titleColor'])
-        .css('border-bottom','1px solid #fec231');
-      $(".commContent[data-dptid='"+thisDptId+"']")
-        .css('display','block');
-    } else {
-      $(".commTitle[data-dptid='"+thisDptId+"']")
-        .css('color',selectColors['titleColor'])
-        .css('background-color',selectColors['titleBkgd'])
+    if ($(window).outerWidth() < 769) {
+      let thisDptId = event.target.dataset.dptid;
+      let thisType = event.target.dataset.chambertype;
+      let isOpen;
+      if ($(".commContent[data-dptid='"+thisDptId+"']").css('display') == 'block') {
+        isOpen = true;
+      } else {
+        isOpen = false;
+      };
+      const commSenColors = {
+        titleColor: '#fec231',
+        titleBkgd: '#8C130E'
+      };
+      const commRepColors = {
+        titleColor: '#fec231',
+        titleBkgd: '#004E8C'
+      };
+      let selectColors = null;
+      if (thisType == 'senate') {
+        selectColors = commSenColors;
+      } else {
+        selectColors = commRepColors;
+      };
+      $(".commTitle[data-chambertype='senate']")
+        .css('color',commSenColors['titleColor'])
+        .css('background-color',commSenColors['titleBkgd'])
         .css('border-bottom','none');
-      $(".commContent[data-dptid='"+thisDptId+"']")
+      $(".commTitle[data-chambertype='house']")
+        .css('color',commRepColors['titleColor'])
+        .css('background-color',commRepColors['titleBkgd'])
+        .css('border-bottom','none');
+      $(".commContent")
         .css('display','none');
-    };
-    if (thisType == 'senate') {
-      setBodyHeight(".senateBox");
-    } else {
-      setBodyHeight(".houseBox");
+      if (isOpen == false) {
+        $(".commTitle[data-dptid='"+thisDptId+"']")
+          .css('color',selectColors['titleBkgd'])
+          .css('background-color',selectColors['titleColor'])
+          .css('border-bottom','1px solid #fec231');
+        $(".commContent[data-dptid='"+thisDptId+"']")
+          .css('display','block');
+      } else {
+        $(".commTitle[data-dptid='"+thisDptId+"']")
+          .css('color',selectColors['titleColor'])
+          .css('background-color',selectColors['titleBkgd'])
+          .css('border-bottom','none');
+        $(".commContent[data-dptid='"+thisDptId+"']")
+          .css('display','none');
+      };
+      if (thisType == 'senate') {
+        setBodyHeight(".senateBox");
+      } else {
+        setBodyHeight(".houseBox");
+      };
     };
   });
 
