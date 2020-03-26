@@ -409,7 +409,7 @@
           </div>
           <div class="bothIntro repIntro">
             <?php
-              echo($senIntro['content']);
+              echo($repIntro['content']);
             ?>
           </div>
           <div class="leaderBox">
