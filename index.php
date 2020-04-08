@@ -212,7 +212,6 @@
           For more information, check out the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
         </div>
       </div>
-      <div id="explainBttn" class="moreButton">-- SEE MORE --</div>
     </div>
     <div class="applyLink footer" style="background-color:black">
       Want to attend Buckeye Boys State next year?<br/>

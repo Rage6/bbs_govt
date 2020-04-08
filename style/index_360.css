@@ -1,5 +1,5 @@
 body {
-  background-image:linear-gradient(to right, #fec231 0%, blue 5%, blue 95%, #fec231 100%);
+  background-color: darkblue;
 }
 a {
   text-decoration: none;
@@ -16,10 +16,7 @@ a {
   width: 90%;
 }
 #hubContent {
-  padding: 0 0 100px 0;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; */
+
 }
 .govtLinkRow {
 
@@ -63,15 +60,20 @@ a {
 }
 .introRow {
   margin-bottom: 40px;
+  padding-top: 10px;
 }
 .introBox {
   margin: 10px 10% 10px 10%;
-  border: 1px solid #fec231;
+  border: 5px solid white;
   border-radius: 15px;
   padding: 20px 5%;
   color: #fec231;
   font-size: 1.3rem;
-  background-color: darkblue;
+  background: linear-gradient(
+      rgba(139,0,0,0.85),
+      rgba(139,0,0,0.85)), url('../img/ohio_flag.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .introTitle {
   margin-bottom: 25px;
@@ -80,12 +82,16 @@ a {
 }
 .statsBox {
   margin: 10px 10% 10px 10%;
-  border: 1px solid #fec231;
+  border: 5px solid white;
   border-radius: 15px;
   padding: 20px 5%;
   color: #fec231;
   font-size: 1.3rem;
-  background-color: darkblue;
+  background: linear-gradient(
+      rgba(139,0,0,0.85),
+      rgba(139,0,0,0.85)), url('../img/city_session.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .statsTitle {
 
@@ -109,6 +115,16 @@ a {
   border-radius: 20px 20px 0 0;
   width: 100%;
 }
+
+#aboutTop {
+  padding-top: 50px;
+  background: linear-gradient(
+      rgba(139,0,0,0.85),
+      rgba(139,0,0,0.85)), url('../img/nightly_presentation.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 .levelTitle {
   margin-left: 10%;
   padding: 10px 5%;
@@ -144,18 +160,11 @@ a {
   height: 30px;
 }
 .explainTitle {
-  margin-top: 50px;
+
 }
 .explainBox {
-  margin: 10px 10% 10px 10%;
-  padding-bottom: 20px;
+  margin: 10px 10% 0 10%;
+  padding-bottom: 50px;
   color: #fec231;
   font-size: 1.2rem;
-  max-height: 135px;
-  overflow-y: hidden;
-}
-.moreButton {
-  margin-bottom: 20px;
-  color: #fec231;
-  text-align: center;
 }
