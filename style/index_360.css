@@ -1,6 +1,14 @@
 body {
-  background-color: darkblue;
+  background:
+    url("../img/white_star.png"),
+    linear-gradient(to right, #002868 50%, darkred 50%, darkred);
+
 }
+
+.indexMain {
+  background-color: #002868;
+}
+
 a {
   text-decoration: none;
 }
@@ -26,7 +34,7 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-  color: blue;
+  color: #002868;
   font-size: 1.1rem;
   background-color: #fec231;
   height: 35px;
@@ -37,9 +45,9 @@ a {
   width: 35px;
 }
 .glossaryBar {
-  border-top: 1px solid darkblue;
-  border-bottom: 1px solid darkblue;
-  color: darkblue;
+  border-top: 1px solid #002868;
+  border-bottom: 1px solid #002868;
+  color: #002868;
   text-align: center;
   font-size: 1.3rem;
   background-color: #fec231;
@@ -52,10 +60,10 @@ a {
   border-bottom: 1px solid #fec231;
   padding: 10px 5%;
   color: #fec231;
-  background-color: darkblue;
+  background-color: darkred;
 }
 .glossaryBox div:hover {
-  color: darkblue;
+  color: #002868;
   background-color: #fec231;
 }
 .introRow {
@@ -130,8 +138,8 @@ a {
   padding: 10px 5%;
   text-align: left;
   font-size: 1.5rem;
-  color: blue;
-  background-image: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
+  color: #002868;
+  background: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
   width: 70%;
 }
 .sectionName {

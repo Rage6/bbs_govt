@@ -27,7 +27,7 @@ a {
 
 }
 .glossaryBar {
-  font-size: 2rem;
+  display: none;
 }
 .glossaryBox {
 

@@ -1,5 +1,12 @@
 body {
-
+  margin-left: 50%;
+}
+.indexMain {
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  position: relative;
+  left: -720px;
+  width: 1440px;
 }
 a {
 
@@ -27,7 +34,7 @@ a {
 
 }
 .glossaryBar {
-  font-size: 2rem;
+  display: none;
 }
 .glossaryBox {
 
@@ -98,7 +105,7 @@ a {
 
 }
 .explainTitle {
-
+  color: darkred;
 }
 .explainBox {
   max-height: inherit;
