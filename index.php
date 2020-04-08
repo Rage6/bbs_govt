@@ -78,12 +78,14 @@
         </div>
         <div id="numbersTop" class="statsBox">
           <div class="statsTitle"><span class="introTitle">B</span>y the numbers...</div>
-          <div>Population: <?php echo($totalPopulation) ?></div>
-          <div>Start Date: <?php echo($startDate) ?></div>
-          <div>End Date: <?php echo($endDate) ?></div>
-          <div>Location: Oxford, OH</div>
-          <div>BBS Counties: <?php echo($totalCounties) ?></div>
-          <div>BBS Cities: <?php echo($totalCities) ?></div>
+          <div class="statsList">
+            <div>Population: <?php echo($totalPopulation) ?></div>
+            <div>Start Date: <?php echo($startDate) ?></div>
+            <div>End Date: <?php echo($endDate) ?></div>
+            <div>Location: Oxford, OH</div>
+            <div>BBS Counties: <?php echo($totalCounties) ?></div>
+            <div>BBS Cities: <?php echo($totalCities) ?></div>
+          </div>
         </div>
       </div>
       <div id="hubContent">
@@ -94,39 +96,18 @@
             </div>
             <div class="sectionList">
               <a href="state/governor/governor.php">
-                <div class="levelButton">
-                  <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                    <div>
-                      Office of the Governor
-                    </div>
-                    <div>
-                      <div><img src='img/right_arrow.png'></div>
-                    </div>
-                  </div>
+                <div class="levelButton stateButton">
+                  Office of the Governor
                 </div>
               </a>
               <a href="state/congress/congress.php">
-                <div class="levelButton">
-                  <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                    <div>
-                      General Assembly
-                    </div>
-                    <div>
-                      <div><img src='img/right_arrow.png'></div>
-                    </div>
-                  </div>
+                <div class="levelButton stateButton">
+                  General Assembly
                 </div>
               </a>
               <a href="state/supreme_court/supreme_court.php">
-                <div class="levelButton">
-                  <div class="sectionName" style="border-bottom:none;padding-bottom:0px">
-                    <div>
-                      Supreme Court
-                    </div>
-                    <div>
-                      <div><img src='img/right_arrow.png'></div>
-                    </div>
-                  </div>
+                <div class="levelButton stateButton">
+                  Supreme Court
                 </div>
               </a>
             </div>

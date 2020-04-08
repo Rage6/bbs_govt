@@ -21,7 +21,7 @@ a {
 #hubTitle div:first-child {
   border-bottom: 3px solid #fec231;
   font-size: 2rem;
-  width: 90%;
+  /* width: 90%; */
 }
 #hubContent {
 
@@ -72,7 +72,7 @@ a {
 }
 .introBox {
   margin: 10px 10% 10px 10%;
-  border: 5px solid white;
+  border: 5px solid #fec231;
   border-radius: 15px;
   padding: 20px 5%;
   color: #fec231;
@@ -90,7 +90,7 @@ a {
 }
 .statsBox {
   margin: 10px 10% 10px 10%;
-  border: 5px solid white;
+  border: 5px solid #fec231;
   border-radius: 15px;
   padding: 20px 5%;
   color: #fec231;
@@ -104,6 +104,9 @@ a {
 .statsTitle {
 
 }
+.statsList {
+
+}
 .subtitle {
   margin-top: 45px;
   text-align: center;
@@ -112,12 +115,22 @@ a {
 }
 .levelButton {
   margin: 20px 0% 20px 20%;
-  border-radius: 15px;
   padding: 15px 5% 15px 5%;
   color: black;
   font-size: 1.3rem;
   background-color: #fec231;
   width: 55%;
+}
+.stateButton {
+  border: 2px solid white;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+  font-size: 1.7rem;
+  background-color: darkred;
+}
+.linkButton {
+  border-radius: 15px;
 }
 .levelImg {
   border-radius: 20px 20px 0 0;
@@ -168,7 +181,7 @@ a {
   height: 30px;
 }
 .explainTitle {
-
+  color: darkred;
 }
 .explainBox {
   margin: 10px 10% 0 10%;
