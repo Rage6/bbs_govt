@@ -21,6 +21,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | <?php echo($thisYear) ?></title>
+    <meta property="og:title" content="Buckeye Boys State | <?php echo($thisYear) ?>" />
+    <meta property="og:image" content="img/ohio_flag_bbs.jpg" />
+    <meta property="og:description" content="Welcome to Buckeye Boys State! It is here where many young men take their first steps towards becoming our democratic leaders of tomorrow." />
     <link rel="stylesheet" type="text/css" href="style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/index_360.css"/>
@@ -36,10 +39,7 @@
     <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/index_1440.css"/>
     <!-- Width: 1441px and above -->
     <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/index_1920.css"/>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script> -->
-    <!-- <script src="../../jquery.js"></script> -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico"/>
     <script src=<?php echo($jquery) ?>></script>
     <script src="main.js"></script>
   </head>
