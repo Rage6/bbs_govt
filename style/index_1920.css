@@ -12,11 +12,23 @@ a {
 
 }
 #hubTitle {
+  margin-left: 10%;
   font-size: 4.5rem;
   width: 45%;
 }
 #hubTitle div:first-child {
   font-size: 2.6rem;
+}
+.ohioLogo {
+  margin-right: 10%;
+  display: flex;
+  width: 133px;
+  height: 133px;
+}
+.ohioLogo img {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 #hubContent {
 
@@ -115,7 +127,7 @@ a {
 
 }
 .explainTitle {
-  
+
 }
 .explainBox {
   margin-top: 40px;

@@ -50,9 +50,14 @@
           <img src="img/gear.png" />
         </a>
       </div>
-      <div id="hubTitle">
-        <div>Buckeye Boys State</div>
-        <div>DIRECTORY</div>
+      <div class="topBar">
+        <div id="hubTitle">
+          <div>Buckeye Boys State</div>
+          <div>DIRECTORY</div>
+        </div>
+        <div class="ohioLogo">
+          <img src="img/Ohio_Flag_Map_Accurate.png" />
+        </div>
       </div>
       <div id="glossaryBttn" class="glossaryBar">
         MENU
