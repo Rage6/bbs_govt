@@ -1,0 +1,1064 @@
+/*
+AL blue: #00467f
+AL gold: #fec231
+  white: #FFFFF4
+
+To find a good color schemes: https://color.adobe.com/create
+
+SENATE COLORS:
+------------------
+  AL blue: #00467f  <---- primary color
+      red: #8C130E
+dark blue: #051E33
+dk. green: #4A4D08
+ylw green: #C5CC0A
+
+HOUSE COLORS:
+------------------
+red: #8C130E  <---- primary color
+blue: #004E8C
+dark blue: #032540
+yellow green: #898C1C
+dark red: #400200
+
+*/
+
+/* Begins animation */
+
+/* Moving from 'entranceBox' to 'houseBox' */
+@keyframes toRedBox {
+  from {
+    background-position-x: 50%;
+  }
+  to {
+    background-position-x: 0%;
+  }
+}
+
+/* Moving from 'houseBox' to 'entranceBox' */
+@keyframes redToCenter {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 50%;
+  }
+}
+
+
+/* Moving from 'entranceBox' to 'senateBox' */
+@keyframes toBlueBox {
+  from {
+    background-position-x: 50%;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+
+/* Moving from 'senateBox' to 'entranceBox' */
+@keyframes blueToCenter {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: 50%;
+  }
+}
+
+/* Ends animations */
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  background-image: url("../../../img/state/congress/marble_black.jpg");
+  background-size: contain;
+  height: 100%;
+}
+
+.wholeBox {
+  background:
+    linear-gradient(to right, #8C130E, #8C130E 35%, transparent 37%, transparent 63%, #00467f 65%),
+    linear-gradient(
+      rgba(255,255,255,0.75),
+      rgba(255,255,255,0.75)),
+    url("../../../img/state/congress/congress_collage.jpg");
+  background-size: 300% 100%, 300% 100%, 375px;
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-position-x: 50%;
+  height: 100%;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-name: none;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+/* START ENTRANCE BOX */
+.entranceBox {
+  padding-top: 70px;
+}
+
+.entranceBackArrow {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  width: 13%;
+}
+
+.entranceBackArrow img {
+  width: 100%;
+}
+
+.entranceTitle {
+  margin: 0px 10% 40px 10%;
+  border: 3px solid #fec231;
+  padding: 5px 0;
+  color: #fec231;
+  font-size: 2.2rem;
+  text-align: center;
+  background-color: black;
+}
+
+.entranceTitle div:first-of-type {
+  margin-left: 5%;
+  padding-bottom: 5px;
+  font-size: 1.5rem;
+  width: 90%;
+}
+
+.titleDivider {
+  margin-left: 5%;
+  border-top: 3px solid #fec231;
+  width: 90%;
+}
+
+.entranceTitle div:last-of-type {
+  margin-top: 5px;
+}
+
+.bothChambers {
+
+}
+
+.chooseHouse {
+  margin-top: 15px;
+  margin-left: 20%;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.3rem;
+  background-color: white;
+  box-shadow: 0 0 5px 5px white;
+  width: 60%;
+}
+
+.chamberBttn {
+  margin: 40px 0 0 15%;
+  border-radius: 10px;
+  padding: 20px 5%;;
+  color: white;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 60%;
+}
+
+.senChamber {
+  background-color: #00467f;
+}
+
+.repChamber {
+  background-color: #8C130E;
+}
+
+.chamberDivide {
+
+}
+
+.chamberImg {
+  background-position: center;
+  background-size: cover;
+  height: 250px;
+}
+
+.senChamberImg {
+  background-image: url("../../../img/state/congress/senate/senate_2.jpg");
+}
+
+.repChamberImg {
+  background-image: url("../../../img/state/congress/house_of_rep/house_2.jpg");
+}
+
+.senChamberText {
+
+}
+
+.repChamberText {
+
+}
+
+.forWide {
+  display: none;
+}
+
+/* END ENTRANCE BOX */
+
+/* START BOTH HOUSES */
+
+.menuOption {
+  border-top: 1px solid #fec231;
+  padding: 10px 5%;
+  font-size: 1.5rem;
+}
+
+.bothContent {
+  padding-top: 50px;
+}
+
+.bothTitle {
+  padding: 90px 0;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+}
+
+.bothText {
+  padding: 10px 0;
+  color: black;
+  background-color: #fec231;
+  box-shadow: 0 10px 10px #fec231, 0 -10px 10px #fec231;
+}
+
+.wideTitleImg {
+  display: none;
+}
+
+.bothIntro {
+  margin: 40px 13%;
+  border: 2px solid #fec231;
+  padding: 10px 3%;
+  color: #fec231;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.leaderBox {
+
+}
+
+.moduleTitle {
+  margin-top: 40px;
+  padding: 5px 0;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  /* color: #fec231; */
+  font-size: 1.9rem;
+  text-align: center;
+}
+
+.leaderTypeTitle {
+
+}
+
+.majorityBox {
+
+}
+
+.ldrList {
+
+}
+
+.bothMajTitle {
+  margin: 10px 0;
+  padding: 10px 0 10px 2%;
+  font-size: 1.4rem;
+}
+
+.bothMinTitle {
+  margin: 10px 0;
+  padding: 10px 2% 10px 0;
+  font-size: 1.4rem;
+  text-align: right;
+}
+
+.oneLdr {
+  margin-left: 5%;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  padding: 5%;
+  color: #fec231;
+  width: 80%
+}
+
+.oneLdr img {
+  width: 100%;
+}
+
+.majorityLdrs {
+
+}
+
+.minorityLdr {
+
+}
+
+.ldrTitle {
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.ldrName {
+  margin: 15px 0;
+  color: #fec231;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.ldrDescription {
+  margin: 15px 0;
+  color: #fec231;
+  font-size: 1.3rem;
+}
+
+.billBox {
+  margin-top: 30px;
+}
+
+.billContent {
+
+}
+
+.billNameList {
+  margin: 30px 5% 0 5%;
+}
+
+.selectTitle {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.selectBox {
+  margin: 0 5%;
+}
+
+.currentSelect {
+  padding: 5px 2%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.selectList {
+  display: none;
+  padding-bottom: 10px;
+}
+
+.selectOption {
+  margin: 10px 5% 0 5%;
+  border-radius: 15px;
+  padding: 5px 2%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.billDirectory {
+  margin: 30px 5% 0 5%;
+  border: 1px solid #fec231;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  /* background-color: #051E33; */
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 500px;
+}
+
+.oneBill {
+  padding: 20px 4% 0 4%;
+}
+
+.noBill {
+  text-align: center;
+}
+
+.billNumber {
+  border: 1px solid #fec231;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #4A4D08;
+}
+
+.billData {
+  border-radius: 0 0 10px 10px;
+  padding: 10px 2%;
+  color: #4A4D08;
+  background-color: #fec231;
+}
+
+.billTitle {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+
+.billTitle:last-of-type {
+  margin-bottom: 0;
+}
+
+.billSubtitle {
+  font-size: 1.2rem;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.billTitle div:last-of-type {
+  overflow: scroll;
+  max-height: 100px;
+  max-width: 75%;
+}
+
+.billStatus {
+  font-size: 1.6rem;
+}
+
+.billStatus div:last-of-type {
+  text-align: right;
+}
+
+.divider {
+  margin: 10px 0;
+}
+
+.lawBox {
+
+}
+
+.lawTotal {
+  margin-top: 15px;
+}
+
+.leftHalf {
+  margin: 0 5%;
+}
+
+.lawListTitle {
+  padding: 5px 1%;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.lawList {
+  overflow-y: scroll;
+  height: 125px;
+}
+
+.oneLaw {
+  border-bottom: 1px dashed #fec231;
+}
+
+.oneLaw:hover {
+  cursor: pointer;
+}
+
+.oneLawTitle {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 5px;
+  font-size: 1.2rem;
+}
+
+.oneLawApproval {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 5px;
+  text-align: right;
+}
+
+.allQuestions {
+  margin-top: 10px;
+}
+
+.oneQuestion {
+  margin-bottom: 10px;
+}
+
+.question {
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  padding: 5px 5%;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.answer {
+  display: none;
+  padding: 15px 5%;
+  font-size: 1.3rem;
+}
+
+.rightHalf {
+  margin: 0 5%;
+}
+
+.lawContent {
+  /* margin: 0 5%; */
+  border-radius: 0 0 10px 10px;
+  padding: 10px 5%;
+  font-size: 1.2rem;
+  height: 275px;
+  overflow-y: scroll;
+}
+
+.startEmpty {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.viewLawTitle {
+  margin: 5px 0 20px 0;
+  font-size: 1.4rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.viewLawContent {
+  white-space: pre-wrap;
+}
+
+.committeeBox {
+
+}
+
+.allComm {
+  margin-top: 20px;
+  border-top: 1px solid #fec231;
+}
+
+.oneComm {
+  border-bottom: 1px solid #fec231;
+}
+
+.commTitle {
+  padding: 15px 0;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.commContent {
+  display: none;
+  padding: 40px 0;
+}
+
+.commPurpose {
+  margin: 0 5% 20px 5%;
+  border: 1px dashed #fec231;
+  padding: 10px 5%;
+  font-size: 1.2rem;
+}
+
+.commHead {
+  margin-right: 20%;
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+.oneCity {
+  margin: 20px 10% 0 10%;
+}
+
+.cityName {
+  border-radius: 5px 5px 0 0;
+  padding: 10px 5%;
+  font-size: 1.3rem;
+}
+
+.oneCongressman {
+  padding: 10px 5%;
+}
+
+.oneCongressman:last-of-type {
+  border-radius: 0 0 5px 5px;
+}
+
+.oneCongName {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.oneCongHome {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+.topBttn {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.legionLink {
+  margin-top: 150px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+/* END BOTH HOUSES */
+
+/* START HOUSE OF REPS BOX */
+
+.repMenu {
+  border-bottom: 1px solid #fec231;
+  display: none;
+  transition: transform 0.5s linear;
+  background-color: #004E8C;
+}
+
+.repOption {
+  border-top: 1px solid #fec231;
+  padding: 10px 5%;
+  font-size: 1.5rem;
+  color: #fec231;
+}
+
+.repOption:hover {
+  color: #004E8C;
+  background-color: #fec231;
+}
+
+.repOption:hover:first-of-type {
+  background-color: #051E33;
+  color: #fec231;
+}
+
+.repSubOption {
+  margin-bottom: 10px;
+  padding-left: 10%;
+  color: #fec231;
+  font-size: 1.2rem;
+}
+
+.repSubOption:hover {
+  color: #051E33;
+  background-color: #fec231;
+}
+
+.repBothTopBttns {
+  background-color: #8C120E;
+}
+
+.houseBox {
+  display: none;
+  color: #fec231;
+}
+
+.repContent {
+
+}
+
+.repText {
+  font-size: 2rem;
+}
+
+.repTitle {
+  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse.jpg");
+}
+
+.repIntro {
+  background-color: #400200;
+}
+
+.repModTitle {
+  /* color: #051E33; */
+  color: #fec231;
+  background-color: #898C1C;
+}
+
+.repMajTitle {
+  color: #400200;
+  background-image: linear-gradient(to right, #fec231, #fec231 75%, transparent 90%);
+}
+
+.repMinTitle {
+  color: #400200;
+  background-image: linear-gradient(to left, #fec231, #fec231 75%, transparent 90%);
+}
+
+.repLdrs {
+  background-color: #400200;
+}
+
+.repTopBttn {
+  color: #fec231;
+}
+
+.repBillBox {
+
+}
+
+.repSelectTitle {
+
+}
+
+.repSelectBox {
+  background-color: #004E8C;
+}
+
+.currentRepSelect {
+  border: 1px solid #fec231;
+}
+
+.repSelectList {
+
+}
+
+.repSelectOption {
+  border: 1px solid #fec231;
+}
+
+.repBillDirectory {
+  background-color: #400200;
+}
+
+.repBillNumber {
+  background-color: #898C1C;
+}
+
+.repLawBox {
+
+}
+
+.repQuestion {
+  color: #fec231;
+  background-color: #004E8C;
+}
+
+.repAnswer {
+  color: #fec231;
+  background-color: #400200;
+}
+
+.repDivider {
+  margin: 0 10%;
+  border: 1px dashed #fec231;
+}
+
+.repLawTotal {
+
+}
+
+.repLawListTitle {
+  border-top: 1px solid #fec231;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  background-color: #898C1C;
+}
+
+.repLawList {
+  border: 1px solid #fec231;
+  background-color: #400200;
+}
+
+.repLawContent {
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  background-color: #400200;
+}
+
+.oneRepLaw {
+
+}
+
+.oneRepLawTitle {
+  background-color: #004E8C;
+}
+
+.oneRepLawApproval {
+  background-color: #004E8C;
+}
+
+.repCommitteeBox {
+
+}
+
+.repAllComm {
+
+}
+
+.repOneComm {
+  background-color: #400200;
+}
+
+.repCommTitle {
+  background-color: #004E8C;
+}
+
+.repCommContent {
+  
+}
+
+.repCityName {
+  border-radius: 5px 5px 0 0;
+  color: #051E33;
+  background-color: #fec231;
+}
+
+.oneRepresentative {
+  border: 1px solid #fec231;
+  color: #fec231;
+  background-color: #400200;
+}
+
+.oneRepCity:last-child {
+
+}
+
+.oneRepName {
+
+}
+
+.oneRepHome {
+
+}
+
+.repLegionLink {
+  margin-top: 50px;
+  background-color: #400200;
+}
+
+/* END HOUSE OF REPS BOX */
+
+/* START SENATE BOX */
+
+.senMenu {
+  border-bottom: 1px solid #fec231;
+  display: none;
+  transition: transform 0.5s linear;
+  background-color: #8C130E;
+}
+
+.senOption {
+  color: #fec231;
+  background-color: #8C130E;
+}
+
+.senOption:hover {
+  color: #8C130E;
+  background-color: #fec231;
+}
+
+.senOption:hover:first-of-type {
+  background-color: #8C130E;
+  color: #fec231;
+}
+
+.senSubOption {
+  margin-bottom: 10px;
+  padding-left: 10%;
+  color: #fec231;
+  font-size: 1.2rem;
+  background-color: #8C130E;
+}
+
+.senSubOption:hover {
+  color: #4A4D08;
+  background-color: #fec231;
+}
+
+.senBothTopBttns {
+  background-color: #00467f;
+}
+
+.senateBox {
+  color: #fec231;
+  display: none;
+}
+
+.senContent {
+
+}
+
+.senTitle {
+  background-image: url("../../../img/state/congress/senate/sen_chamber.jpg");
+}
+
+.senText {
+  font-size: 4rem;
+}
+
+.bbsTitle {
+  margin-left: 10%;
+  border-bottom: 2px solid black;
+  font-size: 1.2rem;
+  width: 80%;
+}
+
+.senIntro {
+  background-color: #051E33;
+}
+
+.senModTitle {
+  color: #fec231;
+  background-color: #4A4D08;
+}
+
+.senMajTitle {
+  color: #00467f;
+  background-image: linear-gradient(to right, #fec231, #fec231 75%, transparent 90%);
+}
+
+.senMinTitle {
+  color: #00467f;
+  background-image: linear-gradient(to left, #fec231, #fec231 75%, transparent 90%);
+}
+
+.senLdrs {
+  background-color: #051E33;
+}
+
+.senTopBttn {
+  color: #fec231;
+}
+
+.senBillBox {
+
+}
+
+.senSelectTitle {
+
+}
+
+.senSelectBox {
+  background-color: #8C130E;
+}
+
+.currentSenSelect {
+  border: 1px solid #fec231;
+}
+
+.senSelectList {
+  display: none;
+}
+
+.senSelectOption {
+  border: 1px solid #fec231;
+}
+
+.senBillDirectory {
+  background-color: #051E33;
+  }
+}
+
+.oneSenBill {
+
+}
+
+.senOneQuestion {
+  background-color: #051E33;
+}
+
+.senQuestion {
+  color: #fec231;
+  background-color: #8C130E;
+}
+
+.senAnswer {
+  border-bottom: #fec231;
+  color: #fec231;
+  background-color: #051E33;
+}
+
+.senDivider {
+  margin: 0 10%;
+  border: 1px dashed #fec231;
+}
+
+.senLawTotal {
+
+}
+
+.senLawListTitle {
+  border-top: 1px solid #fec231;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  background-color: #4A4D08;
+}
+
+.senLawList {
+  border: 1px solid #fec231;
+  background-color: #051E33;
+}
+
+.senLawContent {
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  background-color: #051E33;
+}
+
+.oneSenLaw {
+  background-color: #8C130E;
+}
+
+.oneSenLawTitle {
+
+}
+
+.oneSenLawApproval {
+
+}
+
+.senOneComm {
+  background-color: #051E33;
+}
+
+.senCommTitle {
+  background-color: #8C130E;
+}
+
+.senCommContent {
+  /* background-color: #051E33; */
+}
+
+.senCityName {
+  border-radius: 5px 5px 0 0;
+  color: #051E33;
+  background-color: #fec231;
+}
+
+.oneSenator {
+  border: 1px solid #fec231;
+  color: #fec231;
+  background-color: #051E33;
+}
+
+.oneSenCity:last-child {
+
+}
+
+.oneSenName {
+
+}
+
+.oneSenHome {
+
+}
+
+.senLegionLink {
+  margin-top: 50px;
+  background-color: #051E33;
+}
+
+/* END SENATE BOX */

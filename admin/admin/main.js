@@ -666,28 +666,35 @@ $(document).ready(()=>{
   $(document).ready(() => {
     interval = setInterval(tickDown,1000);
   });
-  const lockTime = Date.now() + 1800000;
+  const lockTime = Date.now() + 1800000; // 30 minutes in the future
+  // const lockTime = Date.now() + 30000; // 30 seconds in the future (for testing)
   const tickDown = () => {
     let currentTime = Date.now();
     let timeDiff = lockTime - currentTime;
     let currentSec = Math.floor(timeDiff / 1000);
     let currentMin = Math.floor(currentSec / 60);
     let currentRemainder = currentSec - (currentMin * 60);
+    let tenMinuteMark = 600000; // 10 minutes left
+    let twoMinuteMark = 120000; // 2 minutes left
+    let oneMinuteMark = 60000;  // 1 minute left
     if (currentRemainder < 10) {
       currentRemainder = "0" + currentRemainder;
     };
-    if (currentMin < 10) {
+    if (timeDiff < tenMinuteMark) {
       currentMin = "0" + currentMin;
     };
-    if (currentMin == 2 && currentRemainder == 0) {
+    if (timeDiff <= twoMinuteMark && timeDiff > oneMinuteMark) {
       $("#refInfoBar").css('background-color','orange').css('color','black');
     };
-    if (currentMin == 1 && currentRemainder == 0) {
+    if (timeDiff <= oneMinuteMark && timeDiff > 0) {
       $("#refInfoBar").css('background-color','red').css('color','white');
     };
     $("#timeMin").text(currentMin + ":" + currentRemainder);
     if (timeDiff < 0) {
       $("#refText").text("Auto-locked. Refresh & login");
+      $("#refInfoBar").css('background-color','red').css('color','white');
+      $("<div style='border: 1px solid grey;color: black;background-color: lightgrey;text-align:center'>Your time has expired</div>").insertAfter(".allPostBttns");
+      $(".allPostBttns").css('display','none');
       clearInterval(interval);
     };
   };

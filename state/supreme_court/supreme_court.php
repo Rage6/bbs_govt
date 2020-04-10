@@ -1,14 +1,9 @@
 <?php
+
   session_start();
   require_once("../../pdo.php");
   require_once("../../lockdown.php");
   require_once("supreme_court_lead.php");
-
-  // Redirects to 'default.html' if lockdown in place
-  if ($checkLock > 0) {
-    header('Location: ../../default.html');
-    return true;
-  };
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | State Supreme Court</title>
+    <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/court_360.css" />
     <!-- Width: 361px to 375px -->
@@ -43,27 +39,34 @@
   </head>
   <body>
     <div class="wholePage">
-      <div class="mainTitle">
-        <div class="mainTitleText">
-          <div class="topMain">BUCKEYE BOYS STATE</div>
-          <div class="titleDivide"></div>
-          <div class="bottomMain">
-            <div>SUPREME</div>
-            <div>COURT</div>
+      <div class="arrowAndTitle">
+        <!-- <a class="backArrow" href="../../index.php">
+          <img src="../../img/home_gold.png" />
+        </a> -->
+        <div class="bothTopBttns">
+          <a href="../../index.php">
+            <img src="../../img/home_gold.png" />
+          </a>
+          <img id="menuBttn" class="showMenu" src="../../img/menu_gold.png" />
+        </div>
+        <div class="mainTitle">
+          <div class="courtLogo"></div>
+          <div class="mainTitleText">
+            <div class="topMain">BUCKEYE BOYS STATE</div>
+            <div class="titleDivide"></div>
+            <div class="bottomMain">
+              <div>SUPREME</div>
+              <div>COURT</div>
+            </div>
           </div>
         </div>
-        <div class="courtLogo"></div>
       </div>
       <div class="menuContent">
-        <div class="menuBttn" id="mainMenu">MENU</div>
         <div class="allOptions">
           <div id="justiceLink" class="optionBttn">JUSTICES</div>
           <div id="caseLink" class="optionBttn">COURT CASES</div>
           <div id="minutesLink" class="optionBttn">BAR ASSOCIATION MINUTES</div>
           <div id="resultsLink" class="optionBttn">BAR MEMBERS</div>
-          <a href="../../index.php">
-            <div class="optionBttn returnBttn"><< BACK</div>
-          </a>
         </div>
       </div>
       <div class="mainContent">
@@ -83,7 +86,7 @@
                   <div>".$oneJustice['job_name']."</div>
                 </div>");
                 if ($oneJustice['approved'] == 1) {
-                  echo("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."' />");
+                  echo("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."?t=".time()."' />");
                 } else {
                   echo("<img class='justiceImg' src='../../img/default_photo.png' />");
                 };
@@ -182,12 +185,12 @@
           <div class="barBox">
             <div class="fullBarIntro">
               <div class="barIntro">
-                <div style='margin-bottom:5px'><i><b>Who is a bar members?</b></i></div>
-                All members of the BBS Bar Association are citizens that have passed the bar exam and are now registered attorneys within our state. Current members are listed below alphabetically based on their last names.
+                <div style='margin-bottom:5px'><i><b>Who are bar members?</b></i></div>
+                All members of the BBS Bar Association are citizens that have passed the bar exam and are registered attorneys within our state. Current members are listed below.
               </div>
               <div class="barIntro">
                 <div style='margin-bottom:5px'><i><b>When is membership required?</b></i></div>
-                Only bar members can act as an attorney in Buckey Boys State. Certain BBS elected positions require that their official are also bar members. These positions include judges, the state attorney general, and county/city directors of law.
+                Only bar members can act as attorneys in Buckey Boys State. Certain  elected BBS officials are required to be bar members. These positions include judges, the state attorney general, and county/city directors of law.
               </div>
             </div>
             <?php

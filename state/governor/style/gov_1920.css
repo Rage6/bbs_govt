@@ -1,4 +1,28 @@
+body {
+  background-color: grey;
+}
+
+.wholePage {
+  margin-left: 50%;
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  position: absolute;
+  left: -720px;
+  width: 1440px;
+}
+
+.backArrow {
+  top: 10px;
+  left: 10px;
+  width: 4%;
+}
+
+.showMenu {
+  display: none;
+}
+
 .govTitle {
+  padding: 40px 4% 30px 4%;
   display: flex;
   justify-content: space-around;
   font-size: 4.5rem;
@@ -37,8 +61,8 @@
 }
 
 #menuContent {
-  display: block;
-  width: 40%;
+  display: block !important;
+  width: 100%;
 }
 
 .menuButton {
@@ -211,12 +235,12 @@
 }
 
 .listTitle {
-  margin-left: 38%;
+  margin-left: 25%;
   border-radius: 20px;
   color: #2020a0;
   font-size: 2rem;
   background-color: #fec231;
-  width: 30%;
+  width: 50%;
 }
 
 .bothList {

@@ -3,7 +3,7 @@ $(()=>{
   console.log("supreme_court/main.js is working");
 
   // To open/close the options with the menuBttn on the top
-  $("#mainMenu").click(()=>{
+  $("#menuBttn").click(()=>{
     if ($(".allOptions").css('display') == "none") {
       $(".allOptions").css('display','block');
     } else {

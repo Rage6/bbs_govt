@@ -1,14 +1,34 @@
 body {
-
+  margin-left: 50%;
+}
+.indexMain {
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  position: relative;
+  left: -720px;
+  width: 1440px;
 }
 a {
 
 }
 #hubTitle {
-
+  margin-left: 10%;
+  font-size: 4.5rem;
+  width: 45%;
 }
 #hubTitle div:first-child {
-
+  font-size: 2.6rem;
+}
+.ohioLogo {
+  margin-right: 10%;
+  display: flex;
+  width: 133px;
+  height: 133px;
+}
+.ohioLogo img {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 #hubContent {
 
@@ -27,7 +47,7 @@ a {
 
 }
 .glossaryBar {
-  font-size: 2rem;
+  display: none;
 }
 .glossaryBox {
 
@@ -45,6 +65,7 @@ a {
 .introBox {
   margin: 10px 5%;
   padding: 20px 2%;
+  font-size: 1.6rem;
   width: 40%;
 }
 .introTitle {
@@ -52,11 +73,19 @@ a {
 }
 .statsBox {
   margin: 10px 5%;
-  padding: 20px 3%;
+  padding: 20px 2%;
+  font-size: 1.6rem;
   width: 40%;
 }
 .statsTitle {
 
+}
+.statsList {
+  margin: 20px 0 0 10%;
+  font-size: 1.7rem;
+}
+.statsList div {
+  margin-bottom: 5px;
 }
 .subtitle {
 
@@ -101,6 +130,9 @@ a {
 
 }
 .explainBox {
+  margin-top: 40px;
+  padding: 0 10% 50px 10%;
+  font-size: 1.6rem;
   max-height: inherit;
   overflow-y: hidden;
 }

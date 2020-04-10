@@ -8,8 +8,14 @@ body {
   border-right: 1px solid black;
   position: absolute;
   left: -720px;
-  background: repeating-linear-gradient(0.25turn, black, transparent 50px, transparent 190px,black 240px, black 266px),url("https://previews.123rf.com/images/detshana/detshana1509/detshana150900603/45255721-marble-texture-white-marble-background.jpg");
+  background: repeating-linear-gradient(0.25turn, black, transparent 50px, transparent 190px,black 240px, black 266px),url("../../../img/state/supreme_court/marble_white.jpg");
   width: 1440px;
+}
+
+.backArrow {
+  top: 15px;
+  left: 15px;
+  width: 4%;
 }
 
 .mainTitle {

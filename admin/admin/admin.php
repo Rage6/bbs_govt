@@ -163,29 +163,27 @@
                     <div class='postSubtitle'>Title/Name(s):</div>
                     <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                     <div class='postSubtitle'>Content:</div>
-                    <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>
-                    <div class='postSubtitle'>Order #:</div>
-                    <input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
-
-                    if (count($subtypeList) > 1) {
-                      echo("
-                        <div class='postSubtitle'>
-                          Category
-                        </div>
-                        <div>
-                          <select class='subtypeSelect' name='newSubtype'>");
-                            for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
-                              echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
-                            };
-                          echo("</select>
-                        </div>
-                      ");
+                    <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>");
+                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 12) {
+                      echo("<div class='postSubtitle'>Bill #:</div>");
+                    } else {
+                      echo("<div class='postSubtitle'>Order #:</div>");
                     };
-
-                    echo("<input type='hidden' name='approval' value='0' />
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />
+                    <div class='postSubtitle'>
+                      Category
+                    </div>
+                    <div>
+                      <select class='subtypeSelect' name='newSubtype'>");
+                        for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
+                          echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                        };
+                      echo("</select>
+                    </div>
+                    <input type='hidden' name='approval' value='0' />
                     <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
                     <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
-                    <input class='addSubmit' type='submit' name='addPost' value='SUBMIT' />
+                    <input class='addSubmit allPostBttns' type='submit' name='addPost' value='SUBMIT' />
                   </form>
                 </div>
                 ");
@@ -268,8 +266,12 @@
                       ");
                     };
 
-                    echo("<div class='postSubtitle'>Order #:</div>
-                    <input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
+                    if ($onePost['type_id'] == 9 || $onePost['type_id'] == 12) {
+                      echo("<div class='postSubtitle'>Bill #:</div>");
+                    } else {
+                      echo("<div class='postSubtitle'>Order #:</div>");
+                    };
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
                 ");
                 if ($approval == 1) {
                   $ifApproved = "checked";
@@ -283,9 +285,16 @@
                 echo("
                     <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                     <div class='changeBttns'>
-                      <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>
-                      <div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>
-                    </div>
+                      <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
+                      $findCanAddStmt = $pdo->prepare("SELECT can_add FROM Type WHERE type_id=:ti");
+                      $findCanAddStmt->execute(array(
+                        ':ti'=>$onePost['type_id']
+                      ));
+                      $findCanAdd = $findCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
+                      if ($findCanAdd == 1) {
+                        echo("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                      };
+                    echo("</div>
                     <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
                     if ($_SESSION['adminType'] == "delegate") {
                       echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
@@ -293,16 +302,18 @@
                     echo("Are you sure you want to make the change(s)?
                       <div class='delBttnRow'>
                         <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
-                        <input class='yesChg' type='submit' name='changePosts' value='Yes, change it' />
-                      </div>
-                    </div>
-                    <div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
-                      ARE YOU SURE YOU WANT TO DELETE THIS POST?
-                      <div class='delBttnRow'>
-                        <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
-                        <input class='yesDel' type='submit' name='deletePost' value='YES, delete it' />
+                        <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
                       </div>
                     </div>");
+                    if ($findCanAdd == 1) {
+                      echo("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
+                        ARE YOU SURE YOU WANT TO DELETE THIS POST?
+                        <div class='delBttnRow'>
+                          <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
+                          <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
+                        </div>
+                      </div>");
+                    };
                     if ($_SESSION['adminType'] == "counselor") {
                       echo("
                         <div class='counsOnly'>
@@ -311,7 +322,7 @@
                           <label for='yes'>APPROVED</label></br>
                           <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
                           <label for='no'>PENDING</label></br>
-                          <input type='submit' name='changeApproval' value='SUBMIT' />
+                          <input class='allPostBttns' type='submit' name='changeApproval' value='SUBMIT' />
                         </div>
                       ");
                     };
@@ -357,7 +368,7 @@
                     <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
                     <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
                     <input class='photoFile' name='jobImg' type='file' />
-                    <input class='photoUpload' name='submitFile' type='submit' value='UPLOAD'/>
+                    <input class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
                     $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
@@ -385,7 +396,7 @@
                             echo("
                             </select>
                           </div>
-                          <input class='counsApprBttn' name='approveImg' type='submit' value='ENTER' />
+                          <input class='counsApprBttn allPostBttns' name='approveImg' type='submit' value='ENTER' />
                         </form>");
                       } else {
                         echo("<div style='padding: 0 5%'>This image was not edited into a square shape, making it unable to fit on their page. Tell the delegate to reload their image, use the included editing tool, and hit 'ENTER'</div>");
@@ -415,7 +426,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.senator,Job.representative,Job.job_id ASC");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -434,6 +445,23 @@
                 </div>
                 <div id='listBox' class='listBox'>");
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                if ($oneJob['senator'] != 0) {
+                  $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
+                  $jobCityStmt->execute(array(
+                    ':si'=>$oneJob['senator']
+                  ));
+                  $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                  $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                } elseif ($oneJob['representative'] != 0) {
+                  $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
+                  $jobCityStmt->execute(array(
+                    ':si'=>$oneJob['representative']
+                  ));
+                  $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                  $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                } else {
+                  $cityAndId = "";
+                };
                 if ($oneJob['in_department'] == 1) {
                   $findDptNameStmt->execute(array(
                     ':ji'=>$oneJob['job_id']
@@ -448,7 +476,7 @@
                 if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
                   echo("
                   <div class='staffTitle'>
-                    ".$oneJob['job_name'].$dptName."
+                    ".$oneJob['job_name'].$cityAndId.$dptName."
                   </div>
                   <div class='staffContent'>
                     <div>
@@ -482,8 +510,18 @@
                         ':scd'=>htmlentities($secInfo['section_id'])
                       ));
                       while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        if ($singleJob['senator'] != 0 || $singleJob['representative'] != 0) {
-                          $cityName = $singleJob['section_name'];
+                        if ($singleJob['senator'] != 0) {
+                          $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:sn");
+                          $findCityNameStmt->execute(array(
+                            ':sn'=>$singleJob['senator']
+                          ));
+                          $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
+                        } elseif ($singleJob['representative'] != 0) {
+                          $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:rp");
+                          $findCityNameStmt->execute(array(
+                            ':rp'=>$singleJob['representative']
+                          ));
+                          $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
                         } else {
                           $cityName = "";
                         };
@@ -500,7 +538,7 @@
                           $findDptStatus = 1;
                         };
                         if ($singleJob['in_department'] == 0 || $findDptStatus == 1) {
-                          echo("<option value='".$singleJob['job_id']."'>".$cityName." ".$singleJob['job_name'].$selectDptName."</option>");
+                          echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name'].$cityName.$selectDptName."</option>");
                         };
                       };
             echo("
@@ -533,7 +571,7 @@
           echo("
                   </div>
                   <div>
-                    <input class='assignJobBttn' type='submit' name='changeJobDel' value='CHANGE' />
+                    <input class='assignJobBttn allPostBttns' type='submit' name='changeJobDel' value='CHANGE' />
                   </div>
                 </div>
               </form>
@@ -575,7 +613,7 @@
                     </select>
                   </div>
                   <div>
-                    <input class='addDelBttn' type='submit' name='addDelegate' value='ADD' />
+                    <input class='addDelBttn allPostBttns' type='submit' name='addDelegate' value='ADD' />
                   </div>
                 </form>
               </div>
@@ -642,7 +680,7 @@
                             };
                           echo("</select>
                         </div>
-                        <input class='changeEnter' type='submit' name='updateDelInfo' value='ENTER' />
+                        <input class='changeEnter allPostBttns' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>
                     </div>
                     <div id='delBox".$allDelegate[$delNum]['delegate_id']."' class='deleteBox udpateRow' data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='delBox'>
@@ -652,7 +690,7 @@
                       <div class='deleteRow'>
                         <input type='hidden' name='removeDelId' value='".$allDelegate[$delNum]['delegate_id']."' />
                         <input type='hidden' name='removeDelName' value='".$allDelegate[$delNum]['last_name']."' />
-                        <input class='deleteBttn' type='submit' name='deleteDel' value='YES, delete it' />
+                        <input class='deleteBttn allPostBttns' type='submit' name='deleteDel' value='YES, delete it' />
                         <div data-delId='".$allDelegate[$delNum]['delegate_id']."' data-act='cancelBttn'>CANCEL</div>
                       </div>
                     </div>
@@ -668,12 +706,12 @@
           echo("
           <div class='counsBox'>
             <div id='dptTitle' class='postType listTitle'>
-              Department Directory
+              Departments & Committees
             </div>
             <div id='dptDirBox' class='dptDirBox allBox'>
               <form method='POST'>
                 <div id='addDptBttn' class='addDptBttn'>
-                  CREATE DEPARTMENT
+                  ADD +
                 </div>
                 <div id='addDptBox' class='addDptBox'>
                   <input class='dptText' type='text' name='dptName' placeholder='Department Name' />
@@ -698,7 +736,7 @@
                     };
               echo("</select>
                   </div>
-                  <input class='addDptSubmit' type='submit' name='makeDpt' value='CREATE' />
+                  <input class='addDptSubmit allPostBttns' type='submit' name='makeDpt' value='CREATE' />
                 </div>
               </form>
               <div class='updateTable'>");
@@ -746,7 +784,7 @@
                           <option value='0'".$forNo.">NO</option>
                         </select>
                       </div>
-                      <input class='changeEnter' type='submit' name='submitDpt' value='ENTER' />
+                      <input class='changeEnter allPostBttns' type='submit' name='submitDpt' value='ENTER' />
                     </div>
                   </div>
                   <div id='delDptBox".$dptList[$dptNum]['dpt_id']."' class='deleteBox udpateRow' data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='delDptBox'>
@@ -757,7 +795,7 @@
                       <input type='hidden' name='removeDptId' value='".$dptList[$dptNum]['dpt_id']."' />
                       <input type='hidden' name='removeJobId' value='".$dptList[$dptNum]['job_id']."' />
                       <div>
-                        <input type='submit' name='deleteDpt' value='YES, delete it' />
+                        <input class='allPostBttns' type='submit' name='deleteDpt' value='YES, delete it' />
                       </div>
                       <div data-dptId='".$dptList[$dptNum]['dpt_id']."' data-act='cancelDptBttn'>CANCEL</div>
                     </div>

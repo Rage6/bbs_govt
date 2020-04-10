@@ -7,9 +7,27 @@ body {
   margin: 0;
   font-size: 16px;
 }
+.backArrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12%;
+}
+.bothTopBttns {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+}
+.bothTopBttns img {
+  height: 50px;
+  width: auto;
+}
 .govTitle {
   border-bottom: 3px solid #fec231;
-  padding: 20px 0;
+  padding: 40px 5% 30px 5%;
   color: #fec231;
   font-size: 3rem;
   font-family: 'Montserrat', sans-serif;
@@ -24,7 +42,8 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 .menuBar {
-  padding: 2px 0;
+  border-bottom: 1px solid #2020a0;
+  padding: 5px 0;
   color: #2020a0;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -33,29 +52,20 @@ body {
 .fullContent {
   background-image: linear-gradient(to bottom right, #2020a0, white, red);
 }
-.menuList {
-  border-top: 1px solid #2020a0;
-}
-
 #hoverLink:hover {
   color: #fec231;
   background-color: #2020a0;
 }
-
 #menuContent {
   display: none;
+  /* height: 0px; */
 }
 .menuButton {
+  border-bottom: 1px dashed #2020a0;
   padding: 10px 0 10px 10px;
   color: #2020a0;
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #fec231;
-}
-.backButton {
-  border-top: 1px dashed #2020a0;
-  padding: 5px 0;
-  font-size: 0.8rem;
-  text-align: center;
 }
 .menuList a {
   text-decoration: none;
@@ -66,9 +76,7 @@ body {
 .govContent {
   padding-bottom: 50px;
   background-position: bottom;
-  /* background-image: linear-gradient(to bottom right, #2020a0, white, red); */
 }
-
 #img_0 {
   display: block;
 }
@@ -165,6 +173,12 @@ body {
   padding: 10px 0;
   text-align: center;
   font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.govHometown {
+  padding-bottom: 10px;
+  font-size: 1.1rem;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
 .nameAndPic img{
@@ -289,4 +303,8 @@ body {
   color: #00467f;
   text-decoration: none;
   cursor: pointer;
+}
+
+.govLegionLink {
+  background-color: #2020a0;
 }

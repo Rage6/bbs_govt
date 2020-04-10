@@ -212,13 +212,24 @@ if (isset($_POST['changePosts'])) {
 
 // Delete a post
 if (isset($_POST['deletePost'])) {
-  $delPostStmt = $pdo->prepare('DELETE FROM Post WHERE post_id=:pid');
-  $delPostStmt->execute(array(
-    ':pid'=>$_POST['postId']
+  $checkCanAddStmt = $pdo->prepare("SELECT can_add FROM Post INNER JOIN Type WHERE Post.post_id=:ps AND Post.type_id=Type.type_id");
+  $checkCanAddStmt->execute(array(
+    ':ps'=>htmlentities($_POST['postId'])
   ));
-  $_SESSION['message'] = "<b style='color:blue'>Post Deleted</b>";
-  header('Location: admin.php');
-  return true;
+  $checkCanAdd = $checkCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
+  if ($checkCanAdd == 1) {
+    $delPostStmt = $pdo->prepare('DELETE FROM Post WHERE post_id=:pid');
+    $delPostStmt->execute(array(
+      ':pid'=>$_POST['postId']
+    ));
+    $_SESSION['message'] = "<b style='color:blue'>Post Deleted</b>";
+    header('Location: admin.php');
+    return true;
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>You are not authorized to delete this post</b>";
+    header('Location: admin.php');
+    return false;
+  };
 };
 
 // Changes the job assignment from one existing delegate to another

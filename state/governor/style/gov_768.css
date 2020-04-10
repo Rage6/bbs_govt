@@ -1,13 +1,15 @@
+.backArrow {
+  top: 10px;
+  left: 10px;
+  width: 8%;
+}
+
 .govTitle {
   font-size: 4rem;
 }
 
 .govTitle div:last-child {
   font-size: 1.8rem;
-}
-
-.backButton {
-  font-size: 1.2rem;
 }
 
 #img_0 {

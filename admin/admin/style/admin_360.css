@@ -979,3 +979,8 @@ body {
   background-color: blue;
   width: 60%;
 }
+
+/* These are used to lock all $_POST requests after the timer goes off */
+.allPostBttns {
+
+}

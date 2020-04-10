@@ -1,12 +1,14 @@
 $(()=>{
   // console.log("testing");
+  // Puts the menu bar in position
+
   // Opens and closes the menu options
-  $("#menuClick").click(()=>{
+  $("#menuBttn").click(()=>{
     if (window.innerWidth < 769) {
-      if ($("#menuContent").css("display") == "block") {
-        $("#menuContent").css("display","none");
-      } else {
+      if ($("#menuContent").css("display") == "none") {
         $("#menuContent").css("display","block");
+      } else {
+        $("#menuContent").css("display","none");
       };
     };
   });
