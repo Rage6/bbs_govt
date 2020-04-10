@@ -1,5 +1,7 @@
 body {
-  background-color: grey;
+  background-image: url("../../../img/state/governor/crowd.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .wholePage {

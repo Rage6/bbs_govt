@@ -187,7 +187,7 @@
         <div id="aboutTop">
           <div class="levelTitle explainTitle">What Is Buckeye Boys State?</div>
           <div class="explainBox">
-            <span class="introTitle">E</span>very summer, nearly 1000 young men take their first steps towards leading our nation by creating and running their own state: Buckeye Boys State (BBS). This 8 day-long camp, which takes place at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS will:
+            <span class="introTitle">E</span>very summer, approximately 1000 young men take their first steps towards leading our nation by creating and running their own state: Buckeye Boys State (BBS). This 8 day-long camp, which takes place at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS will:
             <ul>
               <li>Run their own political parties</li>
               <li>Run for elected position within their BBS cities, counties, or state</li>
