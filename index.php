@@ -20,7 +20,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BBS | <?php echo($thisYear) ?></title>
+    <title>Buckeye Boys State | <?php echo($thisYear) ?></title>
     <meta property="og:title" content="Buckeye Boys State" />
     <meta property="og:image" content="img/ohio_flag_bbs.jpg" />
     <meta property="og:description" content="Welcome to Buckeye Boys State! It is here where many young men take their first steps towards becoming our democratic leaders of tomorrow." />
