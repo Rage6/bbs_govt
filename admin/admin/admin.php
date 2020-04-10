@@ -715,7 +715,7 @@
                 </div>
                 <div id='addDptBox' class='addDptBox'>
                   <input class='dptText' type='text' name='dptName' placeholder='Department Name' />
-                  <input class='dptText' type='text' name='dptPurpose' placeholder='Purpose' /></br>
+                  <textarea class='dptText' name='dptPurpose' rows='4' placeholder='Purpose'></textarea></br>
                   <input class='dptText' type='text' name='dptJob' placeholder='Job Title' />
                   <div class='dptActive'>
                     <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>
