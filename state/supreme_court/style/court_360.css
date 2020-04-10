@@ -5,7 +5,8 @@ body {
 .wholePage {
   font-size: 16px;
   background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("../../../img/state/supreme_court/marble_white.jpg");
-  background-size: contain;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 a {

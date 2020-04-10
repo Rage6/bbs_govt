@@ -1,5 +1,7 @@
 body {
-  background-color: lightgrey;
+  background-image: url("../../../img/state/supreme_court/marble_white.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .wholePage {
