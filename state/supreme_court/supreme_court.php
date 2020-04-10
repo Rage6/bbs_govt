@@ -11,7 +11,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BBS | State Supreme Court</title>
+    <title>BBS | Supreme Court</title>
+    <meta property="og:title" content="Supreme Court | BBS" />
+    <meta property="og:image" content="../../img/ohio_flag_bbs.jpg" />
+    <meta property="og:description" content="Welcome to BBS Supreme Court. Here is where you can quickly find all of our important, up-to-date, state-level legal information." />
     <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/court_360.css" />

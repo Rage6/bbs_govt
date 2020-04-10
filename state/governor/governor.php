@@ -12,6 +12,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Governor</title>
+    <meta property="og:title" content="Office of the Governor | BBS" />
+    <meta property="og:image" content="../../img/ohio_flag_bbs.jpg" />
+    <meta property="og:description" content="Welcome to the Office of the Governor. Here is where you can find all of the progress occurring within both Senate and the House of Representatives" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
