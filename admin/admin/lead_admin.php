@@ -601,7 +601,8 @@ if (isset($_POST['makeDpt'])) {
     header('Location: admin.php');
     return false;
   } else {
-    if ($_POST['dptHead'] == 0) {
+    $negOne = 0 - 1;
+    if ($_POST['dptHead'] == $negOne) {
       $_SESSION['message'] = "<b style='color:red'>Choose a delegate</b>";
       header('Location: admin.php');
       return false;

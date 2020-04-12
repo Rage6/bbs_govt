@@ -730,7 +730,7 @@
                   <div class='dptActive'>
                     <span>Director: </span>
                     <select name='dptHead'>
-                      <option value='0'>Choose a delegate</option>");
+                      <option value='-1'>Choose a delegate</option>");
                     for ($num = 0; $num < count($allDelegate); $num++) {
                       echo("
                       <option value='".$allDelegate[$num]['delegate_id']."'>".
