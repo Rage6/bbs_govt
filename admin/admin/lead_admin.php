@@ -102,6 +102,8 @@ while($oneDelName = $photoDelNameStmt->fetch(PDO::FETCH_ASSOC)) {
     if ($oneDelName['job_id'] == $allPhotos[$nameNum]['job_id']) {
       // var_dump($oneDelName['first_name']." ".$oneDelName['last_name']);
       $allPhotos[$nameNum]['delegate_name'] = $oneDelName['first_name']." ".$oneDelName['last_name'];
+    } else {
+      $allPhotos[$nameNum]['delegate_name'] = "N/A";
     };
   };
 };
