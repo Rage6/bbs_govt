@@ -169,6 +169,9 @@ body {
   margin: 0 5%;
   padding-top: 20px;
 }
+.govWords {
+  display: block;
+}
 .govName {
   padding: 10px 0;
   text-align: center;

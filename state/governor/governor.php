@@ -243,10 +243,12 @@
                   <div class='govSubtitle'>".$govStaffList[$govNum]["job_name"]."</div>
                   <div class='forFlex'>
                     <div class='nameAndPic'>
-                      <div class='govName'>
-                        ".$govStaffList[$govNum]["first_name"]." ".$govStaffList[$govNum]["last_name"]."
-                      </div>
-                      <div class='govHometown'>".$govStaffList[$govNum]["hometown"].", OH</div>");
+                      <div class='govWords'>
+                        <div class='govName'>
+                          ".$govStaffList[$govNum]["first_name"]." ".$govStaffList[$govNum]["last_name"]."
+                        </div>
+                        <div class='govHometown'>".$govStaffList[$govNum]["hometown"].", OH</div>
+                      </div>");
                       if ($govStaffList[$govNum]['approved'] == 1) {
                         echo("<img src='".$imgPrefix.$govStaffList[$govNum]['section_path']."crop_".$govStaffList[$govNum]['filename'].".".$govStaffList[$govNum]['extension']."?t=".time()."' />");
                       } else {
@@ -284,10 +286,12 @@
                 echo("
                 <div class='forFlex'>
                   <div class='nameAndPic'>
-                    <div class='govName'>
-                      ".$govStaffList[$electNum]['first_name']." ".$govStaffList[$electNum]['last_name']."
-                    </div>
-                    <div class='govHometown'>".$govStaffList[$electNum]['hometown'].", OH</div>");
+                    <div class='govWords'>
+                      <div class='govName'>
+                        ".$govStaffList[$electNum]['first_name']." ".$govStaffList[$electNum]['last_name']."
+                      </div>
+                      <div class='govHometown'>".$govStaffList[$electNum]['hometown'].", OH</div>
+                    </div>");
                       if ($govStaffList[$electNum]['approved'] == 1) {
                         echo("<img src='".$imgPrefix.$govStaffList[$electNum]['section_path']."crop_".$govStaffList[$electNum]['filename'].".".$govStaffList[$electNum]['extension']."?t=".time()."' />");
                       } else {
