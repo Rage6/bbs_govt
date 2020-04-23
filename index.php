@@ -21,9 +21,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Buckeye Boys State | <?php echo($thisYear) ?></title>
+    <!-- Set-up for posts, texts, etc. -->
     <meta property="og:title" content="Buckeye Boys State" />
     <meta property="og:image" content="img/ohio_flag_bbs.jpg" />
     <meta property="og:description" content="Welcome to Buckeye Boys State! It is here where many young men take their first steps towards becoming our democratic leaders of tomorrow." />
+    <!-- Font styles for the index page -->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Cinzel|Josefin+Slab|Playfair+Display|Special+Elite&display=swap" rel="stylesheet">
+    <!-- CSS across all pages -->
     <link rel="stylesheet" type="text/css" href="style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/index_360.css"/>
@@ -76,7 +80,8 @@
           <ul>
             <li>Basic statistics about BBS</li>
             <li>Links to every branch of the state-level government</li>
-            <li>Populations & Flags awarded to every county and city</li>
+            <li>Populations of every city & county</li>
+            <li>Total of flags awarded to each county & city</li>
             <li>A short summary of the BBS program</li>
             <!-- <li>Election process for each elected official</li> -->
           </ul>
