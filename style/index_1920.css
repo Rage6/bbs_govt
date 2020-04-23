@@ -11,6 +11,9 @@ body {
 a {
 
 }
+.pageTop {
+  display: none;
+}
 #hubTitle {
   margin-left: 10%;
   font-size: 4.5rem;

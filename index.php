@@ -54,15 +54,17 @@
           <img src="img/gear.png" />
         </a>
       </div>
-      <div class="topBar">
-        <div id="hubTitle">
-          <div>Buckeye Boys State</div>
-          <div>DIRECTORY</div>
+      <a name="pageTop">
+        <div class="topBar">
+          <div id="hubTitle">
+            <div>Buckeye Boys State</div>
+            <div>DIRECTORY</div>
+          </div>
+          <div class="ohioLogo">
+            <img src="img/Ohio_Flag_Map_Accurate.png" />
+          </div>
         </div>
-        <div class="ohioLogo">
-          <img src="img/Ohio_Flag_Map_Accurate.png" />
-        </div>
-      </div>
+      </a>
       <div id="glossaryBttn" class="glossaryBar">
         MENU
       </div>
@@ -85,6 +87,9 @@
             <li>A short summary of the BBS program</li>
             <!-- <li>Election process for each elected official</li> -->
           </ul>
+          <!-- <div class="pageTop">
+            <a href="#pageTop">- TOP -</a>
+          </div> -->
         </div>
         <div id="numbersTop" class="statsBox">
           <div class="statsTitle"><span class="introTitle">B</span>y the numbers...</div>
@@ -121,6 +126,9 @@
                 </div>
               </a>
             </div>
+            <div class="pageTop">
+              <a href="#pageTop">- TOP -</a>
+            </div>
           </div>
           <div id="countyTop">
             <div class="levelTitle">
@@ -152,6 +160,9 @@
               };
             ?>
             </div>
+            <div class="pageTop">
+              <a href="#pageTop">- TOP -</a>
+            </div>
           </div>
           <div id="cityTop">
             <div class="levelTitle">
@@ -161,6 +172,14 @@
             <?php
               for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
                 if ($cityList[$cityNum]['is_city'] == 0) {
+                  if ($cityNum != 0) {
+                    echo(
+                      "<div class='pageTop'>
+                        <a href='#pageTop'>- TOP -</a>
+                      </div>
+                      "
+                    );
+                  };
                   echo(
                     "<div class='subtitle'>
                       <div><u>".$cityList[$cityNum]['section_name']." County</u></div>
@@ -185,6 +204,12 @@
                   );
                 };
               };
+              echo(
+                "<div class='pageTop'>
+                  <a href='#pageTop'>- TOP -</a>
+                </div>
+                "
+              );
             ?>
             </div>
           </div>

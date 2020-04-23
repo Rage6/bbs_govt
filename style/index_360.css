@@ -13,6 +13,17 @@ body {
 a {
   text-decoration: none;
 }
+
+.pageTop {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.pageTop a {
+  color: #fec231;
+  cursor: pointer;
+}
+
 .topBar {
   display: flex;
   justify-content: space-between;
