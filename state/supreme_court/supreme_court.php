@@ -30,6 +30,7 @@
     <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/court_1440.css"/>
     <!-- Width: 1441px and above -->
     <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/court_1920.css"/>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico"/>
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:600&display=swap" rel="stylesheet">
     <script src=<?php
       if ($isLocal == true) {
