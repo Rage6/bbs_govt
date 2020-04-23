@@ -53,7 +53,13 @@
         <img id="menuBttn" class="showMenu" src="../../img/menu_gold.png" />
       </div>
       <div class="govTitle">
-        <div><?php echo($govStaffList[0]['first_name']." ".$govStaffList[0]['last_name']) ?></div>
+        <div>
+          <?php
+            echo($govStaffList[0]['first_name']
+            ."</br> ".
+            $govStaffList[0]['last_name'])
+          ?>
+        </div>
         <div class="divider"></div>
         <div>Governor of Buckeye Boys State</div>
       </div>

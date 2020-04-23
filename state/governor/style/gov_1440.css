@@ -9,12 +9,14 @@
 }
 
 .govTitle {
+  padding: 20px 8%;
   display: flex;
   justify-content: space-around;
-  font-size: 4.5rem;
+  font-size: 3.2rem;
 }
 
 .govTitle div:first-child {
+  padding-right: 2%;
   width: 50%;
 }
 
@@ -23,9 +25,9 @@
 }
 
 .govTitle div:last-child {
-  padding-top: 20px;
-  padding-right: 75px;
-  font-size: 2rem;
+  padding-left: 2%;
+  font-size: 3.2rem;
+  width: 50%;
 }
 
 .menuBar {
