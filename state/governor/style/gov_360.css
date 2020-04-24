@@ -24,6 +24,7 @@ body {
 .bothTopBttns img {
   height: 50px;
   width: auto;
+  cursor: pointer;
 }
 .govTitle {
   border-bottom: 3px solid #fec231;
@@ -69,6 +70,7 @@ body {
   color: #2020a0;
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #fec231;
+  cursor: pointer;
 }
 .menuList a {
   text-decoration: none;
@@ -277,6 +279,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   width: 10%;
+  cursor: pointer;
 }
 
 .allReportCnt {
