@@ -117,7 +117,7 @@
         <div class="caseBox">
           <div class="subtypeSelectBox">
             <div class="subtypeSelect">
-              <div class="">CHOOSE TYPE:</div>
+              <div>CHOOSE TYPE:</div>
               <div id="selectBox" data-subtypeid="0">---</div>
             </div>
             <div id="subtypeBttnList" class="subtypeBttnList">
