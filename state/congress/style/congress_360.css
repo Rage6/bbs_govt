@@ -171,6 +171,7 @@ body {
   font-family: "Arvo", serif;
   text-align: center;
   width: 60%;
+  cursor: pointer;
 }
 
 .senChamber {
@@ -214,6 +215,10 @@ body {
 /* END ENTRANCE BOX */
 
 /* START BOTH HOUSES */
+
+.bothTopBttns img {
+  cursor: pointer;
+}
 
 .menuOption {
   border-top: 1px solid #fec231;
@@ -356,6 +361,7 @@ body {
   padding: 5px 2%;
   font-size: 1.1rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .selectList {
@@ -369,6 +375,7 @@ body {
   padding: 5px 2%;
   font-size: 1.1rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .billDirectory {
@@ -608,6 +615,10 @@ body {
   margin-top: 40px;
   font-size: 1.2rem;
   text-align: center;
+}
+
+.topBttn span {
+  cursor: pointer;
 }
 
 .legionLink {

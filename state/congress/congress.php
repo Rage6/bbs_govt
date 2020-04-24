@@ -153,7 +153,9 @@
                     <div class='ldrDescription'>
                       ".$senateLdrList[$ldrNum]['description']."
                     </div>
-                    <div class='topBttn senTopBttn'>- TOP -</div>
+                    <div class='topBttn senTopBttn'>
+                      <span>- TOP -</span>
+                    </div>
                   </div>");
                 };
               ?>
@@ -181,7 +183,9 @@
                     <div class='ldrDescription'>
                       ".$senateLdrList[$ldrNum]['description']."
                     </div>
-                    <div class='topBttn senTopBttn'>- TOP -</div>
+                    <div class='topBttn senTopBttn'>
+                      <span>- TOP -</span>
+                    </div>
                   </div>");
                 };
               ?>
@@ -218,7 +222,9 @@
               </div>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div class='topBttn senTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="senLawBox" class="lawBox senLawBox">
             <div class="moduleTitle senModTitle">LAWS</div>
             <div class="allQuestions">
@@ -285,7 +291,9 @@
               </div>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div class='topBttn senTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
             <div class="moduleTitle senModTitle">COMMITTEES</div>
             <div class="allQuestions">
@@ -328,7 +336,9 @@
               ?>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div class='topBttn senTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="senMemberBox" class="senMemberBox memberBox">
             <div class="moduleTitle senModTitle">KNOW YOUR SENATOR</div>
             <div class="allMember senAllMembers">
@@ -364,7 +374,9 @@
               ?>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>- TOP -</div>
+          <div class='topBttn senTopBttn'>
+            <span>- TOP -</span>
+          </div>
         </div>
         <div class='footer senLegionLink'>
           Want to attend Buckeye Boys State next year?<br>
@@ -440,7 +452,9 @@
                     };
                     echo("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
-                    <div class='topBttn repTopBttn'>- TOP -</div>
+                    <div class='topBttn repTopBttn'>
+                      <span>- TOP -</span>
+                    </div>
                   </div>");
                 };
               ?>
@@ -467,7 +481,9 @@
                     };
                     echo("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
-                    <div class='topBttn repTopBttn'>- TOP -</div>
+                    <div class='topBttn repTopBttn'>
+                      <span>- TOP -</span>
+                    </div>
                   </div>");
                 };
               ?>
@@ -504,7 +520,9 @@
               </div>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>- TOP -</div>
+          <div class='topBttn repTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="repLawBox" class="lawBox repLawBox">
             <div class="moduleTitle repModTitle">LAWS</div>
             <div class="allQuestions">
@@ -565,7 +583,9 @@
               </div>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>- TOP -</div>
+          <div class='topBttn repTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="repCommitteeBox" class="repCommitteeBox committeeBox">
             <div class="moduleTitle repModTitle">COMMITTEES</div>
             <div class="allQuestions">
@@ -602,7 +622,9 @@
               ?>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>- TOP -</div>
+          <div class='topBttn repTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="repMemberBox" class="repMemberBox memberBox">
             <div class="moduleTitle repModTitle">KNOW YOUR REPRESENTATIVE</div>
             <div class="allMember repAllMembers">
@@ -639,7 +661,9 @@
             </div>
           </div>
         </div>
-        <div class='topBttn repTopBttn'>- TOP -</div>
+        <div class='topBttn repTopBttn'>
+          <span>- TOP -</span>
+        </div>
         <div class='footer repLegionLink'>
           Want to attend Buckeye Boys State next year?<br>
           <a href="http://www.ohiobuckeyeboysstate.com/">
