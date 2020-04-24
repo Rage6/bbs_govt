@@ -54,7 +54,7 @@
 
 #menuContent {
   display: block !important;
-  width: 50%;
+  width: 20%;
 }
 
 .menuButton {
@@ -67,6 +67,7 @@
 
 .govContent {
   padding-bottom: 1px;
+  width: 80%;
 }
 
 #img_0 {
