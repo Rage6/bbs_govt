@@ -216,6 +216,7 @@ body {
   text-align: center;
 }
 .itemTitle {
+  margin-bottom: 10px;
   text-decoration: underline;
 }
 .itemContent {
