@@ -27,9 +27,9 @@ body {
 }
 .govTitle {
   border-bottom: 3px solid #fec231;
-  padding: 40px 5% 30px 5%;
+  padding: 60px 5% 30px 5%;
   color: #fec231;
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: #2020a0;
@@ -40,6 +40,9 @@ body {
 .govTitle div:last-child {
   font-size: 1.5rem;
   font-family: 'Open Sans Condensed', sans-serif;
+}
+.titleBreak {
+  display: none;
 }
 .menuBar {
   border-bottom: 1px solid #2020a0;

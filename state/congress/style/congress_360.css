@@ -154,6 +154,7 @@ body {
   margin-top: 15px;
   margin-left: 20%;
   padding: 10px 0;
+  border-radius: 20px;
   text-align: center;
   font-size: 1.3rem;
   background-color: white;
@@ -167,6 +168,7 @@ body {
   padding: 20px 5%;;
   color: white;
   font-size: 1.8rem;
+  font-family: "Arvo", serif;
   text-align: center;
   width: 60%;
 }
@@ -806,7 +808,7 @@ body {
 }
 
 .repCommContent {
-  
+
 }
 
 .repCityName {

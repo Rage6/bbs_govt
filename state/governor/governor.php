@@ -62,7 +62,7 @@
           ?>
         </div>
         <div class="divider"></div>
-        <div>Governor of Buckeye Boys State</div>
+        <div>Governor of <span class="titleBreak"></br></span>Buckeye Boys State</div>
       </div>
       <div class="fullContent">
         <div id="menuContent" class="menuList">

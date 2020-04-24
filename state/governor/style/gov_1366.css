@@ -30,6 +30,10 @@
   width: 50%;
 }
 
+.titleBreak {
+  display: initial;
+}
+
 .menuBar {
   display: none;
 }

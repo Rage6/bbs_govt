@@ -21,7 +21,7 @@
     <meta property="og:title" content="General Assembly | BBS" />
     <meta property="og:image" content="../../img/ohio_flag_bbs.jpg" />
     <meta property="og:description" content="Welcome to the General Assemby. Here is where you can find all of the progress occurring within both Senate and the House of Representatives." />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <link rel="stylesheet" media="screen and (min-width: 1441px)" type="text/css" href="../../style/required_1920.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
@@ -66,7 +66,7 @@
           <div class="titleDivider"></div>
           <div>GENERAL ASSEMBLY</div>
         </div>
-        <div class="chooseHouse">SELECT A HOUSE</div>
+        <div class="chooseHouse">SELECT A CHAMBER</div>
         <div class="bothChambers">
           <div id="senClick" class="chamberBttn senChamber">
             <div class="senChamberText">

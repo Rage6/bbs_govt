@@ -15,7 +15,7 @@ a {
 }
 
 .pageTop {
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   text-align: center;
 }
 
@@ -157,7 +157,6 @@ a {
   padding: 15px 5% 15px 5%;
   color: black;
   font-size: 1.3rem;
-  font-family: "Special Elite", cursive;
   background-color: #fec231;
   width: 55%;
 }
@@ -202,6 +201,7 @@ a {
   padding-bottom: 10px;
   display:flex;
   justify-content: space-between;
+  font-family: "Playfair Display", serif;
 }
 .sectionName div div img {
   float: right;
@@ -218,6 +218,7 @@ a {
 .statsRow div {
   padding-top: 20px;
   font-size: 2rem;
+  font-family: "Special Elite", cursive;
 }
 .statsRow div img {
   height: 30px;

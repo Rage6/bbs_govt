@@ -87,9 +87,6 @@
             <li>A short summary of the BBS program</li>
             <!-- <li>Election process for each elected official</li> -->
           </ul>
-          <!-- <div class="pageTop">
-            <a href="#pageTop">- TOP -</a>
-          </div> -->
         </div>
         <div id="numbersTop" class="statsBox">
           <div class="statsTitle"><span class="introTitle">B</span>y the numbers...</div>
@@ -226,6 +223,9 @@
               <li>Fulfill their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government</li>
             </ul>
             For more information, check out the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
+          </div>
+          <div class="pageTop">
+            <a href="#pageTop">- TOP -</a>
           </div>
         </div>
       </div>

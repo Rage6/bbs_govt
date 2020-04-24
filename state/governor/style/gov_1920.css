@@ -44,6 +44,10 @@ body {
   font-size: 3.5rem;
 }
 
+.titleBreak {
+  display: initial;
+}
+
 .menuBar {
   display: none;
 }
