@@ -7,7 +7,7 @@ body {
 }
 
 .indexMain {
-  background-color: #002868;
+  background: linear-gradient(135deg, black, #002868 6%, #002768);
 }
 
 a {
