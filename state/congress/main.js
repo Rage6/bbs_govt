@@ -76,6 +76,10 @@ $(()=>{
       .css("animation-delay","0.5s")
       .css("animation-duration","1s")
       .css("animation-name","toBlueBox");
+    $("body")
+      .css("animation-delay","0.5s")
+      .css("animation-duration","1s")
+      .css("animation-name","toDarkBlueBorders");
   });
 
   // From the Senate box back to the entrance box

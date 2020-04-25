@@ -75,8 +75,9 @@ html {
 body {
   margin: 0;
   font-size: 16px;
-  background-image: url("../../../img/state/congress/marble_black.jpg");
+  background-image: url("../../../img/state/congress/statehouse_with_flags.jpg");
   background-size: contain;
+  background-attachment: fixed;
   height: 100%;
 }
 
