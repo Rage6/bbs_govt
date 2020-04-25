@@ -71,6 +71,7 @@
           <div id="senClick" class="chamberBttn senChamber">
             <div class="senChamberText">
               Senate
+              <!-- <div style="color:transparent">filler</div> -->
             </div>
             <div class="chamberDivide forWide"></div>
             <div class="chamberImg senChamberImg forWide"></div>
