@@ -1,17 +1,29 @@
 body {
   background:
+    conic-gradient(darkred, darkred 25%, white 25%, white 50%, transparent 50%),
     url("../img/white_star.png"),
     linear-gradient(to right, #002868 50%, darkred 50%, darkred);
-
+  background-attachment: fixed;
 }
 
 .indexMain {
-  background-color: #002868;
+  background: linear-gradient(135deg, black, #002868 6%, #002768);
 }
 
 a {
   text-decoration: none;
 }
+
+.pageTop {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.pageTop a {
+  color: #fec231;
+  cursor: pointer;
+}
+
 .topBar {
   display: flex;
   justify-content: space-between;
@@ -22,11 +34,12 @@ a {
   padding-bottom: 20px;
   color: #fec231;
   text-align: left;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
+  font-family: 'Cinzel', serif;
 }
 #hubTitle div:first-child {
   border-bottom: 3px solid #fec231;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .ohioLogo {
   margin-right: 5%;
@@ -51,6 +64,7 @@ a {
   background-color: #fec231;
   height: 35px;
   width: 35px;
+  cursor: pointer;
 }
 .adminLink img {
   height: 35px;
@@ -62,6 +76,7 @@ a {
   color: #002868;
   text-align: center;
   font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
   background-color: #fec231;
   cursor: pointer;
 }
@@ -81,6 +96,7 @@ a {
 .introRow {
   margin-bottom: 40px;
   padding-top: 10px;
+  font-family: 'Abel', sans-serif;
 }
 .introBox {
   margin: 10px 10% 10px 10%;
@@ -91,10 +107,15 @@ a {
   font-size: 1.3rem;
   background: linear-gradient(
       rgba(139,0,0,0.85),
-      rgba(139,0,0,0.85)), url('../img/ohio_flag.jpg');
+      rgba(139,0,0,0.85)), url('../img/candidate_rally.jpg');
   background-size: cover;
   background-position: center;
 }
+
+.introBox ul li {
+  padding-bottom: 10px;
+}
+
 .introTitle {
   margin-bottom: 25px;
   text-align: center;
@@ -119,11 +140,17 @@ a {
 .statsList {
 
 }
+
+.statsList div {
+  padding-bottom: 10px;
+}
+
 .subtitle {
   margin-top: 45px;
   text-align: center;
   color: #fec231;
   font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
 }
 .levelButton {
   margin: 20px 0% 20px 20%;
@@ -139,6 +166,7 @@ a {
   color: white;
   text-align: center;
   font-size: 1.7rem;
+  font-family: 'Playfair Display', serif;
   background-color: darkred;
 }
 .linkButton {
@@ -163,6 +191,7 @@ a {
   padding: 10px 5%;
   text-align: left;
   font-size: 1.5rem;
+  font-family: "Cinzel", serif;
   color: #002868;
   background: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
   width: 70%;
@@ -172,6 +201,7 @@ a {
   padding-bottom: 10px;
   display:flex;
   justify-content: space-between;
+  font-family: "Playfair Display", serif;
 }
 .sectionName div div img {
   float: right;
@@ -188,6 +218,7 @@ a {
 .statsRow div {
   padding-top: 20px;
   font-size: 2rem;
+  font-family: "Special Elite", cursive;
 }
 .statsRow div img {
   height: 30px;
@@ -200,4 +231,5 @@ a {
   padding-bottom: 50px;
   color: #fec231;
   font-size: 1.2rem;
+  font-family: 'Abel', sans-serif;
 }

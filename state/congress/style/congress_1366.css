@@ -60,6 +60,10 @@
   width: 30%;
 }
 
+.senChamber {
+  font-size: 3.5rem;
+}
+
 .chamberImg {
   margin: 20px 0;
   height: 250px;

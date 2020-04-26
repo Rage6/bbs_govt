@@ -1,5 +1,7 @@
 body {
-  background-color: grey;
+  background-image: url("../../../img/state/governor/crowd.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .wholePage {
@@ -22,13 +24,14 @@ body {
 }
 
 .govTitle {
-  padding: 40px 4% 30px 4%;
+  padding: 20px 8%;
   display: flex;
   justify-content: space-around;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
 }
 
 .govTitle div:first-child {
+  padding-right: 2%;
   width: 50%;
 }
 
@@ -37,9 +40,12 @@ body {
 }
 
 .govTitle div:last-child {
-  padding-top: 10px;
-  padding-right: 75px;
-  font-size: 3rem;
+  padding-left: 2%;
+  font-size: 3.5rem;
+}
+
+.titleBreak {
+  display: initial;
 }
 
 .menuBar {
@@ -62,7 +68,7 @@ body {
 
 #menuContent {
   display: block !important;
-  width: 100%;
+  width: 25%;
 }
 
 .menuButton {
@@ -76,6 +82,7 @@ body {
 
 .govContent {
   padding-bottom: 1px;
+  width: 75%;
 }
 
 #img_0 {
@@ -189,7 +196,7 @@ body {
 }
 
 .forFlex {
-  margin: 0 10% 50px 10%;
+  margin: 0 3% 50px 3%;
   display: flex;
   justify-content: space-around;
 }
@@ -224,8 +231,8 @@ body {
 }
 
 .goalBox {
-  padding: 50px 5%;
-  font-size: 1.8rem;
+  padding: 50px 3%;
+  font-size: 1.3rem;
 }
 
 .goalIntro {
@@ -241,6 +248,10 @@ body {
   font-size: 2rem;
   background-color: #fec231;
   width: 50%;
+}
+
+.itemTitle {
+  
 }
 
 .bothList {

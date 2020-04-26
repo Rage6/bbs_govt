@@ -1,5 +1,7 @@
 .wholePage {
   background: repeating-linear-gradient(0.25turn, black, transparent 35px, transparent 70px,black 115px, black 150px),url("../../../img/state/supreme_court/marble_white.jpg");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .topMain {

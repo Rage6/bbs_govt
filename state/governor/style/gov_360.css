@@ -24,12 +24,13 @@ body {
 .bothTopBttns img {
   height: 50px;
   width: auto;
+  cursor: pointer;
 }
 .govTitle {
   border-bottom: 3px solid #fec231;
-  padding: 40px 5% 30px 5%;
+  padding: 60px 5% 30px 5%;
   color: #fec231;
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: #2020a0;
@@ -40,6 +41,9 @@ body {
 .govTitle div:last-child {
   font-size: 1.5rem;
   font-family: 'Open Sans Condensed', sans-serif;
+}
+.titleBreak {
+  display: none;
 }
 .menuBar {
   border-bottom: 1px solid #2020a0;
@@ -66,6 +70,7 @@ body {
   color: #2020a0;
   font-family: 'Open Sans Condensed', sans-serif;
   background-color: #fec231;
+  cursor: pointer;
 }
 .menuList a {
   text-decoration: none;
@@ -169,6 +174,9 @@ body {
   margin: 0 5%;
   padding-top: 20px;
 }
+.govWords {
+  display: block;
+}
 .govName {
   padding: 10px 0;
   text-align: center;
@@ -208,6 +216,7 @@ body {
   text-align: center;
 }
 .itemTitle {
+  margin-bottom: 10px;
   text-decoration: underline;
 }
 .itemContent {
@@ -271,6 +280,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   width: 10%;
+  cursor: pointer;
 }
 
 .allReportCnt {

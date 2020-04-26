@@ -20,10 +20,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BBS | <?php echo($thisYear) ?></title>
+    <title>Buckeye Boys State | <?php echo($thisYear) ?></title>
+    <!-- Set-up for posts, texts, etc. -->
     <meta property="og:title" content="Buckeye Boys State" />
     <meta property="og:image" content="img/ohio_flag_bbs.jpg" />
     <meta property="og:description" content="Welcome to Buckeye Boys State! It is here where many young men take their first steps towards becoming our democratic leaders of tomorrow." />
+    <!-- Font styles for the index page -->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Cinzel|Josefin+Slab|Playfair+Display|Special+Elite&display=swap" rel="stylesheet">
+    <!-- CSS across all pages -->
     <link rel="stylesheet" type="text/css" href="style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/index_360.css"/>
@@ -50,15 +54,17 @@
           <img src="img/gear.png" />
         </a>
       </div>
-      <div class="topBar">
-        <div id="hubTitle">
-          <div>Buckeye Boys State</div>
-          <div>DIRECTORY</div>
+      <a name="pageTop">
+        <div class="topBar">
+          <div id="hubTitle">
+            <div>Buckeye Boys State</div>
+            <div>DIRECTORY</div>
+          </div>
+          <div class="ohioLogo">
+            <img src="img/Ohio_Flag_Map_Accurate.png" />
+          </div>
         </div>
-        <div class="ohioLogo">
-          <img src="img/Ohio_Flag_Map_Accurate.png" />
-        </div>
-      </div>
+      </a>
       <div id="glossaryBttn" class="glossaryBar">
         MENU
       </div>
@@ -76,7 +82,8 @@
           <ul>
             <li>Basic statistics about BBS</li>
             <li>Links to every branch of the state-level government</li>
-            <li>Populations & Flags awarded to every county and city</li>
+            <li>Populations of every city & county</li>
+            <li>Total of flags awarded to each county & city</li>
             <li>A short summary of the BBS program</li>
             <!-- <li>Election process for each elected official</li> -->
           </ul>
@@ -116,6 +123,9 @@
                 </div>
               </a>
             </div>
+            <div class="pageTop">
+              <a href="#pageTop">- TOP -</a>
+            </div>
           </div>
           <div id="countyTop">
             <div class="levelTitle">
@@ -147,6 +157,9 @@
               };
             ?>
             </div>
+            <div class="pageTop">
+              <a href="#pageTop">- TOP -</a>
+            </div>
           </div>
           <div id="cityTop">
             <div class="levelTitle">
@@ -156,6 +169,14 @@
             <?php
               for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
                 if ($cityList[$cityNum]['is_city'] == 0) {
+                  if ($cityNum != 0) {
+                    echo(
+                      "<div class='pageTop'>
+                        <a href='#pageTop'>- TOP -</a>
+                      </div>
+                      "
+                    );
+                  };
                   echo(
                     "<div class='subtitle'>
                       <div><u>".$cityList[$cityNum]['section_name']." County</u></div>
@@ -180,6 +201,12 @@
                   );
                 };
               };
+              echo(
+                "<div class='pageTop'>
+                  <a href='#pageTop'>- TOP -</a>
+                </div>
+                "
+              );
             ?>
             </div>
           </div>
@@ -187,7 +214,7 @@
         <div id="aboutTop">
           <div class="levelTitle explainTitle">What Is Buckeye Boys State?</div>
           <div class="explainBox">
-            <span class="introTitle">E</span>very summer, nearly 1000 young men take their first steps towards leading our nation by creating and running their own state: Buckeye Boys State (BBS). This 8 day-long camp, which takes place at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS will:
+            <span class="introTitle">E</span>very summer, approximately 1000 young men take their first steps towards leading our nation by creating and running their own state: Buckeye Boys State (BBS). This 8 day-long camp, which takes place at Miami University in Oxford, OH, is a hands-on exercise in American democracy. During this time, the citizens of BBS will:
             <ul>
               <li>Run their own political parties</li>
               <li>Run for elected position within their BBS cities, counties, or state</li>
@@ -196,6 +223,9 @@
               <li>Fulfill their responsibility as a BBS citizen, such as abiding by the laws passed by the BBS government</li>
             </ul>
             For more information, check out the <a style="color:#fec231;border-bottom: 1px solid #fec231" href="http://www.ohiobuckeyeboysstate.com/">official American Legion website</a>.
+          </div>
+          <div class="pageTop">
+            <a href="#pageTop">- TOP -</a>
           </div>
         </div>
       </div>

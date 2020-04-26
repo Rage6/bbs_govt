@@ -12,6 +12,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BBS | Governor</title>
+    <meta property="og:title" content="Office of the Governor | BBS" />
+    <meta property="og:image" content="../../img/ohio_flag_bbs.jpg" />
+    <meta property="og:description" content="Welcome to the Office of the Governor. Here is where you can find all of the progress occurring within both Senate and the House of Representatives" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
@@ -28,6 +31,7 @@
     <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/gov_1440.css"/>
     <!-- Width: 1441px and above -->
     <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/gov_1920.css"/>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico"/>
     <!-- <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -50,9 +54,15 @@
         <img id="menuBttn" class="showMenu" src="../../img/menu_gold.png" />
       </div>
       <div class="govTitle">
-        <div><?php echo($govStaffList[0]['first_name']." ".$govStaffList[0]['last_name']) ?></div>
+        <div>
+          <?php
+            echo($govStaffList[0]['first_name']
+            ."</br> ".
+            $govStaffList[0]['last_name'])
+          ?>
+        </div>
         <div class="divider"></div>
-        <div>Governor of Buckeye Boys State</div>
+        <div>Governor of <span class="titleBreak"></br></span>Buckeye Boys State</div>
       </div>
       <div class="fullContent">
         <div id="menuContent" class="menuList">
@@ -240,10 +250,12 @@
                   <div class='govSubtitle'>".$govStaffList[$govNum]["job_name"]."</div>
                   <div class='forFlex'>
                     <div class='nameAndPic'>
-                      <div class='govName'>
-                        ".$govStaffList[$govNum]["first_name"]." ".$govStaffList[$govNum]["last_name"]."
-                      </div>
-                      <div class='govHometown'>".$govStaffList[$govNum]["hometown"].", OH</div>");
+                      <div class='govWords'>
+                        <div class='govName'>
+                          ".$govStaffList[$govNum]["first_name"]." ".$govStaffList[$govNum]["last_name"]."
+                        </div>
+                        <div class='govHometown'>".$govStaffList[$govNum]["hometown"].", OH</div>
+                      </div>");
                       if ($govStaffList[$govNum]['approved'] == 1) {
                         echo("<img src='".$imgPrefix.$govStaffList[$govNum]['section_path']."crop_".$govStaffList[$govNum]['filename'].".".$govStaffList[$govNum]['extension']."?t=".time()."' />");
                       } else {
@@ -281,10 +293,12 @@
                 echo("
                 <div class='forFlex'>
                   <div class='nameAndPic'>
-                    <div class='govName'>
-                      ".$govStaffList[$electNum]['first_name']." ".$govStaffList[$electNum]['last_name']."
-                    </div>
-                    <div class='govHometown'>".$govStaffList[$electNum]['hometown'].", OH</div>");
+                    <div class='govWords'>
+                      <div class='govName'>
+                        ".$govStaffList[$electNum]['first_name']." ".$govStaffList[$electNum]['last_name']."
+                      </div>
+                      <div class='govHometown'>".$govStaffList[$electNum]['hometown'].", OH</div>
+                    </div>");
                       if ($govStaffList[$electNum]['approved'] == 1) {
                         echo("<img src='".$imgPrefix.$govStaffList[$electNum]['section_path']."crop_".$govStaffList[$electNum]['filename'].".".$govStaffList[$electNum]['extension']."?t=".time()."' />");
                       } else {

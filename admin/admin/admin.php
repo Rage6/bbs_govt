@@ -38,6 +38,7 @@
     <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/admin_1440.css"/>
     <!-- Width: 1441px and above -->
     <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/admin_1920.css"/>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico"/>
     <!-- <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -354,8 +355,11 @@
               for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                 echo("
                 <div class='photoBox'>
-                  <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>
-                  <div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>
+                  <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>");
+                  if ($allPhotos[$imgNum]['job_id'] < 0) {
+                    echo("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
+                  };
+                echo("
                   <div>
                     <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                   </div>
@@ -715,7 +719,7 @@
                 </div>
                 <div id='addDptBox' class='addDptBox'>
                   <input class='dptText' type='text' name='dptName' placeholder='Department Name' />
-                  <input class='dptText' type='text' name='dptPurpose' placeholder='Purpose' /></br>
+                  <textarea class='dptText' name='dptPurpose' rows='4' placeholder='Purpose'></textarea></br>
                   <input class='dptText' type='text' name='dptJob' placeholder='Job Title' />
                   <div class='dptActive'>
                     <span style='margin-right: 5%;font-size:1.1rem'>IN USE?</span>
@@ -727,7 +731,7 @@
                   <div class='dptActive'>
                     <span>Director: </span>
                     <select name='dptHead'>
-                      <option value='0'>Choose a delegate</option>");
+                      <option value='-1'>Choose a delegate</option>");
                     for ($num = 0; $num < count($allDelegate); $num++) {
                       echo("
                       <option value='".$allDelegate[$num]['delegate_id']."'>".

@@ -9,12 +9,14 @@
 }
 
 .govTitle {
+  padding: 20px 8%;
   display: flex;
   justify-content: space-around;
-  font-size: 4.5rem;
+  font-size: 3.2rem;
 }
 
 .govTitle div:first-child {
+  padding-right: 2%;
   width: 50%;
 }
 
@@ -23,9 +25,13 @@
 }
 
 .govTitle div:last-child {
-  padding-top: 20px;
-  padding-right: 75px;
-  font-size: 2rem;
+  padding-left: 2%;
+  font-size: 3.2rem;
+  width: 50%;
+}
+
+.titleBreak {
+  display: initial;
 }
 
 .menuBar {
@@ -48,7 +54,7 @@
 
 #menuContent {
   display: block !important;
-  width: 50%;
+  width: 20%;
 }
 
 .menuButton {
@@ -61,6 +67,7 @@
 
 .govContent {
   padding-bottom: 1px;
+  width: 80%;
 }
 
 #img_0 {
@@ -170,7 +177,7 @@
 }
 
 .forFlex {
-  margin: 0 10% 50px 10%;
+  margin: 0 3% 50px 3%;
   display: flex;
   justify-content: space-around;
 }
@@ -218,7 +225,7 @@
   margin-left: 38%;
   border-radius: 20px;
   color: #2020a0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: #fec231;
   width: 24%;
 }

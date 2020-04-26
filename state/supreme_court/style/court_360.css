@@ -5,7 +5,8 @@ body {
 .wholePage {
   font-size: 16px;
   background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("../../../img/state/supreme_court/marble_white.jpg");
-  background-size: contain;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 a {
@@ -42,6 +43,7 @@ a {
 .bothTopBttns img {
   height: 50px;
   width: auto;
+  cursor: pointer;
 }
 
 .mainTitle {
@@ -73,21 +75,21 @@ a {
 }
 
 .courtLogo {
-  background-image: url("http://www.limerickbaptist.ie/wp-content/uploads/sermons/2018/08/scales-of-justice-450203__340.png");
+  background-image: url("../../../img/state/supreme_court/justice_scales.png");
   background-size: cover;
   height: 90px;
   width: 90px;
 }
 
-.menuBttn {
+/* .menuBttn {
   padding: 10px 0;
   font-size: 1.4rem;
   color: #fec231;
   text-align: center;
-  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("../../../img/state/supreme_court/justice_scales.png");
   background-size: cover;
   cursor: pointer;
-}
+} */
 
 .allOptions {
   display: none;
@@ -122,8 +124,7 @@ a {
   font-family: 'Ibarra Real Nova', serif;
   font-size: 1.6rem;
   text-align: center;
-  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
-  background-size: cover;
+  background: linear-gradient(-45deg, #FFD76F, #C79617 25%, #FFD76F 50%, #C79617 75%, #FFD76F 100%);
   width: 70%;
 }
 
@@ -134,7 +135,7 @@ a {
   text-align: center;
   font-family: 'Ibarra Real Nova', serif;
   font-size: 1.4rem;
-  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("https://www.muralswallpaper.com/app/uploads/black-marble-textures-plain-820x532.jpg");
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("../../../img/state/supreme_court/marble_black.jpg");
   background-size: cover;
 }
 
@@ -159,7 +160,7 @@ a {
   text-align: center;
   font-size: 1.6rem;
   font-family: 'Ibarra Real Nova', serif;
-  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  background: linear-gradient(-45deg, #FFD76F, #C79617 25%, #FFD76F 50%, #C79617 75%, #FFD76F 100%);
   background-size: cover;
 }
 
@@ -178,7 +179,7 @@ a {
   color: black;
   font-size: 1.4rem;
   font-family: 'Ibarra Real Nova', serif;
-  background-image: url("https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jan/gold.jpg");
+  background: linear-gradient(-45deg, #FFD76F, #C79617 25%, #FFD76F 50%, #C79617 75%, #FFD76F 100%);
   width: 85%;
 }
 
@@ -187,7 +188,8 @@ a {
   padding: 40px 5%;
   color: black;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
+  background-size: cover;
 }
 
 .caseBox div i {
@@ -208,6 +210,7 @@ a {
   text-align: center;
   overflow-x: scroll;
   width: 50%;
+  cursor: pointer;
 }
 
 .subtypeBttnList {
@@ -255,6 +258,7 @@ a {
   color: white;
   text-align: center;
   background-color: black;
+  cursor: pointer;
 }
 
 .caseDetailBox {
@@ -275,7 +279,8 @@ a {
 .minuteBox {
   color: black;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
+  background-size: cover;
 }
 
 .allMinuteBttns {
@@ -290,6 +295,7 @@ a {
   font-size: 1.5rem;
   text-align: center;
   width: 10%;
+  cursor: pointer;
 }
 
 .allMinuteCnt {
@@ -323,7 +329,8 @@ a {
   border-bottom: 1px solid black;
   padding: 40px 5% 0px 5%;
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("https://thumbs.dreamstime.com/b/old-paper-texture-seamless-background-white-paper-grunge-seamless-gray-abstract-125357525.jpg");
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
+  background-size: cover;
 }
 
 .fullBarIntro {

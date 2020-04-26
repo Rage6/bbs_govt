@@ -11,7 +11,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BBS | State Supreme Court</title>
+    <title>BBS | Supreme Court</title>
+    <meta property="og:title" content="Supreme Court | BBS" />
+    <meta property="og:image" content="../../img/ohio_flag_bbs.jpg" />
+    <meta property="og:description" content="Welcome to BBS Supreme Court. Here is where you can quickly find all of our important, up-to-date, state-level legal information." />
     <link rel="stylesheet" type="text/css" href="../../style/required.css" />
     <!-- Width: 0px to 360px (Default CSS) -->
     <link rel="stylesheet" type="text/css" href="style/court_360.css" />
@@ -27,6 +30,7 @@
     <link rel="stylesheet" media="screen and (min-width: 1367px) and (max-width: 1440px)" href="style/court_1440.css"/>
     <!-- Width: 1441px and above -->
     <link rel="stylesheet" media="screen and (min-width: 1441px)" href="style/court_1920.css"/>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico"/>
     <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:600&display=swap" rel="stylesheet">
     <script src=<?php
       if ($isLocal == true) {
@@ -113,7 +117,7 @@
         <div class="caseBox">
           <div class="subtypeSelectBox">
             <div class="subtypeSelect">
-              <div class="">CHOOSE TYPE:</div>
+              <div>CHOOSE TYPE:</div>
               <div id="selectBox" data-subtypeid="0">---</div>
             </div>
             <div id="subtypeBttnList" class="subtypeBttnList">
