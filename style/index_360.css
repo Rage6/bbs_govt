@@ -1,8 +1,4 @@
 body {
-  /* background:
-    conic-gradient(darkred, darkred 25%, white 25%, white 50%, transparent 50%),
-    url("../img/white_star.png"),
-    linear-gradient(to right, #002868 50%, darkred 50%, darkred); */
   background:
     conic-gradient(darkred, darkred 25%, white 25%, white 50%, transparent 50%),
     radial-gradient(circle at 0%, darkred, darkred 15%, white 15%, white 20%, transparent 20%),
