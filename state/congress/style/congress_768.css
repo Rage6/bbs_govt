@@ -1,7 +1,7 @@
 /* START OF ENTRANCE */
 
 .entranceBox {
-  padding-top: 125px;
+  padding-top: 95px;
 }
 
 .entranceBackArrow {
@@ -13,6 +13,7 @@
 .entranceTitle {
   margin-left: 15%;
   margin-right: 15%;
+  margin-bottom: 20px;
   font-size: 4rem;
 }
 
@@ -27,7 +28,7 @@
 }
 
 .chamberBttn {
-  margin-top: 60px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -38,7 +39,7 @@
 }
 
 .repChamber {
-  font-size: 1.9rem;
+  font-size: 1.4rem;
 }
 
 .chamberDivide {
