@@ -65,19 +65,49 @@ body {
   border-radius: 10px;
 }
 
-.lockReset {
-  margin: 30px 10% 0 10%;
+.blacklistBox {
+  margin: 30px 10%;
   padding: 10px 5%;
-  display: flex;
-  justify-content: space-between;
-  background-color: lightblue;
+  color: white;
+  background-color: black;
 }
 
-.lastIP {
-  margin: 0 10% 0 10%;
-  border: 2px dashed red;
-  display: block;
+.blacklistTitle {
+  font-size: 2rem;
   text-align: center;
+}
+
+.blacklistContent {
+  background-color: grey;
+}
+
+.listSubtitle {
+  border-bottom: 2px solid white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.listRow {
+  margin: 5px 0%;
+  padding: 10px 2%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.listRow:hover {
+  background-color: lightgrey;
+}
+
+.listRow div {
+  border: 1px solid black;
+  padding: 5px 1%;
+  overflow-x: scroll;
+  width: 30%;
+}
+
+.listRow div:last-of-type {
+  border: none;
 }
 
 .dateBox {

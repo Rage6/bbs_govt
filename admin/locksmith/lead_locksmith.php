@@ -18,10 +18,18 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,population,flags,couns_num,del_num,is_city,is_county,failed_IP FROM Section ORDER BY is_city,is_county,section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,population,flags,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
+};
+
+// Get the 'cookie' list of people that had 5 consecutive login failures
+$showBlacklistStmt = $pdo->prepare("SELECT * FROM Blocked WHERE blocked = 1");
+$showBlacklistStmt->execute();
+$blacklist = [];
+while ($oneListed = $showBlacklistStmt->fetch(PDO::FETCH_ASSOC)) {
+  $blacklist[] = $oneListed;
 };
 
 // Carries out the password change
@@ -93,13 +101,13 @@ if (isset($_POST['flagUpdate'])) {
   return true;
 };
 
-// Resets the number of failed login attempts back to zero for the given section
-if (isset($_POST['resetNum'])) {
-  $resetNumStmt = $pdo->prepare("UPDATE Section SET couns_num=0, del_num=0 WHERE section_id=:scid");
-  $resetNumStmt->execute(array(
-    ':scid'=>htmlentities($_POST['secId'])
+// Delete user cookie's from the blacklist
+if (isset($_POST['deleteCookie'])) {
+  $deleteSelectCookieStmt = $pdo->prepare("DELETE FROM Blocked WHERE error_cookie = :co");
+  $deleteSelectCookieStmt->execute(array(
+    ':co'=>htmlentities($_POST['cookie'])
   ));
-  $_SESSION['message'] = "<b style='color:green'>Section unlocked</b>";
+  $_SESSION['message'] = "<b style='color:green'>Cookie removed from blacklist</b>";
   header('Location: locksmith.php');
   return true;
 };

@@ -28,11 +28,6 @@
         unset($_SESSION['message']);
       };
       for ($indexNum = 0; $indexNum < $totalSec; $indexNum++) {
-        if ($secList[$indexNum]['couns_num'] >= 5) {
-          $attemptColor = "red";
-        } else {
-          $attemptColor = "green";
-        };
         if ($secList[$indexNum]['section_id'] != 0) {
         echo("
           <div class='secBox'>
@@ -97,30 +92,43 @@
               ");
             };
             echo("
-            <div class='lockReset'>
-              <div>
-                Failed Logins: <span style='color:".$attemptColor."'>".$secList[$indexNum]['del_num']."</span>
-              </div>
-              <div>
-                <form method='POST'>
-                  <input type='hidden' name='secId' value='".$secList[$indexNum]['section_id']."' />
-                  <input style='border:1px solid black' type='submit' name='resetNum' value='UNLOCK' />
-                </form>
-              </div>
-            </div>");
-            if ($secList[$indexNum]['failed_IP'] != null) {
-              echo("
-              <div class='lockReset lastIP'>
-                <div><u>Last Failed IP Address:</u></div>
-                <div>".$secList[$indexNum]['failed_IP']."</div>
-              </div>");
-            };
-            echo("
           </div>
         ");
         };
       };
     ?>
+    <div class='blacklistBox'>
+      <div class='blacklistTitle'>BLACKLIST</div>
+      <div class='blacklistContent'>
+        <div class='listSubtitle'>
+          <div>Cookie</div>
+          <div>Time</div>
+          <div>Action</div>
+        </div>
+        <?php
+          if (count($blacklist) > 0) {
+            for ($listNum = 0; $listNum < count($blacklist); $listNum++) {
+              echo("
+                <form method='POST'>
+                  <div class='listRow'>
+                    <input type='hidden' name='cookie' value='".$blacklist[$listNum]['error_cookie']."' />
+                    <div>".$blacklist[$listNum]['error_cookie']."</div>
+                    <div>".$blacklist[$listNum]['time_stamp']."</div>
+                    <div>
+                      <input type='submit' name='deleteCookie' value='DELETE' />
+                    </div>
+                  </div>
+                </form>");
+            };
+          } else {
+            echo("
+              <div class='listRow'>
+                NO USERS ON BLACKLIST AT THIS TIME
+              </div>");
+          };
+        ?>
+      </div>
+    </div>
     <div class="dateBox">
       <div class="dateTitle">START & END</div>
       <form method='POST'>
