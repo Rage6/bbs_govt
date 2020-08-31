@@ -70,10 +70,10 @@
       </div>
       <div id="glossaryBox" class="glossaryBox">
         <div id="numbersBttn">BASIC STATISTICS</div>
+        <div id="electBttn">ELECTION PROCESS</div>
         <div id="stateBttn">STATE</div>
         <div id="countyBttn">COUNTY</div>
         <div id="cityBttn">CITY</div>
-        <!-- <div id="electBttn">ELECTION PROCESS</div> -->
         <div id="aboutBttn">ABOUT BBS</div>
       </div>
       <div class="introRow">
@@ -81,11 +81,11 @@
           <span class="introTitle">W</span>elcome to the Buckeye Boys State (BBS) government directory. Here you will find:
           <ul>
             <li>Basic statistics about BBS</li>
+            <li>Descriptions of the election process for each position</li>
             <li>Links to every branch of the state-level government</li>
             <li>Populations of every city & county</li>
             <li>Total of flags awarded to each county & city</li>
             <li>A short summary of the BBS program</li>
-            <!-- <li>Election process for each elected official</li> -->
           </ul>
         </div>
         <div id="numbersTop" class="statsBox">
@@ -100,6 +100,36 @@
           </div>
         </div>
       </div>
+
+      <div id="electTop" class="electionBox">
+        <div class="levelTitle">ELECTION PROCESS</div>
+      </div>
+      <div>
+        <div>
+          <select>
+            <option data-level="none">Choose a level...</option>
+            <option data-level="state">STATE</option>
+            <option data-level="county">COUNTY</option>
+            <option data-level="city">CITY</option>
+          </select>
+        </div>
+        <div>
+          Buckeye Boy State's highest priority during the elections is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency that is expected of every nominee/candidate at BBS is <b>strictly enforced</b>.
+        </div>
+        <div>
+          All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
+        </div>
+        <div>
+          There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of executive, legislative, and judicial branches.
+        </div>
+        <div>
+          If you are an upcoming delegate and unsure about your goals at BBS, then browse through the available positions and try to find something that interest you. If you are already decided to pursue a certain elected position, then click on it within the browser and see what it takes to reach your goal.
+        </div>
+      </div>
+      <div class='pageTop'>
+        <a href='#pageTop'>- TOP -</a>
+      </div>
+
       <div id="hubContent">
         <div class="govtLinkRow">
           <div id="stateTop">

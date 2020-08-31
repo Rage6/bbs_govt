@@ -37,4 +37,42 @@ $(() => {
     slideDown("#aboutTop",500);
   });
 
+  // Object of all possible elected positions
+  const positions = {
+    governor: {
+      name: "Governor",
+      level: "state",
+      fee: 700,
+      paired: "The Governor must run with a Vice Governor.",
+      eventList: [1,2],
+    },
+    viceGovernor: {
+      name: "Vice Governor",
+      level: "state",
+      fee: 700,
+      paired: "The Vice Governor must run alongside a Governor.",
+      eventList: [1,2]
+    }
+  };
+
+  // Object of all possible events during the election process
+  const phase = {
+    statePetition: {
+      eventID: 1,
+      eventName: "Turn in completed petition forms",
+      description: "The completed list of petitions and all other necessary paperwork must be turned in by 5:30pm on Day 2 (Monday).",
+      time: "Everything must be turned in by 5:30pm on Day 2 (Monday)."
+    },
+    statePrimaryRally: {
+      eventID: 2,
+      eventName: "State primary election rally",
+      description: "Each of the candidates that turned in their completed paperwork & fees for a state-level position will have a brief time in which to give their name and speak to their entire party at this time. They will speak individually, not as a forum or a debate.",
+      crowd: "Half of the BBS population will be present at each rally.",
+      time: "The rally takes place on Day 2 (Monday) in the evening."
+    }
+  };
+
+  console.log(positions);
+  console.log(phase);
+
 });
