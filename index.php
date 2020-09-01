@@ -70,7 +70,7 @@
       </div>
       <div id="glossaryBox" class="glossaryBox">
         <div id="numbersBttn">BASIC STATISTICS</div>
-        <div id="electBttn">ELECTION PROCESS</div>
+        <div id="electBttn">ELECTIONS</div>
         <div id="stateBttn">STATE</div>
         <div id="countyBttn">COUNTY</div>
         <div id="cityBttn">CITY</div>
@@ -102,7 +102,7 @@
       </div>
 
       <div id="electTop">
-        <div class="levelTitle">ELECTION PROCESS</div>
+        <div class="levelTitle">ELECTIONS</div>
         <div class="electionBox">
           <div class="browserBox">
             <div class="positTitle">GOVERNMENT LEVELS</div>
@@ -125,36 +125,38 @@
             </div>
           </div>
           <div class="positTitle"><u>THINGS TO KNOW...</u></div>
-          <div class="topicBox">
-            <div class="topicTitle" data-title="integrity">
-              + Election Integrity Matters
+          <div class="allTopic">
+            <div class="topicBox">
+              <div class="topicTitle" data-title="integrity">
+                + Election Integrity Matters
+              </div>
+              <div class="topicContent" data-content="integrity">
+                One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate is <b>strictly enforced</b>. It has happend before in which a delegate was elected, but was unable to fill that position because they failed to meet the electoral standards.
+              </div>
             </div>
-            <div class="topicContent" data-content="integrity">
-              One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate at BBS is <b>strictly enforced</b>. It has happend before in which a delegate was elected, but unable to fill that position because they failed to meet our electoral standards.
+            <div class="topicBox">
+              <div class="topicTitle" data-title="sprint">
+                + Elections Are A Sprint
+              </div>
+              <div class="topicContent" data-content="sprint">
+                All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If you have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
+              </div>
             </div>
-          </div>
-          <div class="topicBox">
-            <div class="topicTitle" data-title="sprint">
-              + Elections Are A Sprint
+            <div class="topicBox">
+              <div class="topicTitle" data-title="serve">
+                + Many Ways To Serve
+              </div>
+              <div class="topicContent" data-content="serve">
+                There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of executive, legislative, and judicial branches. Finally, there are also numerous unlisted jobs within BBS that do not require being elected.
+              </div>
             </div>
-            <div class="topicContent" data-content="sprint">
-              All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If you have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
-            </div>
-          </div>
-          <div class="topicBox">
-            <div class="topicTitle" data-title="serve">
-              + Many Ways To Serve
-            </div>
-            <div class="topicContent" data-content="serve">
-              There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of executive, legislative, and judicial branches. Finally, there are also numerous unlisted jobs within BBS that do not require being elected.
-            </div>
-          </div>
-          <div class="topicBox">
-            <div class="topicTitle" data-title="direction">
-              + Find Your Path Now
-            </div>
-            <div class="topicContent" data-content="direction">
-              If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you are already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
+            <div class="topicBox">
+              <div class="topicTitle" data-title="direction">
+                + Find Your Path Now
+              </div>
+              <div class="topicContent" data-content="direction">
+                If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you are already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
+              </div>
             </div>
           </div>
         </div>

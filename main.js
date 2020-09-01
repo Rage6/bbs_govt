@@ -40,14 +40,17 @@ $(() => {
   // Shows or hides the clicked election topic
   let lastClicked = null;
   $("[data-title]").click(()=>{
-    let title = event.target.dataset.title;
-    let dataTitle = "[data-content='"+title+"']";
-    let currentDisplay = $(dataTitle).css('display');
-    $("[data-content]").css('display','none');
-    if (currentDisplay == "none") {
-      $(dataTitle).css('display','block');
-    } else {
-      $(dataTitle).css('display','none');
+    let windowWidth = $(window).width();
+    if (windowWidth < 768) {
+      let title = event.target.dataset.title;
+      let dataTitle = "[data-content='"+title+"']";
+      let currentDisplay = $(dataTitle).css('display');
+      $("[data-content]").css('display','none');
+      if (currentDisplay == "none") {
+        $(dataTitle).css('display','block');
+      } else {
+        $(dataTitle).css('display','none');
+      };
     };
   });
 
@@ -125,31 +128,6 @@ $(() => {
     };
   });
 
-  // Selecting a job
-  // $("[data-eventlist]").click(()=>{
-  // const jobClick = () => {
-  //   $("#chooseJob").remove();
-  //   $("#noStep").remove();
-  //   $(".oneEvent").remove();
-  //   let eventStringList = event.target.dataset.eventlist;
-  //   let eventList = eventStringList.split(',');
-  //   // console.log("eventList");
-  //   let noEvent = true;
-  //   for (let stepNum = 0; stepNum < steps.length; stepNum++) {
-  //     if (eventList == position[positNum].level) {
-  //       $("#positionList").append("\
-  //         <div data-eventlist='"+position[positNum].eventList+"' class='onePosition'>"+position[positNum].name+"</div>\
-  //       ");
-  //       noStep = false;
-  //     };
-  //   };
-  //   if (noStep == true) {
-  //     $("#positionList").append("\
-  //       <div id='noStep'>NO POSITIONS FOUND</div>\
-  //     ");
-  //   };
-  // };
-
   // Object of all possible elected positions
   const position = [
     {
@@ -186,8 +164,5 @@ $(() => {
       time: "The rally takes place on Day 2 (Monday) in the evening."
     }
   ];
-
-  console.log(position);
-  console.log(steps);
 
 });

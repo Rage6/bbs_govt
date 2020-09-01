@@ -1,14 +1,5 @@
-body {
-
-}
-a {
-
-}
 #hubTitle {
   margin-left: 10%;
-}
-#hubTitle div:first-child {
-
 }
 .ohioLogo {
   margin-right: 10%;
@@ -21,77 +12,15 @@ a {
   width: 100%;
   height: 100%;
 }
-#hubContent {
-
-}
-.govtLinkRow {
-
-}
-.adminLink {
-
-}
-.adminLink img {
-
-}
 .glossaryBar {
   font-size: 2rem;
 }
-.glossaryBox {
-
+.allTopic {
+  /* display: flex;
+  justify-content: space-between;  */
 }
-.glossaryBox div {
-
-}
-.glossaryBox div:hover {
-
-}
-.introRow {
-
-}
-.introBox {
-
-}
-.introTitle {
-
-}
-.statsBox {
-
-}
-.statsTitle {
-
-}
-.subtitle {
-
-}
-.levelButton {
-
-}
-.levelImg {
-
-}
-.levelTitle {
-
-}
-.sectionName {
-
-}
-.sectionName div div img {
-
-}
-.sectionName div img {
-
-}
-.statsRow {
-
-}
-.statsRow div {
-
-}
-.statsRow div img {
-
-}
-.explainTitle {
-
+.topicContent {
+  display: block;
 }
 .explainBox {
   max-height: inherit;
