@@ -53,14 +53,23 @@ $(() => {
 
   // Selecting level of jobs
   $("[data-level]").click(()=>{
+    // Empties the old positions
     $("#chooseLevel").remove();
     $("#noPosit").remove();
     $(".onePosition").remove();
+    // Empties any old events, replaces with default words
     $("#chooseJob").remove();
     $(".oneEvent").remove();
     $("#positionEvents").append("<i id='chooseJob'>Choose an elected position...</i>");
+    // Empties the last description, replaces with default words
+    $("#positionDescrip").empty();
+    $("#positionDescrip").append("<i id='chooseStep'>Choose a step in that process...</i>");
+    // The selected 'level' shows which was clicked on...
     let level = event.target.dataset.level;
+    $("[data-level]").css('background-color','black');
+    event.target.style.backgroundColor = "darkred";
     let noPosit = true;
+    // ...then adds/shows the appropriate positions...
     for (let positNum = 0; positNum < position.length; positNum++) {
       if (level == position[positNum].level) {
         $("#positionList").append("\
@@ -71,6 +80,7 @@ $(() => {
               "+position[positNum].name+"\
           </div>\
         ");
+        // ...while binding them to a function that...
         $("#positionList").on("click","[data-positid='"+position[positNum].positionID+"']",function(){
           $("#chooseJob").remove();
           $("#noEvent").remove();
@@ -83,7 +93,18 @@ $(() => {
             for (let stepNum = 0; stepNum < steps.length; stepNum++) {
               if (eventList[eventNum] == steps[stepNum].eventID) {
                 orderNum++;
-                $("#positionEvents").append("<div data-eventid='"+steps[stepNum].eventID+"' class='oneEvent'>"+orderNum+") "+steps[stepNum].eventName+"</div>");
+                // ...will show that position's steps for elected. Each new step is then...
+                $("#positionEvents").append("\
+                  <div \
+                    data-eventid='"+steps[stepNum].eventID+"' \
+                    class='oneEvent'>\
+                      "+orderNum+") "+steps[stepNum].eventName+"\
+                  </div>");
+                $("#positionEvents").on("click","[data-eventid='"+steps[stepNum].eventID+"']",function(){
+                  // console.log(steps[stepNum].description);
+                  $("#positionDescrip").empty();
+                  $("#positionDescrip").append(steps[stepNum].description);
+                });
                 noEvent = false;
               };
             };
@@ -99,7 +120,7 @@ $(() => {
     };
     if (noPosit == true) {
       $("#positionList").append("\
-        <div id='noPosit'>NO POSITIONS FOUND</div>\
+        <div id='noPosit' class='noPosit'>NO POSITIONS FOUND</div>\
       ");
     };
   });

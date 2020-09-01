@@ -166,49 +166,92 @@ a {
 
 .levelList div {
   margin: 0 0 20px 0;
+  border: 1px solid rgba(254,194,49,1);
   border-radius: 10px;
   padding: 10px 2%;
-  font-size: 1.4rem;
-  background-color: white;
+  color: rgba(254,194,49,1);
+  font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
+  background-color: black;
+  cursor: pointer;
 }
 
 .positionBox {
   margin-bottom: 20px;
+  padding-top: 10px;
+  color: rgba(254,194,49,1);
+  font-family: "Playfair Display", serif;
+  background-color: black;
   height: 100px;
+  overflow-y: scroll;
+}
+
+.positionBox i {
+  margin: 0 2%;
+  font-size: 1.1rem;
+}
+
+.noPosit {
+  background-color: black !important;
+}
+
+.positionList div {
+  margin: 0 2% 10px 2%;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: darkred;
+}
+
+.positionDescrip {
+  padding: 10px 2%;
 }
 
 .positTitle {
   margin-bottom: 5px;
-  color: white;
-}
-
-.positionList {
-  background-color: orange;
+  font-family: "Cinzel", serif;
+  color: rgba(254,194,49,1);
 }
 
 .onePosition {
   background-color: lightblue;
 }
 
-.positionEvents {
-  background-color: yellow;
-}
-
 .oneEvent {
-  background-color: red;
+  margin: 0 0 10px 5%;
+  padding: 5px 1%;
+  font-size: 1.1rem;
+  background-color: darkred;
+  width: 88%;
 }
 
-.positionDescrip {
-  background-color: lightgreen;
+.topicBox {
+  margin: 10px 0;
+  color: rgba(254,194,49,1);
+  font-family: "Cinzel", serif;
+  background-color: transparent;
+}
+
+.noteTitle {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  font-family: "Cinzel", serif;
+  color: rgba(254,194,49,1);
 }
 
 .topicTitle {
-  background-color: white;
+  padding: 10px 2%;
+  border-radius: 5px;
+  color: #002768;
+  background-color: rgba(254,194,49,1);
+  cursor: pointer;
 }
 
 .topicContent {
+  margin-left: 10%;
+  padding: 10px 0 20px 0;
   display: none;
-  background-color: orange;
+  width: 90%;
 }
 
 .subtitle {
