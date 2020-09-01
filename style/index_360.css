@@ -148,6 +148,69 @@ a {
   padding-bottom: 10px;
 }
 
+.electionBox {
+  margin: 20px 0 20px 10%;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.browserBox {
+
+}
+
+.levelList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.levelList div {
+  margin: 0 0 20px 0;
+  border-radius: 10px;
+  padding: 10px 2%;
+  font-size: 1.4rem;
+  background-color: white;
+}
+
+.positionBox {
+  margin-bottom: 20px;
+  height: 100px;
+}
+
+.positTitle {
+  margin-bottom: 5px;
+  color: white;
+}
+
+.positionList {
+  background-color: orange;
+}
+
+.onePosition {
+  background-color: lightblue;
+}
+
+.positionEvents {
+  background-color: yellow;
+}
+
+.oneEvent {
+  background-color: red;
+}
+
+.positionDescrip {
+  background-color: lightgreen;
+}
+
+.topicTitle {
+  background-color: white;
+}
+
+.topicContent {
+  display: none;
+  background-color: orange;
+}
+
 .subtitle {
   margin-top: 45px;
   text-align: center;

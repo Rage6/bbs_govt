@@ -101,29 +101,62 @@
         </div>
       </div>
 
-      <div id="electTop" class="electionBox">
+      <div id="electTop">
         <div class="levelTitle">ELECTION PROCESS</div>
-      </div>
-      <div>
-        <div>
-          <select>
-            <option data-level="none">Choose a level...</option>
-            <option data-level="state">STATE</option>
-            <option data-level="county">COUNTY</option>
-            <option data-level="city">CITY</option>
-          </select>
-        </div>
-        <div>
-          Buckeye Boy State's highest priority during the elections is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency that is expected of every nominee/candidate at BBS is <b>strictly enforced</b>.
-        </div>
-        <div>
-          All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
-        </div>
-        <div>
-          There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of executive, legislative, and judicial branches.
-        </div>
-        <div>
-          If you are an upcoming delegate and unsure about your goals at BBS, then browse through the available positions and try to find something that interest you. If you are already decided to pursue a certain elected position, then click on it within the browser and see what it takes to reach your goal.
+        <div class="electionBox">
+          <div class="browserBox">
+            <div class="positTitle">POSITION LEVELS</div>
+            <div class="levelList">
+              <div data-level="state">STATE</div>
+              <div data-level="county">COUNTY</div>
+              <div data-level="city">CITY</div>
+            </div>
+            <div class="positTitle">ELECTED POSITIONS</div>
+            <div id="positionList" class="positionBox positionList">
+              <i id="chooseLevel">Choose a level of government...</i>
+            </div>
+            <div class="positTitle">STEPS OF ELECTION</div>
+            <div id="positionEvents" class="positionBox positionEvents">
+              <i id="chooseJob">Choose an elected position...</i>
+            </div>
+            <div class="positTitle">STEP DESCRIPTION</div>
+            <div id="positionDescrip" class="positionBox positionDescrip">
+              Choose a step in that process...
+            </div>
+          </div>
+          <div class="positTitle">WHAT TO KNOW...</div>
+          <div>
+            <div class="topicTitle" data-title="integrity">
+              + Election Integrity Matters
+            </div>
+            <div class="topicContent" data-content="integrity">
+              One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate at BBS is <b>strictly enforced</b>. It has happend before when a delegate was elected, but then unable to fill that position because they somehow failed to meet the electoral standards.
+            </div>
+          </div>
+          <div>
+            <div class="topicTitle" data-title="sprint">
+              + Elections Are A Sprint
+            </div>
+            <div class="topicContent" data-content="sprint">
+              All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If you have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
+            </div>
+          </div>
+          <div>
+            <div class="topicTitle" data-title="serve">
+              + Many Ways To Serve
+            </div>
+            <div class="topicContent" data-content="serve">
+              There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of executive, legislative, and judicial branches. Finally, there are also numerous unlisted jobs within BBS that do not require being elected.
+            </div>
+          </div>
+          <div>
+            <div class="topicTitle" data-title="direction">
+              + Find Your Direction Now
+            </div>
+            <div class="topicContent" data-content="direction">
+              If you are an upcoming delegate and unsure about your goals at BBS, then browse through the available positions and try to find something that interest you. If you are already decided to pursue a certain elected position, then click on it within the browser and see what it takes to reach your goal.
+            </div>
+          </div>
         </div>
       </div>
       <div class='pageTop'>
