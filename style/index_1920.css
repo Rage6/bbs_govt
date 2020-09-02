@@ -8,9 +8,6 @@ body {
   left: -720px;
   width: 1440px;
 }
-a {
-
-}
 .pageTop {
   display: none;
 }
@@ -33,9 +30,6 @@ a {
   width: 100%;
   height: 100%;
 }
-#hubContent {
-
-}
 .govtLinkRow {
   display: flex;
   justify-content: space-around;
@@ -43,23 +37,8 @@ a {
 .govtLinkRow div {
   width: 60%;
 }
-.adminLink {
-
-}
-.adminLink img {
-
-}
 .glossaryBar {
   display: none;
-}
-.glossaryBox {
-
-}
-.glossaryBox div {
-
-}
-.glossaryBox div:hover {
-
 }
 .introRow {
   display: flex;
@@ -71,17 +50,11 @@ a {
   font-size: 1.6rem;
   width: 40%;
 }
-.introTitle {
-
-}
 .statsBox {
   margin: 10px 5%;
   padding: 20px 2%;
   font-size: 1.6rem;
   width: 40%;
-}
-.statsTitle {
-
 }
 .statsList {
   margin: 20px 0 0 10%;
@@ -90,20 +63,8 @@ a {
 .statsList div {
   margin-bottom: 5px;
 }
-.subtitle {
-
-}
 .subtitle div {
   width: 100% !important;
-}
-.levelButton {
-
-}
-.levelImg {
-
-}
-.levelTitle {
-
 }
 .sectionList {
   border-bottom: 1px solid #fec231;
@@ -114,23 +75,36 @@ a {
 .sectionName {
   width: 100% !important;
 }
-.sectionName div div img {
-
-}
-.sectionName div img {
-
-}
 .statsRow {
   width: 100% !important;
 }
-.statsRow div {
+.clickingRow {
+  display: flex;
+  justify-content: space-between;
+}
+.clickingRow div {
+  display: block;
+  width: 93%;
+}
+.positionBox {
+  height: 150px;
+}
+.onePosition {
 
 }
-.statsRow div img {
-
+.oneEvent {
+  width: 90%;
 }
-.explainTitle {
-
+.allTopic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.topicBox {
+  width: 45%;
+}
+.topicContent {
+  display: block;
 }
 .explainBox {
   margin-top: 40px;

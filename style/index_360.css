@@ -55,7 +55,7 @@ a {
 
 }
 .govtLinkRow {
-
+  padding-top: 30px;
 }
 .adminLink {
   border-radius: 0 0 0 5px;
@@ -97,7 +97,7 @@ a {
   background-color: #fec231;
 }
 .introRow {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
   padding-top: 10px;
   font-family: 'Abel', sans-serif;
 }
@@ -148,6 +148,11 @@ a {
   padding-bottom: 10px;
 }
 
+.electionContent {
+  padding-top: 30px;
+  background-color: darkred;
+}
+
 .electionBox {
   margin: 20px 0 20px 10%;
   margin-left: 10%;
@@ -176,11 +181,15 @@ a {
   cursor: pointer;
 }
 
+.clickingRow {
+
+}
+
 .positionBox {
   margin-bottom: 20px;
-  padding-top: 10px;
+  padding: 10px 1%;
   color: rgba(254,194,49,1);
-  font-family: "Playfair Display", serif;
+  font-family: 'Abel', sans-serif;
   background-color: black;
   height: 100px;
   overflow-y: scroll;
@@ -196,12 +205,14 @@ a {
 }
 
 .positionList div {
-  margin: 0 2% 10px 2%;
+  margin-bottom: 10px;
   border-radius: 10px;
   font-size: 1.3rem;
   text-align: center;
   background-color: darkred;
 }
+
+
 
 .positionDescrip {
   padding: 10px 2%;
@@ -214,7 +225,7 @@ a {
 }
 
 .onePosition {
-  background-color: lightblue;
+  
 }
 
 .oneEvent {
@@ -226,7 +237,7 @@ a {
 }
 
 .allTopic {
-  
+
 }
 
 .topicBox {
@@ -238,7 +249,6 @@ a {
 
 .noteTitle {
   margin-bottom: 5px;
-  font-size: 1.2rem;
   font-family: "Cinzel", serif;
   color: rgba(254,194,49,1);
 }
@@ -246,7 +256,7 @@ a {
 .topicTitle {
   padding: 10px 2%;
   border-radius: 5px;
-  color: #002768;
+  color: darkred;
   background-color: rgba(254,194,49,1);
   cursor: pointer;
 }
@@ -305,7 +315,7 @@ a {
   text-align: left;
   font-size: 1.5rem;
   font-family: "Cinzel", serif;
-  color: #002868;
+  color: darkred;
   background: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
   width: 70%;
 }

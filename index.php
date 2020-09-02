@@ -100,7 +100,7 @@
           </div>
         </div>
       </div>
-
+    <div class="electionContent">
       <div id="electTop">
         <div class="levelTitle">ELECTIONS</div>
         <div class="electionBox">
@@ -111,17 +111,25 @@
               <div data-level="county">COUNTY</div>
               <div data-level="city">CITY</div>
             </div>
-            <div class="noteTitle">ELECTED POSITIONS</div>
-            <div id="positionList" class="positionBox positionList">
-              <i id="chooseLevel">Choose a level of government...</i>
-            </div>
-            <div class="positTitle">STEPS OF ELECTION</div>
-            <div id="positionEvents" class="positionBox positionEvents">
-              <i id="chooseJob">Choose an elected position...</i>
-            </div>
-            <div class="positTitle">STEP DESCRIPTION</div>
-            <div id="positionDescrip" class="positionBox positionDescrip">
-              <i id="chooseStep">Choose a step in that process...</i>
+            <div class="clickingRow">
+              <div>
+                <div class="noteTitle">ELECTED POSITIONS</div>
+                <div id="positionList" class="positionBox positionList">
+                  <i id="chooseLevel">Choose a level of government...</i>
+                </div>
+              </div>
+              <div>
+                <div class="positTitle">STEPS OF ELECTION</div>
+                <div id="positionEvents" class="positionBox positionEvents">
+                  <i id="chooseJob">Choose an elected position...</i>
+                </div>
+              </div>
+              <div>
+                <div class="positTitle">STEP DESCRIPTION</div>
+                <div id="positionDescrip" class="positionBox positionDescrip">
+                  <i id="chooseStep">Choose a step in that process...</i>
+                </div>
+              </div>
             </div>
           </div>
           <div class="positTitle"><u>THINGS TO KNOW...</u></div>
@@ -147,7 +155,7 @@
                 + Many Ways To Serve
               </div>
               <div class="topicContent" data-content="serve">
-                There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of executive, legislative, and judicial branches. Finally, there are also numerous unlisted jobs within BBS that do not require being elected.
+                There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of the executive, legislative, and judicial branches. Finally, there are numerous jobs within BBS that will not require you to be elected.
               </div>
             </div>
             <div class="topicBox">
@@ -155,7 +163,7 @@
                 + Find Your Path Now
               </div>
               <div class="topicContent" data-content="direction">
-                If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you are already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
+                If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you have already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
               </div>
             </div>
           </div>
@@ -164,7 +172,7 @@
       <div class='pageTop'>
         <a href='#pageTop'>- TOP -</a>
       </div>
-
+    </div>
       <div id="hubContent">
         <div class="govtLinkRow">
           <div id="stateTop">

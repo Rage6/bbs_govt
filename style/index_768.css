@@ -15,9 +15,14 @@
 .glossaryBar {
   font-size: 2rem;
 }
+
 .allTopic {
-  /* display: flex;
-  justify-content: space-between;  */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.topicBox {
+  width: 45%;
 }
 .topicContent {
   display: block;
