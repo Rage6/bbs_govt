@@ -150,13 +150,17 @@ a {
 
 .electionContent {
   padding-top: 30px;
-  background-color: darkred;
+  background:
+    linear-gradient(0deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+    url("../img/voting_stickers.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .electionBox {
-  margin: 20px 0 20px 10%;
+  margin-top: 20px;
   margin-left: 10%;
-  margin-bottom: 20px;
+  padding-bottom: 30px;
   width: 80%;
 }
 
@@ -220,12 +224,13 @@ a {
 
 .positTitle {
   margin-bottom: 5px;
+  font-size: 1.2rem;
   font-family: "Cinzel", serif;
-  color: rgba(254,194,49,1);
+  color: darkred;
 }
 
 .onePosition {
-  
+  font-family: "Playfair Display", serif;
 }
 
 .oneEvent {
@@ -242,16 +247,17 @@ a {
 
 .topicBox {
   margin: 10px 0;
+  border-radius: 5px;
   color: rgba(254,194,49,1);
   font-family: "Cinzel", serif;
-  background-color: transparent;
+  background-color: darkred;
 }
 
-.noteTitle {
+/* .noteTitle {
   margin-bottom: 5px;
   font-family: "Cinzel", serif;
-  color: rgba(254,194,49,1);
-}
+  color: darkred;
+} */
 
 .topicTitle {
   padding: 10px 2%;
@@ -264,6 +270,8 @@ a {
 .topicContent {
   margin-left: 10%;
   padding: 10px 0 20px 0;
+  font-family: 'Abel', sans-serif;
+  font-size: 1.2rem;
   display: none;
   width: 90%;
 }

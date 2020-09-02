@@ -70,10 +70,10 @@
       </div>
       <div id="glossaryBox" class="glossaryBox">
         <div id="numbersBttn">BASIC STATISTICS</div>
-        <div id="electBttn">ELECTIONS</div>
         <div id="stateBttn">STATE</div>
         <div id="countyBttn">COUNTY</div>
         <div id="cityBttn">CITY</div>
+        <div id="electBttn">ELECTIONS</div>
         <div id="aboutBttn">ABOUT BBS</div>
       </div>
       <div class="introRow">
@@ -100,79 +100,7 @@
           </div>
         </div>
       </div>
-    <div class="electionContent">
-      <div id="electTop">
-        <div class="levelTitle">ELECTIONS</div>
-        <div class="electionBox">
-          <div class="browserBox">
-            <div class="positTitle">GOVERNMENT LEVELS</div>
-            <div class="levelList">
-              <div data-level="state">STATE</div>
-              <div data-level="county">COUNTY</div>
-              <div data-level="city">CITY</div>
-            </div>
-            <div class="clickingRow">
-              <div>
-                <div class="noteTitle">ELECTED POSITIONS</div>
-                <div id="positionList" class="positionBox positionList">
-                  <i id="chooseLevel">Choose a level of government...</i>
-                </div>
-              </div>
-              <div>
-                <div class="positTitle">STEPS OF ELECTION</div>
-                <div id="positionEvents" class="positionBox positionEvents">
-                  <i id="chooseJob">Choose an elected position...</i>
-                </div>
-              </div>
-              <div>
-                <div class="positTitle">STEP DESCRIPTION</div>
-                <div id="positionDescrip" class="positionBox positionDescrip">
-                  <i id="chooseStep">Choose a step in that process...</i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="positTitle"><u>THINGS TO KNOW...</u></div>
-          <div class="allTopic">
-            <div class="topicBox">
-              <div class="topicTitle" data-title="integrity">
-                + Election Integrity Matters
-              </div>
-              <div class="topicContent" data-content="integrity">
-                One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate is <b>strictly enforced</b>. It has happend before in which a delegate was elected, but was unable to fill that position because they failed to meet the electoral standards.
-              </div>
-            </div>
-            <div class="topicBox">
-              <div class="topicTitle" data-title="sprint">
-                + Elections Are A Sprint
-              </div>
-              <div class="topicContent" data-content="sprint">
-                All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If you have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
-              </div>
-            </div>
-            <div class="topicBox">
-              <div class="topicTitle" data-title="serve">
-                + Many Ways To Serve
-              </div>
-              <div class="topicContent" data-content="serve">
-                There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of the executive, legislative, and judicial branches. Finally, there are numerous jobs within BBS that will not require you to be elected.
-              </div>
-            </div>
-            <div class="topicBox">
-              <div class="topicTitle" data-title="direction">
-                + Find Your Path Now
-              </div>
-              <div class="topicContent" data-content="direction">
-                If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you have already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class='pageTop'>
-        <a href='#pageTop'>- TOP -</a>
-      </div>
-    </div>
+
       <div id="hubContent">
         <div class="govtLinkRow">
           <div id="stateTop">
@@ -284,6 +212,97 @@
             </div>
           </div>
         </div>
+
+        <div class="electionContent">
+          <div id="electTop">
+            <div class="levelTitle">ELECTIONS</div>
+            <div class="electionBox">
+              <div class="browserBox">
+                <div class="positTitle">GOVERNMENT LEVELS</div>
+                <div class="levelList">
+                  <div data-level="state">STATE</div>
+                  <div data-level="county">COUNTY</div>
+                  <div data-level="city">CITY</div>
+                </div>
+                <div class="clickingRow">
+                  <div>
+                    <div class="positTitle">ELECTED POSITIONS</div>
+                    <div id="positionList" class="positionBox positionList">
+                      <i id="chooseLevel">Choose a government level...</i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="positTitle">STEPS OF ELECTION</div>
+                    <div id="positionEvents" class="positionBox positionEvents">
+                      <i id="chooseJob">Choose an elected position...</i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="positTitle">STEP DESCRIPTION</div>
+                    <div id="positionDescrip" class="positionBox positionDescrip">
+                      <i id="chooseStep">Choose a step in that process...</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="positTitle"><u>THINGS TO KNOW...</u></div>
+              <div class="allTopic">
+                <div class="topicBox">
+                  <div class="topicTitle" data-title="integrity">
+                    + Election Integrity Matters
+                  </div>
+                  <div class="topicContent" data-content="integrity">
+                    One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate is <b>strictly enforced</b>. It has happend before in which a delegate was elected, but was unable to fill that position because they failed to meet the electoral standards.
+                  </div>
+                </div>
+                <div class="topicBox">
+                  <div class="topicTitle" data-title="sprint">
+                    + Elections Are A Sprint
+                  </div>
+                  <div class="topicContent" data-content="sprint">
+                    All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If you have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
+                  </div>
+                </div>
+                <div class="topicBox">
+                  <div class="topicTitle" data-title="serve">
+                    + Many Ways To Serve
+                  </div>
+                  <div class="topicContent" data-content="serve">
+                    There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of the executive, legislative, and judicial branches. Finally, there are numerous jobs within BBS that will not require you to be elected.
+                  </div>
+                </div>
+                <div class="topicBox">
+                  <div class="topicTitle" data-title="direction">
+                    + Find Your Path Now
+                  </div>
+                  <div class="topicContent" data-content="direction">
+                    If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you have already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
+                  </div>
+                </div>
+                <div class="topicBox">
+                  <div class="topicTitle" data-title="speaking">
+                    + Your Voice Is Required
+                  </div>
+                  <div class="topicContent" data-content="speaking">
+                    Anyone running for any elected position in BBS will have to speak publicly at one time or another. <u>Prepare for it!</u> In its simplist form, each candidate at a city caucus will have 30 seconds to explain their name, goals, and policies to their city's party members. In a much larger example, the candidates nominated for state-level positions formally debate against their opponents in front of the entire BBS population.
+                  </div>
+                </div>
+                <div class="topicBox">
+                  <div class="topicTitle" data-title="teamwork">
+                    + Don't Be A 'Lone Wolf'
+                  </div>
+                  <div class="topicContent" data-content="teamwork">
+                    Campaigning effectively often takes a coordinated effort of a group of delegates. This is particularly true of state-level campaigns. Raising donations, gaining petitions across multiple counties, spreading the candidate's name around. Things like this may take more time and effort than what you have to give, so don't try to do it alone.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='pageTop'>
+            <a style="color:darkred" href='#pageTop'>- TOP -</a>
+          </div>
+        </div>
+
         <div id="aboutTop">
           <div class="levelTitle explainTitle">What Is Buckeye Boys State?</div>
           <div class="explainBox">
@@ -302,6 +321,7 @@
           </div>
         </div>
       </div>
+
       <div class="applyLink footer" style="background-color:black">
         Want to attend Buckeye Boys State next year?<br/>
         <a href="http://www.ohiobuckeyeboysstate.com/">
