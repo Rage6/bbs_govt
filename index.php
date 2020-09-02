@@ -70,10 +70,10 @@
       </div>
       <div id="glossaryBox" class="glossaryBox">
         <div id="numbersBttn">BASIC STATISTICS</div>
+        <div id="electBttn">ELECTIONS</div>
         <div id="stateBttn">STATE</div>
         <div id="countyBttn">COUNTY</div>
         <div id="cityBttn">CITY</div>
-        <!-- <div id="electBttn">ELECTION PROCESS</div> -->
         <div id="aboutBttn">ABOUT BBS</div>
       </div>
       <div class="introRow">
@@ -81,11 +81,11 @@
           <span class="introTitle">W</span>elcome to the Buckeye Boys State (BBS) government directory. Here you will find:
           <ul>
             <li>Basic statistics about BBS</li>
+            <li>Descriptions of the election process for each position</li>
             <li>Links to every branch of the state-level government</li>
             <li>Populations of every city & county</li>
             <li>Total of flags awarded to each county & city</li>
             <li>A short summary of the BBS program</li>
-            <!-- <li>Election process for each elected official</li> -->
           </ul>
         </div>
         <div id="numbersTop" class="statsBox">
@@ -100,6 +100,79 @@
           </div>
         </div>
       </div>
+    <div class="electionContent">
+      <div id="electTop">
+        <div class="levelTitle">ELECTIONS</div>
+        <div class="electionBox">
+          <div class="browserBox">
+            <div class="positTitle">GOVERNMENT LEVELS</div>
+            <div class="levelList">
+              <div data-level="state">STATE</div>
+              <div data-level="county">COUNTY</div>
+              <div data-level="city">CITY</div>
+            </div>
+            <div class="clickingRow">
+              <div>
+                <div class="noteTitle">ELECTED POSITIONS</div>
+                <div id="positionList" class="positionBox positionList">
+                  <i id="chooseLevel">Choose a level of government...</i>
+                </div>
+              </div>
+              <div>
+                <div class="positTitle">STEPS OF ELECTION</div>
+                <div id="positionEvents" class="positionBox positionEvents">
+                  <i id="chooseJob">Choose an elected position...</i>
+                </div>
+              </div>
+              <div>
+                <div class="positTitle">STEP DESCRIPTION</div>
+                <div id="positionDescrip" class="positionBox positionDescrip">
+                  <i id="chooseStep">Choose a step in that process...</i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="positTitle"><u>THINGS TO KNOW...</u></div>
+          <div class="allTopic">
+            <div class="topicBox">
+              <div class="topicTitle" data-title="integrity">
+                + Election Integrity Matters
+              </div>
+              <div class="topicContent" data-content="integrity">
+                One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate is <b>strictly enforced</b>. It has happend before in which a delegate was elected, but was unable to fill that position because they failed to meet the electoral standards.
+              </div>
+            </div>
+            <div class="topicBox">
+              <div class="topicTitle" data-title="sprint">
+                + Elections Are A Sprint
+              </div>
+              <div class="topicContent" data-content="sprint">
+                All of the campaigns and elections at BBS take place within the first three days. This often makes running for an election a fast-paced and exciting 72 hours! If you have already decided to run for an elected position, we encourage you to develop a general campaign plan before arriving on the first day.
+              </div>
+            </div>
+            <div class="topicBox">
+              <div class="topicTitle" data-title="serve">
+                + Many Ways To Serve
+              </div>
+              <div class="topicContent" data-content="serve">
+                There are MANY different elected positions that are open at the beginning of Buckeye Boys State. They occur at the state, county, and city levels, and each of these levels has its own form of the executive, legislative, and judicial branches. Finally, there are numerous jobs within BBS that will not require you to be elected.
+              </div>
+            </div>
+            <div class="topicBox">
+              <div class="topicTitle" data-title="direction">
+                + Find Your Path Now
+              </div>
+              <div class="topicContent" data-content="direction">
+                If you are an upcoming delegate and unsure about your goals at BBS, then browse through the list of elected positions and try to find something that interest you. If you have already decided to pursue a certain position, then click on it and see what it takes to reach your goal.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='pageTop'>
+        <a href='#pageTop'>- TOP -</a>
+      </div>
+    </div>
       <div id="hubContent">
         <div class="govtLinkRow">
           <div id="stateTop">

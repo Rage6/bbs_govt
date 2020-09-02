@@ -55,7 +55,7 @@ a {
 
 }
 .govtLinkRow {
-
+  padding-top: 30px;
 }
 .adminLink {
   border-radius: 0 0 0 5px;
@@ -97,7 +97,7 @@ a {
   background-color: #fec231;
 }
 .introRow {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
   padding-top: 10px;
   font-family: 'Abel', sans-serif;
 }
@@ -148,6 +148,126 @@ a {
   padding-bottom: 10px;
 }
 
+.electionContent {
+  padding-top: 30px;
+  background-color: darkred;
+}
+
+.electionBox {
+  margin: 20px 0 20px 10%;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.browserBox {
+
+}
+
+.levelList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.levelList div {
+  margin: 0 0 20px 0;
+  border: 1px solid rgba(254,194,49,1);
+  border-radius: 10px;
+  padding: 10px 2%;
+  color: rgba(254,194,49,1);
+  font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
+  background-color: black;
+  cursor: pointer;
+}
+
+.clickingRow {
+
+}
+
+.positionBox {
+  margin-bottom: 20px;
+  padding: 10px 1%;
+  color: rgba(254,194,49,1);
+  font-family: 'Abel', sans-serif;
+  background-color: black;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.positionBox i {
+  margin: 0 2%;
+  font-size: 1.1rem;
+}
+
+.noPosit {
+  background-color: black !important;
+}
+
+.positionList div {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: darkred;
+}
+
+
+
+.positionDescrip {
+  padding: 10px 2%;
+}
+
+.positTitle {
+  margin-bottom: 5px;
+  font-family: "Cinzel", serif;
+  color: rgba(254,194,49,1);
+}
+
+.onePosition {
+  
+}
+
+.oneEvent {
+  margin: 0 0 10px 5%;
+  padding: 5px 1%;
+  font-size: 1.1rem;
+  background-color: darkred;
+  width: 88%;
+}
+
+.allTopic {
+
+}
+
+.topicBox {
+  margin: 10px 0;
+  color: rgba(254,194,49,1);
+  font-family: "Cinzel", serif;
+  background-color: transparent;
+}
+
+.noteTitle {
+  margin-bottom: 5px;
+  font-family: "Cinzel", serif;
+  color: rgba(254,194,49,1);
+}
+
+.topicTitle {
+  padding: 10px 2%;
+  border-radius: 5px;
+  color: darkred;
+  background-color: rgba(254,194,49,1);
+  cursor: pointer;
+}
+
+.topicContent {
+  margin-left: 10%;
+  padding: 10px 0 20px 0;
+  display: none;
+  width: 90%;
+}
+
 .subtitle {
   margin-top: 45px;
   text-align: center;
@@ -195,7 +315,7 @@ a {
   text-align: left;
   font-size: 1.5rem;
   font-family: "Cinzel", serif;
-  color: #002868;
+  color: darkred;
   background: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
   width: 70%;
 }
