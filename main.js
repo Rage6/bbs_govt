@@ -135,17 +135,192 @@ $(() => {
       name: "Governor",
       level: "state",
       fee: 700,
-      paired: "The Governor must run with a Vice Governor.",
+      paired: "The Governor must run with a Lt. Governor.",
       eventList: [1,2],
     },
     {
       positionID: 2,
-      name: "Vice Governor",
+      name: "Lieutenant Governor",
       level: "state",
       fee: 700,
-      paired: "The Vice Governor must run alongside a Governor.",
+      paired: "The Lt. Governor must run with a Governor. His campaign fee is combined with that of the Governor, for a total of $700.",
       eventList: [1,2]
-    }
+    },
+    {
+      positionID: 3,
+      name: "Attorney General",
+      level: "state",
+      fee: 300,
+      eventList: [1,2]
+    },
+    {
+      positionID: 4,
+      name: "Treasurer",
+      level: "state",
+      fee: 300,
+      eventList: [1,2]
+    },
+    {
+      positionID: 5,
+      name: "Auditor",
+      level: "state",
+      fee: 300,
+      eventList: [1,2]
+    },
+    {
+      positionID: 6,
+      name: "Secretary of State",
+      level: "state",
+      fee: 300,
+      eventList: [1,2]
+    },
+    {
+      positionID: 7,
+      name: "Chief Justice",
+      level: "state",
+      fee: 400,
+      eventList: [1,2]
+    },
+    {
+      positionID: 8,
+      name: "Associate Justice",
+      level: "state",
+      fee: 300,
+      eventList: [1,2]
+    },
+    {
+      positionID: 9,
+      name: "Judge of the Court of Appeals",
+      level: "state",
+      fee: 200,
+      eventList: [1,2]
+    },
+    {
+      positionID: 10,
+      name: "State Senator",
+      level: "state",
+      fee: 75,
+      eventList: [1,2]
+    },
+    {
+      positionID: 11,
+      name: "State Representative",
+      level: "state",
+      fee: 75,
+      eventList: [1,2]
+    },
+    {
+      positionID: 12,
+      name: "Commissioner",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 13,
+      name: "Treasurer",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 14,
+      name: "Engineer",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 15,
+      name: "Recorder",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 16,
+      name: "Auditor",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 17,
+      name: "Prosecuting Attorney",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 18,
+      name: "Clerk of Courts",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 19,
+      name: "Judge of Municipal Court",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 20,
+      name: "Judge of the Court of Common Pleas",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 21,
+      name: "State School Board Member",
+      level: "county",
+      fee: 1,
+      eventList: [1,2]
+    },
+    {
+      positionID: 22,
+      name: "Mayor",
+      level: "city",
+      fee: 50,
+      eventList: [1,2]
+    },
+    {
+      positionID: 23,
+      name: "Treasurer",
+      level: "city",
+      fee: 50,
+      eventList: [1,2]
+    },
+    {
+      positionID: 24,
+      name: "Auditor",
+      level: "city",
+      fee: 50,
+      eventList: [1,2]
+    },
+    {
+      positionID: 25,
+      name: "Director of Law",
+      level: "city",
+      fee: 50,
+      eventList: [1,2]
+    },
+    {
+      positionID: 26,
+      name: "Councilman",
+      level: "city",
+      fee: 50,
+      eventList: [1,2]
+    },
+    {
+      positionID: 27,
+      name: "City School Board Member",
+      level: "city",
+      fee: 1,
+      eventList: [1,2]
+    },
   ];
 
   // Object of all possible events during the election process
