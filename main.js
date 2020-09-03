@@ -224,98 +224,98 @@ $(() => {
       eventList: [1,2]
     },
     {
-      positionID: 13,
+      positionID: 14,
       name: "Engineer",
       level: "county",
       fee: 150,
       eventList: [1,2]
     },
     {
-      positionID: 13,
+      positionID: 15,
       name: "Recorder",
       level: "county",
       fee: 150,
       eventList: [1,2]
     },
     {
-      positionID: 14,
-      name: "Auditor",
-      level: "county",
-      fee: 150,
-      eventList: [1,2]
-    },
-    {
-      positionID: 15,
-      name: "Prosecuting Attorney",
-      level: "county",
-      fee: 150,
-      eventList: [1,2]
-    },
-    {
       positionID: 16,
-      name: "Clerk of Courts",
+      name: "Auditor",
       level: "county",
       fee: 150,
       eventList: [1,2]
     },
     {
       positionID: 17,
-      name: "Judge of Municipal Court",
+      name: "Prosecuting Attorney",
       level: "county",
       fee: 150,
       eventList: [1,2]
     },
     {
       positionID: 18,
-      name: "Judge of the Court of Common Pleas",
+      name: "Clerk of Courts",
       level: "county",
       fee: 150,
       eventList: [1,2]
     },
     {
       positionID: 19,
+      name: "Judge of Municipal Court",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 20,
+      name: "Judge of the Court of Common Pleas",
+      level: "county",
+      fee: 150,
+      eventList: [1,2]
+    },
+    {
+      positionID: 21,
       name: "State School Board Member",
       level: "county",
       fee: 1,
       eventList: [1,2]
     },
     {
-      positionID: 20,
+      positionID: 22,
       name: "Mayor",
       level: "city",
       fee: 50,
       eventList: [1,2]
     },
     {
-      positionID: 21,
+      positionID: 23,
       name: "Treasurer",
       level: "city",
       fee: 50,
       eventList: [1,2]
     },
     {
-      positionID: 22,
+      positionID: 24,
       name: "Auditor",
       level: "city",
       fee: 50,
       eventList: [1,2]
     },
     {
-      positionID: 23,
+      positionID: 25,
       name: "Director of Law",
       level: "city",
       fee: 50,
       eventList: [1,2]
     },
     {
-      positionID: 24,
+      positionID: 26,
       name: "Councilman",
       level: "city",
       fee: 50,
       eventList: [1,2]
     },
     {
-      positionID: 25,
+      positionID: 27,
       name: "City School Board Member",
       level: "city",
       fee: 1,
