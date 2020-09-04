@@ -85,6 +85,8 @@ $(() => {
         ");
         // ...while binding them to a function that...
         $("#positionList").on("click","[data-positid='"+position[positNum].positionID+"']",function(){
+          $("[data-positid]").css('color','gold').css('background-color','darkred');
+          $("[data-positid='"+position[positNum].positionID+"']").css("color","darkred").css("background-color","gold");
           $("#chooseJob").remove();
           $("#noEvent").remove();
           $(".oneEvent").remove();
@@ -105,6 +107,8 @@ $(() => {
                   </div>");
                 $("#positionEvents").on("click","[data-eventid='"+steps[stepNum].eventID+"']",function(){
                   // console.log(steps[stepNum].description);
+                  $("[data-eventid]").css("color","gold").css("background-color","darkred");
+                  $("[data-eventid='"+steps[stepNum].eventID+"']").css("color","darkred").css("background-color","gold");
                   $("#positionDescrip").empty();
                   $("#positionDescrip").append(steps[stepNum].description);
                 });
