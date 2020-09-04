@@ -326,17 +326,143 @@ $(() => {
   // Object of all possible events during the election process
   const steps = [
     {
-      eventID: 1,
-      eventName: "Turn in completed petition forms",
+      eventID: 3,
+      eventName: "Pick up a petition",
       description: "The completed list of petitions and all other necessary paperwork must be turned in by 5:30pm on Day 2 (Monday).",
       time: "Everything must be turned in by 5:30pm on Day 2 (Monday)."
     },
     {
-      eventID: 2,
-      eventName: "State primary election rally",
+      eventID: 4,
+      eventName: "Recieve 54 nomination signatures",
       description: "Each of the candidates that turned in their completed paperwork & fees for a state-level position will have a brief time in which to give their name and speak to their entire party at this time. They will speak individually, not as a forum or a debate.",
       crowd: "Half of the BBS population will be present at each rally.",
       time: "The rally takes place on Day 2 (Monday) in the evening."
+    },
+    {
+      eventID: 5,
+      eventName: "Track all of your campaign's expenses/contributions",
+      description: "The completed list of petitions and all other necessary paperwork must be turned in by 5:30pm on Day 2 (Monday).",
+      time: "Everything must be turned in by 5:30pm on Day 2 (Monday)."
+    },
+    {
+      eventID: 6,
+      eventName: "Collect $700 for the Governor & Lt. Governor fee (in total)",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 7,
+      eventName: "Collect $400 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 8,
+      eventName: "Collect $300 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 9,
+      eventName: "Collect $200 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 10,
+      eventName: "Collect $150 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 11,
+      eventName: "Collect $75 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 12,
+      eventName: "Collect $50 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 13,
+      eventName: "Collect $1 fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 14,
+      eventName: "Fill out the Declaration of Candidacy (DoC) form",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 15,
+      eventName: "Submit the completed DoC, fee, and petition",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 16,
+      eventName: "Submit the completed DoC and fee",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 17,
+      eventName: "Recieve a nomination during county party caucus",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 18,
+      eventName: "Recieve a nomination during city party caucus",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 19,
+      eventName: "Win the majority of the votes during the city caucus",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 20,
+      eventName: "Win the majority of the votes during the county caucus",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 21,
+      eventName: "Speak at the state party caucus",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 22,
+      eventName: "Win the Primary Elections",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 23,
+      eventName: "Participate in the state debate",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 24,
+      eventName: "Win the General Elections",
+      description: "Testing",
+      time: ""
+    },
+    {
+      eventID: 25,
+      eventName: "Submit the complete 'Campaign Contribution & Expenditure' form",
+      description: "Testing",
+      time: ""
     }
   ];
 
