@@ -110,7 +110,7 @@ $(() => {
                   $("[data-eventid]").css("color","rgba(254,194,49,1)").css("background-color","darkred");
                   $("[data-eventid='"+steps[stepNum].eventID+"']").css("color","darkred").css("background-color","rgba(254,194,49,1)");
                   $("#positionDescrip").empty();
-                  $("#positionDescrip").append(steps[stepNum].description);
+                  $("#positionDescrip").append(steps[stepNum].description+" "+steps[stepNum].time);
                 });
                 noEvent = false;
               };
@@ -218,70 +218,70 @@ $(() => {
       name: "Commissioner",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,29,30,25]
     },
     {
       positionID: 13,
       name: "Treasurer",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,29,30,25]
     },
     {
       positionID: 14,
       name: "Engineer",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,29,30,25]
     },
     {
       positionID: 15,
       name: "Recorder",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,29,30,25]
     },
     {
       positionID: 16,
       name: "Auditor",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,29,30,25]
     },
     {
       positionID: 17,
       name: "Prosecuting Attorney",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,26,29,27,30,28,25]
     },
     {
       positionID: 18,
       name: "Clerk of Courts",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,24,25]
+      eventList: [17,10,18,20,5,29,30,25]
     },
     {
       positionID: 19,
       name: "Judge of Municipal Court",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,26,27,28,24,25]
+      eventList: [17,10,18,20,5,26,29,27,30,28,25]
     },
     {
       positionID: 20,
       name: "Judge of the Court of Common Pleas",
       level: "county",
       fee: 150,
-      eventList: [14,17,5,10,18,20,26,27,28,24,25]
+      eventList: [17,10,18,20,5,26,29,27,30,28,25]
     },
     {
       positionID: 21,
       name: "State School Board Member",
       level: "county",
       fee: 1,
-      eventList: [14,17,5,13,18,20,24,25]
+      eventList: [17,29,5,13,18,20,24,25]
     },
     {
       positionID: 22,
@@ -331,160 +331,165 @@ $(() => {
   const steps = [
     {
       eventID: 3,
-      eventName: "Pick up a petition",
-      description: "The completed list of petitions and all other necessary paperwork must be turned in by 5:30pm on Day 2 (Monday).",
-      time: "Everything must be turned in by 5:30pm on Day 2 (Monday)."
+      eventName: "Pick up a petition form and submit the 'Certificate of Intent' forms",
+      description: "Both of the forms can be found at the location of the Acting Secretary of State. A petition form is used to collect the signatures of other delegates in support of your candidacy. If a candidate withdraws from the running, they must still submit their uncomplete petition form and 'Campaign Contribution & Expenses' form (see 'Track all of your campaign expenses/contributions').",
+      time: ""
     },
     {
       eventID: 4,
-      eventName: "Recieve 54 nomination signatures",
-      description: "Each of the candidates that turned in their completed paperwork & fees for a state-level position will have a brief time in which to give their name and speak to their entire party at this time. They will speak individually, not as a forum or a debate.",
-      crowd: "Half of the BBS population will be present at each rally.",
-      time: "The rally takes place on Day 2 (Monday) in the evening."
+      eventName: "Collect 54 signatures on the petition form",
+      description: "All of the delegates signing the petition must be from the same political party as the candidate's party. The parties within BBS are 'Federalist' or 'Nationalist'. To show state-wide support, petitions must contain a) signatures from at least 6 different counties and b) no more than 11 signatures from a particular county.",
+      time: "",
     },
     {
       eventID: 5,
-      eventName: "Track all of your campaign's expenses/contributions",
-      description: "The completed list of petitions and all other necessary paperwork must be turned in by 5:30pm on Day 2 (Monday).",
-      time: "Everything must be turned in by 5:30pm on Day 2 (Monday)."
+      eventName: "Track all of your campaign expenses/contributions",
+      description: "Many delegates use donated funds in order to pay for the approved BBS materials (both physical and digital) that can advertise their candidacies. State-level candidates can accept no more than $20 from a single delegate, and a county- or city-level one can accept no more than $10. To ensure fair use of these funds, all candidates <b><u>MUST</u></b> track their donations and payments with a 'Campaign Contribution & Expenditure' form. This completed form <b><u>MUST</u></b> be submitted after their general election, whether they win or lose.",
+      time: ""
     },
     {
       eventID: 6,
       eventName: "Pay $700 for the Governor & Lt. Governor fee (in total)",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form. Since the Governor and Lt. Governor must pair together at the beginning of their campaign, their fee is combined into one $700 total.",
       time: ""
     },
     {
       eventID: 7,
       eventName: "Pay $400 fee",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 8,
       eventName: "Pay $300 fee",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 9,
       eventName: "Pay $200 fee",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 10,
       eventName: "Pay $150 fee",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 11,
       eventName: "Pay $75 fee",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 12,
       eventName: "Pay $50 fee",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 13,
       eventName: "Pay $1 fee",
-      description: "Testing",
-      time: ""
-    },
-    {
-      eventID: 14,
-      eventName: "Recieve a nomination during county party caucus",
-      description: "Testing",
+      description: "Every delegate begins with an account of 600 BBS dollars. All candidates must track their campaign funds with the 'Campaign Contribution & Expenditure' form.",
       time: ""
     },
     {
       eventID: 15,
-      eventName: "Recieve a nomination during city party caucus",
-      description: "Testing",
-      time: ""
+      eventName: "Declare your city nomination during the informal city party caucus",
+      description: "Anyone pursuing a city-level position must first become a nominee within their political party. They can nominate themself, or be nominated by another delegate in the caucus. All of these nominees will compete to be their city party's candidate at the <u>formal</u> city party caucus tomorrow.",
+      time: "The informal caucus takes place in the evening of Day 1 (Sunday)."
     },
     {
       eventID: 16,
-      eventName: "Win the majority of the votes during the city caucus",
-      description: "Testing",
-      time: ""
+      eventName: "Win candidacy by majority vote during the formal city caucus",
+      description: "All nominees from the informal city party caucus will now have a chance to briefly speak to their city party's members. Once all nominees have spoken, voting will take place. Each party candidate will be determined by whichever nominee gets the majority of the votes.",
+      time: "The formal city caucus takes place in the afternoon of Day 2 (Monday)."
     },
     {
       eventID: 17,
-      eventName: "Win the majority of the votes during the county caucus",
-      description: "Testing",
-      time: ""
+      eventName: "Declare your county nomination and win candidacy during the county party caucus",
+      description: "During the county caucus, nominees can nominate themselves or recieve the nomination from another party member. All of the nomines will then have an opportunity to speak to the entire county party. The speeches will immediately be followed by voting. The nominee with the majority vote will be the county party's candidate.",
+      time: "The county caucus takes place in the morning of Day 2 (Monday)."
     },
     {
       eventID: 18,
       eventName: "Fill out the Declaration of Candidacy (DoC) form",
-      description: "Testing",
+      description: "If you are a state-level candidates, then submit your DoC directly to the Acting Secretary of State. If you are a county- and city-level candidate, then fill out the form immediately after winning your candidacy and give it to your party chairman.",
       time: ""
     },
     {
       eventID: 19,
       eventName: "Submit the completed DoC, fee, and petition",
-      description: "Testing",
-      time: ""
+      description: "With both of the forms completed and the fee prepared, submit these required  materials to the Acting Secretary of State.",
+      time: "The deadline for this is NO LATER THAN 5:30pm on Day 2 (Monday)."
     },
     {
       eventID: 20,
       eventName: "Submit the completed DoC and fee",
-      description: "Testing",
-      time: ""
+      description: "Your DoC and the necessary fee must be turned over to your party chairman, who will then hand it over to the Acting Secretary of State.",
+      time: "This must take place immediately following the party caucus in which you became a candidate."
     },
     {
       eventID: 21,
       eventName: "Speak at the state party caucus",
-      description: "Testing",
-      time: ""
+      description: "Each of the candidates that turned in their completed paperwork & fees for a state-level position will have a brief time in which to give their name and speak to their entire party during the rally. They will speak individually, not as a forum or a debate.",
+      time: "The rally takes place in the evening of Day 2 (Monday) in the evening."
     },
     {
       eventID: 22,
-      eventName: "Win the Primary Elections",
-      description: "Testing",
-      time: ""
+      eventName: "Win the state Primary Elections",
+      description: "Each city will have a designated time to arrive at the polling stations and will be guided by their city counselor.",
+      time: "The primary election polls open in the morning of Day 3 (Tuesday). The results will be posted in the afternoon."
     },
     {
       eventID: 23,
-      eventName: "Participate in the state debate",
-      description: "Testing",
-      time: ""
+      eventName: "Participate in 'Meet The Candidate' rally and debates",
+      description: "The newly-elected state candidates of each party will have an opportunity to speak to the entire BBS body, during which they can introduce themselves and express their goals or policies. This will be immediately followed by a series of debate between all of the opposing candidates.",
+      time: "This event begins shortly after lunch on Day 3 (Tuesday)."
     },
     {
       eventID: 24,
-      eventName: "Win the General Elections",
+      eventName: "As with the primary elections, each city will have a designated time to arrive at the polling stations and will be guided by their city counselor.",
       description: "Testing",
-      time: ""
+      time: "The polling stations open in the afternoon of Day 3 (Tuesday)."
     },
     {
       eventID: 25,
       eventName: "Submit the complete 'Campaign Contribution & Expenditure' form",
-      description: "Testing",
+      description: "At the conclusion of the state General Elections, all state, county, and city candidates must turn in their completed 'Campaign Contribution & Expenditure' form to the Acting Secretary of State. This includes both winners and losers in their general elections, as well as all of the state candidates that lost in the primary election.",
       time: ""
     },
     {
       eventID: 26,
       eventName: "Take BAR exam (1st attempt)",
-      description: "Testing",
-      time: ""
+      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
+      time: "This exam takes place in the morning of Day 2 (Monday)."
     },
     {
       eventID: 27,
       eventName: "Take BAR exam (2nd attempt)",
-      description: "Testing",
-      time: ""
+      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
+      time: "This exam takes place in the afternoon of Day 2 (Monday)."
     },
     {
       eventID: 28,
       eventName: "Take BAR exam (final attempt)",
-      description: "Testing",
-      time: ""
+      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
+      time: "This exam takes place on Day 3 (Tuesday)."
+    },
+    {
+      eventID: 29,
+      eventName: "Speak at the general county meeting",
+      description: "The county candidates will have a chance to speak to ALL of their county members at this meeting, and not only their party.",
+      time: "The county meeting takes place in the afternoon of Day 2 (Monday)."
+    },
+    {
+      eventID: 30,
+      eventName: "Win in the city/county General Elections",
+      description: "Each city will have a designated time to arrive at the polling stations and will be guided by their city counselor.",
+      time: "The election polls open in the morning of Day 3 (Tuesday). The results will be posted in the afternoon."
     }
   ];
 
