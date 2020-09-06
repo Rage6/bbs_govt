@@ -140,7 +140,7 @@ $(() => {
       level: "state",
       fee: 700,
       paired: "The Governor must run with a Lt. Governor.",
-      eventList: [3,4,5,6,18,19,21,22,23,24,25]
+      eventList: [3,4,6,18,19,5,21,22,23,24,25]
     },
     {
       positionID: 2,
@@ -148,70 +148,70 @@ $(() => {
       level: "state",
       fee: 700,
       paired: "The Lt. Governor must run with a Governor. His campaign fee is combined with that of the Governor, for a total of $700.",
-      eventList: [3,4,5,6,18,19,21,22,23,24,25]
+      eventList: [3,4,6,18,19,5,21,22,23,24,25]
     },
     {
       positionID: 3,
       name: "Attorney General",
       level: "state",
       fee: 300,
-      eventList: [3,4,5,8,18,19,21,22,23,24,25]
+      eventList: [3,26,4,7,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 4,
       name: "Treasurer",
       level: "state",
       fee: 300,
-      eventList: [3,4,5,8,18,19,21,22,23,24,25]
+      eventList: [3,4,8,18,19,5,21,22,23,24,25]
     },
     {
       positionID: 5,
       name: "Auditor",
       level: "state",
       fee: 300,
-      eventList: [3,4,5,8,18,19,21,22,23,24,25]
+      eventList: [3,4,8,18,19,5,21,22,23,24,25]
     },
     {
       positionID: 6,
       name: "Secretary of State",
       level: "state",
       fee: 300,
-      eventList: [3,4,5,8,18,19,21,22,23,24,25]
+      eventList: [3,4,8,18,19,5,21,22,23,24,25]
     },
     {
       positionID: 7,
       name: "Chief Justice",
       level: "state",
       fee: 400,
-      eventList: [3,26,4,5,7,18,19,21,27,22,28,23,24,25]
+      eventList: [3,26,4,7,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 8,
       name: "Associate Justice",
       level: "state",
       fee: 300,
-      eventList: [3,26,4,5,8,18,19,21,27,22,28,23,24,25]
+      eventList: [3,26,4,8,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 9,
       name: "Judge of the Court of Appeals",
       level: "state",
       fee: 200,
-      eventList: [3,26,4,5,9,18,19,21,27,22,28,23,24,25]
+      eventList: [3,26,4,9,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 10,
       name: "State Senator",
       level: "state",
       fee: 75,
-      eventList: [5,11,15,16,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
     {
       positionID: 11,
       name: "State Representative",
       level: "state",
       fee: 75,
-      eventList: [5,11,15,16,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
     {
       positionID: 12,
@@ -288,42 +288,42 @@ $(() => {
       name: "Mayor",
       level: "city",
       fee: 50,
-      eventList: [15,16,5,12,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
     {
       positionID: 23,
       name: "Treasurer",
       level: "city",
       fee: 50,
-      eventList: [15,16,5,12,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
     {
       positionID: 24,
       name: "Auditor",
       level: "city",
       fee: 50,
-      eventList: [15,16,5,12,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
     {
       positionID: 25,
       name: "Director of Law",
       level: "city",
       fee: 50,
-      eventList: [26,15,16,5,12,18,20,27,24,28,25]
+      eventList: [15,26,16,12,18,20,5,27,30,28,25]
     },
     {
       positionID: 26,
       name: "Councilman",
       level: "city",
       fee: 50,
-      eventList: [15,16,5,12,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
     {
       positionID: 27,
       name: "City School Board Member",
       level: "city",
       fee: 1,
-      eventList: [15,16,5,13,18,20,24,25]
+      eventList: [15,16,12,18,20,5,30,25]
     },
   ];
 
@@ -451,9 +451,9 @@ $(() => {
     },
     {
       eventID: 24,
-      eventName: "As with the primary elections, each city will have a designated time to arrive at the polling stations and will be guided by their city counselor.",
-      description: "Testing",
-      time: "The polling stations open in the afternoon of Day 3 (Tuesday)."
+      eventName: "Win in the state General Election",
+      description: "",
+      time: "The polling stations open in the afternoon of Day 3 (Tuesday), shortly after the state rally and debates."
     },
     {
       eventID: 25,
@@ -488,7 +488,7 @@ $(() => {
     {
       eventID: 30,
       eventName: "Win in the city/county General Elections",
-      description: "Each city will have a designated time to arrive at the polling stations and will be guided by their city counselor.",
+      description: "",
       time: "The election polls open in the morning of Day 3 (Tuesday). The results will be posted in the afternoon."
     }
   ];
