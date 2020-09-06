@@ -85,8 +85,8 @@ $(() => {
         ");
         // ...while binding them to a function that...
         $("#positionList").on("click","[data-positid='"+position[positNum].positionID+"']",function(){
-          $("[data-positid]").css('color','gold').css('background-color','darkred');
-          $("[data-positid='"+position[positNum].positionID+"']").css("color","darkred").css("background-color","gold");
+          $("[data-positid]").css('color','rgba(254,194,49,1)').css('background-color','darkred');
+          $("[data-positid='"+position[positNum].positionID+"']").css("color","darkred").css("background-color","rgba(254,194,49,1)");
           $("#chooseJob").remove();
           $("#noEvent").remove();
           $(".oneEvent").remove();
@@ -107,8 +107,8 @@ $(() => {
                   </div>");
                 $("#positionEvents").on("click","[data-eventid='"+steps[stepNum].eventID+"']",function(){
                   // console.log(steps[stepNum].description);
-                  $("[data-eventid]").css("color","gold").css("background-color","darkred");
-                  $("[data-eventid='"+steps[stepNum].eventID+"']").css("color","darkred").css("background-color","gold");
+                  $("[data-eventid]").css("color","rgba(254,194,49,1)").css("background-color","darkred");
+                  $("[data-eventid='"+steps[stepNum].eventID+"']").css("color","darkred").css("background-color","rgba(254,194,49,1)");
                   $("#positionDescrip").empty();
                   $("#positionDescrip").append(steps[stepNum].description);
                 });
