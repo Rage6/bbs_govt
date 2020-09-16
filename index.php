@@ -109,18 +109,27 @@
             </div>
             <div class="sectionList">
               <a href="state/governor/governor.php">
-                <div class="levelButton stateButton">
-                  Office of the Governor
+                <div class="stateButton">
+                  <div class="stateButtonCenter">Governor</div>
+                  <div class="stateButtonRight">
+                    <div></div>
+                  </div>
                 </div>
               </a>
               <a href="state/congress/congress.php">
-                <div class="levelButton stateButton">
-                  General Assembly
+                <div class="stateButton">
+                  <div class="stateButtonCenter">Congress</div>
+                  <div class="stateButtonRight">
+                    <div></div>
+                  </div>
                 </div>
               </a>
               <a href="state/supreme_court/supreme_court.php">
-                <div class="levelButton stateButton">
-                  Supreme Court
+                <div class="stateButton">
+                  <div class="stateButtonCenter">Supreme Court</div>
+                  <div class="stateButtonRight">
+                    <div></div>
+                  </div>
                 </div>
               </a>
             </div>
