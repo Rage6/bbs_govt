@@ -22,13 +22,14 @@
 }
 
 .chooseHouse {
+  margin-top: 4vh;
   margin-left: 25%;
   font-size: 2.5rem;
   width: 50%;
 }
 
 .chamberBttn {
-  margin-top: 20px;
+  margin-top: 7vh;
   display: flex;
   justify-content: space-between;
 }

@@ -8,7 +8,7 @@ $(()=>{
     if ($(window).outerHeight() < currentBoxHeight) {
       $("body").css('height',currentBoxHeight);
     } else {
-      $("body").css('height','100%');
+      $("body").css('height','100vh');
     };
   };
 

@@ -8,7 +8,7 @@
 }
 
 .entranceBox {
-  padding-top: 110px;
+  padding-top: 17vh;
 }
 
 .entranceBackArrow {
@@ -18,7 +18,7 @@
 }
 
 .entranceTitle {
-  margin: 0px 15% 40px 15%;
+  margin: 0px 15% 5vh 15%;
   padding: 10px 0;
   display: flex;
   justify-content: space-around;
@@ -63,6 +63,7 @@
 }
 
 .chamberBttn {
+  margin-top: 8vh;
   margin-left: 0%;
   width: 30%;
 }
