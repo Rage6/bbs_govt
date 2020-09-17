@@ -63,6 +63,9 @@ body {
 .statsList div {
   margin-bottom: 5px;
 }
+.stateButton {
+  width: 75% !important;
+}
 .subtitle div {
   width: 100% !important;
 }
