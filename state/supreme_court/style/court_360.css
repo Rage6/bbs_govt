@@ -183,6 +183,18 @@ a {
   width: 85%;
 }
 
+.justiceBio div {
+  text-align: center;
+}
+
+.cityHeader {
+  font-size: 1.1rem;
+}
+
+.justiceBio div:nth-child(2) {
+  margin-bottom: 15px;
+}
+
 /* For the Court Cases */
 .caseBox {
   padding: 40px 5%;

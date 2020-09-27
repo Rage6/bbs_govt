@@ -86,7 +86,7 @@
               echo("
               <div class='justiceBox'>
                 <div class='justiceTitle'>
-                  <div>".$oneJustice['first_name']." ".$oneJustice['last_name']."</div>
+                  <div>".$oneJustice['first_name']."</br>".$oneJustice['last_name']."</div>
                   <div>".$oneJustice['job_name']."</div>
                 </div>");
                 if ($oneJustice['approved'] == 1) {
@@ -95,8 +95,10 @@
                   echo("<img class='justiceImg' src='../../img/default_photo.png' />");
                 };
                 echo("<div class='justiceBio'>
-                  <div>BBS City: ".$oneJustice['section_name']."</div>
-                  <div>Hometown: ".$oneJustice['hometown'].", OH</div>
+                  <div class='cityHeader'>BBS City:</div>
+                  <div class='cityContent'>".$oneJustice['section_name']."</div>
+                  <div class='cityHeader'>Hometown:</div>
+                  <div class='cityContent'>".$oneJustice['hometown']."</div>
                 </div>
               </div>");
             };
