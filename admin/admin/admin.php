@@ -416,7 +416,7 @@
                       $approvalStatus = "PENDING";
                     };
                     echo("
-                    <div>
+                    <div class='approvalStatus'>
                       Approval Status: ".$approvalStatus."
                     </div>
                     ");
