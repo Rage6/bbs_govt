@@ -296,7 +296,7 @@ if (isset($_POST['submitFile'])) {
             $_FILES['jobImg']['name'] = $currentFileName;
             $imgDestination = "../../img".$currentFilePath.$currentFileName.".".$currentFileExtension;
             move_uploaded_file($_FILES['jobImg']['tmp_name'],$imgDestination);
-            // To avoid misuse of EXIF Orientation, this creates the image as a plain JPEG w/o EXIF in the metadata
+            // To avoid misuse of EXIF Orientation, this creates the image as a plain JPEG w/o EXIF in the metadata reset
             $plainImg = imagecreatefromjpeg($imgDestination);
             imagejpeg($plainImg,$imgDestination);
             //
@@ -475,6 +475,23 @@ if (isset($_GET['editImg'])) {
     // imagedestroy($blankImg);
   };
   $_SESSION['message'] = "<b style='color:green'>Upload And Edit Successful</b>";
+  unset($_SESSION['imgId']);
+  header('Location: admin.php');
+  return true;
+};
+
+// Reset the current cropped image to a default image
+if (isset($_POST['resetFile'])) {
+  $resetPhotoStmt = $pdo->prepare("SELECT image_id, job_id, image_path, filename, extension FROM Image WHERE section_id=:se AND job_id=:jbi AND filename IS NOT NULL");
+  $resetPhotoStmt->execute(array(
+    ':se'=>$secId,
+    ':jbi'=>(int)$_POST['jobId']
+  ));
+  $resetData = $resetPhotoStmt->fetch(PDO::FETCH_ASSOC);
+  $resetImgDestination = "../../img".$resetData['image_path']."crop_".$resetData['filename'].".".$resetData['extension'];
+  $plainResetImg = imagecreatefromjpeg("../../img/default_other.jpg");
+  imagejpeg($plainResetImg,$resetImgDestination);
+  $_SESSION['message'] = "<b style='color:green'>Image Reset Successful</b>";
   unset($_SESSION['imgId']);
   header('Location: admin.php');
   return true;

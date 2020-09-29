@@ -34,7 +34,9 @@
       Job.section_id=$secId AND
       Delegate.delegate_id=Job.delegate_id AND
       Image.job_id=Job.job_id AND
-      Section.section_id=Delegate.city_id");
+      Section.section_id=Delegate.city_id
+    ORDER BY
+      Job.job_id ASC");
   $justiceInfoStmt->execute();
 
   // Collects the Minutes from the Bar Association

@@ -360,7 +360,7 @@
                     echo("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                   };
                 echo("
-                  <div>
+                  <div class='actualPhoto'>
                     <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                   </div>
                   <form method='POST' enctype='multipart/form-data'>
@@ -372,7 +372,10 @@
                     <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
                     <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
                     <input class='photoFile' name='jobImg' type='file' />
-                    <input class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
+                    <div class='imgRow'>
+                      <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
+                      <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
+                    </div>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
                     $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
@@ -413,7 +416,7 @@
                       $approvalStatus = "PENDING";
                     };
                     echo("
-                    <div>
+                    <div class='approvalStatus'>
                       Approval Status: ".$approvalStatus."
                     </div>
                     ");
