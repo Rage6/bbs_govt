@@ -360,7 +360,7 @@
                     echo("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                   };
                 echo("
-                  <div>
+                  <div class='actualPhoto'>
                     <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                   </div>
                   <form method='POST' enctype='multipart/form-data'>
@@ -372,16 +372,10 @@
                     <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
                     <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
                     <input class='photoFile' name='jobImg' type='file' />
-                    <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
-                  </form>
-                  <form method='POST' enctype='multipart/form-data'>
-                    <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
-                    <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
-                    <input name='jobExt' type='hidden' value='".$allPhotos[$imgNum]['extension']."' />
-                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
-                    <input name='sectionPath' type='hidden' value='".$allPhotos[$imgNum]['section_path']."' />
-                    <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
+                    <div class='imgRow'>
+                      <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
+                      <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
+                    </div>
                   </form>");
                   if ($_SESSION['adminType'] == 'counselor') {
                     $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");

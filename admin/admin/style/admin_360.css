@@ -333,6 +333,10 @@ body {
   text-align: center;
 }
 
+.actualPhoto {
+  margin-bottom: 10px;
+}
+
 .photoDelegate {
   margin-bottom: 10px;
   font-size: 1.2rem;
@@ -360,8 +364,14 @@ body {
   cursor: pointer;
 }
 
+.imgRow {
+  margin: 30px 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .photoUpload {
-  margin: 5px 0 15px 30%;
+  margin: 0 5%;
   padding: 10px 0 10px 0;
   text-align: center;
   color: white;

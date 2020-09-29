@@ -482,7 +482,7 @@ if (isset($_GET['editImg'])) {
 
 // Reset the current cropped image to a default image
 if (isset($_POST['resetFile'])) {
-  $resetPhotoStmt = $pdo->prepare("SELECT image_id, job_id, section_path, image_path, filename, extension FROM Image WHERE section_id=:se AND job_id=:jbi AND filename IS NOT NULL");
+  $resetPhotoStmt = $pdo->prepare("SELECT image_id, job_id, image_path, filename, extension FROM Image WHERE section_id=:se AND job_id=:jbi AND filename IS NOT NULL");
   $resetPhotoStmt->execute(array(
     ':se'=>$secId,
     ':jbi'=>(int)$_POST['jobId']
