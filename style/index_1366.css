@@ -21,11 +21,17 @@
   height: 100%;
 }
 .govtLinkRow {
+
+}
+.allGovtColumn {
   display: flex;
   justify-content: space-around;
 }
-.govtLinkRow div {
+.oneGovtColumn {
   width: 60%;
+}
+.bottomShade {
+  display: block;
 }
 .glossaryBar {
   display: none;
@@ -61,6 +67,7 @@
 }
 .sectionList {
   border-bottom: 1px solid #fec231;
+  padding-bottom: 50px;
   overflow-y: scroll;
   height: 450px;
   width: 100% !important;
@@ -110,4 +117,7 @@
 }
 .moreButton {
  display: none;
+}
+.electionContent {
+  margin-top: -50px;
 }

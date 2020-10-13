@@ -69,8 +69,13 @@ $(() => {
     $("#positionDescrip").append("<i id='chooseStep'>Choose a step in that process...</i>");
     // The selected 'level' shows which was clicked on...
     let level = event.target.dataset.level;
-    $("[data-level]").css('background-color','black');
-    event.target.style.backgroundColor = "darkred";
+    $("[data-level]")
+      .css('border','1px solid rgba(254,194,49,1)')
+      .css('color','rgba(254,194,49,1)')
+      .css('background-color','darkred');
+    event.target.style.backgroundColor = "rgba(254,194,49,1)";
+    event.target.style.color = "darkred";
+    event.target.style.border = "1px solid darkred";
     let noPosit = true;
     // ...then adds/shows the appropriate positions...
     for (let positNum = 0; positNum < position.length; positNum++) {
