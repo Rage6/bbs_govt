@@ -1,8 +1,6 @@
 body {
   background:
-    /* conic-gradient(darkred, darkred 25%, white 25%, white 50%, transparent 50%),
-    radial-gradient(circle at 0%, darkred, darkred 15%, white 15%, white 20%, transparent 20%),
-    linear-gradient(to right, #002868 50%, darkred 50%, darkred); */
+    linear-gradient(45deg, rgba(255,255,255,0.3),rgba(255,255,255,0.3)),
     radial-gradient(circle at 0%, darkred, darkred 15%, white 15%, white 20%, transparent 20%),
     linear-gradient(to right, #002868 50%, transparent 50%, transparent),
     linear-gradient(darkred, darkred 33%, white 33%, white 66%, darkred 66%, darkred);
@@ -10,7 +8,7 @@ body {
 }
 
 .indexMain {
-  background: linear-gradient(135deg, black, #002868 6%, #002768);
+  background: linear-gradient(135deg, #002768, #002768);
 }
 
 a {
