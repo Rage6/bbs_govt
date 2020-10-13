@@ -57,6 +57,23 @@ a {
 .govtLinkRow {
   padding-top: 30px;
 }
+
+.allGovtColumn {
+
+}
+
+.oneGovtColumn {
+
+}
+
+.bottomShade {
+  display: none;
+  position:relative;
+  top: -50px;
+  background: linear-gradient(180deg,transparent,black);
+  height:50px;
+}
+
 .adminLink {
   border-radius: 0 0 0 5px;
   position: absolute;
@@ -277,7 +294,7 @@ a {
   font-family: 'Abel', sans-serif;
   font-size: 1.2rem;
   display: none;
-  width: 90%;
+  width: 85%;
 }
 
 .subtitle {
