@@ -47,6 +47,7 @@ body {
   display: none;
 }
 .introRow {
+  border-top: 3px solid #fec231;
   display: flex;
   justify-content: flex-end;
   background:
