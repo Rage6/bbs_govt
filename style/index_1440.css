@@ -38,13 +38,27 @@
 }
 .introRow {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  background:
+  linear-gradient(
+      to left,
+      rgba(139,0,0,0.85) 0%,
+      rgba(139,0,0,0.85) 45%,
+      rgba(139,0,0,0)),
+  url('../img/candidate_rally.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .introBox {
   margin: 10px 5%;
   padding: 20px 2%;
   font-size: 1.6rem;
-  width: 40%;
+  width: 50%;
+  background:
+    linear-gradient(
+      to left,
+      rgba(139,0,0,1),
+      rgba(139,0,0,1));
 }
 .statsBox {
   margin: 10px 5%;
