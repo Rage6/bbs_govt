@@ -115,6 +115,13 @@ a {
   padding-bottom: 40px;
   padding-top: 10px;
   font-family: 'Abel', sans-serif;
+  /* background: linear-gradient(
+      to right,
+      rgba(139,0,0,0.85) 0%,
+      rgba(139,0,0,0.85) 45%,
+      rgba(139,0,0,0)), url('../img/candidate_rally.jpg');
+  background-size: cover;
+  background-position: center; */
 }
 .introBox {
   margin: 10px 10% 10px 10%;
@@ -123,9 +130,12 @@ a {
   padding: 20px 5%;
   color: #fec231;
   font-size: 1.3rem;
-  background: linear-gradient(
+  /* background-color: rgba(139,0,0,0.85); */
+  background:
+    linear-gradient(
       rgba(139,0,0,0.85),
-      rgba(139,0,0,0.85)), url('../img/candidate_rally.jpg');
+      rgba(139,0,0,0.85)),
+    url('../img/candidate_rally.jpg');
   background-size: cover;
   background-position: center;
 }

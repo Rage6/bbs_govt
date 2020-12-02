@@ -69,7 +69,7 @@
         MENU
       </div>
       <div id="glossaryBox" class="glossaryBox">
-        <div id="numbersBttn">BASIC STATISTICS</div>
+        <!-- <div id="numbersBttn">BASIC STATISTICS</div> -->
         <div id="stateBttn">STATE</div>
         <div id="countyBttn">COUNTY</div>
         <div id="cityBttn">CITY</div>
@@ -80,15 +80,20 @@
         <div class="introBox">
           <span class="introTitle">W</span>elcome to the Buckeye Boys State (BBS) government directory. Here you will find:
           <ul>
-            <li>Basic statistics about BBS</li>
-            <li>Descriptions of the election process for each position</li>
-            <li>Links to every branch of the state-level government</li>
-            <li>Populations of every city & county</li>
-            <li>Total of flags awarded to each county & city</li>
-            <li>A short summary of the BBS program</li>
+            <!-- <li>Basic statistics about BBS</li> -->
+            <li>Up-to-date information from the:
+              <ul>
+                <li style="padding-top:10px">Office of the Governor</li>
+                <li>House of Representatives</li>
+                <li>Senate</li>
+                <li>Supreme Court</li>
+              </ul>
+            <li>Detailed instructions for the BBS election process</li>
+            <li>The population size and flags achieved by every city & county</li>
+            <li>A short description of the BBS program and where to apply</li>
           </ul>
         </div>
-        <div id="numbersTop" class="statsBox">
+        <!-- <div id="numbersTop" class="statsBox">
           <div class="statsTitle"><span class="introTitle">B</span>y the numbers...</div>
           <div class="statsList">
             <div>Population: <?php echo($totalPopulation) ?></div>
@@ -98,7 +103,7 @@
             <div>BBS Counties: <?php echo($totalCounties) ?></div>
             <div>BBS Cities: <?php echo($totalCities) ?></div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div id="hubContent">
