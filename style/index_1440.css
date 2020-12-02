@@ -38,6 +38,7 @@
 }
 .introRow {
   display: flex;
+  border-top: 3px solid #fec231;
   justify-content: flex-end;
   background:
   linear-gradient(
@@ -51,7 +52,6 @@
 }
 .introBox {
   margin: 10px 5%;
-  border-top: 3px solid #fec231;
   padding: 20px 2%;
   font-size: 1.6rem;
   width: 50%;
