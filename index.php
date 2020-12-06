@@ -57,8 +57,8 @@
       <a name="pageTop">
         <div class="topBar">
           <div id="hubTitle">
+            <div>American Legion</div>
             <div>Buckeye Boys State</div>
-            <div>DIRECTORY</div>
           </div>
           <div class="ohioLogo">
             <img src="img/Ohio_Flag_Map_Accurate.png" />
