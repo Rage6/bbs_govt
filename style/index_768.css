@@ -1,5 +1,9 @@
 #hubTitle {
   margin-left: 10%;
+  font-size: 3rem;
+}
+#hubTitle div:first-child {
+  font-size: 1.8rem;
 }
 .ohioLogo {
   margin-right: 10%;

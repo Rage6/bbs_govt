@@ -3,11 +3,11 @@
 }
 #hubTitle {
   margin-left: 10%;
-  font-size: 4.5rem;
+  font-size: 3.8rem;
   width: 45%;
 }
 #hubTitle div:first-child {
-  font-size: 2.6rem;
+  font-size: 2.3rem;
 }
 .ohioLogo {
   margin-right: 10%;
@@ -28,7 +28,9 @@
   justify-content: space-around;
 }
 .oneGovtColumn {
-  width: 60%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  width: 30%;
 }
 .bottomShade {
   display: block;
