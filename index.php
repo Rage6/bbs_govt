@@ -110,7 +110,7 @@
         <div class="govtLinkRow">
           <div class="allGovtColumn">
           <div id="stateTop" class="oneGovtColumn">
-            <div class="levelTitle">
+            <div class="levelTitle columnTitle">
               STATE
             </div>
             <div class="sectionList">
@@ -144,7 +144,7 @@
             </div>
           </div>
           <div id="countyTop" class="oneGovtColumn">
-            <div class="levelTitle">
+            <div class="levelTitle columnTitle">
               COUNTY
             </div>
             <div class="sectionList">
@@ -178,7 +178,7 @@
             </div>
           </div>
           <div id="cityTop" class="oneGovtColumn">
-            <div class="levelTitle">
+            <div class="levelTitle columnTitle">
               CITY
             </div>
             <div class="sectionList">

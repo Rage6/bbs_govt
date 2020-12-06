@@ -379,6 +379,7 @@ a {
 
 .levelTitle {
   margin-left: 10%;
+  border-bottom: 1px solid #002768;
   padding: 10px 5%;
   text-align: left;
   font-size: 1.5rem;
@@ -386,6 +387,9 @@ a {
   color: darkred;
   background: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
   width: 70%;
+}
+.columnTitle {
+  border-bottom: 1px solid #002768;
 }
 .sectionName {
   border-bottom: 3px solid black;

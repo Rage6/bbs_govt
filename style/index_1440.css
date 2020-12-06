@@ -28,7 +28,9 @@
   justify-content: space-around;
 }
 .oneGovtColumn {
-  width: 60%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  width: 30%;
 }
 .bottomShade {
   display: block;
