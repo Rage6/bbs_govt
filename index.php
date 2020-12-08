@@ -61,7 +61,8 @@
             <div>Buckeye Boys State</div>
           </div>
           <div class="ohioLogo">
-            <img src="img/Ohio_Flag_Map_Accurate.png" />
+            <!-- <img src="img/Ohio_Flag_Map_Accurate.png" /> -->
+            <img src="img/emblem_min.png" />
           </div>
         </div>
       </a>
