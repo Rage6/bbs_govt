@@ -43,7 +43,9 @@
       rgba(139,0,0,1),
       rgba(139,0,0,1));
 }
-
+.oneGovtColumn {
+  padding-top: 30px;
+}
 .allTopic {
   display: flex;
   flex-wrap: wrap;

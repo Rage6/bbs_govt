@@ -44,6 +44,7 @@ body {
   background-size: 100% 200px;
 }
 .oneGovtColumn {
+  padding-top: 30px;
   border-left: 2px solid black;
   border-right: 2px solid black;
   width: 30%;
