@@ -36,6 +36,12 @@ body {
 .allGovtColumn {
   display: flex;
   justify-content: space-around;
+  /*For checkers*/
+  /* background: conic-gradient(black 0deg 90deg,#002868 90deg 180deg,black 180deg 270deg,#002868 270deg 360deg);
+  background-size: 7px 7px; */
+  /*For stripes*/
+  background:linear-gradient(to bottom, black,#002868 50px,black 100px, #002868 150px, black);
+  background-size: 100% 200px;
 }
 .oneGovtColumn {
   border-left: 2px solid black;
