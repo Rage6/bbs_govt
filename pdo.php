@@ -26,7 +26,11 @@
   if ($currentHost == "localhost:8888") {
     $imgPrefix = "http://localhost:8888/Buckeye_Boys_State/bbs_govt/img";
   } else {
-    $imgPrefix = "https://buckeye-boys-state.herokuapp.com/img";
+    if ($_ENV["CLEARDB_PASSWORD"] && $_ENV["CLEARDB_USERNAME"]) {
+      $imgPrefix = "https://buckeye-boys-state.herokuapp.com/img";
+    } else {
+      $imgPrefix = "https://www.weareohiobbs.com/img";
+    };
   };
 
   // Starting date
