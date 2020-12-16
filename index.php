@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Buckeye Boys State | <?php echo($thisYear) ?></title>
     <!-- Set-up for posts, texts, etc. -->
-    <meta property="og:title" content="Buckeye Boys State" />
+    <meta property="og:title" content="Buckeye Boys State | <?php echo($thisYear) ?>" />
     <meta property="og:image" content="img/ohio_flag_bbs.jpg" />
     <meta property="og:description" content="Welcome to Buckeye Boys State! It is here where many young men take their first steps towards becoming our democratic leaders of tomorrow." />
     <!-- Font styles for the index page -->
