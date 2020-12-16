@@ -45,8 +45,8 @@ if (isset($_POST['changePw'])) {
       ':sd'=>htmlentities($_POST['secId'])
     ));
     $getBothPw = $getBothPwStmt->fetch(PDO::FETCH_ASSOC);
-    if (password_verify($getBothPw['couns_pw'],$newHash) != true || password_verify($getBothPw['del_pw'],$newHash) != true) {
-      $_SESSION['message'] = "<b style='color:red'>The password entered is already used. Please try a differnent password</b>";
+    if (password_verify($newPw,$getBothPw['couns_pw']) == 1 || password_verify($newPw,$getBothPw['del_pw']) == 1) {
+      $_SESSION['message'] = "<b style='color:red'>The password entered is already used in your section. Please try a differnent password</b>";
       header('Location: locksmith.php');
       return false;
     } else {
