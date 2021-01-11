@@ -40,6 +40,16 @@
       };?>></script>
     <script src="main.js"></script>
     <script src="case_library/cases.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEVZ2L2FBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PEVZ2L2FBZ');
+    </script>
+    <!-- End of gtag -->
   </head>
   <body>
     <div class="wholePage">
