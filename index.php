@@ -46,6 +46,16 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico"/>
     <script src=<?php echo($jquery) ?>></script>
     <script src="main.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEVZ2L2FBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PEVZ2L2FBZ');
+    </script>
+    <!-- End of gtag -->
   </head>
   <body>
     <div class="indexMain">
