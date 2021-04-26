@@ -42,6 +42,22 @@
         echo("
           <div class='secBox'>
             <div class='secName'>".$secList[$indexNum]['section_name']."</div>
+            <div>
+              <form method='POST'>");
+                if ($secList[$indexNum]['is_city'] != 0 || $secList[$indexNum]['is_city'] == NULL || $secList[$indexNum]['is_county'] != 0 || $secList[$indexNum]['is_county'] == NULL) {
+                  echo("
+                    <input type='hidden' name='newNameId' value='".$secList[$indexNum]['section_id']."'>
+                    <input type='text' name='newName' value='".$secList[$indexNum]['section_name']."'></br>
+                    <select name='newSectStatus'>
+                      <option value='1'>ACTIVE</option>
+                      <option value='0'>INACTIVE</option>
+                    </select></br>
+                    <input type='submit' name='changeSectionName' value='CHANGE STATUS'></br>
+                  ");
+                };
+              echo("
+              </form>
+            </div>
             <div class='rowPasswords'>
               <form method='POST'>
                 <div>

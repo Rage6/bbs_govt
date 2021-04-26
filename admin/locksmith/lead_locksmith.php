@@ -32,6 +32,24 @@ while ($oneListed = $showBlacklistStmt->fetch(PDO::FETCH_ASSOC)) {
   $blacklist[] = $oneListed;
 };
 
+// Change a city or counties name, status
+if (isset($_POST['changeSectionName'])) {
+  if ($_POST['newName'] != '') {
+    $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn WHERE section_id=:si");
+    $changeBasicsStmt->execute(array(
+      ':sn'=>htmlentities($_POST['newName']),
+      ':si'=>htmlentities($_POST['newNameId'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>Section status changed</b>";
+    header('Location: locksmith.php');
+    return true;
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>A name must be entered </b>";
+    header('Location: locksmith.php');
+    return false;
+  };
+};
+
 // Carries out the password change
 if (isset($_POST['changePw'])) {
   if ($_POST['newPw'] == $_POST['confPw']) {
