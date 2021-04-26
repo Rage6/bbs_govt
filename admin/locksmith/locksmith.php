@@ -14,6 +14,16 @@
     <title>Key Box</title>
     <link rel="stylesheet" type="text/css" href="style/locksmith.css" />
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEVZ2L2FBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PEVZ2L2FBZ');
+    </script>
+    <!-- End of gtag -->
   </head>
   <body>
     <form method="POST">
