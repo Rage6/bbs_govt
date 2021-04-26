@@ -35,11 +35,12 @@ while ($oneListed = $showBlacklistStmt->fetch(PDO::FETCH_ASSOC)) {
 // Change a city or counties name, status
 if (isset($_POST['changeSectionName'])) {
   if ($_POST['newName'] != '') {
-    $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn,active=:ns WHERE section_id=:si");
+    $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn,active=:ns,is_county=:nc WHERE section_id=:si");
     $changeBasicsStmt->execute(array(
       ':sn'=>htmlentities($_POST['newName']),
       ':si'=>htmlentities($_POST['newNameId']),
-      ':ns'=>htmlentities($_POST['newSectStatus'])
+      ':ns'=>htmlentities($_POST['newSectStatus']),
+      ':nc'=>htmlentities($_POST['newSecCounty'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Section status changed</b>";
     header('Location: locksmith.php');
