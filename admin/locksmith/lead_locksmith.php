@@ -46,7 +46,7 @@ if (isset($_POST['changeSectionName'])) {
     header('Location: locksmith.php');
     return true;
   } else {
-    $_SESSION['message'] = "<b style='color:red'>A name must be entered </b>";
+    $_SESSION['message'] = "<b style='color:red'>A complete status must be entered </b>";
     header('Location: locksmith.php');
     return false;
   };
