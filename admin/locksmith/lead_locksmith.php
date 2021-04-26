@@ -18,7 +18,7 @@ $totalSecStmt->execute();
 $totalSec = (int)$totalSecStmt->fetch(PDO::FETCH_ASSOC)['COUNT(section_id)'];
 
 // Gets necessary data from all of the sections
-$allSecStmt = $pdo->prepare('SELECT section_id,section_name,population,flags,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC');
+$allSecStmt = $pdo->prepare('SELECT section_id,section_name,population,flags,active,is_city,is_county FROM Section ORDER BY is_city,is_county,section_name ASC');
 $allSecStmt->execute();
 for ($secNum = 0; $secNum < $totalSec; $secNum++) {
   $secList[] = $allSecStmt->fetch(PDO::FETCH_ASSOC);
@@ -35,10 +35,11 @@ while ($oneListed = $showBlacklistStmt->fetch(PDO::FETCH_ASSOC)) {
 // Change a city or counties name, status
 if (isset($_POST['changeSectionName'])) {
   if ($_POST['newName'] != '') {
-    $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn WHERE section_id=:si");
+    $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn,active=:ns WHERE section_id=:si");
     $changeBasicsStmt->execute(array(
       ':sn'=>htmlentities($_POST['newName']),
-      ':si'=>htmlentities($_POST['newNameId'])
+      ':si'=>htmlentities($_POST['newNameId']),
+      ':ns'=>htmlentities($_POST['newSectStatus'])
     ));
     $_SESSION['message'] = "<b style='color:green'>Section status changed</b>";
     header('Location: locksmith.php');

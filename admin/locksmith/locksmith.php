@@ -48,9 +48,17 @@
                   echo("
                     <input type='hidden' name='newNameId' value='".$secList[$indexNum]['section_id']."'>
                     <input type='text' name='newName' value='".$secList[$indexNum]['section_name']."'></br>
-                    <select name='newSectStatus'>
+                    <select name='newSectStatus'>");
+                    if ($secList[$indexNum]['active'] == 1) {
+                      echo("
+                      <option value='1' selected>ACTIVE</option>
+                      <option value='0'>INACTIVE</option>");
+                    } else {
+                      echo("
                       <option value='1'>ACTIVE</option>
-                      <option value='0'>INACTIVE</option>
+                      <option value='0' selected>INACTIVE</option>");
+                    };
+                    echo("
                     </select></br>
                     <input type='submit' name='changeSectionName' value='CHANGE STATUS'></br>
                   ");
