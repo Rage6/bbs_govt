@@ -148,6 +148,14 @@
       Job.job_name='Senator'
         AND
       Job.delegate_id=Delegate.delegate_id
+        AND
+      Job.job_active=1
+        AND
+      Section.active=1
+      --   AND
+      -- Section.is_county IS NOT NULL
+      --   AND
+      -- Section.is_city IS NOT NULL
     ORDER BY
       section_name,hometown ASC");
   $senMemListStmt->execute();
@@ -254,6 +262,10 @@
       Job.job_name='Representative'
         AND
       Job.delegate_id=Delegate.delegate_id
+        AND
+      Job.job_active=1
+        AND
+      Section.active=1
     ORDER BY
       section_name,hometown ASC");
   $repMemListStmt->execute();

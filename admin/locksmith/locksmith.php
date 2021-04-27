@@ -14,6 +14,16 @@
     <title>Key Box</title>
     <link rel="stylesheet" type="text/css" href="style/locksmith.css" />
     <link rel="icon" type="image/x-icon" href="../../img/favicon.ico"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEVZ2L2FBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PEVZ2L2FBZ');
+    </script>
+    <!-- End of gtag -->
   </head>
   <body>
     <form method="POST">
@@ -32,6 +42,57 @@
         echo("
           <div class='secBox'>
             <div class='secName'>".$secList[$indexNum]['section_name']."</div>
+            <div>
+              <form method='POST'>");
+                if ($secList[$indexNum]['is_city'] != 0 || $secList[$indexNum]['is_city'] == NULL || $secList[$indexNum]['is_county'] != 0 || $secList[$indexNum]['is_county'] == NULL) {
+                  echo("
+                    <input type='hidden' name='newNameId' value='".$secList[$indexNum]['section_id']."'>
+                    <span><u>Name</u>:</span><input type='text' name='newName' value='".$secList[$indexNum]['section_name']."'></br>
+                    <span><u>Status</u>:</span><select name='newSectStatus'>");
+                    if ($secList[$indexNum]['active'] == 1) {
+                      echo("
+                      <option value='1' selected>ACTIVE</option>
+                      <option value='0'>INACTIVE</option>");
+                    } else {
+                      echo("
+                      <option value='1'>ACTIVE</option>
+                      <option value='0' selected>INACTIVE</option>");
+                    };
+                    echo("
+                    </select></br>");
+                    if ($secList[$indexNum]['is_city'] == 1) {
+                      echo("<span><u>County</u>:</span><select name='newSecCounty'>");
+                      foreach ($secList as $oneSec) {
+                        if ($oneSec['is_county'] != 0 && $oneSec['is_city'] == 0) {
+                          if ($secList[$indexNum]['is_county'] == $oneSec['is_county']) {
+                            echo("<option value='".$oneSec['section_id']."' selected>".$oneSec['section_name']."</option>");
+                          } else {
+                            echo("<option value='".$oneSec['section_id']."'>".$oneSec['section_name']."</option>");
+                          };
+                        };
+                      };
+                      echo("</select></br>");
+                    };
+                    if ($secList[$indexNum]['is_city'] == 1) {
+                      echo("
+                      <input type='submit' name='changeCityName' value='CHANGE STATUS'></br>
+                      ");
+                    } else {
+                      echo("
+                      <input type='submit' name='changeCountyName' value='CHANGE STATUS'></br>
+                      ");
+                    };
+                };
+                // if ($secList[$indexNum]['is_city'] == 1) {
+                //   foreach ($secList as $oneSec) {
+                //     if ($oneSec['is_county'] != 0 && $oneSec['is_city'] == 0) {
+                //       echo("<div>".$oneSec['section_name']."</div>");
+                //     };
+                //   };
+                // };
+              echo("
+              </form>
+            </div>
             <div class='rowPasswords'>
               <form method='POST'>
                 <div>
