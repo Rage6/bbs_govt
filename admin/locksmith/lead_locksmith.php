@@ -32,8 +32,8 @@ while ($oneListed = $showBlacklistStmt->fetch(PDO::FETCH_ASSOC)) {
   $blacklist[] = $oneListed;
 };
 
-// Change a city or counties name, status
-if (isset($_POST['changeSectionName'])) {
+// Change a city name, status, and county
+if (isset($_POST['changeCityName'])) {
   if ($_POST['newName'] != '') {
     $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn,active=:ns,is_county=:nc WHERE section_id=:si");
     $changeBasicsStmt->execute(array(
@@ -42,11 +42,30 @@ if (isset($_POST['changeSectionName'])) {
       ':ns'=>htmlentities($_POST['newSectStatus']),
       ':nc'=>htmlentities($_POST['newSecCounty'])
     ));
-    $_SESSION['message'] = "<b style='color:green'>Section status changed</b>";
+    $_SESSION['message'] = "<b style='color:green'>City status changed</b>";
     header('Location: locksmith.php');
     return true;
   } else {
-    $_SESSION['message'] = "<b style='color:red'>A complete status must be entered </b>";
+    $_SESSION['message'] = "<b style='color:red'>A complete name must be entered </b>";
+    header('Location: locksmith.php');
+    return false;
+  };
+};
+
+// Change a county name and status
+if (isset($_POST['changeCountyName'])) {
+  if ($_POST['newName'] != '') {
+    $changeBasicsStmt = $pdo->prepare("UPDATE Section SET section_name=:sn,active=:ns WHERE section_id=:si");
+    $changeBasicsStmt->execute(array(
+      ':sn'=>htmlentities($_POST['newName']),
+      ':si'=>htmlentities($_POST['newNameId']),
+      ':ns'=>htmlentities($_POST['newSectStatus'])
+    ));
+    $_SESSION['message'] = "<b style='color:green'>County status changed</b>";
+    header('Location: locksmith.php');
+    return true;
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>A name must be entered </b>";
     header('Location: locksmith.php');
     return false;
   };

@@ -124,6 +124,17 @@ while ($oneDelegate = $allDelegateStmt->fetch(PDO::FETCH_ASSOC)) {
   $allDelegate[] = $oneDelegate;
 };
 
+if (isset($_POST['changeJobStatus'])) {
+  $activityChangeStmt = $pdo->prepare('UPDATE Job SET job_active=:ja WHERE job_id=:ji');
+  $activityChangeStmt->execute(array(
+    ':ja'=>htmlentities($_POST['statusChange']),
+    ':ji'=>htmlentities($_POST['jobId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Job activity changed</b>";
+  header('Location: admin.php');
+  return true;
+};
+
 // Add a new post
 if (isset($_POST['addPost'])) {
   if ($_POST['postTitle'] != "") {

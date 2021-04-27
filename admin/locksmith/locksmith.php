@@ -47,8 +47,8 @@
                 if ($secList[$indexNum]['is_city'] != 0 || $secList[$indexNum]['is_city'] == NULL || $secList[$indexNum]['is_county'] != 0 || $secList[$indexNum]['is_county'] == NULL) {
                   echo("
                     <input type='hidden' name='newNameId' value='".$secList[$indexNum]['section_id']."'>
-                    <input type='text' name='newName' value='".$secList[$indexNum]['section_name']."'></br>
-                    <select name='newSectStatus'>");
+                    <span><u>Name</u>:</span><input type='text' name='newName' value='".$secList[$indexNum]['section_name']."'></br>
+                    <span><u>Status</u>:</span><select name='newSectStatus'>");
                     if ($secList[$indexNum]['active'] == 1) {
                       echo("
                       <option value='1' selected>ACTIVE</option>
@@ -61,7 +61,7 @@
                     echo("
                     </select></br>");
                     if ($secList[$indexNum]['is_city'] == 1) {
-                      echo("<select name='newSecCounty'>");
+                      echo("<span><u>County</u>:</span><select name='newSecCounty'>");
                       foreach ($secList as $oneSec) {
                         if ($oneSec['is_county'] != 0 && $oneSec['is_city'] == 0) {
                           if ($secList[$indexNum]['is_county'] == $oneSec['is_county']) {
@@ -73,9 +73,15 @@
                       };
                       echo("</select></br>");
                     };
-                    echo("
-                    <input type='submit' name='changeSectionName' value='CHANGE STATUS'></br>
-                  ");
+                    if ($secList[$indexNum]['is_city'] == 1) {
+                      echo("
+                      <input type='submit' name='changeCityName' value='CHANGE STATUS'></br>
+                      ");
+                    } else {
+                      echo("
+                      <input type='submit' name='changeCountyName' value='CHANGE STATUS'></br>
+                      ");
+                    };
                 };
                 // if ($secList[$indexNum]['is_city'] == 1) {
                 //   foreach ($secList as $oneSec) {

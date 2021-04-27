@@ -342,8 +342,8 @@ $(() => {
     },
     {
       eventID: 4,
-      eventName: "Collect 54 signatures on the petition form",
-      description: "All of the delegates signing the petition must be from the same political party as the candidate's party. The parties within BBS are 'Federalist' or 'Nationalist'. To show state-wide support, petitions must contain a) signatures from at least 6 different counties and b) no more than 11 signatures from a particular county.",
+      eventName: "Collect 44 signatures on the petition form",
+      description: "All of the delegates signing the petition must be from the same political party as the candidate's party. The parties within BBS are 'Federalist' or 'Nationalist'. To show state-wide support, the state petition forms must contain 11 signatures from each of the 4 counties.",
       time: "",
     },
     {

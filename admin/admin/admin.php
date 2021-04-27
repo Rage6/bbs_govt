@@ -443,7 +443,7 @@
 
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
-          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.senator,Job.representative,Job.job_id ASC");
+          $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,job_active,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.senator,Job.representative,Job.job_id ASC");
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
@@ -469,6 +469,7 @@
                   ));
                   $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
                   $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                  $onlyId = $oneJob['job_id'];
                 } elseif ($oneJob['representative'] != 0) {
                   $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
                   $jobCityStmt->execute(array(
@@ -476,6 +477,7 @@
                   ));
                   $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
                   $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                  $onlyId = $oneJob['job_id'];
                 } else {
                   $cityAndId = "";
                 };
@@ -494,6 +496,22 @@
                   echo("
                   <div class='staffTitle'>
                     ".$oneJob['job_name'].$cityAndId.$dptName."
+                    <form method='POST'>
+                      <input type='hidden' name='jobId' value='".$onlyId."'/>
+                      <select name='statusChange'>");
+                      if ($oneJob['job_active'] == 1) {
+                        echo("
+                          <option value='1' selected>ACTIVE</option>
+                          <option value='0'>INACTIVE</option>");
+                      } else {
+                        echo("
+                          <option value='1'>ACTIVE</option>
+                          <option value='0' selected>INACTIVE</option>");
+                      };
+                      echo("
+                      </select>
+                      <input type='submit' name='changeJobStatus'>
+                    </form>
                   </div>
                   <div class='staffContent'>
                     <div>
