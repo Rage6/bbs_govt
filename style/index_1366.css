@@ -142,6 +142,9 @@
 .moreButton {
  display: none;
 }
+.generalAssemblyBttn {
+  font-size: inherit !important;
+}
 .electionContent {
   margin-top: -50px;
 }

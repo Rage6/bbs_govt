@@ -135,7 +135,7 @@
               </a>
               <a href="state/congress/congress.php">
                 <div class="stateButton">
-                  <div class="stateButtonCenter">Congress</div>
+                  <div class="stateButtonCenter generalAssemblyBttn">General Assembly</div>
                   <div class="stateButtonRight">
                     <div></div>
                   </div>
