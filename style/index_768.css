@@ -64,3 +64,6 @@
 .moreButton {
   display: none;
 }
+.generalAssemblyBttn {
+  font-size: inherit !important;
+}

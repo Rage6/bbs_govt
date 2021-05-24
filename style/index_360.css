@@ -344,6 +344,10 @@ a {
   width: 80% !important;
 }
 
+.generalAssemblyBttn {
+  font-size: 1.4rem !important;
+}
+
 .stateButtonRight {
   border: 2px solid white;
   display: flex;
