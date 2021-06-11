@@ -94,6 +94,10 @@ $(() => {
           $("[data-positid='"+position[positNum].positionID+"']").css("color","darkred").css("background-color","rgba(254,194,49,1)");
           $("#chooseJob").remove();
           $("#noEvent").remove();
+          $("#positionDescrip").empty();
+          $("#positionDescrip").append("\
+            <i>Choose a step in that process...</i>\
+          ");
           $(".oneEvent").remove();
           let eventStringList = event.target.dataset.eventlist;
           let eventList = eventStringList.split(',');
@@ -160,7 +164,8 @@ $(() => {
       name: "Attorney General",
       level: "state",
       fee: 300,
-      eventList: [3,26,4,7,18,19,5,21,27,22,28,23,24,25]
+      eventList: [3,26,4,7,18,19,5,21,27,22,23,24,25]
+      // eventList: [3,26,4,7,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 4,
@@ -188,21 +193,24 @@ $(() => {
       name: "Chief Justice",
       level: "state",
       fee: 400,
-      eventList: [3,26,4,7,18,19,5,21,27,22,28,23,24,25]
+      eventList: [3,26,4,7,18,19,5,21,27,22,23,24,25]
+      // eventList: [3,26,4,7,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 8,
       name: "Associate Justice",
       level: "state",
       fee: 300,
-      eventList: [3,26,4,8,18,19,5,21,27,22,28,23,24,25]
+      eventList: [3,26,4,8,18,19,5,21,27,22,23,24,25]
+      // eventList: [3,26,4,8,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 9,
       name: "Judge of the Court of Appeals",
       level: "state",
       fee: 200,
-      eventList: [3,26,4,9,18,19,5,21,27,22,28,23,24,25]
+      eventList: [3,26,4,9,18,19,5,21,27,22,23,24,25]
+      // eventList: [3,26,4,9,18,19,5,21,27,22,28,23,24,25]
     },
     {
       positionID: 10,
@@ -258,7 +266,8 @@ $(() => {
       name: "Prosecuting Attorney",
       level: "county",
       fee: 150,
-      eventList: [17,10,18,20,5,26,29,27,30,28,25]
+      eventList: [17,10,18,20,5,26,29,27,30,25]
+      // eventList: [17,10,18,20,5,26,29,27,30,28,25]
     },
     {
       positionID: 18,
@@ -272,14 +281,16 @@ $(() => {
       name: "Judge of Municipal Court",
       level: "county",
       fee: 150,
-      eventList: [17,10,18,20,5,26,29,27,30,28,25]
+      eventList: [17,10,18,20,5,26,29,27,30,25]
+      // eventList: [17,10,18,20,5,26,29,27,30,28,25]
     },
     {
       positionID: 20,
       name: "Judge of the Court of Common Pleas",
       level: "county",
       fee: 150,
-      eventList: [17,10,18,20,5,26,29,27,30,28,25]
+      eventList: [17,10,18,20,5,26,29,27,30,25]
+      // eventList: [17,10,18,20,5,26,29,27,30,28,25]
     },
     {
       positionID: 21,
@@ -314,7 +325,8 @@ $(() => {
       name: "Director of Law",
       level: "city",
       fee: 50,
-      eventList: [15,26,16,12,18,20,5,27,30,28,25]
+      eventList: [15,26,16,12,18,20,5,27,30,25]
+      // eventList: [15,26,16,12,18,20,5,27,30,28,25]
     },
     {
       positionID: 26,
@@ -469,21 +481,21 @@ $(() => {
     {
       eventID: 26,
       eventName: "Take BAR exam (1st attempt)",
-      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
+      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but failed to pass the BAR exam (after two attempts) will lose that elected position.",
       time: "This exam takes place in the morning of Day 2 (Monday)."
     },
     {
       eventID: 27,
       eventName: "Take BAR exam (2nd attempt)",
-      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
+      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after two attempts) will lose that elected position.",
       time: "This exam takes place in the afternoon of Day 2 (Monday)."
     },
-    {
-      eventID: 28,
-      eventName: "Take BAR exam (final attempt)",
-      description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
-      time: "This exam takes place on Day 3 (Tuesday)."
-    },
+    // {
+    //   eventID: 28,
+    //   eventName: "Take BAR exam (final attempt)",
+    //   description: "The BAR exam is a test required of any attorny in Buckeye Boys State. This includes judges, the attorney general, prosecutors, directors of law, and even private attorneys. Anyone elected to one of these positions but fails to pass the BAR exam (after three attempts) will lose that elected position.",
+    //   time: "This exam takes place on Day 3 (Tuesday)."
+    // },
     {
       eventID: 29,
       eventName: "Speak at the general county meeting",
