@@ -370,7 +370,7 @@
                             ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
                           </div>
                           <div class='oneCongHome oneSenHome'>
-                            ".$senMemList[$oneSenNum]['hometown'].", OH
+                            ".$senMemList[$oneSenNum]['hometown']."
                           </div>
                         </div>");
                   $nextSenNum = $oneSenNum + 1;
@@ -656,7 +656,7 @@
                         ".$repMemList[$oneRepNum]['first_name']." ".$repMemList[$oneRepNum]['last_name']."
                       </div>
                       <div class='oneCongHome oneRepHome'>
-                        ".$repMemList[$oneRepNum]['hometown'].", OH
+                        ".$repMemList[$oneRepNum]['hometown']."
                       </div>
                     </div>");
                   $nextRepNum = $oneRepNum + 1;
