@@ -433,7 +433,7 @@ body {
 }
 
 .billTitle div:last-of-type {
-  overflow: scroll;
+  /* overflow: scroll; */
   max-height: 100px;
   max-width: 75%;
 }
