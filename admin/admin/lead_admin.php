@@ -223,6 +223,18 @@ if (isset($_POST['changePosts'])) {
   };
 };
 
+// Only a category is changed
+if (isset($_POST['changeCategories'])) {
+  $changeCategoryStmt = $pdo->prepare("UPDATE Post SET Post.subtype_id = :sb WHERE post_id = :poi");
+  $changeCategoryStmt->execute(array(
+    ':sb'=>htmlentities($_POST['subtype']),
+    ':poi'=>htmlentities($_POST['categoryPostId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Category changed and approved</b>";
+  header('Location: admin.php');
+  return true;
+};
+
 // Delete a post
 if (isset($_POST['deletePost'])) {
   $checkCanAddStmt = $pdo->prepare("SELECT can_add FROM Post INNER JOIN Type WHERE Post.post_id=:ps AND Post.type_id=Type.type_id");

@@ -255,14 +255,20 @@
                           Category
                         </div>
                         <div>
-                          <select class='subtypeSelect' name='subtype'>
-                            <option value='".$currentSubId."'>".$currentSubName."</option>");
-                            for ($sub = 0; $sub < count($subtypeList); $sub++) {
-                              if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
-                                echo("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                          <form method='POST'>
+                            <input type='hidden' name='categoryPostId' value='".$onePost['post_id']."'>
+                            <select class='subtypeSelect' name='subtype'>
+                              <option value='".$currentSubId."'>".$currentSubName."</option>");
+                              for ($sub = 0; $sub < count($subtypeList); $sub++) {
+                                if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
+                                  echo("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                };
                               };
-                            };
-                          echo("</select>
+                            echo("</select>
+                            <button type='submit' name='changeCategories'>
+                              Change Category Only
+                            </button>
+                          </form>
                         </div>
                       ");
                     } else {
