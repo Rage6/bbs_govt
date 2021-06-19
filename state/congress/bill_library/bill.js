@@ -72,10 +72,14 @@ $(document).ready(()=>{
         if (billTotal > 0) {
           for (let billNum = 0; billNum < billArray.length; billNum++) {
             if (subtypeId == "0" || billArray[billNum]['subtype_id'] == subtypeId) {
+              let prefix = "";
+              if (billArray[billNum]['chamber_prefix'] != null) {
+                prefix = billArray[billNum]['chamber_prefix'];
+              };
               $(billDirectory).append(
                   "<div class='oneBill " + oneBill + "'>\
                     <div class='billNumber " + billTitle + "'>\
-                      Bill #"+billArray[billNum]['post_order']+"\
+                      "+prefix+" "+billArray[billNum]['post_order']+"\
                     </div>\
                     <div class='billData " + billData + "'>\
                       <div class='billTitle'>\
