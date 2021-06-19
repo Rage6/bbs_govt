@@ -180,8 +180,13 @@
                     } else {
                       echo("<div class='postSubtitle'>Order #:</div>");
                     };
-                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />
-                    <div class='postSubtitle'>
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
+                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 12) {
+                      echo("
+                      <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
+                      <input type='text' name='chamberPrefix' />");
+                    };
+                    echo("<div class='postSubtitle'>
                       Category
                     </div>
                     <div>
@@ -268,7 +273,7 @@
                             <button type='submit' name='changeCategories'>
                               Change Category Only
                             </button>
-                          </form>
+                          
                         </div>
                       ");
                     } else {
@@ -288,8 +293,12 @@
                     } else {
                       echo("<div class='postSubtitle'>Order #:</div>");
                     };
-                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>
-                ");
+                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
+                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 12) {
+                      echo("
+                      <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
+                      <input type='text' name='currentPrefix' value='".$onePost['chamber_prefix']."' />");
+                    };
                 if ($approval == 1) {
                   $ifApproved = "checked";
                   $ifPending = "";
