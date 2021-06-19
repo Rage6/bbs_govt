@@ -97,6 +97,8 @@
       Post.subtype_id=Subtype.subtype_id
        AND
       (Subtype.subtype_name LIKE '%law%')
+       AND
+      Post.approved=1
     ORDER BY post_order DESC");
 
   // Get all Senate committee information
