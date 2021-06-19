@@ -1,7 +1,7 @@
 $(document).ready(()=>{
   // console.log("law.js is working...");
   $.getJSON('law_library/law_json.php',(lawLibrary)=>{
-
+    console.log(lawLibrary);
     let initColor = null;
     let initBkgd = null;
     let clickedTitle = null;
