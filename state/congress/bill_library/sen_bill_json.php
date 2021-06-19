@@ -9,6 +9,7 @@
   $senBillStmt = $pdo->prepare(
     "SELECT
       post_order,
+      chamber_prefix,
       title,
       Subtype.subtype_id,
       subtype_name
