@@ -138,42 +138,36 @@ if (isset($_POST['changeJobStatus'])) {
 // Add a new post
 if (isset($_POST['addPost'])) {
   if ($_POST['postTitle'] != "") {
-    if ($_POST['postContent'] != "") {
-      if ($_POST['orderNum'] != "") {
-        if (isset($_POST['chamberPrefix'])) {
-          $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,chamber_prefix,approved,type_id,subtype_id,section_id) VALUES (:ti,:cn,:po,:pf,:ap,:td,:su,:sd)");
-          $addPostStmt->execute(array(
-            ':ti'=>htmlentities($_POST['postTitle']),
-            ':cn'=>htmlentities($_POST['postContent']),
-            ':po'=>htmlentities($_POST['orderNum']),
-            ':pf'=>htmlentities($_POST['chamberPrefix']),
-            ':ap'=>htmlentities($_POST['approval']),
-            ':td'=>htmlentities($_POST['typeId']),
-            ':su'=>htmlentities($_POST['newSubtype']),
-            ':sd'=>htmlentities($_POST['secId'])
-          ));
-        } else {
-          $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,approved,type_id,subtype_id,section_id) VALUES (:ti,:cn,:po,:ap,:td,:su,:sd)");
-          $addPostStmt->execute(array(
-            ':ti'=>htmlentities($_POST['postTitle']),
-            ':cn'=>htmlentities($_POST['postContent']),
-            ':po'=>htmlentities($_POST['orderNum']),
-            ':ap'=>htmlentities($_POST['approval']),
-            ':td'=>htmlentities($_POST['typeId']),
-            ':su'=>htmlentities($_POST['newSubtype']),
-            ':sd'=>htmlentities($_POST['secId'])
-          ));
-        };
-        $_SESSION['message'] = "<b style='color:green'>Post Added</b>";
-        header('Location: admin.php');
-        return true;
+    if ($_POST['orderNum'] != "") {
+      if (isset($_POST['chamberPrefix'])) {
+        $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,chamber_prefix,approved,type_id,subtype_id,section_id) VALUES (:ti,:cn,:po,:pf,:ap,:td,:su,:sd)");
+        $addPostStmt->execute(array(
+          ':ti'=>htmlentities($_POST['postTitle']),
+          ':cn'=>htmlentities($_POST['postContent']),
+          ':po'=>htmlentities($_POST['orderNum']),
+          ':pf'=>htmlentities($_POST['chamberPrefix']),
+          ':ap'=>htmlentities($_POST['approval']),
+          ':td'=>htmlentities($_POST['typeId']),
+          ':su'=>htmlentities($_POST['newSubtype']),
+          ':sd'=>htmlentities($_POST['secId'])
+        ));
       } else {
-        $_SESSION['message'] = "<b style='color:red'>An order within the other posts is required</b>";
-        header('Location: admin.php');
-        return false;
+        $addPostStmt = $pdo->prepare("INSERT INTO Post(title,content,post_order,approved,type_id,subtype_id,section_id) VALUES (:ti,:cn,:po,:ap,:td,:su,:sd)");
+        $addPostStmt->execute(array(
+          ':ti'=>htmlentities($_POST['postTitle']),
+          ':cn'=>htmlentities($_POST['postContent']),
+          ':po'=>htmlentities($_POST['orderNum']),
+          ':ap'=>htmlentities($_POST['approval']),
+          ':td'=>htmlentities($_POST['typeId']),
+          ':su'=>htmlentities($_POST['newSubtype']),
+          ':sd'=>htmlentities($_POST['secId'])
+        ));
       };
+      $_SESSION['message'] = "<b style='color:green'>Post Added</b>";
+      header('Location: admin.php');
+      return true;
     } else {
-      $_SESSION['message'] = "<b style='color:red'>A content is required</b>";
+      $_SESSION['message'] = "<b style='color:red'>An order within the other posts is required</b>";
       header('Location: admin.php');
       return false;
     };
