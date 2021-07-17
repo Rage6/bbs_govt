@@ -192,7 +192,8 @@ if (isset($_POST['changeApproval'])) {
 
 // Changes an existing post
 if (isset($_POST['changePosts'])) {
-  if ($_POST['postTitle'] == "" || $_POST['postContent'] == "" || $_POST['orderNum'] == "") {
+  // if ($_POST['postTitle'] == "" || $_POST['postContent'] == "" || $_POST['orderNum'] == "") {
+  if ($_POST['postTitle'] == "" || $_POST['orderNum'] == "") {
     $_SESSION['message'] = "<b style='color:red'>Title, main content, and order placement is required</b>";
     header('Location: admin.php');
     return false;
