@@ -151,7 +151,7 @@ body {
 .postMain {
   margin-bottom: 30px;
   padding-top: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .addingPost {
@@ -313,7 +313,7 @@ body {
 }
 
 .photoMain {
-  display: none;
+  /* display: none; */
   background-color: tan;
 }
 

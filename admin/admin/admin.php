@@ -161,297 +161,305 @@
             };
             echo("
             <div class='delegateBox'>
-              <div data-head='".$oneType['type_id']."' class='postType'>"
-                .$oneType['type_name'].
-              "</div>
-              <div id='typeId".$oneType['type_id']."' class='postMain'>");
-              if ($oneType['can_add'] == 1) {
-                echo("<div class='postTypeRow'>
-                  <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
-                </div>
-                <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
-                  <form method='POST'>
-                    <div class='postSubtitle'>Title/Name(s):</div>
-                    <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
-                    <div class='postSubtitle'>Content:</div>
-                    <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>");
-                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
-                      echo("<div class='postSubtitle'>Bill #:</div>");
-                    } else {
-                      echo("<div class='postSubtitle'>Order #:</div>");
-                    };
-                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
-                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
-                      echo("
-                      <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
-                      <input type='text' name='chamberPrefix' />");
-                    };
-                    echo("<div class='postSubtitle'>
-                      Category
-                    </div>
-                    <div>
-                      <select class='subtypeSelect' name='newSubtype'>");
-                        for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
-                          echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
-                        };
-                      echo("</select>
-                    </div>
-                    <input type='hidden' name='approval' value='0' />
-                    <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
-                    <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
-                    <input class='addSubmit allPostBttns' type='submit' name='addPost' value='SUBMIT' />
-                  </form>
-                </div>
-                ");
-              };
-              echo("
-                <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
-                  <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
-                  <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
-                </div>
-                <div id='boxList_".$oneType['type_id']."' class='boxList'>
-              ");
-              $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order, Post.timestamp ASC");
-              $listPostStmt->execute(array(
-                ':tid'=>$oneType['type_id']
-              ));
-              while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
-                if ($onePost['approved'] == 1) {
-                  $approval = 1;
-                } else {
-                  $approval = 0;
+              <a href='admin.php?type=".$oneType['type_id']."'>
+                <div data-head='".$oneType['type_id']."' class='postType'>"
+                  .$oneType['type_name'].
+                "</div>
+              </a>");
+              if (isset($_GET['type']) && $_GET['type'] == $oneType['type_id']) {
+                echo("<div id='typeId".$oneType['type_id']."' class='postMain'>");
+                if ($oneType['can_add'] == 1) {
+                  echo("<div class='postTypeRow'>
+                    <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
+                  </div>
+                  <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
+                    <form method='POST'>
+                      <div class='postSubtitle'>Title/Name(s):</div>
+                      <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
+                      <div class='postSubtitle'>Content:</div>
+                      <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>");
+                      if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
+                        echo("<div class='postSubtitle'>Bill #:</div>");
+                      } else {
+                        echo("<div class='postSubtitle'>Order #:</div>");
+                      };
+                      echo("<input class='postOrder' type='number' name='orderNum' min='1' value='1' />");
+                      if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
+                        echo("
+                        <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
+                        <input type='text' name='chamberPrefix' />");
+                      };
+                      echo("<div class='postSubtitle'>
+                        Category
+                      </div>
+                      <div>
+                        <select class='subtypeSelect' name='newSubtype'>");
+                          for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
+                            echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                          };
+                        echo("</select>
+                      </div>
+                      <input type='hidden' name='approval' value='0' />
+                      <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
+                      <input type='hidden' name='secId' value='".$_SESSION['secId']."' />
+                      <input class='addSubmit allPostBttns' type='submit' name='addPost' value='SUBMIT' />
+                    </form>
+                  </div>
+                  ");
                 };
                 echo("
-                <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
-                  <form method='POST'>
-                    <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
-                    if ($oneType['can_add'] == 1) {
-                      echo("
-                        <div class='postSubtitle'>Title/Name(s):</div>
-                        <textarea class='postText titleText' name='postTitle'>");
-                        echo htmlspecialchars($onePost['title'], ENT_QUOTES);
-                      echo("</textarea>");
-                    } else {
-                      echo("
-                        <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
-                        <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
-                    };
-                    echo("<div class='postSubtitle'>Content:</div>
-                    <textarea class='postText contentText' name='postContent'>");
-                      echo htmlspecialchars($onePost['content'], ENT_QUOTES);
-                    echo("</textarea>
-                    <div class='postSubtitle'>Time Posted</div>
-                    <div style='text-align:center'>
-                      (<i>YYYY-MM-DD HH:MM:SS</i>)
-                    </div>
-                    <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>");
-
-                    if (count($subtypeList) > 1) {
-                      $currentSubId = 0;
-                      $currentSubName = "none";
-                      for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
-                        if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
-                          $currentSubId = $subtypeList[$subNum]['subtype_id'];
-                          $currentSubName = $subtypeList[$subNum]['subtype_name'];
-                        };
+                  <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
+                    <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
+                    <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
+                  </div>
+                  <div id='boxList_".$oneType['type_id']."' class='boxList'>
+                ");
+                $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order, Post.timestamp ASC");
+                $listPostStmt->execute(array(
+                  ':tid'=>$oneType['type_id']
+                ));
+                while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
+                  if ($onePost['approved'] == 1) {
+                    $approval = 1;
+                  } else {
+                    $approval = 0;
+                  };
+                  echo("
+                  <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
+                    <form method='POST'>
+                      <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
+                      if ($oneType['can_add'] == 1) {
+                        echo("
+                          <div class='postSubtitle'>Title/Name(s):</div>
+                          <textarea class='postText titleText' name='postTitle'>");
+                          echo htmlspecialchars($onePost['title'], ENT_QUOTES);
+                        echo("</textarea>");
+                      } else {
+                        echo("
+                          <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
+                          <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
                       };
-                      echo("
+                      echo("<div class='postSubtitle'>Content:</div>
+                      <textarea class='postText contentText' name='postContent'>");
+                        echo htmlspecialchars($onePost['content'], ENT_QUOTES);
+                      echo("</textarea>
+                      <div class='postSubtitle'>Time Posted</div>
+                      <div style='text-align:center'>
+                        (<i>YYYY-MM-DD HH:MM:SS</i>)
+                      </div>
+                      <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>");
+
+                      if (count($subtypeList) > 1) {
+                        $currentSubId = 0;
+                        $currentSubName = "none";
+                        for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
+                          if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
+                            $currentSubId = $subtypeList[$subNum]['subtype_id'];
+                            $currentSubName = $subtypeList[$subNum]['subtype_name'];
+                          };
+                        };
+                        echo("
+                          <div class='postSubtitle'>
+                            Category
+                          </div>
+                          <div>
+                            <form method='POST'>
+                              <input type='hidden' name='categoryPostId' value='".$onePost['post_id']."'>
+                              <select class='subtypeSelect' name='subtype'>
+                                <option value='".$currentSubId."'>".$currentSubName."</option>");
+                                for ($sub = 0; $sub < count($subtypeList); $sub++) {
+                                  if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
+                                    echo("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                  };
+                                };
+                              echo("</select>
+                              <button type='submit' name='changeCategories'>
+                                Change Category Only
+                              </button>
+
+                          </div>
+                        ");
+                      } else {
+                        echo("
                         <div class='postSubtitle'>
                           Category
                         </div>
                         <div>
-                          <form method='POST'>
-                            <input type='hidden' name='categoryPostId' value='".$onePost['post_id']."'>
-                            <select class='subtypeSelect' name='subtype'>
-                              <option value='".$currentSubId."'>".$currentSubName."</option>");
-                              for ($sub = 0; $sub < count($subtypeList); $sub++) {
-                                if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
-                                  echo("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
-                                };
-                              };
-                            echo("</select>
-                            <button type='submit' name='changeCategories'>
-                              Change Category Only
-                            </button>
-
+                          <input type='hidden' name='subtype' value='".$subtypeList[0]['subtype_id']."' />
+                          <div style='text-align:center'>".$subtypeList[0]['subtype_name']."</div>
                         </div>
-                      ");
-                    } else {
-                      echo("
-                      <div class='postSubtitle'>
-                        Category
-                      </div>
-                      <div>
-                        <input type='hidden' name='subtype' value='".$subtypeList[0]['subtype_id']."' />
-                        <div style='text-align:center'>".$subtypeList[0]['subtype_name']."</div>
-                      </div>
-                      ");
-                    };
-
-                    if ($onePost['type_id'] == 9 || $onePost['type_id'] == 11) {
-                      echo("<div class='postSubtitle'>Bill #:</div>");
-                    } else {
-                      echo("<div class='postSubtitle'>Order #:</div>");
-                    };
-                    echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
-                    if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
-                      echo("
-                      <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
-                      <input type='text' name='currentPrefix' value='".$onePost['chamber_prefix']."' />");
-                    };
-                if ($approval == 1) {
-                  $ifApproved = "checked";
-                  $ifPending = "";
-                  $status = "<b style='color:green'>APPROVED</b>";
-                } else {
-                  $ifApproved = "";
-                  $ifPending = "checked";
-                  $status = "<b style='color:yellow'>PENDING</b>";
-                };
-                echo("
-                    <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
-                    <div class='changeBttns'>
-                      <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
-                      $findCanAddStmt = $pdo->prepare("SELECT can_add FROM Type WHERE type_id=:ti");
-                      $findCanAddStmt->execute(array(
-                        ':ti'=>$onePost['type_id']
-                      ));
-                      $findCanAdd = $findCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
-                      if ($findCanAdd == 1) {
-                        echo("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                        ");
                       };
-                    echo("</div>
-                    <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
-                    if ($_SESSION['adminType'] == "delegate") {
-                      echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
-                    };
-                    echo("Are you sure you want to make the change(s)?
-                      <div class='delBttnRow'>
-                        <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
-                        <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
-                      </div>
-                    </div>");
-                    if ($findCanAdd == 1) {
-                      echo("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
-                        ARE YOU SURE YOU WANT TO DELETE THIS POST?
+
+                      if ($onePost['type_id'] == 9 || $onePost['type_id'] == 11) {
+                        echo("<div class='postSubtitle'>Bill #:</div>");
+                      } else {
+                        echo("<div class='postSubtitle'>Order #:</div>");
+                      };
+                      echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
+                      if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
+                        echo("
+                        <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
+                        <input type='text' name='currentPrefix' value='".$onePost['chamber_prefix']."' />");
+                      };
+                  if ($approval == 1) {
+                    $ifApproved = "checked";
+                    $ifPending = "";
+                    $status = "<b style='color:green'>APPROVED</b>";
+                  } else {
+                    $ifApproved = "";
+                    $ifPending = "checked";
+                    $status = "<b style='color:yellow'>PENDING</b>";
+                  };
+                  echo("
+                      <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
+                      <div class='changeBttns'>
+                        <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
+                        $findCanAddStmt = $pdo->prepare("SELECT can_add FROM Type WHERE type_id=:ti");
+                        $findCanAddStmt->execute(array(
+                          ':ti'=>$onePost['type_id']
+                        ));
+                        $findCanAdd = $findCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
+                        if ($findCanAdd == 1) {
+                          echo("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                        };
+                      echo("</div>
+                      <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
+                      if ($_SESSION['adminType'] == "delegate") {
+                        echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
+                      };
+                      echo("Are you sure you want to make the change(s)?
                         <div class='delBttnRow'>
-                          <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
-                          <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
+                          <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
+                          <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
                         </div>
                       </div>");
-                    };
-                    if ($_SESSION['adminType'] == "counselor") {
-                      echo("
-                        <div class='counsOnly'>
-                          <div><u>COUNSELOR ONLY</u></div>
-                          <input type='radio' id='yes".$onePost['post_id']."' name='approval' value='1' ".$ifApproved." />
-                          <label for='yes'>APPROVED</label></br>
-                          <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
-                          <label for='no'>PENDING</label></br>
-                          <input class='allPostBttns' type='submit' name='changeApproval' value='SUBMIT' />
-                        </div>
-                      ");
-                    };
-                  echo("
-                  </form>
-                </div>");
-              };
+                      if ($findCanAdd == 1) {
+                        echo("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
+                          ARE YOU SURE YOU WANT TO DELETE THIS POST?
+                          <div class='delBttnRow'>
+                            <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
+                            <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
+                          </div>
+                        </div>");
+                      };
+                      if ($_SESSION['adminType'] == "counselor") {
+                        echo("
+                          <div class='counsOnly'>
+                            <div><u>COUNSELOR ONLY</u></div>
+                            <input type='radio' id='yes".$onePost['post_id']."' name='approval' value='1' ".$ifApproved." />
+                            <label for='yes'>APPROVED</label></br>
+                            <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
+                            <label for='no'>PENDING</label></br>
+                            <input class='allPostBttns' type='submit' name='changeApproval' value='SUBMIT' />
+                          </div>
+                        ");
+                      };
+                    echo("
+                    </form>
+                  </div>");
+                };
+              echo("</div>
+              </div>");
+            };
             echo("</div>");
-        echo("</div>
-            </div>");
           };
           echo("
           <div class='delegateBox'>
-          <div id='photoTab' class='postType'>
-            Staff Photos
-          </div>
-          <div class='postMain photoMain'>
-            <div class='postTypeRow'>
-              <div class='addingPost hideAdding'>
-                Testing
-              </div>
+          <a href='admin.php?type=photos'>
+            <div id='photoTab' class='postType'>
+              Staff Photos
             </div>
-            <div class='pendingRow photoFolderTab'>
-              <div class='pendingBttn'>
-                View / Change
+          </a>");
+          if (isset($_GET['type']) && $_GET['type'] == "photos") {
+            echo("<div class='postMain photoMain'>
+              <div class='postTypeRow'>
+                <div class='addingPost hideAdding'>
+                  Testing
+                </div>
               </div>
-            </div>
-            <div class='boxList'>");
-              for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
-                echo("
-                <div class='photoBox'>
-                  <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>");
-                  if ($allPhotos[$imgNum]['job_id'] < 0) {
-                    echo("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
-                  };
-                echo("
-                  <div class='actualPhoto'>
-                    <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
-                  </div>
-                  <form method='POST' enctype='multipart/form-data'>
-                    <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                    <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
-                    <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
-                    <input name='jobExt' type='hidden' value='".$allPhotos[$imgNum]['extension']."' />
-                    <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
-                    <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
-                    <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
-                    <input class='photoFile' name='jobImg' type='file' />
-                    <div class='imgRow'>
-                      <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
-                      <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
-                    </div>
-                  </form>");
-                  if ($_SESSION['adminType'] == 'counselor') {
-                    $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
-                    $photoInfoStmt->execute(array(
-                      ':jbi'=>$allPhotos[$imgNum]['job_id']
-                    ));
-                    $photoInfo = $photoInfoStmt->fetch(PDO::FETCH_ASSOC);
-                    echo("<div class='photoApprovBox'>
-                      <div class='counsApprTitle'>COUNSELOR ONLY</div>");
-                      if ($photoInfo['edited'] == 1) {
-                        echo("<form method='POST'>
-                          <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                          <div class='apprSelection'>
-                            <div>Image Approved?</div>
-                            <select name='imgStatus'>");
-                            if ($allPhotos[$imgNum]['approved'] == 1) {
-                              echo("
-                                <option value='1'>YES</option>
-                                <option value='0'>NO</option>");
-                            } else {
-                              echo("
-                                <option value='0'>NO</option>
-                                <option value='1'>YES</option>");
-                            };
-                            echo("
-                            </select>
-                          </div>
-                          <input class='counsApprBttn allPostBttns' name='approveImg' type='submit' value='ENTER' />
-                        </form>");
-                      } else {
-                        echo("<div style='padding: 0 5%'>This image was not edited into a square shape, making it unable to fit on their page. Tell the delegate to reload their image, use the included editing tool, and hit 'ENTER'</div>");
-                      };
-                    echo("</div>");
-                  } else {
-                    if ($allPhotos[$imgNum]['approved'] == 1) {
-                      $approvalStatus = "APPROVED";
-                    } else {
-                      $approvalStatus = "PENDING";
+              <div class='pendingRow photoFolderTab'>
+                <div class='pendingBttn'>
+                  View / Change
+                </div>
+              </div>
+              <div class='boxList'>");
+                for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
+                  echo("
+                  <div class='photoBox'>
+                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>");
+                    if ($allPhotos[$imgNum]['job_id'] < 0) {
+                      echo("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                     };
-                    echo("
-                    <div class='approvalStatus'>
-                      Approval Status: ".$approvalStatus."
+                  echo("
+                    <div class='actualPhoto'>
+                      <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                     </div>
-                    ");
-                  };
-                echo("
-                </div>");
-              };
-            echo("</div>
-          </div>
-          </div>");
+                    <form method='POST' enctype='multipart/form-data'>
+                      <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
+                      <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
+                      <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
+                      <input name='jobExt' type='hidden' value='".$allPhotos[$imgNum]['extension']."' />
+                      <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
+                      <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
+                      <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
+                      <input class='photoFile' name='jobImg' type='file' />
+                      <div class='imgRow'>
+                        <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
+                        <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
+                      </div>
+                    </form>");
+                    if ($_SESSION['adminType'] == 'counselor') {
+                      $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
+                      $photoInfoStmt->execute(array(
+                        ':jbi'=>$allPhotos[$imgNum]['job_id']
+                      ));
+                      $photoInfo = $photoInfoStmt->fetch(PDO::FETCH_ASSOC);
+                      echo("<div class='photoApprovBox'>
+                        <div class='counsApprTitle'>COUNSELOR ONLY</div>");
+                        if ($photoInfo['edited'] == 1) {
+                          echo("<form method='POST'>
+                            <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
+                            <div class='apprSelection'>
+                              <div>Image Approved?</div>
+                              <select name='imgStatus'>");
+                              if ($allPhotos[$imgNum]['approved'] == 1) {
+                                echo("
+                                  <option value='1'>YES</option>
+                                  <option value='0'>NO</option>");
+                              } else {
+                                echo("
+                                  <option value='0'>NO</option>
+                                  <option value='1'>YES</option>");
+                              };
+                              echo("
+                              </select>
+                            </div>
+                            <input class='counsApprBttn allPostBttns' name='approveImg' type='submit' value='ENTER' />
+                          </form>");
+                        } else {
+                          echo("<div style='padding: 0 5%'>This image was not edited into a square shape, making it unable to fit on their page. Tell the delegate to reload their image, use the included editing tool, and hit 'ENTER'</div>");
+                        };
+                      echo("</div>");
+                    } else {
+                      if ($allPhotos[$imgNum]['approved'] == 1) {
+                        $approvalStatus = "APPROVED";
+                      } else {
+                        $approvalStatus = "PENDING";
+                      };
+                      echo("
+                      <div class='approvalStatus'>
+                        Approval Status: ".$approvalStatus."
+                      </div>
+                      ");
+                    };
+                  echo("
+                  </div>");
+                };
+              echo("</div>
+            </div>
+            </div>");
+          };
   echo("</div>");
 
         // ** Below are COUNSELOR ONLY
