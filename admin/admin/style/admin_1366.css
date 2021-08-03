@@ -127,7 +127,7 @@
 
 .counsBox {
   border: 1px solid black;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   width: 45%;
 }
 
@@ -136,21 +136,21 @@
 }
 
 .listBox {
-  display: block;
+  /* display: block; */
   overflow-y: scroll;
   height: 412px;
 }
 
 .assignJobBox {
-  display: block;
+  /* display: block; */
 }
 
 .updateDirBox {
-  display: block;
+  /* display: block; */
 }
 
 .dptDirBox {
-  display: block;
+  /* display: block; */
 }
 
 .staffTitle {

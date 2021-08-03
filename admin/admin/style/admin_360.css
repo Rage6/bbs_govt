@@ -151,7 +151,7 @@ body {
 .postMain {
   margin-bottom: 30px;
   padding-top: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .addingPost {
@@ -313,7 +313,7 @@ body {
 }
 
 .photoMain {
-  display: none;
+  /* display: none; */
   background-color: tan;
 }
 
@@ -458,11 +458,16 @@ body {
 }
 
 .counsContent {
+  margin-bottom: 50px;
   border: 2px solid red;
 }
 
 .counsBox {
   margin-top: 10px;
+}
+
+.counsBox a {
+  text-decoration: none;
 }
 
 .counsBox:first-of-type {
@@ -486,7 +491,7 @@ body {
 }
 
 .listBox {
-  display: none;
+  /* display: none; */
   background-color: white;
 }
 
@@ -506,7 +511,7 @@ body {
 }
 
 .assignJobBox {
-  display: none;
+  /* display: none; */
   background-color: lightgreen;
 }
 
@@ -546,7 +551,7 @@ body {
 
 .updateDirBox {
   padding: 20px 0;
-  display: none;
+  /* display: none; */
   background-color: lightgreen;
 }
 
@@ -730,7 +735,7 @@ body {
 }
 
 .dptDirBox {
-  display: none;
+  /* display: none; */
 }
 
 .addDptBttn {

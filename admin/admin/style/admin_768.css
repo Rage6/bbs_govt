@@ -82,21 +82,21 @@
 }
 
 .listBox {
-  display: block;
+  /* display: block; */
   overflow-y: scroll;
   height: 412px;
 }
 
 .assignJobBox {
-  display: block;
+  /* display: block; */
 }
 
 .updateDirBox {
-  display: block;
+  /* display: block; */
 }
 
 .dptDirBox {
-  display: block;
+  /* display: block; */
 }
 
 .staffTitle {
