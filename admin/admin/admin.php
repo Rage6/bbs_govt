@@ -460,7 +460,8 @@
             </div>
             </div>");
           };
-  echo("</div>");
+  echo("</div>
+      </div>");
 
         // ** Below are COUNSELOR ONLY
 
@@ -480,10 +481,13 @@
           // Box that shows all of the section's current staff
           echo("
               <div class='counsBox'>
-                <div id='listTitle' class='postType listTitle'>
-                  Current Staff
-                </div>
-                <div id='listBox' class='listBox'>");
+                <a href='admin.php?type=staff'>
+                  <div id='listTitle' class='postType listTitle'>
+                    Current Staff
+                  </div>
+                </a>");
+                if (isset($_GET['type']) && $_GET['type'] == "staff") {
+                echo("<div id='listBox' class='listBox'>");
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($oneJob['senator'] != 0) {
                   $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
@@ -548,16 +552,20 @@
                 };
               };
         echo("
-                </div>
-              </div>");
+                </div>");
+              };
+              echo("</div>");
 
         // Box for assigning delegates to the section's jobs
         echo("
           <div class='counsBox'>
-            <div id='assignJobTitle' class='postType listTitle'>
-              Assign A Job
-            </div>
-            <div id='assignJobBox' class='assignJobBox'>
+            <a href='admin.php?type=assignments'>
+              <div id='assignJobTitle' class='postType listTitle'>
+                Assign A Job
+              </div>
+            </a>");
+            if (isset($_GET['type']) && $_GET['type'] == "assignments") {
+            echo("<div id='assignJobBox' class='assignJobBox'>
               <form method='POST'>
                 <div class='pickJob'>
                   <div>I am filling this job... </div>
@@ -633,16 +641,20 @@
                   </div>
                 </div>
               </form>
-            </div>
-          </div>
-          ");
+            </div>");
+            };
+          echo("</div>");
 
           // Box for adding, changing, deleting a delegate from the database
           echo("
           <div class='counsBox'>
-            <div id='updateDirTitle' class='postType listTitle'>
-              Delegate Directory
-            </div>
+            <a href='admin.php?type=delegates'>
+              <div id='updateDirTitle' class='postType listTitle'>
+                Delegate Directory
+              </div>
+            </a>");
+            if (isset($_GET['type']) && $_GET['type'] == "delegates") {
+            echo("
             <div id='updateDirBox' class='updateDirBox'>
               <div id='addDirTitle' class='addDirTitle'>+ ADD DELEGATE</div>
               <div id='addDirBox' class='addDirBox'>
@@ -758,14 +770,20 @@
             };
           echo("
               </div>
-            </div>
+            </div>");
+            };
+            echo("
           </div>");
           //
           echo("
           <div class='counsBox'>
-            <div id='dptTitle' class='postType listTitle'>
-              Departments & Committees
-            </div>
+            <a href='admin.php?type=departments'>
+              <div id='dptTitle' class='postType listTitle'>
+                Departments & Committees
+              </div>
+            </a>");
+            if (isset($_GET['type']) && $_GET['type'] == "departments") {
+            echo("
             <div id='dptDirBox' class='dptDirBox allBox'>
               <form method='POST'>
                 <div id='addDptBttn' class='addDptBttn'>
@@ -864,13 +882,15 @@
               echo("
                 </div>
               </div>
-            </div>
+            </div>");
+            };
+            echo("
           </div>
           ");
         };
         // <input type='text' name='dptPurpose' value='".$dptList[$dptNum]['purpose']."' />
       ?>
-      <div style="padding-top:50px"></div>
+      <!-- <div style="padding-top:50px"></div> -->
       <div class="refAll" id="refAll">
         <div id="refInfoBar" class="refInfoBar">
           <div id="refText">Refresh in: <span id="timeMin">30</span> min</div>
