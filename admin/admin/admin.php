@@ -595,17 +595,33 @@
                       ));
                       while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
                         if ($singleJob['senator'] != 0) {
-                          $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:sn");
-                          $findCityNameStmt->execute(array(
-                            ':sn'=>$singleJob['senator']
-                          ));
-                          $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
+
+                          // $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:sn");
+                          // $findCityNameStmt->execute(array(
+                          //   ':sn'=>$singleJob['senator']
+                          // ));
+                          // $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
+                          $cityName = "No city";
+                          foreach ($allSection as $oneSection) {
+                            if ($oneSection['section_id'] == $singleJob['senator']) {
+                              $cityName = ", ".$oneSection['section_name']." (#".$singleJob['job_id'].")";
+                            };
+                          };
+
                         } elseif ($singleJob['representative'] != 0) {
-                          $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:rp");
-                          $findCityNameStmt->execute(array(
-                            ':rp'=>$singleJob['representative']
-                          ));
-                          $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
+
+                          // $findCityNameStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:rp");
+                          // $findCityNameStmt->execute(array(
+                          //   ':rp'=>$singleJob['representative']
+                          // ));
+                          // $cityName = ", ".$findCityNameStmt->fetch(PDO::FETCH_ASSOC)['section_name']." (#".$singleJob['job_id'].")";
+                          $cityName = "No city";
+                          foreach ($allSection as $oneSection) {
+                            if ($oneSection['section_id'] == $singleJob['representative']) {
+                              $cityName = ", ".$oneSection['section_name']." (#".$singleJob['job_id'].")";
+                            };
+                          };
+
                         } else {
                           $cityName = "";
                         };
