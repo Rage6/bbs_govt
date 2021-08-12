@@ -490,19 +490,37 @@
                 echo("<div id='listBox' class='listBox'>");
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
                 if ($oneJob['senator'] != 0) {
-                  $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
-                  $jobCityStmt->execute(array(
-                    ':si'=>$oneJob['senator']
-                  ));
-                  $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+
+                  // One example of using a generic array ($allSection) vs. using an independent SQL request
+                  // $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
+                  // $jobCityStmt->execute(array(
+                  //   ':si'=>$oneJob['senator']
+                  // ));
+                  // $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                  $jobCity = "None";
+                  foreach($allSection as $oneSection) {
+                    if ($oneSection['section_id'] == $oneJob['senator']) {
+                      $jobCity = $oneSection['section_name'];
+                    };
+                  };
+
                   $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
                   $onlyId = $oneJob['job_id'];
                 } elseif ($oneJob['representative'] != 0) {
-                  $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
-                  $jobCityStmt->execute(array(
-                    ':si'=>$oneJob['representative']
-                  ));
-                  $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+
+                  // Another example of using a generic array ($allSection) vs. using an independent SQL request
+                  // $jobCityStmt = $pdo->prepare("SELECT section_name FROM Section WHERE section_id=:si");
+                  // $jobCityStmt->execute(array(
+                  //   ':si'=>$oneJob['representative']
+                  // ));
+                  // $jobCity = $jobCityStmt->fetch(PDO::FETCH_ASSOC)['section_name'];
+                  $jobCity = "None";
+                  foreach($allSection as $oneSection) {
+                    if ($oneSection['section_id'] == $oneJob['representative']) {
+                      $jobCity = $oneSection['section_name'];
+                    };
+                  };
+
                   $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
                   $onlyId = $oneJob['job_id'];
                 } else {

@@ -1,5 +1,13 @@
 <?php
 
+// Master Section list
+$allSectionStmt = $pdo->prepare("SELECT * FROM Section");
+$allSectionStmt->execute();
+$allSection = [];
+while ($oneSection = $allSectionStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allSection[] = $oneSection;
+};
+
 // Confirms a token is present and matches with the token in the dB
 if (isset($_SESSION['counsToken'])) {
   $dbTknStmt = $pdo->prepare("SELECT couns_token,couns_sess_start FROM Section WHERE section_id=:cid");
