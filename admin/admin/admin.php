@@ -120,7 +120,7 @@
     <div class="titleBottom">Administrative Center</div>
     <?php
       if (isset($_SESSION['message']) && $_SERVER['REQUEST_METHOD'] == "GET") {
-        echo("<div class='message'>".$_SESSION['message']."</div>");
+        echo html_entity_decode("<div class='message'>".$_SESSION['message']."</div>");
         // var_dump($_SESSION['message']);
         unset($_SESSION['message']);
       };
@@ -136,7 +136,7 @@
           $titleSuffix = "";
         };
         // Displays which section you are working on
-        echo($secInfo['section_name'].$titleSuffix);
+        echo html_entity_decode($secInfo['section_name'].$titleSuffix);
       ?>
     </div>
     <div style="display:flex;border-left:2px solid black;border-right:2px solid black">
@@ -159,7 +159,7 @@
             while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
               $subtypeList[] = $oneSubtype;
             };
-            echo("
+            echo html_entity_decode("
             <div class='delegateBox'>
               <a href='admin.php?type=".$oneType['type_id']."'>
                 <div data-head='".$oneType['type_id']."' class='postType'>"
@@ -167,9 +167,9 @@
                 "</div>
               </a>");
               if (isset($_GET['type']) && $_GET['type'] == $oneType['type_id']) {
-                echo("<div id='typeId".$oneType['type_id']."' class='postMain'>");
+                echo html_entity_decode("<div id='typeId".$oneType['type_id']."' class='postMain'>");
                 if ($oneType['can_add'] == 1) {
-                  echo("<div class='postTypeRow'>
+                  echo html_entity_decode("<div class='postTypeRow'>
                     <div id='addBttn".$oneType['type_id']."' class='addingPost' data-type='".$oneType['type_id']."'> + ADD POST</div>
                   </div>
                   <div style='display:none' id='addBox".$oneType['type_id']."' class='addBox postBox'>
@@ -195,9 +195,9 @@
                       <div>
                         <select class='subtypeSelect' name='newSubtype'>");
                           for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
-                            echo("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                            echo html_entity_decode("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
                           };
-                        echo("</select>
+                        echo html_entity_decode("</select>
                       </div>
                       <input type='hidden' name='approval' value='0' />
                       <input type='hidden' name='typeId' value='".$oneType['type_id']."' />
@@ -207,7 +207,7 @@
                   </div>
                   ");
                 };
-                echo("
+                echo html_entity_decode("
                   <div id='typeRow_".$oneType['type_id']."' class='pendingRow'>
                     <div id='pending".$oneType['type_id']."' class='pendingBttn' data-pendtype='".$oneType['type_id']."' data-approval=0>PENDING</div>
                     <div id='all".$oneType['type_id']."' class='allBttn' data-pendtype='".$oneType['type_id']."' data-approval=1>ALL</div>
@@ -224,7 +224,7 @@
                   } else {
                     $approval = 0;
                   };
-                  echo("
+                  echo html_entity_decode("
                   <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
                     <form method='POST'>
                       <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
@@ -235,14 +235,14 @@
                           echo html_entity_decode($onePost['title'], ENT_QUOTES);
                         echo("</textarea>");
                       } else {
-                        echo("
+                        echo html_entity_decode("
                           <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
                           <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
                       };
                       echo("<div class='postSubtitle'>Content:</div>
                       <textarea class='postText contentText' name='postContent'>");
                         echo html_entity_decode($onePost['content'], ENT_QUOTES);
-                      echo("</textarea>
+                      echo html_entity_decode("</textarea>
                       <div class='postSubtitle'>Time Posted</div>
                       <div style='text-align:center'>
                         (<i>YYYY-MM-DD HH:MM:SS</i>)
@@ -258,7 +258,7 @@
                             $currentSubName = $subtypeList[$subNum]['subtype_name'];
                           };
                         };
-                        echo("
+                        echo html_entity_decode("
                           <div class='postSubtitle'>
                             Category
                           </div>
@@ -269,7 +269,7 @@
                                 <option value='".$currentSubId."'>".$currentSubName."</option>");
                                 for ($sub = 0; $sub < count($subtypeList); $sub++) {
                                   if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
-                                    echo("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                    echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
                                   };
                                 };
                               echo("</select>
@@ -280,7 +280,7 @@
                           </div>
                         ");
                       } else {
-                        echo("
+                        echo html_entity_decode("
                         <div class='postSubtitle'>
                           Category
                         </div>
@@ -296,9 +296,9 @@
                       } else {
                         echo("<div class='postSubtitle'>Order #:</div>");
                       };
-                      echo("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
+                      echo html_entity_decode("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
                       if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
-                        echo("
+                        echo html_entity_decode("
                         <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
                         <input type='text' name='currentPrefix' value='".$onePost['chamber_prefix']."' />");
                       };
@@ -311,7 +311,7 @@
                     $ifPending = "checked";
                     $status = "<b style='color:yellow'>PENDING</b>";
                   };
-                  echo("
+                  echo html_entity_decode("
                       <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                       <div class='changeBttns'>
                         <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
@@ -321,21 +321,21 @@
                         ));
                         $findCanAdd = $findCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
                         if ($findCanAdd == 1) {
-                          echo("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                          echo html_entity_decode("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
                         };
-                      echo("</div>
+                      echo html_entity_decode("</div>
                       <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
                       if ($_SESSION['adminType'] == "delegate") {
                         echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
                       };
-                      echo("Are you sure you want to make the change(s)?
+                      echo html_entity_decode("Are you sure you want to make the change(s)?
                         <div class='delBttnRow'>
                           <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
                           <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
                         </div>
                       </div>");
                       if ($findCanAdd == 1) {
-                        echo("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
+                        echo html_entity_decode("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
                           ARE YOU SURE YOU WANT TO DELETE THIS POST?
                           <div class='delBttnRow'>
                             <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
@@ -344,7 +344,7 @@
                         </div>");
                       };
                       if ($_SESSION['adminType'] == "counselor") {
-                        echo("
+                        echo html_entity_decode("
                           <div class='counsOnly'>
                             <div><u>COUNSELOR ONLY</u></div>
                             <input type='radio' id='yes".$onePost['post_id']."' name='approval' value='1' ".$ifApproved." />
@@ -385,13 +385,13 @@
               </div>
               <div class='boxList'>");
                 for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='photoBox'>
                     <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>");
                     if ($allPhotos[$imgNum]['job_id'] < 0) {
-                      echo("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
+                      echo html_entity_decode("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                     };
-                  echo("
+                  echo html_entity_decode("
                     <div class='actualPhoto'>
                       <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
                     </div>
@@ -522,7 +522,7 @@
                   $dptStatus = 0;
                 };
                 if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='staffTitle'>
                     ".$oneJob['job_name'].$cityAndId.$dptName."
                     <form method='POST'>
@@ -537,7 +537,7 @@
                           <option value='1'>ACTIVE</option>
                           <option value='0' selected>INACTIVE</option>");
                       };
-                      echo("
+                      echo html_entity_decode("
                       </select>
                       <input type='submit' name='changeJobStatus'>
                     </form>
@@ -567,7 +567,7 @@
               </div>
             </a>");
             if (isset($_GET['type']) && $_GET['type'] == "assignments") {
-            echo("<div id='assignJobBox' class='assignJobBox'>
+            echo html_entity_decode("<div id='assignJobBox' class='assignJobBox'>
               <form method='POST'>
                 <div class='pickJob'>
                   <div>I am filling this job... </div>
@@ -608,7 +608,7 @@
                           $findDptStatus = 1;
                         };
                         if ($singleJob['in_department'] == 0 || $findDptStatus == 1) {
-                          echo("<option value='".$singleJob['job_id']."'>".$singleJob['job_name'].$cityName.$selectDptName."</option>");
+                          echo html_entity_decode("<option value='".$singleJob['job_id']."'>".$singleJob['job_name'].$cityName.$selectDptName."</option>");
                         };
                       };
             echo("
@@ -626,7 +626,7 @@
                     </div>");
                 for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
                   if ($allDelegate[$delNum]['delegate_id'] != 0) {
-                    echo("
+                    echo html_entity_decode("
                     <div class='delRadio'>
                       <input
                         type='radio'
@@ -675,7 +675,7 @@
                   <select class='selectBttn' name='delCity'>
                     <option value='-1'>Choose a city...</option>");
                     for ($cityNum = 0; $cityNum < count($allCity); $cityNum++) {
-                      echo("<option value='".$allCity[$cityNum]['section_id']."'>".$allCity[$cityNum]['section_name']."</option>");
+                      echo html_entity_decode("<option value='".$allCity[$cityNum]['section_id']."'>".$allCity[$cityNum]['section_name']."</option>");
                     };
             echo("
                   </select>
@@ -694,7 +694,7 @@
               <div class='updateTable'>");
             for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
               if ($allDelegate[$delNum]['delegate_id'] != 0) {
-                echo("
+                echo html_entity_decode("
                   <form method='POST'>
                     <input type='hidden' name='delId' value='".$allDelegate[$delNum]['delegate_id']."'>
                     <div class='updateRow'>
@@ -731,10 +731,10 @@
                               $currentCity = $allCity[$currentCityNum];
                             };
                           };
-                          echo("<option value='".$currentCity['section_id']."'>".$currentCity['section_name']."</option>");
+                          echo html_entity_decode("<option value='".$currentCity['section_id']."'>".$currentCity['section_name']."</option>");
                           for ($updateCityNum = 0; $updateCityNum < count($allCity); $updateCityNum++) {
                             if ($allDelegate[$delNum]['city_id'] != $allCity[$updateCityNum]['section_id']) {
-                              echo("<option value='".$allCity[$updateCityNum]['section_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
+                              echo html_entity_decode("<option value='".$allCity[$updateCityNum]['section_id']."'>".$allCity[$updateCityNum]['section_name']."</option>");
                             };
                           };
                     echo("
@@ -752,7 +752,7 @@
                               <option value='1'>YES</option>
                               <option selected value='0'>NO</option>");
                             };
-                          echo("</select>
+                          echo html_entity_decode("</select>
                         </div>
                         <input class='changeEnter allPostBttns' type='submit' name='updateDelInfo' value='ENTER' />
                       </div>
@@ -809,7 +809,7 @@
                     <select name='dptHead'>
                       <option value='-1'>Choose a delegate</option>");
                     for ($num = 0; $num < count($allDelegate); $num++) {
-                      echo("
+                      echo html_entity_decode("
                       <option value='".$allDelegate[$num]['delegate_id']."'>".
                         $allDelegate[$num]['last_name'].", ".$allDelegate[$num]['first_name']
                       ."</option>");
@@ -828,7 +828,7 @@
                   $forYes = "";
                   $forNo = " selected";
                 };
-                echo("
+                echo html_entity_decode("
                 <form method='POST'>
                   <input type='hidden' name='dptId' value='".$dptList[$dptNum]['dpt_id']."'>
                   <input type='hidden' name='dptJobId' value='".$dptList[$dptNum]['job_id']."'>
