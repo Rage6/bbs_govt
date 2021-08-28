@@ -66,7 +66,7 @@
       <div class="govTitle">
         <div>
           <?php
-            echo($govStaffList[0]['first_name']
+            echo html_entity_decode($govStaffList[0]['first_name']
             ."</br> ".
             $govStaffList[0]['last_name'])
           ?>
@@ -107,9 +107,13 @@
         <div class="govContent">
           <?php
             if ($govStaffList[0]['approved'] == 1) {
-              echo("<img id='img_0' src='".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."' />");
+              if ($govStaffList[0]['flickr_url'] != null && $govStaffList[0]['flickr_url'] != '') {
+                echo html_entity_decode("<img id='img_0' src='".$govStaffList[0]['flickr_url']."'>");
+              } else {
+                echo html_entity_decode("<img id='img_0' src='".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."' />");
+              };
             } else {
-              echo("<img id='img_0' src='".$imgPrefix."\default_photo.png' />");
+              echo html_entity_decode("<img id='img_0' src='".$imgPrefix."\default_photo.png' />");
             };
           ?>
 
@@ -118,7 +122,11 @@
               <div id="img_1_A" class="oneFrame"
                 <?php
                   if ($govStaffList[0]['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
+                    if ($govStaffList[0]['flickr_url'] != null && $govStaffList[0]['flickr_url'] != '') {
+                      echo html_entity_decode("style=background-image:url('".$govStaffList[0]['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -128,117 +136,117 @@
                 id="img_2_A" class="oneFrame"
                 <?php
                   if ($bannerOne['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_3_A" class="oneFrame"
                 <?php
                   if ($bannerTwo['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_4_A" class="oneFrame"
                 <?php
                   if ($bannerThree['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_5_A" class="oneFrame"
                 <?php
                   if ($bannerFour['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_6_A" class="oneFrame"
                 <?php
                   if ($bannerFive['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_7_A" class="oneFrame"
                 <?php
                   if ($bannerSix['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_1_B" class="oneFrame"
               <?php
-                if ($govStaffList[0]['approved'] == 1) {
-                  echo("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
+                if ($govStaffList[0]['flickr_url'] != null && $govStaffList[0]['flickr_url'] != '') {
+                  echo html_entity_decode("style=background-image:url('".$govStaffList[0]['flickr_url']."')");
                 } else {
-                  echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                  echo html_entity_decode("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
                 };
               ?>
               ></div>
               <div id="img_2_B" class="oneFrame"
                 <?php
                   if ($bannerOne['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_3_B" class="oneFrame"
                 <?php
                   if ($bannerTwo['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_4_B" class="oneFrame"
                 <?php
                   if ($bannerThree['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_5_B" class="oneFrame"
                 <?php
                   if ($bannerFour['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_6_B" class="oneFrame"
                 <?php
                   if ($bannerFive['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
               <div id="img_7_B" class="oneFrame"
                 <?php
                   if ($bannerSix['approved'] == 1) {
-                    echo("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
                   } else {
-                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                    echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
                 ?>
               ></div>
@@ -247,7 +255,7 @@
           <div class="govIntro">
             <?php
               if ($introContent['approved'] == 1) {
-                echo($introContent['content']);
+                echo html_entity_decode($introContent['content']);
               };
             ?>
           </div>
@@ -255,7 +263,7 @@
           <a id="govTop">
             <?php
               for ($govNum = 0; $govNum < 2; $govNum++) {
-                echo("
+                echo html_entity_decode("
                 <div id='govTop' class='govBox'>
                   <div class='govSubtitle'>".$govStaffList[$govNum]["job_name"]."</div>
                   <div class='forFlex'>
@@ -267,11 +275,15 @@
                         <div class='govHometown'>".$govStaffList[$govNum]["hometown"]."</div>
                       </div>");
                       if ($govStaffList[$govNum]['approved'] == 1) {
-                        echo("<img src='".$imgPrefix.$govStaffList[$govNum]['section_path']."crop_".$govStaffList[$govNum]['filename'].".".$govStaffList[$govNum]['extension']."?t=".time()."' />");
+                        if ($govStaffList[$govNum]['flickr_url'] != null && $govStaffList[$govNum]['flickr_url'] != '') {
+                          echo html_entity_decode("<img src='".$govStaffList[$govNum]['flickr_url']."' />");
+                        } else {
+                          echo html_entity_decode("<img src='".$imgPrefix.$govStaffList[$govNum]['section_path']."crop_".$govStaffList[$govNum]['filename'].".".$govStaffList[$govNum]['extension']."?t=".time()."' />");
+                        };
                       } else {
-                        echo("<img src='".$imgPrefix."\default_photo.png' />");
+                        echo html_entity_decode("<img src='".$imgPrefix."\default_photo.png' />");
                       };
-                    echo("
+                    echo html_entity_decode("
                     </div>
                     <div class='govBio'>".$govStaffList[$govNum]['description']."</div>
                   </div>
@@ -291,16 +303,16 @@
               $firstBox = true;
               for ($electNum = 2; $electNum < 6; $electNum++) {
                 if ($firstBox == true) {
-                  echo("
+                  echo html_entity_decode("
                   <div style='margin-top:0px' class='govBox'>
                     <div class='firstBox govSubtitle'>".$govStaffList[$electNum]['job_name']."</div>");
                   $firstBox = false;
                 } else {
-                  echo("
+                  echo html_entity_decode("
                   <div class='govBox'>
                     <div class='govSubtitle'>".$govStaffList[$electNum]['job_name']."</div>");
                 };
-                echo("
+                echo html_entity_decode("
                 <div class='forFlex'>
                   <div class='nameAndPic'>
                     <div class='govWords'>
@@ -310,11 +322,15 @@
                       <div class='govHometown'>".$govStaffList[$electNum]['hometown']."</div>
                     </div>");
                       if ($govStaffList[$electNum]['approved'] == 1) {
-                        echo("<img src='".$imgPrefix.$govStaffList[$electNum]['section_path']."crop_".$govStaffList[$electNum]['filename'].".".$govStaffList[$electNum]['extension']."?t=".time()."' />");
+                        if ($govStaffList[$electNum]['flickr_url'] != null && $govStaffList[$electNum]['flickr_url'] != '') {
+                          echo("<img src='".$govStaffList[$electNum]['flickr_url']."'>");
+                        } else {
+                          echo("<img src='".$imgPrefix.$govStaffList[$electNum]['section_path']."crop_".$govStaffList[$electNum]['filename'].".".$govStaffList[$electNum]['extension']."?t=".time()."' />");
+                        };
                       } else {
-                        echo("<img src='".$imgPrefix."\default_photo.png' />");
+                        echo html_entity_decode("<img src='".$imgPrefix."\default_photo.png' />");
                       };
-                  echo("
+                  echo html_entity_decode("
                   </div>
                   <div class='govBio'>".$govStaffList[$electNum]['description']."</div>
                 </div>
@@ -332,7 +348,7 @@
             <div class="tagTitle">POLICIES & GOALS</div>
             <div class="goalBox">
               <div class="goalIntro">
-                Gov. <?php echo($govStaffList[0]['last_name']) ?>, Lt. Gov. <?php echo($govStaffList[1]['last_name']) ?> and their team are dedicated to leading their state in the right direction.
+                Gov. <?php echo html_entity_decode($govStaffList[0]['last_name']) ?>, Lt. Gov. <?php echo html_entity_decode($govStaffList[1]['last_name']) ?> and their team are dedicated to leading their state in the right direction.
               </div>
               <div class="bothList">
                 <div class="policyList">
@@ -343,7 +359,7 @@
                       $policyStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=2 AND approved=1 ORDER BY post_order ASC");
                       $policyStmt->execute();
                       while ($onePolicy = $policyStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo("<li class='listSpacing'>
+                        echo html_entity_decode("<li class='listSpacing'>
                           <div class='itemTitle'>".$onePolicy['title']."</div>
                           <div class='itemContent'>".$onePolicy['content']."</div>
                         </li>");
@@ -360,7 +376,7 @@
                       $goalStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=1 AND approved=1 ORDER BY post_order ASC");
                       $goalStmt->execute();
                       while ($oneGoal = $goalStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo("<li class='listSpacing'>
+                        echo html_entity_decode("<li class='listSpacing'>
                           <div class='itemTitle'>".$oneGoal['title']."</div>
                           <div class='itemContent'>".$oneGoal['content']."</div>
                         </li>");
@@ -385,7 +401,7 @@
                 $agencyStmt = $pdo->prepare("SELECT DISTINCT * FROM Department INNER JOIN Job INNER JOIN Delegate WHERE Department.section_id=$secId AND Department.job_id=Job.job_id AND Job.delegate_id=Delegate.delegate_id AND Department.active=1 ORDER BY Department.dpt_id ASC");
                 $agencyStmt->execute();
                 while ($oneAgency = $agencyStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='oneAgency'>
                     <div class='agencySubtitle' id='agencyBtn".$agencyNum."'>".$oneAgency['dpt_name']."</div>
                     <div class='agencyContent' id='agencyCnt".$agencyNum."'>
@@ -429,7 +445,7 @@
                     $month = substr($oneReport['timestamp'],5,2);
                     $day = substr($oneReport['timestamp'],8,2);
                     $year = substr($oneReport['timestamp'],0,4);
-                    echo("
+                    echo html_entity_decode("
                     <div id='reportCnt".$cntNum."' class='allReportCnt'>
                       <div class='reportDate'>".$month."/".$day."/".$year."</div>
                       <div class='reportTitle'>".$oneReport['title']."</div>
