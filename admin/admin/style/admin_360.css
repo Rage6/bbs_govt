@@ -339,6 +339,36 @@ body {
   margin-bottom: 10px;
 }
 
+.actualPhoto img {
+  margin-left: 2%;
+  border: 1px solid black;
+  width: 96%;
+}
+
+.flickrBox {
+  margin: 0 5% 25px 5%;
+}
+
+.flickrLink {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.flickrBttns input:first-of-type {
+  color: white;
+  background-color: blue;
+}
+
+.flickrBttns input:last-of-type {
+  color: white;
+  background-color: red;
+}
+
+.flickrBttns {
+  display: flex;
+  justify-content: space-around;
+}
+
 .photoDelegate {
   margin-bottom: 10px;
   font-size: 1.2rem;

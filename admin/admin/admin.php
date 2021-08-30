@@ -392,23 +392,41 @@
                       echo html_entity_decode("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                     };
                   echo html_entity_decode("
-                    <div class='actualPhoto'>
-                      <img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>
+                    <div class='actualPhoto'>");
+                      // echo html_entity_decode("<img class='photoImg' src='".$imgPrefix.$allPhotos[$imgNum]['image_path']."crop_".$allPhotos[$imgNum]['filename'].".".$allPhotos[$imgNum]['extension']."?t=".time()."'/>");
+                      if ($allPhotos[$imgNum]['flickr_url'] != null) {
+                        echo html_entity_decode("<img src='".$allPhotos[$imgNum]['flickr_url']."'>");
+                      } else {
+                        echo("<img src='".$imgPrefix."/default_other.jpg'>");
+                      };
+                    echo html_entity_decode("
                     </div>
-                    <form method='POST' enctype='multipart/form-data'>
-                      <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
-                      <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
-                      <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
-                      <input name='jobExt' type='hidden' value='".$allPhotos[$imgNum]['extension']."' />
-                      <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
-                      <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
-                      <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
-                      <input class='photoFile' name='jobImg' type='file' />
-                      <div class='imgRow'>
-                        <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
-                        <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
+                    <form method='POST'>
+                      <div class='flickrBox'>
+                        <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
+                        <input name='approvalNum' type='hidden' value='".$allPhotos[$imgNum]['approved']."' />
+                        <input class='flickrLink' name='flickrUrl' type='text' value='".$allPhotos[$imgNum]['flickr_url']."' placeholder='Enter Flickr URL here'/>
+                      <div class='flickrBttns'>
+                        <input type='submit' name='sendFlickr' value='ENTER'>
+                        <input type='submit' name='resetFlickr' value='RESET'>
+                      </div>
                       </div>
                     </form>");
+                    // echo html_entity_decode("
+                    // <form method='POST' enctype='multipart/form-data'>
+                    //   <input name='jobId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
+                    //   <input name='imageId' type='hidden' value='".$allPhotos[$imgNum]['image_id']."' />
+                    //   <input name='jobFile' type='hidden' value='".$allPhotos[$imgNum]['filename']."' />
+                    //   <input name='jobExt' type='hidden' value='".$allPhotos[$imgNum]['extension']."' />
+                    //   <input name='jobPath' type='hidden' value='".$allPhotos[$imgNum]['image_path']."' />
+                    //   <input name='actualX' type='hidden' value='".$allPhotos[$imgNum]['actual_width']."' />
+                    //   <input name='actualY' type='hidden' value='".$allPhotos[$imgNum]['actual_height']."' />
+                    //   <input class='photoFile' name='jobImg' type='file' />
+                    //   <div class='imgRow'>
+                    //     <input style='background-color:blue' class='photoUpload allPostBttns' name='submitFile' type='submit' value='UPLOAD'/>
+                    //     <input style='background-color:red' class='photoUpload allPostBttns' name='resetFile' type='submit' value='RESET'/>
+                    //   </div>
+                    // </form>");
                     if ($_SESSION['adminType'] == 'counselor') {
                       $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
                       $photoInfoStmt->execute(array(
