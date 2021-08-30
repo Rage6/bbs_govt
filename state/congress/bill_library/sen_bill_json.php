@@ -26,7 +26,7 @@
   $senBillStmt->execute();
   $senBillList = [];
   while ($oneSenBill = $senBillStmt->fetch(PDO::FETCH_ASSOC)) {
-    $senBillList[] = $oneSenBill;
+    $senBillList[] = html_entity_decode($oneSenBill);
   };
   // print_r($senBillList);
   echo(json_encode($senBillList,JSON_PRETTY_PRINT));
