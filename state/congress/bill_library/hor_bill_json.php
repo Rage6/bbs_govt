@@ -26,7 +26,8 @@
   $horBillStmt->execute();
   $horBillList = [];
   while ($oneHorBill = $horBillStmt->fetch(PDO::FETCH_ASSOC)) {
-    $horBillList[] = html_entity_decode($oneHorBill);
+    $oneHorBill['title'] = html_entity_decode($oneHorBill['title']);
+    $horBillList[] = $oneHorBill;
   };
   // print_r($senBillList);
   echo(json_encode($horBillList,JSON_PRETTY_PRINT));
