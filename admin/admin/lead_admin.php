@@ -1,5 +1,13 @@
 <?php
 
+// Master Section list
+$allSectionStmt = $pdo->prepare("SELECT * FROM Section");
+$allSectionStmt->execute();
+$allSection = [];
+while ($oneSection = $allSectionStmt->fetch(PDO::FETCH_ASSOC)) {
+  $allSection[] = $oneSection;
+};
+
 // Confirms a token is present and matches with the token in the dB
 if (isset($_SESSION['counsToken'])) {
   $dbTknStmt = $pdo->prepare("SELECT couns_token,couns_sess_start FROM Section WHERE section_id=:cid");
@@ -80,7 +88,7 @@ $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 // All photo locations w/ staff info if they have a location
 // $allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
 
-$allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Image WHERE section_id=:se AND filename IS NOT NULL");
+$allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height, flickr_url FROM Image WHERE section_id=:se AND filename IS NOT NULL");
 $allPhotoStmt->execute(array(
   ':se'=>$secId
 ));
@@ -308,6 +316,54 @@ if (isset($_POST['changeJobDel'])) {
 
     };
   };
+};
+
+// Enter new Flickr image URL
+if (isset($_POST['sendFlickr'])) {
+  $imgStats = getimagesize($_POST['flickrUrl']);
+  if ($imgStats['mime'] == 'image/jpeg') {
+    $imgWidth = $imgStats[0];
+    $imgHeight = $imgStats[1];
+    $imgRatio = $imgWidth / $imgHeight;
+    if ($imgRatio <= 1.05 && $imgRatio >= 0.95) {
+      $isApproved = htmlentities($_POST['approvalNum']);
+      if ($_SESSION['adminType'] == "counselor" && $isApproved == 1) {
+        $newApproval = 1;
+      } else {
+        $newApproval = 0;
+      };
+      $changeFlickrStmt = $pdo->prepare("UPDATE Image SET flickr_url=:fl,approved=:ap WHERE image_id=:imi");
+      $changeFlickrStmt->execute(array(
+        ':fl'=>htmlentities($_POST['flickrUrl']),
+        ':ap'=>$newApproval,
+        ':imi'=>htmlentities($_POST['imageId'])
+      ));
+      $_SESSION['message'] = "<b style='color:green'>New image link added</b>";
+      header("Location: admin.php?type=photos");
+      return true;
+    } else {
+      $_SESSION['message'] = "<b style='color:red'>All images must be square-shaped. To do make your image a square, use the Flickr editing tool.</b>";
+      header("Location: admin.php?type=photos");
+      return true;
+    };
+  } else {
+    $_SESSION['message'] = "<b style='color:red'>The link did not end up with an image. Make sure your link is complete and going to the expected image.</b>";
+    header("Location: admin.php?type=photos");
+    return false;
+  };
+};
+
+// Reset Flickr image to 'null'
+if (isset($_POST['resetFlickr'])) {
+  $resetFlickrStmt = $pdo->prepare("UPDATE Image SET flickr_url=:fl,approved=:ap WHERE image_id=:imi");
+  $resetFlickrStmt->execute(array(
+    ':fl'=>null,
+    ':ap'=>0,
+    ':imi'=>htmlentities($_POST['imageId'])
+  ));
+  $_SESSION['message'] = "<b style='color:green'>Image reset</b>";
+  header("Location: admin.php?type=photos");
+  return true;
 };
 
 // Uploade a job image, replacing the current one

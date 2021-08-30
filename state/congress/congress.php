@@ -135,7 +135,7 @@
           </div>
           <div class="bothIntro senIntro">
             <?php
-              echo($senIntro['content']);
+              echo html_entity_decode($senIntro['content']);
             ?>
           </div>
           <div class="leaderBox">
@@ -147,20 +147,20 @@
               <div class="ldrList">
               <?php
                 for ($ldrNum = 0; $ldrNum < 4; $ldrNum++) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='oneLdr majorityLdrs senLdrs'>
                     <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
                     <div class='ldrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
-                      echo("
+                      echo html_entity_decode("
                       <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."' />");
                     } else {
-                      echo("
+                      echo html_entity_decode("
                         <img src='../../img/default_photo.png' />");
                     };
-                    echo("
+                    echo html_entity_decode("
                     <div class='ldrDescription'>
                       ".$senateLdrList[$ldrNum]['description']."
                     </div>
@@ -177,20 +177,20 @@
               <div class="ldrList">
               <?php
                 for ($ldrNum = 4; $ldrNum < 8; $ldrNum++) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='oneLdr minorityLdr senLdrs'>
                     <div class='ldrTitle'>".$senateLdrList[$ldrNum]['job_name']."</div>
                     <div class='ldrName'>
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
-                      echo("
+                      echo html_entity_decode("
                       <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."' />");
                     } else {
-                      echo("
+                      echo html_entity_decode("
                       <img src='../../img/default_photo.png' />");
                     };
-                    echo("
+                    echo html_entity_decode("
                     <div class='ldrDescription'>
                       ".$senateLdrList[$ldrNum]['description']."
                     </div>
@@ -216,7 +216,7 @@
                     </div>
                     <?php
                       while ($oneSenStatus = $senStatusStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo("
+                        echo html_entity_decode("
                           <div
                             class='selectOption senSelectOption'
                             data-sensubid='".$oneSenStatus['subtype_id']."'>
@@ -273,7 +273,7 @@
                   <?php
                     $senLawListStmt->execute();
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo("
+                      echo html_entity_decode("
                         <div class='oneLaw oneSenLaw'>
                           <div
                             class='oneLawTitle oneSenLawTitle'
@@ -320,7 +320,7 @@
             <div class="allComm senAllComm">
               <?php
                 while ($oneSenComm = $senCommStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
+                  echo html_entity_decode("
                     <div class='oneComm senOneComm'>
                       <div
                         class='commTitle senCommTitle'
@@ -357,14 +357,14 @@
                 $currentCity = "";
                 for ($oneSenNum = 0; $oneSenNum < count($senMemList); $oneSenNum++) {
                   if ($currentCity != $senMemList[$oneSenNum]['section_name']) {
-                    echo("
+                    echo html_entity_decode("
                       <div class='oneCity oneSenCity'>
                         <div class='cityName senCityName'>
                           ".$senMemList[$oneSenNum]['section_name']." City
                         </div>");
                     $currentCity = $senMemList[$oneSenNum]['section_name'];
                   };
-                      echo("
+                      echo html_entity_decode("
                         <div class='oneCongressman oneSenator'>
                           <div class='oneCongName oneSenName'>
                             ".$senMemList[$oneSenNum]['first_name']." ".$senMemList[$oneSenNum]['last_name']."
@@ -436,7 +436,7 @@
           </div>
           <div class="bothIntro repIntro">
             <?php
-              echo($repIntro['content']);
+              echo html_entity_decode($repIntro['content']);
             ?>
           </div>
           <div class="leaderBox">
@@ -448,20 +448,20 @@
               <div class="ldrList">
               <?php
                 for ($repLdrNum = 0; $repLdrNum < 6; $repLdrNum++) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='oneLdr majorityLdrs repLdrs'>
                     <div class='ldrTitle'>".$repLdrList[$repLdrNum]['job_name']."</div>
                     <div class='ldrName'>
                       ".$repLdrList[$repLdrNum]['first_name']." ".$repLdrList[$repLdrNum]['last_name']."
                     </div>");
                     if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
-                      echo("
+                      echo html_entity_decode("
                       <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
                     } else {
-                      echo("
+                      echo html_entity_decode("
                         <img src='../../img/default_photo.png'>");
                     };
-                    echo("
+                    echo html_entity_decode("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
                     <div class='topBttn repTopBttn'>
                       <span>- TOP -</span>
@@ -477,20 +477,20 @@
               <div class="ldrList">
               <?php
                 for ($repLdrNum = 6; $repLdrNum < 10; $repLdrNum++) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='oneLdr minorityLdr repLdrs'>
                     <div class='ldrTitle'>".$repLdrList[$repLdrNum]['job_name']."</div>
                     <div class='ldrName'>
                       ".$repLdrList[$repLdrNum]['first_name']." ".$repLdrList[$repLdrNum]['last_name']."
                     </div>");
                     if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
-                      echo("
+                      echo html_entity_decode("
                       <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
                     } else {
-                      echo("
+                      echo html_entity_decode("
                       <img src='../../img/default_photo.png'>");
                     };
-                    echo("
+                    echo html_entity_decode("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
                     <div class='topBttn repTopBttn'>
                       <span>- TOP -</span>
@@ -514,7 +514,7 @@
                     </div>
                     <?php
                       while ($oneRepStatus = $repStatusStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo("
+                        echo html_entity_decode("
                           <div
                             class='selectOption repSelectOption'
                             data-repsubid='".$oneRepStatus['subtype_id']."'>
@@ -571,7 +571,7 @@
                   <?php
                     $senLawListStmt->execute();
                     while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo("
+                      echo html_entity_decode("
                         <div class='oneLaw oneRepLaw'>
                           <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
                             ".$oneSenLaw['title']."
@@ -612,7 +612,7 @@
             <div class="allComm repAllComm">
               <?php
                 while ($oneRepComm = $repCommStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
+                  echo html_entity_decode("
                     <div class='oneComm repOneComm'>
                       <div class='commTitle repCommTitle' data-dptid='".$oneRepComm['dpt_id']."' data-chambertype='house'>
                         ".$oneRepComm['dpt_name']."
@@ -643,14 +643,14 @@
                 $currentCity = "";
                 for ($oneRepNum = 0; $oneRepNum < count($repMemList); $oneRepNum++) {
                   if ($currentCity != $repMemList[$oneRepNum]['section_name']) {
-                    echo("
+                    echo html_entity_decode("
                       <div class='oneCity oneRepCity'>
                         <div class='cityName repCityName'>
                           ".$repMemList[$oneRepNum]['section_name']." City
                         </div>");
                     $currentCity = $repMemList[$oneRepNum]['section_name'];
                   };
-                  echo("
+                  echo html_entity_decode("
                     <div class='oneCongressman oneRepresentative'>
                       <div class='oneCongName oneRepName'>
                         ".$repMemList[$oneRepNum]['first_name']." ".$repMemList[$oneRepNum]['last_name']."

@@ -85,7 +85,7 @@
       </div>
       <div class="mainContent">
         <div class="welcome">
-          <?php echo($intro); ?>
+          <?php echo html_entity_decode($intro); ?>
         </div>
         <!-- The Justice bios start here -->
         <a id="justiceTop">
@@ -93,18 +93,18 @@
           <div class="allJustices">
             <?php
             while($oneJustice = $justiceInfoStmt->fetch(PDO::FETCH_ASSOC)) {
-              echo("
+              echo html_entity_decode("
               <div class='justiceBox'>
                 <div class='justiceTitle'>
                   <div>".$oneJustice['first_name']."</br>".$oneJustice['last_name']."</div>
                   <div>".$oneJustice['job_name']."</div>
                 </div>");
                 if ($oneJustice['approved'] == 1) {
-                  echo("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."?t=".time()."' />");
+                  echo html_entity_decode("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."?t=".time()."' />");
                 } else {
-                  echo("<img class='justiceImg' src='../../img/default_photo.png' />");
+                  echo html_entity_decode("<img class='justiceImg' src='../../img/default_photo.png' />");
                 };
-                echo("<div class='justiceBio'>
+                echo html_entity_decode("<div class='justiceBio'>
                   <div class='cityHeader'>BBS City:</div>
                   <div class='cityContent'>".$oneJustice['section_name']."</div>
                   <div class='cityHeader'>Hometown:</div>
@@ -176,7 +176,7 @@
                   $month = substr($oneMinute['timestamp'],5,2);
                   $day = substr($oneMinute['timestamp'],8,2);
                   $year = substr($oneMinute['timestamp'],0,4);
-                  echo("
+                  echo html_entity_decode("
                   <div id='minuteCnt".$cntNum."' class='allMinuteCnt'>
                     <div class='minuteDate'>".$month."/".$day."/".$year."</div>
                     <div class='minuteTitle'>".$oneMinute['title']."</div>
@@ -213,7 +213,7 @@
               if ((int)$countMember > 0) {
                 echo("<div class='allMembers'>");
                 while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
-                  echo("
+                  echo html_entity_decode("
                   <div class='memberBox'>
                     <div class='memberName'>".$oneMember['last_name'].", ".$oneMember['first_name']."</div>
                     <div class='memberHomeBox'>

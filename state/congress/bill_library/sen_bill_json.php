@@ -22,7 +22,7 @@
       subtype_name NOT LIKE '%law%' AND
       approved=1
     ORDER BY
-      post_order, post_id DESC");
+      post_order DESC, post_id DESC");
   $senBillStmt->execute();
   $senBillList = [];
   while ($oneSenBill = $senBillStmt->fetch(PDO::FETCH_ASSOC)) {
