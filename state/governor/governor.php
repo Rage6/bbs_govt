@@ -136,7 +136,11 @@
                 id="img_2_A" class="oneFrame"
                 <?php
                   if ($bannerOne['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                    if ($bannerOne['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerOne['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -145,7 +149,11 @@
               <div id="img_3_A" class="oneFrame"
                 <?php
                   if ($bannerTwo['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                    if ($bannerTwo['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerTwo['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -154,7 +162,11 @@
               <div id="img_4_A" class="oneFrame"
                 <?php
                   if ($bannerThree['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                    if ($bannerThree['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerThree['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -163,7 +175,11 @@
               <div id="img_5_A" class="oneFrame"
                 <?php
                   if ($bannerFour['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                    if ($bannerFour['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerFour['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -172,7 +188,11 @@
               <div id="img_6_A" class="oneFrame"
                 <?php
                   if ($bannerFive['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                    if ($bannerFive['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerFive['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -181,7 +201,11 @@
               <div id="img_7_A" class="oneFrame"
                 <?php
                   if ($bannerSix['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                    if ($bannerSix['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerSix['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -199,7 +223,11 @@
               <div id="img_2_B" class="oneFrame"
                 <?php
                   if ($bannerOne['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                    if ($bannerOne['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerOne['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerOne['image_path']."crop_".$bannerOne['filename'].".".$bannerOne['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -208,7 +236,11 @@
               <div id="img_3_B" class="oneFrame"
                 <?php
                   if ($bannerTwo['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                    if ($bannerTwo['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerTwo['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerTwo['image_path']."crop_".$bannerTwo['filename'].".".$bannerTwo['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -217,7 +249,11 @@
               <div id="img_4_B" class="oneFrame"
                 <?php
                   if ($bannerThree['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                    if ($bannerThree['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerThree['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerThree['image_path']."crop_".$bannerThree['filename'].".".$bannerThree['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -226,7 +262,11 @@
               <div id="img_5_B" class="oneFrame"
                 <?php
                   if ($bannerFour['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                    if ($bannerFour['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerFour['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFour['image_path']."crop_".$bannerFour['filename'].".".$bannerFour['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -235,7 +275,11 @@
               <div id="img_6_B" class="oneFrame"
                 <?php
                   if ($bannerFive['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                    if ($bannerFive['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerFive['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerFive['image_path']."crop_".$bannerFive['filename'].".".$bannerFive['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };
@@ -244,7 +288,11 @@
               <div id="img_7_B" class="oneFrame"
                 <?php
                   if ($bannerSix['approved'] == 1) {
-                    echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                    if ($bannerSix['flickr_url'] != null) {
+                      echo html_entity_decode("style=background-image:url('".$bannerSix['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$bannerSix['image_path']."crop_".$bannerSix['filename'].".".$bannerSix['extension']."?t=".time()."')");
+                    };
                   } else {
                     echo html_entity_decode("style=background-image:url('".$imgPrefix."/default_photo.png')");
                   };

@@ -23,32 +23,32 @@ $reportStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=3 AND approved=1 A
 $reportStmt->execute();
 
 // Basic info for approving and showing first banner image
-$bannerOneStmt = $pdo->prepare("SELECT image_path,filename,extension,approved FROM Image WHERE image_id=7");
+$bannerOneStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=7");
 $bannerOneStmt->execute();
 $bannerOne = $bannerOneStmt->fetch(PDO::FETCH_ASSOC);
 
 // Basic info for approving and showing second banner image
-$bannerTwoStmt = $pdo->prepare("SELECT image_path,filename,extension,approved FROM Image WHERE image_id=8");
+$bannerTwoStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=8");
 $bannerTwoStmt->execute();
 $bannerTwo = $bannerTwoStmt->fetch(PDO::FETCH_ASSOC);
 
 // Basic info for approving and showing third banner image
-$bannerThreeStmt = $pdo->prepare("SELECT image_path,filename,extension,approved FROM Image WHERE image_id=9");
+$bannerThreeStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=9");
 $bannerThreeStmt->execute();
 $bannerThree = $bannerThreeStmt->fetch(PDO::FETCH_ASSOC);
 
 // Basic info for approving and showing fourth banner image
-$bannerFourStmt = $pdo->prepare("SELECT image_path,filename,extension,approved FROM Image WHERE image_id=10");
+$bannerFourStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=10");
 $bannerFourStmt->execute();
 $bannerFour = $bannerFourStmt->fetch(PDO::FETCH_ASSOC);
 
 // Basic info for approving and showing fifth banner image
-$bannerFiveStmt = $pdo->prepare("SELECT image_path,filename,extension,approved FROM Image WHERE image_id=11");
+$bannerFiveStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=11");
 $bannerFiveStmt->execute();
 $bannerFive = $bannerFiveStmt->fetch(PDO::FETCH_ASSOC);
 
 // Basic info for approving and showing six banner image
-$bannerSixStmt = $pdo->prepare("SELECT image_path,filename,extension,approved FROM Image WHERE image_id=12");
+$bannerSixStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=12");
 $bannerSixStmt->execute();
 $bannerSix = $bannerSixStmt->fetch(PDO::FETCH_ASSOC);
 
