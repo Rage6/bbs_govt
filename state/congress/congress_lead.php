@@ -279,4 +279,28 @@
   // var_dump($repLdrList);
   // echo("</pre>");
 
+  // All of the bills in the House
+  $repBillStmt = $pdo->prepare(
+    "SELECT
+      post_order,
+      chamber_prefix,
+      title,
+      Subtype.subtype_id,
+      subtype_name
+    FROM
+      Post INNER JOIN
+      Subtype
+    WHERE
+      Post.subtype_id=Subtype.subtype_id AND
+      Post.type_id=$repTypeId AND
+      subtype_name NOT LIKE '%law%' AND
+      approved=1
+    ORDER BY
+      post_order DESC, post_id DESC");
+  $repBillStmt->execute();
+  $repBillList = [];
+  while ($oneRepBill = $repBillStmt->fetch(PDO::FETCH_ASSOC)) {
+    $repBillList[] = $oneRepBill;
+  };
+
 ?>
