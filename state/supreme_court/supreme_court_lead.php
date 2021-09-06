@@ -16,6 +16,7 @@
   // Collect all bio titles, names, photos, and basic info
   $justiceInfoStmt = $pdo->prepare(
     "SELECT
+      Delegate.delegate_id,
       first_name,
       last_name,
       hometown,
@@ -23,6 +24,7 @@
       section_path,
       filename,
       extension,
+      flickr_url,
       job_name,
       section_name
     FROM
