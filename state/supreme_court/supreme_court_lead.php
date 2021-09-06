@@ -16,7 +16,7 @@
   // Collect all bio titles, names, photos, and basic info
   $justiceInfoStmt = $pdo->prepare(
     "SELECT
-      Delegate.delegate_id,
+      Delegate.delegate_id AS delegate_id,
       first_name,
       last_name,
       hometown,
