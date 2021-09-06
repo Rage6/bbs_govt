@@ -528,28 +528,6 @@
               </div>
               <div id="repBillDirectory" class="billDirectory repBillDirectory">
                 <!-- This is where the selected bills are listed -->
-                <?php
-                  for ($repNum = 0; $repNum < count($repBillList); $repNum++) {
-                    $oneRepBill = $repBillList[$repNum];
-                    echo("
-                    <div class='oneBill oneRepBill'>
-                      <div class='billNumber repBillNumber'>
-                        ".$oneRepBill['prefix']." ".$oneRepBill['post_order']."
-                      </div>
-                      <div class='billData repBillData'>
-                        <div class='billTitle'>
-                          <div class='billSubtitle'>Title:</div>
-                          <div>".html_entity_decode($oneRepBill['title'])."</div>
-                        </div>
-                        <div class='billTitle'>
-                          <div class='billSubtitle'>Status</div>
-                          <div>".html_entity_decode($oneRepBill['subtype_name'])."</div>
-                        </div>
-                      </div>
-                    </div>
-                    ");
-                  };
-                ?>
               </div>
             </div>
           </div>
