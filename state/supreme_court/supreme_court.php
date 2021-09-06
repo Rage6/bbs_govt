@@ -99,8 +99,12 @@
                   <div>".$oneJustice['first_name']."</br>".$oneJustice['last_name']."</div>
                   <div>".$oneJustice['job_name']."</div>
                 </div>");
-                if ($oneJustice['approved'] == 1) {
-                  echo html_entity_decode("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."?t=".time()."' />");
+                if ($oneJustice['approved'] == 1 && $oneJustice['delegate_id'] != 0) {
+                  if ($oneJustice['flickr_url'] == null || $oneJustice['flickr_url'] == '') {
+                    echo html_entity_decode("<img class='justiceImg' src='".$oneJustice['section_path']."crop_".$oneJustice['filename'].".".$oneJustice['extension']."?t=".time()."' />");
+                  } else {
+                    echo html_entity_decode("<img class='justiceImg' src='".$oneJustice['flickr_url']."' />");
+                  }
                 } else {
                   echo html_entity_decode("<img class='justiceImg' src='../../img/default_photo.png' />");
                 };
