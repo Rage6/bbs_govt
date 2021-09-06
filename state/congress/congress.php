@@ -154,8 +154,11 @@
                       ".$senateLdrList[$ldrNum]['first_name']." ".$senateLdrList[$ldrNum]['last_name']."
                     </div>");
                     if ($senateLdrList[$ldrNum]['delegate_id'] != "0" && $senateLdrList[$ldrNum]['approved'] == "1") {
-                      echo html_entity_decode("
-                      <img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."' />");
+                      if ($senateLdrList[$ldrNum]['flickr_url'] == null || $senateLdrList[$ldrNum]['flickr_url'] == '') {
+                        echo html_entity_decode("<img src='".$senateLdrList[$ldrNum]['section_path']."crop_".$senateLdrList[$ldrNum]['filename'].".".$senateLdrList[$ldrNum]['extension']."?t=".time()."' />");
+                      } else {
+                        echo html_entity_decode("<img src='".$senateLdrList[$ldrNum]['flickr_url']."' />");
+                      };
                     } else {
                       echo html_entity_decode("
                         <img src='../../img/default_photo.png' />");
@@ -455,8 +458,11 @@
                       ".$repLdrList[$repLdrNum]['first_name']." ".$repLdrList[$repLdrNum]['last_name']."
                     </div>");
                     if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
-                      echo html_entity_decode("
-                      <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
+                      if ($repLdrList[$repLdrNum]['flickr_url'] == null || $repLdrList[$repLdrNum]['flickr_url'] == '') {
+                        echo html_entity_decode("<img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
+                      } else {
+                        echo html_entity_decode("<img src='".$repLdrList[$repLdrNum]['flickr_url']."'>");
+                      };
                     } else {
                       echo html_entity_decode("
                         <img src='../../img/default_photo.png'>");
@@ -484,8 +490,11 @@
                       ".$repLdrList[$repLdrNum]['first_name']." ".$repLdrList[$repLdrNum]['last_name']."
                     </div>");
                     if ($repLdrList[$repLdrNum]['delegate_id'] != "0" && $repLdrList[$repLdrNum]['approved'] == "1") {
-                      echo html_entity_decode("
-                      <img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
+                      if ($repLdrList[$repLdrNum]['flickr_url'] == null || $repLdrList[$repLdrNum]['flickr_url'] == '') {
+                        echo html_entity_decode("<img src='".$repLdrList[$repLdrNum]['section_path']."crop_".$repLdrList[$repLdrNum]['filename'].".".$repLdrList[$repLdrNum]['extension']."?t=".time()."'>");
+                      } else {
+                        echo html_entity_decode("<img src='".$repLdrList[$repLdrNum]['flickr_url']."'>");
+                      };
                     } else {
                       echo html_entity_decode("
                       <img src='../../img/default_photo.png'>");

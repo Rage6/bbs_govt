@@ -43,7 +43,8 @@
       approved,
       section_path,
       filename,
-      extension
+      extension,
+      flickr_url
     FROM
       Delegate INNER JOIN
       Job INNER JOIN
@@ -184,7 +185,8 @@
       approved,
       section_path,
       filename,
-      extension
+      extension,
+      flickr_url
     FROM
       Delegate INNER JOIN
       Job INNER JOIN
