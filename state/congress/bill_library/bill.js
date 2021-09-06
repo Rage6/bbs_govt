@@ -104,10 +104,6 @@ $(document).ready(()=>{
         };
       };
 
-      // Initial display of all of the bills
-      billUpdate(senBillLibrary,"0","senate");
-      // billUpdate(repBillLibrary,"0","house");
-
       // Show all of the Senate bill options
       $("#currentSenSelect").click(()=>{
         if ($(window).outerWidth() < 1366) {

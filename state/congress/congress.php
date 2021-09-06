@@ -230,6 +230,28 @@
               </div>
               <div id="senBillDirectory" class="billDirectory senBillDirectory">
                 <!-- This is where the selected bills are listed -->
+                <?php
+                  for ($senNum = 0; $senNum < count($senBillList); $senNum++) {
+                    $oneSenBill = $senBillList[$senNum];
+                    echo("
+                    <div class='oneBill oneSenBill'>
+                      <div class='billNumber senBillNumber'>
+                        ".$oneSenBill['chamber_prefix']." ".$oneSenBill['post_order']."
+                      </div>
+                      <div class='billData senBillData'>
+                        <div class='billTitle'>
+                          <div class='billSubtitle'>Title:</div>
+                          <div>".html_entity_decode($oneSenBill['title'])."</div>
+                        </div>
+                        <div class='billTitle'>
+                          <div class='billSubtitle'>Status</div>
+                          <div>".html_entity_decode($oneSenBill['subtype_name'])."</div>
+                        </div>
+                      </div>
+                    </div>
+                    ");
+                  };
+                ?>
               </div>
             </div>
           </div>
@@ -534,7 +556,7 @@
                     echo("
                     <div class='oneBill oneRepBill'>
                       <div class='billNumber repBillNumber'>
-                        ".$oneRepBill['prefix']." ".$oneRepBill['post_order']."
+                        ".$oneRepBill['chamber_prefix']." ".$oneRepBill['post_order']."
                       </div>
                       <div class='billData repBillData'>
                         <div class='billTitle'>
