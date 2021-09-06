@@ -387,7 +387,7 @@
                 for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                   echo html_entity_decode("
                   <div class='photoBox'>
-                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."</div>");
+                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']." (Job ID: ".$allPhotos[$imgNum]['job_id'].")</div>");
                     if ($allPhotos[$imgNum]['job_id'] < 0) {
                       echo html_entity_decode("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                     };
@@ -523,10 +523,10 @@
                       $jobCity = $oneSection['section_name'];
                     };
                   };
-                  $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                  $cityAndId = ", ".$jobCity." (Job ID: ".$oneJob['job_id'].")";
                   $onlyId = $oneJob['job_id'];
                 } else {
-                  $cityAndId = "";
+                  $cityAndId = " (Job ID: ".$oneJob['job_id'].")";
                 };
                 if ($oneJob['in_department'] == 1) {
                   $findDptNameStmt->execute(array(
@@ -600,18 +600,18 @@
                           $cityName = "No city";
                           foreach ($allSection as $oneSection) {
                             if ($oneSection['section_id'] == $singleJob['senator']) {
-                              $cityName = ", ".$oneSection['section_name']." (#".$singleJob['job_id'].")";
+                              $cityName = ", ".$oneSection['section_name']." (Job ID: ".$singleJob['job_id'].")";
                             };
                           };
                         } elseif ($singleJob['representative'] != 0) {
                           $cityName = "No city";
                           foreach ($allSection as $oneSection) {
                             if ($oneSection['section_id'] == $singleJob['representative']) {
-                              $cityName = ", ".$oneSection['section_name']." (#".$singleJob['job_id'].")";
+                              $cityName = ", ".$oneSection['section_name']." (Job ID: ".$singleJob['job_id'].")";
                             };
                           };
                         } else {
-                          $cityName = "";
+                          $cityName = " (Job ID: ".$singleJob['job_id'].")";
                         };
                         if ($singleJob['in_department'] == 1) {
                           $findDptNameStmt->execute(array(
