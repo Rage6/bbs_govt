@@ -387,7 +387,7 @@
                 for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                   echo html_entity_decode("
                   <div class='photoBox'>
-                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']." (Job ID: ".$allPhotos[$imgNum]['job_id'].")</div>");
+                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."<br> (Job ID: ".$allPhotos[$imgNum]['job_id'].")</div>");
                     if ($allPhotos[$imgNum]['job_id'] < 0) {
                       echo html_entity_decode("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                     };
