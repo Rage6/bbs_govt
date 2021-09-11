@@ -17,7 +17,7 @@ if (isset($_SESSION['counsToken'])) {
   $dbObject = $dbTknStmt->fetch(PDO::FETCH_ASSOC);
   $dbTkn = $dbObject['couns_token'];
   if ($dbTkn != $_SESSION['counsToken']) {
-    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because another counselor logged into this section's account recently.</b>";
+    $_SESSION['message'] = "<b style='color:red'>Your token does not match your section's token. Please log back in.</br>NOTE: This may have happened because your section was logged into another device recently.</b>";
     unset($_SESSION['counsToken']);
     unset($_SESSION['secId']);
     unset($_SESSION['adminType']);
@@ -86,50 +86,55 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-// $allPhotoStmt = $pdo->prepare("SELECT Job.job_id, job_name, image_id, Image.image_path, Image.filename, extension, Image.approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height FROM Job JOIN Image WHERE Job.job_id=Image.job_id AND section_id=:se AND Image.filename IS NOT NULL");
+if ($_GET['type'] == 'photos') {
+  // // For uploading images directly
+  // $allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height, flickr_url FROM Image WHERE section_id=:se AND filename IS NOT NULL");
+  // // For using the Flickr
+  $allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, approved, flickr_url FROM Image WHERE section_id=:se");
+  $allPhotoStmt->execute(array(
+    ':se'=>$secId
+  ));
+  $allPhotos = [];
+  while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
+    $allPhotos[] = $onePhoto;
+  };
 
-$allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height, flickr_url FROM Image WHERE section_id=:se AND filename IS NOT NULL");
-$allPhotoStmt->execute(array(
-  ':se'=>$secId
-));
-$allPhotos = [];
-while ($onePhoto = $allPhotoStmt->fetch(PDO::FETCH_ASSOC)) {
-  $allPhotos[] = $onePhoto;
-};
-
-$photoDelNameStmt = $pdo->prepare("SELECT job_id,first_name,last_name FROM Job INNER JOIN Delegate WHERE Job.delegate_id=Delegate.delegate_id AND Job.section_id=:scd");
-$photoDelNameStmt->execute(array(
-  ':scd'=>$secId
-));
-$photoDelNames = [];
-while($oneDelName = $photoDelNameStmt->fetch(PDO::FETCH_ASSOC)) {
-  // echo("<pre>");
-  // var_dump($oneDelName);
-  // echo("</pre>");
-  for ($nameNum = 0; $nameNum < count($allPhotos); $nameNum++) {
-    if ($oneDelName['job_id'] == $allPhotos[$nameNum]['job_id']) {
-      // var_dump($oneDelName['first_name']." ".$oneDelName['last_name']);
-      $allPhotos[$nameNum]['delegate_name'] = $oneDelName['first_name']." ".$oneDelName['last_name'];
-    } else {
-      $allPhotos[$nameNum]['delegate_name'] = "N/A";
+  $photoDelNameStmt = $pdo->prepare("SELECT job_id,first_name,last_name FROM Job INNER JOIN Delegate WHERE Job.delegate_id=Delegate.delegate_id AND Job.section_id=:scd");
+  $photoDelNameStmt->execute(array(
+    ':scd'=>$secId
+  ));
+  $photoDelNames = [];
+  while($oneDelName = $photoDelNameStmt->fetch(PDO::FETCH_ASSOC)) {
+    // echo("<pre>");
+    // var_dump($oneDelName);
+    // echo("</pre>");
+    for ($nameNum = 0; $nameNum < count($allPhotos); $nameNum++) {
+      if ($oneDelName['job_id'] == $allPhotos[$nameNum]['job_id']) {
+        // var_dump($oneDelName['first_name']." ".$oneDelName['last_name']);
+        $allPhotos[$nameNum]['delegate_name'] = $oneDelName['first_name']." ".$oneDelName['last_name'];
+      } else {
+        $allPhotos[$nameNum]['delegate_name'] = "N/A";
+      };
     };
   };
 };
 
 // Gets all city info
-$allCityStmt = $pdo->prepare("SELECT * FROM Section WHERE is_city=1");
-$allCityStmt->execute();
 $allCity = [];
-while ($oneCity = $allCityStmt->fetch(PDO::FETCH_ASSOC)) {
-  $allCity[] = $oneCity;
+for ($oneNum = 0; $oneNum < count($allSection); $oneNum++) {
+  if ($allSection[$oneNum]['is_city'] == "1") {
+    $allCity[] = $allSection[$oneNum];
+  };
 };
 
 // Gets all delegate info
-$allDelegateStmt = $pdo->prepare("SELECT * FROM Delegate ORDER BY last_name, first_name ASC");
-$allDelegateStmt->execute();
-$allDelegate = [];
-while ($oneDelegate = $allDelegateStmt->fetch(PDO::FETCH_ASSOC)) {
-  $allDelegate[] = $oneDelegate;
+if ($_SESSION['adminType'] == "counselor") {
+  $allDelegateStmt = $pdo->prepare("SELECT * FROM Delegate ORDER BY last_name, first_name ASC");
+  $allDelegateStmt->execute();
+  $allDelegate = [];
+  while ($oneDelegate = $allDelegateStmt->fetch(PDO::FETCH_ASSOC)) {
+    $allDelegate[] = $oneDelegate;
+  };
 };
 
 if (isset($_POST['changeJobStatus'])) {
@@ -200,7 +205,6 @@ if (isset($_POST['changeApproval'])) {
 
 // Changes an existing post
 if (isset($_POST['changePosts'])) {
-  // if ($_POST['postTitle'] == "" || $_POST['postContent'] == "" || $_POST['orderNum'] == "") {
   if ($_POST['postTitle'] == "" || $_POST['orderNum'] == "") {
     $_SESSION['message'] = "<b style='color:red'>Title, main content, and order placement is required</b>";
     header('Location: admin.php');
