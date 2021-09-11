@@ -214,20 +214,24 @@
               </div>
             </div>
             <?php
-              if ((int)$countMember > 0) {
+              $allMembers = [];
+              while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
+                $allMembers[] = $oneMember;
+              };
+              if (count($allMembers) > 0) {
                 echo("<div class='allMembers'>");
-                while ($oneMember = $memberListStmt->fetch(PDO::FETCH_ASSOC)) {
+                for ($memberNum = 0; $memberNum < count($allMembers); $memberNum++) {
                   echo html_entity_decode("
                   <div class='memberBox'>
-                    <div class='memberName'>".$oneMember['last_name'].", ".$oneMember['first_name']."</div>
+                    <div class='memberName'>".$allMembers[$memberNum]['last_name'].", ".$allMembers[$memberNum]['first_name']."</div>
                     <div class='memberHomeBox'>
                       <div class='cityColumn bothCities'>
                         <div class='bothTitles'>BBS City</div>
-                        <div>".$oneMember['section_name']."</div>
+                        <div>".$allMembers[$memberNum]['section_name']."</div>
                       </div>
                       <div class='hometownColumn bothCities'>
                         <div class='bothTitles'>Hometown</div>
-                        <div>".$oneMember['hometown']."</div>
+                        <div>".$allMembers[$memberNum]['hometown']."</div>
                       </div>
                     </div>
                   </div>
