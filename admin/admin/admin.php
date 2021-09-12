@@ -387,7 +387,7 @@
                 for ($imgNum = 0; $imgNum < count($allPhotos); $imgNum++) {
                   echo html_entity_decode("
                   <div class='photoBox'>
-                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']." (Job ID: ".$allPhotos[$imgNum]['job_id'].")</div>");
+                    <div class='photoTitle'>".$allPhotos[$imgNum]['img_title']."<br> (Job ID: ".$allPhotos[$imgNum]['job_id'].")</div>");
                     if ($allPhotos[$imgNum]['job_id'] < 0) {
                       echo html_entity_decode("<div class='photoDelegate'>(".$allPhotos[$imgNum]['delegate_name'].")</div>");
                     };
@@ -428,15 +428,9 @@
                     //   </div>
                     // </form>");
                     if ($_SESSION['adminType'] == 'counselor') {
-                      $photoInfoStmt = $pdo->prepare("SELECT edited FROM Image WHERE job_id=:jbi");
-                      $photoInfoStmt->execute(array(
-                        ':jbi'=>$allPhotos[$imgNum]['job_id']
-                      ));
-                      $photoInfo = $photoInfoStmt->fetch(PDO::FETCH_ASSOC);
                       echo("<div class='photoApprovBox'>
-                        <div class='counsApprTitle'>COUNSELOR ONLY</div>");
-                        if ($photoInfo['edited'] == 1) {
-                          echo("<form method='POST'>
+                        <div class='counsApprTitle'>COUNSELOR ONLY</div>
+                          <form method='POST'>
                             <input name='appImgId' type='hidden' value='".$allPhotos[$imgNum]['job_id']."' />
                             <div class='apprSelection'>
                               <div>Image Approved?</div>
@@ -454,11 +448,8 @@
                               </select>
                             </div>
                             <input class='counsApprBttn allPostBttns' name='approveImg' type='submit' value='ENTER' />
-                          </form>");
-                        } else {
-                          echo("<div style='padding: 0 5%'>This image was not edited into a square shape, making it unable to fit on their page. Tell the delegate to reload their image, use the included editing tool, and hit 'ENTER'</div>");
-                        };
-                      echo("</div>");
+                          </form>
+                        </div>");
                     } else {
                       if ($allPhotos[$imgNum]['approved'] == 1) {
                         $approvalStatus = "APPROVED";
