@@ -146,19 +146,36 @@
     <div class="mainBox">
       <div class="delegateContent">
       <?php
+        // All of this section's types:
         $listTypeStmt = $pdo->prepare("SELECT * FROM Type WHERE section_id=:sid");
         $listTypeStmt->execute(array(
           ':sid'=>$secInfo['section_id']
         ));
-          while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
-            $subtypeListStmt = $pdo->prepare("SELECT * FROM Subtype WHERE type_id=:tyd");
-            $subtypeListStmt->execute(array(
-              ':tyd'=>$oneType['type_id']
-            ));
-            $subtypeList = [];
-            while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
-              $subtypeList[] = $oneSubtype;
-            };
+        $typeList = [];
+        while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
+          $typeList[] = $oneType;
+        };
+
+        // All of this section's subtypes:
+        $subtypeListStmt = $pdo->prepare("SELECT * FROM Subtype");
+        $subtypeListStmt->execute();
+        $subtypeList = [];
+        while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
+          $subtypeList[] = $oneSubtype;
+        };
+        // All of this section's posts:
+        $listPostStmt = $pdo->prepare("SELECT * FROM Post WHERE section_id=:sid ORDER BY post_order, Post.timestamp ASC");
+        $listPostStmt->execute(array(
+          ':sid'=>$secInfo['section_id']
+        ));
+        $postList = [];
+        while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
+          $postList[] = $onePost;
+        };
+
+          for ($typeNum = 0; $typeNum < count($typeList); $typeNum++) {
+            if ($typeList[$typeNum]['section_id'] == $secInfo['section_id']) {
+            $oneType = $typeList[$typeNum];
             echo html_entity_decode("
             <div class='delegateBox'>
               <a href='admin.php?type=".$oneType['type_id']."'>
@@ -195,7 +212,9 @@
                       <div>
                         <select class='subtypeSelect' name='newSubtype'>");
                           for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
-                            echo html_entity_decode("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                            if ($subtypeList[$newSub]['type_id'] == $oneType['type_id']) {
+                              echo html_entity_decode("<option value='".$subtypeList[$newSub]['subtype_id']."'>".$subtypeList[$newSub]['subtype_name']."</option>");
+                            };
                           };
                         echo html_entity_decode("</select>
                       </div>
@@ -214,11 +233,10 @@
                   </div>
                   <div id='boxList_".$oneType['type_id']."' class='boxList'>
                 ");
-                $listPostStmt = $pdo->prepare("SELECT DISTINCT * FROM Post WHERE type_id=:tid ORDER BY post_order, Post.timestamp ASC");
-                $listPostStmt->execute(array(
-                  ':tid'=>$oneType['type_id']
-                ));
-                while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
+                // List of existing posts...
+                for ($postNum = 0; $postNum < count($postList); $postNum++) {
+                  if ($postList[$postNum]['type_id'] == $oneType['type_id']) {
+                  $onePost = $postList[$postNum];
                   if ($onePost['approved'] == 1) {
                     $approval = 1;
                   } else {
@@ -315,11 +333,7 @@
                       <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
                       <div class='changeBttns'>
                         <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
-                        $findCanAddStmt = $pdo->prepare("SELECT can_add FROM Type WHERE type_id=:ti");
-                        $findCanAddStmt->execute(array(
-                          ':ti'=>$onePost['type_id']
-                        ));
-                        $findCanAdd = $findCanAddStmt->fetch(PDO::FETCH_ASSOC)['can_add'];
+                        $findCanAdd = $oneType['can_add'];
                         if ($findCanAdd == 1) {
                           echo html_entity_decode("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
                         };
@@ -359,10 +373,12 @@
                     </form>
                   </div>");
                 };
+                };
               echo("</div>
               </div>");
             };
             echo("</div>");
+          };
           };
           echo("
           <div class='delegateBox'>
