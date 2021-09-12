@@ -480,6 +480,10 @@
           $jobListStmt->execute(array(
             ':scd'=>htmlentities($secInfo['section_id'])
           ));
+          $jobList = [];
+          while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+            $jobList[] = $oneJob;
+          };
           $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active FROM Department WHERE Department.job_id=:ji");
           echo("
             <div class='counsTitle'>
@@ -497,7 +501,8 @@
                 </a>");
                 if (isset($_GET['type']) && $_GET['type'] == "staff") {
                 echo("<div id='listBox' class='listBox'>");
-              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+              for ($jobNum = 0; $jobNum < count($jobList); $jobNum++) {
+                $oneJob = $jobList[$jobNum];
                 if ($oneJob['senator'] != 0) {
                   $jobCity = "None";
                   foreach($allSection as $oneSection) {
@@ -505,7 +510,7 @@
                       $jobCity = $oneSection['section_name'];
                     };
                   };
-                  $cityAndId = ", ".$jobCity." (#".$oneJob['job_id'].")";
+                  $cityAndId = ", ".$jobCity." (Job ID: ".$oneJob['job_id'].")";
                   $onlyId = $oneJob['job_id'];
                 } elseif ($oneJob['representative'] != 0) {
                   $jobCity = "None";
@@ -583,10 +588,8 @@
                   <div>
                     <select name='jobId'>
                       <option value='-1'>-- Select Job --</option>");
-                      $jobListStmt->execute(array(
-                        ':scd'=>htmlentities($secInfo['section_id'])
-                      ));
-                      while ($singleJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                      for ($jobNum = 0; $jobNum < count($jobList); $jobNum++) {
+                        $singleJob = $jobList[$jobNum];
                         if ($singleJob['senator'] != 0) {
                           $cityName = "No city";
                           foreach ($allSection as $oneSection) {
