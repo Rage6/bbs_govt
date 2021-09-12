@@ -236,143 +236,143 @@
                 // List of existing posts...
                 for ($postNum = 0; $postNum < count($postList); $postNum++) {
                   if ($postList[$postNum]['type_id'] == $oneType['type_id']) {
-                  $onePost = $postList[$postNum];
-                  if ($onePost['approved'] == 1) {
-                    $approval = 1;
-                  } else {
-                    $approval = 0;
-                  };
-                  echo html_entity_decode("
-                  <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
-                    <form method='POST'>
-                      <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
-                      if ($oneType['can_add'] == 1) {
-                        echo("
-                          <div class='postSubtitle'>Title/Name(s):</div>
-                          <textarea class='postText titleText' name='postTitle'>");
-                          echo html_entity_decode($onePost['title'], ENT_QUOTES);
-                        echo("</textarea>");
-                      } else {
-                        echo html_entity_decode("
-                          <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
-                          <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
-                      };
-                      echo("<div class='postSubtitle'>Content:</div>
-                      <textarea class='postText contentText' name='postContent'>");
-                        echo html_entity_decode($onePost['content'], ENT_QUOTES);
-                      echo html_entity_decode("</textarea>
-                      <div class='postSubtitle'>Time Posted</div>
-                      <div style='text-align:center'>
-                        (<i>YYYY-MM-DD HH:MM:SS</i>)
-                      </div>
-                      <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>");
-
-                      if (count($subtypeList) > 1) {
-                        $currentSubId = 0;
-                        $currentSubName = "none";
-                        for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
-                          if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
-                            $currentSubId = $subtypeList[$subNum]['subtype_id'];
-                            $currentSubName = $subtypeList[$subNum]['subtype_name'];
-                          };
+                    $onePost = $postList[$postNum];
+                    if ($onePost['approved'] == 1) {
+                      $approval = 1;
+                    } else {
+                      $approval = 0;
+                    };
+                    echo html_entity_decode("
+                    <div id='postBox_".$onePost['post_id']."' class='postBox' data-postid='".$onePost['post_id']."' data-typeid='".$onePost['type_id']."' data-approval='".$approval."'>
+                      <form method='POST'>
+                        <input type='hidden' name='postId' value='".$onePost['post_id']."'>");
+                        if ($oneType['can_add'] == 1) {
+                          echo("
+                            <div class='postSubtitle'>Title/Name(s):</div>
+                            <textarea class='postText titleText' name='postTitle'>");
+                            echo html_entity_decode($onePost['title'], ENT_QUOTES);
+                          echo("</textarea>");
+                        } else {
+                          echo html_entity_decode("
+                            <input type='hidden' name='postTitle' value='".$onePost['title']."'/>
+                            <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
                         };
-                        echo html_entity_decode("
+                        echo("<div class='postSubtitle'>Content:</div>
+                        <textarea class='postText contentText' name='postContent'>");
+                          echo html_entity_decode($onePost['content'], ENT_QUOTES);
+                        echo html_entity_decode("</textarea>
+                        <div class='postSubtitle'>Time Posted</div>
+                        <div style='text-align:center'>
+                          (<i>YYYY-MM-DD HH:MM:SS</i>)
+                        </div>
+                        <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>");
+
+                        if (count($subtypeList) > 1) {
+                          $currentSubId = 0;
+                          $currentSubName = "none";
+                          for ($subNum = 0; $subNum < count($subtypeList); $subNum++) {
+                            if ($subtypeList[$subNum]['subtype_id'] == $onePost['subtype_id']) {
+                              $currentSubId = $subtypeList[$subNum]['subtype_id'];
+                              $currentSubName = $subtypeList[$subNum]['subtype_name'];
+                            };
+                          };
+                          echo html_entity_decode("
+                            <div class='postSubtitle'>
+                              Category
+                            </div>
+                            <div>
+                              <form method='POST'>
+                                <input type='hidden' name='categoryPostId' value='".$onePost['post_id']."'>
+                                <select class='subtypeSelect' name='subtype'>
+                                  <option value='".$currentSubId."'>".$currentSubName."</option>");
+                                  for ($sub = 0; $sub < count($subtypeList); $sub++) {
+                                    if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
+                                      echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                    };
+                                  };
+                                echo("</select>
+                                <button type='submit' name='changeCategories'>
+                                  Change Category Only
+                                </button>
+
+                            </div>
+                          ");
+                        } else {
+                          echo html_entity_decode("
                           <div class='postSubtitle'>
                             Category
                           </div>
                           <div>
-                            <form method='POST'>
-                              <input type='hidden' name='categoryPostId' value='".$onePost['post_id']."'>
-                              <select class='subtypeSelect' name='subtype'>
-                                <option value='".$currentSubId."'>".$currentSubName."</option>");
-                                for ($sub = 0; $sub < count($subtypeList); $sub++) {
-                                  if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
-                                    echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
-                                  };
-                                };
-                              echo("</select>
-                              <button type='submit' name='changeCategories'>
-                                Change Category Only
-                              </button>
-
+                            <input type='hidden' name='subtype' value='".$subtypeList[0]['subtype_id']."' />
+                            <div style='text-align:center'>".$subtypeList[0]['subtype_name']."</div>
                           </div>
-                        ");
-                      } else {
-                        echo html_entity_decode("
-                        <div class='postSubtitle'>
-                          Category
-                        </div>
-                        <div>
-                          <input type='hidden' name='subtype' value='".$subtypeList[0]['subtype_id']."' />
-                          <div style='text-align:center'>".$subtypeList[0]['subtype_name']."</div>
-                        </div>
-                        ");
-                      };
-
-                      if ($onePost['type_id'] == 9 || $onePost['type_id'] == 11) {
-                        echo("<div class='postSubtitle'>Bill #:</div>");
-                      } else {
-                        echo("<div class='postSubtitle'>Order #:</div>");
-                      };
-                      echo html_entity_decode("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
-                      if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
-                        echo html_entity_decode("
-                        <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
-                        <input type='text' name='currentPrefix' value='".$onePost['chamber_prefix']."' />");
-                      };
-                  if ($approval == 1) {
-                    $ifApproved = "checked";
-                    $ifPending = "";
-                    $status = "<b style='color:green'>APPROVED</b>";
-                  } else {
-                    $ifApproved = "";
-                    $ifPending = "checked";
-                    $status = "<b style='color:yellow'>PENDING</b>";
-                  };
-                  echo html_entity_decode("
-                      <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
-                      <div class='changeBttns'>
-                        <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
-                        $findCanAdd = $oneType['can_add'];
-                        if ($findCanAdd == 1) {
-                          echo html_entity_decode("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                          ");
                         };
-                      echo html_entity_decode("</div>
-                      <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
-                      if ($_SESSION['adminType'] == "delegate") {
-                        echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
-                      };
-                      echo html_entity_decode("Are you sure you want to make the change(s)?
-                        <div class='delBttnRow'>
-                          <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
-                          <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
-                        </div>
-                      </div>");
-                      if ($findCanAdd == 1) {
-                        echo html_entity_decode("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
-                          ARE YOU SURE YOU WANT TO DELETE THIS POST?
+
+                        if ($onePost['type_id'] == 9 || $onePost['type_id'] == 11) {
+                          echo("<div class='postSubtitle'>Bill #:</div>");
+                        } else {
+                          echo("<div class='postSubtitle'>Order #:</div>");
+                        };
+                        echo html_entity_decode("<input class='postOrder' type='number' name='orderNum' min='1' value='".$onePost['post_order']."'/>");
+                        if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
+                          echo html_entity_decode("
+                          <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
+                          <input type='text' name='currentPrefix' value='".$onePost['chamber_prefix']."' />");
+                        };
+                    if ($approval == 1) {
+                      $ifApproved = "checked";
+                      $ifPending = "";
+                      $status = "<b style='color:green'>APPROVED</b>";
+                    } else {
+                      $ifApproved = "";
+                      $ifPending = "checked";
+                      $status = "<b style='color:yellow'>PENDING</b>";
+                    };
+                    echo html_entity_decode("
+                        <div class='postSubtitle postStatus'>Online Status: ".$status."</div>
+                        <div class='changeBttns'>
+                          <div class='blueBttn' id='chgBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='change'>CHANGE</div>");
+                          $findCanAdd = $oneType['can_add'];
+                          if ($findCanAdd == 1) {
+                            echo html_entity_decode("<div id='delBttn".$onePost['post_id']."' data-post='".$onePost['post_id']."' data-box='delete'>DELETE</div>");
+                          };
+                        echo html_entity_decode("</div>
+                        <div style='display:none' id='chgBox".$onePost['post_id']."' class='delBox'>");
+                        if ($_SESSION['adminType'] == "delegate") {
+                          echo("NOTE: Upon clicking 'CHANGE', this post will be hidden online until a counselor reapproves it. ");
+                        };
+                        echo html_entity_decode("Are you sure you want to make the change(s)?
                           <div class='delBttnRow'>
-                            <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
-                            <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
+                            <div class='delBttn noDel' id='cancelChg".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, don't change it</div>
+                            <input class='yesChg allPostBttns' type='submit' name='changePosts' value='Yes, change it' />
                           </div>
                         </div>");
-                      };
-                      if ($_SESSION['adminType'] == "counselor") {
-                        echo html_entity_decode("
-                          <div class='counsOnly'>
-                            <div><u>COUNSELOR ONLY</u></div>
-                            <input type='radio' id='yes".$onePost['post_id']."' name='approval' value='1' ".$ifApproved." />
-                            <label for='yes'>APPROVED</label></br>
-                            <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
-                            <label for='no'>PENDING</label></br>
-                            <input class='allPostBttns' type='submit' name='changeApproval' value='SUBMIT' />
-                          </div>
-                        ");
-                      };
-                    echo("
-                    </form>
-                  </div>");
-                };
+                        if ($findCanAdd == 1) {
+                          echo html_entity_decode("<div style='display:none' id='delBox".$onePost['post_id']."' class='delBox'>
+                            ARE YOU SURE YOU WANT TO DELETE THIS POST?
+                            <div class='delBttnRow'>
+                              <div class='delBttn noDel' id='cancelDel".$onePost['post_id']."' data-post='".$onePost['post_id']."'>NO, keep it</div>
+                              <input class='yesDel allPostBttns' type='submit' name='deletePost' value='YES, delete it' />
+                            </div>
+                          </div>");
+                        };
+                        if ($_SESSION['adminType'] == "counselor") {
+                          echo html_entity_decode("
+                            <div class='counsOnly'>
+                              <div><u>COUNSELOR ONLY</u></div>
+                              <input type='radio' id='yes".$onePost['post_id']."' name='approval' value='1' ".$ifApproved." />
+                              <label for='yes'>APPROVED</label></br>
+                              <input type='radio' id='no".$onePost['post_id']."' name='approval' value='0' ".$ifPending." />
+                              <label for='no'>PENDING</label></br>
+                              <input class='allPostBttns' type='submit' name='changeApproval' value='SUBMIT' />
+                            </div>
+                          ");
+                        };
+                      echo("
+                      </form>
+                    </div>");
+                  };
                 };
               echo("</div>
               </div>");
