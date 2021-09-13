@@ -146,32 +146,6 @@
     <div class="mainBox">
       <div class="delegateContent">
       <?php
-        // All of this section's types:
-        $listTypeStmt = $pdo->prepare("SELECT * FROM Type WHERE section_id=:sid");
-        $listTypeStmt->execute(array(
-          ':sid'=>$secInfo['section_id']
-        ));
-        $typeList = [];
-        while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
-          $typeList[] = $oneType;
-        };
-
-        // All of this section's subtypes:
-        $subtypeListStmt = $pdo->prepare("SELECT * FROM Subtype");
-        $subtypeListStmt->execute();
-        $subtypeList = [];
-        while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
-          $subtypeList[] = $oneSubtype;
-        };
-        // All of this section's posts:
-        $listPostStmt = $pdo->prepare("SELECT * FROM Post WHERE section_id=:sid ORDER BY post_order, Post.timestamp ASC");
-        $listPostStmt->execute(array(
-          ':sid'=>$secInfo['section_id']
-        ));
-        $postList = [];
-        while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
-          $postList[] = $onePost;
-        };
 
           for ($typeNum = 0; $typeNum < count($typeList); $typeNum++) {
             if ($typeList[$typeNum]['section_id'] == $secInfo['section_id']) {
@@ -286,8 +260,10 @@
                                 <select class='subtypeSelect' name='subtype'>
                                   <option value='".$currentSubId."'>".$currentSubName."</option>");
                                   for ($sub = 0; $sub < count($subtypeList); $sub++) {
-                                    if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
-                                      echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                    if ($subtypeList[$sub]['type_id'] == $oneType['type_id']) {
+                                      if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
+                                        echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                      };
                                     };
                                   };
                                 echo("</select>
@@ -493,14 +469,7 @@
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
           $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,job_active,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.senator,Job.representative,Job.job_id ASC");
-          $jobListStmt->execute(array(
-            ':scd'=>htmlentities($secInfo['section_id'])
-          ));
-          $jobList = [];
-          while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
-            $jobList[] = $oneJob;
-          };
-          $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active FROM Department WHERE Department.job_id=:ji");
+          $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active,job_id FROM Department WHERE section_id=:sid");
           echo("
             <div class='counsTitle'>
               COUNSELORS ONLY
@@ -515,78 +484,95 @@
                     Current Staff
                   </div>
                 </a>");
-                if (isset($_GET['type']) && $_GET['type'] == "staff") {
+              if (isset($_GET['type']) && $_GET['type'] == "staff") {
+                // All job list...
+                $jobListStmt->execute(array(
+                  ':scd'=>htmlentities($secInfo['section_id'])
+                ));
+                $jobList = [];
+                while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                  $jobList[] = $oneJob;
+                };
+                // All department list...
+                $findDptNameStmt->execute(array(
+                  ':sid'=>htmlentities($secInfo['section_id'])
+                ));
+                $dptNameList = [];
+                while ($oneDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC)) {
+                  $dptNameList[] = $oneDptName;
+                };
                 echo("<div id='listBox' class='listBox'>");
-              for ($jobNum = 0; $jobNum < count($jobList); $jobNum++) {
-                $oneJob = $jobList[$jobNum];
-                if ($oneJob['senator'] != 0) {
-                  $jobCity = "None";
-                  foreach($allSection as $oneSection) {
-                    if ($oneSection['section_id'] == $oneJob['senator']) {
-                      $jobCity = $oneSection['section_name'];
-                    };
-                  };
-                  $cityAndId = ", ".$jobCity." (Job ID: ".$oneJob['job_id'].")";
-                  $onlyId = $oneJob['job_id'];
-                } elseif ($oneJob['representative'] != 0) {
-                  $jobCity = "None";
-                  foreach($allSection as $oneSection) {
-                    if ($oneSection['section_id'] == $oneJob['representative']) {
-                      $jobCity = $oneSection['section_name'];
-                    };
-                  };
-                  $cityAndId = ", ".$jobCity." (Job ID: ".$oneJob['job_id'].")";
-                  $onlyId = $oneJob['job_id'];
-                } else {
-                  $cityAndId = " (Job ID: ".$oneJob['job_id'].")";
-                };
-                if ($oneJob['in_department'] == 1) {
-                  $findDptNameStmt->execute(array(
-                    ':ji'=>$oneJob['job_id']
-                  ));
-                  $findDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
-                  $dptName = " (".$findDptName['dpt_name'].")";
-                  $dptStatus = $findDptName['active'];
-                } else {
-                  $dptName = "";
-                  $dptStatus = 0;
-                };
-                if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
-                  echo html_entity_decode("
-                  <div class='staffTitle'>
-                    ".$oneJob['job_name'].$cityAndId.$dptName."
-                    <form method='POST'>
-                      <input type='hidden' name='jobId' value='".$onlyId."'/>
-                      <select name='statusChange'>");
-                      if ($oneJob['job_active'] == 1) {
-                        echo("
-                          <option value='1' selected>ACTIVE</option>
-                          <option value='0'>INACTIVE</option>");
-                      } else {
-                        echo("
-                          <option value='1'>ACTIVE</option>
-                          <option value='0' selected>INACTIVE</option>");
+                for ($jobNum = 0; $jobNum < count($jobList); $jobNum++) {
+                  $oneJob = $jobList[$jobNum];
+                  if ($oneJob['senator'] != 0) {
+                    $jobCity = "None";
+                    foreach($allSection as $oneSection) {
+                      if ($oneSection['section_id'] == $oneJob['senator']) {
+                        $jobCity = $oneSection['section_name'];
                       };
-                      echo html_entity_decode("
-                      </select>
-                      <input type='submit' name='changeJobStatus'>
-                    </form>
-                  </div>
-                  <div class='staffContent'>
-                    <div>
-                      <span style='color:green'>NAME:</span>
-                      ".$oneJob['first_name']." ".$oneJob['last_name']."
+                    };
+                    $cityAndId = ", ".$jobCity." (Job ID: ".$oneJob['job_id'].")";
+                    $onlyId = $oneJob['job_id'];
+                  } elseif ($oneJob['representative'] != 0) {
+                    $jobCity = "None";
+                    foreach($allSection as $oneSection) {
+                      if ($oneSection['section_id'] == $oneJob['representative']) {
+                        $jobCity = $oneSection['section_name'];
+                      };
+                    };
+                    $cityAndId = ", ".$jobCity." (Job ID: ".$oneJob['job_id'].")";
+                    $onlyId = $oneJob['job_id'];
+                  } else {
+                    $cityAndId = " (Job ID: ".$oneJob['job_id'].")";
+                  };
+                  if ($oneJob['in_department'] == 1) {
+                    $findDptName = null;
+                    for ($dptNum = 0; $dptNum < count($dptNameList); $dptNum++) {
+                      if ($dptNameList[$dptNum]['job_id'] == $oneJob['job_id']) {
+                        $findDptName = $dptNameList[$dptNum];
+                      }
+                    };
+                    $dptName = " (".$findDptName['dpt_name'].")";
+                    $dptStatus = $findDptName['active'];
+                  } else {
+                    $dptName = "";
+                    $dptStatus = 0;
+                  };
+                  if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
+                    echo html_entity_decode("
+                    <div class='staffTitle'>
+                      ".$oneJob['job_name'].$cityAndId.$dptName."
+                      <form method='POST'>
+                        <input type='hidden' name='jobId' value='".$onlyId."'/>
+                        <select name='statusChange'>");
+                        if ($oneJob['job_active'] == 1) {
+                          echo("
+                            <option value='1' selected>ACTIVE</option>
+                            <option value='0'>INACTIVE</option>");
+                        } else {
+                          echo("
+                            <option value='1'>ACTIVE</option>
+                            <option value='0' selected>INACTIVE</option>");
+                        };
+                        echo html_entity_decode("
+                        </select>
+                        <input type='submit' name='changeJobStatus'>
+                      </form>
                     </div>
-                    <div>
-                      <span style='color:green'>BBS CITY:</span> ".$oneJob['section_name']."
-                    </div>
-                  </div>");
+                    <div class='staffContent'>
+                      <div>
+                        <span style='color:green'>NAME:</span>
+                        ".$oneJob['first_name']." ".$oneJob['last_name']."
+                      </div>
+                      <div>
+                        <span style='color:green'>BBS CITY:</span> ".$oneJob['section_name']."
+                      </div>
+                    </div>");
+                  };
                 };
+            echo("</div>");
               };
-        echo("
-                </div>");
-              };
-              echo("</div>");
+          echo("</div>");
 
         // Box for assigning delegates to the section's jobs
         echo("
@@ -597,83 +583,101 @@
               </div>
             </a>");
             if (isset($_GET['type']) && $_GET['type'] == "assignments") {
-            echo html_entity_decode("<div id='assignJobBox' class='assignJobBox'>
-              <form method='POST'>
-                <div class='pickJob'>
-                  <div>I am filling this job... </div>
-                  <div>
-                    <select name='jobId'>
-                      <option value='-1'>-- Select Job --</option>");
-                      for ($jobNum = 0; $jobNum < count($jobList); $jobNum++) {
-                        $singleJob = $jobList[$jobNum];
-                        if ($singleJob['senator'] != 0) {
-                          $cityName = "No city";
-                          foreach ($allSection as $oneSection) {
-                            if ($oneSection['section_id'] == $singleJob['senator']) {
-                              $cityName = ", ".$oneSection['section_name']." (Job ID: ".$singleJob['job_id'].")";
+              // For SQL request of jobs
+              $jobListStmt->execute(array(
+                ':scd'=>htmlentities($secInfo['section_id'])
+              ));
+              $jobList = [];
+              while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
+                $jobList[] = $oneJob;
+              };
+              // For SQL request of departments
+              $findDptNameStmt->execute(array(
+                ':sid'=>htmlentities($secInfo['section_id'])
+              ));
+              $dptNameList = [];
+              while ($oneDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC)) {
+                $dptNameList[] = $oneDptName;
+              };
+              echo html_entity_decode("<div id='assignJobBox' class='assignJobBox'>
+                <form method='POST'>
+                  <div class='pickJob'>
+                    <div>I am filling this job... </div>
+                    <div>
+                      <select name='jobId'>
+                        <option value='-1'>-- Select Job --</option>");
+                        for ($jobNum = 0; $jobNum < count($jobList); $jobNum++) {
+                          $singleJob = $jobList[$jobNum];
+                          if ($singleJob['senator'] != 0) {
+                            $cityName = "No city";
+                            foreach ($allSection as $oneSection) {
+                              if ($oneSection['section_id'] == $singleJob['senator']) {
+                                $cityName = ", ".$oneSection['section_name']." (Job ID: ".$singleJob['job_id'].")";
+                              };
                             };
-                          };
-                        } elseif ($singleJob['representative'] != 0) {
-                          $cityName = "No city";
-                          foreach ($allSection as $oneSection) {
-                            if ($oneSection['section_id'] == $singleJob['representative']) {
-                              $cityName = ", ".$oneSection['section_name']." (Job ID: ".$singleJob['job_id'].")";
+                          } elseif ($singleJob['representative'] != 0) {
+                            $cityName = "No city";
+                            foreach ($allSection as $oneSection) {
+                              if ($oneSection['section_id'] == $singleJob['representative']) {
+                                $cityName = ", ".$oneSection['section_name']." (Job ID: ".$singleJob['job_id'].")";
+                              };
                             };
+                          } else {
+                            $cityName = " (Job ID: ".$singleJob['job_id'].")";
                           };
-                        } else {
-                          $cityName = " (Job ID: ".$singleJob['job_id'].")";
+                          if ($singleJob['in_department'] == 1) {
+                            $findDpt = null;
+                            for ($dptNum = 0; $dptNum < count($dptNameList); $dptNum++) {
+                              if ($dptNameList[$dptNum]['job_id'] == $singleJob['job_id']) {
+                                $findDpt = $dptNameList[$dptNum];
+                              }
+                            };
+                            $findDptName = $findDpt['dpt_name'];
+                            $findDptStatus = $findDpt['active'];
+                            $selectDptName = " (".$findDptName.")";
+                          } else {
+                            $selectDptName = "";
+                            $findDptStatus = 1;
+                          };
+                          if ($singleJob['in_department'] == 0 || $findDptStatus == 1) {
+                            echo html_entity_decode("<option value='".$singleJob['job_id']."'>".$singleJob['job_name'].$cityName.$selectDptName."</option>");
+                          };
                         };
-                        if ($singleJob['in_department'] == 1) {
-                          $findDptNameStmt->execute(array(
-                            ':ji'=>$singleJob['job_id']
-                          ));
-                          $findDpt = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
-                          $findDptName = $findDpt['dpt_name'];
-                          $findDptStatus = $findDpt['active'];
-                          $selectDptName = " (".$findDptName.")";
-                        } else {
-                          $selectDptName = "";
-                          $findDptStatus = 1;
-                        };
-                        if ($singleJob['in_department'] == 0 || $findDptStatus == 1) {
-                          echo html_entity_decode("<option value='".$singleJob['job_id']."'>".$singleJob['job_name'].$cityName.$selectDptName."</option>");
-                        };
-                      };
-            echo("
-                    </select>
+              echo("
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <div style='text-align:center;margin-bottom:10px'>
-                  ...with the following delegate:
-                </div>
-                <div>
-                  <div class='delegateList'>
-                    <div class='delRadio'>
-                      <input type='radio' name='jobDel' value='0' />
-                      NO DELEGATE
-                    </div>");
-                for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
-                  if ($allDelegate[$delNum]['delegate_id'] != 0) {
-                    echo html_entity_decode("
-                    <div class='delRadio'>
-                      <input
-                        type='radio'
-                        name='jobDel'
-                        value='".$allDelegate[$delNum]['delegate_id']."'
-                      />"
-                      .$allDelegate[$delNum]['last_name'].", "
-                      .$allDelegate[$delNum]['first_name'].
-                    "</div>");
+                  <div style='text-align:center;margin-bottom:10px'>
+                    ...with the following delegate:
+                  </div>
+                  <div>
+                    <div class='delegateList'>
+                      <div class='delRadio'>
+                        <input type='radio' name='jobDel' value='0' />
+                        NO DELEGATE
+                      </div>");
+                  for ($delNum = 0; $delNum < count($allDelegate); $delNum++) {
+                    if ($allDelegate[$delNum]['delegate_id'] != 0) {
+                      echo html_entity_decode("
+                      <div class='delRadio'>
+                        <input
+                          type='radio'
+                          name='jobDel'
+                          value='".$allDelegate[$delNum]['delegate_id']."'
+                        />"
+                        .$allDelegate[$delNum]['last_name'].", "
+                        .$allDelegate[$delNum]['first_name'].
+                      "</div>");
+                    };
                   };
-                };
-          echo("
+            echo("
+                    </div>
+                    <div>
+                      <input class='assignJobBttn allPostBttns' type='submit' name='changeJobDel' value='CHANGE' />
+                    </div>
                   </div>
-                  <div>
-                    <input class='assignJobBttn allPostBttns' type='submit' name='changeJobDel' value='CHANGE' />
-                  </div>
-                </div>
-              </form>
-            </div>");
+                </form>
+              </div>");
             };
           echo("</div>");
 
