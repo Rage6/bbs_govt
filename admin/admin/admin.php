@@ -146,32 +146,6 @@
     <div class="mainBox">
       <div class="delegateContent">
       <?php
-        // All of this section's types:
-        $listTypeStmt = $pdo->prepare("SELECT * FROM Type WHERE section_id=:sid");
-        $listTypeStmt->execute(array(
-          ':sid'=>$secInfo['section_id']
-        ));
-        $typeList = [];
-        while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
-          $typeList[] = $oneType;
-        };
-
-        // All of this section's subtypes:
-        $subtypeListStmt = $pdo->prepare("SELECT * FROM Subtype");
-        $subtypeListStmt->execute();
-        $subtypeList = [];
-        while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
-          $subtypeList[] = $oneSubtype;
-        };
-        // All of this section's posts:
-        $listPostStmt = $pdo->prepare("SELECT * FROM Post WHERE section_id=:sid ORDER BY post_order, Post.timestamp ASC");
-        $listPostStmt->execute(array(
-          ':sid'=>$secInfo['section_id']
-        ));
-        $postList = [];
-        while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
-          $postList[] = $onePost;
-        };
 
           for ($typeNum = 0; $typeNum < count($typeList); $typeNum++) {
             if ($typeList[$typeNum]['section_id'] == $secInfo['section_id']) {
@@ -286,8 +260,10 @@
                                 <select class='subtypeSelect' name='subtype'>
                                   <option value='".$currentSubId."'>".$currentSubName."</option>");
                                   for ($sub = 0; $sub < count($subtypeList); $sub++) {
-                                    if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
-                                      echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                    if ($subtypeList[$sub]['type_id'] == $oneType['type_id']) {
+                                      if ($subtypeList[$sub]['subtype_id'] != $onePost['subtype_id']) {
+                                        echo html_entity_decode("<option value='".$subtypeList[$sub]['subtype_id']."'>".$subtypeList[$sub]['subtype_name']."</option>");
+                                      };
                                     };
                                   };
                                 echo("</select>
@@ -493,8 +469,7 @@
         // For assigning/changing job assignments
         if ($_SESSION['adminType'] == 'counselor') {
           $jobListStmt = $pdo->prepare("SELECT Delegate.delegate_id,job_id,job_name,job_active,Job.section_id,senator,representative,in_department,first_name,last_name,section_name FROM Job JOIN Delegate JOIN Section WHERE Job.section_id=:scd AND Job.delegate_id=Delegate.delegate_id AND Delegate.city_id=Section.section_id ORDER BY Job.senator,Job.representative,Job.job_id ASC");
-          // $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active FROM Department WHERE Department.job_id=:ji");
-          $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active,job_id FROM Department");
+          $findDptNameStmt = $pdo->prepare("SELECT dpt_name,active,job_id FROM Department WHERE section_id=:sid");
           echo("
             <div class='counsTitle'>
               COUNSELORS ONLY
@@ -510,6 +485,7 @@
                   </div>
                 </a>");
               if (isset($_GET['type']) && $_GET['type'] == "staff") {
+                // All job list...
                 $jobListStmt->execute(array(
                   ':scd'=>htmlentities($secInfo['section_id'])
                 ));
@@ -517,11 +493,10 @@
                 while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
                   $jobList[] = $oneJob;
                 };
-                // $findDptNameStmt->execute(array(
-                //   ':ji'=>$oneJob['job_id']
-                // ));
-                // $findDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
-                $findDptNameStmt->execute();
+                // All department list...
+                $findDptNameStmt->execute(array(
+                  ':sid'=>htmlentities($secInfo['section_id'])
+                ));
                 $dptNameList = [];
                 while ($oneDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC)) {
                   $dptNameList[] = $oneDptName;
@@ -551,10 +526,6 @@
                     $cityAndId = " (Job ID: ".$oneJob['job_id'].")";
                   };
                   if ($oneJob['in_department'] == 1) {
-                    // $findDptNameStmt->execute(array(
-                    //   ':ji'=>$oneJob['job_id']
-                    // ));
-                    // $findDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
                     $findDptName = null;
                     for ($dptNum = 0; $dptNum < count($dptNameList); $dptNum++) {
                       if ($dptNameList[$dptNum]['job_id'] == $oneJob['job_id']) {
@@ -599,10 +570,9 @@
                     </div>");
                   };
                 };
-          echo("
-                  </div>");
+            echo("</div>");
               };
-              echo("</div>");
+          echo("</div>");
 
         // Box for assigning delegates to the section's jobs
         echo("
@@ -613,12 +583,21 @@
               </div>
             </a>");
             if (isset($_GET['type']) && $_GET['type'] == "assignments") {
+              // For SQL request of jobs
               $jobListStmt->execute(array(
                 ':scd'=>htmlentities($secInfo['section_id'])
               ));
               $jobList = [];
               while ($oneJob = $jobListStmt->fetch(PDO::FETCH_ASSOC)) {
                 $jobList[] = $oneJob;
+              };
+              // For SQL request of departments
+              $findDptNameStmt->execute(array(
+                ':sid'=>htmlentities($secInfo['section_id'])
+              ));
+              $dptNameList = [];
+              while ($oneDptName = $findDptNameStmt->fetch(PDO::FETCH_ASSOC)) {
+                $dptNameList[] = $oneDptName;
               };
               echo html_entity_decode("<div id='assignJobBox' class='assignJobBox'>
                 <form method='POST'>
@@ -647,10 +626,12 @@
                             $cityName = " (Job ID: ".$singleJob['job_id'].")";
                           };
                           if ($singleJob['in_department'] == 1) {
-                            $findDptNameStmt->execute(array(
-                              ':ji'=>$singleJob['job_id']
-                            ));
-                            $findDpt = $findDptNameStmt->fetch(PDO::FETCH_ASSOC);
+                            $findDpt = null;
+                            for ($dptNum = 0; $dptNum < count($dptNameList); $dptNum++) {
+                              if ($dptNameList[$dptNum]['job_id'] == $singleJob['job_id']) {
+                                $findDpt = $dptNameList[$dptNum];
+                              }
+                            };
                             $findDptName = $findDpt['dpt_name'];
                             $findDptStatus = $findDpt['active'];
                             $selectDptName = " (".$findDptName.")";

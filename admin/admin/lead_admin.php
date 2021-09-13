@@ -137,6 +137,35 @@ if ($_SESSION['adminType'] == "counselor") {
   };
 };
 
+// Get all of this section's types
+$listTypeStmt = $pdo->prepare("SELECT * FROM Type WHERE section_id=:sid");
+$listTypeStmt->execute(array(
+  ':sid'=>htmlentities($secInfo['section_id'])
+));
+$typeList = [];
+while ($oneType = $listTypeStmt->fetch(PDO::FETCH_ASSOC)) {
+  $typeList[] = $oneType;
+};
+
+// Get all of this section's subtypes
+$subtypeListStmt = $pdo->prepare("SELECT * FROM Subtype");
+$subtypeListStmt->execute();
+$subtypeList = [];
+while ($oneSubtype = $subtypeListStmt->fetch(PDO::FETCH_ASSOC)) {
+  $subtypeList[] = $oneSubtype;
+};
+
+// Get all of this section's posts
+$listPostStmt = $pdo->prepare("SELECT * FROM Post WHERE section_id=:sid ORDER BY post_order, Post.timestamp ASC");
+$listPostStmt->execute(array(
+  ':sid'=>htmlentities($secInfo['section_id'])
+));
+$postList = [];
+while ($onePost = $listPostStmt->fetch(PDO::FETCH_ASSOC)) {
+  $postList[] = $onePost;
+};
+
+// Makes a job 'active' or 'inactive'
 if (isset($_POST['changeJobStatus'])) {
   $activityChangeStmt = $pdo->prepare('UPDATE Job SET job_active=:ja WHERE job_id=:ji');
   $activityChangeStmt->execute(array(
