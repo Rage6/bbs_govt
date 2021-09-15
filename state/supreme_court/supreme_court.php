@@ -167,26 +167,39 @@
           <div class="tagTitle">Bar Association Minutes</div>
           <div class="minuteBox">
             <div class="allMinuteBttns">
-              <div id="minute1" data-day="1">1</div>
-              <div id="minute2" data-day="2">2</div>
-              <div id="minute3" data-day="3">3</div>
-              <div id="minute4" data-day="4">4</div>
-              <div id="minute5" data-day="5">5</div>
+              <?php
+                for ($oneNum = 0; $oneNum < count($listOfMinutes); $oneNum++) {
+                  $oneMinute = $listOfMinutes[$oneNum];
+                  if ($oneMinute['content'] != '' && $oneMinute['content'] != null) {
+                    echo html_entity_decode("<div id='minute".$oneMinute['post_order']."' data-day='".$oneMinute['post_order']."'>".$oneMinute['post_order']."</div>");
+                  };
+                };
+              ?>
             </div>
             <div class="minuteCnt">
               <?php
-                $cntNum = 1;
-                while ($oneMinute = $minuteStmt->fetch(PDO::FETCH_ASSOC)) {
-                  $month = substr($oneMinute['timestamp'],5,2);
-                  $day = substr($oneMinute['timestamp'],8,2);
-                  $year = substr($oneMinute['timestamp'],0,4);
-                  echo html_entity_decode("
-                  <div id='minuteCnt".$cntNum."' class='allMinuteCnt'>
-                    <div class='minuteDate'>".$month."/".$day."/".$year."</div>
-                    <div class='minuteTitle'>".$oneMinute['title']."</div>
-                    <div class='minuteMain'>".$oneMinute['content']."</div>
-                  </div>");
-                  $cntNum++;
+                $hasMinutes = false;
+                for ($oneNum = 0; $oneNum < count($listOfMinutes); $oneNum++) {
+                  $oneMinute = $listOfMinutes[$oneNum];
+                  if ($oneMinute['content'] != '' && $oneMinute != null) {
+                    $month = substr($oneMinute['timestamp'],5,2);
+                    $day = substr($oneMinute['timestamp'],8,2);
+                    $year = substr($oneMinute['timestamp'],0,4);
+                    echo html_entity_decode("
+                    <div id='minuteCnt".$oneMinute['post_order']."' class='allMinuteCnt'>
+                      <div class='minuteDate'>".$month."/".$day."/".$year."</div>
+                      <div class='minuteTitle'>".$oneMinute['title']."</div>
+                      <div class='minuteMain'>".$oneMinute['content']."</div>
+                    </div>");
+                    $hasMinutes = true;
+                  };
+                  if ($hasMinutes === false && $oneNum === count($listOfMinutes) - 1) {
+                    echo html_entity_decode("
+                    <div class='allMinuteCnt noCnt'>
+                      <div class='minuteTitle'>Coming Soon</div>
+                      <div class='minuteMain'>Records of our daily meetings will be published here in the future.</div>
+                    </div>");
+                  };
                 };
               ?>
             </div>

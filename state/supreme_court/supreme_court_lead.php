@@ -44,6 +44,10 @@
   // Collects the Minutes from the Bar Association
   $minuteStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=7 ORDER BY post_order ASC");
   $minuteStmt->execute();
+  $listOfMinutes = [];
+  while ($oneMinute = $minuteStmt->fetch(PDO::FETCH_ASSOC)) {
+    $listOfMinutes[] = $oneMinute;
+  };
 
   // Collect all of the bar members
   $memberListStmt = $pdo->prepare(

@@ -515,7 +515,7 @@
                     };
                     if ($reportNum === count($listOfReports) - 1 && $hasReports === false) {
                       echo html_entity_decode("
-                      <div>
+                      <div class='allReportCnt noCnt'>
                         <div class='reportTitle'>Don't Worry!</div>
                         <div class='reportMain'>Our activities will be published soon!</div>
                       </div>");

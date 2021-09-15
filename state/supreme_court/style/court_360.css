@@ -316,6 +316,10 @@ a {
   display: none;
 }
 
+.noCnt {
+  display: block !important;
+}
+
 .minuteDate {
   padding-right: 10%;
   text-align: right;
