@@ -116,7 +116,7 @@
             COMMITTEES
           </div>
           <div id="senMemberClick" class='menuOption senOption'>
-            MEET THE SENATORS
+            KNOW YOUR SENATOR
           </div>
         </div>
         <div class="bothTopBttns senBothTopBttns">
