@@ -100,10 +100,10 @@
           <div class='menuOption senOption'>
             LEADERSHIP
           </div>
-          <div id="senMajClick" class='senSubOption'>
+          <div id="senMajClick" class='subOption senSubOption'>
             + Majority Leaders
           </div>
-          <div id="senMinClick" class='senSubOption'>
+          <div id="senMinClick" class='subOption senSubOption'>
             + Minority Leaders
           </div>
           <div id="senBillClick" class='menuOption senOption'>
@@ -407,10 +407,10 @@
           <div class='menuOption repOption'>
             LEADERSHIP
           </div>
-          <div id="repMajClick" class='repSubOption'>
+          <div id="repMajClick" class='subOption repSubOption'>
             + Majority Leaders
           </div>
-          <div id="repMinClick" class='repSubOption'>
+          <div id="repMinClick" class='subOption repSubOption'>
             + Minority Leaders
           </div>
           <div id="repBillClick" class='menuOption repOption'>
