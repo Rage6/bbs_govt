@@ -226,6 +226,11 @@ body {
   border-top: 1px solid #fec231;
   padding: 10px 5%;
   font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.subOption {
+  cursor: pointer;
 }
 
 .bothContent {

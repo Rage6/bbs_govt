@@ -480,26 +480,46 @@
             <div class="tagTitle">DAILY REPORT OF ACTIVITIES</div>
             <div class="reportBox">
               <div class="allReportBtns">
-                <div id="report1" data-day="1">1</div>
+                <?php
+                  $hasNum = false;
+                  for ($reportNum = 0; $reportNum < count($listOfReports); $reportNum++) {
+                    if ($listOfReports[$reportNum]['content'] != '' && $listOfReports[$reportNum]['content'] != null) {
+                      echo html_entity_decode("<div id='report".$listOfReports[$reportNum]['post_order']."' data-day='".$listOfReports[$reportNum]['post_order']."'>".$listOfReports[$reportNum]['post_order']."</div>");
+                      $hasNum = true;
+                    };
+                  };
+                ?>
+                <!-- <div id="report1" data-day="1">1</div>
                 <div id="report2" data-day="2">2</div>
                 <div id="report3" data-day="3">3</div>
                 <div id="report4" data-day="4">4</div>
-                <div id="report5" data-day="5">5</div>
+                <div id="report5" data-day="5">5</div> -->
               </div>
               <div class="reportCnt">
                 <?php
-                  $cntNum = 1;
-                  while ($oneReport = $reportStmt->fetch(PDO::FETCH_ASSOC)) {
-                    $month = substr($oneReport['timestamp'],5,2);
-                    $day = substr($oneReport['timestamp'],8,2);
-                    $year = substr($oneReport['timestamp'],0,4);
-                    echo html_entity_decode("
-                    <div id='reportCnt".$cntNum."' class='allReportCnt'>
-                      <div class='reportDate'>".$month."/".$day."/".$year."</div>
-                      <div class='reportTitle'>".$oneReport['title']."</div>
-                      <div class='reportMain'>".$oneReport['content']."</div>
-                    </div>");
-                    $cntNum++;
+                  $hasReports = false;
+                  for ($reportNum = 0; $reportNum < count($listOfReports); $reportNum++) {
+                    $oneReport = $listOfReports[$reportNum];
+                    if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                      $cntNum = $listOfReports[$reportNum]['post_order'];
+                      $month = substr($oneReport['timestamp'],5,2);
+                      $day = substr($oneReport['timestamp'],8,2);
+                      $year = substr($oneReport['timestamp'],0,4);
+                      echo html_entity_decode("
+                      <div id='reportCnt".$cntNum."' class='allReportCnt'>
+                        <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                        <div class='reportTitle'>".$oneReport['title']."</div>
+                        <div class='reportMain'>".$oneReport['content']."</div>
+                      </div>");
+                      $hasReports = true;
+                    };
+                    if ($reportNum === count($listOfReports) - 1 && $hasReports === false) {
+                      echo html_entity_decode("
+                      <div class='allReportCnt noCnt'>
+                        <div class='reportTitle'>Coming Soon</div>
+                        <div class='reportMain'>Our activities will be published in the future</div>
+                      </div>");
+                    };
                   };
                 ?>
               </div>

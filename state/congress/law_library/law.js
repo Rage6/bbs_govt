@@ -62,9 +62,10 @@ $(document).ready(()=>{
                 <i>-- SELECT A LAW --</i>\
               </div>");
           };
-          if (lawLibrary[lawNum]['content'] == '') {
+          if (lawLibrary[lawNum]['content'] == '' || lawLibrary[lawNum]['content'] == null) {
             $(clickedLawContent).append(
-              "<div>Details not yet published</div>"
+              "<div class='viewLawTitle'>"+lawLibrary[lawNum]['title']+"</div>\
+              <div class='viewLawContent'><i>Details not yet published</i></div>"
             );
           } else {
             $(clickedLawContent).append(

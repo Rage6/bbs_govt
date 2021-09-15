@@ -21,6 +21,10 @@ while($oneGov = $govStaffStmt->fetch(PDO::FETCH_ASSOC)) {
 // Recalls all daily reports
 $reportStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=3 AND approved=1 AND post_order<=5 ORDER BY post_order ASC");
 $reportStmt->execute();
+$listOfReports = [];
+while ($oneReport = $reportStmt->fetch(PDO::FETCH_ASSOC)) {
+  $listOfReports[] = $oneReport;
+}
 
 // Basic info for approving and showing first banner image
 $bannerOneStmt = $pdo->prepare("SELECT image_path,filename,extension,approved,flickr_url FROM Image WHERE image_id=7");
