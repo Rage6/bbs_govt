@@ -481,11 +481,11 @@
             <div class="reportBox">
               <div class="allReportBtns">
                 <?php
-                  //$hasNum = false;
+                  $hasNum = false;
                   for ($reportNum = 0; $reportNum < count($listOfReports); $reportNum++) {
                     if ($listOfReports[$reportNum]['content'] != '' && $listOfReports[$reportNum]['content'] != null) {
                       echo html_entity_decode("<div id='report".$listOfReports[$reportNum]['post_order']."' data-day='".$listOfReports[$reportNum]['post_order']."'>".$listOfReports[$reportNum]['post_order']."</div>");
-                      //$hasNum = true;
+                      $hasNum = true;
                     };
                   };
                 ?>
@@ -516,8 +516,8 @@
                     if ($reportNum === count($listOfReports) - 1 && $hasReports === false) {
                       echo html_entity_decode("
                       <div class='allReportCnt noCnt'>
-                        <div class='reportTitle'>Don't Worry!</div>
-                        <div class='reportMain'>Our activities will be published soon!</div>
+                        <div class='reportTitle'>Coming Soon</div>
+                        <div class='reportMain'>Our activities will be published in the future</div>
                       </div>");
                     };
                   };
