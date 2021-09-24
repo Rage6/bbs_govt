@@ -168,7 +168,7 @@
                       <div class='postSubtitle'>Title/Name(s):</div>
                       <textarea name='postTitle' class='postText titleText' placeholder='Enter your title here'></textarea>
                       <div class='postSubtitle'>Content:</div>
-                      <textarea name='postContent' class='postText contentText' placeholder='Enter your content here'></textarea>");
+                      <textarea name='postContent' class='postText contentText' maxlength='".$oneType['max_char']."' placeholder='Enter your content here'></textarea>");
                       if ($oneType['type_id'] == 9 || $oneType['type_id'] == 11) {
                         echo("<div class='postSubtitle'>Bill #:</div>");
                       } else {
@@ -232,7 +232,7 @@
                             <div class='postSubtitle'>Title: ".$onePost['title']."</div>");
                         };
                         echo("<div class='postSubtitle'>Content:</div>
-                        <textarea class='postText contentText' name='postContent'>");
+                        <textarea class='postText contentText'maxlength='".$oneType['max_char']."' name='postContent'>");
                           echo html_entity_decode($onePost['content'], ENT_QUOTES);
                         echo html_entity_decode("</textarea>
                         <div class='postSubtitle'>Time Posted</div>
