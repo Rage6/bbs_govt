@@ -343,7 +343,7 @@ a {
 /* For the list of Bar members */
 .barBox {
   border-bottom: 1px solid black;
-  padding: 40px 5% 0px 5%;
+  padding: 40px 10% 0px 10%;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
   background-size: cover;
@@ -372,7 +372,7 @@ a {
 
 .allMembers {
   min-height: 200px;
-  max-height: 800px;
+  max-height: 460px;
   overflow-y: scroll;
 }
 
