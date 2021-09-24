@@ -358,7 +358,22 @@ a {
 }
 
 .stateButtonRight div {
-  background: conic-gradient(transparent 0%, transparent 62.5%, white 62.5%, white 87.5%, transparent 87.5%, transparent);
+  background:
+    conic-gradient(
+      from 0turn at 30% 50%,
+      transparent 0%,
+      transparent 62.5%,
+      darkred 62.5%,
+      darkred 87.5%,
+      transparent 87.5%,
+      transparent),
+    conic-gradient(
+      transparent 0%,
+      transparent 62.5%,
+      white 62.5%,
+      white 87.5%,
+      transparent 87.5%,
+      transparent);
   background-position: 11px;
   width: 35px !important;
   height: 35px;
