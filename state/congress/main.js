@@ -259,6 +259,25 @@ $(()=>{
     setBodyHeight(".houseBox");
   });
 
+  // Generic function for showing the current chamber journals
+  const showJournal = (dataId) => {
+    $("[data-day]").css("background-color","#2020a0").css("color","#fec231");
+    $("[data-day="+dataId+"]").css("color","#2020a0").css("background-color","#fec231");
+    $("[data-journal]").css("display","none");
+    $("[data-journal="+dataId+"]").css("display","block");
+  }
+
+  // Sets up initial House journal
+  let firstDayNum = $("[data-day]");
+  firstDayNum = firstDayNum[0].dataset.day;
+  showJournal(firstDayNum);
+
+  // Switches between House journals
+  $("[data-day]").click((event)=>{
+    let dataId = event.target.dataset.day;
+    showJournal(dataId);
+  });
+
   // Function that shows the content of a clicked committee title
   $("[data-dptid]").click(()=>{
     if ($(window).outerWidth() < 769) {

@@ -484,7 +484,11 @@
                   $hasNum = false;
                   for ($reportNum = 0; $reportNum < count($listOfReports); $reportNum++) {
                     if ($listOfReports[$reportNum]['content'] != '' && $listOfReports[$reportNum]['content'] != null) {
-                      echo html_entity_decode("<div id='report".$listOfReports[$reportNum]['post_order']."' data-day='".$listOfReports[$reportNum]['post_order']."'>".$listOfReports[$reportNum]['post_order']."</div>");
+                      echo html_entity_decode("
+                        <div
+                          id='report".$listOfReports[$reportNum]['post_order']."'
+                          data-day='".$listOfReports[$reportNum]['post_order']."'
+                        >".$listOfReports[$reportNum]['post_order']."</div>");
                       $hasNum = true;
                     };
                   };

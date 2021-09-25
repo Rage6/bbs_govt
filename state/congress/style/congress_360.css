@@ -553,6 +553,53 @@ body {
   white-space: pre-wrap;
 }
 
+.repJournalBox {
+  /* padding-top: 10px; */
+  color: #fec231;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2020a0;
+}
+
+.allRepJournalBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allRepJournalBtns div {
+  margin: 20px 0 10px 0;
+  border: 1px solid #fec231;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+  cursor: pointer;
+}
+
+.allRepJournalCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
+}
+
+.noCnt {
+  display: block !important;
+}
+
+.repJournalDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.repJournalTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.repJournalMain {
+  padding: 0 5%;
+  white-space: pre-wrap;
+}
+
 .committeeBox {
 
 }
