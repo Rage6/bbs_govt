@@ -273,12 +273,12 @@ $(()=>{
   }
 
   // Sets up initial House journal
-  let firstDayNum = $("[data-day]");
-  firstDayNum = firstDayNum[0].dataset.day;
-  showJournal(firstDayNum,"#fec231","#400200");
+  let firstHouseDayNum = $("[data-day][data-chamber='house']");
+  firstHouseDayNum = firstHouseDayNum[0].dataset.day;
+  showJournal(firstHouseDayNum,"#fec231","#400200");
 
   // Switches between House journals
-  $("[data-day]").click((event)=>{
+  $("[data-day][data-chamber='house']").click((event)=>{
     let dataId = event.target.dataset.day;
     showJournal(dataId,"#fec231","#400200");
   });

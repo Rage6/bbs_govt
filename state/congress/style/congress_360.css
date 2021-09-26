@@ -1096,6 +1096,14 @@ body {
 
 }
 
+.allSenJournalCnt {
+  background-color: #400200;
+}
+
+.allSenJournalBtns div {
+  border: 1px solid #fec231;
+}
+
 .senOneComm {
   background-color: #051E33;
 }

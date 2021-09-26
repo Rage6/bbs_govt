@@ -623,7 +623,8 @@
                       echo html_entity_decode("
                         <div
                           id='repJournal".$allRepJournals[$reportNum]['post_order']."'
-                          data-day='".$allRepJournals[$reportNum]['post_order']."'>
+                          data-day='".$allRepJournals[$reportNum]['post_order']."'
+                          data-chamber='house'>
                           ".$allRepJournals[$reportNum]['post_order']."
                         </div>");
                       $repHasNum = true;
@@ -642,7 +643,7 @@
                       $day = substr($oneReport['timestamp'],8,2);
                       $year = substr($oneReport['timestamp'],0,4);
                       echo html_entity_decode("
-                      <div data-journal=".$oneReport['post_order'].">
+                      <div data-journal=".$oneReport['post_order']." data-chamber='house'>
                         <div class='reportDate'>".$month."/".$day."/".$year."</div>
                         <div class='reportTitle'>".$oneReport['title']."</div>
                         <div class='reportMain'>".$oneReport['content']."</div>
