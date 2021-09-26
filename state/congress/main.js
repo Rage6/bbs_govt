@@ -202,6 +202,11 @@ $(()=>{
     scrollToOption("#repLawBox",1100);
     useRepMenu();
   });
+  // Slide to House Journal
+  $("#repJournalClick").click(()=> {
+    scrollToOption("#repJournalBox",1300);
+    useRepMenu();
+  });
   // Slide to House Committees
   $("#repCommitteeClick").click(()=> {
     scrollToOption("#repCommitteeBox",1300);
@@ -260,9 +265,9 @@ $(()=>{
   });
 
   // Generic function for showing the current chamber journals
-  const showJournal = (dataId) => {
-    $("[data-day]").css("background-color","#2020a0").css("color","#fec231");
-    $("[data-day="+dataId+"]").css("color","#2020a0").css("background-color","#fec231");
+  const showJournal = (dataId,selectColor,backgroundColor) => {
+    $("[data-day]").css("background-color",backgroundColor).css("color",selectColor);
+    $("[data-day="+dataId+"]").css("color",backgroundColor).css("background-color",selectColor);
     $("[data-journal]").css("display","none");
     $("[data-journal="+dataId+"]").css("display","block");
   }
@@ -270,12 +275,12 @@ $(()=>{
   // Sets up initial House journal
   let firstDayNum = $("[data-day]");
   firstDayNum = firstDayNum[0].dataset.day;
-  showJournal(firstDayNum);
+  showJournal(firstDayNum,"#fec231","#400200");
 
   // Switches between House journals
   $("[data-day]").click((event)=>{
     let dataId = event.target.dataset.day;
-    showJournal(dataId);
+    showJournal(dataId,"#fec231","#400200");
   });
 
   // Function that shows the content of a clicked committee title

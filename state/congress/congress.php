@@ -419,6 +419,9 @@
           <div id="repLawClick" class='menuOption repOption'>
             LAWS
           </div>
+          <div id="repJournalClick" class='menuOption repOption'>
+            DAILY JOURNAL
+          </div>
           <div id="repCommitteeClick" class='menuOption repOption'>
             COMMITTEES
           </div>
@@ -609,10 +612,10 @@
           <div class='topBttn repTopBttn'>
             <span>- TOP -</span>
           </div>
-          <div id="repJournal">
+          <div id="repJournalBox">
             <div class="moduleTitle repModTitle">HOUSE JOURNAL</div>
-            <div class="repJournalBox">
-              <div class="allRepJournalBtns">
+            <div class="journalBox repJournalBox">
+              <div class="allJournalBtns allRepJournalBtns">
                 <?php
                   $repHasNum = false;
                   for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
@@ -628,7 +631,7 @@
                   };
                 ?>
               </div>
-              <div class="allRepJournalCnt">
+              <div class="allJournalCnt allRepJournalCnt">
                 <?php
                   $hasRepJoCnt = false;
                   for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
@@ -639,7 +642,7 @@
                       $day = substr($oneReport['timestamp'],8,2);
                       $year = substr($oneReport['timestamp'],0,4);
                       echo html_entity_decode("
-                      <div data-journal=".$oneReport['post_order']." class='allRepJournalCnt'>
+                      <div data-journal=".$oneReport['post_order'].">
                         <div class='reportDate'>".$month."/".$day."/".$year."</div>
                         <div class='reportTitle'>".$oneReport['title']."</div>
                         <div class='reportMain'>".$oneReport['content']."</div>
@@ -648,7 +651,7 @@
                     };
                     if ($reportNum === count($allRepJournals) - 1 && $hasRepJoCnt === false) {
                       echo html_entity_decode("
-                      <div class='allRepJournalCnt noCnt'>
+                      <div class='allJournalCnt allRepJournalCnt noCnt'>
                         <div class='repJournalTitle'>Coming Soon</div>
                         <div class='repJournalMain'>Our activities will be published in the future</div>
                       </div>");

@@ -553,21 +553,19 @@ body {
   white-space: pre-wrap;
 }
 
-.repJournalBox {
-  /* padding-top: 10px; */
-  color: #fec231;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #2020a0;
+.journalBox {
+  padding: 1vh 0;
+  /* color: #fec231; */
+  /* background-color: #004E8C; */
 }
 
-.allRepJournalBtns {
+.allJournalBtns {
   display: flex;
   justify-content: space-around;
 }
 
-.allRepJournalBtns div {
+.allJournalBtns div {
   margin: 20px 0 10px 0;
-  border: 1px solid #fec231;
   border-radius: 5px;
   font-size: 1.5rem;
   text-align: center;
@@ -575,27 +573,29 @@ body {
   cursor: pointer;
 }
 
-.allRepJournalCnt {
+.allJournalCnt {
   margin: 0 5%;
-  padding: 20px 0 40px 0;
+  padding: 1vh 1%;
+  height: 51vh;
+  overflow-y: scroll;
 }
 
 .noCnt {
   display: block !important;
 }
 
-.repJournalDate {
+.reportDate {
   padding-right: 10%;
   text-align: right;
 }
 
-.repJournalTitle {
+.reportTitle {
   margin-bottom: 20px;
   padding-left: 10%;
   font-size: 1.6rem;
 }
 
-.repJournalMain {
+.reportMain {
   padding: 0 5%;
   white-space: pre-wrap;
 }
@@ -855,6 +855,14 @@ body {
 
 .oneRepLawApproval {
   background-color: #004E8C;
+}
+
+.allRepJournalCnt {
+  background-color: #400200;
+}
+
+.allRepJournalBtns div {
+  border: 1px solid #fec231;
 }
 
 .repCommitteeBox {
