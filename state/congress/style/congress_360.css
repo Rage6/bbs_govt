@@ -553,6 +553,53 @@ body {
   white-space: pre-wrap;
 }
 
+.journalBox {
+  padding: 1vh 0;
+  /* color: #fec231; */
+  /* background-color: #004E8C; */
+}
+
+.allJournalBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allJournalBtns div {
+  margin: 20px 0 10px 0;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+  cursor: pointer;
+}
+
+.allJournalCnt {
+  margin: 0 5%;
+  padding: 1vh 1%;
+  height: 51vh;
+  overflow-y: scroll;
+}
+
+.noCnt {
+  display: block !important;
+}
+
+.reportDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.reportTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.reportMain {
+  padding: 0 5%;
+  white-space: pre-wrap;
+}
+
 .committeeBox {
 
 }
@@ -810,6 +857,14 @@ body {
   background-color: #004E8C;
 }
 
+.allRepJournalCnt {
+  background-color: #400200;
+}
+
+.allRepJournalBtns div {
+  border: 1px solid #fec231;
+}
+
 .repCommitteeBox {
 
 }
@@ -1039,6 +1094,14 @@ body {
 
 .oneSenLawApproval {
 
+}
+
+.allSenJournalCnt {
+  background-color: #400200;
+}
+
+.allSenJournalBtns div {
+  border: 1px solid #fec231;
 }
 
 .senOneComm {

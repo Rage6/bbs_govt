@@ -217,7 +217,7 @@
       subtype_name NOT LIKE '%Law%'");
   $repStatusStmt->execute();
 
-  // Get all Senate committee information
+  // Get all House committee information
   $repCommStmt = $pdo->prepare(
     "SELECT
       dpt_id,
@@ -275,6 +275,22 @@
   $repMemListStmt->execute();
   while ($oneRepMember = $repMemListStmt->fetch(PDO::FETCH_ASSOC)) {
     $repMemList[] = $oneRepMember;
+  };
+
+  // List of House journal entries
+  $allRepJournals = [];
+  $allRepJournalsStmt = $pdo->prepare(
+    "SELECT
+      *
+    FROM
+      Post
+    WHERE
+      type_id=12
+    ORDER BY
+      post_order ASC");
+  $allRepJournalsStmt->execute();
+  while ($oneRepJournal = $allRepJournalsStmt->fetch(PDO::FETCH_ASSOC)) {
+    $allRepJournals[] = $oneRepJournal;
   };
 
   // echo("<pre>");

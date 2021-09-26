@@ -419,6 +419,9 @@
           <div id="repLawClick" class='menuOption repOption'>
             LAWS
           </div>
+          <div id="repJournalClick" class='menuOption repOption'>
+            DAILY JOURNAL
+          </div>
           <div id="repCommitteeClick" class='menuOption repOption'>
             COMMITTEES
           </div>
@@ -608,6 +611,59 @@
           </div>
           <div class='topBttn repTopBttn'>
             <span>- TOP -</span>
+          </div>
+          <div id="repJournalBox">
+            <div class="moduleTitle repModTitle">HOUSE JOURNAL</div>
+            <div class="journalBox repJournalBox">
+              <div class="allJournalBtns allRepJournalBtns">
+                <?php
+                  $repHasNum = false;
+                  for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
+                    if ($allRepJournals[$reportNum]['content'] != '' && $allRepJournals[$reportNum]['content'] != null) {
+                      echo html_entity_decode("
+                        <div
+                          id='repJournal".$allRepJournals[$reportNum]['post_order']."'
+                          data-day='".$allRepJournals[$reportNum]['post_order']."'
+                          data-chamber='house'>
+                          ".$allRepJournals[$reportNum]['post_order']."
+                        </div>");
+                      $repHasNum = true;
+                    };
+                  };
+                ?>
+              </div>
+              <div class="allJournalCnt allRepJournalCnt">
+                <?php
+                  $hasRepJoCnt = false;
+                  for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
+                    $oneReport = $allRepJournals[$reportNum];
+                    if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                      $cntNum = $allRepJournals[$reportNum]['post_order'];
+                      $month = substr($oneReport['timestamp'],5,2);
+                      $day = substr($oneReport['timestamp'],8,2);
+                      $year = substr($oneReport['timestamp'],0,4);
+                      echo html_entity_decode("
+                      <div data-journal=".$oneReport['post_order']." data-chamber='house'>
+                        <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                        <div class='reportTitle'>".$oneReport['title']."</div>
+                        <div class='reportMain'>".$oneReport['content']."</div>
+                      </div>");
+                      $hasRepJoCnt = true;
+                    };
+                    if ($reportNum === count($allRepJournals) - 1 && $hasRepJoCnt === false) {
+                      echo html_entity_decode("
+                      <div class='allJournalCnt allRepJournalCnt noCnt'>
+                        <div class='repJournalTitle'>Coming Soon</div>
+                        <div class='repJournalMain'>Our activities will be published in the future</div>
+                      </div>");
+                    };
+                  };
+                ?>
+              </div>
+            </div>
+            <div class='topBttn repTopBttn'>
+              <span>- TOP -</span>
+            </div>
           </div>
           <div id="repCommitteeBox" class="repCommitteeBox committeeBox">
             <div class="moduleTitle repModTitle">COMMITTEES</div>
