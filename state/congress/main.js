@@ -168,6 +168,11 @@ $(()=>{
     scrollToOption("#senLawBox",1100);
     useSenMenu();
   });
+  // Slide to Laws on Senate page
+  $("#senJournalClick").click(()=> {
+    scrollToOption("#senJournalBox",1200);
+    useSenMenu();
+  });
   // Slide to Senate Committees
   $("#senCommitteeClick").click(()=> {
     scrollToOption("#senCommitteeBox",1300);
@@ -204,7 +209,7 @@ $(()=>{
   });
   // Slide to House Journal
   $("#repJournalClick").click(()=> {
-    scrollToOption("#repJournalBox",1300);
+    scrollToOption("#repJournalBox",1200);
     useRepMenu();
   });
   // Slide to House Committees
@@ -265,22 +270,33 @@ $(()=>{
   });
 
   // Generic function for showing the current chamber journals
-  const showJournal = (dataId,selectColor,backgroundColor) => {
-    $("[data-day]").css("background-color",backgroundColor).css("color",selectColor);
-    $("[data-day="+dataId+"]").css("color",backgroundColor).css("background-color",selectColor);
-    $("[data-journal]").css("display","none");
-    $("[data-journal="+dataId+"]").css("display","block");
+  const showJournal = (dataId,chamber,selectColor,backgroundColor) => {
+    $("[data-day][data-chamber='"+chamber+"']").css("background-color",backgroundColor).css("color",selectColor);
+    $("[data-day="+dataId+"][data-chamber='" + chamber + "']").css("color",backgroundColor).css("background-color",selectColor);
+    $("[data-journal][data-chamber='" + chamber + "']").css("display","none");
+    $("[data-journal="+dataId+"][data-chamber='" + chamber + "']").css("display","block");
   }
 
   // Sets up initial House journal
   let firstHouseDayNum = $("[data-day][data-chamber='house']");
   firstHouseDayNum = firstHouseDayNum[0].dataset.day;
-  showJournal(firstHouseDayNum,"#fec231","#400200");
+  showJournal(firstHouseDayNum,"house","#fec231","#400200");
 
   // Switches between House journals
   $("[data-day][data-chamber='house']").click((event)=>{
     let dataId = event.target.dataset.day;
-    showJournal(dataId,"#fec231","#400200");
+    showJournal(dataId,"house","#fec231","#400200");
+  });
+
+  // Sets up initial Senate journal
+  let firstSenateDayNum = $("[data-day][data-chamber='senate']");
+  firstSenateDayNum = firstSenateDayNum[0].dataset.day;
+  showJournal(firstSenateDayNum,"senate","#fec231","#051E33");
+
+  // Switches between Senate journals
+  $("[data-day][data-chamber='senate']").click((event)=>{
+    let dataId = event.target.dataset.day;
+    showJournal(dataId,"senate","#fec231","#051E33");
   });
 
   // Function that shows the content of a clicked committee title

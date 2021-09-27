@@ -293,6 +293,22 @@
     $allRepJournals[] = $oneRepJournal;
   };
 
+  // List of Senate journal entries
+  $allSenJournals = [];
+  $allSenJournalsStmt = $pdo->prepare(
+    "SELECT
+      *
+    FROM
+      Post
+    WHERE
+      type_id=13
+    ORDER BY
+      post_order ASC");
+  $allSenJournalsStmt->execute();
+  while ($oneSenJournal = $allSenJournalsStmt->fetch(PDO::FETCH_ASSOC)) {
+    $allSenJournals[] = $oneSenJournal;
+  };
+
   // echo("<pre>");
   // var_dump($repLdrList);
   // echo("</pre>");
