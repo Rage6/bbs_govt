@@ -112,6 +112,9 @@
           <div id="senLawClick" class='menuOption senOption'>
             LAWS
           </div>
+          <div id="senJournalClick" class='menuOption senOption'>
+            JOURNAL
+          </div>
           <div id="senCommitteeClick" class='menuOption senOption'>
             COMMITTEES
           </div>
@@ -311,6 +314,59 @@
           <div class='topBttn senTopBttn'>
             <span>- TOP -</span>
           </div>
+          <div id="senJournalBox">
+            <div class="moduleTitle senModTitle">JOURNAL</div>
+            <div class="journalBox senJournalBox">
+              <div class="allJournalBtns allSenJournalBtns">
+                <?php
+                  $senHasNum = false;
+                  for ($reportNum = 0; $reportNum < count($allSenJournals); $reportNum++) {
+                    if ($allSenJournals[$reportNum]['content'] != '' && $allSenJournals[$reportNum]['content'] != null) {
+                      echo html_entity_decode("
+                        <div
+                          id='senJournal".$allSenJournals[$reportNum]['post_order']."'
+                          data-day='".$allSenJournals[$reportNum]['post_order']."'
+                          data-chamber='senate'>
+                          ".$allSenJournals[$reportNum]['post_order']."
+                        </div>");
+                      $senHasNum = true;
+                    };
+                  };
+                ?>
+              </div>
+              <div class="allJournalCnt allSenJournalCnt">
+                <?php
+                  $hasSenJoCnt = false;
+                  for ($reportNum = 0; $reportNum < count($allSenJournals); $reportNum++) {
+                    $oneReport = $allSenJournals[$reportNum];
+                    if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                      $cntNum = $allSenJournals[$reportNum]['post_order'];
+                      $month = substr($oneReport['timestamp'],5,2);
+                      $day = substr($oneReport['timestamp'],8,2);
+                      $year = substr($oneReport['timestamp'],0,4);
+                      echo html_entity_decode("
+                      <div data-journal=".$oneReport['post_order']." data-chamber='house'>
+                        <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                        <div class='reportTitle'>".$oneReport['title']."</div>
+                        <div class='reportMain'>".$oneReport['content']."</div>
+                      </div>");
+                      $hasSenJoCnt = true;
+                    };
+                    if ($reportNum === count($allSenJournals) - 1 && $hasSenJoCnt === false) {
+                      echo html_entity_decode("
+                      <div class='allJournalCnt allSenJournalCnt noCnt'>
+                        <div class='senJournalTitle'>Coming Soon</div>
+                        <div class='senJournalMain'>Our activities will be published in the future</div>
+                      </div>");
+                    };
+                  };
+                ?>
+              </div>
+            </div>
+          </div>
+          <div class='topBttn repTopBttn'>
+            <span>- TOP -</span>
+          </div>
           <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
             <div class="moduleTitle senModTitle">COMMITTEES</div>
             <div class="allQuestions">
@@ -420,7 +476,7 @@
             LAWS
           </div>
           <div id="repJournalClick" class='menuOption repOption'>
-            DAILY JOURNAL
+            JOURNAL
           </div>
           <div id="repCommitteeClick" class='menuOption repOption'>
             COMMITTEES
@@ -613,7 +669,7 @@
             <span>- TOP -</span>
           </div>
           <div id="repJournalBox">
-            <div class="moduleTitle repModTitle">HOUSE JOURNAL</div>
+            <div class="moduleTitle repModTitle">JOURNAL</div>
             <div class="journalBox repJournalBox">
               <div class="allJournalBtns allRepJournalBtns">
                 <?php
