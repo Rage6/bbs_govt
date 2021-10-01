@@ -124,31 +124,33 @@
             <div class="levelTitle columnTitle">
               STATE
             </div>
-            <div class="sectionList">
-              <a href="state/governor/governor.php">
-                <div class="stateButton">
-                  <div class="stateButtonCenter">Governor</div>
-                  <div class="stateButtonRight">
-                    <div></div>
+            <div class="hideScrollbar">
+              <div class="sectionList">
+                <a href="state/governor/governor.php">
+                  <div class="stateButton">
+                    <div class="stateButtonCenter">Governor</div>
+                    <div class="stateButtonRight">
+                      <div></div>
+                    </div>
                   </div>
-                </div>
-              </a>
-              <a href="state/congress/congress.php">
-                <div class="stateButton">
-                  <div class="stateButtonCenter generalAssemblyBttn">General Assembly</div>
-                  <div class="stateButtonRight">
-                    <div></div>
+                </a>
+                <a href="state/congress/congress.php">
+                  <div class="stateButton">
+                    <div class="stateButtonCenter generalAssemblyBttn">General Assembly</div>
+                    <div class="stateButtonRight">
+                      <div></div>
+                    </div>
                   </div>
-                </div>
-              </a>
-              <a href="state/supreme_court/supreme_court.php">
-                <div class="stateButton">
-                  <div class="stateButtonCenter">Supreme Court</div>
-                  <div class="stateButtonRight">
-                    <div></div>
+                </a>
+                <a href="state/supreme_court/supreme_court.php">
+                  <div class="stateButton">
+                    <div class="stateButtonCenter">Supreme Court</div>
+                    <div class="stateButtonRight">
+                      <div></div>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
             <div class="pageTop">
               <a href="#pageTop">- TOP -</a>
@@ -158,31 +160,33 @@
             <div class="levelTitle columnTitle">
               COUNTY
             </div>
-            <div class="sectionList">
-            <?php
-              for ($countyNum = 0; $countyNum < count($countyList); $countyNum++) {
-                $cntyPopStmt = $pdo->prepare("SELECT SUM(population) FROM Section WHERE is_county=:si");
-                $cntyPopStmt->execute(array(
-                  ':si'=>htmlentities($countyList[$countyNum]['section_id'])
-                ));
-                $cntyPop = $cntyPopStmt->fetch(PDO::FETCH_ASSOC)['SUM(population)'];
-                echo("
-                  <!-- <a href='county/county.php?section_id=".$countyList[$countyNum]['section_id']."'> -->
-                    <div class='levelButton'>
-                      <div class='sectionName'>
-                        <div>".$countyList[$countyNum]['section_name']." County</div>
-                        <!-- <div><img src='img/right_arrow.png'></div> -->
+            <div class="hideScrollbar">
+              <div class="sectionList">
+              <?php
+                for ($countyNum = 0; $countyNum < count($countyList); $countyNum++) {
+                  $cntyPopStmt = $pdo->prepare("SELECT SUM(population) FROM Section WHERE is_county=:si");
+                  $cntyPopStmt->execute(array(
+                    ':si'=>htmlentities($countyList[$countyNum]['section_id'])
+                  ));
+                  $cntyPop = $cntyPopStmt->fetch(PDO::FETCH_ASSOC)['SUM(population)'];
+                  echo("
+                    <!-- <a href='county/county.php?section_id=".$countyList[$countyNum]['section_id']."'> -->
+                      <div class='levelButton'>
+                        <div class='sectionName'>
+                          <div>".$countyList[$countyNum]['section_name']." County</div>
+                          <!-- <div><img src='img/right_arrow.png'></div> -->
+                        </div>
+                        <div class='statsRow'>
+                          <div><img src='img/flag_2.png'> ".$countyList[$countyNum]['flags']."</div>
+                          <div style='border-right:3px solid black; width: 2%;'></div>
+                          <div><img src='img/delegate_2.png'> ".$cntyPop."</div>
+                        </div>
                       </div>
-                      <div class='statsRow'>
-                        <div><img src='img/flag_2.png'> ".$countyList[$countyNum]['flags']."</div>
-                        <div style='border-right:3px solid black; width: 2%;'></div>
-                        <div><img src='img/delegate_2.png'> ".$cntyPop."</div>
-                      </div>
-                    </div>
-                  <!-- </a> -->"
-                );
-              };
-            ?>
+                    <!-- </a> -->"
+                  );
+                };
+              ?>
+              </div>
             </div>
             <div class="pageTop">
               <a href="#pageTop">- TOP -</a>
@@ -192,49 +196,51 @@
             <div class="levelTitle columnTitle">
               CITY
             </div>
-            <div class="sectionList">
-            <?php
-              for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
-                if ($cityList[$cityNum]['is_city'] == 0) {
-                  if ($cityNum != 0) {
+            <div class="hideScrollbar">
+              <div class="sectionList">
+              <?php
+                for ($cityNum = 0; $cityNum < count($cityList); $cityNum++) {
+                  if ($cityList[$cityNum]['is_city'] == 0) {
+                    if ($cityNum != 0) {
+                      echo(
+                        "<div class='pageTop'>
+                          <a href='#pageTop'>- TOP -</a>
+                        </div>
+                        "
+                      );
+                    };
                     echo(
-                      "<div class='pageTop'>
-                        <a href='#pageTop'>- TOP -</a>
+                      "<div class='subtitle'>
+                        <div><u>".$cityList[$cityNum]['section_name']." County</u></div>
                       </div>
                       "
                     );
+                  } else {
+                    echo("
+                      <!-- <a href='city/city.php?section_id=".$cityList[$cityNum]['section_id']."'> -->
+                        <div class='levelButton'>
+                          <div class='sectionName'>
+                            <div>".$cityList[$cityNum]['section_name']." City</div>
+                            <!-- <div><img src='img/right_arrow.png'></div> -->
+                          </div>
+                          <div class='statsRow'>
+                            <div><img src='img/flag_2.png'> ".$cityList[$cityNum]['flags']."</div>
+                            <div style='border-right:3px solid black; width: 2%;'></div>
+                            <div><img src='img/delegate_2.png'> ".$cityList[$cityNum]['population']."</div>
+                          </div>
+                        </div>
+                      <!-- </a> -->"
+                    );
                   };
-                  echo(
-                    "<div class='subtitle'>
-                      <div><u>".$cityList[$cityNum]['section_name']." County</u></div>
-                    </div>
-                    "
-                  );
-                } else {
-                  echo("
-                    <!-- <a href='city/city.php?section_id=".$cityList[$cityNum]['section_id']."'> -->
-                      <div class='levelButton'>
-                        <div class='sectionName'>
-                          <div>".$cityList[$cityNum]['section_name']." City</div>
-                          <!-- <div><img src='img/right_arrow.png'></div> -->
-                        </div>
-                        <div class='statsRow'>
-                          <div><img src='img/flag_2.png'> ".$cityList[$cityNum]['flags']."</div>
-                          <div style='border-right:3px solid black; width: 2%;'></div>
-                          <div><img src='img/delegate_2.png'> ".$cityList[$cityNum]['population']."</div>
-                        </div>
-                      </div>
-                    <!-- </a> -->"
-                  );
                 };
-              };
-              echo(
-                "<div class='pageTop'>
-                  <a href='#pageTop'>- TOP -</a>
-                </div>
-                "
-              );
-            ?>
+                echo(
+                  "<div class='pageTop'>
+                    <a href='#pageTop'>- TOP -</a>
+                  </div>
+                  "
+                );
+              ?>
+              </div>
             </div>
           </div>
           </div>
