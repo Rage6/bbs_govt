@@ -203,7 +203,7 @@
                     <div class='ldrDescription'>
                       ".$senateLdrList[$ldrNum]['description']."
                     </div>
-                    <div class='topBttn senTopBttn'>
+                    <div class='topBttn topBoxBttn senTopBttn'>
                       <span>- TOP -</span>
                     </div>
                   </div>");
@@ -242,7 +242,7 @@
               </div>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>
+          <div class='topBttn topBoxBttn topBoxBttn senTopBttn'>
             <span>- TOP -</span>
           </div>
           <div id="senLawBox" class="lawBox senLawBox">
@@ -311,10 +311,10 @@
               </div>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>
+          <div class='topBttn topBoxBttn senTopBttn'>
             <span>- TOP -</span>
           </div>
-          <div id="senJournalBox">
+          <div id="senJournalBox" class="senJournalBackground">
             <div class="moduleTitle senModTitle">JOURNAL</div>
             <div class="journalBox senJournalBox">
               <div class="allJournalBtns allSenJournalBtns">
@@ -347,7 +347,6 @@
                       echo html_entity_decode("
                       <div data-journal=".$oneReport['post_order']." data-chamber='house'>
                         <div class='reportDate'>".$month."/".$day."/".$year."</div>
-                        <div class='reportTitle'>".$oneReport['title']."</div>
                         <div class='reportMain'>".$oneReport['content']."</div>
                       </div>");
                       $hasSenJoCnt = true;
@@ -355,17 +354,16 @@
                     if ($reportNum === count($allSenJournals) - 1 && $hasSenJoCnt === false) {
                       echo html_entity_decode("
                       <div class='allJournalCnt allSenJournalCnt noCnt'>
-                        <div class='senJournalTitle'>Coming Soon</div>
-                        <div class='senJournalMain'>Our activities will be published in the future</div>
+                        <div class='senJournalMain'>There are no journal entries at this time</div>
                       </div>");
                     };
                   };
                 ?>
               </div>
             </div>
-          </div>
-          <div class='topBttn repTopBttn'>
-            <span>- TOP -</span>
+            <div class='topBttn topBoxBttn repTopBttn'>
+              <span>- TOP -</span>
+            </div>
           </div>
           <div id="senCommitteeBox" class="senCommitteeBox committeeBox">
             <div class="moduleTitle senModTitle">COMMITTEES</div>
@@ -409,7 +407,7 @@
               ?>
             </div>
           </div>
-          <div class='topBttn senTopBttn'>
+          <div class='topBttn topBoxBttn senTopBttn'>
             <span>- TOP -</span>
           </div>
           <div id="senMemberBox" class="senMemberBox memberBox">
@@ -563,7 +561,7 @@
                     };
                     echo html_entity_decode("
                     <div class='ldrDescription'>".$repLdrList[$repLdrNum]['description']."</div>
-                    <div class='topBttn repTopBttn'>
+                    <div class='topBttn topBoxBttn repTopBttn'>
                       <span>- TOP -</span>
                     </div>
                   </div>");
@@ -602,7 +600,7 @@
               </div>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>
+          <div class='topBttn topBoxBttn topBoxBttn repTopBttn'>
             <span>- TOP -</span>
           </div>
           <div id="repLawBox" class="lawBox repLawBox">
@@ -665,10 +663,10 @@
               </div>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>
+          <div class='topBttn topBoxBttn repTopBttn'>
             <span>- TOP -</span>
           </div>
-          <div id="repJournalBox">
+          <div id="repJournalBox" class="repJournalBackground">
             <div class="moduleTitle repModTitle">JOURNAL</div>
             <div class="journalBox repJournalBox">
               <div class="allJournalBtns allRepJournalBtns">
@@ -701,7 +699,6 @@
                       echo html_entity_decode("
                       <div data-journal=".$oneReport['post_order']." data-chamber='house'>
                         <div class='reportDate'>".$month."/".$day."/".$year."</div>
-                        <div class='reportTitle'>".$oneReport['title']."</div>
                         <div class='reportMain'>".$oneReport['content']."</div>
                       </div>");
                       $hasRepJoCnt = true;
@@ -709,15 +706,14 @@
                     if ($reportNum === count($allRepJournals) - 1 && $hasRepJoCnt === false) {
                       echo html_entity_decode("
                       <div class='allJournalCnt allRepJournalCnt noCnt'>
-                        <div class='repJournalTitle'>Coming Soon</div>
-                        <div class='repJournalMain'>Our activities will be published in the future</div>
+                        <div class='repJournalMain'>There are no journal entries at this time</div>
                       </div>");
                     };
                   };
                 ?>
               </div>
             </div>
-            <div class='topBttn repTopBttn'>
+            <div class='topBttn topBoxBttn repTopBttn'>
               <span>- TOP -</span>
             </div>
           </div>
@@ -757,7 +753,7 @@
               ?>
             </div>
           </div>
-          <div class='topBttn repTopBttn'>
+          <div class='topBttn topBoxBttn repTopBttn'>
             <span>- TOP -</span>
           </div>
           <div id="repMemberBox" class="repMemberBox memberBox">

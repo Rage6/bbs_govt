@@ -149,6 +149,21 @@
 
           for ($typeNum = 0; $typeNum < count($typeList); $typeNum++) {
             if ($typeList[$typeNum]['section_id'] == $secInfo['section_id']) {
+              $selectSubtypeList = [];
+              $selectSubtypeCount = 0;
+              for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
+                if ($subtypeList[$newSub]['type_id'] == $typeList[$typeNum]['type_id']) {
+                  $selectSubtypeList[] = $subtypeList[$newSub];
+                  $selectSubtypeCount += 1;
+                };
+              };
+              if ($selectSubtypeCount <= 1) {
+                $hideSubTitle = " subHideStatus";
+                $hideSubBox = " class='subHideStatus'";
+              } else {
+                $hideSubTitle = "";
+                $hideSubBox = "";
+              }
             $oneType = $typeList[$typeNum];
             echo html_entity_decode("
             <div class='delegateBox'>
@@ -180,10 +195,11 @@
                         <div class='postSubtitle'>Bill Prefix (H.B. or S.B.):</div>
                         <input type='text' name='chamberPrefix' />");
                       };
-                      echo("<div class='postSubtitle'>
+                      echo("
+                      <div class='postSubtitle".$hideSubTitle."'>
                         Category
                       </div>
-                      <div>
+                      <div".$hideSubBox.">
                         <select class='subtypeSelect' name='newSubtype'>");
                           for ($newSub = 0; $newSub < count($subtypeList); $newSub++) {
                             if ($subtypeList[$newSub]['type_id'] == $oneType['type_id']) {
@@ -234,13 +250,20 @@
                         echo("<div class='postSubtitle'>Content:</div>
                         <textarea class='postText contentText'maxlength='".$oneType['max_char']."' name='postContent'>");
                           echo html_entity_decode($onePost['content'], ENT_QUOTES);
-                        echo html_entity_decode("</textarea>
-                        <div class='postSubtitle'>Time Posted</div>
-                        <div style='text-align:center'>
+                        echo html_entity_decode("</textarea>");
+                        if ($oneType['needs_time'] == 0) {
+                          $hideTimeTitle = " subHideStatus";
+                          $hideTimeBox = " class='subHideStatus'";
+                        } else {
+                          $hideTimeTitle = "";
+                          $hideTimeBox = "";
+                        };
+                        echo("
+                        <div class='postSubtitle".$hideTimeTitle."'>Time Posted</div>
+                        <div style='text-align:center'".$hideTimeBox.">
                           (<i>YYYY-MM-DD HH:MM:SS</i>)
                         </div>
-                        <textarea class='postText timeText' name='postTime'>".$onePost['timestamp']."</textarea>");
-
+                        <textarea class='postText timeText".$hideTimeTitle."' name='postTime'>".$onePost['timestamp']."</textarea>");
                         if (count($subtypeList) > 1) {
                           $currentSubId = 0;
                           $currentSubName = "none";
@@ -251,10 +274,10 @@
                             };
                           };
                           echo html_entity_decode("
-                            <div class='postSubtitle'>
+                            <div class='postSubtitle".$hideSubTitle."'>
                               Category
                             </div>
-                            <div>
+                            <div".$hideSubBox.">
                               <form method='POST'>
                                 <input type='hidden' name='categoryPostId' value='".$onePost['post_id']."'>
                                 <select class='subtypeSelect' name='subtype'>
@@ -275,7 +298,7 @@
                           ");
                         } else {
                           echo html_entity_decode("
-                          <div class='postSubtitle'>
+                          <div class='postSubtitle hidden'>
                             Category
                           </div>
                           <div>

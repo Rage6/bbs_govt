@@ -203,6 +203,10 @@ body {
   font-size: 1.3rem;
 }
 
+.subHideStatus {
+  display: none;
+}
+
 .titleText {
   height: 80px;
 }
