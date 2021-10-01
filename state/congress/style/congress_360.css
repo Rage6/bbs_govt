@@ -269,7 +269,7 @@ body {
 }
 
 .moduleTitle {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   padding: 5px 0;
   border-top: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
@@ -439,8 +439,8 @@ body {
 
 .billTitle div:last-of-type {
   /* overflow: scroll; */
-  overflow-y: auto;
-  max-height: 100px;
+  /* overflow-y: auto; */
+  /* max-height: 100px; */
   max-width: 75%;
 }
 
@@ -560,6 +560,7 @@ body {
 }
 
 .allJournalBtns {
+  margin: 0 5%;
   display: flex;
   justify-content: space-around;
 }
@@ -575,6 +576,8 @@ body {
 
 .allJournalCnt {
   margin: 0 5%;
+  border-radius: 10px;
+  border: 1px solid #fec231;
   padding: 1vh 1%;
   height: 51vh;
   overflow-y: scroll;
@@ -674,6 +677,10 @@ body {
 
 .topBttn span {
   cursor: pointer;
+}
+
+.topBoxBttn {
+  padding-bottom: 40px;
 }
 
 .legionLink {
@@ -858,6 +865,7 @@ body {
 }
 
 .allRepJournalCnt {
+  border: 1px solid #fec231;
   background-color: #400200;
 }
 

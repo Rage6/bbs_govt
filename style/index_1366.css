@@ -89,12 +89,15 @@
 .subtitle div {
   width: 100% !important;
 }
+.hideScrollbar {
+  overflow-x: hidden;
+}
 .sectionList {
   border-bottom: 1px solid #fec231;
   padding-bottom: 50px;
   overflow-y: scroll;
   height: 450px;
-  width: 100% !important;
+  width: calc(100% + 17px);
 }
 .sectionName {
   width: 100% !important;

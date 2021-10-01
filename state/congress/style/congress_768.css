@@ -250,6 +250,20 @@
   border-radius: 0 10px 10px 0;
 }
 
+.allJournalBtns {
+  justify-content: flex-start;
+}
+
+.allJournalBtns div:first-of-type {
+  margin-left: 0px;
+}
+
+.allJournalBtns div {
+  margin-left: 30px;
+  font-size: 2.5rem;
+  width: 50px;
+}
+
 .allComm {
   margin-left: 5%;
   margin-right: 5%;
