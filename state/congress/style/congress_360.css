@@ -580,7 +580,12 @@ body {
   border: 1px solid #fec231;
   padding: 1vh 1%;
   height: 51vh;
+  overflow-x: hidden;
+}
+
+[data-journal] {
   overflow-y: scroll;
+  width: calc(100% + 17px);
 }
 
 .noCnt {
@@ -865,8 +870,11 @@ body {
 }
 
 .allRepJournalCnt {
-  border: 1px solid #fec231;
   background-color: #400200;
+}
+
+.allJournalCnt div {
+  border: none;
 }
 
 .allRepJournalBtns div {
