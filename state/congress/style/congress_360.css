@@ -574,18 +574,19 @@ body {
   cursor: pointer;
 }
 
-.allJournalCnt {
-  margin: 0 5%;
-  border-radius: 10px;
-  border: 1px solid #fec231;
-  padding: 1vh 1%;
-  height: 51vh;
-  overflow-x: hidden;
+.allJournalCase {
+  margin: 0 0 0 5%;
 }
 
-[data-journal] {
+.allJournalCnt {
+  /* margin: 0 5%;
+  border-radius: 10px;
+  border: 1px solid #fec231; */
+  padding: 1vh 1%;
+  height: 51vh;
+  width: calc(100% - 2px);
   overflow-y: scroll;
-  width: calc(100% + 17px);
+  overflow-x: hidden;
 }
 
 .noCnt {
