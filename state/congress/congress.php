@@ -334,31 +334,33 @@
                   };
                 ?>
               </div>
-              <div class="allJournalCnt allSenJournalCnt">
-                <?php
-                  $hasSenJoCnt = false;
-                  for ($reportNum = 0; $reportNum < count($allSenJournals); $reportNum++) {
-                    $oneReport = $allSenJournals[$reportNum];
-                    if ($oneReport['content'] != '' && $oneReport['content'] != null) {
-                      $cntNum = $allSenJournals[$reportNum]['post_order'];
-                      $month = substr($oneReport['timestamp'],5,2);
-                      $day = substr($oneReport['timestamp'],8,2);
-                      $year = substr($oneReport['timestamp'],0,4);
-                      echo html_entity_decode("
-                      <div data-journal=".$oneReport['post_order']." data-chamber='house'>
-                        <div class='reportDate'>".$month."/".$day."/".$year."</div>
-                        <div class='reportMain'>".$oneReport['content']."</div>
-                      </div>");
-                      $hasSenJoCnt = true;
+              <div class="allJournalCase">
+                <div class="allJournalCnt allSenJournalCnt">
+                  <?php
+                    $hasSenJoCnt = false;
+                    for ($reportNum = 0; $reportNum < count($allSenJournals); $reportNum++) {
+                      $oneReport = $allSenJournals[$reportNum];
+                      if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                        $cntNum = $allSenJournals[$reportNum]['post_order'];
+                        $month = substr($oneReport['timestamp'],5,2);
+                        $day = substr($oneReport['timestamp'],8,2);
+                        $year = substr($oneReport['timestamp'],0,4);
+                        echo html_entity_decode("
+                        <div data-journal=".$oneReport['post_order']." data-chamber='house'>
+                          <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                          <div class='reportMain'>".$oneReport['content']."</div>
+                        </div>");
+                        $hasSenJoCnt = true;
+                      };
+                      if ($reportNum === count($allSenJournals) - 1 && $hasSenJoCnt === false) {
+                        echo html_entity_decode("
+                        <div class='noCnt'>
+                          <div class='senJournalMain'>There are no journal entries at this time</div>
+                        </div>");
+                      };
                     };
-                    if ($reportNum === count($allSenJournals) - 1 && $hasSenJoCnt === false) {
-                      echo html_entity_decode("
-                      <div class='allJournalCnt allSenJournalCnt noCnt'>
-                        <div class='senJournalMain'>There are no journal entries at this time</div>
-                      </div>");
-                    };
-                  };
-                ?>
+                  ?>
+                </div>
               </div>
             </div>
             <div class='topBttn topBoxBttn repTopBttn'>
@@ -686,31 +688,33 @@
                   };
                 ?>
               </div>
-              <div class="allJournalCnt allRepJournalCnt">
-                <?php
-                  $hasRepJoCnt = false;
-                  for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
-                    $oneReport = $allRepJournals[$reportNum];
-                    if ($oneReport['content'] != '' && $oneReport['content'] != null) {
-                      $cntNum = $allRepJournals[$reportNum]['post_order'];
-                      $month = substr($oneReport['timestamp'],5,2);
-                      $day = substr($oneReport['timestamp'],8,2);
-                      $year = substr($oneReport['timestamp'],0,4);
-                      echo html_entity_decode("
-                      <div data-journal=".$oneReport['post_order']." data-chamber='house'>
-                        <div class='reportDate'>".$month."/".$day."/".$year."</div>
-                        <div class='reportMain'>".$oneReport['content']."</div>
-                      </div>");
-                      $hasRepJoCnt = true;
+              <div class="allJournalCase">
+                <div class="allJournalCnt allRepJournalCnt">
+                  <?php
+                    $hasRepJoCnt = false;
+                    for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
+                      $oneReport = $allRepJournals[$reportNum];
+                      if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                        $cntNum = $allRepJournals[$reportNum]['post_order'];
+                        $month = substr($oneReport['timestamp'],5,2);
+                        $day = substr($oneReport['timestamp'],8,2);
+                        $year = substr($oneReport['timestamp'],0,4);
+                        echo html_entity_decode("
+                        <div data-journal=".$oneReport['post_order']." data-chamber='house'>
+                          <div class='reportDate'>".$month."/".$day."/".$year."</div>
+                          <div class='reportMain'>".$oneReport['content']."</div>
+                        </div>");
+                        $hasRepJoCnt = true;
+                      };
+                      if ($reportNum === count($allRepJournals) - 1 && $hasRepJoCnt === false) {
+                        echo html_entity_decode("
+                        <div class='noCnt'>
+                          <div class='repJournalMain'>There are no journal entries at this time</div>
+                        </div>");
+                      };
                     };
-                    if ($reportNum === count($allRepJournals) - 1 && $hasRepJoCnt === false) {
-                      echo html_entity_decode("
-                      <div class='allJournalCnt allRepJournalCnt noCnt'>
-                        <div class='repJournalMain'>There are no journal entries at this time</div>
-                      </div>");
-                    };
-                  };
-                ?>
+                  ?>
+                </div>
               </div>
             </div>
             <div class='topBttn topBoxBttn repTopBttn'>
