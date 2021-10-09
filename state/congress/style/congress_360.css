@@ -470,13 +470,18 @@ body {
 
 .lawListTitle {
   padding: 5px 1%;
-  border-radius: 10px 10px 0 0;
+  /* border-radius: 10px 10px 0 0; */
   text-align: center;
 }
 
 .lawList {
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 125px;
+}
+
+.lawlistInner {
+  width: calc(100% + 17px);
 }
 
 .oneLaw {
@@ -489,14 +494,14 @@ body {
 
 .oneLawTitle {
   padding-left: 2%;
-  padding-right: 2%;
+  padding-right: calc(2% + 17px);
   padding-top: 5px;
   font-size: 1.2rem;
 }
 
 .oneLawApproval {
   padding-left: 2%;
-  padding-right: 2%;
+  padding-right: calc(2% + 17px);
   padding-bottom: 5px;
   text-align: right;
 }
@@ -525,15 +530,17 @@ body {
 
 .rightHalf {
   margin: 0 5%;
+  overflow-x: hidden;
 }
 
 .lawContent {
   /* margin: 0 5%; */
-  border-radius: 0 0 10px 10px;
-  padding: 10px 5%;
+  /* border-radius: 0 0 10px 10px; */
+  padding: 10px 0%;
   font-size: 1.2rem;
   height: 275px;
   overflow-y: scroll;
+  width: calc(100% + 17px);
 }
 
 .startEmpty {
@@ -544,12 +551,16 @@ body {
 
 .viewLawTitle {
   margin: 5px 0 20px 0;
+  padding-left: 5%;
+  padding-right: calc(5% + 17px);
   font-size: 1.4rem;
   text-align: center;
   text-decoration: underline;
 }
 
 .viewLawContent {
+  padding-left: 5%;
+  padding-right: calc(5% + 17px);
   white-space: pre-wrap;
 }
 
@@ -844,13 +855,12 @@ body {
 }
 
 .repLawList {
-  border: 1px solid #fec231;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
   background-color: #400200;
 }
 
 .repLawContent {
-  border-left: 1px solid #fec231;
-  border-right: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
   background-color: #400200;
 }
@@ -1087,13 +1097,12 @@ body {
 }
 
 .senLawList {
-  border: 1px solid #fec231;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
   background-color: #051E33;
 }
 
 .senLawContent {
-  border-left: 1px solid #fec231;
-  border-right: 1px solid #fec231;
   border-bottom: 1px solid #fec231;
   background-color: #051E33;
 }
