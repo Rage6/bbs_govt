@@ -279,26 +279,28 @@
                   <div>Title & Approval</div>
                 </div>
                 <div id="senLawList" class="senLawList lawList">
-                  <?php
-                    $senLawListStmt->execute();
-                    while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo html_entity_decode("
-                        <div class='oneLaw oneSenLaw'>
-                          <div
-                            class='oneLawTitle oneSenLawTitle'
-                            data-postid='".$oneSenLaw['post_id']."'
-                            data-chamber='senate'>
-                              ".$oneSenLaw['title']."
-                          </div>
-                          <div
-                            class='oneLawApproval oneSenLawApproval'
-                            data-postid='".$oneSenLaw['post_id']."'
-                            data-chamber='senate'>
-                              ".$oneSenLaw['subtype_name']."
-                          </div>
-                        </div>");
-                    };
-                  ?>
+                  <div class="lawlistInner">
+                    <?php
+                      $senLawListStmt->execute();
+                      while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo html_entity_decode("
+                          <div class='oneLaw oneSenLaw'>
+                            <div
+                              class='oneLawTitle oneSenLawTitle'
+                              data-postid='".$oneSenLaw['post_id']."'
+                              data-chamber='senate'>
+                                ".$oneSenLaw['title']."
+                            </div>
+                            <div
+                              class='oneLawApproval oneSenLawApproval'
+                              data-postid='".$oneSenLaw['post_id']."'
+                              data-chamber='senate'>
+                                ".$oneSenLaw['subtype_name']."
+                            </div>
+                          </div>");
+                      };
+                    ?>
+                  </div>
                 </div>
               </div>
               <div class="rightHalf">
@@ -393,11 +395,13 @@
                       <div
                         class='commContent senCommContent'
                         data-dptid='".$oneSenComm['dpt_id']."'
-                        data-chambertype='senate'>
-                        <div class='commPurpose'>
-                          ".$oneSenComm['purpose']."
-                        </div>
-                        <div class='commHead'>
+                        data-chambertype='senate'>");
+                        if ($oneSenComm['purpose'] != '' && $oneSenComm['purpose'] != null) {
+                          echo("<div class='commPurpose'>
+                            ".$oneSenComm['purpose']."
+                          </div>");
+                        };
+                        echo("<div class='commHead'>
                           <div><u>".$oneSenComm['job_name']."</u></div>
                           <div>
                             ".$oneSenComm['first_name']." ".$oneSenComm['last_name']."
@@ -639,20 +643,22 @@
                   <div>Title & Approval</div>
                 </div>
                 <div id="repLawList" class="repLawList lawList">
-                  <?php
-                    $senLawListStmt->execute();
-                    while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo html_entity_decode("
-                        <div class='oneLaw oneRepLaw'>
-                          <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
-                            ".$oneSenLaw['title']."
-                          </div>
-                          <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
-                            ".$oneSenLaw['subtype_name']."
-                          </div>
-                        </div>");
-                    };
-                  ?>
+                  <div class="lawlistInner">
+                    <?php
+                      $senLawListStmt->execute();
+                      while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo html_entity_decode("
+                          <div class='oneLaw oneRepLaw'>
+                            <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
+                              ".$oneSenLaw['title']."
+                            </div>
+                            <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
+                              ".$oneSenLaw['subtype_name']."
+                            </div>
+                          </div>");
+                      };
+                    ?>
+                  </div>
                 </div>
               </div>
               <div class="rightHalf">
@@ -741,11 +747,13 @@
                       <div class='commTitle repCommTitle' data-dptid='".$oneRepComm['dpt_id']."' data-chambertype='house'>
                         ".$oneRepComm['dpt_name']."
                       </div>
-                      <div class='commContent repCommContent' data-dptid='".$oneRepComm['dpt_id']."' data-chambertype='house'>
-                        <div class='commPurpose'>
-                          ".$oneRepComm['purpose']."
-                        </div>
-                        <div class='commHead'>
+                      <div class='commContent repCommContent' data-dptid='".$oneRepComm['dpt_id']."' data-chambertype='house'>");
+                        if ($oneRepComm['purpose'] != null && $oneRepComm['purpose'] != '') {
+                          echo("<div class='commPurpose'>
+                            ".$oneRepComm['purpose']."
+                          </div>");
+                        };
+                        echo("<div class='commHead'>
                           <div><u>".$oneRepComm['job_name']."</u></div>
                           <div>
                             ".$oneRepComm['first_name']." ".$oneRepComm['last_name']."
