@@ -474,14 +474,18 @@ body {
   text-align: center;
 }
 
+.lawListOuter {
+  overflow-x: hidden;
+}
+
 .lawList {
   overflow-y: scroll;
-  overflow-x: hidden;
+  width: calc(100% + 17px);
   height: 125px;
 }
 
 .lawlistInner {
-  width: calc(100% + 17px);
+  
 }
 
 .oneLaw {

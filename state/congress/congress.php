@@ -278,28 +278,30 @@
                 <div class="lawListTitle senLawListTitle">
                   <div>Title & Approval</div>
                 </div>
-                <div id="senLawList" class="senLawList lawList">
-                  <div class="lawlistInner">
-                    <?php
-                      $senLawListStmt->execute();
-                      while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo html_entity_decode("
-                          <div class='oneLaw oneSenLaw'>
-                            <div
-                              class='oneLawTitle oneSenLawTitle'
-                              data-postid='".$oneSenLaw['post_id']."'
-                              data-chamber='senate'>
-                                ".$oneSenLaw['title']."
-                            </div>
-                            <div
-                              class='oneLawApproval oneSenLawApproval'
-                              data-postid='".$oneSenLaw['post_id']."'
-                              data-chamber='senate'>
-                                ".$oneSenLaw['subtype_name']."
-                            </div>
-                          </div>");
-                      };
-                    ?>
+                <div class="lawListOuter">
+                  <div id="senLawList" class="senLawList lawList">
+                    <div class="lawlistInner">
+                      <?php
+                        $senLawListStmt->execute();
+                        while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                          echo html_entity_decode("
+                            <div class='oneLaw oneSenLaw'>
+                              <div
+                                class='oneLawTitle oneSenLawTitle'
+                                data-postid='".$oneSenLaw['post_id']."'
+                                data-chamber='senate'>
+                                  ".$oneSenLaw['title']."
+                              </div>
+                              <div
+                                class='oneLawApproval oneSenLawApproval'
+                                data-postid='".$oneSenLaw['post_id']."'
+                                data-chamber='senate'>
+                                  ".$oneSenLaw['subtype_name']."
+                              </div>
+                            </div>");
+                        };
+                      ?>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -642,22 +644,24 @@
                 <div class="lawListTitle repLawListTitle">
                   <div>Title & Approval</div>
                 </div>
-                <div id="repLawList" class="repLawList lawList">
-                  <div class="lawlistInner">
-                    <?php
-                      $senLawListStmt->execute();
-                      while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo html_entity_decode("
-                          <div class='oneLaw oneRepLaw'>
-                            <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
-                              ".$oneSenLaw['title']."
-                            </div>
-                            <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
-                              ".$oneSenLaw['subtype_name']."
-                            </div>
-                          </div>");
-                      };
-                    ?>
+                <div class="lawListOuter">
+                  <div id="repLawList" class="repLawList lawList">
+                    <div class="lawlistInner">
+                      <?php
+                        $senLawListStmt->execute();
+                        while ($oneSenLaw = $senLawListStmt->fetch(PDO::FETCH_ASSOC)) {
+                          echo html_entity_decode("
+                            <div class='oneLaw oneRepLaw'>
+                              <div class='oneLawTitle oneRepLawTitle' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
+                                ".$oneSenLaw['title']."
+                              </div>
+                              <div class='oneLawApproval oneRepLawApproval' data-postid='".$oneSenLaw['post_id']."' data-chamber='house'>
+                                ".$oneSenLaw['subtype_name']."
+                              </div>
+                            </div>");
+                        };
+                      ?>
+                    </div>
                   </div>
                 </div>
               </div>
