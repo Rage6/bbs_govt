@@ -135,11 +135,16 @@ body {
   width: 49%;
 }
 
+.caseContentOuter {
+  overflow-x: hidden;
+}
+
 .caseContent {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   max-height: 500px;
+  width: calc(96% + 17px);
 }
 
 .minuteBox {

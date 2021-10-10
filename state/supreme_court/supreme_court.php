@@ -142,16 +142,20 @@
           </div>
           <div class="caseBttnBox">
             <div>CHOOSE CASE:</div>
-            <div id="caseBttnList" class="caseBttnList">
-              <!-- The titles of the selected cases are shown here -->
-              <i>-- No case found --</i>
+            <div class="caseBttnListOuter">
+              <div id="caseBttnList" class="caseBttnList">
+                <!-- The titles of the selected cases are shown here -->
+                <i>-- No case found --</i>
+              </div>
             </div>
           </div>
           <div class="caseDetailBox">
             <div>CASE DETAILS</div>
-            <div id="caseContent" class="caseContent">
-              <!-- The details about the selected case show up here -->
-              <i>-- No case selected --</i>
+            <div class="caseContentOuter">
+              <div id="caseContent" class="caseContent">
+                <!-- The details about the selected case show up here -->
+                <i>-- No case selected --</i>
+              </div>
             </div>
           </div>
         </div>

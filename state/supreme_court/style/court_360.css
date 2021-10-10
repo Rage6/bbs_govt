@@ -277,11 +277,14 @@ a {
 
 }
 
-.caseContent {
+.caseContentOuter {
   margin-top: 10px;
-  border: 1px solid black;
+}
+
+.caseContent {
   padding: 10px 2%;
   white-space: pre-wrap;
+  background-color: rgba(255,255,255,0.4);
   min-height: 200px;
   max-height: 285px;
   overflow-y: scroll;
