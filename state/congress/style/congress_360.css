@@ -385,10 +385,16 @@ body {
   cursor: pointer;
 }
 
+.billDirectoryOuter {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .billDirectory {
-  margin: 30px 5% 0 5%;
-  border: 1px solid #fec231;
-  border-radius: 10px;
+  margin-top: 30px;
+  border-top: 1px solid #fec231;
+  border-bottom: 1px solid #fec231;
+  /* border-radius: 10px; */
   padding-bottom: 20px;
   /* background-color: #051E33; */
   overflow-y: scroll;
@@ -485,7 +491,7 @@ body {
 }
 
 .lawlistInner {
-  
+
 }
 
 .oneLaw {

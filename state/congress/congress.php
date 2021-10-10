@@ -237,8 +237,10 @@
                   </div>
                 </div>
               </div>
-              <div id="senBillDirectory" class="billDirectory senBillDirectory">
-                <!-- This is where the selected bills are listed -->
+              <div class="billDirectoryOuter">
+                <div id="senBillDirectory" class="billDirectory senBillDirectory">
+                  <!-- This is where the selected bills are listed -->
+                </div>
               </div>
             </div>
           </div>
@@ -603,8 +605,10 @@
                   </div>
                 </div>
               </div>
-              <div id="repBillDirectory" class="billDirectory repBillDirectory">
-                <!-- This is where the selected bills are listed -->
+              <div class="billDirectoryOuter">
+                <div id="repBillDirectory" class="billDirectory repBillDirectory">
+                  <!-- This is where the selected bills are listed -->
+                </div>
               </div>
             </div>
           </div>
