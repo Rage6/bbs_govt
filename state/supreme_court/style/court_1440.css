@@ -116,6 +116,7 @@
 .caseBttnList {
   border: none;
   max-height: 500px;
+  width: calc(96% + 17px);
 }
 
 .caseBttnBox {
