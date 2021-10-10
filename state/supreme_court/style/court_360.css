@@ -254,8 +254,11 @@ a {
   margin-bottom: 40px;
 }
 
-.caseBttnList {
+.caseBttnListOuter {
   margin-top: 10px;
+}
+
+.caseBttnList {
   border: 1px solid black;
   padding: 10px 2%;
   overflow-y: scroll;

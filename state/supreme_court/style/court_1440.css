@@ -109,6 +109,10 @@
   width: inherit;
 }
 
+.caseBttnListOuter {
+  overflow-x: hidden;
+}
+
 .caseBttnList {
   border: none;
   max-height: 500px;
