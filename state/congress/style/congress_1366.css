@@ -145,11 +145,16 @@
   display: none;
 }
 
+.billDirectoryOuter {
+  overflow-x: hidden;
+  width: 68%;
+}
+
 .billDirectory {
   margin: 30px 0 0 0;
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
+  width: calc(100% + 17px);
 }
 
 .selectList {
