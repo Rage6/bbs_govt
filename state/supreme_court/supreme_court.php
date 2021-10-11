@@ -193,7 +193,9 @@
                     <div id='minuteCnt".$oneMinute['post_order']."' class='allMinuteCnt'>
                       <div class='minuteDate'>".$month."/".$day."/".$year."</div>
                       <div class='minuteTitle'>".$oneMinute['title']."</div>
-                      <div class='minuteMain'>".$oneMinute['content']."</div>
+                      <div class='minuteMainOuter'>
+                        <div class='minuteMain'>".$oneMinute['content']."</div>
+                      </div>
                     </div>");
                     $hasMinutes = true;
                   };
@@ -201,7 +203,9 @@
                     echo html_entity_decode("
                     <div class='allMinuteCnt noCnt'>
                       <div class='minuteTitle'>Coming Soon</div>
-                      <div class='minuteMain'>Records of our daily meetings will be published here in the future.</div>
+                      <div class='minuteMainOuter'>
+                        <div class='minuteMain'>Records of our daily meetings will be published here in the future.</div>
+                      </div>
                     </div>");
                   };
                 };
