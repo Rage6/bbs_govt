@@ -187,6 +187,15 @@ body {
   justify-content: space-around;
 }
 
+.minuteMainOuter {
+  border-right: 1px dashed black;
+  overflow-x: hidden;
+}
+
+.minuteMain {
+  width: calc(90% + 17px);
+}
+
 .barIntro {
   width: 45%;
 }
