@@ -161,10 +161,15 @@
   width: 90%;
 }
 
+.outerAllMembers {
+  overflow-x: hidden;
+}
+
 .allMembers {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: calc(100% + 17px);
 }
 
 .memberBox {

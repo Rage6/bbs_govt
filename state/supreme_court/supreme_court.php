@@ -240,7 +240,8 @@
                 $allMembers[] = $oneMember;
               };
               if (count($allMembers) > 0) {
-                echo("<div class='allMembers'>");
+                echo("<div class='outerAllMembers'>
+                <div class='allMembers'>");
                 for ($memberNum = 0; $memberNum < count($allMembers); $memberNum++) {
                   echo html_entity_decode("
                   <div class='memberBox'>
@@ -258,7 +259,8 @@
                   </div>
                   ");
                 };
-                echo("</div>");
+                echo("</div>
+                </div>");
               } else {
                 echo("
                 <div class='noMemberBox'>
