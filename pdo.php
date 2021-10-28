@@ -11,10 +11,10 @@
   } else {
     $isLocal = false;
     if ($_ENV["PASSWORD"] && $_ENV["USERNAME"]) {
-      $pdo = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;port=3306;dbname=heroku_9f89bb0196fa398',$_ENV["USERNAME"],$_ENV["PASSWORD"]);
+      $pdo = new PDO('mysql:host='.$_ENV["HOST"].';port=3306;dbname='.$_ENV["DB_NAME"],$_ENV["USERNAME"],$_ENV["PASSWORD"]);
     } else {
       require_once("config.php");
-      $pdo = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;port=3306;dbname=heroku_9f89bb0196fa398',$username,$password);
+      $pdo = new PDO('mysql:host='.$_ENV["HOST"].';port=3306;dbname='.$_ENV["DB_NAME"],$username,$password);
     };
     $rootURL = $currentHost;
     $jquery = '"https://code.jquery.com/jquery-3.4.1.min.js"
