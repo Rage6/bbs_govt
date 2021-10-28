@@ -10,11 +10,11 @@
     $jquery = "../../jquery.js";
   } else {
     $isLocal = false;
-    if ($_ENV["CLEARDB_PASSWORD"] && $_ENV["CLEARDB_USERNAME"]) {
-      $pdo = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;port=3306;dbname=heroku_9f89bb0196fa398',$_ENV["CLEARDB_USERNAME"],$_ENV["CLEARDB_PASSWORD"]);
+    if ($_ENV["PASSWORD"] && $_ENV["USERNAME"]) {
+      $pdo = new PDO('mysql:host='.$_ENV["HOST"].';port=3306;dbname='.$_ENV["DB_NAME"],$_ENV["USERNAME"],$_ENV["PASSWORD"]);
     } else {
       require_once("config.php");
-      $pdo = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;port=3306;dbname=heroku_9f89bb0196fa398',$username,$password);
+      $pdo = new PDO('mysql:host='.$_ENV["HOST"].';port=3306;dbname='.$_ENV["DB_NAME"],$username,$password);
     };
     $rootURL = $currentHost;
     $jquery = '"https://code.jquery.com/jquery-3.4.1.min.js"
@@ -26,7 +26,7 @@
   if ($currentHost == "localhost:8888") {
     $imgPrefix = "http://localhost:8888/Buckeye_Boys_State/bbs_govt/img";
   } else {
-    if ($_ENV["CLEARDB_PASSWORD"] && $_ENV["CLEARDB_USERNAME"]) {
+    if ($_ENV["PASSWORD"] && $_ENV["USERNAME"]) {
       $imgPrefix = "https://buckeye-boys-state.herokuapp.com/img";
     } else {
       $imgPrefix = "https://www.weareohiobbs.com/img";
