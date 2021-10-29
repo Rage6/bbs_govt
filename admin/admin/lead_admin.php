@@ -86,7 +86,7 @@ $secInfoStmt->execute(array(
 $secInfo = $secInfoStmt->fetch(PDO::FETCH_ASSOC);
 
 // All photo locations w/ staff info if they have a location
-if ($_GET['type'] == 'photos') {
+if (isset($_GET['type']) && $_GET['type'] == 'photos') {
   // // For uploading images directly
   // $allPhotoStmt = $pdo->prepare("SELECT job_id, image_id, img_title, image_path, filename, extension, approved, percent_x, percent_y, height, width, section_path, filename, actual_width, actual_height, flickr_url FROM Image WHERE section_id=:se AND filename IS NOT NULL");
   // // For using the Flickr
