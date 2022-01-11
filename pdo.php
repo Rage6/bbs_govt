@@ -14,7 +14,7 @@
       $pdo = new PDO('mysql:host='.$_ENV["HOST"].';port=3306;dbname='.$_ENV["DB_NAME"],$_ENV["USERNAME"],$_ENV["PASSWORD"]);
     } else {
       require_once("config.php");
-      $pdo = new PDO('mysql:host='.$_ENV["HOST"].';port=3306;dbname='.$_ENV["DB_NAME"],$username,$password);
+      $pdo = new PDO('mysql:host='.$host.';port=3306;dbname='.$dB_name,$username,$password);
     };
     $rootURL = $currentHost;
     $jquery = '"https://code.jquery.com/jquery-3.4.1.min.js"

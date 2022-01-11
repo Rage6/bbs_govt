@@ -271,15 +271,21 @@ $(()=>{
 
   // Generic function for showing the current chamber journals
   const showJournal = (dataId,chamber,selectColor,backgroundColor) => {
-    $("[data-day][data-chamber='"+chamber+"']").css("background-color",backgroundColor).css("color",selectColor);
-    $("[data-day="+dataId+"][data-chamber='" + chamber + "']").css("color",backgroundColor).css("background-color",selectColor);
-    $("[data-journal][data-chamber='" + chamber + "']").css("display","none");
-    $("[data-journal="+dataId+"][data-chamber='" + chamber + "']").css("display","block");
+    if (dataId > 0) {
+      $("[data-day][data-chamber='"+chamber+"']").css("background-color",backgroundColor).css("color",selectColor);
+      $("[data-day="+dataId+"][data-chamber='" + chamber + "']").css("color",backgroundColor).css("background-color",selectColor);
+      $("[data-journal][data-chamber='" + chamber + "']").css("display","none");
+      $("[data-journal="+dataId+"][data-chamber='" + chamber + "']").css("display","block");
+    };
   }
 
   // Sets up initial House journal
   let firstHouseDayNum = $("[data-day][data-chamber='house']");
-  firstHouseDayNum = firstHouseDayNum[0].dataset.day;
+  if (firstHouseDayNum.length > 0) {
+    firstHouseDayNum = firstHouseDayNum[0].dataset.day;
+  } else {
+    firstHouseDayNum = firstHouseDayNum.length;
+  };
   showJournal(firstHouseDayNum,"house","#fec231","#400200");
 
   // Switches between House journals
@@ -290,7 +296,11 @@ $(()=>{
 
   // Sets up initial Senate journal
   let firstSenateDayNum = $("[data-day][data-chamber='senate']");
-  firstSenateDayNum = firstSenateDayNum[0].dataset.day;
+  if (firstSenateDayNum.length > 0) {
+    firstSenateDayNum = firstSenateDayNum[0].dataset.day;
+  } else {
+    firstSenateDayNum = firstSenateDayNum.length
+  };
   showJournal(firstSenateDayNum,"senate","#fec231","#051E33");
 
   // Switches between Senate journals
