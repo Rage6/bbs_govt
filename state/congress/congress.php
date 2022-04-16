@@ -68,7 +68,7 @@
       <div class='entranceBox'>
         <div class="bothTopBttns">
         </div>
-        <a class="entranceBackArrow" href="../../index.php">
+        <a class="entranceBackArrow" href="../../index.php<?php echo($prior_year_href) ?>">
           <img src="../../img/home_blue.png" />
         </a>
         <div class='entranceTitle'>
