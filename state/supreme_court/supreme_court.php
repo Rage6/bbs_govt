@@ -58,7 +58,7 @@
           <img src="../../img/home_gold.png" />
         </a> -->
         <div class="bothTopBttns">
-          <a href="../../index.php">
+          <a href="../../index.php<?php echo($prior_year_href) ?>">
             <img src="../../img/home_gold.png" />
           </a>
           <img id="menuBttn" class="showMenu" src="../../img/menu_gold.png" />

@@ -2,10 +2,24 @@
   $currentYear = 2019;
   $currentHost = $_SERVER['HTTP_HOST'];
 
-  // Will determine where to retrieve the data from
+  if ($_GET['year']) {
+    $prior_year_pdo = '_'.$_GET['year'];
+    $prior_year_href = '?year='.$_GET['year'];
+  } else {
+    $prior_year_pdo = '';
+    $prior_year_href = '';
+  };
+
+  // Retrieves the data from...
   if ($currentHost == "localhost:8888") {
     $isLocal = true;
-    $pdo = new PDO('mysql:host=localhost;port=8888;dbname=BBS_government','Nick','Ike');
+    // ...the current year
+    // if ($prior_year_pdo == '') {
+      // $pdo = new PDO('mysql:host=localhost;port=8888;dbname=BBS_government','Nick','Ike');
+    // ...a past year
+    // } else {
+      $pdo = new PDO('mysql:host=localhost;port=8888;dbname=BBS_government'.$prior_year_pdo,'Nick','Ike');
+    // };
     $rootURL = $currentHost."/Buckeye_Boys_State/bbs_govt/";
     $jquery = "../../jquery.js";
   } else {

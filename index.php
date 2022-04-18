@@ -20,7 +20,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Buckeye Boys State | <?php echo($thisYear) ?></title>
+    <title>Buckeye Boys State |
+      <?php
+        if (!$_GET['year']) {
+          echo($thisYear);
+        } else {
+          echo($_GET['year']);
+        };
+      ?></title>
     <!-- Set-up for posts, texts, etc. -->
     <meta property="og:title" content="Buckeye Boys State | <?php echo($thisYear) ?>" />
     <meta property="og:image" content="img/ohio_flag_bbs.jpg" />
@@ -60,14 +67,20 @@
   <body>
     <div class="indexMain">
       <div class="adminLink">
-        <a href="admin/login/login.php">
+        <a href="admin/login/login.php<?php echo($prior_year_href) ?>">
           <img src="img/gear.png" />
         </a>
       </div>
       <a name="pageTop">
         <div class="topBar">
           <div id="hubTitle">
-            <div>American Legion</div>
+            <div>American Legion || </span><span><?php
+                if (!$_GET['year']) {
+                  echo($thisYear);
+                } else {
+                  echo($_GET['year']);
+                };
+              ?></div>
             <div>Buckeye Boys State</div>
           </div>
           <div class="ohioLogo">
@@ -126,7 +139,7 @@
             </div>
             <div class="hideScrollbar">
               <div class="sectionList">
-                <a href="state/governor/governor.php">
+                <a href="state/governor/governor.php<?php echo($prior_year_href) ?>">
                   <div class="stateButton">
                     <div class="stateButtonCenter">Governor</div>
                     <div class="stateButtonRight">
@@ -134,7 +147,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="state/congress/congress.php">
+                <a href="state/congress/congress.php<?php echo($prior_year_href) ?>">
                   <div class="stateButton">
                     <div class="stateButtonCenter generalAssemblyBttn">General Assembly</div>
                     <div class="stateButtonRight">
@@ -142,7 +155,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="state/supreme_court/supreme_court.php">
+                <a href="state/supreme_court/supreme_court.php<?php echo($prior_year_href) ?>">
                   <div class="stateButton">
                     <div class="stateButtonCenter">Supreme Court</div>
                     <div class="stateButtonRight">
