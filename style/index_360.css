@@ -447,3 +447,49 @@ a {
   font-size: 1.2rem;
   font-family: 'Abel', sans-serif;
 }
+
+.pastContent {
+  padding-top: 30px;
+  background:
+    linear-gradient(0deg, rgba(0,39,104,0.8), rgba(0,39,104,0.8)),
+    url("../img/past_1970.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.pastBox {
+  margin: 10px 10% 0 10%;
+  padding-bottom: 50px;
+  color: #fec231;
+  font-size: 1.2rem;
+  font-family: 'Abel', sans-serif;
+}
+
+.selectYearBox {
+  
+}
+
+.pastYearTitle {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pastYearList {
+  margin: 0 0 50px 0;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.pastYearList a div {
+  margin-right: 20px;
+  padding: 10px;
+  border: 3px solid #fec231;
+  border-radius: 10px;
+  font-size: 1.6rem;
+}
+
+.pastYearList a {
+  color: #fec231;
+}

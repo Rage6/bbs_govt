@@ -36,6 +36,9 @@ $(() => {
   $("#aboutBttn").click(()=>{
     slideDown("#aboutTop",500);
   });
+  $("#pastBttn").click(()=>{
+    slideDown("#pastTop",500);
+  });
 
   // Shows or hides the clicked election topic
   let lastClicked = null;
