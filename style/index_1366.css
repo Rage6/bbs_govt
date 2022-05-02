@@ -142,6 +142,11 @@
   max-height: inherit;
   overflow-y: hidden;
 }
+.pastBox {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  font-size: 1.6rem;
+}
 .moreButton {
  display: none;
 }

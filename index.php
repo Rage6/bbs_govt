@@ -382,18 +382,20 @@
                 </a>
               </div>
             </div>
-            <span class="introTitle">E</span>ach generation of Buckeye Boys State (BBS) had its own ideas, achievements, and debates that can aid future citizens. For this reason, each year's progress since 2021 has been digitally recorded and shared for following generations. This information is for the past, the present, and the futures.
-            <ul>
-              <li>
-                <u>PAST</u>: The policies, laws, and rulings during past years of BBS often reflect the real-world challenges and topics of their times, as well as helping us appreciate what has changed since then.
-              </li>
-              <li>
-                <u>PRESENT</u>: The lessons that prior BBS leaders learned, as well as the solutions that they responded with, may still be applicable to current issues now.
-              </li>
-              <li>
-                <u>FUTURE</u>: History has shown that the young men of BBS are the leaders of tomorrow, so our records may provide a glimpse of the kinds of men that will soon serve as our cultural, military, and civic leaders in the future.
-              </li>
-            </ul>
+            <div>
+              <span class="introTitle">E</span>ach generation of Buckeye Boys State (BBS) had its own ideas, achievements, and debates that can aid future citizens. For this reason, each year's progress since 2021 has been digitally recorded and shared for following generations. This information is for the past, the present, and the futures.
+              <ul>
+                <li>
+                  <u>PAST</u>: The policies, laws, and rulings during past years of BBS often reflect the real-world challenges and topics of their times, as well as helping us appreciate what has changed since then.
+                </li>
+                <li>
+                  <u>PRESENT</u>: The lessons that prior BBS leaders learned, as well as the solutions that they responded with, may still be applicable to current issues now.
+                </li>
+                <li>
+                  <u>FUTURE</u>: History has shown that the young men of BBS are the leaders of tomorrow, so our records may provide a glimpse of the kinds of men that will soon serve as our cultural, military, and civic leaders in the future.
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="pageTop">
             <a href="#pageTop">- TOP -</a>
