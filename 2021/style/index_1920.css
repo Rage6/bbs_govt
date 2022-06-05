@@ -1,0 +1,168 @@
+body {
+  margin-left: 50%;
+}
+.indexMain {
+  border-left: 1px solid #fec231;
+  border-right: 1px solid #fec231;
+  position: relative;
+  left: -720px;
+  width: 1440px;
+}
+.pageTop {
+  display: none;
+}
+#hubTitle {
+  margin-left: 10%;
+  font-size: 3.8rem;
+  width: 45%;
+}
+#hubTitle div:first-child {
+  font-size: 2.3rem;
+}
+.ohioLogo {
+  margin-right: 10%;
+  display: flex;
+  width: 133px;
+  height: 133px;
+}
+.ohioLogo img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.govtLinkRow {
+
+}
+.allGovtColumn {
+  display: flex;
+  justify-content: space-around;
+  /*For checkers*/
+  /* background: conic-gradient(black 0deg 90deg,#002868 90deg 180deg,black 180deg 270deg,#002868 270deg 360deg);
+  background-size: 7px 7px; */
+  /*For stripes*/
+  background:linear-gradient(to bottom, black,#002868 50px,black 100px, #002868 150px, black);
+  background-size: 100% 200px;
+}
+.oneGovtColumn {
+  padding-top: 30px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  width: 30%;
+}
+.bottomShade {
+  display: block;
+}
+.glossaryBar {
+  display: none;
+}
+.introRow {
+  border-top: 3px solid #fec231;
+  display: flex;
+  justify-content: flex-end;
+  background:
+  linear-gradient(
+      to left,
+      rgba(139,0,0,0.85) 0%,
+      rgba(139,0,0,0.85) 45%,
+      rgba(139,0,0,0)),
+  url('../img/FlagsAndDelegates0.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.introBox {
+  margin: 10px 5%;
+  padding: 20px 2%;
+  font-size: 1.6rem;
+  width: 50%;
+  background:
+    linear-gradient(
+      to left,
+      rgba(139,0,0,1),
+      rgba(139,0,0,1));
+}
+.statsBox {
+  margin: 10px 5%;
+  padding: 20px 2%;
+  font-size: 1.6rem;
+  width: 40%;
+}
+.statsList {
+  margin: 20px 0 0 10%;
+  font-size: 1.7rem;
+}
+.statsList div {
+  margin-bottom: 5px;
+}
+.stateButton {
+  width: 75% !important;
+}
+.subtitle div {
+  width: 100% !important;
+}
+.hideScrollbar {
+  overflow-x: hidden;
+}
+.sectionList {
+  border-bottom: 1px solid #fec231;
+  padding-bottom: 50px;
+  overflow-y: scroll;
+  height: 450px;
+  width: calc(100% + 17px);
+}
+.sectionName {
+  width: 100% !important;
+}
+.statsRow {
+  width: 100% !important;
+}
+.levelList {
+  width: 32%;
+}
+.clickingRow {
+  display: flex;
+  justify-content: space-between;
+}
+.clickingRow div {
+  flex-basis: 32%;
+}
+.positionBox {
+  height: 150px;
+}
+.onePosition {
+
+}
+.oneEvent {
+  width: 90%;
+}
+.allTopic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.topicBox {
+  width: 45%;
+}
+.topicContent {
+  display: block;
+}
+.explainBox {
+  margin-top: 40px;
+  padding: 0 10% 50px 10%;
+  font-size: 1.6rem;
+  max-height: inherit;
+  overflow-y: hidden;
+}
+.pastBox {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  font-size: 1.6rem;
+}
+.moreButton {
+  display: none;
+}
+.generalAssemblyBttn {
+  font-size: inherit !important;
+}
+.electionContent {
+  margin-top: -50px;
+}
