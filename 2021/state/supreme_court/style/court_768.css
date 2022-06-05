@@ -1,0 +1,78 @@
+.wholePage {
+  background: repeating-linear-gradient(0.25turn, black, transparent 50px, transparent 190px,black 240px, black 266px),url("../../../img/state/supreme_court/marble_white.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.backArrow {
+  top: 10px;
+  left: 10px;
+  width: 7%;
+}
+
+.mainTitle {
+  justify-content: space-around;
+}
+
+.mainTitleText {
+  width: 70%;
+}
+
+.topMain {
+  font-size: 1.9rem;
+}
+
+.titleDivide {
+
+}
+
+.bottomMain {
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menuBttn {
+  font-size: 1.7rem;
+}
+
+.tagTitle {
+  font-size: 1.6rem;
+}
+
+.allJustices {
+  padding-left: 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.justiceBox {
+  margin-bottom: 30px;
+  width: 45%;
+}
+
+.justiceTitle div:last-child {
+  font-size: 1.2rem;
+}
+
+.caseBox {
+  font-size: 1.2rem;
+}
+
+.allMembers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.memberBox {
+  width: 45%;
+}
+
+.upArrow {
+  margin-left: 42%;
+  margin-bottom: 100px;
+  width: 16%;
+}

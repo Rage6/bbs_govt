@@ -375,7 +375,7 @@
             <div class="selectYearBox">
               <div class="pastYearTitle">SELECT A YEAR</div>
               <div class="pastYearList">
-                <a href="?year=2021" target="_blank">
+                <a href="2021/index.html" target="_blank">
                   <div>
                     2021
                   </div>
