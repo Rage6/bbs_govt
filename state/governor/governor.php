@@ -212,13 +212,17 @@
                 ?>
               ></div>
               <div id="img_1_B" class="oneFrame"
-              <?php
-                if ($govStaffList[0]['flickr_url'] != null && $govStaffList[0]['flickr_url'] != '') {
-                  echo html_entity_decode("style=background-image:url('".$govStaffList[0]['flickr_url']."')");
-                } else {
-                  echo html_entity_decode("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
-                };
-              ?>
+                <?php
+                  if ($govStaffList[0]['approved'] == 1) {
+                    if ($govStaffList[0]['flickr_url'] != null && $govStaffList[0]['flickr_url'] != '') {
+                      echo html_entity_decode("style=background-image:url('".$govStaffList[0]['flickr_url']."')");
+                    } else {
+                      echo html_entity_decode("style=background-image:url('".$imgPrefix.$govStaffList[0]['image_path']."crop_".$govStaffList[0]['filename'].".".$govStaffList[0]['extension']."?t=".time()."')");
+                    };
+                  } else {
+                    echo("style=background-image:url('".$imgPrefix."/default_photo.png')");
+                  };
+                ?>
               ></div>
               <div id="img_2_B" class="oneFrame"
                 <?php

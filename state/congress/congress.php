@@ -138,7 +138,11 @@
           </div>
           <div class="bothIntro senIntro">
             <?php
-              echo html_entity_decode($senIntro['content']);
+              if ($senIntro['approved'] == 1) {
+                echo html_entity_decode($senIntro['content']);
+              } else {
+                echo("Welcome to ALBBS Senate");
+              };
             ?>
           </div>
           <div class="leaderBox">
@@ -327,7 +331,7 @@
                 <?php
                   $senHasNum = false;
                   for ($reportNum = 0; $reportNum < count($allSenJournals); $reportNum++) {
-                    if ($allSenJournals[$reportNum]['content'] != '' && $allSenJournals[$reportNum]['content'] != null) {
+                    if ($allSenJournals[$reportNum]['content'] != '' && $allSenJournals[$reportNum]['content'] != null && $allSenJournals[$reportNum]['approved'] == 1) {
                       echo html_entity_decode("
                         <div
                           id='senJournal".$allSenJournals[$reportNum]['post_order']."'
@@ -346,7 +350,7 @@
                     $hasSenJoCnt = false;
                     for ($reportNum = 0; $reportNum < count($allSenJournals); $reportNum++) {
                       $oneReport = $allSenJournals[$reportNum];
-                      if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                      if ($oneReport['content'] != '' && $oneReport['content'] != null && $oneReport['approved'] == 1) {
                         $cntNum = $allSenJournals[$reportNum]['post_order'];
                         $month = substr($oneReport['timestamp'],5,2);
                         $day = substr($oneReport['timestamp'],8,2);
@@ -509,7 +513,11 @@
           </div>
           <div class="bothIntro repIntro">
             <?php
-              echo html_entity_decode($repIntro['content']);
+              if ($repIntro['approved'] == 1) {
+                echo html_entity_decode($repIntro['content']);
+              } else {
+                echo("Welcome to ALBBS House of Representatives");
+              };
             ?>
           </div>
           <div class="leaderBox">
@@ -689,7 +697,7 @@
                 <?php
                   $repHasNum = false;
                   for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
-                    if ($allRepJournals[$reportNum]['content'] != '' && $allRepJournals[$reportNum]['content'] != null) {
+                    if ($allRepJournals[$reportNum]['content'] != '' && $allRepJournals[$reportNum]['content'] != null && $allRepJournals[$reportNum]['approved'] == 1) {
                       echo html_entity_decode("
                         <div
                           id='repJournal".$allRepJournals[$reportNum]['post_order']."'
@@ -708,7 +716,7 @@
                     $hasRepJoCnt = false;
                     for ($reportNum = 0; $reportNum < count($allRepJournals); $reportNum++) {
                       $oneReport = $allRepJournals[$reportNum];
-                      if ($oneReport['content'] != '' && $oneReport['content'] != null) {
+                      if ($oneReport['content'] != '' && $oneReport['content'] != null && $oneReport['approved'] == 1) {
                         $cntNum = $allRepJournals[$reportNum]['post_order'];
                         $month = substr($oneReport['timestamp'],5,2);
                         $day = substr($oneReport['timestamp'],8,2);

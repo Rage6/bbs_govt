@@ -563,9 +563,11 @@
                   };
                   if ($oneJob['in_department'] == 0 || $dptStatus == 1) {
                     echo html_entity_decode("
-                    <div class='staffTitle'>
-                      ".$oneJob['job_name'].$cityAndId.$dptName."
-                      <form method='POST'>
+                    <div class='staffTitle'>"
+                      .$oneJob['job_name'].$cityAndId.$dptName);
+                      if ($oneJob['senator'] != 0 || $oneJob['representative'] != 0) {
+                      echo html_entity_decode(
+                      "<form method='POST'>
                         <input type='hidden' name='jobId' value='".$onlyId."'/>
                         <select name='statusChange'>");
                         if ($oneJob['job_active'] == 1) {
@@ -580,8 +582,9 @@
                         echo html_entity_decode("
                         </select>
                         <input type='submit' name='changeJobStatus'>
-                      </form>
-                    </div>
+                      </form>");
+                      };
+                    echo html_entity_decode("</div>
                     <div class='staffContent'>
                       <div>
                         <span style='color:green'>NAME:</span>
