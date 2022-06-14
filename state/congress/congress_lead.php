@@ -18,7 +18,7 @@
 
 
   // Gets Senate's introductory statement
-  $senIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=14");
+  $senIntroStmt = $pdo->prepare("SELECT content,approved FROM Post WHERE post_id=14");
   $senIntroStmt->execute();
   $senIntro = $senIntroStmt->fetch(PDO::FETCH_ASSOC);
 
@@ -169,7 +169,7 @@
   // FOR HOUSE OF REPRESENTATIVES
 
   // Gets House of Rep's introductory statement
-  $repIntroStmt = $pdo->prepare("SELECT content FROM Post WHERE post_id=13");
+  $repIntroStmt = $pdo->prepare("SELECT content,approved FROM Post WHERE post_id=13");
   $repIntroStmt->execute();
   $repIntro = $repIntroStmt->fetch(PDO::FETCH_ASSOC);
 

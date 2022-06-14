@@ -85,7 +85,13 @@
       </div>
       <div class="mainContent">
         <div class="welcome">
-          <?php echo html_entity_decode($intro); ?>
+          <?php
+            if ($intro['approved'] == 1) {
+              echo html_entity_decode($intro['content']);
+            } else {
+              echo("Welcome to the ALBBS Supreme Court");
+            };
+          ?>
         </div>
         <!-- The Justice bios start here -->
         <a id="justiceTop">

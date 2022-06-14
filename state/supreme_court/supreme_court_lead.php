@@ -9,9 +9,11 @@
   $secId = 4;
 
   // For Supreme Court's introduction
-  $introStmt = $pdo->prepare("SELECT content FROM Post WHERE type_id=5");
+  $introStmt = $pdo->prepare("SELECT content,approved FROM Post WHERE type_id=5 AND section_id=$secId");
   $introStmt->execute();
-  $intro = $introStmt->fetch(PDO::FETCH_ASSOC)['content'];
+  $intro = $introStmt->fetch(PDO::FETCH_ASSOC);
+  // $introApproval = $intro['approval'];
+  // $introContent = $intro['content'];
 
   // Collect all bio titles, names, photos, and basic info
   $justiceInfoStmt = $pdo->prepare(
@@ -42,7 +44,7 @@
   $justiceInfoStmt->execute();
 
   // Collects the Minutes from the Bar Association
-  $minuteStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=7 ORDER BY post_order ASC");
+  $minuteStmt = $pdo->prepare("SELECT * FROM Post WHERE type_id=7 AND approved=1 ORDER BY post_order ASC");
   $minuteStmt->execute();
   $listOfMinutes = [];
   while ($oneMinute = $minuteStmt->fetch(PDO::FETCH_ASSOC)) {

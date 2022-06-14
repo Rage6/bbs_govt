@@ -1,0 +1,21 @@
+*** USING HTTRACK ***
+
+- HTTrack is a useful that can be used in the command terminal to convert an entire website into only HTML, CSS, and JS. This means that the website that it produces is completely static, meaning that the data being displayed is now written into the HTML, never changing. 
+- This is how the a "screenshot" is taken of a year's results and displayed in the archive. 
+- To do this on the terminal:
+
+1) Enter 'hatrack'
+2) Enter a project name
+3) Put in the path to where your app will end up. If you leave it blank and hit enter, it will end up in 'Users/nicholasvogt/websites/' by default.
+4) Enter the URL of the website that you want a copy of
+5) Enter the number 2 to get Action #2, "Mirror Web Site(s) with Wizard"
+6) Leave the Proxy empty and hit enter
+7) Leave the Wildcards thing blank and hit enter
+8) Leave additional options blank and hit enter
+9) Enter 'Y' to 'launch the mirror'
+10) The new project is now in the 'websites' directory. 
+11) Make an empty directory for this year in the actual website
+12) Put the newly made copy the old website into the new directory
+
+- NOTE: One form of data is not read by HTTrack: any JSON. This is why the bills, laws, and court cases do not automatically show up after the HTTrack stops.
+	* To get this data as an array of objects: 1) use the SQL in the JSON file that normally produces the results, 2) run that SQL statement in the phpMyAdmin, 3) export the results as a JSON file, 4) copy the array of the desired data, and 5) replace the variable where the JSON normally places the data.
