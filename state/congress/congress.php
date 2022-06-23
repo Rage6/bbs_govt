@@ -356,7 +356,7 @@
                         $day = substr($oneReport['timestamp'],8,2);
                         $year = substr($oneReport['timestamp'],0,4);
                         echo html_entity_decode("
-                        <div data-journal=".$oneReport['post_order']." data-chamber='house'>
+                        <div data-journal=".$oneReport['post_order']." data-chamber='senate'>
                           <div class='reportDate'>".$month."/".$day."/".$year."</div>
                           <div class='reportMain'>".$oneReport['content']."</div>
                         </div>");
