@@ -1,6 +1,6 @@
 *** USING HTTRACK ***
 
-- HTTrack is a useful that can be used in the command terminal to convert an entire website into only HTML, CSS, and JS. This means that the website that it produces is completely static, meaning that the data being displayed is now written into the HTML, never changing. 
+- HTTrack is a useful program that can be used in the command terminal to convert an entire website into only HTML, CSS, and JS. This means that the website that it produces is completely static, meaning that the data being displayed is now written into the HTML, never changing. 
 - This is how the a "screenshot" is taken of a year's results and displayed in the archive. 
 - To do this on the terminal:
 

@@ -1,0 +1,497 @@
+body {
+  background:
+    linear-gradient(45deg, rgba(255,255,255,0.3),rgba(255,255,255,0.3)),
+    radial-gradient(circle at 0%, darkred, darkred 15%, white 15%, white 20%, transparent 20%),
+    linear-gradient(to right, #002868 50%, transparent 50%, transparent),
+    linear-gradient(darkred, darkred 33%, white 33%, white 66%, darkred 66%, darkred);
+  background-attachment: fixed;
+}
+
+.indexMain {
+  background: linear-gradient(135deg, #002768, #002768);
+}
+
+a {
+  text-decoration: none;
+}
+
+.pageTop {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.pageTop a {
+  color: #fec231;
+  cursor: pointer;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+}
+#hubTitle {
+  margin-left: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fec231;
+  text-align: left;
+  font-size: 1.8rem;
+  font-family: 'Cinzel', serif;
+}
+#hubTitle div:first-child {
+  border-bottom: 3px solid #fec231;
+  font-size: 1.3rem;
+}
+.ohioLogo {
+  margin-right: 5%;
+  padding: 20px 0;
+  display: none;
+  justify-content: flex-end;
+  width: 45%;
+}
+#hubContent {
+
+}
+.govtLinkRow {
+
+}
+
+.allGovtColumn {
+
+}
+
+.oneGovtColumn {
+  background-color: #002868;
+}
+
+.bottomShade {
+  display: none;
+  position:relative;
+  top: -50px;
+  background: linear-gradient(180deg,transparent,black);
+  height:50px;
+}
+
+.adminLink {
+  border-radius: 0 0 0 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #002868;
+  font-size: 1.1rem;
+  background-color: #fec231;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+.adminLink img {
+  height: 35px;
+  width: 35px;
+}
+.glossaryBar {
+  border-top: 1px solid #002868;
+  border-bottom: 1px solid #002868;
+  color: #002868;
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
+  background-color: #fec231;
+  cursor: pointer;
+}
+.glossaryBox {
+  display: none;
+}
+.glossaryBox div {
+  border-bottom: 1px solid #fec231;
+  padding: 10px 5%;
+  color: #fec231;
+  background-color: darkred;
+}
+.glossaryBox div:hover {
+  color: #002868;
+  background-color: #fec231;
+}
+.introRow {
+  padding-bottom: 40px;
+  padding-top: 10px;
+  font-family: 'Abel', sans-serif;
+  /* background: linear-gradient(
+      to right,
+      rgba(139,0,0,0.85) 0%,
+      rgba(139,0,0,0.85) 45%,
+      rgba(139,0,0,0)),
+      url('../img/FlagsAndDelegates0.jpg');
+  background-size: cover;
+  background-position: center; */
+}
+.introBox {
+  margin: 10px 10% 10px 10%;
+  border: 5px solid #fec231;
+  border-radius: 15px;
+  padding: 20px 5%;
+  color: #fec231;
+  font-size: 1.3rem;
+  /* background-color: rgba(139,0,0,0.85); */
+  background:
+    linear-gradient(
+      rgba(139,0,0,0.85),
+      rgba(139,0,0,0.85)),
+    url('../img/FlagsAndDelegates0.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.introBox ul li {
+  padding-bottom: 10px;
+}
+
+.introTitle {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 3rem;
+}
+.statsBox {
+  margin: 10px 10% 10px 10%;
+  border: 5px solid #fec231;
+  border-radius: 15px;
+  padding: 20px 5%;
+  color: #fec231;
+  font-size: 1.3rem;
+  background: linear-gradient(
+      rgba(139,0,0,0.85),
+      rgba(139,0,0,0.85)),
+      url('../img/FlagsAndDelegates0.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.statsTitle {
+
+}
+.statsList {
+
+}
+
+.statsList div {
+  padding-bottom: 10px;
+}
+
+.electionContent {
+  padding-top: 30px;
+  background:
+    linear-gradient(0deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+    url("../img/voting_stickers.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.electionBox {
+  margin-top: 20px;
+  margin-left: 10%;
+  padding-bottom: 30px;
+  width: 80%;
+}
+
+.browserBox {
+
+}
+
+.levelList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.levelList div {
+  margin: 0 0 20px 0;
+  border: 1px solid rgba(254,194,49,1);
+  border-radius: 10px;
+  padding: 10px 2%;
+  color: rgba(254,194,49,1);
+  font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
+  background-color: darkred;
+  cursor: pointer;
+}
+
+.clickingRow {
+
+}
+
+.positionBox {
+  margin-bottom: 20px;
+  padding: 10px 1%;
+  color: rgba(254,194,49,1);
+  font-family: 'Abel', sans-serif;
+  background-color: black;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.positionBox i {
+  margin: 0 2%;
+  font-size: 1.1rem;
+}
+
+.noPosit {
+  background-color: black !important;
+}
+
+.positionList div {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: darkred;
+}
+
+
+
+.positionDescrip {
+  padding: 10px 2%;
+}
+
+.positTitle {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  font-family: "Cinzel", serif;
+  color: darkred;
+}
+
+.onePosition {
+  border: 1px solid rgba(254,194,49,1);
+  font-family: "Playfair Display", serif;
+}
+
+.oneEvent {
+  margin: 0 0 10px 5%;
+  border: 1px solid rgba(254,194,49,1);
+  border-radius: 5px;
+  padding: 5px 1%;
+  font-size: 1.1rem;
+  background-color: darkred;
+  width: 88%;
+}
+
+.allTopic {
+
+}
+
+.topicBox {
+  margin: 10px 0;
+  border-radius: 5px;
+  color: rgba(254,194,49,1);
+  font-family: "Cinzel", serif;
+  background-color: darkred;
+}
+
+/* .noteTitle {
+  margin-bottom: 5px;
+  font-family: "Cinzel", serif;
+  color: darkred;
+} */
+
+.topicTitle {
+  padding: 10px 2%;
+  border: 1px solid darkred;
+  border-radius: 5px;
+  color: darkred;
+  background-color: rgba(254,194,49,1);
+  cursor: pointer;
+}
+
+.topicContent {
+  margin-left: 10%;
+  padding: 10px 0 20px 0;
+  font-family: 'Abel', sans-serif;
+  font-size: 1.2rem;
+  display: none;
+  width: 85%;
+}
+
+.subtitle {
+  margin-top: 45px;
+  text-align: center;
+  color: #fec231;
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+.levelButton {
+  margin: 20px 0% 20px 20%;
+  border-radius: 0 30px 0 30px;
+  padding: 15px 5% 15px 5%;
+  color: black;
+  font-size: 1.3rem;
+  background-color: #fec231;
+  width: 55%;
+}
+
+.stateButton {
+  margin: 20px 5% 20px 15%;
+  padding: 15px 5% 15px 0%;
+  color: white;
+  text-align: center;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+}
+  /* background: conic-gradient(transparent 0%, transparent 50%, darkred 50%, darkred 62.5%, transparent 62.5%, transparent 87.5%, darkred 87.5%, darkred); */
+
+.stateButtonCenter {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  background-color: darkred;
+  width: 80% !important;
+}
+
+.generalAssemblyBttn {
+  font-size: 1.4rem !important;
+}
+
+.stateButtonRight {
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkred;
+  width: 20% !important;
+}
+
+.stateButtonRight div {
+  background:
+    conic-gradient(
+      from 0turn at 30% 50%,
+      transparent 0%,
+      transparent 62.5%,
+      darkred 62.5%,
+      darkred 87.5%,
+      transparent 87.5%,
+      transparent),
+    conic-gradient(
+      transparent 0%,
+      transparent 62.5%,
+      white 62.5%,
+      white 87.5%,
+      transparent 87.5%,
+      transparent);
+  background-position: 11px;
+  width: 35px !important;
+  height: 35px;
+}
+
+.linkButton {
+  border-radius: 15px;
+}
+
+.levelImg {
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+}
+
+#aboutTop {
+  padding-top: 50px;
+  background: linear-gradient(
+      rgba(139,0,0,0.85),
+      rgba(139,0,0,0.85)), url('../img/nightly_presentation.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.levelTitle {
+  margin-left: 10%;
+  padding: 10px 5%;
+  text-align: left;
+  font-size: 1.5rem;
+  font-family: "Cinzel", serif;
+  color: darkred;
+  background: linear-gradient(to right, rgba(254,194,49,1) 70%, rgba(254,194,49,0));
+  width: 70%;
+}
+.columnTitle {
+  border-bottom: 1px solid #002768;
+}
+.sectionName {
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+  display:flex;
+  justify-content: space-between;
+  font-family: "Playfair Display", serif;
+}
+.sectionName div div img {
+  float: right;
+  height: 25px;
+}
+.sectionName div img {
+  float: right;
+  height: 25px;
+}
+.statsRow {
+  display: flex;
+  justify-content: space-around;
+}
+.statsRow div {
+  padding-top: 20px;
+  font-size: 2rem;
+  font-family: "Special Elite", cursive;
+}
+.statsRow div img {
+  height: 30px;
+}
+.explainTitle {
+  color: darkred;
+}
+.explainBox {
+  margin: 10px 10% 0 10%;
+  padding-bottom: 50px;
+  color: #fec231;
+  font-size: 1.2rem;
+  font-family: 'Abel', sans-serif;
+}
+
+.pastContent {
+  padding-top: 30px;
+  background:
+    linear-gradient(0deg, rgba(0,39,104,0.8), rgba(0,39,104,0.8)),
+    url("../img/past_1970.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.pastBox {
+  margin: 10px 10% 0 10%;
+  padding-bottom: 50px;
+  color: #fec231;
+  font-size: 1.2rem;
+  font-family: 'Abel', sans-serif;
+}
+
+.selectYearBox {
+
+}
+
+.pastYearTitle {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pastYearList {
+  margin: 0 0 50px 0;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.pastYearList a div {
+  margin-right: 20px;
+  padding: 10px;
+  border: 3px solid #fec231;
+  border-radius: 10px;
+  font-size: 1.6rem;
+}
+
+.pastYearList a {
+  color: #fec231;
+}

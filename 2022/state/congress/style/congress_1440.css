@@ -1,0 +1,380 @@
+/* START OF ENTRANCE BOX */
+
+.entranceBox {
+  padding-top: 12vh;
+}
+
+.entranceBackArrow {
+  top: 0;
+  left: 130px;
+  width: 5%;
+}
+
+.entranceTitle {
+  margin: 0px 15% 40px 15%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.entranceTitle div {
+
+}
+
+.entranceTitle div:first-of-type {
+  margin: initial;
+  font-size: 3rem;
+  width: 40%;
+}
+
+.titleDivider {
+  margin-left: 0;
+  border-top: none;
+  border-left: 3px solid #fec231;
+  width: initial;
+  height: 115px;
+}
+
+.entranceTitle div:last-of-type {
+  margin: initial;
+  font-size: 3rem;
+  width: 40%;
+}
+
+.chooseHouse {
+  margin-left: 38%;
+  font-size: 1.8rem;
+  width: 24%;
+}
+
+.bothChambers {
+  margin: 0 13%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.senChamber {
+  font-size: 3.5rem;
+}
+
+.chamberBttn {
+  margin-left: 0%;
+  width: 30%;
+}
+
+.chamberImg {
+  margin: 20px 0;
+  height: 25vh;
+}
+
+.forWide {
+  display: flex;
+}
+
+/* END OF ENTRANCE BOX */
+
+/* START BOTH HOUSES */
+
+.bothContent {
+  padding-top: 105px;
+}
+
+.bothTitle {
+  padding: 0;
+  display: flex;
+  background-image: none;
+}
+
+.bothText {
+  padding: 20px 0;
+  box-shadow: none;
+  width: 50%;
+}
+
+.bbsTitle {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  font-size: 2rem;
+}
+
+.wideTitleImg {
+  display: block;
+  width: 50%;
+  min-height: 100%;
+}
+
+.moduleTitle {
+  font-size: 3rem;
+}
+
+.bothMajTitle {
+  margin: 30px 0;
+  padding-left: 5%;
+  font-size: 2rem;
+}
+
+.bothMinTitle {
+  margin: 30px 0;
+  padding-right: 5%;
+  font-size: 2rem;
+}
+
+.ldrList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.oneLdr {
+  padding: 2%;
+  width: 22%;
+}
+
+.billContent {
+  display: flex;
+}
+
+.billNameList {
+  margin: 30px 0 0 0;
+  width: 30%;
+}
+
+.currentSelect {
+  display: none;
+}
+
+.billDirectoryOuter {
+  overflow-x: hidden;
+  width: 68%;
+}
+
+.billDirectory {
+  margin: 30px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + 17px);
+}
+
+.selectList {
+  padding-top: 10px;
+}
+
+.selectOption:first-of-type {
+  margin-top: 0px;
+}
+
+.oneBill {
+  padding: 20px 0 0 2%;
+  width: 30%;
+}
+
+.billData {
+  padding: 10px 5%;
+}
+
+.allQuestions {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.oneQuestion {
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+}
+
+.question {
+  width: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.questionTag {
+  display: none;
+}
+
+.questionList {
+  margin: 0;
+}
+
+.answer {
+  display: block;
+  width: 85%;
+}
+
+.lawTotal {
+  display: flex;
+}
+
+.leftHalf {
+  margin: 0 0 0 5%;
+  width: 40%;
+}
+
+.lawListTitle {
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.lawList {
+  height: 254px;
+}
+
+.rightHalf {
+  margin: 0 5% 0 0;
+  border-left: 1px solid #fec231;
+  width: 60%;
+}
+
+.lawContent {
+  border-top: 1px solid #fec231;
+}
+
+.allJournalBtns {
+  justify-content: flex-start;
+}
+
+.allJournalBtns div:first-of-type {
+  margin-left: 0px;
+}
+
+.allJournalBtns div {
+  margin-left: 30px;
+  font-size: 2.5rem;
+  width: 50px;
+}
+
+.allJournalCase {
+  margin: 0 0 0 5%;
+}
+
+.journalBox {
+  width: 70%;
+}
+
+.allComm {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-top: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.oneComm {
+  margin-right: 3%;
+  margin-bottom: 20px;
+  border: 1px solid #fec231;
+  border-radius: 10px;
+  width: 30%;
+}
+
+.commTitle {
+  border-radius: 10px 10px 0 0;
+}
+
+.commContent {
+  border-radius: 0 0 10px 10px;
+  display: block;
+}
+
+.allMember {
+  margin: 25px 5% 0 5%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.oneCity {
+  margin: 20px 3% 0 0;
+  width: 30%;
+}
+
+/* END BOTH HOUSES */
+
+/* START OF HOUSE BOX */
+
+.repText {
+  font-size: 4rem;
+}
+
+.repTitle {
+
+}
+
+.repTitleImg {
+  background-image: url("../../../img/state/congress/house_of_rep/ohio-statehouse-2.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.repMajTitle {
+  background-image: linear-gradient(to right, #fec231, #fec231 50%, transparent 75%);
+}
+
+.repSelectList {
+  display: block;
+}
+
+.repLawContent {
+  border-left: none;
+}
+
+.repJournalBackground {
+  background-image:
+    linear-gradient(to right, rgba(140,19,14,0.9),rgba(140,19,14,0.9) 50%, rgba(140,19,14,0.5)),
+    url('../../../img/state/congress/house_of_rep/flag-gavel-constitution.jpg');
+  background-size: cover;
+  background-position: right;
+}
+
+/* END OF HOUSE BOX */
+
+/* START OF SENATE */
+
+.senText {
+  font-size: 4rem;
+}
+
+.senTitle {
+
+}
+
+.senTitleImg {
+  background-image: url("../../../img/state/congress/senate/sen_chamber.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.senMajTitle {
+  background-image: linear-gradient(to right, #fec231, #fec231 50%, transparent 75%)
+}
+
+.senMinTitle {
+  background-image: linear-gradient(to left, #fec231, #fec231 50%, transparent 75%)
+}
+
+.senSelectList {
+  display: block;
+}
+
+.senLawContent {
+  border-left: none;
+}
+
+.senJournalBackground {
+  background-image:
+    linear-gradient(to right, rgba(0,70,127,0.9),rgba(0,70,127,0.9) 50%, rgba(0,70,127,0.5)),
+    url('../../../img/state/congress/house_of_rep/flag-gavel-constitution.jpg');
+  background-size: cover;
+  background-position: right;
+}
+
+/* END OF SENATE */
