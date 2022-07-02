@@ -1,0 +1,297 @@
+.backArrow {
+  top: 10px;
+  left: 10px;
+  width: 5%;
+}
+
+.showMenu {
+  display: none;
+}
+
+.govTitle {
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 3.2rem;
+}
+
+.govTitle div:first-child {
+  padding-right: 2%;
+  width: 50%;
+}
+
+.divider {
+  border-left: 2px solid #fec231;
+}
+
+.govTitle div:last-child {
+  padding-left: 2%;
+  font-size: 3.2rem;
+  width: 50%;
+}
+
+.titleBreak {
+  display: initial;
+}
+
+.menuBar {
+  display: none;
+}
+
+.fullContent {
+  display: flex;
+}
+
+.menuList {
+  font-size: 1.5rem;
+}
+
+.menuBox {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+#menuContent {
+  display: block !important;
+  width: 20%;
+}
+
+.menuButton {
+  padding-left: 10%;
+}
+
+.backButton {
+  font-size: 1.3rem;
+}
+
+.govContent {
+  padding-bottom: 1px;
+  width: 80%;
+}
+
+#img_0 {
+  display: none;
+}
+
+.slideshow {
+  display: block;
+  /* position: relative; */
+  overflow: hidden;
+}
+
+.slideFilm {
+  display: flex;
+  position: relative;
+  left: 0;
+  width: 300%;
+  animation: slideAction 18s linear infinite;
+}
+
+@keyframes slideAction {
+  0%   { left: 0 }
+  100% { left: -1500px }
+}
+
+.oneFrame {
+  background-size: cover;
+  height: 300px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 300px;
+}
+
+#img_1_A {
+  display: inherit;
+}
+
+#img_2_A {
+  background-image: url("../../../img/state/governor/band_2.html");
+  display: inherit;
+}
+
+#img_3_A {
+  background-image: url("../../../img/state/governor/AL_logo.html");
+  display: inherit;
+}
+
+#img_4_A {
+  background-image: url("../../../img/state/governor/ceremony.html");
+  display: inherit;
+}
+
+#img_5_A {
+  background-image: url("../../../img/state/governor/ceremony.html");
+  display: inherit;
+}
+
+#img_6_A {
+  display: none;
+}
+
+#img_7_A {
+  display: none;
+}
+
+#img_1_B {
+  display: inherit;
+}
+
+#img_2_B {
+  background-image: url("../../../img/state/governor/band_2.html");
+  display: inherit;
+}
+
+#img_3_B {
+  background-image: url("../../../img/state/governor/AL_logo.html");
+  display: inherit;
+}
+
+#img_4_B {
+  background-image: url("../../../img/state/governor/ceremony.html");
+  display: inherit;
+}
+
+#img_5_B {
+  background-image: url("../../../img/state/governor/ceremony.html");
+  display: inherit;
+}
+
+#img_6_B {
+  display: none;
+}
+
+#img_7_B {
+  display: none;
+}
+
+.govIntro {
+  padding: 40px 15% 20px 15%;
+  font-size: 1.9rem;
+}
+
+.govSubtitle {
+  padding-left: 20%;
+  font-size: 1.8rem;
+  width: 80%;
+}
+
+.forFlex {
+  margin: 0 3% 50px 3%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nameAndPic {
+  display: block;
+}
+
+.govName {
+  padding: 50px 0 30px 0;
+  font-size: 3rem;
+}
+
+.nameAndPic img{
+  border: 2px solid #2020a0;
+  border-radius: 15px;
+  height: 350px;
+  width: 350px;
+}
+
+.govBio {
+  padding-top: 140px;
+  font-size: 1.7rem;
+}
+
+.upArrow {
+  margin-bottom: 80px;
+}
+
+.tagTitle {
+  font-size: 1.8rem;
+}
+
+.goalBox {
+  padding: 50px 15%;
+  font-size: 1.4rem;
+}
+
+.goalIntro {
+  margin-left: 10%;
+  width: 80%;
+}
+
+.listTitle {
+  margin-left: 38%;
+  border-radius: 20px;
+  color: #2020a0;
+  font-size: 2rem;
+  background-color: #fec231;
+  width: 24%;
+}
+
+.agencyBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.oneAgency {
+  width: 49.8%;
+}
+
+.agencySubtitle {
+  border: 1px solid #2020a0;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.agencyContent {
+  margin-bottom: 10px;
+  border: 1px solid #2020a0;
+  border-top: none;
+  display: block;
+  width: 80%;
+}
+
+.purpose {
+  padding: 20px 0;
+  font-size: 1.3rem;
+}
+
+.directorRow {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.reportBox {
+  padding: 50px 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.allReportBtns {
+  margin-left: 40px;
+  flex-direction: column;
+  font-size: 2rem;
+}
+
+.allReportBtns div {
+  width: 50px;
+}
+
+.reportCnt {
+  width: 85%;
+}
+
+.reportMain {
+  border: 2px solid #fec231;
+  padding: 20px;
+  overflow-y: scroll;
+  height: 350px;
+}
+
+.footer {
+  font-size: 1.7rem;
+}

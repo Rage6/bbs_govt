@@ -1,0 +1,437 @@
+body {
+  margin: 0;
+}
+
+.wholePage {
+  font-size: 16px;
+  background: repeating-linear-gradient(0.25turn, black, transparent 25px, transparent 80px,black 100px, black 125px),url("../../../img/state/supreme_court/marble_white.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.arrowAndTitle {
+  background: linear-gradient(transparent, transparent 90%, black 100%), url("../../../img/state/supreme_court/marble_black.jpg");
+  background-size: cover;
+}
+
+.backArrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13%;
+  cursor: pointer;
+}
+
+.backArrow img {
+  width: 100%;
+  height: 100%;
+}
+
+.bothTopBttns {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+}
+
+.bothTopBttns img {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+}
+
+.mainTitle {
+  padding: 50px 5% 15px 5%;
+  color: #fec231;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: 'Ibarra Real Nova', serif;
+}
+
+.mainTitleText {
+
+}
+
+.topMain {
+  font-size: 1.2rem;
+  margin: 10px 0px 5px 0px;
+}
+
+.titleDivide {
+  border-top:3px solid #fec231
+}
+
+.bottomMain {
+  margin-top: 5px;
+  font-size: 2.2rem;
+}
+
+.courtLogo {
+  background-image: url("../../../img/state/supreme_court/justice_scales.png");
+  background-size: cover;
+  height: 90px;
+  width: 90px;
+}
+
+/* .menuBttn {
+  padding: 10px 0;
+  font-size: 1.4rem;
+  color: #fec231;
+  text-align: center;
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("../../../img/state/supreme_court/justice_scales.png");
+  background-size: cover;
+  cursor: pointer;
+} */
+
+.allOptions {
+  display: none;
+}
+
+.optionBttn {
+  padding: 10px 0 10px 5%;
+  color: #fec231;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.2rem;
+  background: black;
+  border-bottom: 1px solid #fec231;
+  cursor: pointer;
+}
+
+.returnBttn {
+  padding-left: 0;
+  border-bottom: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.mainContent {
+
+}
+
+.welcome {
+  margin: 20px 0 0 10%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.6rem;
+  text-align: center;
+  background: linear-gradient(-45deg, #FFD76F, #C79617 25%, #FFD76F 50%, #C79617 75%, #FFD76F 100%);
+  width: 70%;
+}
+
+.tagTitle {
+  margin-top: 30px;
+  padding: 10px 0;
+  color: #fec231;
+  text-align: center;
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: 1.4rem;
+  background: linear-gradient(black, transparent 20%, transparent 80%, black 100%), url("../../../img/state/supreme_court/marble_black.jpg");
+  background-size: cover;
+}
+
+/* For the Justices' bios and photos */
+.allJustices {
+  margin-top: 40px;
+  padding-left: 5%;
+  width: 90%;
+}
+
+.justiceBox {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding-bottom: 15px;
+  background-color: black;
+}
+
+.justiceTitle {
+  padding: 10px 0;
+  border-radius: 10px 10px 0 0;
+  color: black;
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: 'Ibarra Real Nova', serif;
+  background: linear-gradient(-45deg, #FFD76F, #C79617 25%, #FFD76F 50%, #C79617 75%, #FFD76F 100%);
+  background-size: cover;
+}
+
+.justiceTitle div:last-child {
+  font-size: 1rem;
+}
+
+.justiceImg {
+  margin: 15px 0 0 5%;
+  width: 90%;
+}
+
+.justiceBio {
+  margin: 15px 0 0 5%;
+  padding: 10px 0 10px 5%;
+  color: black;
+  font-size: 1.4rem;
+  font-family: 'Ibarra Real Nova', serif;
+  background: linear-gradient(-45deg, #FFD76F, #C79617 25%, #FFD76F 50%, #C79617 75%, #FFD76F 100%);
+  width: 85%;
+}
+
+.justiceBio div {
+  text-align: center;
+}
+
+.cityHeader {
+  font-size: 1.1rem;
+}
+
+.justiceBio div:nth-child(2) {
+  margin-bottom: 15px;
+}
+
+/* For the Court Cases */
+.caseBox {
+  padding: 40px 5%;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
+  background-size: cover;
+}
+
+.caseBox div i {
+  text-align: center;
+}
+
+.subtypeSelectBox {
+  margin-bottom: 30px;
+}
+
+.subtypeSelect {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtypeSelect div:last-child {
+  border: 1px solid black;
+  text-align: center;
+  overflow-x: scroll;
+  width: 50%;
+  cursor: pointer;
+}
+
+.subtypeBttnList {
+  margin-bottom: 10px;
+  display: none;
+  /* justify-content: space-around;
+  flex-wrap: wrap; */
+}
+
+.subtypeBttn {
+  margin-left: 50%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid white;
+  padding: 5px 0;
+  text-align: center;
+  color: white;
+  background-color: black;
+  width: 50%;
+  cursor: pointer;
+}
+
+.subtypeBttn:hover {
+  color: #fec231;
+  background-color: black;
+}
+
+.caseBttnBox {
+  margin-bottom: 40px;
+}
+
+.caseBttnListOuter {
+  margin-top: 10px;
+}
+
+.caseBttnList {
+  border: 1px solid black;
+  padding: 10px 2%;
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 300px;
+}
+
+.caseBttn {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  background-color: black;
+  cursor: pointer;
+}
+
+.caseDetailBox {
+
+}
+
+.caseContentOuter {
+  margin-top: 10px;
+}
+
+.caseContent {
+  padding: 10px 2%;
+  white-space: pre-wrap;
+  background-color: rgba(255,255,255,0.4);
+  min-height: 200px;
+  max-height: 285px;
+  overflow-y: scroll;
+}
+
+/* For the 'Bar Association Minutes' */
+.minuteBox {
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
+  background-size: cover;
+}
+
+.allMinuteBttns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.allMinuteBttns div {
+  margin: 20px 0 10px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 10%;
+  cursor: pointer;
+}
+
+.allMinuteCnt {
+  margin: 0 5%;
+  padding: 20px 0 40px 0;
+  display: none;
+}
+
+.noCnt {
+  display: block !important;
+}
+
+.minuteDate {
+  padding-right: 10%;
+  text-align: right;
+}
+
+.minuteTitle {
+  margin-bottom: 20px;
+  padding-left: 10%;
+  font-size: 1.6rem;
+}
+
+.minuteMain {
+  border: 1px dashed black;
+  padding: 15px 5%;
+  white-space: pre-wrap;
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 375px;
+}
+
+/* For the list of Bar members */
+.barBox {
+  border-bottom: 1px solid black;
+  padding: 40px 10% 0px 10%;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(black, transparent 5%, transparent 95%, black 100%),url("../../../img/state/supreme_court/background-paper.jpg");
+  background-size: cover;
+}
+
+.fullBarIntro {
+
+}
+
+.fullBarIntro {
+
+}
+
+.barIntro {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.noMemberBox {
+  margin: 40px 0;
+  border: 1px dashed black;
+  padding: 15px 5%;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.allMembers {
+  min-height: 200px;
+  max-height: 460px;
+  overflow-y: scroll;
+}
+
+.memberBox {
+  margin-bottom: 15px;
+  border: 1px dashed black;
+}
+
+.memberBox:last-child {
+  margin-bottom: 40px;
+}
+
+.memberName {
+  padding: 10px 5%;
+  color: #fec231;
+  text-align: center;
+  background-color: black;
+}
+
+.memberHomeBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bothCities {
+  padding: 10px 0;
+  text-align: center;
+  width: 45%;
+}
+
+.bothTitles {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+/* For the tags that take things back to the top */
+.upArrow {
+  margin: 20px 0 70px 35%;
+  border: 1px solid #fec231;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: black;
+  width: 30%;
+}
+
+.goTop {
+  color: #fec231;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer {
+  font-family: 'Montserrat', sans-serif;
+  background-color: black;
+}
