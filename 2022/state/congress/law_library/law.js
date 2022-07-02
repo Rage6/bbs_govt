@@ -1,6 +1,9 @@
 $(document).ready(()=>{
   // console.log("law.js is working...");
-  $.getJSON('law_library/law_json.php',(lawLibrary)=>{
+  // $.getJSON('law_library/law_json.php',(lawLibrary)=>{
+    const lawLibrary = [
+      {"post_id":"1248","title":"American Legionnaire Appreciation Day","content":"A Proclamation \r\nThat Saturday, June 18th shall be Buckeye Boys State Legionnaire Appreciation day.\r\n\r\n BE IT ENACTED BY THE GENERAL ASSEMBLY OF BUCKEYE BOYS STATE: \r\n\r\nThat Saturday, June 18th will be declared Buckeye Boy&rsquo;s State&rsquo;s Legionnaire Appreciation Day.  Examples of thanking Legionnaires could include, but not be limited to, thanking a Legionnaire or sitting with and engaging in conversation with a Legionnaire to convey our appreciation for their sacrifices and taking interest in us and other future generations of leaders. \r\nThis is to be an informal holiday so there will be no paid time off of work. \r\nThere shall be an announcement of the day of commemoration on the day of Friday, June 17th.\r\n","subtype_name":"Law (Governor approval)"}
+    ];
     console.log(lawLibrary);
     let initColor = null;
     let initBkgd = null;
@@ -77,6 +80,6 @@ $(document).ready(()=>{
       };
     });
 
-  });
+  // });
 
 });

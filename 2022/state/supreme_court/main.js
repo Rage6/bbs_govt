@@ -43,8 +43,8 @@ $(()=>{
   });
 
   // Selects the 'minutes' to see
-  $("#minute1").css("color","white").css("background-color","black");
-  $("#minuteCnt1").css("display","block");
+  $("#minute3").css("color","white").css("background-color","black");
+  $("#minuteCnt3").css("display","block");
   $("[data-day]").click((event)=>{
     $("#" + event.target.id).css("color","white").css("background-color","black");
     let minuteNum = parseInt($("#" + event.target.id).attr("data-day"));
