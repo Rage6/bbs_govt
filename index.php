@@ -300,7 +300,7 @@
                     + Election Integrity Matters
                   </div>
                   <div class="topicContent" data-content="integrity">
-                    One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate is <b>strictly enforced</b>. It has happend before in which a delegate was elected, but was unable to fill that position because they failed to meet the electoral standards.
+                    One of Buckeye Boy State's highest priorities is to uphold the fairness and integrity of our democratic elections. For this reason, the requirements, deadlines, and financial transparency expected of every nominee/candidate is <b>strictly enforced</b>. It has happened before in which a delegate was elected, but was unable to fill that position because they failed to meet the electoral standards.
                   </div>
                 </div>
                 <div class="topicBox">
@@ -332,7 +332,7 @@
                     + Your Voice Is Required
                   </div>
                   <div class="topicContent" data-content="speaking">
-                    Anyone running for any elected position in BBS will have to speak publicly at one time or another. <u>Prepare for it!</u> In its simplist form, a city candidate will have 30 seconds to explain their name, goals, and policies to their city's party members. At a much larger scale, a state nominee must participate in a formal debate in front of the entire BBS population.
+                    Anyone running for any elected position in BBS will have to speak publicly at one time or another. <u>Prepare for it!</u> In its siwmplest form, a city candidate will have 30 seconds to explain their name, goals, and policies to their city's party members. At a much larger scale, a state nominee must participate in a formal debate in front of the entire BBS population.
                   </div>
                 </div>
                 <div class="topicBox">
